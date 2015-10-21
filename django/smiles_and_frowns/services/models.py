@@ -48,6 +48,12 @@ class Profile(models.Model):
 	def __unicode__(self):
 		return self.role + " - " + self.user.username
 
+def create_user_profile(sender,instance,created,**kwargs):
+	"""creates a new user profile when a django user model is saved."""
+	if created:
+		profile, created = Profile.objects.get_or_create(user=instance)
+post_save.connect(create_user_profile,sender=User)
+
 class Board(SyncModel):
 	title = models.CharField(max_length=128)
 	users = models.ManyToManyField(User, blank=True)
