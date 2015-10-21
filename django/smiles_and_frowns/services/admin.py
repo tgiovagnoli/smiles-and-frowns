@@ -4,14 +4,17 @@ from services import models
 class ProfileAdmin(admin.ModelAdmin):
 	save_on_top = True
 	fields = ("user", "role", "gender", "age")
-	list_display = ("user", "role", "age")
+	list_display = ("user", "age")
+
+class UserRoleAdmin(admin.ModelAdmin):
+	save_on_top = True
+	fields = ("user", "role")
+	list_display = ("user", "role")
 
 class BoardAdmin(admin.ModelAdmin):
 	save_on_top = True
 	fields = ("title", "edit_count", "in_app_purchase_id", "users", "device_date", "deleted", "uuid")
 	list_display = ("title", "edit_count", "updated_date")
-	filter_horizontal = ("users",)
-
 
 class BehaviorAdmin(admin.ModelAdmin):
 	save_on_top = True
@@ -43,6 +46,7 @@ class PredefinedBoardAdmin(admin.ModelAdmin):
 	fields = ("board",)
 
 admin.site.register(models.Profile, ProfileAdmin)
+admin.site.register(models.UserRole, UserRoleAdmin)
 admin.site.register(models.Board, BoardAdmin)
 admin.site.register(models.Behavior, BehaviorAdmin)
 admin.site.register(models.Reward, RewardAdmin)

@@ -42,27 +42,53 @@ class Profile(models.Model):
 	#https://docs.djangoproject.com/en/1.8/topics/auth/customizing/
 	"""
 	user = models.OneToOneField(User)
-	role = models.CharField(max_length=64, choices=PROFILE_ROLE_CHOICES, default="child")
 	gender = models.CharField(max_length=64, choices=GENDER_CHOICES, blank=True, default=None)
-	age = models.CharField(max_length=3, default=None, blank=True	)
+	age = models.CharField(max_length=3, default=None, blank=True)
 	def __unicode__(self):
-		return self.role + " - " + self.user.username
+		return self.user.username
 
 class Board(SyncModel):
 	title = models.CharField(max_length=128)
-	users = models.ManyToManyField(User, blank=True)
+	owner = models.ForeignKey(User)
 	in_app_purchase_id = models.CharField(max_length=128, blank=True, default=None)
 	edit_count = models.IntegerField(default=0)
+
+	@property
+	def users(self):
+		return UserRole.objects.filter(board=self)
+	@property
+	def behaviors(self):
+		return Behavior.objects.filter(board=self)
+	@property
+	def rewards(self):
+		return Reward.objects.filter(board=self)
+	@property
+	def smiles(self):
+		return Smile.objects.filter(board=self)
+	@property
+	def frowns(self):
+		return Frown.objects.filter(board=self)
+	@property
+	def invites(self):
+		return Invite.objects.filter(board=self)
+
 	def save(self, *args, **kwargs):
 		self.edit_count = self.edit_count + 1
 		super(Board, self).save(*args,**kwargs)
 	def __unicode__(self):
 		return self.title
 
+class UserRole(models.Model):
+	user = models.OneToOneField(User)
+	role = models.CharField(max_length=64, choices=PROFILE_ROLE_CHOICES, default="child")
+	board = models.ForeignKey(Board)
+	def __unicode__(self):
+		return self.role + " - " + self.user.username
+
 class Behavior(SyncModel):
 	title = models.CharField(max_length=128)
 	note = models.CharField(max_length=256, blank=True, default=None)
-	board = models.ForeignKey("Board")
+	board = models.ForeignKey(Board)
 	def save(self, *args, **kwargs):
 		self.board.edit_count = self.board.edit_count + 1
 		self.board.save()
