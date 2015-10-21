@@ -1,8 +1,10 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
 from django.db.models import Q
 from django.core.exceptions import ValidationError
+from django.db.models.signals import pre_save, post_save
 
 # base model for all classes that need to synchronize between devices
 class SyncModel(models.Model):
@@ -47,6 +49,12 @@ class Profile(models.Model):
 	def __unicode__(self):
 		return self.user.username
 
+def create_user_profile(sender,instance,created,**kwargs):
+	"""creates a new user profile when a django user model is saved."""
+	if created:
+		profile, created = Profile.objects.get_or_create(user=instance)
+post_save.connect(create_user_profile,sender=User)
+
 class Board(SyncModel):
 	title = models.CharField(max_length=128)
 	owner = models.ForeignKey(User)
@@ -73,6 +81,8 @@ class Board(SyncModel):
 		return Invite.objects.filter(board=self)
 
 	def save(self, *args, **kwargs):
+		if self.uuid == None or self.uuid == "" or len(self.uuid) == 0:
+			self.uuid = str(uuid.uuid4())
 		self.edit_count = self.edit_count + 1
 		super(Board, self).save(*args,**kwargs)
 	def __unicode__(self):
@@ -90,6 +100,8 @@ class Behavior(SyncModel):
 	note = models.CharField(max_length=256, blank=True, default=None)
 	board = models.ForeignKey(Board)
 	def save(self, *args, **kwargs):
+		if self.uuid == None or self.uuid == "" or len(self.uuid) == 0:
+			self.uuid = str(uuid.uuid4())
 		self.board.edit_count = self.board.edit_count + 1
 		self.board.save()
 		super(Behavior, self).save(*args,**kwargs)
@@ -103,6 +115,8 @@ class Reward(SyncModel):
 	smile_amount = models.FloatField()
 	currency_type = models.CharField(max_length=64, choices=CURRENCY_TYPE_CHOICES, default="money")
 	def save(self, *args, **kwargs):
+		if self.uuid == None or self.uuid == "" or len(self.uuid) == 0:
+			self.uuid = str(uuid.uuid4())
 		self.board.edit_count = self.board.edit_count + 1
 		self.board.save()
 		super(Reward, self).save(*args,**kwargs)
@@ -115,6 +129,8 @@ class Smile(SyncModel):
 	behavior = models.ForeignKey(Behavior)
 	collected = models.BooleanField(default=False)
 	def save(self, *args, **kwargs):
+		if self.uuid == None or self.uuid == "" or len(self.uuid) == 0:
+			self.uuid = str(uuid.uuid4())
 		self.board.edit_count = self.board.edit_count + 1
 		self.board.save()
 		super(Smile, self).save(*args,**kwargs)
@@ -126,6 +142,8 @@ class Frown(SyncModel):
 	board = models.ForeignKey(Board)
 	behavior = models.ForeignKey(Behavior)
 	def save(self, *args, **kwargs):
+		if self.uuid == None or self.uuid == "" or len(self.uuid) == 0:
+			self.uuid = str(uuid.uuid4())
 		self.board.edit_count = self.board.edit_count + 1
 		self.board.save()
 		super(Frown, self).save(*args,**kwargs)
