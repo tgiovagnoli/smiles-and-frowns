@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import admin
 from django.db.models import Q
 from django.core.exceptions import ValidationError
+from django.db.models.signals import pre_save, post_save
 
 # base model for all classes that need to synchronize between devices
 class SyncModel(models.Model):
