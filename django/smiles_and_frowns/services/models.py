@@ -1,10 +1,12 @@
 import uuid
+from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
 from django.db.models import Q
 from django.core.exceptions import ValidationError
 from django.db.models.signals import pre_save, post_save
+
 
 # base model for all classes that need to synchronize between devices
 class SyncModel(models.Model):
@@ -16,6 +18,8 @@ class SyncModel(models.Model):
 	def save(self, *args, **kwargs):
 		if self.uuid == None or self.uuid == "" or len(self.uuid) == 0:
 			self.uuid = str(uuid.uuid4())
+		if self.device_date == None:
+			self.device_date = datetime.now()
 		super(SyncModel, self).save(*args,**kwargs)
 	class Meta:
 		abstract = True
@@ -28,6 +32,7 @@ PROFILE_ROLE_CHOICES = (
 )
 
 GENDER_CHOICES = (
+	("", "---"),
 	("male", "Male"),
 	("female", "Female")
 )
@@ -48,8 +53,8 @@ class Profile(models.Model):
 	#https://docs.djangoproject.com/en/1.8/topics/auth/customizing/
 	"""
 	user = models.OneToOneField(User)
-	gender = models.CharField(max_length=64, choices=GENDER_CHOICES, blank=True, default=None)
-	age = models.CharField(max_length=3, default=None, blank=True)
+	gender = models.CharField(max_length=64, choices=GENDER_CHOICES, blank=True, default="")
+	age = models.CharField(max_length=3, default="", blank=True)
 	def __unicode__(self):
 		return self.user.username
 
@@ -61,8 +66,8 @@ post_save.connect(create_user_profile, sender=User)
 
 class Board(SyncModel):
 	title = models.CharField(max_length=128)
-	owner = models.ForeignKey(User)
-	transaction_id = models.CharField(max_length=128, blank=True, default=None)
+	owner = models.ForeignKey(User, unique=False)
+	transaction_id = models.CharField(max_length=128, blank=True, default="")
 	edit_count = models.IntegerField(default=0)
 
 	@property
@@ -91,7 +96,7 @@ class Board(SyncModel):
 		return self.title
 
 class UserRole(SyncModel):
-	user = models.OneToOneField(User)
+	user = models.ForeignKey(User)
 	role = models.CharField(max_length=64, choices=PROFILE_ROLE_CHOICES, default="child")
 	board = models.ForeignKey(Board)
 	def __unicode__(self):
