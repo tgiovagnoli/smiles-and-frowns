@@ -128,24 +128,39 @@ def sync_pull(request):
 
 	boards = None
 	try:
-		boards = json.loads(request.body)
+		board_info_dictionary = json.loads(request.body)
 	except(e):
 		return json_response({"message": "Could not parse request"})
 
 	output = []
-	for board_data in boards:
-		uuid = board_data["uuid"]
-		edit_count = board_data["edit_count"]
-		sync_date = parser.parse(board_data["sync_date"])
-		board = None
-		try:
-			board = models.Board.objects.get(uuid=uuid, edit_count__gt=edit_count, device_date__gt=sync_date)
-		except:
-			board = None
-		if board:
+	boards = []
+
+	boards_query = models.Board.objects.filter(owner=request.user)
+	for board_record in boards_query:
+		boards.append(board_record)
+
+	user_roles = models.UserRole.objects.filter(user=request.user)
+	for user_role in user_roles:
+		boards.append(user_role.board)
+
+	for board in boards:
+		has_locally = False
+		for board_data in board_info_dictionary:
+			uuid = board_data["uuid"]
+			edit_count = board_data["edit_count"]
+			sync_date = parser.parse(board_data["sync_date"])
+			
+			if board.uuid == uuid:
+				has_locally = True
+				if board.device_date > sync_date:
+					sync_data = get_sync_for_board(board, sync_date)
+					output.append(sync_data)
+		if not has_locally:
 			sync_data = get_sync_for_board(board, sync_date)
 			output.append(sync_data)
-	return HttpResponse(json_response(output), content_type="application/json")
+
+	return json_response(output)
+
 
 @csrf_exempt
 def sync_from_client(request):
