@@ -116,8 +116,8 @@ class Behavior(SyncModel):
 class Reward(SyncModel):
 	board = models.ForeignKey(Board)
 	title = models.CharField(max_length=128)
-	currency_amount = models.FloatField()
-	smile_amount = models.FloatField()
+	currency_amount = models.FloatField(default=1)
+	smile_amount = models.FloatField(default=1)
 	currency_type = models.CharField(max_length=64, choices=CURRENCY_TYPE_CHOICES, default="money")
 	def save(self, *args, **kwargs):
 		self.board.edit_count = self.board.edit_count + 1

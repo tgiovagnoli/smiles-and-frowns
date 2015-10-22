@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 from services import models, json_utils, utils
+from pytz import UTC
 
 def json_response(response_data):
 	return HttpResponse(json.dumps(response_data, indent=4), content_type="application/json")
@@ -174,7 +175,7 @@ def sync_pull(request):
 		if not has_locally:
 			sync_data = get_sync_for_board(board, board.created_date, True)
 			output.append(sync_data)
-	
+
 	return json_response(output)
 
 
@@ -191,22 +192,27 @@ def sync_from_client(request):
 	#boards have to be available for most other object so these should be created first.
 	client_boards = data.get('boards')
 	for client_board in client_boards:
-		
 		#get or create board
-		board,created = models.Board.objects.get_or_create(uuid=client_board.get('uuid'))
+		created = False
+		try:
+			board = models.Board.objects.get(uuid=client_board.get("uuid"))
+		except:
+			created = True
+			board = models.Board(uuid=client_board.get("uuid"), owner=request.user)
+
 		if not created:
-			if board.device_date > json_utils.date_fromstring(client_board.get('device_date')):
+			if board.device_date > UTC.localize(json_utils.date_fromstring(client_board.get('device_date')) ):
 				continue
 		
 		if created:
 			board_owner = None
 			try:
-				board_owner = User.get(username=client_board.get("user_owner_username"))
+				board_owner = User.objects.get(username=client_board.get("owner_username"))
 			except:
-				return json_response_error("Client sync error, user with username(%@) not found on server." % (client_frown.get("user_owner_username")))
+				return json_response_error("Client sync error, user with username (%s) not found on server." % (client_board.get("owner_username")))
 			
 			if board_owner != request.user:
-				return json_response_error("Client sync error, user with username(%@) not found on server." % (client_frown.get("user_owner_username")))
+				return json_response_error("Client sync error, user with username (%s) is not the logged in user." % (client_board.get("owner_username")))
 			board.owner = request.user
 		
 		board.device_date = json_utils.date_fromstring( client_board.get('device_date') )
@@ -214,24 +220,31 @@ def sync_from_client(request):
 		board.transaction_id = client_board.get('transaction_id')
 		board.save()
 
+
 	#go through behaviors
 	client_behaviors = data.get('behaviors')
 	for client_behavior in client_behaviors:
 		#get board for behavior.board
 		try:
-			board = models.Board.objects.get(uuid=client_behavior.get('board_uuid'))
+			board = models.Board.objects.get(uuid=client_behavior.get("board_uuid"))
 		except:
 			return json_response_error("Client sync error, board with uuid(%@) not found on server." % (client_behavior.get('board_uuid')))
 
 		#get or create behavior
-		behavior,created = models.Behavior.objects.get_or_create(uuid=client_behavior.get('uuid'))
+		created = False
+		try:
+			behavior = models.Behavior.objects.get(uuid=client_behavior.get('uuid'))
+		except:
+			created = True
+			behavior = models.Behavior(uuid=client_behavior.get("uuid"), board=board)
+
 		if not created:
-			if behavior.device_date > json_utils.date_fromstring( client_behavior.get('device_date') ):
+			if behavior.device_date > UTC.localize(json_utils.date_fromstring( client_behavior.get('device_date'))):
 				continue
 
 		behavior.device_date = json_utils.date_fromstring( client_behavior.get('device_date') )
-		behavior.title = client_behavior.title
-		behavior.note = client_behavior.note
+		behavior.title = client_behavior.get('title')
+		behavior.note = client_behavior.get('note')
 		behavior.board = board
 		behavior.save()
 
@@ -257,15 +270,12 @@ def sync_from_client(request):
 			return json_response_error("Client sync error, behavior with uuid(%@) not found on server." % (client_smile.get('behavior_uuid')))
 
 		#get or create smile
-		smile,created = models.Smile.objects.get_or_create(uuid=client_smile.get('uuid'))
+		smile,created = models.Smile.objects.get_or_create(uuid=client_smile.get('uuid'), user=user, board=board, behavior=behavior)
 		if not created:
-			if smile.device_date > json_utils.date_fromstring( client_smile.get('device_date') ):
+			if smile.device_date > UTC.localize(json_utils.date_fromstring( client_smile.get('device_date'))):
 				continue
 
 		smile.device_date = json_utils.date_fromstring( client_smile.get('device_date') )
-		smile.user = user
-		smile.board = board
-		smile.behavior = behavior
 		smile.collected = client_smile.get('collected')
 		smile.save()
 
@@ -291,15 +301,12 @@ def sync_from_client(request):
 			return json_response_error("Client sync error, behavior with uuid(%@) not found on server." % (client_frown.get('behavior_uuid')))
 
 		#get or create frown
-		frown,created = models.Frown.objects.get_or_create(uuid=client_frown.get('uuid'))
+		frown,created = models.Frown.objects.get_or_create(uuid=client_frown.get('uuid'), user=user, board=board, behavior=behavior)
 		if not created:
-			if frown.device_date > json_utils.date_fromstring( client_frown.get('device_date') ):
+			if frown.device_date > UTC.localize(json_utils.date_fromstring( client_frown.get('device_date'))):
 				continue
 
 		frown.device_date = json_utils.date_fromstring( client_frown.get('device_date') )
-		frown.board = board
-		frown.user = user
-		frown.behavior = behavior
 		frown.save()
 
 	#go through rewards
@@ -312,14 +319,18 @@ def sync_from_client(request):
 			return json_response_error("Client sync error, board with uuid(%@) not found on server." % (client_reward.get('board_uuid')))
 
 		#get or create reward
-		reward,created = models.Reward.objects.get_or_create(uuid=client_reward.get('uuid'))
+		reward,created = models.Reward.objects.get_or_create(uuid=client_reward.get('uuid'), board=board)
 		if not created:
-			if reward.device_date > json_utils.date_fromstring(client_reward.get('device_date')):
+			if reward.device_date > UTC.localize(json_utils.date_fromstring(client_reward.get('device_date'))):
 				continue
 
 		reward.title = client_reward.get('title')
-		reward.currenty_amount = client_reward.get('currenty_amount')
+		reward.currency_amount = client_reward.get('currency_amount')
 		reward.smile_amount = client_reward.get('smile_amount')
 		reward.currency_type = client_reward.get('currency_type')
-		reward.board = board
 		reward.save()
+
+	return json_response({"message": "success"})
+
+
+
