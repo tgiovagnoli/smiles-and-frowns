@@ -29,7 +29,7 @@ def sync_from_client(request):
 	if not request.user.is_authenticated(): return login_required_response()
 
 	#get JSON body
-	json_string = request.META['body']
+	json_string = request.body
 	data = json.loads(json_string)
 
 	#go through boards the client sent us.
