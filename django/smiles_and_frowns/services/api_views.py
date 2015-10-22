@@ -73,8 +73,6 @@ def sync_pull(request):
 			output.append(sync_data)
 	return HttpResponse(json_response(output), content_type="application/json")
 
-
-
 def sync_from_client(request):
 	#check authenticated
 	if not request.user.is_authenticated(): return login_required_response()
@@ -91,12 +89,13 @@ def sync_from_client(request):
 		#get or create board
 		board,created = models.Board.objects.get_or_create(uuid=client_board.get('uuid'))
 		if not created:
-			if board.updated_date > json_utils.date_fromstring( client_board.get('device_date') ):
+			if board.device_date > json_utils.date_fromstring( client_board.get('device_date') ):
 				continue
 		
 		#TODO: How do we properly set the board.owner?
 		board.owner = request.user
 		
+		board.device_date = json_utils.date_fromstring( client_board.get('device_date') )
 		board.title = client_board.get('title')
 		board.in_app_purchase_id = client_board.get('in_app_purchase_id')
 		board.save()
@@ -113,9 +112,10 @@ def sync_from_client(request):
 		#get or create behavior
 		behavior,created = models.Behavior.objects.get_or_create(uuid=client_behavior.get('uuid'))
 		if not created:
-			if behavior.updated_date > json_utils.date_fromstring( client_behavior.get('device_date') ):
+			if behavior.device_date > json_utils.date_fromstring( client_behavior.get('device_date') ):
 				continue
 
+		behavior.device_date = json_utils.date_fromstring( client_behavior.get('device_date') )
 		behavior.title = client_behavior.title
 		behavior.note = client_behavior.note
 		behavior.board = board
@@ -145,8 +145,10 @@ def sync_from_client(request):
 		#get or create smile
 		smile,created = models.Smile.objects.get_or_create(uuid=client_smile.get('uuid'))
 		if not created:
-			if smile.updated_date > json_utils.date_fromstring( client_smile.get('device_date') ):
+			if smile.device_date > json_utils.date_fromstring( client_smile.get('device_date') ):
 				continue
+
+		smile.device_date = json_utils.date_fromstring( client_smile.get('device_date') )
 		smile.user = user
 		smile.board = board
 		smile.behavior = behavior
@@ -177,9 +179,10 @@ def sync_from_client(request):
 		#get or create frown
 		frown,created = models.Frown.objects.get_or_create(uuid=client_frown.get('uuid'))
 		if not created:
-			if frown.updated_date > json_utils.date_fromstring( client_frown.get('device_date') ):
+			if frown.device_date > json_utils.date_fromstring( client_frown.get('device_date') ):
 				continue
 
+		frown.device_date = json_utils.date_fromstring( client_frown.get('device_date') )
 		frown.board = board
 		frown.user = user
 		frown.behavior = behavior
