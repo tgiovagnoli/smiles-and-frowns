@@ -188,3 +188,24 @@ def sync_from_client(request):
 		frown.behavior = behavior
 		frown.save()
 
+def update_board(client_board):
+	#get or create board
+	board, created = models.Board.objects.get_or_create(uuid=client_board.get('uuid'))
+	if not created:
+		if board.device_date > json_utils.date_fromstring( client_board.get('device_date') ):
+			continue
+	if created:
+		user = None
+		try:
+			user = models.User.get(username=client_board.get("user_owner_username"))
+		except:
+			return json_response_error("Client sync error, user with username(%@) not found on server." % (client_frown.get("user_owner_username")))
+		if user not request.user:
+			return json_response_error("Client sync error, user owner username(%@) is not logged in user." % (client_frown.get("user_owner_username")))
+		board.owner = request.user
+
+	board.device_date = json_utils.date_fromstring( client_board.get("device_date") )
+	board.title = client_board.get("title")
+	board.in_app_purchase_id = client_board.get("in_app_purchase_id")
+	board.save()
+
