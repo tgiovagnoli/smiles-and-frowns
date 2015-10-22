@@ -4,6 +4,7 @@ import json
 from services import models
 from django.core import serializers
 
+
 def datestring(datetimeobj):
 	return datetimeobj.strftime("%Y-%m-%dT%H:%M:%SZ")
 
