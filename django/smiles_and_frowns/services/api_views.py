@@ -13,13 +13,10 @@ def json_response(response_data):
 	return HttpResponse(json.dumps(response_data, indent=4), content_type="application/json")
 
 def json_response_error(error_message):
-	return HttpResponse(json.dumps({'message':error_message}, indent=4), content_type="application/json")	
+	return HttpResponse(json.dumps({'error':error_message}, indent=4), content_type="application/json")	
 
 def login_required_response():
-	message = {
-		"message": "login required"
-	}
-	return json_response(message)
+	return json_response({"error": "login required"})
 
 def boards(request):
 	if not request.user.is_authenticated(): 
@@ -138,7 +135,7 @@ def user_login(request):
 @csrf_exempt
 def user_logout(request):
 	logout(request)
-	return json_response({"message": "logged out"})
+	return json_response({})
 
 def get_sync_for_board(board, sync_date, is_new=False):
 	sync_data = {
@@ -371,7 +368,7 @@ def sync_from_client(request):
 		reward.currency_type = client_reward.get('currency_type')
 		reward.save()
 
-	return json_response({"message": "success"})
+	return json_response({})
 
 
 
