@@ -124,7 +124,7 @@ def sync_from_client(request):
 			return json_response_error("Client sync error, behavior with uuid(%@) not found on server." % (client_frown.get('behavior_uuid')))
 
 		#get or create frown
-		frown,created = models.Frown.objects.get_or_create(client_frown.get('uuid'))
+		frown,created = models.Frown.objects.get_or_create(uuid=client_frown.get('uuid'))
 		if not created:
 			if frown.updated_date > json_utils.date_fromstring( client_frown.get('device_date') ):
 				continue
