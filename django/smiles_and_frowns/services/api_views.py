@@ -57,20 +57,28 @@ def user_login(request):
 		return json_response_error("method not allowed")
 
 	#get username / password
-	username = request.POST.get('username',None)
+	username = None
+	email = request.POST.get('email',None)
 	password = request.POST.get('password',None)
 
-	#check for username
-	if not username or len(username) < 1:
-		return json_response_error("username required")
+	#check for email
+	if not email or len(email) < 1:
+		return json_response_error("email required")
 
 	#check for password
 	if not password or len(password) < 1:
 		return json_response_error("password required")
 
+	#lookup user by email for their username
+	user = None
+	try:
+		user = User.objects.get(email=email)
+		username = user.username
+	except:
+		return json_response_error("user not found")
+
 	#try and authenticate user
 	user = None
-
 	try: 
 		user = authenticate(username=username,password=password)
 	except: 
@@ -122,6 +130,7 @@ def sync_pull(request):
 			output.append(sync_data)
 	return HttpResponse(json_response(output), content_type="application/json")
 
+@csrf_exempt
 def sync_from_client(request):
 	if not request.user.is_authenticated(): 
 		return login_required_response()
