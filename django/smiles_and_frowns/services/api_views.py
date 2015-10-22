@@ -161,6 +161,28 @@ def sync_pull(request):
 
 	return json_response(output)
 
+def sync_pull2(request):
+	data = json.loads(request.body)
+	sync_date = json_utils.date_fromstring(data.get('sync_date'))
+	client_boards = data.get('boards')
+	boards = []
+	board_uuids = []
+	for client_board in client_boards:
+		try:
+			board = models.Board.objects.get(uuid=client_board.get('uuid'),edit_count__gt=client_board.get('edit_count'),device_date__gt=sync_date)
+			board_uuids.append(board.uuid)
+			boards.append(board)
+		except:
+			pass
+	new_boards = models.Board.objects.filter(~Q(uuid__in=board_uuids), Q(device_date__gt=sync_date))
+	for board in new_boards:
+		boards.append(board)
+	output = []
+	for board in boards:
+		sync_data = get_sync_for_board(board, sync_date)
+		output.append(sync_data)
+	return json_response(output)
+
 
 @csrf_exempt
 def sync_from_client(request):
