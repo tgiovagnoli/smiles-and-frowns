@@ -8,11 +8,8 @@ from django.core import serializers
 def datestring(datetimeobj):
 	return datetimeobj.strftime("%Y-%m-%dT%H:%M:%SZ")
 
-<<<<<<< HEAD
-=======
 def date_fromstring(datestring):
 	return datetime.datetime.strptime(datestring,"%Y-%m-%dT%H:%M:%SZ")
->>>>>>> 4d4e9617679c9500e1ca9339f869b36396e7a0d2
 
 def append_sync_info(sync_model_instance, info_dict):
 	info_dict["created_date"] = datestring(sync_model_instance.created_date)
