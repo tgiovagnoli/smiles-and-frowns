@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
-from services import models, json_utils
+from services import models, json_utils, utils
 
 def json_response(response_data):
 	return HttpResponse(json.dumps(response_data, indent=4), content_type="application/json")
@@ -28,28 +28,6 @@ def boards(request):
 	return json_response(board_data)
 
 
-def get_sync_for_board(board, sync_date):
-	sync_data = {
-		"board": json_utils.board_info_dictionary(board)
-	}
-	#send back the user roles
-	users_roles = models.UserRole.objects.filter(board=board, device_date__gt=sync_date)
-	sync_data["user_roles"] = json_utils.user_role_info_dictionary_collection(users_roles, with_users=True)
-
-	behaviors = models.Behavior.objects.filter(board=board, device_date__gt=sync_date)
-	sync_data["behaviors"] = json_utils.behavior_info_dictionary_collection(behaviors)
-
-	rewards = models.Reward.objects.filter(board=board, device_date__gt=sync_date)
-	sync_data["rewards"] = json_utils.reward_info_dictionary_collection(rewards)
-
-	smiles = models.Smile.objects.filter(board=board, device_date__gt=sync_date)
-	sync_data["smiles"] = json_utils.smile_info_dictionary_collection(smiles)
-
-	frowns = models.Frown.objects.filter(board=board, device_date__gt=sync_date)
-	sync_data["frowns"] = json_utils.frown_info_dictionary_collection(frowns)
-
-	return sync_data
-
 @csrf_exempt
 def user_signup(request):
 	#check for POST
@@ -66,8 +44,6 @@ def user_signup(request):
 	#check for password
 	if not password or len(password) < 1:
 		return json_response_error("password required")
-
-	
 
 @csrf_exempt
 def user_login(request):
@@ -121,6 +97,44 @@ def user_logout(request):
 	logout(request)
 	return json_response({"message": "logged out"})
 
+
+def get_sync_for_board(board, sync_date, is_new=False):
+	sync_data = {
+		"board": json_utils.board_info_dictionary(board)
+	}
+	if is_new:
+		users_roles = models.UserRole.objects.filter(board=board)
+	else:
+		users_roles = models.UserRole.objects.filter(board=board, device_date__gt=sync_date)
+	sync_data["user_roles"] = json_utils.user_role_info_dictionary_collection(users_roles, with_users=True)
+
+	if is_new:
+		behaviors = models.Behavior.objects.filter(board=board)
+	else:
+		behaviors = models.Behavior.objects.filter(board=board, device_date__gt=sync_date)
+	sync_data["behaviors"] = json_utils.behavior_info_dictionary_collection(behaviors)
+
+	if is_new:
+		rewards = models.Reward.objects.filter(board=board)
+	else:
+		rewards = models.Reward.objects.filter(board=board, device_date__gt=sync_date)
+	sync_data["rewards"] = json_utils.reward_info_dictionary_collection(rewards)
+
+	if is_new:
+		smiles = models.Smile.objects.filter(board=board)
+	else:
+		smiles = models.Smile.objects.filter(board=board, device_date__gt=sync_date)
+	sync_data["smiles"] = json_utils.smile_info_dictionary_collection(smiles)
+
+	if is_new:
+		frowns = models.Frown.objects.filter(board=board)
+	else:
+		frowns = models.Frown.objects.filter(board=board, device_date__gt=sync_date)
+	sync_data["frowns"] = json_utils.frown_info_dictionary_collection(frowns)
+
+	return sync_data
+
+
 @csrf_exempt
 def sync_pull(request):
 	if not request.user.is_authenticated(): 
@@ -129,8 +143,11 @@ def sync_pull(request):
 	boards = None
 	try:
 		board_info_dictionary = json.loads(request.body)
-	except(e):
-		return json_response({"message": "Could not parse request"})
+	except:
+		return json_response_error("could not parse request")
+
+	if utils.is_array(board_info_dictionary) == False:
+		return json_response_error("could not parse request")
 
 	output = []
 	boards = []
@@ -149,38 +166,15 @@ def sync_pull(request):
 			uuid = board_data["uuid"]
 			edit_count = board_data["edit_count"]
 			sync_date = parser.parse(board_data["sync_date"])
-			
 			if board.uuid == uuid:
 				has_locally = True
 				if board.device_date > sync_date:
 					sync_data = get_sync_for_board(board, sync_date)
 					output.append(sync_data)
 		if not has_locally:
-			sync_data = get_sync_for_board(board, board.created_date)
+			sync_data = get_sync_for_board(board, board.created_date, True)
 			output.append(sync_data)
-
-	return json_response(output)
-
-def sync_pull2(request):
-	data = json.loads(request.body)
-	sync_date = json_utils.date_fromstring(data.get('sync_date'))
-	client_boards = data.get('boards')
-	boards = []
-	board_uuids = []
-	for client_board in client_boards:
-		try:
-			board = models.Board.objects.get(uuid=client_board.get('uuid'),edit_count__gt=client_board.get('edit_count'),device_date__gt=sync_date)
-			board_uuids.append(board.uuid)
-			boards.append(board)
-		except:
-			pass
-	new_boards = models.Board.objects.filter(~Q(uuid__in=board_uuids), Q(device_date__gt=sync_date))
-	for board in new_boards:
-		boards.append(board)
-	output = []
-	for board in boards:
-		sync_data = get_sync_for_board(board, sync_date)
-		output.append(sync_data)
+	
 	return json_response(output)
 
 
