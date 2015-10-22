@@ -1,10 +1,11 @@
-import json
+import json,uuid
 from dateutil import parser
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.hashers import make_password
 from services import models, json_utils, utils
 from pytz import UTC
 
@@ -28,7 +29,6 @@ def boards(request):
 	board_data = json_utils.board_info_dictionary_collection(boards, with_users=True, with_behaviors=True, with_rewards=True, with_smiles=True, with_frowns=True, with_invites=True)
 	return json_response(board_data)
 
-
 @csrf_exempt
 def user_signup(request):
 	#check for POST
@@ -45,6 +45,48 @@ def user_signup(request):
 	#check for password
 	if not password or len(password) < 1:
 		return json_response_error("password required")
+
+	#create random username with uuid
+	username = str(uuid.uuid4())
+
+	#create user
+	try:
+		new_user = User(email=email,username=username,password=make_password(password))
+		new_user.save()
+	except Exception as e:
+		return json_response_error('error creating user %s' % str(e))
+
+	return json_response({})
+
+@csrf_exempt
+def user_update(request):
+	if not request.user.is_authenticated(): 
+		return login_required_response()
+
+	if request.method != POST:
+		return json_response_error("method not allowed")
+
+	email = request.POST.get('email',None)
+	password = request.POST.get('password',None)
+	password_confirm = request.POST.get('password_confirm',None)
+	firstname = request.POST.get('firstname',None)
+	lastname = request.POST.get('lastname',None)
+
+	if email:
+		request.user.email = email
+
+	if firstname:
+		request.user.first_name = firstname
+
+	if lastname:
+		request.user.last_name = lastname
+
+	if password and password_confirm and password == password_confirm:
+		user.set_password( make_password(password) )
+
+	user.save()
+	data = json_utils.user_info_dictionary(user)
+	return json_response(data)
 
 @csrf_exempt
 def user_login(request):
@@ -97,7 +139,6 @@ def user_login(request):
 def user_logout(request):
 	logout(request)
 	return json_response({"message": "logged out"})
-
 
 def get_sync_for_board(board, sync_date, is_new=False):
 	sync_data = {
