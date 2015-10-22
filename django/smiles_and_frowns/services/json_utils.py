@@ -38,7 +38,6 @@ def board_info_dictionary(board, with_users=False, with_behaviors=False, with_re
 		board_data["frowns"] = frown_info_dictionary_collection(board.frowns)
 	if with_invites:
 		board_data["invites"] = invite_info_dictionary_collection(board.invites)
-
 	return board_data
 
 def user_role_info_dictionary_collection(user_roles, with_users=False, with_boards=False):
@@ -51,6 +50,7 @@ def user_role_info_dictionary(user_role, with_user=False, with_board=False):
 	user_role_data = {
 		"role": user_role.role,
 	}
+	append_sync_info(user_role, user_role_data)
 	if with_board:
 		user_role_data["board"] =  board_info_dictionary(user_role.board)
 	if with_user:
@@ -114,7 +114,6 @@ def smile_info_dictionary(smile, with_board=False, with_user=False):
 		smile_data["board"] = board_info_dictionary(smile.board)
 	else:
 		smile_data["board_uuid"] = smile.board.uuid
-
 	if with_user:
 		smile_data["user"] = user_info_dictionary(smile.user)
 	else:
@@ -136,12 +135,10 @@ def frown_info_dictionary(frown, with_board=False, with_user=False):
 		frown_data["board"] = board_info_dictionary(frown.board)
 	else:
 		frown_data["board_uuid"] = frown.board.uuid
-
 	if with_user:
 		frown_data["user"] = user_info_dictionary(frown.user)
 	else:
 		frown_data["user_username"] = frown.user.username
-
 	return frown_data
 
 def invite_info_dictionary_collection(invites, with_boards=False, with_users=False):
@@ -158,12 +155,10 @@ def invite_info_dictionary(invite, with_board=False, with_user=False):
 		invite_data["board"] = board_info_dictionary(invite.board)
 	else:
 		invite_data["board_uuid"] = invite.board.uuid
-
 	if with_user:
 		invite_data["user"] = user_info_dictionary(invite.user)
 	else:
 		invite_data["user_username"] = invite.user.username
-
 	return invite_data
 
 

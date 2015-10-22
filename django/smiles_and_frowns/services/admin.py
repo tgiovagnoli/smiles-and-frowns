@@ -9,7 +9,8 @@ class ProfileAdmin(admin.ModelAdmin):
 class UserRoleAdmin(admin.ModelAdmin):
 	save_on_top = True
 	fields = ("user", "role")
-	list_display = ("user", "role")
+	list_display = ("user", "role", "device_date", "deleted", "uuid")
+	readonly_fields = ("uuid",)
 
 class BoardAdmin(admin.ModelAdmin):
 	save_on_top = True
