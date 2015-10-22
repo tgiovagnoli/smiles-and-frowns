@@ -1,4 +1,4 @@
-import json
+import json,uuid
 from dateutil import parser
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.models import User
@@ -44,6 +44,18 @@ def user_signup(request):
 	#check for password
 	if not password or len(password) < 1:
 		return json_response_error("password required")
+
+	#create random username with uuid
+	username = str(uuid.uuid4())
+
+	#create user
+	try:
+		new_user = User(email=email_value,username=username,password=password_value)
+		new_user.save()
+	except Exception as e:
+		return json_response_error('error creating user %s' % str(e))
+
+	return json_response({})
 
 @csrf_exempt
 def user_login(request):
