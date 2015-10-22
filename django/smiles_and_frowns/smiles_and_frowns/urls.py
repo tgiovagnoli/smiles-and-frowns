@@ -4,6 +4,8 @@ from services import api_views, views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^api/signup/?', api_views.user_signup),
+    url(r'^api/update/?', api_views.user_update),
     url(r'^api/login/?', api_views.user_login),
     url(r'^api/logout/?', api_views.user_logout),
     url(r'^api/boards/?', api_views.boards),
