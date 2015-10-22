@@ -51,6 +51,25 @@ def get_sync_for_board(board, sync_date):
 	return sync_data
 
 @csrf_exempt
+def user_signup(request):
+	#check for POST
+	if request.method != "POST":
+		return json_response_error("method not allowed")
+
+	email = request.POST.get('email',None)
+	password = request.POST.get('password',None)
+	
+	#check for email
+	if not email or len(email) < 1:
+		return json_response_error("email required")
+
+	#check for password
+	if not password or len(password) < 1:
+		return json_response_error("password required")
+
+	
+
+@csrf_exempt
 def user_login(request):
 	#check for POST
 	if request.method != "POST":
@@ -97,12 +116,10 @@ def user_login(request):
 	data = json_utils.user_info_dictionary(user)
 	return json_response(data)
 
-
 @csrf_exempt
 def user_logout(request):
 	logout(request)
 	return json_response({"message": "logged out"})
-
 
 @csrf_exempt
 def sync_pull(request):
