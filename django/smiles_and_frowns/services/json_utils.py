@@ -3,13 +3,13 @@ import datetime
 import json
 from services import models
 from django.core import serializers
-
+from pytz import UTC
 
 def datestring(datetimeobj):
 	return datetimeobj.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def date_fromstring(datestring):
-	return datetime.datetime.strptime(datestring,"%Y-%m-%dT%H:%M:%SZ")
+	return UTC.localize(datetime.datetime.strptime(datestring,"%Y-%m-%dT%H:%M:%SZ"))
 
 def append_sync_info(sync_model_instance, info_dict):
 	info_dict["created_date"] = datestring(sync_model_instance.created_date)

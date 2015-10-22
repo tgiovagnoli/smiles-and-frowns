@@ -7,7 +7,6 @@ from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
 from services import models, json_utils, utils
-from pytz import UTC
 
 def json_response(response_data):
 	return HttpResponse(json.dumps(response_data, indent=4), content_type="application/json")
@@ -239,7 +238,7 @@ def sync_from_client(request):
 			board = models.Board(uuid=client_board.get("uuid"), owner=request.user)
 
 		if not created:
-			if board.device_date > UTC.localize(json_utils.date_fromstring(client_board.get('device_date')) ):
+			if board.device_date > json_utils.date_fromstring(client_board.get('device_date')):
 				continue
 		
 		if created:
@@ -277,7 +276,7 @@ def sync_from_client(request):
 			behavior = models.Behavior(uuid=client_behavior.get("uuid"), board=board)
 
 		if not created:
-			if behavior.device_date > UTC.localize(json_utils.date_fromstring( client_behavior.get('device_date'))):
+			if behavior.device_date > json_utils.date_fromstring( client_behavior.get('device_date')):
 				continue
 
 		behavior.device_date = json_utils.date_fromstring( client_behavior.get('device_date') )
@@ -310,7 +309,7 @@ def sync_from_client(request):
 		#get or create smile
 		smile,created = models.Smile.objects.get_or_create(uuid=client_smile.get('uuid'), user=user, board=board, behavior=behavior)
 		if not created:
-			if smile.device_date > UTC.localize(json_utils.date_fromstring( client_smile.get('device_date'))):
+			if smile.device_date > json_utils.date_fromstring( client_smile.get('device_date')):
 				continue
 
 		smile.device_date = json_utils.date_fromstring( client_smile.get('device_date') )
@@ -341,7 +340,7 @@ def sync_from_client(request):
 		#get or create frown
 		frown,created = models.Frown.objects.get_or_create(uuid=client_frown.get('uuid'), user=user, board=board, behavior=behavior)
 		if not created:
-			if frown.device_date > UTC.localize(json_utils.date_fromstring( client_frown.get('device_date'))):
+			if frown.device_date > json_utils.date_fromstring( client_frown.get('device_date')):
 				continue
 
 		frown.device_date = json_utils.date_fromstring( client_frown.get('device_date') )
@@ -359,7 +358,7 @@ def sync_from_client(request):
 		#get or create reward
 		reward,created = models.Reward.objects.get_or_create(uuid=client_reward.get('uuid'), board=board)
 		if not created:
-			if reward.device_date > UTC.localize(json_utils.date_fromstring(client_reward.get('device_date'))):
+			if reward.device_date > json_utils.date_fromstring(client_reward.get('device_date')):
 				continue
 
 		reward.title = client_reward.get('title')
