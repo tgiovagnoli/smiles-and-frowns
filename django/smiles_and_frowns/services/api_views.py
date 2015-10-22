@@ -139,7 +139,7 @@ def sync_pull(request):
 					sync_data = get_sync_for_board(board, sync_date)
 					output.append(sync_data)
 		if not has_locally:
-			sync_data = get_sync_for_board(board, sync_date)
+			sync_data = get_sync_for_board(board, board.created_date)
 			output.append(sync_data)
 
 	return json_response(output)
