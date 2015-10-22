@@ -62,7 +62,7 @@ post_save.connect(create_user_profile, sender=User)
 class Board(SyncModel):
 	title = models.CharField(max_length=128)
 	owner = models.ForeignKey(User)
-	in_app_purchase_id = models.CharField(max_length=128, blank=True, default=None)
+	transaction_id = models.CharField(max_length=128, blank=True, default=None)
 	edit_count = models.IntegerField(default=0)
 
 	@property

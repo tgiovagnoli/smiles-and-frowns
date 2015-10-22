@@ -2,6 +2,7 @@ import json
 from dateutil import parser
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 from services import models, json_utils
@@ -19,8 +20,8 @@ def login_required_response():
 	return json_response(message)
 
 def boards(request):
-	#check authenticated
-	if not request.user.is_authenticated(): return login_required_response()
+	if not request.user.is_authenticated(): 
+		return login_required_response()
 
 	boards = models.Board.objects.all()
 	board_data = json_utils.board_info_dictionary_collection(boards, with_users=True, with_behaviors=True, with_rewards=True, with_smiles=True, with_frowns=True, with_invites=True)
@@ -49,9 +50,57 @@ def get_sync_for_board(board, sync_date):
 
 	return sync_data
 
+@csrf_exempt
+def user_login(request):
+	#check for POST
+	if request.method != "POST":
+		return json_response_error("method not allowed")
+
+	#get username / password
+	username = request.POST.get('username',None)
+	password = request.POST.get('password',None)
+
+	#check for username
+	if not username or len(username) < 1:
+		return json_response_error("username required")
+
+	#check for password
+	if not password or len(password) < 1:
+		return json_response_error("password required")
+
+	#try and authenticate user
+	user = None
+
+	try: 
+		user = authenticate(username=username,password=password)
+	except: 
+		pass
+
+	if user is None:
+		return json_response_error("invalid user")
+	
+	#try and login the user
+	if user.is_active:
+		login(request,user)
+	else:
+		return HttpResponse(status=http.HTTP_BAD_REQUEST)
+	
+	#return authed user json data	
+	data = json_utils.user_info_dictionary(user)
+	return json_response(data)
+
+
+@csrf_exempt
+def user_logout(request):
+	logout(request)
+	return json_response({"message": "logged out"})
+
 
 @csrf_exempt
 def sync_pull(request):
+	if not request.user.is_authenticated(): 
+		return login_required_response()
+
 	boards = None
 	try:
 		boards = json.loads(request.body)
@@ -74,8 +123,8 @@ def sync_pull(request):
 	return HttpResponse(json_response(output), content_type="application/json")
 
 def sync_from_client(request):
-	#check authenticated
-	if not request.user.is_authenticated(): return login_required_response()
+	if not request.user.is_authenticated(): 
+		return login_required_response()
 
 	#get JSON body
 	json_string = request.body
@@ -85,20 +134,29 @@ def sync_from_client(request):
 	#boards have to be available for most other object so these should be created first.
 	client_boards = data.get('boards')
 	for client_board in client_boards:
-		
 		#get or create board
 		board,created = models.Board.objects.get_or_create(uuid=client_board.get('uuid'))
 		if not created:
 			if board.device_date > json_utils.date_fromstring( client_board.get('device_date') ):
 				continue
 		
-		#TODO: How do we properly set the board.owner?
-		board.owner = request.user
+		if created:
+			board_owner = None
+			try:
+				board_owner = models.User.get(username=client_board.get("user_owner_username"))
+			except:
+				return json_response_error("Client sync error, user with username(%@) not found on server." % (client_frown.get("user_owner_username")))
+			
+			if board_owner != request.user:
+				return json_response_error("Client sync error, user with username(%@) not found on server." % (client_frown.get("user_owner_username")))
+			board.owner = request.user
+			
 		
 		board.device_date = json_utils.date_fromstring( client_board.get('device_date') )
 		board.title = client_board.get('title')
-		board.in_app_purchase_id = client_board.get('in_app_purchase_id')
+		board.transaction_id = client_board.get('transaction_id')
 		board.save()
+
 
 	#go through behaviors
 	client_behaviors = data.get('behaviors')
@@ -187,25 +245,4 @@ def sync_from_client(request):
 		frown.user = user
 		frown.behavior = behavior
 		frown.save()
-
-def update_board(client_board):
-	#get or create board
-	board, created = models.Board.objects.get_or_create(uuid=client_board.get('uuid'))
-	if not created:
-		if board.device_date > json_utils.date_fromstring( client_board.get('device_date') ):
-			continue
-	if created:
-		user = None
-		try:
-			user = models.User.get(username=client_board.get("user_owner_username"))
-		except:
-			return json_response_error("Client sync error, user with username(%@) not found on server." % (client_frown.get("user_owner_username")))
-		if user not request.user:
-			return json_response_error("Client sync error, user owner username(%@) is not logged in user." % (client_frown.get("user_owner_username")))
-		board.owner = request.user
-
-	board.device_date = json_utils.date_fromstring( client_board.get("device_date") )
-	board.title = client_board.get("title")
-	board.in_app_purchase_id = client_board.get("in_app_purchase_id")
-	board.save()
 
