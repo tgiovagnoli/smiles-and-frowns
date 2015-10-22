@@ -10,7 +10,7 @@
             <plist version="1.0">
                 <dict>
                     <key>NSPersistenceFrameworkVersion</key>
-                    <integer>526</integer>
+                    <integer>640</integer>
                     <key>NSStoreModelVersionHashes</key>
                     <dict>
                         <key>LMCookieJar</key>
@@ -66,7 +66,7 @@
         <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z107"></relationship>
     </object>
     <object type="LMREQUEST" id="z103">
-        <attribute name="body" type="string">[{"data":{"keyValues":[]},"identifier":"com.luckymarmot.BodyMultipartFormDataDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="uuid" type="string">97ED2F2E-991D-4901-B7FC-4586CA388610</attribute>
         <attribute name="url" type="string">http://127.0.0.1:8000/api/sync/</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
@@ -128,7 +128,7 @@
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z110"></relationship>
     </object>
     <object type="LMREQUEST" id="z110">
-        <attribute name="body" type="string">[{"data":{"keyValues":[[["password"],["abc123$"],true],[["username"],["mwilson"],true],[["email"],["malcolm@apptitude-digtial.com"],true]]},"identifier":"com.luckymarmot.BodyFormKeyValueDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"keyValues":[[["password"],["abc123$"],true],[["email"],["malcolm@apptitude-digtial.com"],true]]},"identifier":"com.luckymarmot.BodyFormKeyValueDynamicValue"}]</attribute>
         <attribute name="uuid" type="string">A0874C60-5EB5-423F-80A8-906575F00B7D</attribute>
         <attribute name="url" type="string">http://127.0.0.1:8000/api/login/</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
