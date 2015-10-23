@@ -1,0 +1,15 @@
+You're invited to participate in a Smiles and Frowns board.<br/><br/>
+
+Hi {{ invitee_firstname }},<br/><br/>
+
+{% if inviter.first_name %}
+	{{ inviter.first_name }}
+{% else %}
+	someone
+{% endif %}
+has invited you to participate in {{ board.title }}'s board in Smiles & Frowns. Open the app and check your board invites.<br/><br/>
+
+<a href="snf://invites">Click here</a> if you have S&F installed. If you don't, download the app <a href="">here</a>
+
+Thanks!
+S&F Team.
