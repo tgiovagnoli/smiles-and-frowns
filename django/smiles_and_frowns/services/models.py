@@ -7,7 +7,6 @@ from django.db.models import Q
 from django.core.exceptions import ValidationError
 from django.db.models.signals import pre_save, post_save
 
-
 # base model for all classes that need to synchronize between devices
 class SyncModel(models.Model):
 	uuid = models.CharField(max_length=64, unique=True)
@@ -65,25 +64,30 @@ post_save.connect(create_user_profile, sender=User)
 
 class Board(SyncModel):
 	title = models.CharField(max_length=128)
-	owner = models.ForeignKey(User, unique=False)
-	transaction_id = models.CharField(max_length=128, blank=True, default="")
+	owner = models.ForeignKey(User,unique=False,null=True,on_delete=models.SET_NULL)
+	transaction_id = models.CharField(max_length=128,blank=True,default="")
 	edit_count = models.IntegerField(default=0)
 
 	@property
 	def users(self):
 		return UserRole.objects.filter(board=self)
+	
 	@property
 	def behaviors(self):
 		return Behavior.objects.filter(board=self)
+	
 	@property
 	def rewards(self):
 		return Reward.objects.filter(board=self)
+	
 	@property
 	def smiles(self):
 		return Smile.objects.filter(board=self)
+	
 	@property
 	def frowns(self):
 		return Frown.objects.filter(board=self)
+	
 	@property
 	def invites(self):
 		return Invite.objects.filter(board=self)
@@ -91,20 +95,21 @@ class Board(SyncModel):
 	def save(self, *args, **kwargs):
 		self.edit_count = self.edit_count + 1
 		super(Board, self).save(*args,**kwargs)
+	
 	def __unicode__(self):
 		return self.title
 
 class UserRole(SyncModel):
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
 	role = models.CharField(max_length=64, choices=PROFILE_ROLE_CHOICES, default="child")
-	board = models.ForeignKey(Board)
+	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	def __unicode__(self):
 		return self.role + " - " + self.user.username
 
 class Behavior(SyncModel):
 	title = models.CharField(max_length=128)
 	note = models.CharField(max_length=256, blank=True, default=None)
-	board = models.ForeignKey(Board)
+	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	def save(self, *args, **kwargs):
 		self.board.edit_count = self.board.edit_count + 1
 		self.board.save()
@@ -113,7 +118,7 @@ class Behavior(SyncModel):
 		return self.title
 
 class Reward(SyncModel):
-	board = models.ForeignKey(Board)
+	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	title = models.CharField(max_length=128)
 	currency_amount = models.FloatField(default=1)
 	smile_amount = models.FloatField(default=1)
@@ -126,8 +131,8 @@ class Reward(SyncModel):
 		return self.title
 
 class Smile(SyncModel):
-	user = models.OneToOneField(User)
-	board = models.ForeignKey(Board)
+	user = models.OneToOneField(User,on_delete=models.SET_NULL,null=True)
+	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	behavior = models.ForeignKey(Behavior)
 	collected = models.BooleanField(default=False)
 	def save(self, *args, **kwargs):
@@ -139,7 +144,7 @@ class Smile(SyncModel):
 
 class Frown(SyncModel):
 	user = models.OneToOneField(User)
-	board = models.ForeignKey(Board)
+	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	behavior = models.ForeignKey(Behavior)
 	def save(self, *args, **kwargs):
 		self.board.edit_count = self.board.edit_count + 1
@@ -148,15 +153,15 @@ class Frown(SyncModel):
 	def __unicode__(self):
 		return self.board.title
 
-
 class Invite(models.Model):
-	board = models.ForeignKey(Board)
-	user = models.ForeignKey(User, null=True, blank=True)
+	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
+	user = models.ForeignKey(User,blank=True,on_delete=models.SET_NULL,null=True)
 	code = models.CharField(max_length=64)
+	role = models.CharField(max_length=64, choices=PROFILE_ROLE_CHOICES, default="guardian")
 	def __unicode__(self):
 		return self.board.title
 
 class PredefinedBoard(models.Model):
-	board = models.ForeignKey(Board)
+	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	def __unicode__(self):
 		return self.board.title

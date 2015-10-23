@@ -3,13 +3,13 @@ import datetime
 import json
 from services import models
 from django.core import serializers
-
+from pytz import UTC
 
 def datestring(datetimeobj):
 	return datetimeobj.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 def date_fromstring(datestring):
-	return datetime.datetime.strptime(datestring,"%Y-%m-%dT%H:%M:%SZ")
+	return UTC.localize(datetime.datetime.strptime(datestring,"%Y-%m-%dT%H:%M:%SZ"))
 
 def append_sync_info(sync_model_instance, info_dict):
 	info_dict["created_date"] = datestring(sync_model_instance.created_date)
@@ -65,7 +65,10 @@ def user_info_dictionary(user):
 	user_data = {
 		"username": user.username,
 		"gender": user.profile.gender,
-		"age": user.profile.age
+		"age": user.profile.age,
+		"firstname":user.first_name,
+		"lastname":user.last_name,
+		"email":user.email,
 	}
 	return user_data
 
@@ -154,6 +157,7 @@ def invite_info_dictionary_collection(invites, with_boards=False, with_users=Fal
 def invite_info_dictionary(invite, with_board=False, with_user=False):
 	invite_data = {
 		"code": invite.code,
+		"role": invite.role,
 	}
 	if with_board:
 		invite_data["board"] = board_info_dictionary(invite.board)
@@ -164,6 +168,3 @@ def invite_info_dictionary(invite, with_board=False, with_user=False):
 	else:
 		invite_data["user_username"] = invite.user.username
 	return invite_data
-
-
-
