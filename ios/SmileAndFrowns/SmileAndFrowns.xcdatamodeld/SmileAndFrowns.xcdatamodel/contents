@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Automatic">
+    <entity name="SNFBehavior" representedClassName="SNFBehavior" syncable="YES">
+        <attribute name="created_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="modified_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="behaviors" inverseEntity="SNFBoard" syncable="YES"/>
+        <relationship name="frowns" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFFrown" inverseName="behavior" inverseEntity="SNFFrown" syncable="YES"/>
+        <relationship name="smiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFSmile" inverseName="behavior" inverseEntity="SNFSmile" syncable="YES"/>
+    </entity>
+    <entity name="SNFBoard" representedClassName="SNFBoard" syncable="YES">
+        <attribute name="created_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="modified_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transaction_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="behaviors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFBehavior" inverseName="board" inverseEntity="SNFBehavior" syncable="YES"/>
+        <relationship name="frowns" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFFrown" inverseName="board" inverseEntity="SNFFrown" syncable="YES"/>
+        <relationship name="invites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFInvite" inverseName="board" inverseEntity="SNFInvite" syncable="YES"/>
+        <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFReward" inverseName="board" inverseEntity="SNFReward" syncable="YES"/>
+        <relationship name="smiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFSmile" inverseName="board" inverseEntity="SNFSmile" syncable="YES"/>
+        <relationship name="user_roles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFUserRole" inverseName="board" inverseEntity="SNFUserRole" syncable="YES"/>
+    </entity>
+    <entity name="SNFFrown" representedClassName="SNFFrown" syncable="YES">
+        <attribute name="created_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="modified_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="behavior" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBehavior" inverseName="frowns" inverseEntity="SNFBehavior" syncable="YES"/>
+        <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="frowns" inverseEntity="SNFBoard" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" syncable="YES"/>
+    </entity>
+    <entity name="SNFInvite" representedClassName="SNFInvite" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="role" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="invites" inverseEntity="SNFBoard" syncable="YES"/>
+    </entity>
+    <entity name="SNFReward" representedClassName="SNFReward" syncable="YES">
+        <attribute name="created_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="modified_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="rewards" inverseEntity="SNFBoard" syncable="YES"/>
+    </entity>
+    <entity name="SNFSmile" representedClassName="SNFSmile" syncable="YES">
+        <attribute name="collected" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="created_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="modified_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="behavior" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBehavior" inverseName="smiles" inverseEntity="SNFBehavior" syncable="YES"/>
+        <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="smiles" inverseEntity="SNFBoard" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" syncable="YES"/>
+    </entity>
+    <entity name="SNFUser" representedClassName="SNFUser" syncable="YES">
+        <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SNFUserRole" representedClassName="SNFUserRole" syncable="YES">
+        <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="role" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="user_roles" inverseEntity="SNFBoard" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="SNFBoard" positionX="-63" positionY="-18" width="128" height="240"/>
+        <element name="SNFSmile" positionX="-54" positionY="-9" width="128" height="180"/>
+        <element name="SNFFrown" positionX="-36" positionY="9" width="128" height="165"/>
+        <element name="SNFBehavior" positionX="-18" positionY="27" width="128" height="195"/>
+        <element name="SNFReward" positionX="0" positionY="45" width="128" height="135"/>
+        <element name="SNFInvite" positionX="18" positionY="63" width="128" height="105"/>
+        <element name="SNFUser" positionX="36" positionY="81" width="128" height="150"/>
+        <element name="SNFUserRole" positionX="-18" positionY="81" width="128" height="120"/>
+    </elements>
+</model>

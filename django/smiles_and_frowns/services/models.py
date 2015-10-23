@@ -25,7 +25,6 @@ class SyncModel(models.Model):
 		abstract = True
 
 PROFILE_ROLE_CHOICES = (
-	("owner", "Owner"),
 	("parent", "Parent"),
 	("guardian", "Guardian"),
 	("child", "Child"),

@@ -1,0 +1,454 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D659DBB11BDAE07F0048D3F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB01BDAE07F0048D3F7 /* main.m */; };
+		D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */; };
+		D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */; };
+		D659DBBA1BDAE07F0048D3F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D659DBB81BDAE07F0048D3F7 /* Main.storyboard */; };
+		D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */; };
+		D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */; };
+		D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D659DBC01BDAE07F0048D3F7 /* LaunchScreen.storyboard */; };
+		D659DBEC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBED1BDAEA000048D3F7 /* SNFSmile.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBCF1BDAEA000048D3F7 /* SNFSmile.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD11BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBEF1BDAEA000048D3F7 /* SNFBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD31BDAEA000048D3F7 /* SNFBehavior.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD51BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBF11BDAEA000048D3F7 /* SNFBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD71BDAEA000048D3F7 /* SNFBoard.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBF21BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD91BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDB1BDAEA000048D3F7 /* SNFFrown.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBF41BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDD1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDF1BDAEA000048D3F7 /* SNFReward.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE31BDAEA000048D3F7 /* SNFInvite.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE51BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE71BDAEA000048D3F7 /* SNFUser.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE91BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBFB1BDAEA000048D3F7 /* SNFUserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBEB1BDAEA000048D3F7 /* SNFUserRole.m */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D659DBAC1BDAE07F0048D3F7 /* SmileAndFrowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmileAndFrowns.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D659DBB01BDAE07F0048D3F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SmileAndFrowns/AppDelegate.h; sourceTree = "<group>"; };
+		D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D659DBB51BDAE07F0048D3F7 /* SNFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SNFViewController.h; path = SmileAndFrowns/SNFViewController.h; sourceTree = "<group>"; };
+		D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNFViewController.m; sourceTree = "<group>"; };
+		D659DBB91BDAE07F0048D3F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmileAndFrowns.xcdatamodel; sourceTree = "<group>"; };
+		D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SmileAndFrowns/Assets.xcassets; sourceTree = "<group>"; };
+		D659DBC11BDAE07F0048D3F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D659DBC31BDAE07F0048D3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D659DBCC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFSmile+CoreDataProperties.h"; path = "SmileAndFrowns/SNFSmile+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFSmile+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D659DBCE1BDAEA000048D3F7 /* SNFSmile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFSmile.h; path = SmileAndFrowns/SNFSmile.h; sourceTree = "<group>"; };
+		D659DBCF1BDAEA000048D3F7 /* SNFSmile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFSmile.m; sourceTree = "<group>"; };
+		D659DBD01BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFBehavior+CoreDataProperties.h"; path = "SmileAndFrowns/SNFBehavior+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBD11BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFBehavior+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D659DBD21BDAEA000048D3F7 /* SNFBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFBehavior.h; path = SmileAndFrowns/SNFBehavior.h; sourceTree = "<group>"; };
+		D659DBD31BDAEA000048D3F7 /* SNFBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBehavior.m; sourceTree = "<group>"; };
+		D659DBD41BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFBoard+CoreDataProperties.h"; path = "SmileAndFrowns/SNFBoard+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBD51BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFBoard+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D659DBD61BDAEA000048D3F7 /* SNFBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFBoard.h; path = SmileAndFrowns/SNFBoard.h; sourceTree = "<group>"; };
+		D659DBD71BDAEA000048D3F7 /* SNFBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoard.m; sourceTree = "<group>"; };
+		D659DBD81BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFFrown+CoreDataProperties.h"; path = "SmileAndFrowns/SNFFrown+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBD91BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFFrown+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D659DBDA1BDAEA000048D3F7 /* SNFFrown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFFrown.h; path = SmileAndFrowns/SNFFrown.h; sourceTree = "<group>"; };
+		D659DBDB1BDAEA000048D3F7 /* SNFFrown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFFrown.m; sourceTree = "<group>"; };
+		D659DBDC1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFReward+CoreDataProperties.h"; path = "SmileAndFrowns/SNFReward+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBDD1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFReward+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D659DBDE1BDAEA000048D3F7 /* SNFReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFReward.h; path = SmileAndFrowns/SNFReward.h; sourceTree = "<group>"; };
+		D659DBDF1BDAEA000048D3F7 /* SNFReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReward.m; sourceTree = "<group>"; };
+		D659DBE01BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFInvite+CoreDataProperties.h"; path = "SmileAndFrowns/SNFInvite+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFInvite+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D659DBE21BDAEA000048D3F7 /* SNFInvite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFInvite.h; path = SmileAndFrowns/SNFInvite.h; sourceTree = "<group>"; };
+		D659DBE31BDAEA000048D3F7 /* SNFInvite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFInvite.m; sourceTree = "<group>"; };
+		D659DBE41BDAEA000048D3F7 /* SNFUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFUser+CoreDataProperties.h"; path = "SmileAndFrowns/SNFUser+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBE51BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFUser+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D659DBE61BDAEA000048D3F7 /* SNFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFUser.h; path = SmileAndFrowns/SNFUser.h; sourceTree = "<group>"; };
+		D659DBE71BDAEA000048D3F7 /* SNFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUser.m; sourceTree = "<group>"; };
+		D659DBE81BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFUserRole+CoreDataProperties.h"; path = "SmileAndFrowns/SNFUserRole+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBE91BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFUserRole+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D659DBEA1BDAEA000048D3F7 /* SNFUserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFUserRole.h; path = SmileAndFrowns/SNFUserRole.h; sourceTree = "<group>"; };
+		D659DBEB1BDAEA000048D3F7 /* SNFUserRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserRole.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D659DBA91BDAE07F0048D3F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D659DBA31BDAE07F0048D3F7 = {
+			isa = PBXGroup;
+			children = (
+				D659DBC91BDAE0980048D3F7 /* Headers */,
+				D659DBAE1BDAE07F0048D3F7 /* Source */,
+				D659DBCA1BDAE0B30048D3F7 /* Resources */,
+				D659DBAF1BDAE07F0048D3F7 /* Supporting Files */,
+				D659DBAD1BDAE07F0048D3F7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D659DBAD1BDAE07F0048D3F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D659DBAC1BDAE07F0048D3F7 /* SmileAndFrowns.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D659DBAE1BDAE07F0048D3F7 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D659DBFC1BDAEA110048D3F7 /* Models */,
+				D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */,
+				D659DBC01BDAE07F0048D3F7 /* LaunchScreen.storyboard */,
+				D659DBB81BDAE07F0048D3F7 /* Main.storyboard */,
+				D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */,
+			);
+			name = Source;
+			path = SmileAndFrowns;
+			sourceTree = "<group>";
+		};
+		D659DBAF1BDAE07F0048D3F7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D659DBC31BDAE07F0048D3F7 /* Info.plist */,
+				D659DBB01BDAE07F0048D3F7 /* main.m */,
+			);
+			name = "Supporting Files";
+			path = SmileAndFrowns;
+			sourceTree = "<group>";
+		};
+		D659DBC91BDAE0980048D3F7 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */,
+				D659DBD21BDAEA000048D3F7 /* SNFBehavior.h */,
+				D659DBD01BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.h */,
+				D659DBD61BDAEA000048D3F7 /* SNFBoard.h */,
+				D659DBD41BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.h */,
+				D659DBDA1BDAEA000048D3F7 /* SNFFrown.h */,
+				D659DBD81BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.h */,
+				D659DBE21BDAEA000048D3F7 /* SNFInvite.h */,
+				D659DBE01BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.h */,
+				D659DBDE1BDAEA000048D3F7 /* SNFReward.h */,
+				D659DBDC1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.h */,
+				D659DBCE1BDAEA000048D3F7 /* SNFSmile.h */,
+				D659DBCC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.h */,
+				D659DBE61BDAEA000048D3F7 /* SNFUser.h */,
+				D659DBE41BDAEA000048D3F7 /* SNFUser+CoreDataProperties.h */,
+				D659DBEA1BDAEA000048D3F7 /* SNFUserRole.h */,
+				D659DBE81BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.h */,
+				D659DBB51BDAE07F0048D3F7 /* SNFViewController.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		D659DBCA1BDAE0B30048D3F7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */,
+				D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D659DBFC1BDAEA110048D3F7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D659DBFD1BDAEAE80048D3F7 /* Entities */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D659DBFD1BDAEAE80048D3F7 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */,
+				D659DBCF1BDAEA000048D3F7 /* SNFSmile.m */,
+				D659DBD11BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m */,
+				D659DBD31BDAEA000048D3F7 /* SNFBehavior.m */,
+				D659DBD51BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m */,
+				D659DBD71BDAEA000048D3F7 /* SNFBoard.m */,
+				D659DBD91BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m */,
+				D659DBDB1BDAEA000048D3F7 /* SNFFrown.m */,
+				D659DBDD1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m */,
+				D659DBDF1BDAEA000048D3F7 /* SNFReward.m */,
+				D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */,
+				D659DBE31BDAEA000048D3F7 /* SNFInvite.m */,
+				D659DBE51BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m */,
+				D659DBE71BDAEA000048D3F7 /* SNFUser.m */,
+				D659DBE91BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m */,
+				D659DBEB1BDAEA000048D3F7 /* SNFUserRole.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D659DBAB1BDAE07F0048D3F7 /* SmileAndFrowns */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D659DBC61BDAE07F0048D3F7 /* Build configuration list for PBXNativeTarget "SmileAndFrowns" */;
+			buildPhases = (
+				D659DBA81BDAE07F0048D3F7 /* Sources */,
+				D659DBA91BDAE07F0048D3F7 /* Frameworks */,
+				D659DBAA1BDAE07F0048D3F7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmileAndFrowns;
+			productName = SmileAndFrowns;
+			productReference = D659DBAC1BDAE07F0048D3F7 /* SmileAndFrowns.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D659DBA41BDAE07F0048D3F7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = apptitude;
+				TargetAttributes = {
+					D659DBAB1BDAE07F0048D3F7 = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = D659DBA71BDAE07F0048D3F7 /* Build configuration list for PBXProject "SmileAndFrowns" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D659DBA31BDAE07F0048D3F7;
+			productRefGroup = D659DBAD1BDAE07F0048D3F7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D659DBAB1BDAE07F0048D3F7 /* SmileAndFrowns */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D659DBAA1BDAE07F0048D3F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
+				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
+				D659DBBA1BDAE07F0048D3F7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D659DBA81BDAE07F0048D3F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */,
+				D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */,
+				D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */,
+				D659DBF41BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m in Sources */,
+				D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */,
+				D659DBF21BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m in Sources */,
+				D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */,
+				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
+				D659DBEC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m in Sources */,
+				D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */,
+				D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */,
+				D659DBED1BDAEA000048D3F7 /* SNFSmile.m in Sources */,
+				D659DBF11BDAEA000048D3F7 /* SNFBoard.m in Sources */,
+				D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */,
+				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,
+				D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */,
+				D659DBFB1BDAEA000048D3F7 /* SNFUserRole.m in Sources */,
+				D659DBEF1BDAEA000048D3F7 /* SNFBehavior.m in Sources */,
+				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
+				D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D659DBB81BDAE07F0048D3F7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D659DBB91BDAE07F0048D3F7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D659DBC01BDAE07F0048D3F7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D659DBC11BDAE07F0048D3F7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D659DBC41BDAE07F0048D3F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D659DBC51BDAE07F0048D3F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D659DBC71BDAE07F0048D3F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SmileAndFrowns/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apptitude.SmileAndFrowns;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D659DBC81BDAE07F0048D3F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SmileAndFrowns/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apptitude.SmileAndFrowns;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D659DBA71BDAE07F0048D3F7 /* Build configuration list for PBXProject "SmileAndFrowns" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D659DBC41BDAE07F0048D3F7 /* Debug */,
+				D659DBC51BDAE07F0048D3F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D659DBC61BDAE07F0048D3F7 /* Build configuration list for PBXNativeTarget "SmileAndFrowns" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D659DBC71BDAE07F0048D3F7 /* Debug */,
+				D659DBC81BDAE07F0048D3F7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */,
+			);
+			currentVersion = D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */;
+			name = SmileAndFrowns.xcdatamodeld;
+			path = SmileAndFrowns/SmileAndFrowns.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D659DBA41BDAE07F0048D3F7 /* Project object */;
+}
