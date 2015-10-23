@@ -357,7 +357,7 @@ def invite(request):
 	send_email_with_code = True
 	invitee_user = None
 	try:
-		invitee_user = User.objects.get(email=email)
+		invitee_user = User.objects.get(email=invitee_email)
 		send_email_with_code = False
 	except:
 		print "invitee_user not found, using no invitee_user for invite"
