@@ -195,7 +195,9 @@ def user_update(request):
 	if gender:
 		request.user.profile.gender = gender
 
-	user.save()
+	request.user.save()
+	request.user.profile.save()
+	
 	data = json_utils.user_info_dictionary(user)
 	return json_response(data)
 
@@ -311,7 +313,7 @@ def invite(request):
 	@param invitee_firstname - invitee firstname
 	@param invitee_lastname - invitee lastname
 	'''
-
+	
 	#check for POST
 	if request.method != "POST":
 		return json_response_error("method not allowed")
