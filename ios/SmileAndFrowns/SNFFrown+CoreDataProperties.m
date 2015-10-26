@@ -13,7 +13,7 @@
 
 @implementation SNFFrown (CoreDataProperties)
 
-@dynamic modified_date;
+@dynamic updated_date;
 @dynamic created_date;
 @dynamic deleted;
 @dynamic uuid;

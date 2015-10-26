@@ -11,6 +11,30 @@
 
 @implementation SNFBehavior
 
-// Insert code here to add functionality to your managed object subclass
+
+/*
+ @property (nullable, nonatomic, retain) NSString *title;
+ @property (nullable, nonatomic, retain) NSString *note;
+ @property (nullable, nonatomic, retain) NSString *uuid;
+ @property (nullable, nonatomic, retain) NSNumber *deleted;
+ @property (nullable, nonatomic, retain) NSDate *created_date;
+ @property (nullable, nonatomic, retain) NSDate *updated_date;
+ @property (nullable, nonatomic, retain) NSNumber *remote_id;
+ @property (nullable, nonatomic, retain) NSManagedObject *board;
+ @property (nullable, nonatomic, retain) NSSet<SNFSmile *> *smiles;
+ @property (nullable, nonatomic, retain) NSManagedObject *frowns;
+*/
++ (NSDictionary *)keyMappings{
+	return @{
+				@"uuid": @"uuid",
+				@"title": @"title",
+				@"note": @"note",
+				@"deleted": @"deleted",
+				@"created_date": @"created_date",
+				@"updated_date": @"updated_date",
+				@"remote_id": @"id",
+			 };
+}
+
 
 @end

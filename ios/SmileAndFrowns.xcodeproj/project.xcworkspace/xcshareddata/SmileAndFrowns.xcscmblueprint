@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0183306A356AB83BA8CBFB37A0A13B9B272D69F4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0183306A356AB83BA8CBFB37A0A13B9B272D69F4" : 0,
+    "775E5D3697FE4E89F0EC1B339D6CA4E5ECD01DBF" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7E70E3BC-4D5B-4F45-A683-015E4203393B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0183306A356AB83BA8CBFB37A0A13B9B272D69F4" : "smiles_and_frowns\/",
+    "775E5D3697FE4E89F0EC1B339D6CA4E5ECD01DBF" : "smiles_and_frowns\/ios\/submodules\/apd-objc\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SmileAndFrowns",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ios\/SmileAndFrowns.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ApptitudeDigital\/smiles-and-frowns.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0183306A356AB83BA8CBFB37A0A13B9B272D69F4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ApptitudeDigital\/apd-objc.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "775E5D3697FE4E89F0EC1B339D6CA4E5ECD01DBF"
+    }
+  ]
+}

@@ -18,7 +18,7 @@
 @dynamic uuid;
 @dynamic deleted;
 @dynamic created_date;
-@dynamic modified_date;
+@dynamic updated_date;
 @dynamic remote_id;
 @dynamic board;
 @dynamic smiles;

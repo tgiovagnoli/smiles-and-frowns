@@ -5,7 +5,7 @@
     <databaseInfo>
         <version>134481920</version>
         <UUID>50D7EE01-2ECE-4BDE-8433-C479A9B3FC99</UUID>
-        <nextObjectID>124</nextObjectID>
+        <nextObjectID>126</nextObjectID>
         <metadata>
             <plist version="1.0">
                 <dict>
@@ -128,7 +128,7 @@
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z110"></relationship>
     </object>
     <object type="LMREQUEST" id="z110">
-        <attribute name="body" type="string">[{"data":{"keyValues":[[["password"],["abc123$"],true],[["email"],["aaron@apptitude-digital.com"],true]]},"identifier":"com.luckymarmot.BodyFormKeyValueDynamicValue"}]</attribute>
+        <attribute name="body" type="string">[{"data":{"keyValues":[[["password"],["abc123$"],true],[["email"],["malcolm@apptitude-digtial.com"],true]]},"identifier":"com.luckymarmot.BodyFormKeyValueDynamicValue"}]</attribute>
         <attribute name="uuid" type="string">A0874C60-5EB5-423F-80A8-906575F00B7D</attribute>
         <attribute name="url" type="string">http://127.0.0.1:8000/api/login/</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
@@ -177,7 +177,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">["{\\n  \\"boards\\": [\\n    {\\n      \\"uuid\\": \\"6beb2862-7904-11e5-8bcf-feff819cdc9f\\",\\n      \\"device_date\\": \\"2015-10-21T21:34:54Z\\",\\n      \\"owner_username\\": \\"mwilson\\",\\n      \\"title\\": \\"an awesome board\\",\\n      \\"transaction_id\\": \\"12324567890\\"\\n    }\\n  ],\\n  \\"behaviors\\": [\\n    {\\n      \\"board_uuid\\": \\"6beb2862-7904-11e5-8bcf-feff819cdc9f\\",\\n      \\"uuid\\": \\"0b4a1abe-7908-11e5-8bcf-feff819cdc9f\\",\\n      \\"device_date\\": \\"2015-10-21T21:34:54Z\\",\\n      \\"title\\": \\"Awesome board behavior\\",\\n      \\"note\\": \\"And a note for this behavior\\"\\n    }\\n  ],\\n  \\"smiles\\": [\\n    {\\n      \\"user_username\\": \\"mwilson\\",\\n      \\"board_uuid\\": \\"6beb2862-7904-11e5-8bcf-feff819cdc9f\\",\\n      \\"uuid\\": \\"45d37fa8-7909-11e5-8bcf-feff819cdc9f\\",\\n      \\"behavior_uuid\\": \\"0b4a1abe-7908-11e5-8bcf-feff819cdc9f\\",\\n      \\"collected\\": \\"False\\",\\n      \\"device_date\\": \\"2015-10-21T21:34:54Z\\"\\n    }\\n  ],\\n  \\"frowns\\": [\\n    {\\n      \\"user_username\\": \\"mwilson\\",\\n      \\"board_uuid\\": \\"6beb2862-7904-11e5-8bcf-feff819cdc9f\\",\\n      \\"uuid\\": \\"45d37fa8-7909-11e5-8bcf-feff819cdc9f\\",\\n      \\"behavior_uuid\\": \\"0b4a1abe-7908-11e5-8bcf-feff819cdc9f\\",\\n      \\"collected\\": \\"False\\",\\n      \\"device_date\\": \\"2015-10-21T21:34:54Z\\"\\n    }\\n  ],\\n  \\"rewards\\": [\\n    {\\n      \\"board_uuid\\": \\"6beb2862-7904-11e5-8bcf-feff819cdc9f\\",\\n      \\"uuid\\": \\"5ba1af98-790a-11e5-8bcf-feff819cdc9f\\",\\n      \\"title\\": \\"Cleaning the room\\",\\n      \\"currency_amount\\": 1,\\n      \\"smile_amount\\": 2,\\n      \\"currency_type\\": \\"money\\",\\n      \\"device_date\\": \\"2015-10-21T21:34:54Z\\"\\n    }\\n  ]\\n}"]</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"boards\\":[{\\"uuid\\":\\"6beb2862-7904-11e5-8bcf-feff819cdc9f\\",\\"device_date\\":\\"2015-10-21T21:34:54Z\\",\\"owner_username\\":\\"mwilson\\",\\"title\\":\\"an awesome board\\",\\"transaction_id\\":\\"12324567890\\"}],\\"behaviors\\":[{\\"board_uuid\\":\\"6beb2862-7904-11e5-8bcf-feff819cdc9f\\",\\"uuid\\":\\"0b4a1abe-7908-11e5-8bcf-feff819cdc9f\\",\\"device_date\\":\\"2015-10-21T21:34:54Z\\",\\"title\\":\\"Awesome board behavior\\",\\"note\\":\\"And a note for this behavior\\"}],\\"smiles\\":[{\\"user_username\\":\\"mwilson\\",\\"board_uuid\\":\\"6beb2862-7904-11e5-8bcf-feff819cdc9f\\",\\"uuid\\":\\"45d37fa8-7909-11e5-8bcf-feff819cdc9f\\",\\"behavior_uuid\\":\\"0b4a1abe-7908-11e5-8bcf-feff819cdc9f\\",\\"collected\\":\\"False\\",\\"device_date\\":\\"2015-10-21T21:34:54Z\\"}],\\"frowns\\":[{\\"user_username\\":\\"mwilson\\",\\"board_uuid\\":\\"6beb2862-7904-11e5-8bcf-feff819cdc9f\\",\\"uuid\\":\\"45d37fa8-7909-11e5-8bcf-feff819cdc9f\\",\\"behavior_uuid\\":\\"0b4a1abe-7908-11e5-8bcf-feff819cdc9f\\",\\"collected\\":\\"False\\",\\"device_date\\":\\"2015-10-21T21:34:54Z\\"}],\\"rewards\\":[{\\"board_uuid\\":\\"6beb2862-7904-11e5-8bcf-feff819cdc9f\\",\\"uuid\\":\\"5ba1af98-790a-11e5-8bcf-feff819cdc9f\\",\\"title\\":\\"Cleaning the room\\",\\"currency_amount\\":1,\\"smile_amount\\":2,\\"currency_type\\":\\"money\\",\\"device_date\\":\\"2015-10-21T21:34:54Z\\"}]}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
         <attribute name="order" type="int64">8</attribute>
         <attribute name="name" type="string">Sync Push</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
@@ -323,5 +323,30 @@
         <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z123"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z125">
+        <attribute name="value" type="string"></attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string"></attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z126"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z126">
+        <attribute name="uuid" type="string">6927335E-0C7D-4FD3-B95E-75D5923B561D</attribute>
+        <attribute name="url" type="string">http://127.0.0.1:8000/api/boards/</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">GET</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="order" type="int64">9</attribute>
+        <attribute name="name" type="string">Boards</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z125"></relationship>
     </object>
 </database>

@@ -14,7 +14,7 @@
 @implementation SNFBoard (CoreDataProperties)
 
 @dynamic uuid;
-@dynamic modified_date;
+@dynamic updated_date;
 @dynamic deleted;
 @dynamic title;
 @dynamic transaction_id;

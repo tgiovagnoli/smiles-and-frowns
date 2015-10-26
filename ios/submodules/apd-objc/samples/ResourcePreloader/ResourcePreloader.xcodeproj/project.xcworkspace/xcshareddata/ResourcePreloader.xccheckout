@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C474B095-2907-458F-8BEE-1EA50BC710BD</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>775E5D3697FE4E89F0EC1B339D6CA4E5ECD01DBF</key>
+		<string>github.com-gngrwzrd:ApptitudeDigital/apd-objc.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>samples/ResourcePreloader/ResourcePreloader.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>775E5D3697FE4E89F0EC1B339D6CA4E5ECD01DBF</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com-gngrwzrd:ApptitudeDigital/apd-objc.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>775E5D3697FE4E89F0EC1B339D6CA4E5ECD01DBF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>775E5D3697FE4E89F0EC1B339D6CA4E5ECD01DBF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>apd-objc</string>
+		</dict>
+	</array>
+</dict>
+</plist>

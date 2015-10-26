@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D62D378B1BDE7F5D00102D6A /* APDDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D37891BDE7F5D00102D6A /* APDDebugViewController.m */; };
+		D62D378C1BDE7F5D00102D6A /* APDDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62D378A1BDE7F5D00102D6A /* APDDebugViewController.xib */; };
+		D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D378E1BDE7FC600102D6A /* SNFDebug.m */; };
+		D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62D378F1BDE7FC600102D6A /* SNFDebug.xib */; };
+		D62D37951BDE81F800102D6A /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D37941BDE81F800102D6A /* NSTimer+Blocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D62D37981BDE864200102D6A /* SNFCoreDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D37971BDE864200102D6A /* SNFCoreDataUtil.m */; };
 		D659DBB11BDAE07F0048D3F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB01BDAE07F0048D3F7 /* main.m */; };
 		D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */; };
 		D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */; };
@@ -14,25 +20,37 @@
 		D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */; };
 		D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */; };
 		D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D659DBC01BDAE07F0048D3F7 /* LaunchScreen.storyboard */; };
-		D659DBEC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBED1BDAEA000048D3F7 /* SNFSmile.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBCF1BDAEA000048D3F7 /* SNFSmile.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD11BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBEF1BDAEA000048D3F7 /* SNFBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD31BDAEA000048D3F7 /* SNFBehavior.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD51BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBF11BDAEA000048D3F7 /* SNFBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD71BDAEA000048D3F7 /* SNFBoard.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBF21BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD91BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDB1BDAEA000048D3F7 /* SNFFrown.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBF41BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDD1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDF1BDAEA000048D3F7 /* SNFReward.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE31BDAEA000048D3F7 /* SNFInvite.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE51BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE71BDAEA000048D3F7 /* SNFUser.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE91BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		D659DBFB1BDAEA000048D3F7 /* SNFUserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBEB1BDAEA000048D3F7 /* SNFUserRole.m */; settings = {ASSET_TAGS = (); }; };
+		D659DBEC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */; };
+		D659DBED1BDAEA000048D3F7 /* SNFSmile.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBCF1BDAEA000048D3F7 /* SNFSmile.m */; };
+		D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD11BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m */; };
+		D659DBEF1BDAEA000048D3F7 /* SNFBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD31BDAEA000048D3F7 /* SNFBehavior.m */; };
+		D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD51BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m */; };
+		D659DBF11BDAEA000048D3F7 /* SNFBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD71BDAEA000048D3F7 /* SNFBoard.m */; };
+		D659DBF21BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBD91BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m */; };
+		D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDB1BDAEA000048D3F7 /* SNFFrown.m */; };
+		D659DBF41BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDD1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m */; };
+		D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDF1BDAEA000048D3F7 /* SNFReward.m */; };
+		D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */; };
+		D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE31BDAEA000048D3F7 /* SNFInvite.m */; };
+		D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE51BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m */; };
+		D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE71BDAEA000048D3F7 /* SNFUser.m */; };
+		D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE91BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m */; };
+		D659DBFB1BDAEA000048D3F7 /* SNFUserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBEB1BDAEA000048D3F7 /* SNFUserRole.m */; };
+		D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DC001BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m */; };
+		D659DC041BDB06010048D3F7 /* SNFModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DC031BDB06010048D3F7 /* SNFModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D62D37881BDE7F5D00102D6A /* APDDebugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APDDebugViewController.h; path = "submodules/apd-objc/APDDebugViewController.h"; sourceTree = "<group>"; };
+		D62D37891BDE7F5D00102D6A /* APDDebugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDDebugViewController.m; path = "submodules/apd-objc/APDDebugViewController.m"; sourceTree = "<group>"; };
+		D62D378A1BDE7F5D00102D6A /* APDDebugViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APDDebugViewController.xib; path = "submodules/apd-objc/APDDebugViewController.xib"; sourceTree = "<group>"; };
+		D62D378D1BDE7FC600102D6A /* SNFDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFDebug.h; path = SmileAndFrowns/SNFDebug.h; sourceTree = "<group>"; };
+		D62D378E1BDE7FC600102D6A /* SNFDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFDebug.m; sourceTree = "<group>"; };
+		D62D378F1BDE7FC600102D6A /* SNFDebug.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFDebug.xib; sourceTree = "<group>"; };
+		D62D37931BDE81F800102D6A /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTimer+Blocks.h"; path = "submodules/apd-objc/NSTimer+Blocks.h"; sourceTree = "<group>"; };
+		D62D37941BDE81F800102D6A /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTimer+Blocks.m"; path = "submodules/apd-objc/NSTimer+Blocks.m"; sourceTree = "<group>"; };
+		D62D37961BDE864200102D6A /* SNFCoreDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFCoreDataUtil.h; path = SmileAndFrowns/SNFCoreDataUtil.h; sourceTree = "<group>"; };
+		D62D37971BDE864200102D6A /* SNFCoreDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFCoreDataUtil.m; sourceTree = "<group>"; };
 		D659DBAC1BDAE07F0048D3F7 /* SmileAndFrowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmileAndFrowns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D659DBB01BDAE07F0048D3F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SmileAndFrowns/AppDelegate.h; sourceTree = "<group>"; };
@@ -76,6 +94,10 @@
 		D659DBE91BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFUserRole+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D659DBEA1BDAEA000048D3F7 /* SNFUserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFUserRole.h; path = SmileAndFrowns/SNFUserRole.h; sourceTree = "<group>"; };
 		D659DBEB1BDAEA000048D3F7 /* SNFUserRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserRole.m; sourceTree = "<group>"; };
+		D659DBFF1BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObject+InfoDictionary.h"; path = "SmileAndFrowns/NSManagedObject+InfoDictionary.h"; sourceTree = "<group>"; };
+		D659DC001BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+InfoDictionary.m"; sourceTree = "<group>"; };
+		D659DC021BDB06010048D3F7 /* SNFModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFModel.h; path = SmileAndFrowns/SNFModel.h; sourceTree = "<group>"; };
+		D659DC031BDB06010048D3F7 /* SNFModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +111,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D62D37861BDE7E9700102D6A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D62D37871BDE7F4400102D6A /* apd-objc */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D62D37871BDE7F4400102D6A /* apd-objc */ = {
+			isa = PBXGroup;
+			children = (
+				D62D37931BDE81F800102D6A /* NSTimer+Blocks.h */,
+				D62D37941BDE81F800102D6A /* NSTimer+Blocks.m */,
+				D62D37881BDE7F5D00102D6A /* APDDebugViewController.h */,
+				D62D37891BDE7F5D00102D6A /* APDDebugViewController.m */,
+				D62D378A1BDE7F5D00102D6A /* APDDebugViewController.xib */,
+			);
+			name = "apd-objc";
+			sourceTree = "<group>";
+		};
+		D62D37921BDE7FCA00102D6A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D62D378E1BDE7FC600102D6A /* SNFDebug.m */,
+				D62D378F1BDE7FC600102D6A /* SNFDebug.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		D659DBA31BDAE07F0048D3F7 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +147,7 @@
 				D659DBAE1BDAE07F0048D3F7 /* Source */,
 				D659DBCA1BDAE0B30048D3F7 /* Resources */,
 				D659DBAF1BDAE07F0048D3F7 /* Supporting Files */,
+				D62D37861BDE7E9700102D6A /* Frameworks */,
 				D659DBAD1BDAE07F0048D3F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,11 +163,13 @@
 		D659DBAE1BDAE07F0048D3F7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D659DBFC1BDAEA110048D3F7 /* Models */,
+				D62D37921BDE7FCA00102D6A /* Views */,
 				D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */,
+				D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */,
+				D659DBFE1BDAF98F0048D3F7 /* Util */,
+				D659DBFC1BDAEA110048D3F7 /* Models */,
 				D659DBC01BDAE07F0048D3F7 /* LaunchScreen.storyboard */,
 				D659DBB81BDAE07F0048D3F7 /* Main.storyboard */,
-				D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */,
 			);
 			name = Source;
 			path = SmileAndFrowns;
@@ -134,15 +188,19 @@
 		D659DBC91BDAE0980048D3F7 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				D62D37961BDE864200102D6A /* SNFCoreDataUtil.h */,
 				D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */,
+				D659DBFF1BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.h */,
 				D659DBD21BDAEA000048D3F7 /* SNFBehavior.h */,
 				D659DBD01BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.h */,
 				D659DBD61BDAEA000048D3F7 /* SNFBoard.h */,
 				D659DBD41BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.h */,
+				D62D378D1BDE7FC600102D6A /* SNFDebug.h */,
 				D659DBDA1BDAEA000048D3F7 /* SNFFrown.h */,
 				D659DBD81BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.h */,
 				D659DBE21BDAEA000048D3F7 /* SNFInvite.h */,
 				D659DBE01BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.h */,
+				D659DC021BDB06010048D3F7 /* SNFModel.h */,
 				D659DBDE1BDAEA000048D3F7 /* SNFReward.h */,
 				D659DBDC1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.h */,
 				D659DBCE1BDAEA000048D3F7 /* SNFSmile.h */,
@@ -168,6 +226,7 @@
 		D659DBFC1BDAEA110048D3F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D659DC031BDB06010048D3F7 /* SNFModel.m */,
 				D659DBFD1BDAEAE80048D3F7 /* Entities */,
 			);
 			name = Models;
@@ -194,6 +253,15 @@
 				D659DBEB1BDAEA000048D3F7 /* SNFUserRole.m */,
 			);
 			name = Entities;
+			sourceTree = "<group>";
+		};
+		D659DBFE1BDAF98F0048D3F7 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D62D37971BDE864200102D6A /* SNFCoreDataUtil.m */,
+				D659DC001BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,7 +322,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
+				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
 				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
+				D62D378C1BDE7F5D00102D6A /* APDDebugViewController.xib in Resources */,
 				D659DBBA1BDAE07F0048D3F7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D62D378B1BDE7F5D00102D6A /* APDDebugViewController.m in Sources */,
 				D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */,
 				D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */,
 				D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */,
@@ -273,7 +344,10 @@
 				D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */,
 				D659DBF21BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m in Sources */,
 				D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */,
+				D62D37981BDE864200102D6A /* SNFCoreDataUtil.m in Sources */,
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
+				D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */,
+				D659DC041BDB06010048D3F7 /* SNFModel.m in Sources */,
 				D659DBEC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m in Sources */,
 				D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */,
 				D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */,
@@ -282,9 +356,11 @@
 				D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */,
 				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,
 				D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */,
+				D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */,
 				D659DBFB1BDAEA000048D3F7 /* SNFUserRole.m in Sources */,
 				D659DBEF1BDAEA000048D3F7 /* SNFBehavior.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
+				D62D37951BDE81F800102D6A /* NSTimer+Blocks.m in Sources */,
 				D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

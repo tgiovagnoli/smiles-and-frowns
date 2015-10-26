@@ -1,14 +1,7 @@
-//
-//  ViewController.h
-//  SmileAndFrowns
-//
-//  Created by Malcolm Wilson on 10/23/15.
-//  Copyright © 2015 apptitude. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+#import "SNFDebug.h"
 
-@interface SNFViewController : UIViewController
+@interface SNFViewController : UIViewController <APDDebugViewControllerDelegate>
 
 
 @end

@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SNFSmile (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSDate *modified_date;
+@property (nullable, nonatomic, retain) NSDate *updated_date;
 @property (nullable, nonatomic, retain) NSDate *created_date;
 @property (nullable, nonatomic, retain) NSNumber *deleted;
 @property (nullable, nonatomic, retain) NSString *uuid;

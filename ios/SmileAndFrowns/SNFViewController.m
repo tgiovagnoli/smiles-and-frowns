@@ -1,27 +1,36 @@
-//
-//  ViewController.m
-//  SmileAndFrowns
-//
-//  Created by Malcolm Wilson on 10/23/15.
-//  Copyright © 2015 apptitude. All rights reserved.
-//
-
 #import "SNFViewController.h"
+#import "SNFBoard.h"
+#import "SNFModel.h"
 
-@interface SNFViewController ()
-
-@end
+#import "NSTimer+Blocks.h"
 
 @implementation SNFViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	[NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
+		[self showDebug];
+	} repeats:NO];
 }
+
+- (void)showDebug{
+	SNFDebug *debug = [[SNFDebug alloc] init];
+	debug.delegate = self;
+	[self presentViewController:debug animated:YES completion:^{}];
+}
+
+- (void)debugViewControllerIsDone:(APDDebugViewController *)debugViewController{
+	[self dismissViewControllerAnimated:YES completion:^{}];
+}
+
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
-	// Dispose of any resources that can be recreated.
+}
+
+
+- (IBAction)test:(id)sender{
+	[self showDebug];
 }
 
 @end

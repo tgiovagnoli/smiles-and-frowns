@@ -1,15 +1,29 @@
-//
-//  SNFSmile.m
-//  SmileAndFrowns
-//
-//  Created by Malcolm Wilson on 10/23/15.
-//  Copyright © 2015 apptitude. All rights reserved.
-//
-
 #import "SNFSmile.h"
 
 @implementation SNFSmile
 
-// Insert code here to add functionality to your managed object subclass
+/*
+ @dynamic modified_date;
+ @dynamic created_date;
+ @dynamic deleted;
+ @dynamic uuid;
+ @dynamic collected;
+ @dynamic remote_id;
+ @dynamic board;
+ @dynamic user;
+ @dynamic behavior;
+*/
+
++ (NSDictionary *)keyMappings{
+	return @{
+				@"uuid": @"uuid",
+				@"deleted": @"deleted",
+				@"transaction_id": @"transaction_id",
+				@"remote_id": @"id",
+				@"updated_date": @"updated_date",
+				@"created_date": @"created_date",
+				@"board": @"board",
+			 };
+}
 
 @end

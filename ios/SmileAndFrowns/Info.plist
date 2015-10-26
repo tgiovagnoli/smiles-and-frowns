@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SmilesAndFrownsDebug</key>
+	<dict>
+		<key>serverURL</key>
+		<string>http://127.0.0.1:8000</string>
+		<key>apiPath</key>
+		<string>api</string>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

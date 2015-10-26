@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SNFModel.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Override point for customization after application launch.
+	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
 	return YES;
 }
 
