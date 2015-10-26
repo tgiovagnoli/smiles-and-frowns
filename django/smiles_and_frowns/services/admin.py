@@ -44,7 +44,7 @@ class FrownAdmin(admin.ModelAdmin):
 
 class InviteAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("board", "user", "code")
+	fields = ("board", "user", "code", "role")
 	list_display = ("board", "user")
 
 class PredefinedBoardAdmin(admin.ModelAdmin):

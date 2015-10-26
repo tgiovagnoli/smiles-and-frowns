@@ -6,9 +6,9 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     
     #user endpoints
+    url(r'^api/token_auth/(?P<backend>[^/]+)/$', api_views.register_by_access_token),
     url(r'^api/signup/?', api_views.user_signup),
     url(r'^api/update/?', api_views.user_update),
-    url(r'^api/social_auth/?',api_views.user_social_auth),
     url(r'^api/login/?', api_views.user_login),
     url(r'^api/logout/?', api_views.user_logout),
     url(r'^api/reset_password/?', api_views.user_password_reset),

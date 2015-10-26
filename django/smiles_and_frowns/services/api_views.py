@@ -10,6 +10,7 @@ from django.contrib.auth.hashers import make_password
 from django.template import Context, loader
 from services import models, json_utils, utils
 from smiles_and_frowns import settings
+from social.apps.django_app.utils import psa
 from pytz import UTC
 
 def json_response(response_data):
@@ -28,9 +29,36 @@ def boards(request):
 	board_data = json_utils.board_info_dictionary_collection(boards, with_users=True, with_behaviors=True, with_rewards=True, with_smiles=True, with_frowns=True, with_invites=True)
 	return json_response(board_data)
 
-@csrf_exempt
-def user_social_auth(request):
-	return json_response({})
+@psa('social:complete')
+def register_by_access_token(request,backend):
+	#http://python-social-auth.readthedocs.org/en/latest/use_cases.html
+	#This view expects an access_token GET parameter, if it's needed,
+	#request.backend and request.strategy will be loaded with the current
+	#backend and strategy.
+	
+	if request.method != "POST":
+		return json_response_error("method not allowed")
+	
+	if "access_token" not in request.POST:
+		return json_response_error("no access token")
+
+	access_token = request.POST.get('access_token')
+	
+	if backend == "twitter":
+		if "access_token_secret" not in request.POST:
+			return json_response_error('no access token secret')
+		access_token = {
+			"oauth_token":request.POST.get('access_token'),
+			"oauth_token_secret":request.POST.get('access_token_secret'),
+		}
+	
+	user = request.backend.do_auth(access_token)
+	
+	if user:
+		login(request,user)
+		return json_response({})
+	
+	return json_response_error("user not found")
 
 @csrf_exempt
 def user_password_reset(request):
