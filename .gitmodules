@@ -1,3 +1,0 @@
-[submodule "ios/submodules"]
-	path = ios/submodules
-	url = git@github.com:ApptitudeDigital/apd-objc.git
