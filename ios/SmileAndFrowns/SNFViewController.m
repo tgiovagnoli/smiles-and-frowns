@@ -23,11 +23,9 @@
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 }
-
 
 - (IBAction)test:(id)sender{
 	[self showDebug];

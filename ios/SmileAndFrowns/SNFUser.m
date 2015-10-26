@@ -1,15 +1,22 @@
-//
-//  SNFUser.m
-//  SmileAndFrowns
-//
-//  Created by Malcolm Wilson on 10/23/15.
-//  Copyright © 2015 apptitude. All rights reserved.
-//
-
 #import "SNFUser.h"
 
 @implementation SNFUser
 
-// Insert code here to add functionality to your managed object subclass
+
++ (NSString *)primaryLookup{
+	return @"username";
+}
+
++ (NSDictionary *)keyMappings{
+	return @{
+				@"username": @"username",
+				@"first_name": @"first_name",
+				@"last_name": @"last_name",
+				@"age": @"age",
+				@"gender": @"gender",
+				@"remote_id": @"id",
+			 };
+}
+
 
 @end

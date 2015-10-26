@@ -12,7 +12,6 @@
 		D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D378E1BDE7FC600102D6A /* SNFDebug.m */; };
 		D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62D378F1BDE7FC600102D6A /* SNFDebug.xib */; };
 		D62D37951BDE81F800102D6A /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D37941BDE81F800102D6A /* NSTimer+Blocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D62D37981BDE864200102D6A /* SNFCoreDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D37971BDE864200102D6A /* SNFCoreDataUtil.m */; };
 		D659DBB11BDAE07F0048D3F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB01BDAE07F0048D3F7 /* main.m */; };
 		D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */; };
 		D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */; };
@@ -49,8 +48,6 @@
 		D62D378F1BDE7FC600102D6A /* SNFDebug.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFDebug.xib; sourceTree = "<group>"; };
 		D62D37931BDE81F800102D6A /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTimer+Blocks.h"; path = "submodules/apd-objc/NSTimer+Blocks.h"; sourceTree = "<group>"; };
 		D62D37941BDE81F800102D6A /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTimer+Blocks.m"; path = "submodules/apd-objc/NSTimer+Blocks.m"; sourceTree = "<group>"; };
-		D62D37961BDE864200102D6A /* SNFCoreDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFCoreDataUtil.h; path = SmileAndFrowns/SNFCoreDataUtil.h; sourceTree = "<group>"; };
-		D62D37971BDE864200102D6A /* SNFCoreDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFCoreDataUtil.m; sourceTree = "<group>"; };
 		D659DBAC1BDAE07F0048D3F7 /* SmileAndFrowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmileAndFrowns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D659DBB01BDAE07F0048D3F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SmileAndFrowns/AppDelegate.h; sourceTree = "<group>"; };
@@ -134,6 +131,7 @@
 		D62D37921BDE7FCA00102D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */,
 				D62D378E1BDE7FC600102D6A /* SNFDebug.m */,
 				D62D378F1BDE7FC600102D6A /* SNFDebug.xib */,
 			);
@@ -163,13 +161,12 @@
 		D659DBAE1BDAE07F0048D3F7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D62D37921BDE7FCA00102D6A /* Views */,
 				D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */,
-				D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */,
-				D659DBFE1BDAF98F0048D3F7 /* Util */,
-				D659DBFC1BDAEA110048D3F7 /* Models */,
 				D659DBC01BDAE07F0048D3F7 /* LaunchScreen.storyboard */,
 				D659DBB81BDAE07F0048D3F7 /* Main.storyboard */,
+				D659DBFC1BDAEA110048D3F7 /* Models */,
+				D659DBFE1BDAF98F0048D3F7 /* Util */,
+				D62D37921BDE7FCA00102D6A /* Views */,
 			);
 			name = Source;
 			path = SmileAndFrowns;
@@ -188,7 +185,6 @@
 		D659DBC91BDAE0980048D3F7 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				D62D37961BDE864200102D6A /* SNFCoreDataUtil.h */,
 				D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */,
 				D659DBFF1BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.h */,
 				D659DBD21BDAEA000048D3F7 /* SNFBehavior.h */,
@@ -258,7 +254,6 @@
 		D659DBFE1BDAF98F0048D3F7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				D62D37971BDE864200102D6A /* SNFCoreDataUtil.m */,
 				D659DC001BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m */,
 			);
 			name = Util;
@@ -344,7 +339,6 @@
 				D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */,
 				D659DBF21BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m in Sources */,
 				D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */,
-				D62D37981BDE864200102D6A /* SNFCoreDataUtil.m in Sources */,
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
 				D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */,
 				D659DC041BDB06010048D3F7 /* SNFModel.m in Sources */,

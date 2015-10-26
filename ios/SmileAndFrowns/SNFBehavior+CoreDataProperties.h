@@ -1,5 +1,8 @@
 #import "SNFBehavior.h"
 
+@class SNFBoard;
+@class SNFFrown;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SNFBehavior (CoreDataProperties)
@@ -12,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSDate *created_date;
 @property (nullable, nonatomic, retain) NSDate *updated_date;
 @property (nullable, nonatomic, retain) NSNumber *remote_id;
-@property (nullable, nonatomic, retain) NSManagedObject *board;
+@property (nullable, nonatomic, retain) SNFBoard *board;
 @property (nullable, nonatomic, retain) NSSet<SNFSmile *> *smiles;
-@property (nullable, nonatomic, retain) NSManagedObject *frowns;
+@property (nullable, nonatomic, retain) NSSet<SNFFrown *> *frowns;
 
 @end
 

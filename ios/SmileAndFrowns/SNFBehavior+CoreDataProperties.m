@@ -10,6 +10,8 @@
 //
 
 #import "SNFBehavior+CoreDataProperties.h"
+#import "SNFBoard.h"
+#import "SNFFrown.h"
 
 @implementation SNFBehavior (CoreDataProperties)
 
@@ -23,5 +25,6 @@
 @dynamic board;
 @dynamic smiles;
 @dynamic frowns;
+@dynamic edit_count;
 
 @end

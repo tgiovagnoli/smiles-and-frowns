@@ -1,16 +1,17 @@
-//
-//  SNFReward.m
-//  SmileAndFrowns
-//
-//  Created by Malcolm Wilson on 10/23/15.
-//  Copyright © 2015 apptitude. All rights reserved.
-//
-
 #import "SNFReward.h"
 #import "SNFBoard.h"
 
 @implementation SNFReward
 
-// Insert code here to add functionality to your managed object subclass
++ (NSDictionary *)keyMappings{
+	return @{
+				@"uuid": @"uuid",
+				@"deleted": @"deleted",
+				@"remote_id": @"id",
+				@"updated_date": @"updated_date",
+				@"created_date": @"created_date",
+				@"board": @"board",
+			 };
+}
 
 @end

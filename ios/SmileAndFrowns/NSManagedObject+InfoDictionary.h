@@ -21,17 +21,16 @@ typedef NS_ENUM(NSUInteger, PropertyType){
 @interface NSManagedObject (InfoDictionary)
 
 + (NSDictionary *)keyMappings;
++ (NSString *)primaryLookup;
++ (NSManagedObject *)editOrCreatefromInfoDictionary:(NSDictionary *)infoDict withContext:(NSManagedObjectContext *)context;
 
+- (void)updateWithInfoDict:(NSDictionary *)info andContext:(NSManagedObjectContext *)context;
+- (NSDictionary *)infoDictionary;
 - (NSObject *)objectOrNull:(NSObject *)obj;
 - (NSString *)stringFromDate:(NSDate *)date;
 - (NSDate *)dateFromString:(NSString *)dateString;
 - (NSArray *)uuidArrayFromManagedObjects:(NSSet *)managedObjects;
-- (void)updateSyncPropertiesfromDict:(NSDictionary *)infoDict;
 
 
-
-+ (NSManagedObject *)editOrCreatefromInfoDictionary:(NSDictionary *)infoDict;
-- (void)updateWithInfoDict:(NSDictionary *)info;
-- (NSDictionary *)infoDictionary;
 
 @end
