@@ -37,7 +37,7 @@ def register_by_access_token(request,backend):
 	#backend and strategy.
 	
 	if request.method != "POST":
-		return json_response_error("method not allowe")
+		return json_response_error("method not allowed")
 	
 	if "access_token" not in request.POST:
 		return json_response_error("no access token")
