@@ -9,7 +9,7 @@
 }
 
 + (NSDictionary *) keyMappings {
-	return @{};
+	return @{@"uuid": @"uuid"};
 }
 
 + (NSManagedObject *) editOrCreatefromInfoDictionary:(NSDictionary *) infoDict withContext:(NSManagedObjectContext *) context {
@@ -55,11 +55,12 @@
 }
 
 - (void) updateWithInfoDict:(NSDictionary *) info andContext:(NSManagedObjectContext *) context {
+	NSDictionary * mappings = [[self class] keyMappings];
+	
 	for(NSString * key in info) {
 		id value = info[key];
-		NSString * mappedKey = key;
 		
-		NSDictionary * mappings = [[self class] keyMappings];
+		NSString * mappedKey = key;
 		if([[mappings allKeysForObject:key] lastObject]) {
 			mappedKey = [[mappings allKeysForObject:key] lastObject];
 		}
@@ -86,12 +87,12 @@
 		}
 		
 		if ([self respondsToSelector:NSSelectorFromString(mappedKey)]) {
-			NSLog(@"setting value:(%@) forKey:(%@) on (%@)", value, key, NSStringFromClass([self class]));
+			//NSLog(@"setting value:(%@) forKey:(%@) on (%@)", value, key, NSStringFromClass([self class]));
 			[self setValue:value forKey:mappedKey];
 		}else{
 			@throw [NSException exceptionWithName:@"KeyNotFound" reason:[NSString stringWithFormat:@"Cound not find key (%@) on (%@)", mappedKey, NSStringFromClass([self class])] userInfo:nil];
 		}
-		
+
 	}
 }
 
