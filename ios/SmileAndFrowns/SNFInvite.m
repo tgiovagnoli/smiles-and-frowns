@@ -5,12 +5,12 @@
 
 + (NSDictionary *)keyMappings{
 	return @{
-				@"role": @"role",
-				@"code": @"code",
-				@"remote_id": @"id",
-				@"board": @"board",
-				@"uuid": @"uuid"
-			 };
+		@"role": @"role",
+		@"code": @"code",
+		@"remote_id": @"id",
+		@"board": @"board",
+		@"uuid": @"uuid"
+	};
 }
 
 

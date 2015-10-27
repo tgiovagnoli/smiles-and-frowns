@@ -5,16 +5,15 @@
 
 + (NSDictionary *)keyMappings{
 	return @{
-				@"uuid": @"uuid",
-				@"title": @"title",
-				@"note": @"note",
-				@"deleted": @"deleted",
-				@"created_date": @"created_date",
-				@"updated_date": @"updated_date",
-				@"remote_id": @"id",
-				@"board": @"board",
-				
-			 };
+		@"uuid": @"uuid",
+		@"title": @"title",
+		@"note": @"note",
+		@"deleted": @"deleted",
+		@"created_date": @"created_date",
+		@"updated_date": @"updated_date",
+		@"remote_id": @"id",
+		@"board": @"board",
+	};
 }
 
 

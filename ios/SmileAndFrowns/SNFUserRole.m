@@ -6,11 +6,11 @@
 
 + (NSDictionary *)keyMappings{
 	return @{
-				@"uuid": @"uuid",
-				@"remote_id": @"id",
-				@"board": @"board",
-				@"user": @"user",
-			 };
+		@"uuid": @"uuid",
+		@"remote_id": @"id",
+		@"board": @"board",
+		@"user": @"user",
+	};
 }
 
 @end
