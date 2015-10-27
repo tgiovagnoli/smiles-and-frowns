@@ -9,7 +9,7 @@
 }
 
 + (NSDictionary *) keyMappings {
-	return @{};
+	return @{@"uuid": @"uuid"};
 }
 
 + (NSManagedObject *) editOrCreatefromInfoDictionary:(NSDictionary *) infoDict withContext:(NSManagedObjectContext *) context {
@@ -55,11 +55,12 @@
 }
 
 - (void) updateWithInfoDict:(NSDictionary *) info andContext:(NSManagedObjectContext *) context {
+	NSDictionary * mappings = [[self class] keyMappings];
+	
 	for(NSString * key in info) {
 		id value = info[key];
-		NSString * mappedKey = key;
 		
-		NSDictionary * mappings = [[self class] keyMappings];
+		NSString * mappedKey = key;
 		if([[mappings allKeysForObject:key] lastObject]) {
 			mappedKey = [[mappings allKeysForObject:key] lastObject];
 		}
@@ -85,7 +86,7 @@
 			}
 		}
 		
-		NSLog(@"setting value:(%@) forKey:(%@)", value,key);
+		//NSLog(@"setting value:(%@) forKey:(%@)", value,key);
 		
 		[self setValue:value forKey:mappedKey];
 	}
