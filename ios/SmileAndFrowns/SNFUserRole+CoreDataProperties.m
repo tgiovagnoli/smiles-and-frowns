@@ -3,6 +3,9 @@
 
 @implementation SNFUserRole (CoreDataProperties)
 
+@dynamic updated_date;
+@dynamic created_date;
+@dynamic deleted;
 @dynamic uuid;
 @dynamic role;
 @dynamic remote_id;

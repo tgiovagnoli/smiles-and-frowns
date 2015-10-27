@@ -6,6 +6,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SNFUserRole (CoreDataProperties)
 
+
+@property (nullable, nonatomic, retain) NSDate *updated_date;
+@property (nullable, nonatomic, retain) NSDate *created_date;
+@property (nullable, nonatomic, retain) NSNumber *deleted;
 @property (nullable, nonatomic, retain) NSString *uuid;
 @property (nullable, nonatomic, retain) NSString *role;
 @property (nullable, nonatomic, retain) NSNumber *remote_id;

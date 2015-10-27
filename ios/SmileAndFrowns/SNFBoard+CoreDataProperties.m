@@ -10,6 +10,7 @@
 @dynamic uuid;
 @dynamic updated_date;
 @dynamic deleted;
+@dynamic edit_count;
 @dynamic title;
 @dynamic transaction_id;
 @dynamic created_date;

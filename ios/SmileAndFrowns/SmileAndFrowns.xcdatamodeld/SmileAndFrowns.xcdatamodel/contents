@@ -77,8 +77,11 @@
         <relationship name="user_roles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFUserRole" inverseName="user" inverseEntity="SNFUserRole" syncable="YES"/>
     </entity>
     <entity name="SNFUserRole" representedClassName="SNFUserRole" syncable="YES">
+        <attribute name="created_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="deleted" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="role" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updated_date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="user_roles" inverseEntity="SNFBoard" syncable="YES"/>
         <relationship name="invites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFInvite" inverseName="role" inverseEntity="SNFInvite" syncable="YES"/>
@@ -92,6 +95,6 @@
         <element name="SNFReward" positionX="0" positionY="45" width="128" height="135"/>
         <element name="SNFSmile" positionX="-54" positionY="-9" width="128" height="180"/>
         <element name="SNFUser" positionX="36" positionY="81" width="128" height="195"/>
-        <element name="SNFUserRole" positionX="-18" positionY="81" width="128" height="135"/>
+        <element name="SNFUserRole" positionX="-18" positionY="81" width="128" height="180"/>
     </elements>
 </model>

@@ -7,11 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D62D378B1BDE7F5D00102D6A /* APDDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D37891BDE7F5D00102D6A /* APDDebugViewController.m */; };
-		D62D378C1BDE7F5D00102D6A /* APDDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62D378A1BDE7F5D00102D6A /* APDDebugViewController.xib */; };
+		D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */; };
+		D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAC1BDFD1FF0024CBC2 /* SNFError.m */; };
+		D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAF1BDFD88F0024CBC2 /* SNFService.m */; };
+		D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FB61BE002160024CBC2 /* APDDebugViewController.m */; };
+		D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6272FB71BE002160024CBC2 /* APDDebugViewController.xib */; };
+		D6272FC01BE002160024CBC2 /* APDDjangoErrorViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FB91BE002160024CBC2 /* APDDjangoErrorViewer.m */; };
+		D6272FC11BE002160024CBC2 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FBB1BE002160024CBC2 /* NSTimer+Blocks.m */; };
+		D6272FC21BE002160024CBC2 /* NSURLRequest+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */; };
+		D6272FC41BE002330024CBC2 /* APDDjangoErrorViewer.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6272FC31BE002330024CBC2 /* APDDjangoErrorViewer.xib */; };
 		D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D378E1BDE7FC600102D6A /* SNFDebug.m */; };
 		D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62D378F1BDE7FC600102D6A /* SNFDebug.xib */; };
-		D62D37951BDE81F800102D6A /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D37941BDE81F800102D6A /* NSTimer+Blocks.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D62D379C1BDEEFC400102D6A /* SNFSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D379B1BDEEFC400102D6A /* SNFSyncService.m */; };
+		D62D37A01BDEF0D400102D6A /* SNFConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D379F1BDEF0D400102D6A /* SNFConfig.m */; };
 		D659DBB11BDAE07F0048D3F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB01BDAE07F0048D3F7 /* main.m */; };
 		D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */; };
 		D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */; };
@@ -40,60 +48,75 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D62D37881BDE7F5D00102D6A /* APDDebugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APDDebugViewController.h; path = "submodules/apd-objc/APDDebugViewController.h"; sourceTree = "<group>"; };
-		D62D37891BDE7F5D00102D6A /* APDDebugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDDebugViewController.m; path = "submodules/apd-objc/APDDebugViewController.m"; sourceTree = "<group>"; };
-		D62D378A1BDE7F5D00102D6A /* APDDebugViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APDDebugViewController.xib; path = "submodules/apd-objc/APDDebugViewController.xib"; sourceTree = "<group>"; };
-		D62D378D1BDE7FC600102D6A /* SNFDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFDebug.h; path = SmileAndFrowns/SNFDebug.h; sourceTree = "<group>"; };
+		D6272FA71BDFCD1A0024CBC2 /* SNFUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserService.h; sourceTree = "<group>"; };
+		D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserService.m; sourceTree = "<group>"; };
+		D6272FAB1BDFD1FF0024CBC2 /* SNFError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFError.h; sourceTree = "<group>"; };
+		D6272FAC1BDFD1FF0024CBC2 /* SNFError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFError.m; sourceTree = "<group>"; };
+		D6272FAE1BDFD88F0024CBC2 /* SNFService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFService.h; sourceTree = "<group>"; };
+		D6272FAF1BDFD88F0024CBC2 /* SNFService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFService.m; sourceTree = "<group>"; };
+		D6272FB51BE002160024CBC2 /* APDDebugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APDDebugViewController.h; path = "submodules/apd-objc/APDDebugViewController.h"; sourceTree = "<group>"; };
+		D6272FB61BE002160024CBC2 /* APDDebugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDDebugViewController.m; path = "submodules/apd-objc/APDDebugViewController.m"; sourceTree = "<group>"; };
+		D6272FB71BE002160024CBC2 /* APDDebugViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APDDebugViewController.xib; path = "submodules/apd-objc/APDDebugViewController.xib"; sourceTree = "<group>"; };
+		D6272FB81BE002160024CBC2 /* APDDjangoErrorViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APDDjangoErrorViewer.h; path = "submodules/apd-objc/APDDjangoErrorViewer.h"; sourceTree = "<group>"; };
+		D6272FB91BE002160024CBC2 /* APDDjangoErrorViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDDjangoErrorViewer.m; path = "submodules/apd-objc/APDDjangoErrorViewer.m"; sourceTree = "<group>"; };
+		D6272FBA1BE002160024CBC2 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTimer+Blocks.h"; path = "submodules/apd-objc/NSTimer+Blocks.h"; sourceTree = "<group>"; };
+		D6272FBB1BE002160024CBC2 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTimer+Blocks.m"; path = "submodules/apd-objc/NSTimer+Blocks.m"; sourceTree = "<group>"; };
+		D6272FBC1BE002160024CBC2 /* NSURLRequest+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURLRequest+Additions.h"; path = "submodules/apd-objc/NSURLRequest+Additions.h"; sourceTree = "<group>"; };
+		D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+Additions.m"; path = "submodules/apd-objc/NSURLRequest+Additions.m"; sourceTree = "<group>"; };
+		D6272FC31BE002330024CBC2 /* APDDjangoErrorViewer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APDDjangoErrorViewer.xib; path = "submodules/apd-objc/APDDjangoErrorViewer.xib"; sourceTree = "<group>"; };
+		D62D378D1BDE7FC600102D6A /* SNFDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFDebug.h; sourceTree = "<group>"; };
 		D62D378E1BDE7FC600102D6A /* SNFDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFDebug.m; sourceTree = "<group>"; };
 		D62D378F1BDE7FC600102D6A /* SNFDebug.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFDebug.xib; sourceTree = "<group>"; };
-		D62D37931BDE81F800102D6A /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTimer+Blocks.h"; path = "submodules/apd-objc/NSTimer+Blocks.h"; sourceTree = "<group>"; };
-		D62D37941BDE81F800102D6A /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTimer+Blocks.m"; path = "submodules/apd-objc/NSTimer+Blocks.m"; sourceTree = "<group>"; };
+		D62D379A1BDEEFC400102D6A /* SNFSyncService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFSyncService.h; sourceTree = "<group>"; };
+		D62D379B1BDEEFC400102D6A /* SNFSyncService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFSyncService.m; sourceTree = "<group>"; };
+		D62D379E1BDEF0D400102D6A /* SNFConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFConfig.h; sourceTree = "<group>"; };
+		D62D379F1BDEF0D400102D6A /* SNFConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFConfig.m; sourceTree = "<group>"; };
 		D659DBAC1BDAE07F0048D3F7 /* SmileAndFrowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmileAndFrowns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D659DBB01BDAE07F0048D3F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SmileAndFrowns/AppDelegate.h; sourceTree = "<group>"; };
+		D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D659DBB51BDAE07F0048D3F7 /* SNFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SNFViewController.h; path = SmileAndFrowns/SNFViewController.h; sourceTree = "<group>"; };
+		D659DBB51BDAE07F0048D3F7 /* SNFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNFViewController.h; sourceTree = "<group>"; };
 		D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNFViewController.m; sourceTree = "<group>"; };
 		D659DBB91BDAE07F0048D3F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmileAndFrowns.xcdatamodel; sourceTree = "<group>"; };
 		D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SmileAndFrowns/Assets.xcassets; sourceTree = "<group>"; };
 		D659DBC11BDAE07F0048D3F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D659DBC31BDAE07F0048D3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D659DBCC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFSmile+CoreDataProperties.h"; path = "SmileAndFrowns/SNFSmile+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBCC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFSmile+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFSmile+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D659DBCE1BDAEA000048D3F7 /* SNFSmile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFSmile.h; path = SmileAndFrowns/SNFSmile.h; sourceTree = "<group>"; };
+		D659DBCE1BDAEA000048D3F7 /* SNFSmile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFSmile.h; sourceTree = "<group>"; };
 		D659DBCF1BDAEA000048D3F7 /* SNFSmile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFSmile.m; sourceTree = "<group>"; };
-		D659DBD01BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFBehavior+CoreDataProperties.h"; path = "SmileAndFrowns/SNFBehavior+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBD01BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFBehavior+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D659DBD11BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFBehavior+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D659DBD21BDAEA000048D3F7 /* SNFBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFBehavior.h; path = SmileAndFrowns/SNFBehavior.h; sourceTree = "<group>"; };
+		D659DBD21BDAEA000048D3F7 /* SNFBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBehavior.h; sourceTree = "<group>"; };
 		D659DBD31BDAEA000048D3F7 /* SNFBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBehavior.m; sourceTree = "<group>"; };
-		D659DBD41BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFBoard+CoreDataProperties.h"; path = "SmileAndFrowns/SNFBoard+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBD41BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFBoard+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D659DBD51BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFBoard+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D659DBD61BDAEA000048D3F7 /* SNFBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFBoard.h; path = SmileAndFrowns/SNFBoard.h; sourceTree = "<group>"; };
+		D659DBD61BDAEA000048D3F7 /* SNFBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBoard.h; sourceTree = "<group>"; };
 		D659DBD71BDAEA000048D3F7 /* SNFBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoard.m; sourceTree = "<group>"; };
-		D659DBD81BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFFrown+CoreDataProperties.h"; path = "SmileAndFrowns/SNFFrown+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBD81BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFFrown+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D659DBD91BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFFrown+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D659DBDA1BDAEA000048D3F7 /* SNFFrown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFFrown.h; path = SmileAndFrowns/SNFFrown.h; sourceTree = "<group>"; };
+		D659DBDA1BDAEA000048D3F7 /* SNFFrown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFFrown.h; sourceTree = "<group>"; };
 		D659DBDB1BDAEA000048D3F7 /* SNFFrown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFFrown.m; sourceTree = "<group>"; };
-		D659DBDC1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFReward+CoreDataProperties.h"; path = "SmileAndFrowns/SNFReward+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBDC1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFReward+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D659DBDD1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFReward+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D659DBDE1BDAEA000048D3F7 /* SNFReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFReward.h; path = SmileAndFrowns/SNFReward.h; sourceTree = "<group>"; };
+		D659DBDE1BDAEA000048D3F7 /* SNFReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReward.h; sourceTree = "<group>"; };
 		D659DBDF1BDAEA000048D3F7 /* SNFReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReward.m; sourceTree = "<group>"; };
-		D659DBE01BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFInvite+CoreDataProperties.h"; path = "SmileAndFrowns/SNFInvite+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBE01BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFInvite+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFInvite+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D659DBE21BDAEA000048D3F7 /* SNFInvite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFInvite.h; path = SmileAndFrowns/SNFInvite.h; sourceTree = "<group>"; };
+		D659DBE21BDAEA000048D3F7 /* SNFInvite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFInvite.h; sourceTree = "<group>"; };
 		D659DBE31BDAEA000048D3F7 /* SNFInvite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFInvite.m; sourceTree = "<group>"; };
-		D659DBE41BDAEA000048D3F7 /* SNFUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFUser+CoreDataProperties.h"; path = "SmileAndFrowns/SNFUser+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBE41BDAEA000048D3F7 /* SNFUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFUser+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D659DBE51BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFUser+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D659DBE61BDAEA000048D3F7 /* SNFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFUser.h; path = SmileAndFrowns/SNFUser.h; sourceTree = "<group>"; };
+		D659DBE61BDAEA000048D3F7 /* SNFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUser.h; sourceTree = "<group>"; };
 		D659DBE71BDAEA000048D3F7 /* SNFUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUser.m; sourceTree = "<group>"; };
-		D659DBE81BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SNFUserRole+CoreDataProperties.h"; path = "SmileAndFrowns/SNFUserRole+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D659DBE81BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFUserRole+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D659DBE91BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFUserRole+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D659DBEA1BDAEA000048D3F7 /* SNFUserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFUserRole.h; path = SmileAndFrowns/SNFUserRole.h; sourceTree = "<group>"; };
+		D659DBEA1BDAEA000048D3F7 /* SNFUserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserRole.h; sourceTree = "<group>"; };
 		D659DBEB1BDAEA000048D3F7 /* SNFUserRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserRole.m; sourceTree = "<group>"; };
-		D659DBFF1BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObject+InfoDictionary.h"; path = "SmileAndFrowns/NSManagedObject+InfoDictionary.h"; sourceTree = "<group>"; };
+		D659DBFF1BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+InfoDictionary.h"; sourceTree = "<group>"; };
 		D659DC001BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+InfoDictionary.m"; sourceTree = "<group>"; };
-		D659DC021BDB06010048D3F7 /* SNFModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNFModel.h; path = SmileAndFrowns/SNFModel.h; sourceTree = "<group>"; };
+		D659DC021BDB06010048D3F7 /* SNFModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFModel.h; sourceTree = "<group>"; };
 		D659DC031BDB06010048D3F7 /* SNFModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,40 +131,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D6272FB41BE0020A0024CBC2 /* apd-objc */ = {
+			isa = PBXGroup;
+			children = (
+				D6272FB51BE002160024CBC2 /* APDDebugViewController.h */,
+				D6272FB61BE002160024CBC2 /* APDDebugViewController.m */,
+				D6272FB71BE002160024CBC2 /* APDDebugViewController.xib */,
+				D6272FB81BE002160024CBC2 /* APDDjangoErrorViewer.h */,
+				D6272FB91BE002160024CBC2 /* APDDjangoErrorViewer.m */,
+				D6272FC31BE002330024CBC2 /* APDDjangoErrorViewer.xib */,
+				D6272FBA1BE002160024CBC2 /* NSTimer+Blocks.h */,
+				D6272FBB1BE002160024CBC2 /* NSTimer+Blocks.m */,
+				D6272FBC1BE002160024CBC2 /* NSURLRequest+Additions.h */,
+				D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */,
+			);
+			name = "apd-objc";
+			sourceTree = "<group>";
+		};
 		D62D37861BDE7E9700102D6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D62D37871BDE7F4400102D6A /* apd-objc */,
+				D6272FB41BE0020A0024CBC2 /* apd-objc */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D62D37871BDE7F4400102D6A /* apd-objc */ = {
-			isa = PBXGroup;
-			children = (
-				D62D37931BDE81F800102D6A /* NSTimer+Blocks.h */,
-				D62D37941BDE81F800102D6A /* NSTimer+Blocks.m */,
-				D62D37881BDE7F5D00102D6A /* APDDebugViewController.h */,
-				D62D37891BDE7F5D00102D6A /* APDDebugViewController.m */,
-				D62D378A1BDE7F5D00102D6A /* APDDebugViewController.xib */,
-			);
-			name = "apd-objc";
 			sourceTree = "<group>";
 		};
 		D62D37921BDE7FCA00102D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */,
+				D62D378D1BDE7FC600102D6A /* SNFDebug.h */,
 				D62D378E1BDE7FC600102D6A /* SNFDebug.m */,
 				D62D378F1BDE7FC600102D6A /* SNFDebug.xib */,
+				D659DBB51BDAE07F0048D3F7 /* SNFViewController.h */,
+				D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		D62D37991BDEEFA900102D6A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D62D379A1BDEEFC400102D6A /* SNFSyncService.h */,
+				D62D379B1BDEEFC400102D6A /* SNFSyncService.m */,
+				D6272FA71BDFCD1A0024CBC2 /* SNFUserService.h */,
+				D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */,
+				D6272FAE1BDFD88F0024CBC2 /* SNFService.h */,
+				D6272FAF1BDFD88F0024CBC2 /* SNFService.m */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		D659DBA31BDAE07F0048D3F7 = {
 			isa = PBXGroup;
 			children = (
-				D659DBC91BDAE0980048D3F7 /* Headers */,
 				D659DBAE1BDAE07F0048D3F7 /* Source */,
 				D659DBCA1BDAE0B30048D3F7 /* Resources */,
 				D659DBAF1BDAE07F0048D3F7 /* Supporting Files */,
@@ -161,10 +203,12 @@
 		D659DBAE1BDAE07F0048D3F7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */,
 				D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */,
 				D659DBC01BDAE07F0048D3F7 /* LaunchScreen.storyboard */,
 				D659DBB81BDAE07F0048D3F7 /* Main.storyboard */,
 				D659DBFC1BDAEA110048D3F7 /* Models */,
+				D62D37991BDEEFA900102D6A /* Services */,
 				D659DBFE1BDAF98F0048D3F7 /* Util */,
 				D62D37921BDE7FCA00102D6A /* Views */,
 			);
@@ -182,34 +226,6 @@
 			path = SmileAndFrowns;
 			sourceTree = "<group>";
 		};
-		D659DBC91BDAE0980048D3F7 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */,
-				D659DBFF1BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.h */,
-				D659DBD21BDAEA000048D3F7 /* SNFBehavior.h */,
-				D659DBD01BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.h */,
-				D659DBD61BDAEA000048D3F7 /* SNFBoard.h */,
-				D659DBD41BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.h */,
-				D62D378D1BDE7FC600102D6A /* SNFDebug.h */,
-				D659DBDA1BDAEA000048D3F7 /* SNFFrown.h */,
-				D659DBD81BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.h */,
-				D659DBE21BDAEA000048D3F7 /* SNFInvite.h */,
-				D659DBE01BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.h */,
-				D659DC021BDB06010048D3F7 /* SNFModel.h */,
-				D659DBDE1BDAEA000048D3F7 /* SNFReward.h */,
-				D659DBDC1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.h */,
-				D659DBCE1BDAEA000048D3F7 /* SNFSmile.h */,
-				D659DBCC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.h */,
-				D659DBE61BDAEA000048D3F7 /* SNFUser.h */,
-				D659DBE41BDAEA000048D3F7 /* SNFUser+CoreDataProperties.h */,
-				D659DBEA1BDAEA000048D3F7 /* SNFUserRole.h */,
-				D659DBE81BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.h */,
-				D659DBB51BDAE07F0048D3F7 /* SNFViewController.h */,
-			);
-			name = Headers;
-			sourceTree = "<group>";
-		};
 		D659DBCA1BDAE0B30048D3F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,8 +238,11 @@
 		D659DBFC1BDAEA110048D3F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D659DC021BDB06010048D3F7 /* SNFModel.h */,
 				D659DC031BDB06010048D3F7 /* SNFModel.m */,
 				D659DBFD1BDAEAE80048D3F7 /* Entities */,
+				D62D379E1BDEF0D400102D6A /* SNFConfig.h */,
+				D62D379F1BDEF0D400102D6A /* SNFConfig.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -231,22 +250,38 @@
 		D659DBFD1BDAEAE80048D3F7 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */,
-				D659DBCF1BDAEA000048D3F7 /* SNFSmile.m */,
-				D659DBD11BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m */,
+				D659DBD21BDAEA000048D3F7 /* SNFBehavior.h */,
 				D659DBD31BDAEA000048D3F7 /* SNFBehavior.m */,
-				D659DBD51BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m */,
+				D659DBD01BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.h */,
+				D659DBD11BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m */,
+				D659DBD61BDAEA000048D3F7 /* SNFBoard.h */,
 				D659DBD71BDAEA000048D3F7 /* SNFBoard.m */,
-				D659DBD91BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m */,
+				D659DBD41BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.h */,
+				D659DBD51BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m */,
+				D659DBDA1BDAEA000048D3F7 /* SNFFrown.h */,
 				D659DBDB1BDAEA000048D3F7 /* SNFFrown.m */,
-				D659DBDD1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m */,
-				D659DBDF1BDAEA000048D3F7 /* SNFReward.m */,
-				D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */,
+				D659DBD81BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.h */,
+				D659DBD91BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m */,
+				D659DBE21BDAEA000048D3F7 /* SNFInvite.h */,
 				D659DBE31BDAEA000048D3F7 /* SNFInvite.m */,
-				D659DBE51BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m */,
+				D659DBE01BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.h */,
+				D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */,
+				D659DBDE1BDAEA000048D3F7 /* SNFReward.h */,
+				D659DBDF1BDAEA000048D3F7 /* SNFReward.m */,
+				D659DBDC1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.h */,
+				D659DBDD1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m */,
+				D659DBCE1BDAEA000048D3F7 /* SNFSmile.h */,
+				D659DBCF1BDAEA000048D3F7 /* SNFSmile.m */,
+				D659DBCC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.h */,
+				D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */,
+				D659DBE61BDAEA000048D3F7 /* SNFUser.h */,
 				D659DBE71BDAEA000048D3F7 /* SNFUser.m */,
-				D659DBE91BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m */,
+				D659DBE41BDAEA000048D3F7 /* SNFUser+CoreDataProperties.h */,
+				D659DBE51BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m */,
+				D659DBEA1BDAEA000048D3F7 /* SNFUserRole.h */,
 				D659DBEB1BDAEA000048D3F7 /* SNFUserRole.m */,
+				D659DBE81BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.h */,
+				D659DBE91BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -254,7 +289,10 @@
 		D659DBFE1BDAF98F0048D3F7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				D659DBFF1BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.h */,
 				D659DC001BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m */,
+				D6272FAB1BDFD1FF0024CBC2 /* SNFError.h */,
+				D6272FAC1BDFD1FF0024CBC2 /* SNFError.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -317,10 +355,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
+				D6272FC41BE002330024CBC2 /* APDDjangoErrorViewer.xib in Resources */,
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
 				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
-				D62D378C1BDE7F5D00102D6A /* APDDebugViewController.xib in Resources */,
 				D659DBBA1BDAE07F0048D3F7 /* Main.storyboard in Resources */,
+				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,9 +370,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D62D378B1BDE7F5D00102D6A /* APDDebugViewController.m in Sources */,
+				D62D379C1BDEEFC400102D6A /* SNFSyncService.m in Sources */,
 				D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */,
 				D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */,
+				D62D37A01BDEF0D400102D6A /* SNFConfig.m in Sources */,
 				D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */,
 				D659DBF41BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m in Sources */,
 				D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */,
@@ -342,19 +382,25 @@
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
 				D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */,
 				D659DC041BDB06010048D3F7 /* SNFModel.m in Sources */,
+				D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */,
 				D659DBEC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m in Sources */,
 				D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */,
 				D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */,
 				D659DBED1BDAEA000048D3F7 /* SNFSmile.m in Sources */,
 				D659DBF11BDAEA000048D3F7 /* SNFBoard.m in Sources */,
 				D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */,
+				D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */,
 				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,
+				D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */,
 				D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */,
 				D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */,
 				D659DBFB1BDAEA000048D3F7 /* SNFUserRole.m in Sources */,
+				D6272FC01BE002160024CBC2 /* APDDjangoErrorViewer.m in Sources */,
+				D6272FC21BE002160024CBC2 /* NSURLRequest+Additions.m in Sources */,
 				D659DBEF1BDAEA000048D3F7 /* SNFBehavior.m in Sources */,
+				D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */,
+				D6272FC11BE002160024CBC2 /* NSTimer+Blocks.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
-				D62D37951BDE81F800102D6A /* NSTimer+Blocks.m in Sources */,
 				D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

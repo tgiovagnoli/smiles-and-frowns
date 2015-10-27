@@ -453,6 +453,7 @@ def invite(request):
 	#response
 	return json_response({})
 
+@csrf_exempt
 def get_sync_for_board(board, sync_date, is_new=False):
 	sync_data = {
 		"board": json_utils.board_info_dictionary(board)

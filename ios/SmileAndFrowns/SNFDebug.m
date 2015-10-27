@@ -8,16 +8,70 @@
 #import "SNFUser.h"
 #import "SNFUserRole.h"
 #import "SNFInvite.h"
+#import "SNFSyncService.h"
+#import "SNFUserService.h"
+#import "APDDjangoErrorViewer.h"
 
 @implementation SNFDebug
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	[self startWatchingBoard];
-	
 	[self insertItemWithName:@"Create/Update From Dictionaries" andSelector:@selector(createFromDictionaries)];
 	[self insertItemWithName:@"Save Managed Context" andSelector:@selector(save)];
 	[self insertItemWithName:@"Show Info Dictionaries" andSelector:@selector(showInfoDictionariesForBoard)];
+	[self insertItemWithName:@"Get New From Remote" andSelector:@selector(getNewFromRemote)];
+	[self insertItemWithName:@"Login" andSelector:@selector(login)];
+	[self insertItemWithName:@"Logout" andSelector:@selector(logout)];
+}
+
+- (void)login{
+	SNFUserService *userService = [[SNFUserService alloc] init];
+	[userService loginWithEmail:@"info@apptitude-digital.com" andPassword:@"abc123$" withCompletion:^(NSError *error, SNFUser *userInfo) {
+		if(error){
+			[self alertWithMessage:error.localizedDescription];
+		}else{
+			[self alertWithMessage:[NSString stringWithFormat:@"logged in %@", userInfo.email]];
+		};
+	}];
+}
+
+- (void)logout{
+	SNFUserService *userService = [[SNFUserService alloc] init];
+	[userService logoutWithCompletion:^(NSError *error) {
+		if(error){
+			[self alertWithMessage:error.localizedDescription];
+		}else{
+			[self alertWithMessage:@"logged out"];
+		}
+	}];
+}
+
+- (void)getNewFromRemote{
+	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
+	NSDictionary *boardInfo = @{@"uuid": @"sample-board-uuid"};
+	SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
+	
+	SNFSyncService *syncService = [[SNFSyncService alloc] init];
+	[syncService syncFromRemoteWithBoards:@[board] andCompletion:^(NSError *error, NSArray *boardData) {
+		if(error){
+			if(error.code == SNFErrorCodeDjangoDebugError){
+				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
+				[self presentViewController:viewer animated:YES completion:^{
+					[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
+				}];
+			}else{
+				[self alertWithMessage:error.localizedDescription];
+			}
+		}else{
+			[self alertWithMessage:@"sync complete"];
+		}
+	}];
+}
+
+- (void)alertWithMessage:(NSString *)message{
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}]];
+	[self presentViewController:alert animated:YES completion:^{}];
 }
 
 - (void)startWatchingBoard{
@@ -177,6 +231,10 @@
 	for(SNFUserRole *userRole in board.user_roles){
 		NSLog(@"user role data: %@", [userRole infoDictionary]);
 	}
+	
+}
+
+- (void)checkRelationShips{
 	
 }
 

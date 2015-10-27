@@ -85,9 +85,13 @@
 			}
 		}
 		
-		NSLog(@"setting value:(%@) forKey:(%@)", value,key);
+		if ([self respondsToSelector:NSSelectorFromString(mappedKey)]) {
+			NSLog(@"setting value:(%@) forKey:(%@) on (%@)", value, key, NSStringFromClass([self class]));
+			[self setValue:value forKey:mappedKey];
+		}else{
+			@throw [NSException exceptionWithName:@"KeyNotFound" reason:[NSString stringWithFormat:@"Cound not find key (%@) on (%@)", mappedKey, NSStringFromClass([self class])] userInfo:nil];
+		}
 		
-		[self setValue:value forKey:mappedKey];
 	}
 }
 

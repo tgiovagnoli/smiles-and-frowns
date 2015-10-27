@@ -11,4 +11,10 @@ static SNFModel *_instance;
 	return _instance;
 }
 
+- (id)init{
+	self = [super init];
+	_config = [[SNFConfig alloc] init];
+	return self;
+}
+
 @end

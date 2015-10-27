@@ -65,9 +65,9 @@ def user_info_dictionary(user):
 	user_data = {
 		"username": user.username,
 		"gender": user.profile.gender,
-		"age": user.profile.age,
-		"firstname":user.first_name,
-		"lastname":user.last_name,
+		"age": int(user.profile.age),
+		"first_name":user.first_name,
+		"last_name":user.last_name,
 		"email":user.email,
 	}
 	return user_data
@@ -114,17 +114,16 @@ def smile_info_dictionary_collection(smiles, with_boards=False, with_users=False
 
 def smile_info_dictionary(smile, with_board=False, with_user=False):
 	smile_data = {
-		"behavior": smile.behavior.uuid,
+		"behavior": {"uuid": smile.behavior.uuid},
 	}
 	append_sync_info(smile, smile_data)
 	if with_board:
 		smile_data["board"] = board_info_dictionary(smile.board)
-	else:
-		smile_data["board_uuid"] = smile.board.uuid
+	
 	if with_user:
 		smile_data["user"] = user_info_dictionary(smile.user)
 	else:
-		smile_data["user_username"] = smile.user.username
+		smile_data["user"] = {"username": smile.user.username}
 	return smile_data
 
 def frown_info_dictionary_collection(frowns, with_boards=False, with_users=False):
@@ -135,7 +134,7 @@ def frown_info_dictionary_collection(frowns, with_boards=False, with_users=False
 
 def frown_info_dictionary(frown, with_board=False, with_user=False):
 	frown_data = {
-		"behavior": frown.behavior.uuid,
+		"behavior": {"uuid": frown.behavior.uuid},
 	}
 	append_sync_info(frown, frown_data)
 	if with_board:
@@ -145,7 +144,7 @@ def frown_info_dictionary(frown, with_board=False, with_user=False):
 	if with_user:
 		frown_data["user"] = user_info_dictionary(frown.user)
 	else:
-		frown_data["user_username"] = frown.user.username
+		frown_data["user"] = {"username": frown.user.username}
 	return frown_data
 
 def invite_info_dictionary_collection(invites, with_boards=False, with_users=False):
