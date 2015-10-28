@@ -27,7 +27,6 @@ def board_info_dictionary_collection(boards, with_users=False, with_behaviors=Fa
 def board_info_dictionary(board, with_users=False, with_behaviors=False, with_rewards=False, with_smiles=False, with_frowns=False, with_invites=False):
 	board_data = {
 		"title": board.title,
-		"edit_count": board.edit_count,
 		"id": board.id
 	}
 	append_sync_info(board, board_data)
@@ -53,6 +52,7 @@ def user_role_info_dictionary_collection(user_roles, with_users=False, with_boar
 
 def user_role_info_dictionary(user_role, with_user=False, with_board=False):
 	user_role_data = {
+		'board':{'uuid':user_role.board.uuid},
 		"role": user_role.role,
 		"id": user_role.id
 	}
@@ -83,6 +83,7 @@ def behavior_info_dictionary_collection(behaviors, with_boards=False):
 
 def behavior_info_dictionary(behavior, with_board=False):
 	behavior_data = {
+		'board':{'uuid':behavior.board.uuid},
 		"title": behavior.title,
 		"note": behavior.note,
 		"id": behavior.id
@@ -100,6 +101,7 @@ def reward_info_dictionary_collection(rewards, with_boards=False):
 
 def reward_info_dictionary(reward, with_board=False):
 	reward_data = {
+		'board':{'uuid':reward.board.uuid},
 		"title": reward.title,
 		"currency_amount": reward.currency_amount,
 		"smile_amount": reward.smile_amount,
@@ -119,11 +121,13 @@ def smile_info_dictionary_collection(smiles, with_boards=False, with_users=False
 
 def smile_info_dictionary(smile, with_board=False, with_user=False):
 	smile_data = {
+		'board':{'uuid':smile.board.uuid},
 		"behavior": {"uuid": smile.behavior.uuid},
 		"id": smile.id,
 		"collected": smile.collected
 	}
 	append_sync_info(smile, smile_data)
+	
 	if with_board:
 		smile_data["board"] = board_info_dictionary(smile.board)
 	
@@ -131,6 +135,7 @@ def smile_info_dictionary(smile, with_board=False, with_user=False):
 		smile_data["user"] = user_info_dictionary(smile.user)
 	else:
 		smile_data["user"] = {"username": smile.user.username}
+
 	return smile_data
 
 def frown_info_dictionary_collection(frowns, with_boards=False, with_users=False):
@@ -141,18 +146,20 @@ def frown_info_dictionary_collection(frowns, with_boards=False, with_users=False
 
 def frown_info_dictionary(frown, with_board=False, with_user=False):
 	frown_data = {
+		'board':{'uuid':frown.board.uuid},
 		"behavior": {"uuid": frown.behavior.uuid},
 		"id": frown.id
 	}
 	append_sync_info(frown, frown_data)
+	
 	if with_board:
 		frown_data["board"] = board_info_dictionary(frown.board)
-	else:
-		frown_data["board_uuid"] = frown.board.uuid
+	
 	if with_user:
 		frown_data["user"] = user_info_dictionary(frown.user)
 	else:
 		frown_data["user"] = {"username": frown.user.username}
+	
 	return frown_data
 
 def invite_info_dictionary_collection(invites, with_boards=False, with_users=False):
