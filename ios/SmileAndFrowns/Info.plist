@@ -3,8 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>SNFConfig</key>
-	<string>SNFDebug</string>
+	<string>SNFDebugImac</string>
 	<key>SNFDebug</key>
+	<dict>
+		<key>serverURL</key>
+		<string>http://imac.local:8000</string>
+		<key>apiPath</key>
+		<string>api</string>
+	</dict>
+	<key>SNFDebugImac</key>
 	<dict>
 		<key>serverURL</key>
 		<string>http://imac.local:8000</string>

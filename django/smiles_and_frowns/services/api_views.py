@@ -479,7 +479,7 @@ def sync_pull(request):
 	#get boards the user is participating in.
 	roles = models.UserRole.objects.filter(user=request.user).all()
 	for role in roles:
-		if role.board:
+		if role.board and not role.board in boards:
 			boards.append(role.board)
 
 	#get sync date.
