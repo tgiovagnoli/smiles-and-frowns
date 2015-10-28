@@ -7,6 +7,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SNFFrown : NSManagedObject
 
++ (NSArray *)frownsSinceSyncDate:(NSDate *)syncDate withContext:(NSManagedObjectContext *)context;
 
 @end
 

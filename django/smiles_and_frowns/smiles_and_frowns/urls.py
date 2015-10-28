@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^api/update/?', api_views.user_update),
     url(r'^api/login/?', api_views.user_login),
     url(r'^api/logout/?', api_views.user_logout),
+    url(r'^api/user_info/?', api_views.user_info),
     url(r'^api/reset_password/?', api_views.user_password_reset),
     
     #invite endpoints

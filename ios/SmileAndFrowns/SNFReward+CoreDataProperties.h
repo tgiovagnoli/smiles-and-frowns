@@ -11,6 +11,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *remote_id;
 @property (nullable, nonatomic, retain) SNFBoard *board;
 
+@property (nullable, nonatomic, retain) NSString *title;
+@property (nullable, nonatomic, retain) NSNumber *currency_amount;
+@property (nullable, nonatomic, retain) NSNumber *smile_amount;
+@property (nullable, nonatomic, retain) NSString *currency_type;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

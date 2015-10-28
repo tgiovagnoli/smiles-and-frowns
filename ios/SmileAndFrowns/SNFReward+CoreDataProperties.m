@@ -8,5 +8,9 @@
 @dynamic uuid;
 @dynamic remote_id;
 @dynamic board;
+@dynamic title;
+@dynamic currency_amount;
+@dynamic smile_amount;
+@dynamic currency_type;
 
 @end

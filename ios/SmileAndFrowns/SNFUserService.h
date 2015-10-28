@@ -10,5 +10,6 @@ typedef void(^SNFUserServiceCallback)(NSError *error, SNFUser *user);
 
 - (void)loginWithEmail:(NSString *)email andPassword:(NSString *)password withCompletion:(SNFUserServiceCallback)completion;
 - (void)logoutWithCompletion:(void(^)(NSError *error))completion;
+- (void)authedUserInfoWithCompletion:(SNFUserServiceCallback)completion;
 
 @end

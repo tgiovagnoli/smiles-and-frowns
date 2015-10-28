@@ -16,6 +16,7 @@
 		D6272FC11BE002160024CBC2 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FBB1BE002160024CBC2 /* NSTimer+Blocks.m */; };
 		D6272FC21BE002160024CBC2 /* NSURLRequest+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */; };
 		D6272FC41BE002330024CBC2 /* APDDjangoErrorViewer.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6272FC31BE002330024CBC2 /* APDDjangoErrorViewer.xib */; };
+		D6272FC71BE04E010024CBC2 /* SNFUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FC61BE04E010024CBC2 /* SNFUserSettings.m */; };
 		D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D378E1BDE7FC600102D6A /* SNFDebug.m */; };
 		D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62D378F1BDE7FC600102D6A /* SNFDebug.xib */; };
 		D62D379C1BDEEFC400102D6A /* SNFSyncService.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D379B1BDEEFC400102D6A /* SNFSyncService.m */; };
@@ -64,6 +65,8 @@
 		D6272FBC1BE002160024CBC2 /* NSURLRequest+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURLRequest+Additions.h"; path = "submodules/apd-objc/NSURLRequest+Additions.h"; sourceTree = "<group>"; };
 		D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+Additions.m"; path = "submodules/apd-objc/NSURLRequest+Additions.m"; sourceTree = "<group>"; };
 		D6272FC31BE002330024CBC2 /* APDDjangoErrorViewer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APDDjangoErrorViewer.xib; path = "submodules/apd-objc/APDDjangoErrorViewer.xib"; sourceTree = "<group>"; };
+		D6272FC51BE04E010024CBC2 /* SNFUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserSettings.h; sourceTree = "<group>"; };
+		D6272FC61BE04E010024CBC2 /* SNFUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserSettings.m; sourceTree = "<group>"; };
 		D62D378D1BDE7FC600102D6A /* SNFDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFDebug.h; sourceTree = "<group>"; };
 		D62D378E1BDE7FC600102D6A /* SNFDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFDebug.m; sourceTree = "<group>"; };
 		D62D378F1BDE7FC600102D6A /* SNFDebug.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFDebug.xib; sourceTree = "<group>"; };
@@ -243,6 +246,8 @@
 				D659DBFD1BDAEAE80048D3F7 /* Entities */,
 				D62D379E1BDEF0D400102D6A /* SNFConfig.h */,
 				D62D379F1BDEF0D400102D6A /* SNFConfig.m */,
+				D6272FC51BE04E010024CBC2 /* SNFUserSettings.h */,
+				D6272FC61BE04E010024CBC2 /* SNFUserSettings.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				D659DC041BDB06010048D3F7 /* SNFModel.m in Sources */,
 				D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */,
 				D659DBEC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m in Sources */,
+				D6272FC71BE04E010024CBC2 /* SNFUserSettings.m in Sources */,
 				D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */,
 				D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */,
 				D659DBED1BDAEA000048D3F7 /* SNFSmile.m in Sources */,

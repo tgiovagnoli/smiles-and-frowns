@@ -14,9 +14,9 @@ class UserRoleAdmin(admin.ModelAdmin):
 
 class BoardAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("title", "edit_count", "transaction_id", "device_date", "deleted", "uuid")
+	fields = ("title", "owner", "edit_count", "transaction_id", "device_date", "deleted", "uuid")
 	list_display = ("title", "edit_count", "updated_date")
-	readonly_fields = ('uuid', "edit_count")
+	readonly_fields = ('uuid', "edit_count", "owner")
 
 class BehaviorAdmin(admin.ModelAdmin):
 	save_on_top = True

@@ -36,15 +36,11 @@
 	}
 	
 	if(!managedObject) {
-		NSLog(@"creating new instance of %@", className);
 		managedObject = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([self class]) inManagedObjectContext:context];
 		
 		if([infoDict objectForKey:infoPrimaryKey]) {
 			[managedObject setValue:[infoDict objectForKey:infoPrimaryKey] forKey:primaryKey];
 		}
-		
-	} else {
-		NSLog(@"loading instance of %@", className);
 	}
 	
 	if(managedObject) {
@@ -101,14 +97,39 @@
 	NSMutableDictionary * infoDict = [[NSMutableDictionary alloc] init];
 	for(NSString * key in keyMappings) {
 		id value = [self valueForKey:key];
+		NSString * insertKey = [keyMappings objectForKey:key];
 		if(value) {
 			if([value isKindOfClass:[NSDate class]]) {
 				value = [self stringFromDate:(NSDate *)value];
 			} else if([value respondsToSelector:@selector(infoDictionary)]) {
 				value = [value performSelector:@selector(infoDictionary)];
 			}
-			NSString * insertKey = [keyMappings objectForKey:key];
+			
 			[infoDict setObject:value forKey:insertKey];
+		}else{
+			[infoDict setObject:[NSNull null] forKey:insertKey];
+		}
+	}
+	return infoDict;
+}
+
+- (NSDictionary *)infoDictionaryWithChildrenAsUIDs{
+	NSDictionary * keyMappings = [[self class] keyMappings];
+	NSMutableDictionary * infoDict = [[NSMutableDictionary alloc] init];
+	for(NSString * key in keyMappings) {
+		id value = [self valueForKey:key];
+		NSString *insertKey = [keyMappings objectForKey:key];
+		if(value) {
+			if([value isKindOfClass:[NSDate class]]) {
+				value = [self stringFromDate:(NSDate *)value];
+			} else if([value respondsToSelector:@selector(infoDictionary)]) {
+				NSManagedObject *obj = (NSManagedObject *)value;
+				value = [obj valueForKey:[[obj class] primaryLookup]];
+				insertKey = [NSString stringWithFormat:@"%@_%@", [keyMappings objectForKey:key], [[obj class] primaryLookup]];
+			}
+			[infoDict setObject:value forKey:insertKey];
+		}else{
+			[infoDict setObject:[NSNull null] forKey:insertKey];
 		}
 	}
 	return infoDict;
@@ -146,5 +167,20 @@
 	}
 	return uuids;
 }
+
++ (void)load{
+	@autoreleasepool {
+		[[NSNotificationCenter defaultCenter] addObserver:(id)[self class] selector:@selector(objectContextWillSave:) name: NSManagedObjectContextWillSaveNotification object:nil];
+	}
+}
+
++ (void)objectContextWillSave:(NSNotification*) notification{
+	NSManagedObjectContext* context = [notification object];
+	NSSet* allModified = [context.insertedObjects setByAddingObjectsFromSet: context.updatedObjects];
+	NSPredicate* predicate = [NSPredicate predicateWithFormat: @"self isKindOfClass: %@", [self class]];
+	NSSet *modifiable = [allModified filteredSetUsingPredicate:predicate];
+	NSLog(@"on update");
+}
+
 
 @end

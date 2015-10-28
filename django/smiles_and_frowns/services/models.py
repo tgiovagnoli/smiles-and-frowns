@@ -64,9 +64,9 @@ post_save.connect(create_user_profile, sender=User)
 
 class Board(SyncModel):
 	title = models.CharField(max_length=128)
-	owner = models.ForeignKey(User,unique=False,null=True,on_delete=models.SET_NULL)
-	transaction_id = models.CharField(max_length=128,blank=True,default="")
-	edit_count = models.IntegerField(default=0)
+	owner = models.ForeignKey(User, unique=False, null=True, on_delete=models.SET_NULL)
+	transaction_id = models.CharField(max_length=128, blank=True, default="")
+	edit_count = models.IntegerField(blank=False, default=0)
 
 	@property
 	def users(self):
@@ -108,47 +108,51 @@ class UserRole(SyncModel):
 
 class Behavior(SyncModel):
 	title = models.CharField(max_length=128)
-	note = models.CharField(max_length=256, blank=True, default=None)
+	note = models.CharField(max_length=256, blank=True, null=True, default="")
 	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	def save(self, *args, **kwargs):
-		self.board.edit_count = self.board.edit_count + 1
-		self.board.save()
+		if self.board:
+			self.board.edit_count = self.board.edit_count + 1
+			self.board.save()
 		super(Behavior, self).save(*args,**kwargs)
 	def __unicode__(self):
 		return self.title
 
 class Reward(SyncModel):
 	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
-	title = models.CharField(max_length=128)
+	title = models.CharField(max_length=128, null=True)
 	currency_amount = models.FloatField(default=1)
 	smile_amount = models.FloatField(default=1)
 	currency_type = models.CharField(max_length=64, choices=CURRENCY_TYPE_CHOICES, default="money")
 	def save(self, *args, **kwargs):
-		self.board.edit_count = self.board.edit_count + 1
-		self.board.save()
+		if self.board:
+			self.board.edit_count = self.board.edit_count + 1
+			self.board.save()
 		super(Reward, self).save(*args,**kwargs)
 	def __unicode__(self):
 		return self.title
 
 class Smile(SyncModel):
-	user = models.OneToOneField(User,on_delete=models.SET_NULL,null=True)
-	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
-	behavior = models.ForeignKey(Behavior)
+	user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
+	board = models.ForeignKey(Board, on_delete=models.SET_NULL, null=True)
+	behavior = models.ForeignKey(Behavior, null=True)
 	collected = models.BooleanField(default=False)
 	def save(self, *args, **kwargs):
-		self.board.edit_count = self.board.edit_count + 1
-		self.board.save()
+		if self.board:
+			self.board.edit_count = self.board.edit_count + 1
+			self.board.save()
 		super(Smile, self).save(*args,**kwargs)
 	def __unicode__(self):
 		return self.board.title
 
 class Frown(SyncModel):
-	user = models.OneToOneField(User)
-	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
-	behavior = models.ForeignKey(Behavior)
+	user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
+	board = models.ForeignKey(Board, on_delete=models.SET_NULL, null=True)
+	behavior = models.ForeignKey(Behavior, null=True)
 	def save(self, *args, **kwargs):
-		self.board.edit_count = self.board.edit_count + 1
-		self.board.save()
+		if self.board:
+			self.board.edit_count = self.board.edit_count + 1
+			self.board.save()
 		super(Frown, self).save(*args,**kwargs)
 	def __unicode__(self):
 		return self.board.title

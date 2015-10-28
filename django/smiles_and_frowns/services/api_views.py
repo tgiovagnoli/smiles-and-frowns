@@ -1,5 +1,7 @@
 import json,uuid,datetime
 from dateutil import parser
+from pytz import UTC
+from datetime import datetime
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -11,7 +13,7 @@ from django.template import Context, loader
 from services import models, json_utils, utils
 from smiles_and_frowns import settings
 from social.apps.django_app.utils import psa
-from pytz import UTC
+
 
 def json_response(response_data):
 	return HttpResponse(json.dumps(response_data, indent=4), content_type="application/json")
@@ -281,10 +283,19 @@ def user_login(request):
 	data = json_utils.user_info_dictionary(user)
 	return json_response(data)
 
+
 @csrf_exempt
 def user_logout(request):
 	logout(request)
 	return json_response({})
+
+@csrf_exempt
+def user_info(request):
+	#check auth
+	if not request.user.is_authenticated(): 
+		return login_required_response()
+	data = json_utils.user_info_dictionary(request.user)
+	return json_response(data)
 
 @csrf_exempt
 def invites(request):
@@ -499,13 +510,10 @@ def sync_pull(request):
 
 	#get incoming board
 	try:
-		board_info_dictionary = json.loads(request.body)
+		board_info_dictionary = json.loads(request.body).get("boards")
 	except:
 		return json_response_error("could not parse request")
 
-	#make sure an array of boards is sent to sync
-	if utils.is_array(board_info_dictionary) == False:
-		return json_response_error("could not parse request")
 
 	output = []
 	boards = []
@@ -540,8 +548,11 @@ def sync_pull(request):
 		if not has_locally:
 			sync_data = get_sync_for_board(board, board.created_date, True)
 			output.append(sync_data)
-
-	return json_response(output)
+	response_data = {
+		"data": output,
+		"sync_date": json_utils.datestring(datetime.now())
+	}
+	return json_response(response_data)
 
 
 @csrf_exempt
@@ -584,14 +595,16 @@ def sync_from_client(request):
 				return json_response_error("Client sync error, user with username (%s) is not the logged in user." % (client_board.get("owner_username")))
 			board.owner = request.user
 		
+		
 		board.deleted = client_board.get('deleted',False)
 		board.device_date = json_utils.date_fromstring( client_board.get('device_date') )
 		board.title = client_board.get('title')
-		board.transaction_id = client_board.get('transaction_id')
+		# board.transaction_id = client_board.get('transaction_id')
 		board.save()
 
+
 	#go through user roles
-	client_roles = data.get("user_roles",[])
+	client_roles = data.get("user_roles", [])
 	for client_role in client_roles:
 		#find board
 		try:
@@ -600,18 +613,21 @@ def sync_from_client(request):
 			return json_response_error("Client sync error, board with uuid(%s) not found on server." % (client_role.get('board_uuid')))
 
 		#get provided user info about role
-		userinfo = client_role.get('user',None)
+		userinfo = client_role.get('user', None)
 		if not userinfo:
 			return json_response_error("Client sync error, userinfo not provided for role with uuid %s" (client_role.get('uuid')))
 
 		#find or create role
-		role,created = models.UserRole.objects.get_or_create(uuid=client_role.get('uuid'))
+		return json_response_error(str(client_role))
+		uuid = client_role.get('uuid')
+
+		role, created = models.UserRole.objects.get_or_create(uuid=uuid)
 		if not created:
 			if role.device_date > json_utils.date_fromstring(client_role.get('device_date')):
 				continue
 
 		#try and find existing user in DB
-		user,created = User.objects.get_or_create(username=userinfo.get('username'))
+		user,created = User.objects.get_or_create(username=userinfo.get('user_username'))
 		if created:
 			user.email = userinfo.get('email',None)
 			user.first_name = userinfo.get('firstname',None)
@@ -634,16 +650,16 @@ def sync_from_client(request):
 		try:
 			board = models.Board.objects.get(uuid=client_behavior.get("board_uuid"))
 		except:
-			return json_response_error("Client sync error, board with uuid(%s) not found on server." % (client_behavior.get('board_uuid')))
+			return json_response_error("Client sync error, Behavior board with uuid(%s) not found on server." % (client_behavior.get('board_uuid')))
 
 		#get or create behavior
 		behavior,created = models.Behavior.objects.get_or_create(uuid=client_behavior.get('uuid'))
 		if not created:
-			if behavior.device_date > json_utils.date_fromstring( client_behavior.get('device_date')):
+			if behavior.device_date > json_utils.date_fromstring( client_behavior.get('updated_date')):
 				continue
 
 		behavior.deleted = client_behavior.get('deleted',False)
-		behavior.device_date = json_utils.date_fromstring( client_behavior.get('device_date') )
+		behavior.device_date = json_utils.date_fromstring( client_behavior.get('updated_date') )
 		behavior.title = client_behavior.get('title')
 		behavior.note = client_behavior.get('note')
 		behavior.board = board
@@ -656,31 +672,31 @@ def sync_from_client(request):
 		try:
 			user = User.objects.get(username=client_smile.get('user_username'))
 		except:
-			return json_response_error("Client sync error, user with username(%s) not found on server." % (client_smile.get('user_username')))
+			return json_response_error("Client sync error, Smile user with username(%s) not found on server." % (client_smile.get('user_username')))
 		
 		#get board for smile.board
 		try:
 			board = models.Board.objects.get(uuid=client_smile.get('board_uuid'))
 		except:
-			return json_response_error("Client sync error, board with uuid(%s) not found on server." % (client_smile.get('board_uuid')))
+			return json_response_error("Client sync error, Smile board with uuid(%s) not found on server." % (client_smile.get('board_uuid')))
 		
 		#get behavior for smile.behavior
 		try:
 			behavior = models.Behavior.objects.get(uuid=client_smile.get('behavior_uuid'))
 		except:
-			return json_response_error("Client sync error, behavior with uuid(%s) not found on server." % (client_smile.get('behavior_uuid')))
+			return json_response_error("Client sync error, Smile behavior with uuid(%s) not found on server." % (client_smile.get('behavior_uuid')))
 
 		#get or create smile
 		smile,created = models.Smile.objects.get_or_create(uuid=client_smile.get('uuid'))
 		if not created:
-			if smile.device_date > json_utils.date_fromstring( client_smile.get('device_date')):
+			if smile.device_date > json_utils.date_fromstring( client_smile.get('updated_date')):
 				continue
 
 		smile.user=user
 		smile.board=board
 		smile.behavior=behavior
 		smile.deleted = client_smile.get('deleted',False)
-		smile.device_date = json_utils.date_fromstring( client_smile.get('device_date') )
+		smile.device_date = json_utils.date_fromstring( client_smile.get('updated_date') )
 		smile.collected = client_smile.get('collected')
 		smile.save()
 
@@ -691,31 +707,31 @@ def sync_from_client(request):
 		try:
 			user = User.objects.get(username=client_frown.get('user_username'))
 		except:
-			return json_response_error("Client sync error, user with username(%s) not found on server." % (client_frown.get('user_username')))
+			return json_response_error("Client sync error, Frown user with username(%s) not found on server." % (client_frown.get('user_username')))
 		
 		#get board for frown.board
 		try:
 			board = models.Board.objects.get(uuid=client_frown.get('board_uuid'))
 		except:
-			return json_response_error("Client sync error, board with uuid(%s) not found on server." % (client_frown.get('board_uuid')))
+			return json_response_error("Client sync error, Frown board with uuid(%s) not found on server." % (client_frown.get('board_uuid')))
 		
 		#get behavior for frown.behavior
 		try:
 			behavior = models.Behavior.objects.get(uuid=client_frown.get('behavior_uuid'))
 		except:
-			return json_response_error("Client sync error, behavior with uuid(%s) not found on server." % (client_frown.get('behavior_uuid')))
+			return json_response_error("Client sync error, Frown behavior with uuid(%s) not found on server." % (client_frown.get('behavior_uuid')))
 
 		#get or create frown
 		frown,created = models.Frown.objects.get_or_create(uuid=client_frown.get('uuid'))
 		if not created:
-			if frown.device_date > json_utils.date_fromstring( client_frown.get('device_date')):
+			if frown.device_date > json_utils.date_fromstring( client_frown.get('updated_date')):
 				continue
 
 		frown.user = user
 		frown.board = board
 		frown.behavior = behavior
 		frown.deleted = client_frown.get('deleted',False)
-		frown.device_date = json_utils.date_fromstring( client_frown.get('device_date') )
+		frown.device_date = json_utils.date_fromstring( client_frown.get('updated_date') )
 		frown.save()
 
 	#go through rewards
@@ -730,7 +746,7 @@ def sync_from_client(request):
 		#get or create reward
 		reward,created = models.Reward.objects.get_or_create(uuid=client_reward.get('uuid'))
 		if not created:
-			if reward.device_date > json_utils.date_fromstring(client_reward.get('device_date')):
+			if reward.device_date > json_utils.date_fromstring(client_reward.get('updated_date')):
 				continue
 
 		reward.board = board
@@ -741,4 +757,4 @@ def sync_from_client(request):
 		reward.currency_type = client_reward.get('currency_type')
 		reward.save()
 
-	return json_response({})
+	return sync_pull(request)

@@ -11,6 +11,7 @@
 
 - (void)updateWithInfoDict:(NSDictionary *)info andContext:(NSManagedObjectContext *)context;
 - (NSDictionary *)infoDictionary;
+- (NSDictionary *)infoDictionaryWithChildrenAsUIDs;
 - (NSObject *)objectOrNull:(NSObject *)obj;
 - (NSString *)stringFromDate:(NSDate *)date;
 - (NSDate *)dateFromString:(NSString *)dateString;

@@ -27,7 +27,8 @@ def board_info_dictionary_collection(boards, with_users=False, with_behaviors=Fa
 def board_info_dictionary(board, with_users=False, with_behaviors=False, with_rewards=False, with_smiles=False, with_frowns=False, with_invites=False):
 	board_data = {
 		"title": board.title,
-		"edit_count": board.edit_count
+		"edit_count": board.edit_count,
+		"id": board.id
 	}
 	append_sync_info(board, board_data)
 	if with_users:
@@ -53,6 +54,7 @@ def user_role_info_dictionary_collection(user_roles, with_users=False, with_boar
 def user_role_info_dictionary(user_role, with_user=False, with_board=False):
 	user_role_data = {
 		"role": user_role.role,
+		"id": user_role.id
 	}
 	append_sync_info(user_role, user_role_data)
 	if with_board:
@@ -69,6 +71,7 @@ def user_info_dictionary(user):
 		"first_name":user.first_name,
 		"last_name":user.last_name,
 		"email":user.email,
+		"id": user.id
 	}
 	return user_data
 
@@ -82,6 +85,7 @@ def behavior_info_dictionary(behavior, with_board=False):
 	behavior_data = {
 		"title": behavior.title,
 		"note": behavior.note,
+		"id": behavior.id
 	}
 	append_sync_info(behavior, behavior_data)
 	if with_board:
@@ -100,6 +104,7 @@ def reward_info_dictionary(reward, with_board=False):
 		"currency_amount": reward.currency_amount,
 		"smile_amount": reward.smile_amount,
 		"currency_type": reward.currency_type,
+		"id": reward.id
 	}
 	append_sync_info(reward, reward_data)
 	if with_board:
@@ -115,6 +120,8 @@ def smile_info_dictionary_collection(smiles, with_boards=False, with_users=False
 def smile_info_dictionary(smile, with_board=False, with_user=False):
 	smile_data = {
 		"behavior": {"uuid": smile.behavior.uuid},
+		"id": smile.id,
+		"collected": smile.collected
 	}
 	append_sync_info(smile, smile_data)
 	if with_board:
@@ -135,6 +142,7 @@ def frown_info_dictionary_collection(frowns, with_boards=False, with_users=False
 def frown_info_dictionary(frown, with_board=False, with_user=False):
 	frown_data = {
 		"behavior": {"uuid": frown.behavior.uuid},
+		"id": frown.id
 	}
 	append_sync_info(frown, frown_data)
 	if with_board:
@@ -157,6 +165,7 @@ def invite_info_dictionary(invite, with_board=False, with_user=False):
 	invite_data = {
 		"code": invite.code,
 		"role": invite.role,
+		"id": invite.id
 	}
 	if with_board:
 		invite_data["board"] = board_info_dictionary(invite.board)

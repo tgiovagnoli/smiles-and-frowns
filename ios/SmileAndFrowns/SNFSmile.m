@@ -11,6 +11,7 @@
 		@"created_date": @"created_date",
 		@"board": @"board",
 		@"behavior": @"behavior",
+		@"collected": @"collected",
 		@"user": @"user"
 	};
 }

@@ -17,5 +17,11 @@
 	};
 }
 
++ (NSArray *)frownsSinceSyncDate:(NSDate *)syncDate withContext:(NSManagedObjectContext *)context{
+	NSError *error;
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SNFFrown"];
+	request.predicate = [NSPredicate predicateWithFormat:@"updated_date > %@", syncDate];
+	return [context executeFetchRequest:request error:&error];
+}
 
 @end
