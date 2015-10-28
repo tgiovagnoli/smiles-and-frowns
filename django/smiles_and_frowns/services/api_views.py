@@ -475,11 +475,12 @@ def sync_pull(request):
 	all_boards = models.Board.objects.filter(owner=request.user).all()
 	for board in all_boards:
 		boards.append(board)
-	
+
 	#get boards the user is participating in.
 	roles = models.UserRole.objects.filter(user=request.user).all()
 	for role in roles:
-		boards.append(role.board)
+		if role.board:
+			boards.append(role.board)
 
 	#get sync date.
 	sync_date = request.POST.get('sync_date')
