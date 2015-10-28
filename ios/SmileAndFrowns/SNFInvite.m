@@ -13,4 +13,10 @@
 	};
 }
 
+// TODO: invite needs created and updated
+- (void) awakeFromInsert{
+	self.uuid = [[NSUUID UUID] UUIDString];
+	[super awakeFromInsert];
+}
+
 @end

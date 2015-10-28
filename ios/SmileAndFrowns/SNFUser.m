@@ -18,5 +18,12 @@
 	};
 }
 
+- (void)awakeFromInsert{
+	if(!self.username){
+		self.username = [[NSUUID UUID] UUIDString];
+	}
+	[super awakeFromInsert];
+}
+
 
 @end

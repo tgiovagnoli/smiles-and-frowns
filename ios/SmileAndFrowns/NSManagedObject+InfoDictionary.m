@@ -88,7 +88,6 @@
 		}else{
 			@throw [NSException exceptionWithName:@"KeyNotFound" reason:[NSString stringWithFormat:@"Cound not find key (%@) on (%@)", mappedKey, NSStringFromClass([self class])] userInfo:nil];
 		}
-
 	}
 }
 
@@ -124,8 +123,8 @@
 				value = [self stringFromDate:(NSDate *)value];
 			} else if([value respondsToSelector:@selector(infoDictionary)]) {
 				NSManagedObject *obj = (NSManagedObject *)value;
-				value = [obj valueForKey:[[obj class] primaryLookup]];
-				insertKey = [NSString stringWithFormat:@"%@_%@", [keyMappings objectForKey:key], [[obj class] primaryLookup]];
+				NSObject *lookedUpValue = [obj valueForKey:[[obj class] primaryLookup]];
+				value = @{[[obj class] primaryLookup]: lookedUpValue};
 			}
 			[infoDict setObject:value forKey:insertKey];
 		}else{

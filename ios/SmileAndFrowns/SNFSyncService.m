@@ -19,6 +19,11 @@
 		completion(jsonError, nil);
 	}
 	
+#if DEBUG
+	NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+	NSLog(@">> POSTING:\n\n%@\n\n-----------------------\n", jsonString);
+#endif
+
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:serviceURL];
 	[request setHTTPMethod:@"POST"];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -47,80 +52,21 @@
 	[task resume];
 }
 
-- (void)updateLocalDataWithResults:(NSDictionary *)results andCallCompletion:(SNFSyncServiceCallback)completion{
-	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
-	
-	NSMutableArray *updates = [[NSMutableArray alloc] init];
-	
-	NSString *syncString = [results objectForKey:@"sync_date"];
-	NSArray *remoteChanges = [results objectForKey:@"data"];
-	for(NSDictionary *changeData in remoteChanges){
-		NSMutableDictionary *changeLog = [[NSMutableDictionary alloc] init];
-		// update board
-		NSDictionary *boardUpdates = [changeData valueForKey:@"board"];
-		SNFBoard *board;
-		if(boardUpdates){
-			board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardUpdates withContext:context];
-			[changeLog setObject:board forKey:@"board"];
-		}
-		if(!board){
-			continue;
-		}
-		// update behaviors
-		NSArray *behaviorUpdates = [changeData valueForKey:@"behaviors"];
-		if(behaviorUpdates){
-			NSMutableArray *behaviorChanges = [[NSMutableArray alloc] init];
-			for(NSDictionary *behaviorUpdate in behaviorUpdates){
-				SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorUpdate withContext:context];
-				behavior.board = board;
-				[behaviorChanges addObject:behavior];
-			}
-			[changeLog setObject:behaviorChanges forKey:@"behaviors"];
-		}
-		// update rewards
-		NSArray *rewardsUpdates = [changeData valueForKey:@"rewards"];
-		if(rewardsUpdates){
-			NSMutableArray *rewardChanges = [[NSMutableArray alloc] init];
-			for(NSDictionary *rewardsUpdate in rewardsUpdates){
-				SNFReward *reward = (SNFReward *)[SNFReward editOrCreatefromInfoDictionary:rewardsUpdate withContext:context];
-				reward.board = board;
-				[rewardChanges addObject:reward];
-			}
-			[changeLog setObject:rewardChanges forKey:@"rewards"];
-		}
-		// update smiles
-		NSArray *smilesUpdates = [changeData valueForKey:@"smiles"];
-		if(smilesUpdates){
-			NSMutableArray *smilesChanges = [[NSMutableArray alloc] init];
-			for(NSDictionary *smilesUpdate in smilesUpdates){
-				SNFSmile *smile = (SNFSmile *)[SNFSmile editOrCreatefromInfoDictionary:smilesUpdate withContext:context];
-				smile.board = board;
-				[smilesChanges addObject:smile];
-			}
-			[changeLog setObject:smilesChanges forKey:@"smiles"];
-		}
-		// update frowns
-		NSArray *frownsUpdates = [changeData valueForKey:@"frowns"];
-		if(frownsUpdates){
-			NSMutableArray *frownsChanges = [[NSMutableArray alloc] init];
-			for(NSDictionary *frownsUpdate in frownsUpdates){
-				SNFFrown *frown = (SNFFrown *)[SNFFrown editOrCreatefromInfoDictionary:frownsUpdate withContext:context];
-				frown.board = board;
-				[frownsChanges addObject:frown];
-			}
-			[changeLog setObject:frownsChanges forKey:@"frowns"];
-		}
-		[updates addObject:changeLog];
-	}
-	NSLog(@"%@", syncString);
-	completion(nil, updates);
-}
-
 - (NSDictionary *)createPostInfoDictionary{
 	NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
-	NSDate *lastSyncDate = [[NSDate date] dateByAddingTimeInterval: -1209600.0];
+	NSDate *lastSyncDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
+	if(!lastSyncDate){
+		lastSyncDate = [NSDate dateWithTimeIntervalSince1970:0];
+	}
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+	NSString *dateString = [formatter stringFromDate:lastSyncDate];
+	[postData setObject:dateString forKey:@"sync_date"];
+	
+	
 	[postData setObject:[self collectionForEntityName:@"SNFBoard" sinceSyncDate:lastSyncDate] forKey:@"boards"];
-	[postData setObject:[self collectionForEntityName:@"SNFUserRole" sinceSyncDate:lastSyncDate] forKey:@"user_roles"];
+	[postData setObject:[self collectionForUserRolesSinceSyncDate:lastSyncDate] forKey:@"user_roles"];
 	[postData setObject:[self collectionForEntityName:@"SNFBehavior" sinceSyncDate:lastSyncDate] forKey:@"behaviors"];
 	[postData setObject:[self collectionForEntityName:@"SNFReward" sinceSyncDate:lastSyncDate] forKey:@"rewards"];
 	[postData setObject:[self collectionForEntityName:@"SNFSmile" sinceSyncDate:lastSyncDate] forKey:@"smiles"];
@@ -128,6 +74,23 @@
 	return postData;
 }
 
+- (NSArray *)collectionForUserRolesSinceSyncDate:(NSDate *)syncDate{
+	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
+	NSError *error;
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SNFUserRole"];
+	request.predicate = [NSPredicate predicateWithFormat:@"updated_date > %@", syncDate];
+	NSArray *results = [context executeFetchRequest:request error:&error];
+	NSMutableArray *infoCollection = [[NSMutableArray alloc] init];
+	for(SNFUserRole *obj in results){
+		NSDictionary *info = [obj infoDictionaryWithChildrenAsUIDs];
+		NSDictionary *userInfo = @{@"user": [obj.user infoDictionary]};
+		NSMutableDictionary *final = [[NSMutableDictionary alloc] init];
+		[final addEntriesFromDictionary:info];
+		[final addEntriesFromDictionary:userInfo];
+		[infoCollection addObject:final];
+	}
+	return infoCollection;
+}
 
 - (NSArray *)collectionForEntityName:(NSString *)name sinceSyncDate:(NSDate *)syncDate{
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
@@ -141,6 +104,92 @@
 	}
 	return infoCollection;
 }
+
+
+- (void)updateLocalDataWithResults:(NSDictionary *)results andCallCompletion:(SNFSyncServiceCallback)completion{
+	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
+	
+	NSMutableArray *updates = [[NSMutableArray alloc] init];
+	// update the user's local sync date
+	NSString *syncString = [results objectForKey:@"sync_date"];
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+	NSDate *latestSyncDate = [formatter dateFromString:syncString];
+	if(latestSyncDate){
+		[SNFModel sharedInstance].userSettings.lastSyncDate = latestSyncDate;
+	}
+	
+	NSMutableDictionary *changeLog = [[NSMutableDictionary alloc] init];
+	// update boards
+	NSArray *boardUpdates = [results valueForKey:@"board"];
+	SNFBoard *board;
+	if(boardUpdates){
+		NSMutableArray *boardChanges = [[NSMutableArray alloc] init];
+		for(NSDictionary *boardUpdate in boardUpdates){
+			SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardUpdate withContext:context];
+			[boardChanges addObject:board];
+		}
+		[changeLog setObject:boardChanges forKey:@"boards"];
+	}
+	// update behaviors
+	NSArray *behaviorUpdates = [results valueForKey:@"behaviors"];
+	if(behaviorUpdates){
+		NSMutableArray *behaviorChanges = [[NSMutableArray alloc] init];
+		for(NSDictionary *behaviorUpdate in behaviorUpdates){
+			SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorUpdate withContext:context];
+			behavior.board = board;
+			[behaviorChanges addObject:behavior];
+		}
+		[changeLog setObject:behaviorChanges forKey:@"behaviors"];
+	}
+	// update rewards
+	NSArray *rewardsUpdates = [results valueForKey:@"rewards"];
+	if(rewardsUpdates){
+		NSMutableArray *rewardChanges = [[NSMutableArray alloc] init];
+		for(NSDictionary *rewardsUpdate in rewardsUpdates){
+			SNFReward *reward = (SNFReward *)[SNFReward editOrCreatefromInfoDictionary:rewardsUpdate withContext:context];
+			reward.board = board;
+			[rewardChanges addObject:reward];
+		}
+		[changeLog setObject:rewardChanges forKey:@"rewards"];
+	}
+	// update smiles
+	NSArray *smilesUpdates = [results valueForKey:@"smiles"];
+	if(smilesUpdates){
+		NSMutableArray *smilesChanges = [[NSMutableArray alloc] init];
+		for(NSDictionary *smilesUpdate in smilesUpdates){
+			SNFSmile *smile = (SNFSmile *)[SNFSmile editOrCreatefromInfoDictionary:smilesUpdate withContext:context];
+			smile.board = board;
+			[smilesChanges addObject:smile];
+		}
+		[changeLog setObject:smilesChanges forKey:@"smiles"];
+	}
+	// update frowns
+	NSArray *frownsUpdates = [results valueForKey:@"frowns"];
+	if(frownsUpdates){
+		NSMutableArray *frownsChanges = [[NSMutableArray alloc] init];
+		for(NSDictionary *frownsUpdate in frownsUpdates){
+			SNFFrown *frown = (SNFFrown *)[SNFFrown editOrCreatefromInfoDictionary:frownsUpdate withContext:context];
+			frown.board = board;
+			[frownsChanges addObject:frown];
+		}
+		[changeLog setObject:frownsChanges forKey:@"frowns"];
+	}
+	[updates addObject:changeLog];
+
+#if DEBUG
+	NSLog(@">> RECIEVING:\n\n%@\n\n-----------------------\n", updates);
+#endif
+	
+	completion(nil, updates);
+}
+
+
+
+
+
+
 
 
 @end

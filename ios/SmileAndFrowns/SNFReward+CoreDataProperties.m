@@ -12,5 +12,6 @@
 @dynamic currency_amount;
 @dynamic smile_amount;
 @dynamic currency_type;
+@dynamic device_date;
 
 @end

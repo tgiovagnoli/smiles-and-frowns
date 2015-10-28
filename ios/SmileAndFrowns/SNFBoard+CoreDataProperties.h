@@ -10,15 +10,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SNFBoard (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *uuid;
-@property (nullable, nonatomic, retain) NSDate *updated_date;
-@property (nullable, nonatomic, retain) NSDate *sync_date;
-@property (nullable, nonatomic, retain) NSNumber *deleted;
-@property (nullable, nonatomic, retain) NSNumber *edit_count;
 @property (nullable, nonatomic, retain) NSString *title;
 @property (nullable, nonatomic, retain) NSString *transaction_id;
-@property (nullable, nonatomic, retain) NSDate *created_date;
-@property (nullable, nonatomic, retain) NSNumber *remote_id;
+
 @property (nullable, nonatomic, retain) SNFUser *owner;
 @property (nullable, nonatomic, retain) NSSet<SNFFrown *> *frowns;
 @property (nullable, nonatomic, retain) NSSet<SNFSmile *> *smiles;
@@ -26,6 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSSet<SNFBehavior *> *behaviors;
 @property (nullable, nonatomic, retain) NSSet<SNFUserRole *> *user_roles;
 @property (nullable, nonatomic, retain) NSSet<SNFInvite *> *invites;
+
+@property (nullable, nonatomic, retain) NSNumber *deleted;
+@property (nullable, nonatomic, retain) NSString *uuid;
+@property (nullable, nonatomic, retain) NSDate *created_date;
+@property (nullable, nonatomic, retain) NSDate *updated_date;
+@property (nullable, nonatomic, retain) NSDate *device_date;
+@property (nullable, nonatomic, retain) NSNumber *remote_id;
 
 @end
 
