@@ -32,6 +32,7 @@
 	[self insertItemWithName:@"Log Behaviors" andSelector:@selector(logBehaviors)];
 	[self insertItemWithName:@"Log Smiles" andSelector:@selector(logSmiles)];
 	[self insertItemWithName:@"Log Frowns" andSelector:@selector(logFrowns)];
+	[self insertItemWithName:@"Log User Roles" andSelector:@selector(logUserRoles)];
 }
 
 - (void)login{
@@ -301,6 +302,10 @@
 
 - (void)logRewards{
 	[self logInfoForType:@"SNFReward"];
+}
+
+- (void)logUserRoles{
+	[self logInfoForType:@"SNFUserRole"];
 }
 
 - (void)logInfoForType:(NSString *)type{

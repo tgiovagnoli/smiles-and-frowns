@@ -29,6 +29,12 @@ def board_info_dictionary(board, with_users=False, with_behaviors=False, with_re
 		"title": board.title,
 		"id": board.id
 	}
+	if board.owner and with_users:
+		board_data["owner"] = user_role_info_dictionary_collection(board.owner, with_users=True)
+	elif board.owner:
+		board_data["owner"] = {"username": board.owner.username}
+
+
 	append_sync_info(board, board_data)
 	if with_users:
 		board_data["users"] = user_role_info_dictionary_collection(board.users, with_users=True)
