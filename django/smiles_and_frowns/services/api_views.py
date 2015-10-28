@@ -545,7 +545,7 @@ def sync_from_client(request):
 			board.owner = request.user
 
 		board.deleted = client_board.get('deleted',False)
-		board.title = client_board.get('title')
+		board.title = client_board.get('title', '')
 		board.device_date = board_client_date
 		board.transaction_id = client_board.get('transaction_id')
 		board.save()
@@ -581,12 +581,12 @@ def sync_from_client(request):
 			user = User.objects.get(username=userinfo.get('username'))
 		except:
 			created = True
-			User(username=userinfo.get('username'))
+			user = User(username=userinfo.get('username'))
 
 		if created:
-			user.email = userinfo.get('email', None)
-			user.first_name = userinfo.get('first_name', None)
-			user.last_name = userinfo.get('last_name', None)
+			user.email = userinfo.get('email', "")
+			user.first_name = userinfo.get('first_name', "")
+			user.last_name = userinfo.get('last_name', "")
 			#sets a random password for new users.
 			user.set_password(utils.random_password())
 		user.save()

@@ -54,23 +54,29 @@
 
 - (NSDictionary *)createPostInfoDictionary{
 	NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+	
 	NSDate *lastSyncDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
-	if(!lastSyncDate){
-		lastSyncDate = [NSDate dateWithTimeIntervalSince1970:0];
+	if(lastSyncDate){
+		NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+		[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+		[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+		NSString *dateString = [formatter stringFromDate:lastSyncDate];
+		[postData setObject:dateString forKey:@"sync_date"];
+	}else{
+		[postData setObject:[NSNull null] forKey:@"sync_date"];
 	}
-	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-	NSString *dateString = [formatter stringFromDate:lastSyncDate];
-	[postData setObject:dateString forKey:@"sync_date"];
 	
+	NSDate *fromDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
+	if(!fromDate){
+		fromDate = [NSDate dateWithTimeIntervalSince1970:0];
+	}
 	
-	[postData setObject:[self collectionForEntityName:@"SNFBoard" sinceSyncDate:lastSyncDate] forKey:@"boards"];
-	[postData setObject:[self collectionForUserRolesSinceSyncDate:lastSyncDate] forKey:@"user_roles"];
-	[postData setObject:[self collectionForEntityName:@"SNFBehavior" sinceSyncDate:lastSyncDate] forKey:@"behaviors"];
-	[postData setObject:[self collectionForEntityName:@"SNFReward" sinceSyncDate:lastSyncDate] forKey:@"rewards"];
-	[postData setObject:[self collectionForEntityName:@"SNFSmile" sinceSyncDate:lastSyncDate] forKey:@"smiles"];
-	[postData setObject:[self collectionForEntityName:@"SNFFrown" sinceSyncDate:lastSyncDate] forKey:@"frowns"];
+	[postData setObject:[self collectionForEntityName:@"SNFBoard" sinceSyncDate:fromDate] forKey:@"boards"];
+	[postData setObject:[self collectionForUserRolesSinceSyncDate:fromDate] forKey:@"user_roles"];
+	[postData setObject:[self collectionForEntityName:@"SNFBehavior" sinceSyncDate:fromDate] forKey:@"behaviors"];
+	[postData setObject:[self collectionForEntityName:@"SNFReward" sinceSyncDate:fromDate] forKey:@"rewards"];
+	[postData setObject:[self collectionForEntityName:@"SNFSmile" sinceSyncDate:fromDate] forKey:@"smiles"];
+	[postData setObject:[self collectionForEntityName:@"SNFFrown" sinceSyncDate:fromDate] forKey:@"frowns"];
 	return postData;
 }
 
@@ -138,7 +144,6 @@
 		NSMutableArray *behaviorChanges = [[NSMutableArray alloc] init];
 		for(NSDictionary *behaviorUpdate in behaviorUpdates){
 			SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorUpdate withContext:context];
-			behavior.board = board;
 			[behaviorChanges addObject:behavior];
 		}
 		[changeLog setObject:behaviorChanges forKey:@"behaviors"];
@@ -149,7 +154,6 @@
 		NSMutableArray *rewardChanges = [[NSMutableArray alloc] init];
 		for(NSDictionary *rewardsUpdate in rewardsUpdates){
 			SNFReward *reward = (SNFReward *)[SNFReward editOrCreatefromInfoDictionary:rewardsUpdate withContext:context];
-			reward.board = board;
 			[rewardChanges addObject:reward];
 		}
 		[changeLog setObject:rewardChanges forKey:@"rewards"];
@@ -160,7 +164,6 @@
 		NSMutableArray *smilesChanges = [[NSMutableArray alloc] init];
 		for(NSDictionary *smilesUpdate in smilesUpdates){
 			SNFSmile *smile = (SNFSmile *)[SNFSmile editOrCreatefromInfoDictionary:smilesUpdate withContext:context];
-			smile.board = board;
 			[smilesChanges addObject:smile];
 		}
 		[changeLog setObject:smilesChanges forKey:@"smiles"];
@@ -171,7 +174,6 @@
 		NSMutableArray *frownsChanges = [[NSMutableArray alloc] init];
 		for(NSDictionary *frownsUpdate in frownsUpdates){
 			SNFFrown *frown = (SNFFrown *)[SNFFrown editOrCreatefromInfoDictionary:frownsUpdate withContext:context];
-			frown.board = board;
 			[frownsChanges addObject:frown];
 		}
 		[changeLog setObject:frownsChanges forKey:@"frowns"];
