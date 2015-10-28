@@ -14,6 +14,7 @@ static SNFModel *_instance;
 - (id)init{
 	self = [super init];
 	_config = [[SNFConfig alloc] init];
+	_userSettings = [[SNFUserSettings alloc] init];
 	return self;
 }
 

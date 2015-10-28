@@ -615,7 +615,7 @@ def sync_from_client(request):
 		#get provided user info about role
 		userinfo = client_role.get('user', None)
 		if not userinfo:
-			return json_response_error("Client sync error, userinfo not provided for role with uuid %s" (client_role.get('uuid')))
+			return json_response_error("Client sync error, userinfo not provided for role with uuid " + client_role.get('uuid'))
 
 		#find or create role
 		return json_response_error(str(client_role))
@@ -691,7 +691,7 @@ def sync_from_client(request):
 		if not created:
 			if smile.device_date > json_utils.date_fromstring( client_smile.get('updated_date')):
 				continue
-
+		
 		smile.user=user
 		smile.board=board
 		smile.behavior=behavior

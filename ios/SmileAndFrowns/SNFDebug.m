@@ -20,6 +20,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(objectContextWillSave:) name: NSManagedObjectContextWillSaveNotification object: nil];
 	
 	[self insertItemWithName:@"Create/Update From Dictionaries" andSelector:@selector(createFromDictionaries)];
+	[self insertItemWithName:@"Create Unique Board" andSelector:@selector(createUniqueBoard)];
 	[self insertItemWithName:@"Save Managed Context" andSelector:@selector(save)];
 	[self insertItemWithName:@"Sync" andSelector:@selector(sync)];
 	[self insertItemWithName:@"Login" andSelector:@selector(login)];
@@ -178,7 +179,71 @@
 			}
 		}
 	}];
-	
+}
+
+- (void)createUniqueBoard{
+	SNFUserService *userService = [[SNFUserService alloc] init];
+	[userService authedUserInfoWithCompletion:^(NSError *error, SNFUser *user) {
+		if(user){
+			NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
+			
+			NSDictionary *boardInfo = @{@"title": @"Custom Board Created on Device"};
+			SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
+			board.owner = user;
+			
+			NSDictionary *userRoleInfo = @{
+										   @"user": @{@"username": user.username},
+										   @"role": @"parent",
+										   @"board": @{@"uuid": board.uuid},
+										   };
+			SNFUserRole *userRole = (SNFUserRole *)[SNFUserRole editOrCreatefromInfoDictionary:userRoleInfo withContext:context];
+			
+			NSDictionary *inviteInfo = @{
+								   @"role": @{@"uuid": userRole.uuid},
+								   @"board": @{@"uuid": board.uuid},
+								   };
+			SNFInvite *invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:inviteInfo withContext:context];
+			
+			NSDictionary *behaviorInfo = @{
+										   @"title": @"Cleaning up room",
+										   @"board": @{@"uuid": board.uuid},
+										   };
+			SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
+			
+			NSDictionary *rewardInfo = @{
+										 @"smile_amount": @1.0,
+										 @"title": @"Dollars",
+										 @"currency_type": @"money",
+										 @"currency_amount": @0.25,
+										 };
+			SNFReward *reward = (SNFReward *)[SNFReward editOrCreatefromInfoDictionary:rewardInfo withContext:context];
+			
+			NSDictionary *frownInfo = @{
+										@"board": @{@"uuid": board.uuid,},
+										@"behavior": @{@"uuid": behavior.uuid},
+										@"user": @{@"username": user.username},
+										};
+			SNFFrown *frown = (SNFFrown *)[SNFFrown editOrCreatefromInfoDictionary:frownInfo withContext:context];
+			
+			NSDictionary *smileInfo = @{
+										@"board": @{@"uuid": board.uuid,},
+										@"behavior": @{@"uuid": behavior.uuid},
+										@"user": @{@"username": user.username},
+										};
+			SNFSmile *smile = (SNFSmile *)[SNFSmile editOrCreatefromInfoDictionary:smileInfo withContext:context];
+			
+			NSLog(@"%@ %@ %@ %@ %@ %@ %@ %@", user, userRole, invite, reward, behavior, smile, frown, board);
+		}else if(error){
+			if(error.code == SNFErrorCodeDjangoDebugError){
+				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
+				[self presentViewController:viewer animated:YES completion:^{
+					[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
+				}];
+			}else{
+				[self alertWithMessage:error.localizedDescription];
+			}
+		}
+	}];
 }
 
 - (void)save{

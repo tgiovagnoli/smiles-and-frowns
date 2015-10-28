@@ -16,4 +16,12 @@
 	};
 }
 
+- (void) awakeFromInsert{
+	self.updated_date = [NSDate date];
+	self.created_date = [NSDate date];
+	self.device_date = [NSDate date];
+	self.uuid = [[NSUUID UUID] UUIDString];
+	[super awakeFromInsert];
+}
+
 @end
