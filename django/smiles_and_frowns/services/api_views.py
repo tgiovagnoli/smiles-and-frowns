@@ -465,44 +465,6 @@ def invite(request):
 	return json_response({})
 
 @csrf_exempt
-def get_sync_for_board(board, sync_date, is_new=False):
-	sync_data = {
-		"board": json_utils.board_info_dictionary(board)
-	}
-	
-	if is_new:
-		users_roles = models.UserRole.objects.filter(board=board)
-	else:
-		users_roles = models.UserRole.objects.filter(board=board, device_date__gt=sync_date)
-	sync_data["user_roles"] = json_utils.user_role_info_dictionary_collection(users_roles, with_users=True)
-
-	if is_new:
-		behaviors = models.Behavior.objects.filter(board=board)
-	else:
-		behaviors = models.Behavior.objects.filter(board=board, device_date__gt=sync_date)
-	sync_data["behaviors"] = json_utils.behavior_info_dictionary_collection(behaviors)
-
-	if is_new:
-		rewards = models.Reward.objects.filter(board=board)
-	else:
-		rewards = models.Reward.objects.filter(board=board, device_date__gt=sync_date)
-	sync_data["rewards"] = json_utils.reward_info_dictionary_collection(rewards)
-
-	if is_new:
-		smiles = models.Smile.objects.filter(board=board)
-	else:
-		smiles = models.Smile.objects.filter(board=board, device_date__gt=sync_date)
-	sync_data["smiles"] = json_utils.smile_info_dictionary_collection(smiles)
-
-	if is_new:
-		frowns = models.Frown.objects.filter(board=board)
-	else:
-		frowns = models.Frown.objects.filter(board=board, device_date__gt=sync_date)
-	sync_data["frowns"] = json_utils.frown_info_dictionary_collection(frowns)
-
-	return sync_data
-
-@csrf_exempt
 def sync_pull(request):
 	#check auth
 	if not request.user.is_authenticated(): 
@@ -519,7 +481,7 @@ def sync_pull(request):
 	
 	#if first sync, add predefined boards.
 	if not sync_date:
-		sync_date = datetime(2015,1,1)
+		sync_date = UTC.localize(datetime(2015,1,1))
 		predefined_boards = models.PredefinedBoard.objects.all()
 		for board in predefined_boards:
 			if not board in boards:
@@ -528,7 +490,6 @@ def sync_pull(request):
 	#convert string to date
 	else:
 		sync_date = json_utils.date_fromstring(sync_date)
-	
 	
 	behaviors = models.Behavior.objects.filter(board__in=boards,device_date__gt=sync_date)
 	smiles = models.Smile.objects.filter(board__in=boards,device_date__gt=sync_date)
