@@ -11,6 +11,10 @@
 
 @class SNFBoard, SNFUser;
 
+#define SNFUserRoleChild @"child"
+#define SNFUserRoleParent @"parent"
+#define SNFUserRoleGuardian @"guardian"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SNFUserRole : NSManagedObject

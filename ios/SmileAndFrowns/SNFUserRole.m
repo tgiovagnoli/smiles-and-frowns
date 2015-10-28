@@ -2,9 +2,7 @@
 #import "SNFBoard.h"
 #import "SNFUser.h"
 
-#define SNFUserRoleChild @"child"
-#define SNFUserRoleParent @"parent"
-#define SNFUserRoleGuardian @"guardian"
+
 
 @implementation SNFUserRole
 

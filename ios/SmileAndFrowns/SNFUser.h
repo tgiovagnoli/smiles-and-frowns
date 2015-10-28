@@ -3,6 +3,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+#define SNFUserGenderUnknown @""
+#define SNFUserGenderMale @"male"
+#define SNFUserGenderFemale @"female"
+
 @interface SNFUser : NSManagedObject
 
 @end
