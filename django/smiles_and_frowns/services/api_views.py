@@ -511,7 +511,7 @@ def sync_pull(request):
 def sync_from_client(request):
 	'''
 	Request body should be json:
-	{sync_date,'boards':[], 'behaviors':[], 'smiles':[], 'frowns':[], 'rewards':[], 'user_roles':[]}
+	{sync_date:date, 'boards':[], 'behaviors':[], 'smiles':[], 'frowns':[], 'rewards':[], 'user_roles':[]}
 	'''
 	if not request.user.is_authenticated(): 
 		return login_required_response()
