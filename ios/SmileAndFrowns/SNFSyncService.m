@@ -129,7 +129,6 @@
 	NSMutableDictionary *changeLog = [[NSMutableDictionary alloc] init];
 	// update boards
 	NSArray *boardUpdates = [results valueForKey:@"board"];
-	SNFBoard *board;
 	if(boardUpdates){
 		NSMutableArray *boardChanges = [[NSMutableArray alloc] init];
 		for(NSDictionary *boardUpdate in boardUpdates){
