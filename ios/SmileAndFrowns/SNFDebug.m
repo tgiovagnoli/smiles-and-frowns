@@ -191,12 +191,30 @@
 			SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
 			board.owner = user;
 			
+			// add a random user
+			NSDictionary *userInfo = @{
+							@"first_name": @"Cole",
+							@"last_name": @"Wilson",
+							@"age": @8,
+							@"gender": SNFUserGenderMale,
+							};
+			SNFUser *childUser = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:userInfo withContext:context];
+			
 			NSDictionary *userRoleInfo = @{
 										   @"user": @{@"username": user.username},
-										   @"role": @"parent",
+										   @"role": SNFUserRoleParent,
 										   @"board": @{@"uuid": board.uuid},
 										   };
 			SNFUserRole *userRole = (SNFUserRole *)[SNFUserRole editOrCreatefromInfoDictionary:userRoleInfo withContext:context];
+			
+			
+			NSDictionary *userRoleInfo2 = @{
+										   @"user": @{@"username": childUser.username},
+										   @"role": SNFUserRoleChild,
+										   @"board": @{@"uuid": board.uuid},
+										   };
+			SNFUserRole *userRole2 = (SNFUserRole *)[SNFUserRole editOrCreatefromInfoDictionary:userRoleInfo2 withContext:context];
+			
 			
 			NSDictionary *inviteInfo = @{
 								   @"role": @{@"uuid": userRole.uuid},
@@ -233,7 +251,7 @@
 										};
 			SNFSmile *smile = (SNFSmile *)[SNFSmile editOrCreatefromInfoDictionary:smileInfo withContext:context];
 			
-			NSLog(@"%@ %@ %@ %@ %@ %@ %@ %@", user, userRole, invite, reward, behavior, smile, frown, board);
+			NSLog(@"%@ %@ %@ %@ %@ %@ %@ %@ %@", user, userRole, userRole2, invite, reward, behavior, smile, frown, board);
 		}else if(error){
 			if(error.code == SNFErrorCodeDjangoDebugError){
 				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];

@@ -569,11 +569,18 @@ def sync_from_client(request):
 				continue
 
 		#try and find existing user in DB
-		user,created = User.objects.get_or_create(username=userinfo.get('username'))
+		created = False
+		user = None
+		try:
+			user = User.objects.get(username=userinfo.get('username'))
+		except:
+			created = True
+			User(username=userinfo.get('username'))
+
 		if created:
-			user.email = userinfo.get('email',None)
-			user.first_name = userinfo.get('firstname',None)
-			user.last_name = userinfo.get('lastname',None)
+			user.email = userinfo.get('email', None)
+			user.first_name = userinfo.get('first_name', None)
+			user.last_name = userinfo.get('last_name', None)
 			#sets a random password for new users.
 			user.set_password(utils.random_password())
 		user.save()
