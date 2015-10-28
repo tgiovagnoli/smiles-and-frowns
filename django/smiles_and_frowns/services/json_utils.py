@@ -60,10 +60,10 @@ def user_role_info_dictionary(user_role, with_user=False, with_board=False):
 	if user_role.board:
 		user_role_data['board'] = {'uuid':user_role.board.uuid}
 
-	if with_board:
+	if with_board and user_role.board:
 		user_role_data["board"] =  board_info_dictionary(user_role.board)
 	
-	if with_user:
+	if with_user and user_role.user:
 		user_role_data["user"] =  user_info_dictionary(user_role.user)
 	
 	return user_role_data

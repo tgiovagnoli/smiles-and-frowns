@@ -128,7 +128,7 @@
 	
 	NSMutableDictionary *changeLog = [[NSMutableDictionary alloc] init];
 	// update boards
-	NSArray *boardUpdates = [results valueForKey:@"board"];
+	NSArray *boardUpdates = [results valueForKey:@"boards"];
 	if(boardUpdates){
 		NSMutableArray *boardChanges = [[NSMutableArray alloc] init];
 		for(NSDictionary *boardUpdate in boardUpdates){
