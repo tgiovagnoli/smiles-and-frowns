@@ -137,6 +137,17 @@
 		}
 		[changeLog setObject:boardChanges forKey:@"boards"];
 	}
+	// update user roles
+	NSArray *userRoleUpdates = [results valueForKey:@"user_roles"];
+	if(userRoleUpdates){
+		NSMutableArray *userRoleChanges = [[NSMutableArray alloc] init];
+		for(NSDictionary *userRoleUpdate in userRoleUpdates){
+			SNFUserRole *userRole = (SNFUserRole *)[SNFUserRole editOrCreatefromInfoDictionary:userRoleUpdate withContext:context];
+			[userRoleChanges addObject:userRole];
+		}
+		[changeLog setObject:userRoleChanges forKey:@"user_roles"];
+	}
+	
 	// update behaviors
 	NSArray *behaviorUpdates = [results valueForKey:@"behaviors"];
 	if(behaviorUpdates){

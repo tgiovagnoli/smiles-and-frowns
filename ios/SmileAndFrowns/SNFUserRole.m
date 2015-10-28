@@ -13,7 +13,8 @@
 		@"board": @"board",
 		@"user": @"user",
 		@"device_date": @"device_date",
-		@"updated_date": @"updated_date"
+		@"updated_date": @"updated_date",
+		@"role": @"role",
 	};
 }
 
