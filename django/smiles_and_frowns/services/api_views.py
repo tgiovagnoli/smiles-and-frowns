@@ -465,7 +465,7 @@ def invite(request):
 	return json_response({})
 
 @csrf_exempt
-def sync_pull(request):
+def sync_pull(request, sync_date=None):
 	#check auth
 	if not request.user.is_authenticated(): 
 		return login_required_response()
@@ -482,9 +482,13 @@ def sync_pull(request):
 		if role.board and not role.board in boards:
 			boards.append(role.board)
 
-	#get sync date.
-	sync_date = request.POST.get('sync_date')
-	
+	if not sync_date:
+		sync_date = request.POST.get('sync_date')
+
+	if not sync_date:
+		data = json.loads(request.body)
+		sync_date = data['sync_date']
+
 	#if first sync, add predefined boards.
 	if not sync_date:
 		sync_date = UTC.localize(datetime(2015,1,1))
@@ -496,6 +500,7 @@ def sync_pull(request):
 	#convert string to date
 	else:
 		sync_date = json_utils.date_fromstring(sync_date)
+	
 	
 	behaviors = models.Behavior.objects.filter(board__in=boards,device_date__gt=sync_date)
 	smiles = models.Smile.objects.filter(board__in=boards,device_date__gt=sync_date)
@@ -733,4 +738,4 @@ def sync_from_client(request):
 		reward.device_date = client_reward_date
 		reward.save()
 
-	return sync_pull(request)
+	return sync_pull(request, data['sync_date'])
