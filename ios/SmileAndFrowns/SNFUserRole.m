@@ -2,6 +2,10 @@
 #import "SNFBoard.h"
 #import "SNFUser.h"
 
+#define SNFUserRoleChild @"child"
+#define SNFUserRoleParent @"parent"
+#define SNFUserRoleGuardian @"guardian"
+
 @implementation SNFUserRole
 
 + (NSDictionary *)keyMappings{
@@ -21,6 +25,9 @@
 	self.created_date = [NSDate date];
 	self.device_date = [NSDate date];
 	self.uuid = [[NSUUID UUID] UUIDString];
+	if(!self.role){
+		self.role = SNFUserRoleChild;
+	}
 	[super awakeFromInsert];
 }
 

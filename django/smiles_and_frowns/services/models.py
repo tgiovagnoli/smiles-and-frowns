@@ -96,7 +96,7 @@ class Board(SyncModel):
 
 class UserRole(SyncModel):
 	user = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
-	role = models.CharField(max_length=64, choices=PROFILE_ROLE_CHOICES, default="child")
+	role = models.CharField(max_length=64, choices=PROFILE_ROLE_CHOICES, default="child", null=True)
 	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	def __unicode__(self):
 		return self.role + " - " + self.user.username
@@ -118,7 +118,7 @@ class Reward(SyncModel):
 		return self.title
 
 class Smile(SyncModel):
-	user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
+	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 	board = models.ForeignKey(Board, on_delete=models.SET_NULL, null=True)
 	behavior = models.ForeignKey(Behavior, null=True)
 	collected = models.BooleanField(default=False)
@@ -126,7 +126,7 @@ class Smile(SyncModel):
 		return self.board.title
 
 class Frown(SyncModel):
-	user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
+	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 	board = models.ForeignKey(Board, on_delete=models.SET_NULL, null=True)
 	behavior = models.ForeignKey(Behavior, null=True)
 	def __unicode__(self):

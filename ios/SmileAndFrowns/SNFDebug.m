@@ -215,6 +215,7 @@
 										 @"title": @"Dollars",
 										 @"currency_type": @"money",
 										 @"currency_amount": @0.25,
+										 @"board": @{@"uuid": board.uuid},
 										 };
 			SNFReward *reward = (SNFReward *)[SNFReward editOrCreatefromInfoDictionary:rewardInfo withContext:context];
 			
