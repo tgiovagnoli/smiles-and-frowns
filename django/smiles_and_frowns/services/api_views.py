@@ -477,7 +477,7 @@ def sync_pull(request):
 		boards.append(board)
 
 	#get sync date.
-	sync_date = request.POST.get('client_sync_date')
+	sync_date = request.POST.get('sync_date')
 	
 	#if first sync, add predefined boards.
 	if not sync_date:
