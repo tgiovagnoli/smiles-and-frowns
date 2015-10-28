@@ -511,7 +511,7 @@ def sync_pull(request):
 def sync_from_client(request):
 	'''
 	Request body should be json:
-	{sync_date,'boards':[], 'behaviors':[], 'smiles':[], 'frowns':[], 'rewards':[], 'user_roles':[]}
+	{sync_date:date, 'boards':[], 'behaviors':[], 'smiles':[], 'frowns':[], 'rewards':[], 'user_roles':[]}
 	'''
 	if not request.user.is_authenticated(): 
 		return login_required_response()
@@ -527,7 +527,7 @@ def sync_from_client(request):
 		
 		#get or create board
 		board,created = models.Board.objects.get_or_create(uuid=client_board.get("uuid"))
-		board_client_date = json_utils.date_fromstring(client_board.get('update_date'))
+		board_client_date = json_utils.date_fromstring(client_board.get('updated_date'))
 		
 		#check dates
 		if not created:
@@ -661,7 +661,7 @@ def sync_from_client(request):
 		#get user for frown.user
 		try:
 			user_dict = client_frown.get('user')
-			user = User.objects.get(username=user_dict.get('uuid'))
+			user = User.objects.get(username=user_dict.get('username'))
 		except:
 			return json_response_error("Client sync error, User with username(%s) for frown not found on server." % (user_dict.get('username')))
 		
