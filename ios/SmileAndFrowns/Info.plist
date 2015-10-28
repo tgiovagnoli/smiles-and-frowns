@@ -11,6 +11,13 @@
 		<key>apiPath</key>
 		<string>api</string>
 	</dict>
+	<key>SNFDebugImac</key>
+	<dict>
+		<key>serverURL</key>
+		<string>http://imac.local:8000</string>
+		<key>apiPath</key>
+		<string>api</string>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -45,14 +52,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-
 	<key>NSAppTransportSecurity</key>
 	<dict>
-	  <!--Include to allow all connections (DANGER)-->
-	  <key>NSAllowsArbitraryLoads</key>
-	      <true/>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 	</dict>
-	
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -62,11 +66,9 @@
 			</array>
 		</dict>
 	</array>
-	
 	<key>FacebookAppID</key>
 	<string>1641664296087724</string>
 	<key>FacebookDisplayName</key>
 	<string>Smiles And Frowns Test</string>
-	
 </dict>
 </plist>
