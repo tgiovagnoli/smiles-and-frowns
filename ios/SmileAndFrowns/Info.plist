@@ -53,5 +53,20 @@
 	      <true/>
 	</dict>
 	
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1641664296087724</string>
+			</array>
+		</dict>
+	</array>
+	
+	<key>FacebookAppID</key>
+	<string>1641664296087724</string>
+	<key>FacebookDisplayName</key>
+	<string>Smiles And Frowns Test</string>
+	
 </dict>
 </plist>
