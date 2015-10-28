@@ -10,7 +10,7 @@
 		// check if it's a django debug error
 		NSString *htmlString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 		if(htmlString){
-			if([htmlString containsString:@"<div id=\"summary\">"]){
+			if([htmlString containsString:@"<!DOCTYPE html>"]){
 				*error = [SNFError errorWithCode:SNFErrorCodeDjangoDebugError andMessage:htmlString];
 				return nil;
 			}

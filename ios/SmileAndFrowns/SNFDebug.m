@@ -38,7 +38,15 @@
 	SNFUserService *userService = [[SNFUserService alloc] init];
 	[userService loginWithEmail:@"info@apptitude-digital.com" andPassword:@"abc123$" withCompletion:^(NSError *error, SNFUser *userInfo) {
 		if(error){
-			[self alertWithMessage:error.localizedDescription];
+			if(error.code == SNFErrorCodeDjangoDebugError){
+				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
+				[self presentViewController:viewer animated:YES completion:^{
+					[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
+				}];
+			}else{
+				[self alertWithMessage:error.localizedDescription];
+			}
+			
 		}else{
 			[self alertWithMessage:[NSString stringWithFormat:@"logged in %@", userInfo.email]];
 		};
