@@ -482,26 +482,28 @@ def sync_pull(request, sync_date=None):
 		if role.board and not role.board in boards:
 			boards.append(role.board)
 
-	if not sync_date:
+	#if post, grab sync date
+	if not sync_date and request.method == "POST":
 		sync_date = request.POST.get('sync_date')
 
-	if not sync_date:
+	#if json, grab out of body
+	if not sync_date and request.META['CONTENT_TYPE'] == "application/json":
 		data = json.loads(request.body)
 		sync_date = data['sync_date']
 
 	#if first sync, add predefined boards.
 	if not sync_date:
 		sync_date = UTC.localize(datetime(2015,1,1))
-		predefined_boards = models.PredefinedBoard.objects.all()
-		for board in predefined_boards:
-			if not board in boards:
-				boards.append(board.board)
+		#predefined_boards = models.PredefinedBoard.objects.all()
+		#for board in predefined_boards:
+		#	if not board in boards:
+		#		boards.append(board.board)
 	
 	#convert string to date
 	else:
 		sync_date = json_utils.date_fromstring(sync_date)
 	
-	
+
 	behaviors = models.Behavior.objects.filter(board__in=boards,device_date__gt=sync_date)
 	smiles = models.Smile.objects.filter(board__in=boards,device_date__gt=sync_date)
 	frowns = models.Frown.objects.filter(board__in=boards,device_date__gt=sync_date)
