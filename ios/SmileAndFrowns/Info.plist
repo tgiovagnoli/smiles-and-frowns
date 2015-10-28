@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>SNFConfig</key>
-	<string>SNFDebug</string>
+	<string>SNFDebugImac</string>
 	<key>SNFDebug</key>
 	<dict>
 		<key>serverURL</key>
