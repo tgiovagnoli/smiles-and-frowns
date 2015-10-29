@@ -46,6 +46,8 @@
 		D659DBFB1BDAEA000048D3F7 /* SNFUserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBEB1BDAEA000048D3F7 /* SNFUserRole.m */; };
 		D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DC001BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m */; };
 		D659DC041BDB06010048D3F7 /* SNFModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DC031BDB06010048D3F7 /* SNFModel.m */; };
+		D65DF0E01BE24B86009CC6DF /* SNFPredefinedBoard+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF0DD1BE24B86009CC6DF /* SNFPredefinedBoard+CoreDataProperties.m */; };
+		D65DF0E11BE24B86009CC6DF /* SNFPredefinedBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF0DF1BE24B86009CC6DF /* SNFPredefinedBoard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +123,10 @@
 		D659DC001BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+InfoDictionary.m"; sourceTree = "<group>"; };
 		D659DC021BDB06010048D3F7 /* SNFModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFModel.h; sourceTree = "<group>"; };
 		D659DC031BDB06010048D3F7 /* SNFModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFModel.m; sourceTree = "<group>"; };
+		D65DF0DC1BE24B86009CC6DF /* SNFPredefinedBoard+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFPredefinedBoard+CoreDataProperties.h"; sourceTree = "<group>"; };
+		D65DF0DD1BE24B86009CC6DF /* SNFPredefinedBoard+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFPredefinedBoard+CoreDataProperties.m"; sourceTree = "<group>"; };
+		D65DF0DE1BE24B86009CC6DF /* SNFPredefinedBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBoard.h; sourceTree = "<group>"; };
+		D65DF0DF1BE24B86009CC6DF /* SNFPredefinedBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPredefinedBoard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +277,10 @@
 				D659DBE31BDAEA000048D3F7 /* SNFInvite.m */,
 				D659DBE01BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.h */,
 				D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */,
+				D65DF0DE1BE24B86009CC6DF /* SNFPredefinedBoard.h */,
+				D65DF0DF1BE24B86009CC6DF /* SNFPredefinedBoard.m */,
+				D65DF0DC1BE24B86009CC6DF /* SNFPredefinedBoard+CoreDataProperties.h */,
+				D65DF0DD1BE24B86009CC6DF /* SNFPredefinedBoard+CoreDataProperties.m */,
 				D659DBDE1BDAEA000048D3F7 /* SNFReward.h */,
 				D659DBDF1BDAEA000048D3F7 /* SNFReward.m */,
 				D659DBDC1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.h */,
@@ -399,6 +409,7 @@
 				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,
 				D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */,
 				D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */,
+				D65DF0E01BE24B86009CC6DF /* SNFPredefinedBoard+CoreDataProperties.m in Sources */,
 				D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */,
 				D659DBFB1BDAEA000048D3F7 /* SNFUserRole.m in Sources */,
 				D6272FC01BE002160024CBC2 /* APDDjangoErrorViewer.m in Sources */,
@@ -408,6 +419,7 @@
 				D6272FC11BE002160024CBC2 /* NSTimer+Blocks.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
 				D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */,
+				D65DF0E11BE24B86009CC6DF /* SNFPredefinedBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

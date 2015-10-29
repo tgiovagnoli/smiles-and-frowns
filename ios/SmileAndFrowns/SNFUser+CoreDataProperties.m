@@ -15,6 +15,6 @@
 @dynamic smiles;
 @dynamic frowns;
 @dynamic user_roles;
-
+@dynamic owned_boards;
 
 @end

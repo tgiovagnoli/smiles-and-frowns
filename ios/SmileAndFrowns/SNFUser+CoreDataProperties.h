@@ -3,6 +3,7 @@
 @class SNFSmile;
 @class SNFFrown;
 @class SNFUserRole;
+@class SNFBoard;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSSet<SNFSmile *> *smiles;
 @property (nullable, nonatomic, retain) NSSet<SNFFrown *> *frowns;
 @property (nullable, nonatomic, retain) NSSet<SNFUserRole *> *user_roles;
+@property (nullable, nonatomic, retain) NSSet<SNFBoard *> *owned_boards;
+
 
 @end
 
