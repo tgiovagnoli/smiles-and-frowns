@@ -3,6 +3,7 @@
 #import "SNFDebug.h"
 #import "UIViewControllerStack.h"
 #import "SNFTabMenu.h"
+#import "SNFUserProfile.h"
 
 @interface SNFViewController : UIViewController <APDDebugViewControllerDelegate>
 

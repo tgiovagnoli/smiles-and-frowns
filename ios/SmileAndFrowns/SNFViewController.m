@@ -13,6 +13,7 @@ static SNFViewController * _instance;
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	_instance = self;
+	self.viewControllerStack.alwaysResizePushedViews = YES;
 	[NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
 		[self insertMenu];
 	} repeats:NO];
@@ -33,7 +34,6 @@ static SNFViewController * _instance;
 	return _instance;
 }
 
-
 - (void) showTutorial {
 	SNFTutorial * tutorial = [[SNFTutorial alloc] init];
 	[self.view addSubview:tutorial.view];
@@ -49,7 +49,8 @@ static SNFViewController * _instance;
 }
 
 - (void)showProfile{
-	[self.viewControllerStack eraseStack];
+	SNFUserProfile *profile = [[SNFUserProfile alloc] init];
+	[self.viewControllerStack eraseStackAndPushViewController:profile animated:NO];
 }
 
 - (void)showMore{
@@ -63,7 +64,6 @@ static SNFViewController * _instance;
 - (void)showInvites{
 	[self.viewControllerStack eraseStack];
 }
-
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
