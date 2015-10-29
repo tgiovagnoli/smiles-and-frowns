@@ -5,6 +5,8 @@
 #import "UIViewControllerStack.h"
 #import "NSTimer+Blocks.h"
 #import "SNFTutorial.h"
+#import "SNFBoardList.h"
+#import "SNFMore.h"
 
 static SNFViewController * _instance;
 
@@ -13,6 +15,7 @@ static SNFViewController * _instance;
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	_instance = self;
+	self.viewControllerStack.alwaysResizePushedViews = YES;
 	[NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
 		[self insertMenu];
 	} repeats:NO];
@@ -33,7 +36,6 @@ static SNFViewController * _instance;
 	return _instance;
 }
 
-
 - (void) showTutorial {
 	SNFTutorial * tutorial = [[SNFTutorial alloc] init];
 	[self.view addSubview:tutorial.view];
@@ -45,15 +47,19 @@ static SNFViewController * _instance;
 }
 
 - (void)showBoards{
-	[self.viewControllerStack eraseStack];
+	SNFBoardList *boardsList = [[SNFBoardList alloc] init];
+	[self.viewControllerStack eraseStackAndPushViewController:boardsList animated:NO];
 }
 
 - (void)showProfile{
-	[self.viewControllerStack eraseStack];
+	SNFUserProfile *profile = [[SNFUserProfile alloc] init];
+	[self.viewControllerStack eraseStackAndPushViewController:profile animated:NO];
+	[profile loadAuthedUser];
 }
 
 - (void)showMore{
-	[self.viewControllerStack eraseStack];
+	SNFMore *more = [[SNFMore alloc] init];
+	[self.viewControllerStack eraseStackAndPushViewController:more animated:NO];
 }
 
 - (void)debugViewControllerIsDone:(APDDebugViewController *)debugViewController{
@@ -63,7 +69,6 @@ static SNFViewController * _instance;
 - (void)showInvites{
 	[self.viewControllerStack eraseStack];
 }
-
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
