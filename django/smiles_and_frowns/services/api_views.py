@@ -10,6 +10,7 @@ from django.core.mail import EmailMultiAlternatives
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.hashers import make_password
 from django.template import Context, loader
+from django.db.models import Q
 from services import models, json_utils, utils
 from smiles_and_frowns import settings
 from social.apps.django_app.utils import psa
@@ -465,64 +466,12 @@ def invite(request):
 	return json_response({})
 
 @csrf_exempt
-def sync_pull(request, sync_date=None):
+def sync_pull(request, sync_date=None, created_object_uuids={}):
 	#check auth
 	if not request.user.is_authenticated(): 
 		return login_required_response()
 
-	#get all boards the user owns.
-	boards = []
-	all_boards = models.Board.objects.filter(owner=request.user).all()
-	for board in all_boards:
-		boards.append(board)
-
-	#get boards the user is participating in.
-	roles = models.UserRole.objects.filter(user=request.user).all()
-	for role in roles:
-		if role.board and not role.board in boards:
-			boards.append(role.board)
-
-	#if post, grab sync date
-	if not sync_date:
-		sync_date = request.POST.get('sync_date')
-
-	#if json, grab out of body
-	if not sync_date and request.META['CONTENT_TYPE'] == "application/json":
-		data = json.loads(request.body)
-		sync_date = data.get('sync_date',None)
-
-	#if no sync date set back to 
-	if not sync_date:
-		sync_date = UTC.localize(datetime(2015,1,1))
-	else:
-		#convert string to date
-		sync_date = json_utils.date_fromstring(sync_date)
 	
-	#get associate objects for all boards.
-	behaviors = models.Behavior.objects.filter(board__in=boards,device_date__gt=sync_date)
-	smiles = models.Smile.objects.filter(board__in=boards,device_date__gt=sync_date)
-	frowns = models.Frown.objects.filter(board__in=boards,device_date__gt=sync_date)
-	rewards = models.Reward.objects.filter(board__in=boards,device_date__gt=sync_date)
-	user_roles = models.UserRole.objects.filter(user=request.user,device_date__gt=sync_date)
-
-	#remove boards that don't need to be returned to user.
-	remove = []
-	for board in boards:
-		if board.created_date < sync_date and board.device_date < sync_date:
-			remove.append(board)
-	for board in remove:
-		boards.remove(board)
-
-	#create output
-	output = {'sync_date': json_utils.datestring(UTC.localize(datetime.utcnow())) }
-	output['boards'] = json_utils.board_info_dictionary_collection(boards)
-	output['behaviors'] = json_utils.behavior_info_dictionary_collection(behaviors)
-	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
-	output['frowns'] = json_utils.frown_info_dictionary_collection(frowns)
-	output['rewards'] = json_utils.reward_info_dictionary_collection(rewards)
-	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles,with_users=True)
-
-	return json_response(output)
 
 @csrf_exempt
 def sync_from_client(request):
@@ -533,9 +482,21 @@ def sync_from_client(request):
 	if not request.user.is_authenticated(): 
 		return login_required_response()
 
+	############# Handle request first
+
 	#get JSON body
 	json_string = request.body
 	data = json.loads(json_string)
+
+	#store created uuids for later
+	created_object_uuids = {
+		'boards':[],
+		'behaviors':[],
+		'smiles':[],
+		'frowns':[],
+		'rewards':[],
+		'user_roles':[],
+	}
 
 	#go through boards the client sent us.
 	#boards have to be available for most other object so these should be created first.
@@ -562,16 +523,16 @@ def sync_from_client(request):
 		if created and not board.owner:
 			board.owner = request.user
 
+		#set board data
 		board.deleted = client_board.get('deleted',False)
 		board.title = client_board.get('title', '')
-		
-		print "setting board device date from string (%s) to %s" % (client_board.get('updated_date'), board_client_date)
-
 		board.device_date = board_client_date
 		board.transaction_id = client_board.get('transaction_id')
 		board.save()
 
-		print "board saved, device date: %s" % (board.device_date)
+		#set created id in lookup. this is after save so the uuid is populated
+		if created:
+			created_object_uuids['boards'].append(board.uuid)
 
 	#go through user roles
 	client_roles = data.get("user_roles", [])
@@ -614,6 +575,10 @@ def sync_from_client(request):
 		role.deleted = client_role.get('deleted',False)
 		role.save()
 
+		#set created in uuid lookup. this is after role.save so the uuid is pouplated
+		if created:
+			created_object_uuids['user_roles'].append(role.uuid)
+
 	#go through behaviors
 	client_behaviors = data.get('behaviors',[])
 	for client_behavior in client_behaviors:
@@ -639,6 +604,10 @@ def sync_from_client(request):
 		behavior.device_date = client_behavior_date
 		behavior.deleted = client_behavior.get('deleted',False)
 		behavior.save()
+
+		#set created for lookup
+		if created:
+			created_object_uuids['behaviors'].append(behavior.uuid)
 
 	#go through smiles
 	client_smiles = data.get('smiles',[])
@@ -681,7 +650,11 @@ def sync_from_client(request):
 		smile.collected = client_smile.get('collected')
 		smile.save()
 
-	#go throgh frowns
+		#set created uuid lookup. after save so uuid is available
+		if created:
+			created_object_uuids['smiles'].append(smile.uuid)
+
+	#go through frowns
 	client_frowns = data.get('frowns',[])
 	for client_frown in client_frowns:
 		client_frown_date = json_utils.date_fromstring(client_frown.get('updated_date'))
@@ -721,6 +694,10 @@ def sync_from_client(request):
 		frown.device_date = client_frown_date
 		frown.save()
 
+		#set created in lookup
+		if created:
+			created_object_uuids['frowns'].append(frown.uuid)
+
 	#go through rewards
 	client_rewards = data.get('rewards',[])
 	for client_reward in client_rewards:
@@ -739,6 +716,7 @@ def sync_from_client(request):
 			if reward.device_date > client_reward_date:
 				continue
 
+		#set reward data
 		reward.board = board
 		reward.deleted = client_reward.get('deleted',False)
 		reward.title = client_reward.get('title')
@@ -748,4 +726,58 @@ def sync_from_client(request):
 		reward.device_date = client_reward_date
 		reward.save()
 
-	return sync_pull(request, sync_date=data.get('sync_date',None))
+		#set created for lookup
+		if created:
+			created_object_uuids['rewards'].append(reward.uuid)
+
+	############# Create response data
+
+	#get all boards the user owns.
+	boards = []
+	all_boards = models.Board.objects.filter(owner=request.user).all()
+	for board in all_boards:
+		boards.append(board)
+
+	#get boards the user is participating in.
+	roles = models.UserRole.objects.filter(user=request.user).all()
+	for role in roles:
+		if role.board and not role.board in boards:
+			boards.append(role.board)
+
+	#look for sync date
+	sync_date = data.get('sync_date',None)
+	
+	#if no sync date set back to 
+	if not sync_date:
+		sync_date = UTC.localize(datetime(2015,1,1))
+	else:
+		#convert string to date
+		sync_date = json_utils.date_fromstring(sync_date)
+	
+	#get associate objects for all boards.
+	behaviors = models.Behavior.objects.filter(~Q(uuid__in=created_object_uuids['behaviors']),board__in=boards,device_date__gt=sync_date)
+	smiles = models.Smile.objects.filter(~Q(uuid__in=created_object_uuids['smiles']),board__in=boards,device_date__gt=sync_date)
+	frowns = models.Frown.objects.filter(~Q(uuid__in=created_object_uuids['frowns']),board__in=boards,device_date__gt=sync_date)
+	rewards = models.Reward.objects.filter(~Q(uuid__in=created_object_uuids['rewards']),board__in=boards,device_date__gt=sync_date)
+	user_roles = models.UserRole.objects.filter(~Q(uuid__in=created_object_uuids['user_roles']),user=request.user,device_date__gt=sync_date)
+	
+	#remove boards that don't need to be returned to user.
+	remove = []
+	for board in boards:
+		if board.created_date < sync_date or board.device_date < sync_date:
+			remove.append(board)
+		elif board.uuid in created_object_uuids['boards']:
+			remove.append(board)
+	for board in remove:
+		boards.remove(board)
+
+	#create output
+	output = {'sync_date': json_utils.datestring(UTC.localize(datetime.utcnow())) }
+	output['boards'] = json_utils.board_info_dictionary_collection(boards)
+	output['behaviors'] = json_utils.behavior_info_dictionary_collection(behaviors)
+	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
+	output['frowns'] = json_utils.frown_info_dictionary_collection(frowns)
+	output['rewards'] = json_utils.reward_info_dictionary_collection(rewards)
+	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles,with_users=True)
+
+	return json_response(output)
