@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "SNFService.h"
+#import "SNFDateManager.h"
 
 typedef void(^SNFSyncServiceCallback)(NSError *error, NSObject *boardData);
 

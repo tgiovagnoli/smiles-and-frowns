@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SNFModel.h"
+#import "SNFDateManager.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
+	[SNFDateManager unlock];
 	return YES;
 }
 

@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// TODO: Apple reccomends modifying dates using notifications instead of overriding the save command.  Need to put this somewhere it makes sense.
-	[[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(objectContextWillSave:) name: NSManagedObjectContextWillSaveNotification object: nil];
+	// 
 	
 	[self insertItemWithName:@"Create/Update From Dictionaries" andSelector:@selector(createFromDictionaries)];
 	[self insertItemWithName:@"Create Unique Board" andSelector:@selector(createUniqueBoard)];

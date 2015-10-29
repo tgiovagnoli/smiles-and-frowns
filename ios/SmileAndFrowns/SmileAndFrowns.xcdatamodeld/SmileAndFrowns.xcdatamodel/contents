@@ -26,7 +26,6 @@
         <relationship name="frowns" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFFrown" inverseName="board" inverseEntity="SNFFrown" syncable="YES"/>
         <relationship name="invites" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFInvite" inverseName="board" inverseEntity="SNFInvite" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" inverseName="owned_boards" inverseEntity="SNFUser" syncable="YES"/>
-        <relationship name="predefined_board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFPredefinedBoard" inverseName="board" inverseEntity="SNFPredefinedBoard" syncable="YES"/>
         <relationship name="rewards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFReward" inverseName="board" inverseEntity="SNFReward" syncable="YES"/>
         <relationship name="smiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFSmile" inverseName="board" inverseEntity="SNFSmile" syncable="YES"/>
         <relationship name="user_roles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFUserRole" inverseName="board" inverseEntity="SNFUserRole" syncable="YES"/>
@@ -48,10 +47,6 @@
         <attribute name="uuid" attributeType="String" syncable="YES"/>
         <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="invites" inverseEntity="SNFBoard" syncable="YES"/>
         <relationship name="role" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUserRole" inverseName="invites" inverseEntity="SNFUserRole" syncable="YES"/>
-    </entity>
-    <entity name="SNFPredefinedBoard" representedClassName="SNFPredefinedBoard" syncable="YES">
-        <attribute name="remote_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="predefined_board" inverseEntity="SNFBoard" syncable="YES"/>
     </entity>
     <entity name="SNFReward" representedClassName="SNFReward" syncable="YES">
         <attribute name="created_date" optional="YES" attributeType="Date" syncable="YES"/>
@@ -105,13 +100,12 @@
     </entity>
     <elements>
         <element name="SNFBehavior" positionX="-711" positionY="-189" width="128" height="208"/>
-        <element name="SNFBoard" positionX="-110" positionY="-315" width="128" height="283"/>
+        <element name="SNFBoard" positionX="-110" positionY="-315" width="128" height="268"/>
         <element name="SNFFrown" positionX="-434" positionY="126" width="128" height="178"/>
         <element name="SNFInvite" positionX="-135" positionY="213" width="128" height="118"/>
         <element name="SNFReward" positionX="61" positionY="51" width="128" height="208"/>
         <element name="SNFSmile" positionX="-711" positionY="153" width="128" height="193"/>
         <element name="SNFUser" positionX="-504" positionY="-399" width="128" height="210"/>
         <element name="SNFUserRole" positionX="-272" positionY="-36" width="128" height="193"/>
-        <element name="SNFPredefinedBoard" positionX="151" positionY="-243" width="128" height="73"/>
     </elements>
 </model>

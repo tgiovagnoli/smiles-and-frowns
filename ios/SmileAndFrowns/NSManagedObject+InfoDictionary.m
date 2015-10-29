@@ -173,19 +173,5 @@
 	return uuids;
 }
 
-+ (void)load{
-	@autoreleasepool {
-		[[NSNotificationCenter defaultCenter] addObserver:(id)[self class] selector:@selector(objectContextWillSave:) name: NSManagedObjectContextWillSaveNotification object:nil];
-	}
-}
-
-+ (void)objectContextWillSave:(NSNotification*) notification{
-	NSManagedObjectContext* context = [notification object];
-	NSSet* allModified = [context.insertedObjects setByAddingObjectsFromSet: context.updatedObjects];
-	NSPredicate* predicate = [NSPredicate predicateWithFormat: @"self isKindOfClass: %@", [self class]];
-	NSSet *modifiable = [allModified filteredSetUsingPredicate:predicate];
-	NSLog(@"on update");
-}
-
 
 @end

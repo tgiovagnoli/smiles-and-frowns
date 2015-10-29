@@ -10,6 +10,9 @@
 @implementation SNFSyncService
 
 - (void)syncWithCompletion:(SNFSyncServiceCallback)completion{
+	NSError *saveError;
+	[[SNFModel sharedInstance].managedObjectContext save:&saveError]; // save the context in its current state before syncing so that any newer dates are committed.
+	
 	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"sync"];
 	
 	NSDictionary *postData = [self createPostInfoDictionary];
@@ -192,8 +195,10 @@
 	[updates addObject:changeLog];
 	
 	// save the context so that if the user quits the app all records will work with sync date
+	[SNFDateManager lock]; // lock the date manager before saving the context so that all updates that are made keep the server date
 	NSError *saveError;
 	[context save:&saveError];
+	[SNFDateManager unlock];
 	completion(saveError, updates);
 }
 
