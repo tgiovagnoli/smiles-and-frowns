@@ -5,6 +5,7 @@
 #import "SNFPasswordReset.h"
 #import "SNFUserService.h"
 #import "SNFModel.h"
+#import "MBProgressHUD.h"
 
 @interface SNFLogin ()
 @property SNFUserService * service;
@@ -18,8 +19,11 @@
 }
 
 - (IBAction) login:(id) sender {
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
 	[self.service loginWithEmail:self.email.text andPassword:self.password.text withCompletion:^(NSError *error, SNFUser *user) {
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
 		if(error) {
 			
 			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Login Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];

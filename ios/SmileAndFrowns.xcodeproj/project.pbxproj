@@ -196,17 +196,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0707D69B1BE28EA8002F1FC0 /* Startup */ = {
+		0707D69B1BE28EA8002F1FC0 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
 				0707D69C1BE28EC6002F1FC0 /* SNFTutorial.h */,
 				0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */,
 				0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */,
-				0707D6AB1BE2A1C9002F1FC0 /* SNFLogin.h */,
-				0707D6AC1BE2A1C9002F1FC0 /* SNFLogin.m */,
-				0707D6AD1BE2A1C9002F1FC0 /* SNFLogin.xib */,
 			);
-			name = Startup;
+			name = Tutorial;
 			sourceTree = "<group>";
 		};
 		0707D6C11BE2B2CB002F1FC0 /* Accept Invite */ = {
@@ -233,6 +230,16 @@
 				0707D6CF1BE2B301002F1FC0 /* SNFPasswordReset.xib */,
 			);
 			name = Launcher;
+			sourceTree = "<group>";
+		};
+		0707D6D21BE2B852002F1FC0 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0707D6AB1BE2A1C9002F1FC0 /* SNFLogin.h */,
+				0707D6AC1BE2A1C9002F1FC0 /* SNFLogin.m */,
+				0707D6AD1BE2A1C9002F1FC0 /* SNFLogin.xib */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		D6272FB41BE0020A0024CBC2 /* apd-objc */ = {
@@ -270,6 +277,7 @@
 			children = (
 				0707D6C11BE2B2CB002F1FC0 /* Accept Invite */,
 				0707D6C71BE2B2EB002F1FC0 /* Launcher */,
+				0707D6D21BE2B852002F1FC0 /* Login */,
 				D65DF12B1BE2AE5A009CC6DF /* More */,
 				D65DF1261BE2AA50009CC6DF /* SNFBoardList.h */,
 				D65DF1271BE2AA50009CC6DF /* SNFBoardList.m */,
@@ -286,7 +294,7 @@
 				D659DBB51BDAE07F0048D3F7 /* SNFViewController.h */,
 				D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */,
 				0707D6A41BE29756002F1FC0 /* SNFViewController.xib */,
-				0707D69B1BE28EA8002F1FC0 /* Startup */,
+				0707D69B1BE28EA8002F1FC0 /* Tutorial */,
 			);
 			name = Views;
 			sourceTree = "<group>";
