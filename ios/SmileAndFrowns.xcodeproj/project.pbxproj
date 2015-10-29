@@ -21,6 +21,7 @@
 		0707D6CC1BE2B2F8002F1FC0 /* SNFCreateAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6CA1BE2B2F8002F1FC0 /* SNFCreateAccount.xib */; };
 		0707D6D01BE2B301002F1FC0 /* SNFPasswordReset.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6CE1BE2B301002F1FC0 /* SNFPasswordReset.m */; };
 		0707D6D11BE2B301002F1FC0 /* SNFPasswordReset.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6CF1BE2B301002F1FC0 /* SNFPasswordReset.xib */; };
+		0707D6D51BE2D16D002F1FC0 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6D41BE2D16D002F1FC0 /* NSString+Additions.m */; };
 		D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */; };
 		D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAC1BDFD1FF0024CBC2 /* SNFError.m */; };
 		D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAF1BDFD88F0024CBC2 /* SNFService.m */; };
@@ -102,6 +103,8 @@
 		0707D6CD1BE2B301002F1FC0 /* SNFPasswordReset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPasswordReset.h; sourceTree = "<group>"; };
 		0707D6CE1BE2B301002F1FC0 /* SNFPasswordReset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPasswordReset.m; sourceTree = "<group>"; };
 		0707D6CF1BE2B301002F1FC0 /* SNFPasswordReset.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFPasswordReset.xib; sourceTree = "<group>"; };
+		0707D6D31BE2D16D002F1FC0 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Additions.h"; path = "submodules/apd-objc/NSString+Additions.h"; sourceTree = "<group>"; };
+		0707D6D41BE2D16D002F1FC0 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Additions.m"; path = "submodules/apd-objc/NSString+Additions.m"; sourceTree = "<group>"; };
 		D6272FA71BDFCD1A0024CBC2 /* SNFUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserService.h; sourceTree = "<group>"; };
 		D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserService.m; sourceTree = "<group>"; };
 		D6272FAB1BDFD1FF0024CBC2 /* SNFError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFError.h; sourceTree = "<group>"; };
@@ -265,20 +268,22 @@
 		D6272FB41BE0020A0024CBC2 /* apd-objc */ = {
 			isa = PBXGroup;
 			children = (
-				D65DF1071BE299D3009CC6DF /* UIViewControllerStack.h */,
-				D65DF1081BE299D3009CC6DF /* UIViewControllerStack.m */,
-				0707D6A11BE294A6002F1FC0 /* UIView+LayoutHelpers.h */,
-				0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */,
 				D6272FB51BE002160024CBC2 /* APDDebugViewController.h */,
 				D6272FB61BE002160024CBC2 /* APDDebugViewController.m */,
 				D6272FB71BE002160024CBC2 /* APDDebugViewController.xib */,
 				D6272FB81BE002160024CBC2 /* APDDjangoErrorViewer.h */,
 				D6272FB91BE002160024CBC2 /* APDDjangoErrorViewer.m */,
 				D6272FC31BE002330024CBC2 /* APDDjangoErrorViewer.xib */,
+				0707D6D31BE2D16D002F1FC0 /* NSString+Additions.h */,
+				0707D6D41BE2D16D002F1FC0 /* NSString+Additions.m */,
 				D6272FBA1BE002160024CBC2 /* NSTimer+Blocks.h */,
 				D6272FBB1BE002160024CBC2 /* NSTimer+Blocks.m */,
 				D6272FBC1BE002160024CBC2 /* NSURLRequest+Additions.h */,
 				D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */,
+				0707D6A11BE294A6002F1FC0 /* UIView+LayoutHelpers.h */,
+				0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */,
+				D65DF1071BE299D3009CC6DF /* UIViewControllerStack.h */,
+				D65DF1081BE299D3009CC6DF /* UIViewControllerStack.m */,
 			);
 			name = "apd-objc";
 			sourceTree = "<group>";
@@ -596,6 +601,7 @@
 				D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */,
 				D659DC041BDB06010048D3F7 /* SNFModel.m in Sources */,
 				D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */,
+				0707D6D51BE2D16D002F1FC0 /* NSString+Additions.m in Sources */,
 				D659DBEC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m in Sources */,
 				D6272FC71BE04E010024CBC2 /* SNFUserSettings.m in Sources */,
 				D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */,
