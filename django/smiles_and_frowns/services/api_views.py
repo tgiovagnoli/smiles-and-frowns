@@ -489,7 +489,7 @@ def sync_pull(request, sync_date=None):
 	#if json, grab out of body
 	if not sync_date and request.META['CONTENT_TYPE'] == "application/json":
 		data = json.loads(request.body)
-		sync_date = data['sync_date']
+		sync_date = data.get('sync_date',None)
 
 	#if no sync date set back to 
 	if not sync_date:
@@ -742,5 +742,5 @@ def sync_from_client(request):
 		reward.currency_type = client_reward.get('currency_type')
 		reward.device_date = client_reward_date
 		reward.save()
-
-	return sync_pull(request, data['sync_date'])
+	
+	return sync_pull(request, sync_date=data.get('sync_date',None))
