@@ -4,6 +4,8 @@
 #import "SNFTutorial.h"
 #import "SNFModel.h"
 #import "SNFLogin.h"
+#import "SNFViewController.h"
+#import "SNFAcceptInvite.h"
 
 @interface SNFLauncher ()
 @property BOOL firstlayout;
@@ -12,7 +14,6 @@
 @implementation SNFLauncher
 
 + (BOOL) showAtLaunch {
-	//return TRUE;
 	[[NSUserDefaults standardUserDefaults] registerDefaults:@{@"ShowAtStartup":@(true)}];
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"ShowAtStartup"];
 }
@@ -35,11 +36,20 @@
 - (IBAction) acceptInvite:(id)sender {
 	if(![SNFModel sharedInstance].loggedInUser) {
 		
+		SNFLogin * login = [[SNFLogin alloc] init];
+		login.nextViewControllerAfterLogin = [[SNFAcceptInvite alloc] init];
+		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:^{
+			
+		}];
+	} else {
+		[[AppDelegate rootViewController] presentViewController:[[SNFAcceptInvite alloc] init] animated:TRUE completion:^{
+			
+		}];
 	}
 }
 
 - (IBAction) createBoard:(id)sender {
-	
+	[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
 }
 
 - (IBAction) viewTutorial:(id)sender {
@@ -50,7 +60,7 @@
 
 - (IBAction) login:(id) sender {
 	SNFLogin * login = [[SNFLogin alloc] init];
-	[[AppDelegate instance].window.rootViewController presentViewController:login animated:TRUE completion:^{
+	[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:^{
 		
 	}];
 }

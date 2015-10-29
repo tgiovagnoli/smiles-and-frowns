@@ -17,6 +17,10 @@ static AppDelegate * _instance;
 	return _instance;
 }
 
++ (UIViewController *) rootViewController; {
+	return _instance.window.rootViewController;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	_instance = self;
 	

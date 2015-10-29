@@ -1,6 +1,8 @@
 #import <UIKit/UIKit.h>
 #import "SNFBoard.h"
 
+
+
 @interface SNFBoardListCell : UITableViewCell
 
 @property (weak) IBOutlet UILabel *titleLabel;

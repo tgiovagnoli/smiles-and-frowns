@@ -36,11 +36,6 @@ static SNFViewController * _instance;
 	return _instance;
 }
 
-- (void) showTutorial {
-	SNFTutorial * tutorial = [[SNFTutorial alloc] init];
-	[self.view addSubview:tutorial.view];
-}
-
 - (void) showDebug {
 	SNFDebug *debug = [[SNFDebug alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:debug animated:NO];

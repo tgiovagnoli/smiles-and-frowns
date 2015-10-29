@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFLogin">
             <connections>
+                <outlet property="email" destination="N1T-kw-7ya" id="tgZ-rI-nZg"/>
+                <outlet property="password" destination="xrm-ng-EsY" id="spg-MU-oOM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -43,7 +45,7 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N1T-kw-7ya">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="info@apptitude-digital.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N1T-kw-7ya">
                     <rect key="frame" x="145" y="219" width="311" height="30"/>
                     <animations/>
                     <constraints>
@@ -53,7 +55,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xrm-ng-EsY">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="abc123$" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xrm-ng-EsY">
                     <rect key="frame" x="145" y="257" width="311" height="30"/>
                     <animations/>
                     <constraints>
@@ -71,6 +73,9 @@
                         <constraint firstAttribute="width" constant="70" id="XHT-HO-vY2"/>
                     </constraints>
                     <state key="normal" title="Login"/>
+                    <connections>
+                        <action selector="login:" destination="-1" eventType="touchUpInside" id="zsH-IH-sfZ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40k-jq-61R">
                     <rect key="frame" x="230" y="562" width="140" height="30"/>
@@ -82,6 +87,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="Forgot My Password"/>
+                    <connections>
+                        <action selector="forgotPassword:" destination="-1" eventType="touchUpInside" id="Pe7-Ja-HCQ"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSn-IZ-78r">
                     <rect key="frame" x="279" y="15" width="42" height="21"/>
@@ -114,6 +122,9 @@
                         <constraint firstAttribute="width" constant="150" id="amS-eK-JWP"/>
                     </constraints>
                     <state key="normal" title="Create New Account"/>
+                    <connections>
+                        <action selector="createAccount:" destination="-1" eventType="touchUpInside" id="APw-3Y-xIz"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xe0-63-PVi">
                     <rect key="frame" x="304" y="524" width="150" height="30"/>

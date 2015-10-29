@@ -17,6 +17,7 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 + (AppDelegate *) instance;
++ (UIViewController *) rootViewController;
 - (void) saveContext;
 - (NSURL *) applicationDocumentsDirectory;
 - (void) finishTutorial:(BOOL) userInitiatedTutorial;
