@@ -17,21 +17,12 @@ static SNFViewController * _instance;
 	[super viewDidLoad];
 	
 	_instance = self;
-	
-	if(![SNFTutorial hasSeenTutorial]) {
-		[self showTutorial];
-	}
 }
 
 - (void) showDebug {
 	SNFDebug *debug = [[SNFDebug alloc] init];
 	debug.delegate = self;
 	[self presentViewController:debug animated:YES completion:^{}];
-}
-
-- (void) showTutorial {
-	SNFTutorial * tutorial = [[SNFTutorial alloc] init];
-	[self.view addSubview:tutorial.view];
 }
 
 - (void)debugViewControllerIsDone:(APDDebugViewController *)debugViewController{
