@@ -36,12 +36,14 @@
 				completion(error, nil);
 				return;
 			}
+			
 			NSError *jsonError;
 			NSObject *infoDict = [self responseObjectFromData:data withError:&jsonError];
 			if(jsonError){
 				completion(jsonError, nil);
 				return;
 			}
+			
 			if([infoDict isMemberOfClass:[NSDictionary class]] || [infoDict isKindOfClass:[NSDictionary class]]){
 				[self updateLocalDataWithResults:(NSDictionary *)infoDict andCallCompletion:completion];
 			}else{
@@ -127,6 +129,7 @@
 	}
 	
 	NSMutableDictionary *changeLog = [[NSMutableDictionary alloc] init];
+	
 	// update boards
 	NSArray *boardUpdates = [results valueForKey:@"boards"];
 	if(boardUpdates){
@@ -137,6 +140,7 @@
 		}
 		[changeLog setObject:boardChanges forKey:@"boards"];
 	}
+	
 	// update user roles
 	NSArray *userRoleUpdates = [results valueForKey:@"user_roles"];
 	if(userRoleUpdates){
@@ -158,6 +162,7 @@
 		}
 		[changeLog setObject:behaviorChanges forKey:@"behaviors"];
 	}
+	
 	// update rewards
 	NSArray *rewardsUpdates = [results valueForKey:@"rewards"];
 	if(rewardsUpdates){
@@ -168,6 +173,7 @@
 		}
 		[changeLog setObject:rewardChanges forKey:@"rewards"];
 	}
+	
 	// update smiles
 	NSArray *smilesUpdates = [results valueForKey:@"smiles"];
 	if(smilesUpdates){
@@ -178,6 +184,7 @@
 		}
 		[changeLog setObject:smilesChanges forKey:@"smiles"];
 	}
+	
 	// update frowns
 	NSArray *frownsUpdates = [results valueForKey:@"frowns"];
 	if(frownsUpdates){
@@ -188,6 +195,7 @@
 		}
 		[changeLog setObject:frownsChanges forKey:@"frowns"];
 	}
+	
 	[updates addObject:changeLog];
 
 #if DEBUG
@@ -196,12 +204,5 @@
 	
 	completion(nil, updates);
 }
-
-
-
-
-
-
-
 
 @end
