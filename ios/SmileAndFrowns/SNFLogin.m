@@ -27,7 +27,7 @@
 				
 			}]];
 			
-			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+			[self presentViewController:alert animated:YES completion:^{}];
 			
 		} else {
 			
