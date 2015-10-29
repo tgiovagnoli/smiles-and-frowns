@@ -25,6 +25,7 @@
 	[self insertItemWithName:@"Sync" andSelector:@selector(sync)];
 	[self insertItemWithName:@"Login" andSelector:@selector(login)];
 	[self insertItemWithName:@"Logout" andSelector:@selector(logout)];
+	[self insertItemWithName:@"Update Title On Board" andSelector:@selector(updateTitleOnBoard)];
 	
 	
 	[self insertItemWithName:@"Log Boards" andSelector:@selector(logBoards)];
@@ -34,6 +35,8 @@
 	[self insertItemWithName:@"Log Frowns" andSelector:@selector(logFrowns)];
 	[self insertItemWithName:@"Log User Roles" andSelector:@selector(logUserRoles)];
 }
+
+
 
 - (void)login{
 	SNFUserService *userService = [[SNFUserService alloc] init];
@@ -265,6 +268,54 @@
 	}];
 }
 
+- (void)updateTitleOnBoard{
+	SNFSyncService *syncService = [[SNFSyncService alloc] init];
+	[syncService syncWithCompletion:^(NSError *error, NSObject *boardData) {
+		if(error && error.code == SNFErrorCodeDjangoDebugError){
+			APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
+			[self presentViewController:viewer animated:YES completion:^{
+				[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
+			}];
+		}else if(error){
+			[self alertWithMessage:error.localizedDescription];
+		}
+		
+		
+		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Enter a title" preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+			NSString *uuid = @"A5B6E13E-A3F2-45D6-83AA-213677EE0FF9";
+			NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
+			NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
+			NSEntityDescription * entity = [NSEntityDescription entityForName:@"SNFBoard" inManagedObjectContext:context];
+			[fetchRequest setEntity:entity];
+			
+			NSPredicate * predicate = [NSPredicate predicateWithFormat:@"uuid==%@", uuid];
+			[fetchRequest setPredicate:predicate];
+			
+			NSError *error;
+			NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+			if(fetchedObjects.count <= 0){
+				[self alertWithMessage:[NSString stringWithFormat:@"could not find board with uuid %@", uuid]];
+			}else{
+				for(UITextField *tf in alert.textFields){
+					if(tf.tag == 100){
+						SNFBoard *board = [fetchedObjects objectAtIndex:0];
+						NSLog(@"new value is %@", tf.text);
+						board.title = tf.text;
+					}
+				}
+			}
+		}]];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}]];
+		[alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+			textField.placeholder = @"Title";
+			textField.tag = 100;
+		}];
+		[self presentViewController:alert animated:YES completion:^{}];
+	}];
+	
+}
+
 - (void)save{
 	NSError *error;
 	[[SNFModel sharedInstance].managedObjectContext save:&error];
@@ -298,6 +349,8 @@
 - (void)logUserRoles{
 	[self logInfoForType:@"SNFUserRole"];
 }
+
+
 
 - (void)logInfoForType:(NSString *)type{
 	NSError *error;

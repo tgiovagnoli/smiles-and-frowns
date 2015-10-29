@@ -4,7 +4,6 @@ static BOOL _locked;
 
 @implementation SNFDateManager
 
-
 + (void)initialize{
 	[[NSNotificationCenter defaultCenter] addObserver:[self class] selector: @selector(objectContextWillSave:) name: NSManagedObjectContextWillSaveNotification object: nil];
 }
