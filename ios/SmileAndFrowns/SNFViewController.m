@@ -51,6 +51,7 @@ static SNFViewController * _instance;
 - (void)showProfile{
 	SNFUserProfile *profile = [[SNFUserProfile alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:profile animated:NO];
+	[profile loadAuthedUser];
 }
 
 - (void)showMore{

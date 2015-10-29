@@ -55,6 +55,7 @@
 		D65DF1111BE29A42009CC6DF /* SNFTabMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF10C1BE29A42009CC6DF /* SNFTabMenu.xib */; };
 		D65DF1121BE29A42009CC6DF /* SNFUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF10E1BE29A42009CC6DF /* SNFUserProfile.m */; };
 		D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF10F1BE29A42009CC6DF /* SNFUserProfile.xib */; };
+		D65DF1251BE2A4FB009CC6DF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1241BE2A4FB009CC6DF /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +146,8 @@
 		D65DF10D1BE29A42009CC6DF /* SNFUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserProfile.h; sourceTree = "<group>"; };
 		D65DF10E1BE29A42009CC6DF /* SNFUserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserProfile.m; sourceTree = "<group>"; };
 		D65DF10F1BE29A42009CC6DF /* SNFUserProfile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFUserProfile.xib; sourceTree = "<group>"; };
+		D65DF1231BE2A4FB009CC6DF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = libraries/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		D65DF1241BE2A4FB009CC6DF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = libraries/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +195,7 @@
 		D62D37861BDE7E9700102D6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D65DF1141BE2A45B009CC6DF /* MBProgerssHUD */,
 				D6272FB41BE0020A0024CBC2 /* apd-objc */,
 			);
 			name = Frameworks;
@@ -349,6 +353,15 @@
 			name = Util;
 			sourceTree = "<group>";
 		};
+		D65DF1141BE2A45B009CC6DF /* MBProgerssHUD */ = {
+			isa = PBXGroup;
+			children = (
+				D65DF1231BE2A4FB009CC6DF /* MBProgressHUD.h */,
+				D65DF1241BE2A4FB009CC6DF /* MBProgressHUD.m */,
+			);
+			name = MBProgerssHUD;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -432,6 +445,7 @@
 				D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */,
 				D65DF1121BE29A42009CC6DF /* SNFUserProfile.m in Sources */,
 				D659DBF41BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m in Sources */,
+				D65DF1251BE2A4FB009CC6DF /* MBProgressHUD.m in Sources */,
 				D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */,
 				D659DBF21BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m in Sources */,
 				D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */,

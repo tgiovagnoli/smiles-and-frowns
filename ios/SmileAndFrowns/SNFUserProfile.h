@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 #import "SNFUser.h"
 #import "UIViewControllerStack.h"
 #import "SNFUserService.h"
