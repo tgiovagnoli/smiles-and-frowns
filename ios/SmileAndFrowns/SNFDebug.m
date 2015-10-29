@@ -269,6 +269,10 @@
 }
 
 - (void)updateTitleOnBoard{
+	const NSInteger uuidTag = 1;
+	const NSInteger titleTag = 2;
+	
+	
 	SNFSyncService *syncService = [[SNFSyncService alloc] init];
 	[syncService syncWithCompletion:^(NSError *error, NSObject *boardData) {
 		if(error && error.code == SNFErrorCodeDjangoDebugError){
@@ -280,10 +284,19 @@
 			[self alertWithMessage:error.localizedDescription];
 		}
 		
-		
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Enter a title" preferredStyle:UIAlertControllerStyleAlert];
 		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-			NSString *uuid = @"A5B6E13E-A3F2-45D6-83AA-213677EE0FF9";
+			NSString *title;
+			NSString *uuid;
+			for(UITextField *tf in alert.textFields){
+				if(tf.tag == titleTag){
+					title = tf.text;
+				}else if(tf.tag == uuidTag){
+					uuid = tf.text;
+				}
+			}
+			
+			
 			NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 			NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
 			NSEntityDescription * entity = [NSEntityDescription entityForName:@"SNFBoard" inManagedObjectContext:context];
@@ -298,10 +311,10 @@
 				[self alertWithMessage:[NSString stringWithFormat:@"could not find board with uuid %@", uuid]];
 			}else{
 				for(UITextField *tf in alert.textFields){
-					if(tf.tag == 100){
+					if(tf.tag == titleTag){
 						SNFBoard *board = [fetchedObjects objectAtIndex:0];
+						board.title = title;
 						NSLog(@"new value is %@", tf.text);
-						board.title = tf.text;
 					}
 				}
 			}
@@ -309,8 +322,14 @@
 		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}]];
 		[alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
 			textField.placeholder = @"Title";
-			textField.tag = 100;
+			textField.tag = titleTag;
 		}];
+		[alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+			textField.placeholder = @"UUID";
+			textField.tag = uuidTag;
+			textField.text = @"A5B6E13E-A3F2-45D6-83AA-213677EE0FF9";
+		}];
+		
 		[self presentViewController:alert animated:YES completion:^{}];
 	}];
 	

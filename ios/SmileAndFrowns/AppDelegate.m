@@ -19,7 +19,10 @@ static AppDelegate * _instance;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	_instance = self;
 	
-	self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	SNFViewController *vc = [[SNFViewController alloc] init];
+	self.window.rootViewController = vc;
+	[self.window makeKeyAndVisible];
 	
 	if(![SNFTutorial hasSeenTutorial]) {
 		self.window.rootViewController = [[SNFTutorial alloc] init];
@@ -30,7 +33,9 @@ static AppDelegate * _instance;
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
 	[SNFDateManager unlock];
 	
-	[self.window makeKeyAndVisible];
+	application.statusBarHidden = YES;
+	
+	
 	
 	return YES;
 }
