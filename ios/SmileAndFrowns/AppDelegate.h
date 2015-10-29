@@ -19,7 +19,7 @@
 + (AppDelegate *) instance;
 - (void) saveContext;
 - (NSURL *) applicationDocumentsDirectory;
-- (void) finishTutorial;
+- (void) finishTutorial:(BOOL) userInitiatedTutorial;
 
 @end
 
