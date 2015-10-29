@@ -5,6 +5,7 @@
 #import "SNFTabMenu.h"
 #import "SNFUserProfile.h"
 
+
 @interface SNFViewController : UIViewController <APDDebugViewControllerDelegate>
 
 @property (weak) IBOutlet UIViewControllerStack *viewControllerStack;

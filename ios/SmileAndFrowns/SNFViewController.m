@@ -6,6 +6,7 @@
 #import "NSTimer+Blocks.h"
 #import "SNFTutorial.h"
 #import "SNFBoardList.h"
+#import "SNFMore.h"
 
 static SNFViewController * _instance;
 
@@ -57,7 +58,8 @@ static SNFViewController * _instance;
 }
 
 - (void)showMore{
-	[self.viewControllerStack eraseStack];
+	SNFMore *more = [[SNFMore alloc] init];
+	[self.viewControllerStack eraseStackAndPushViewController:more animated:NO];
 }
 
 - (void)debugViewControllerIsDone:(APDDebugViewController *)debugViewController{

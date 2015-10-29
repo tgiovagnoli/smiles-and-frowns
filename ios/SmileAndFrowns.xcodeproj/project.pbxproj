@@ -62,6 +62,8 @@
 		D65DF1251BE2A4FB009CC6DF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1241BE2A4FB009CC6DF /* MBProgressHUD.m */; };
 		D65DF1291BE2AA50009CC6DF /* SNFBoardList.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1271BE2AA50009CC6DF /* SNFBoardList.m */; };
 		D65DF12A1BE2AA50009CC6DF /* SNFBoardList.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF1281BE2AA50009CC6DF /* SNFBoardList.xib */; };
+		D65DF12F1BE2AE6D009CC6DF /* SNFMore.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF12D1BE2AE6D009CC6DF /* SNFMore.m */; };
+		D65DF1301BE2AE6D009CC6DF /* SNFMore.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF12E1BE2AE6D009CC6DF /* SNFMore.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +165,9 @@
 		D65DF1261BE2AA50009CC6DF /* SNFBoardList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBoardList.h; sourceTree = "<group>"; };
 		D65DF1271BE2AA50009CC6DF /* SNFBoardList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoardList.m; sourceTree = "<group>"; };
 		D65DF1281BE2AA50009CC6DF /* SNFBoardList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFBoardList.xib; sourceTree = "<group>"; };
+		D65DF12C1BE2AE6D009CC6DF /* SNFMore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFMore.h; sourceTree = "<group>"; };
+		D65DF12D1BE2AE6D009CC6DF /* SNFMore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFMore.m; sourceTree = "<group>"; };
+		D65DF12E1BE2AE6D009CC6DF /* SNFMore.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFMore.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +230,7 @@
 		D62D37921BDE7FCA00102D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D65DF12B1BE2AE5A009CC6DF /* More */,
 				D65DF1261BE2AA50009CC6DF /* SNFBoardList.h */,
 				D65DF1271BE2AA50009CC6DF /* SNFBoardList.m */,
 				D65DF1281BE2AA50009CC6DF /* SNFBoardList.xib */,
@@ -386,6 +392,16 @@
 			name = MBProgerssHUD;
 			sourceTree = "<group>";
 		};
+		D65DF12B1BE2AE5A009CC6DF /* More */ = {
+			isa = PBXGroup;
+			children = (
+				D65DF12C1BE2AE6D009CC6DF /* SNFMore.h */,
+				D65DF12D1BE2AE6D009CC6DF /* SNFMore.m */,
+				D65DF12E1BE2AE6D009CC6DF /* SNFMore.xib */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -454,6 +470,7 @@
 				D65DF12A1BE2AA50009CC6DF /* SNFBoardList.xib in Resources */,
 				D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */,
 				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
+				D65DF1301BE2AE6D009CC6DF /* SNFMore.xib in Resources */,
 				0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +520,7 @@
 				D6272FC01BE002160024CBC2 /* APDDjangoErrorViewer.m in Sources */,
 				D6272FC21BE002160024CBC2 /* NSURLRequest+Additions.m in Sources */,
 				D659DBEF1BDAEA000048D3F7 /* SNFBehavior.m in Sources */,
+				D65DF12F1BE2AE6D009CC6DF /* SNFMore.m in Sources */,
 				D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */,
 				D6272FC11BE002160024CBC2 /* NSTimer+Blocks.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
