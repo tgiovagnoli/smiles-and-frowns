@@ -38,11 +38,11 @@
 		
 		SNFLogin * login = [[SNFLogin alloc] init];
 		login.nextViewControllerAfterLogin = [[SNFAcceptInvite alloc] init];
-		[[AppDelegate instance].window.rootViewController presentViewController:login animated:TRUE completion:^{
+		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:^{
 			
 		}];
 	} else {
-		[[AppDelegate instance].window.rootViewController presentViewController:[[SNFAcceptInvite alloc] init] animated:TRUE completion:^{
+		[[AppDelegate rootViewController] presentViewController:[[SNFAcceptInvite alloc] init] animated:TRUE completion:^{
 			
 		}];
 	}
@@ -60,7 +60,7 @@
 
 - (IBAction) login:(id) sender {
 	SNFLogin * login = [[SNFLogin alloc] init];
-	[[AppDelegate instance].window.rootViewController presentViewController:login animated:TRUE completion:^{
+	[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:^{
 		
 	}];
 }

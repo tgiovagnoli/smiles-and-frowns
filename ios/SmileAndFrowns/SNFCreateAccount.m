@@ -12,7 +12,7 @@
 }
 
 - (IBAction) cancel:(id)sender {
-	[[AppDelegate instance].window.rootViewController dismissViewControllerAnimated:TRUE completion:^{
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 	}];
 }

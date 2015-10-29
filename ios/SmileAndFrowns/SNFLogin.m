@@ -3,43 +3,59 @@
 #import "AppDelegate.h"
 #import "SNFCreateAccount.h"
 #import "SNFPasswordReset.h"
+#import "SNFUserService.h"
+#import "SNFModel.h"
 
 @interface SNFLogin ()
+@property SNFUserService * service;
 @end
 
 @implementation SNFLogin
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	self.service = [[SNFUserService alloc] init];
 }
 
 - (IBAction) login:(id) sender {
 	
-	if(self.nextViewControllerAfterLogin) {
-		
-		[[AppDelegate instance].window.rootViewController dismissViewControllerAnimated:TRUE completion:^{
+	[self.service loginWithEmail:self.email.text andPassword:self.password.text withCompletion:^(NSError *error, SNFUser *user) {
+		if(error) {
 			
-			[[AppDelegate instance].window.rootViewController presentViewController:self.nextViewControllerAfterLogin animated:TRUE completion:^{
+			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Login Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 				
-			}];
+			}]];
 			
-		}];
-		
-	}
-	
+			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+			
+		} else {
+			
+			[SNFModel sharedInstance].loggedInUser = user;
+			
+			[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+				
+				if(self.nextViewControllerAfterLogin) {
+					[[AppDelegate rootViewController] presentViewController:self.nextViewControllerAfterLogin animated:TRUE completion:^{
+						
+					}];
+				}
+			}];
+		}
+	}];
 }
 
 - (IBAction) cancel:(id)sender {
-	[[AppDelegate instance].window.rootViewController dismissViewControllerAnimated:TRUE completion:^{
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 	}];
 }
 
 - (IBAction) createAccount:(id) sender {
-	[[AppDelegate instance].window.rootViewController dismissViewControllerAnimated:TRUE completion:^{
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 		SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] init];
-		[[AppDelegate instance].window.rootViewController presentViewController:createAccount animated:TRUE completion:^{
+		[[AppDelegate rootViewController] presentViewController:createAccount animated:TRUE completion:^{
 			
 		}];
 		
@@ -47,10 +63,10 @@
 }
 
 - (IBAction) forgotPassword:(id) sender {
-	[[AppDelegate instance].window.rootViewController dismissViewControllerAnimated:TRUE completion:^{
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 		SNFPasswordReset * reset = [[SNFPasswordReset alloc] init];
-		[[AppDelegate instance].window.rootViewController presentViewController:reset animated:TRUE completion:^{
+		[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:^{
 			
 		}];
 		
