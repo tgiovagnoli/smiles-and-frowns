@@ -10,7 +10,7 @@
 @implementation SNFSyncService
 
 - (void)syncWithCompletion:(SNFSyncServiceCallback)completion{
-	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"sync/push"];
+	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"sync"];
 	
 	NSDictionary *postData = [self createPostInfoDictionary];
 	NSError *jsonError;

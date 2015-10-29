@@ -20,8 +20,7 @@ urlpatterns = [
     url(r'^api/invite/?', api_views.invite),
     
     #syncing
-    url(r'^api/sync/push/?', api_views.sync_from_client),
-    url(r'^api/sync/?', api_views.sync_pull),
+    url(r'^api/sync/?', api_views.sync),
 
     url(r'^api/boards/?', api_views.boards),
 ]

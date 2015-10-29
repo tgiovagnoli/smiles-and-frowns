@@ -466,19 +466,16 @@ def invite(request):
 	return json_response({})
 
 @csrf_exempt
-def sync_pull(request, sync_date=None, created_object_uuids={}):
-	#check auth
-	if not request.user.is_authenticated(): 
-		return login_required_response()
-
-	
-
-@csrf_exempt
-def sync_from_client(request):
+def sync(request):
 	'''
 	Request body should be json:
 	{sync_date:date, 'boards':[], 'behaviors':[], 'smiles':[], 'frowns':[], 'rewards':[], 'user_roles':[]}
+
+	Response body is the same:
+	{sync_date:date, 'boards':[], 'behaviors':[], 'smiles':[], 'frowns':[], 'rewards':[], 'user_roles':[]}
 	'''
+	
+	#check auth
 	if not request.user.is_authenticated(): 
 		return login_required_response()
 
@@ -760,14 +757,18 @@ def sync_from_client(request):
 	frowns = models.Frown.objects.filter(~Q(uuid__in=created_object_uuids['frowns']),board__in=boards,device_date__gt=sync_date)
 	rewards = models.Reward.objects.filter(~Q(uuid__in=created_object_uuids['rewards']),board__in=boards,device_date__gt=sync_date)
 	user_roles = models.UserRole.objects.filter(~Q(uuid__in=created_object_uuids['user_roles']),user=request.user,device_date__gt=sync_date)
-	
+
 	#remove boards that don't need to be returned to user.
 	remove = []
 	for board in boards:
-		if board.created_date < sync_date or board.device_date < sync_date:
+		if board.device_date < sync_date:
 			remove.append(board)
+		
+		#if the board was just created in the request handling code, don't need to return it.
 		elif board.uuid in created_object_uuids['boards']:
 			remove.append(board)
+	
+	#remove boards
 	for board in remove:
 		boards.remove(board)
 
