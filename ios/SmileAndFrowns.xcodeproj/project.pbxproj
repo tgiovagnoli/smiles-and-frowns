@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0707D69F1BE28EC6002F1FC0 /* SNFTutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */; };
+		0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */; };
+		0707D6A31BE294A6002F1FC0 /* UIView+LayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */; };
 		D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */; };
 		D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAC1BDFD1FF0024CBC2 /* SNFError.m */; };
 		D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAF1BDFD88F0024CBC2 /* SNFService.m */; };
@@ -50,6 +53,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0707D69C1BE28EC6002F1FC0 /* SNFTutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFTutorial.h; sourceTree = "<group>"; };
+		0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFTutorial.m; sourceTree = "<group>"; };
+		0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFTutorial.xib; sourceTree = "<group>"; };
+		0707D6A11BE294A6002F1FC0 /* UIView+LayoutHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+LayoutHelpers.h"; path = "submodules/apd-objc/UIView+LayoutHelpers.h"; sourceTree = "<group>"; };
+		0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+LayoutHelpers.m"; path = "submodules/apd-objc/UIView+LayoutHelpers.m"; sourceTree = "<group>"; };
 		D6272FA71BDFCD1A0024CBC2 /* SNFUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserService.h; sourceTree = "<group>"; };
 		D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserService.m; sourceTree = "<group>"; };
 		D6272FAB1BDFD1FF0024CBC2 /* SNFError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFError.h; sourceTree = "<group>"; };
@@ -137,9 +145,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0707D69B1BE28EA8002F1FC0 /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				0707D69C1BE28EC6002F1FC0 /* SNFTutorial.h */,
+				0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */,
+				0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */,
+			);
+			name = Startup;
+			sourceTree = "<group>";
+		};
 		D6272FB41BE0020A0024CBC2 /* apd-objc */ = {
 			isa = PBXGroup;
 			children = (
+				0707D6A11BE294A6002F1FC0 /* UIView+LayoutHelpers.h */,
+				0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */,
 				D6272FB51BE002160024CBC2 /* APDDebugViewController.h */,
 				D6272FB61BE002160024CBC2 /* APDDebugViewController.m */,
 				D6272FB71BE002160024CBC2 /* APDDebugViewController.xib */,
@@ -165,6 +185,7 @@
 		D62D37921BDE7FCA00102D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0707D69B1BE28EA8002F1FC0 /* Startup */,
 				D62D378D1BDE7FC600102D6A /* SNFDebug.h */,
 				D62D378E1BDE7FC600102D6A /* SNFDebug.m */,
 				D62D378F1BDE7FC600102D6A /* SNFDebug.xib */,
@@ -365,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
+				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
 				D6272FC41BE002330024CBC2 /* APDDjangoErrorViewer.xib in Resources */,
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
 				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
@@ -398,7 +420,9 @@
 				D6272FC71BE04E010024CBC2 /* SNFUserSettings.m in Sources */,
 				D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */,
 				D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */,
+				0707D6A31BE294A6002F1FC0 /* UIView+LayoutHelpers.m in Sources */,
 				D659DBED1BDAEA000048D3F7 /* SNFSmile.m in Sources */,
+				0707D69F1BE28EC6002F1FC0 /* SNFTutorial.m in Sources */,
 				D659DBF11BDAEA000048D3F7 /* SNFBoard.m in Sources */,
 				D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */,
 				D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */,
