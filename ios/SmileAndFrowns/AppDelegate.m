@@ -56,30 +56,35 @@ static AppDelegate * _instance;
 		//look for invite code.
 		NSArray * parts = [path componentsSeparatedByString:@"snf://invite/"];
 		if(parts.count == 2) {
+			
+			//set pending invite code.
 			NSString * inviteCode = [parts objectAtIndex:1];
 			[SNFModel sharedInstance].pendingInviteCode = inviteCode;
 			
 			if(![SNFModel sharedInstance].loggedInUser) {
 				
+				//show login view,
 				SNFLogin * login = [[SNFLogin alloc] init];
 				SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] init];
 				login.nextViewController = acceptInvite;
-				[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:^{
-					
-				}];
+				[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 				
 			} else {
 				
 				if(self.window.rootViewController.presentingViewController) {
+					
 					[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+						
 						//user is logged in here, show the invites view.
-						if([self.window.rootViewController isKindOfClass:[SNFLauncher class]]) {
+						if(![SNFViewController instance]) {
 							self.window.rootViewController = [[SNFViewController alloc] init];
 						}
-						
 						[[SNFViewController instance] showInvites];
+						
 					}];
+					
 				} else {
+					
 					//user is logged in here, show the invites view.
 					if([self.window.rootViewController isKindOfClass:[SNFLauncher class]]) {
 						self.window.rootViewController = [[SNFViewController alloc] init];
