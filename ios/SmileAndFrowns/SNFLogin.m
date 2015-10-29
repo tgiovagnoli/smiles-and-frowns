@@ -7,6 +7,8 @@
 #import "SNFModel.h"
 #import "MBProgressHUD.h"
 #import "NSString+Additions.h"
+#import "SNFAcceptInvite.h"
+#import "SNFViewController.h"
 
 @interface SNFLogin ()
 @property SNFUserService * service;
@@ -45,6 +47,7 @@
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
 	[self.service loginWithEmail:self.email.text andPassword:self.password.text withCompletion:^(NSError *error, SNFUser *user) {
+		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
@@ -62,10 +65,28 @@
 			
 			[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 				
-				if(self.nextViewControllerAfterLogin) {
-					[[AppDelegate rootViewController] presentViewController:self.nextViewControllerAfterLogin animated:TRUE completion:^{
+				//show next view controller if needed.
+				if(self.nextViewController) {
+					
+					//don't show next view controller if it's an accept invite code.
+					//if a user logs in successfully they can just accept the invite from the invites view.
+					if([self.nextViewController isKindOfClass:[SNFAcceptInvite class]]) {
 						
-					}];
+						//if main view controller is being shown, show invites.
+						if([SNFViewController instance]) {
+							[[SNFViewController instance] showInvites];
+						
+						} else {
+							
+							[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
+							[[SNFViewController instance] showInvites];
+							
+						}
+						
+					} else {
+						[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
+					}
+
 				}
 			}];
 		}
@@ -82,6 +103,9 @@
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 		SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] init];
+		if(self.nextViewController) {
+			createAccount.nextViewController = self.nextViewController;
+		}
 		[[AppDelegate rootViewController] presentViewController:createAccount animated:TRUE completion:^{
 			
 		}];

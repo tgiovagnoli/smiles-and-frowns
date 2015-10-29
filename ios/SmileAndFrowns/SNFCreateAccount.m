@@ -11,6 +11,19 @@
 	[super viewDidLoad];
 }
 
+- (IBAction) signup:(id)sender {
+	
+	//TODO: signup
+	
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+		if(self.nextViewController) {
+			[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:^{
+				
+			}];
+		}
+	}];
+}
+
 - (IBAction) cancel:(id)sender {
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		

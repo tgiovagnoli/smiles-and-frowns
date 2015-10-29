@@ -21,9 +21,19 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string>SmilesAndFrownsFacebook</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1641664296087724</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>Smiles &amp; Frowns</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>snf</string>
 			</array>
 		</dict>
 	</array>

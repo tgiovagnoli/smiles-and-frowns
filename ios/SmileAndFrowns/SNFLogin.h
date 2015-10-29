@@ -5,6 +5,6 @@
 
 @property IBOutlet UITextField * email;
 @property IBOutlet UITextField * password;
-@property UIViewController * nextViewControllerAfterLogin;
+@property UIViewController * nextViewController;
 
 @end
