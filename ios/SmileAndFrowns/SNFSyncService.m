@@ -18,11 +18,6 @@
 	if(jsonError){
 		completion(jsonError, nil);
 	}
-	
-#if DEBUG
-	NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-	NSLog(@">> POSTING:\n\n%@\n\n-----------------------\n", jsonString);
-#endif
 
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:serviceURL];
 	[request setHTTPMethod:@"POST"];
@@ -195,12 +190,11 @@
 	}
 	
 	[updates addObject:changeLog];
-
-#if DEBUG
-	NSLog(@">> RECIEVING:\n\n%@\n\n-----------------------\n", updates);
-#endif
 	
-	completion(nil, updates);
+	// save the context so that if the user quits the app all records will work with sync date
+	NSError *saveError;
+	[context save:&saveError];
+	completion(saveError, updates);
 }
 
 @end

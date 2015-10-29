@@ -202,16 +202,12 @@
 			
 			// add a random user
 			NSDictionary *userInfo = @{
-							@"first_name": @"Cole",
-							@"last_name": @"Wilson",
-							@"age": @8,
 							@"gender": SNFUserGenderMale,
 							};
 			SNFUser *childUser = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:userInfo withContext:context];
 			
 			NSDictionary *userRoleInfo = @{
 										   @"user": @{@"username": user.username},
-										   @"role": SNFUserRoleParent,
 										   @"board": @{@"uuid": board.uuid},
 										   };
 			SNFUserRole *userRole = (SNFUserRole *)[SNFUserRole editOrCreatefromInfoDictionary:userRoleInfo withContext:context];
@@ -232,16 +228,11 @@
 			SNFInvite *invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:inviteInfo withContext:context];
 			
 			NSDictionary *behaviorInfo = @{
-										   @"title": @"Cleaning up room",
 										   @"board": @{@"uuid": board.uuid},
 										   };
 			SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 			
 			NSDictionary *rewardInfo = @{
-										 @"smile_amount": @1.0,
-										 @"title": @"Dollars",
-										 @"currency_type": @"money",
-										 @"currency_amount": @0.25,
 										 @"board": @{@"uuid": board.uuid},
 										 };
 			SNFReward *reward = (SNFReward *)[SNFReward editOrCreatefromInfoDictionary:rewardInfo withContext:context];
@@ -312,9 +303,9 @@
 	NSError *error;
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:type];
 	NSArray *results = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:request error:&error];
+	NSLog(@"\n\n%@s:\n------------------------------------------------------\n", type);
 	for(NSManagedObject *result in results){
-		NSLog(@"%@", [result infoDictionaryWithChildrenAsUIDs]);
-		NSLog(@"\n\n---------------------------\n\n");
+		NSLog(@"\n%@", [result infoDictionaryWithChildrenAsUIDs]);
 	}
 }
 
@@ -325,11 +316,6 @@
 	for(NSManagedObject *object in allModified){
 		if([object respondsToSelector:NSSelectorFromString(@"updated_date")]){
 			[object setValue:now forKey:@"updated_date"];
-		}
-		if([object respondsToSelector:NSSelectorFromString(@"created_date")]){
-			if(![object valueForKey:@"created_date"]){
-				[object setValue:now forKey:@"created_date"];
-			}
 		}
 	}
 }

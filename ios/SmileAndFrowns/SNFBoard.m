@@ -22,6 +22,9 @@
 	self.created_date = [NSDate date];
 	self.device_date = [NSDate date];
 	self.uuid = [[NSUUID UUID] UUIDString];
+	if(!self.title){
+		self.title = @"Untitled";
+	}
 	[super awakeFromInsert];
 }
 

@@ -3,6 +3,11 @@
 
 @class SNFBoard;
 
+#define SNFRewardCurrencyTypeMoney @"money"
+#define SNFRewardCurrencyTypeTime @"time"
+#define SNFRewardCurrencyTypeTreat @"treat"
+#define SNFRewardCurrencyTypeGoal @"goal"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SNFReward : NSManagedObject

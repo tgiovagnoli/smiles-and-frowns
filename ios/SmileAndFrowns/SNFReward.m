@@ -23,6 +23,18 @@
 	self.created_date = [NSDate date];
 	self.device_date = [NSDate date];
 	self.uuid = [[NSUUID UUID] UUIDString];
+	if(!self.title){
+		self.title = @"Untitled";
+	}
+	if(!self.currency_amount){
+		self.currency_amount = @1.0;
+	}
+	if(!self.smile_amount){
+		self.smile_amount = @1.0;
+	}
+	if(!self.currency_type){
+		self.currency_type = SNFRewardCurrencyTypeMoney;
+	}
 	[super awakeFromInsert];
 }
 

@@ -21,9 +21,14 @@
 	self.created_date = [NSDate date];
 	self.device_date = [NSDate date];
 	self.uuid = [[NSUUID UUID] UUIDString];
-	self.note = @"";
+	self.deleted = @NO;
+	if(!self.note){
+		self.note = @"";
+	}
+	if(!self.title){
+		self.title = @"Untitled";
+	}
 	[super awakeFromInsert];
 }
-
 
 @end
