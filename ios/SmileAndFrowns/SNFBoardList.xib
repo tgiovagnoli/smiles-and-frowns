@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFBoardList">
             <connections>
-                <outlet property="boardstable" destination="3G0-te-iwP" id="YQZ-yF-9sJ"/>
+                <outlet property="boardsTable" destination="3G0-te-iwP" id="Ph3-Lx-s8B"/>
                 <outlet property="filterControl" destination="RpQ-c6-pcS" id="oEz-A1-Xkg"/>
                 <outlet property="purchaseButton" destination="sfm-E0-cfS" id="D8L-h6-o3J"/>
                 <outlet property="searchButton" destination="OjW-Rd-ePF" id="wi5-B4-9Eh"/>
