@@ -4,6 +4,7 @@
 #import "SNFDateManager.h"
 #import "SNFViewController.h"
 #import "SNFTutorial.h"
+#import "SNFLauncher.h"
 
 static AppDelegate * _instance;
 
@@ -26,6 +27,8 @@ static AppDelegate * _instance;
 	
 	if(![SNFTutorial hasSeenTutorial]) {
 		self.window.rootViewController = [[SNFTutorial alloc] init];
+	} else if([SNFLauncher showAtLaunch]) {
+		self.window.rootViewController = [[SNFLauncher alloc] init];
 	} else {
 		self.window.rootViewController = [[SNFViewController alloc] init];
 	}
@@ -34,8 +37,6 @@ static AppDelegate * _instance;
 	[SNFDateManager unlock];
 	
 	application.statusBarHidden = YES;
-	
-	
 	
 	return YES;
 }
@@ -64,8 +65,12 @@ static AppDelegate * _instance;
 	[self saveContext];
 }
 
-- (void) finishTutorial {
-	self.window.rootViewController = [[SNFViewController alloc] init];
+- (void) finishTutorial:(BOOL) userInitiatedTutorial {
+	if(!userInitiatedTutorial && [SNFLauncher showAtLaunch]) {
+		self.window.rootViewController = [[SNFLauncher alloc] init];
+	} else {
+		self.window.rootViewController = [[SNFViewController alloc] init];
+	}
 }
 
 #pragma mark - Core Data stack

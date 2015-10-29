@@ -8,6 +8,8 @@
 @property (weak) IBOutlet UIScrollView * scrollView;
 @property (weak) IBOutlet UIPageControl * pageControl;
 
+@property BOOL userInitiatedTutorial;
+
 + (BOOL) hasSeenTutorial;
 
 @end

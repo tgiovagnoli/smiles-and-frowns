@@ -11,6 +11,8 @@
 		0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */; };
 		0707D6A31BE294A6002F1FC0 /* UIView+LayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */; };
 		0707D6A51BE29756002F1FC0 /* SNFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6A41BE29756002F1FC0 /* SNFViewController.xib */; };
+		0707D6A91BE29BC4002F1FC0 /* SNFLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6A71BE29BC4002F1FC0 /* SNFLauncher.m */; };
+		0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6A81BE29BC4002F1FC0 /* SNFLauncher.xib */; };
 		D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */; };
 		D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAC1BDFD1FF0024CBC2 /* SNFError.m */; };
 		D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAF1BDFD88F0024CBC2 /* SNFService.m */; };
@@ -64,6 +66,9 @@
 		0707D6A11BE294A6002F1FC0 /* UIView+LayoutHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+LayoutHelpers.h"; path = "submodules/apd-objc/UIView+LayoutHelpers.h"; sourceTree = "<group>"; };
 		0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+LayoutHelpers.m"; path = "submodules/apd-objc/UIView+LayoutHelpers.m"; sourceTree = "<group>"; };
 		0707D6A41BE29756002F1FC0 /* SNFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFViewController.xib; sourceTree = "<group>"; };
+		0707D6A61BE29BC4002F1FC0 /* SNFLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFLauncher.h; sourceTree = "<group>"; };
+		0707D6A71BE29BC4002F1FC0 /* SNFLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFLauncher.m; sourceTree = "<group>"; };
+		0707D6A81BE29BC4002F1FC0 /* SNFLauncher.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFLauncher.xib; sourceTree = "<group>"; };
 		D6272FA71BDFCD1A0024CBC2 /* SNFUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserService.h; sourceTree = "<group>"; };
 		D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserService.m; sourceTree = "<group>"; };
 		D6272FAB1BDFD1FF0024CBC2 /* SNFError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFError.h; sourceTree = "<group>"; };
@@ -164,6 +169,9 @@
 				0707D69C1BE28EC6002F1FC0 /* SNFTutorial.h */,
 				0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */,
 				0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */,
+				0707D6A61BE29BC4002F1FC0 /* SNFLauncher.h */,
+				0707D6A71BE29BC4002F1FC0 /* SNFLauncher.m */,
+				0707D6A81BE29BC4002F1FC0 /* SNFLauncher.xib */,
 			);
 			name = Startup;
 			sourceTree = "<group>";
@@ -415,6 +423,7 @@
 				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
 				D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */,
 				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
+				0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +459,7 @@
 				D659DBF11BDAEA000048D3F7 /* SNFBoard.m in Sources */,
 				D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */,
 				D65DF1091BE299D3009CC6DF /* UIViewControllerStack.m in Sources */,
+				0707D6A91BE29BC4002F1FC0 /* SNFLauncher.m in Sources */,
 				D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */,
 				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,
 				D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */,

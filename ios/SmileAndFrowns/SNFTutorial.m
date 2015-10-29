@@ -45,13 +45,12 @@
 }
 
 + (BOOL) hasSeenTutorial; {
-	return FALSE;
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"HasSeenTutorial"];
 }
 
 - (IBAction) getStarted:(id)sender {
 	[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"HasSeenTutorial"];
-	[[AppDelegate instance] finishTutorial];
+	[[AppDelegate instance] finishTutorial:self.userInitiatedTutorial];
 }
 
 - (void) trackPage {
