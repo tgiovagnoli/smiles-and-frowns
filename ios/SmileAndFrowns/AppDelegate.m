@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SNFModel.h"
 #import "SNFDateManager.h"
+#import "SNFViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
 	[SNFDateManager unlock];
+	
+	application.statusBarHidden = YES;
+	
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	SNFViewController *vc = [[SNFViewController alloc] init];
+	self.window.rootViewController = vc;
+	[self.window makeKeyAndVisible];
+	
 	return YES;
 }
 
