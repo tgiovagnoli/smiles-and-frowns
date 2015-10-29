@@ -13,9 +13,6 @@ static SNFViewController * _instance;
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	_instance = self;
-	if(![SNFTutorial hasSeenTutorial]) {
-		[self showTutorial];
-	}
 	[NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
 		[self insertMenu];
 	} repeats:NO];
@@ -35,6 +32,7 @@ static SNFViewController * _instance;
 + (SNFViewController *) instance {
 	return _instance;
 }
+
 
 - (void) showTutorial {
 	SNFTutorial * tutorial = [[SNFTutorial alloc] init];
@@ -56,6 +54,10 @@ static SNFViewController * _instance;
 
 - (void)showMore{
 	[self.viewControllerStack eraseStack];
+}
+
+- (void)debugViewControllerIsDone:(APDDebugViewController *)debugViewController{
+	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void)showInvites{
