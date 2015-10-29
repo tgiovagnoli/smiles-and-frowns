@@ -564,9 +564,14 @@ def sync_from_client(request):
 
 		board.deleted = client_board.get('deleted',False)
 		board.title = client_board.get('title', '')
+		
+		print "setting board device date from string (%s) to %s" % (client_board.get('updated_date'), board_client_date)
+
 		board.device_date = board_client_date
 		board.transaction_id = client_board.get('transaction_id')
 		board.save()
+
+		print "board saved, device date: %s" % (board.device_date)
 
 	#go through user roles
 	client_roles = data.get("user_roles", [])
@@ -742,5 +747,5 @@ def sync_from_client(request):
 		reward.currency_type = client_reward.get('currency_type')
 		reward.device_date = client_reward_date
 		reward.save()
-	
+
 	return sync_pull(request, sync_date=data.get('sync_date',None))

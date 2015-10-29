@@ -14,7 +14,7 @@ def date_fromstring(datestring):
 def append_sync_info(sync_model_instance, info_dict):
 	info_dict["created_date"] = datestring(sync_model_instance.created_date)
 	info_dict["updated_date"] = datestring(sync_model_instance.updated_date)
-	info_dict["device_date"] = datestring(sync_model_instance.updated_date)
+	info_dict["device_date"] = datestring(sync_model_instance.device_date)
 	info_dict["uuid"] = sync_model_instance.uuid
 	info_dict["deleted"] = sync_model_instance.deleted
 
