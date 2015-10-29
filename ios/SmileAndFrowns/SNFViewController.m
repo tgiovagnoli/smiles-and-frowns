@@ -1,27 +1,21 @@
+
 #import "SNFViewController.h"
 #import "SNFBoard.h"
 #import "SNFModel.h"
 #import "UIViewControllerStack.h"
 #import "NSTimer+Blocks.h"
+#import "SNFTutorial.h"
 
-static SNFViewController *_rootViewController;
+static SNFViewController * _instance;
 
 @implementation SNFViewController
 
-- (id)init{
-	self = [super init];
-	NSAssert(_rootViewController == nil, @"Can only have 1 instance of SNFViewController");
-	_rootViewController = self;
-	return self;
-}
-
-
-+ (SNFViewController *)rootViewController{
-	return _rootViewController;
-}
-
-- (void)viewDidLoad{
+- (void) viewDidLoad {
 	[super viewDidLoad];
+	_instance = self;
+	if(![SNFTutorial hasSeenTutorial]) {
+		[self showTutorial];
+	}
 	[NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
 		[self insertMenu];
 	} repeats:NO];
@@ -38,7 +32,16 @@ static SNFViewController *_rootViewController;
 	}];
 }
 
-- (void)showDebug{
++ (SNFViewController *) instance {
+	return _instance;
+}
+
+- (void) showTutorial {
+	SNFTutorial * tutorial = [[SNFTutorial alloc] init];
+	[self.view addSubview:tutorial.view];
+}
+
+- (void) showDebug {
 	SNFDebug *debug = [[SNFDebug alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:debug animated:NO];
 }

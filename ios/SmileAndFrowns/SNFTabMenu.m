@@ -4,23 +4,23 @@
 @implementation SNFTabMenu
 
 - (IBAction)onDebug:(UIButton *)sender{
-	[[SNFViewController rootViewController] showDebug];
+	[[SNFViewController instance] showDebug];
 }
 
 - (IBAction)onBoards:(UIButton *)sender{
-	[[SNFViewController rootViewController] showBoards];
+	[[SNFViewController instance] showBoards];
 }
 
 - (IBAction)onProfile:(UIButton *)sender{
-	[[SNFViewController rootViewController] showProfile];
+	[[SNFViewController instance] showProfile];
 }
 
 - (IBAction)onInvites:(UIButton *)sender{
-	[[SNFViewController rootViewController] showInvites];
+	[[SNFViewController instance] showInvites];
 }
 
 - (IBAction)onMore:(UIButton *)sender{
-	[[SNFViewController rootViewController] showMore];
+	[[SNFViewController instance] showMore];
 }
 
 @end

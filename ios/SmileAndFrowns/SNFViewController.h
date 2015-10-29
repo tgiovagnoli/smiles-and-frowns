@@ -4,16 +4,13 @@
 #import "UIViewControllerStack.h"
 #import "SNFTabMenu.h"
 
-
-
 @interface SNFViewController : UIViewController <APDDebugViewControllerDelegate>
 
 @property (weak) IBOutlet UIViewControllerStack *viewControllerStack;
 @property (weak) IBOutlet UIView *tabMenuContainer;
 @property SNFTabMenu *tabMenu;
 
-+ (SNFViewController *)rootViewController;
-
++ (SNFViewController *)instance;
 - (void)showDebug;
 - (void)showBoards;
 - (void)showProfile;
@@ -21,4 +18,3 @@
 - (void)showInvites;
 
 @end
-
