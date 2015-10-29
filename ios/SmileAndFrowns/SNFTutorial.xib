@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFTutorial">
             <connections>
+                <outlet property="pageControl" destination="cQW-WQ-KlO" id="qfp-mr-w2c"/>
                 <outlet property="scrollView" destination="IGe-yc-AIn" id="edo-II-dcS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="views" destination="wQZ-7j-1tv" id="qXR-OA-NDW"/>
@@ -31,6 +32,9 @@
                         <constraint firstAttribute="height" constant="37" id="7by-4U-dnV"/>
                         <constraint firstAttribute="width" constant="100" id="JTK-6F-Kac"/>
                     </constraints>
+                    <connections>
+                        <action selector="pageControlChange:" destination="-1" eventType="valueChanged" id="yyT-uv-bO9"/>
+                    </connections>
                 </pageControl>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLv-ln-g7E">
                     <rect key="frame" x="248" y="315" width="103" height="30"/>
@@ -46,7 +50,7 @@
                 </button>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="IGe-yc-AIn" secondAttribute="bottom" id="3B5-Qc-7Uo"/>
                 <constraint firstItem="cQW-WQ-KlO" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Hqu-PA-9nE"/>
@@ -95,7 +99,7 @@
                 </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="0tj-a4-bZQ" secondAttribute="trailing" id="0yk-u7-3ch"/>
                 <constraint firstItem="0tj-a4-bZQ" firstAttribute="top" secondItem="SCw-qD-QqO" secondAttribute="bottom" constant="14" id="K9A-b6-pwy"/>
@@ -122,7 +126,7 @@
                 </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="OWA-TI-5jN" firstAttribute="top" secondItem="60K-b7-0S4" secondAttribute="top" constant="51" id="gMO-qh-40F"/>
                 <constraint firstItem="OWA-TI-5jN" firstAttribute="centerX" secondItem="60K-b7-0S4" secondAttribute="centerX" id="t2J-WK-0SQ"/>
@@ -146,7 +150,7 @@
                 </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="sfr-Ny-jYX" firstAttribute="centerX" secondItem="EDU-7J-5MM" secondAttribute="centerX" id="Ze4-Uz-zMc"/>
                 <constraint firstItem="sfr-Ny-jYX" firstAttribute="top" secondItem="EDU-7J-5MM" secondAttribute="top" constant="47" id="h30-lK-DCV"/>
@@ -157,32 +161,48 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add People" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a03-G3-3NE">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add People" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a03-G3-3NE">
                     <rect key="frame" x="256" y="37" width="88" height="21"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="2pj-uX-1Ds"/>
+                        <constraint firstAttribute="width" constant="88" id="Vwq-wx-qZz"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="a03-G3-3NE" firstAttribute="centerX" secondItem="hjt-y4-rrK" secondAttribute="centerX" id="OFK-oa-d5B"/>
+                <constraint firstItem="a03-G3-3NE" firstAttribute="top" secondItem="hjt-y4-rrK" secondAttribute="top" constant="37" id="tFO-mk-rAb"/>
+            </constraints>
             <point key="canvasLocation" x="397" y="1723"/>
         </view>
         <view tag="4" contentMode="scaleToFill" id="DBe-Vx-ncF">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Give Smiles and Rewards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xj-Q4-gkZ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give Smiles and Rewards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xj-Q4-gkZ">
                     <rect key="frame" x="204" y="26" width="192" height="21"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="192" id="4Bl-D6-nvS"/>
+                        <constraint firstAttribute="height" constant="21" id="Jfb-eq-j6V"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="0Xj-Q4-gkZ" firstAttribute="top" secondItem="DBe-Vx-ncF" secondAttribute="top" constant="26" id="SsP-Tb-tkO"/>
+                <constraint firstItem="0Xj-Q4-gkZ" firstAttribute="centerX" secondItem="DBe-Vx-ncF" secondAttribute="centerX" id="TtW-j8-edv"/>
+            </constraints>
             <point key="canvasLocation" x="1040" y="1723"/>
         </view>
     </objects>
