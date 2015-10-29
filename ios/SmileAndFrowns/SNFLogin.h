@@ -3,4 +3,6 @@
 
 @interface SNFLogin : UIViewController
 
+@property UIViewController * nextViewControllerAfterLogin;
+
 @end

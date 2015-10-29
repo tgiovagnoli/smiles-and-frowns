@@ -15,6 +15,12 @@
 		0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6A81BE29BC4002F1FC0 /* SNFLauncher.xib */; };
 		0707D6AE1BE2A1C9002F1FC0 /* SNFLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6AC1BE2A1C9002F1FC0 /* SNFLogin.m */; };
 		0707D6AF1BE2A1C9002F1FC0 /* SNFLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6AD1BE2A1C9002F1FC0 /* SNFLogin.xib */; };
+		0707D6B31BE2ABEB002F1FC0 /* SNFCreateAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6B11BE2ABEB002F1FC0 /* SNFCreateAccount.m */; };
+		0707D6B41BE2ABEB002F1FC0 /* SNFCreateAccount.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6B21BE2ABEB002F1FC0 /* SNFCreateAccount.xib */; };
+		0707D6B81BE2AE16002F1FC0 /* SNFPasswordReset.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6B61BE2AE16002F1FC0 /* SNFPasswordReset.m */; };
+		0707D6B91BE2AE16002F1FC0 /* SNFPasswordReset.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6B71BE2AE16002F1FC0 /* SNFPasswordReset.xib */; };
+		0707D6BF1BE2AFD1002F1FC0 /* SNFAcceptInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6BD1BE2AFD1002F1FC0 /* SNFAcceptInvite.m */; };
+		0707D6C01BE2AFD1002F1FC0 /* SNFAcceptInvite.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6BE1BE2AFD1002F1FC0 /* SNFAcceptInvite.xib */; };
 		D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */; };
 		D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAC1BDFD1FF0024CBC2 /* SNFError.m */; };
 		D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAF1BDFD88F0024CBC2 /* SNFService.m */; };
@@ -74,6 +80,15 @@
 		0707D6AB1BE2A1C9002F1FC0 /* SNFLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFLogin.h; sourceTree = "<group>"; };
 		0707D6AC1BE2A1C9002F1FC0 /* SNFLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFLogin.m; sourceTree = "<group>"; };
 		0707D6AD1BE2A1C9002F1FC0 /* SNFLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFLogin.xib; sourceTree = "<group>"; };
+		0707D6B01BE2ABEB002F1FC0 /* SNFCreateAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFCreateAccount.h; sourceTree = "<group>"; };
+		0707D6B11BE2ABEB002F1FC0 /* SNFCreateAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFCreateAccount.m; sourceTree = "<group>"; };
+		0707D6B21BE2ABEB002F1FC0 /* SNFCreateAccount.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFCreateAccount.xib; sourceTree = "<group>"; };
+		0707D6B51BE2AE16002F1FC0 /* SNFPasswordReset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPasswordReset.h; sourceTree = "<group>"; };
+		0707D6B61BE2AE16002F1FC0 /* SNFPasswordReset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPasswordReset.m; sourceTree = "<group>"; };
+		0707D6B71BE2AE16002F1FC0 /* SNFPasswordReset.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFPasswordReset.xib; sourceTree = "<group>"; };
+		0707D6BC1BE2AFD1002F1FC0 /* SNFAcceptInvite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFAcceptInvite.h; sourceTree = "<group>"; };
+		0707D6BD1BE2AFD1002F1FC0 /* SNFAcceptInvite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFAcceptInvite.m; sourceTree = "<group>"; };
+		0707D6BE1BE2AFD1002F1FC0 /* SNFAcceptInvite.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFAcceptInvite.xib; sourceTree = "<group>"; };
 		D6272FA71BDFCD1A0024CBC2 /* SNFUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserService.h; sourceTree = "<group>"; };
 		D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserService.m; sourceTree = "<group>"; };
 		D6272FAB1BDFD1FF0024CBC2 /* SNFError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFError.h; sourceTree = "<group>"; };
@@ -171,17 +186,40 @@
 		0707D69B1BE28EA8002F1FC0 /* Startup */ = {
 			isa = PBXGroup;
 			children = (
-				0707D6A61BE29BC4002F1FC0 /* SNFLauncher.h */,
-				0707D6A71BE29BC4002F1FC0 /* SNFLauncher.m */,
-				0707D6A81BE29BC4002F1FC0 /* SNFLauncher.xib */,
-				0707D69C1BE28EC6002F1FC0 /* SNFTutorial.h */,
-				0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */,
-				0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */,
 				0707D6AB1BE2A1C9002F1FC0 /* SNFLogin.h */,
 				0707D6AC1BE2A1C9002F1FC0 /* SNFLogin.m */,
 				0707D6AD1BE2A1C9002F1FC0 /* SNFLogin.xib */,
+				0707D69C1BE28EC6002F1FC0 /* SNFTutorial.h */,
+				0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */,
+				0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */,
 			);
 			name = Startup;
+			sourceTree = "<group>";
+		};
+		0707D6BA1BE2AFAB002F1FC0 /* Launcher */ = {
+			isa = PBXGroup;
+			children = (
+				0707D6B01BE2ABEB002F1FC0 /* SNFCreateAccount.h */,
+				0707D6B11BE2ABEB002F1FC0 /* SNFCreateAccount.m */,
+				0707D6B21BE2ABEB002F1FC0 /* SNFCreateAccount.xib */,
+				0707D6A61BE29BC4002F1FC0 /* SNFLauncher.h */,
+				0707D6A71BE29BC4002F1FC0 /* SNFLauncher.m */,
+				0707D6A81BE29BC4002F1FC0 /* SNFLauncher.xib */,
+				0707D6B51BE2AE16002F1FC0 /* SNFPasswordReset.h */,
+				0707D6B61BE2AE16002F1FC0 /* SNFPasswordReset.m */,
+				0707D6B71BE2AE16002F1FC0 /* SNFPasswordReset.xib */,
+			);
+			name = Launcher;
+			sourceTree = "<group>";
+		};
+		0707D6BB1BE2AFBE002F1FC0 /* InviteAccept */ = {
+			isa = PBXGroup;
+			children = (
+				0707D6BC1BE2AFD1002F1FC0 /* SNFAcceptInvite.h */,
+				0707D6BD1BE2AFD1002F1FC0 /* SNFAcceptInvite.m */,
+				0707D6BE1BE2AFD1002F1FC0 /* SNFAcceptInvite.xib */,
+			);
+			name = InviteAccept;
 			sourceTree = "<group>";
 		};
 		D6272FB41BE0020A0024CBC2 /* apd-objc */ = {
@@ -216,6 +254,8 @@
 		D62D37921BDE7FCA00102D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0707D6BB1BE2AFBE002F1FC0 /* InviteAccept */,
+				0707D6BA1BE2AFAB002F1FC0 /* Launcher */,
 				D62D378D1BDE7FC600102D6A /* SNFDebug.h */,
 				D62D378E1BDE7FC600102D6A /* SNFDebug.m */,
 				D62D378F1BDE7FC600102D6A /* SNFDebug.xib */,
@@ -423,6 +463,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0707D6AF1BE2A1C9002F1FC0 /* SNFLogin.xib in Resources */,
+				0707D6B41BE2ABEB002F1FC0 /* SNFCreateAccount.xib in Resources */,
+				0707D6C01BE2AFD1002F1FC0 /* SNFAcceptInvite.xib in Resources */,
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
 				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
 				D65DF1111BE29A42009CC6DF /* SNFTabMenu.xib in Resources */,
@@ -431,6 +473,7 @@
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
 				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
 				D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */,
+				0707D6B91BE2AE16002F1FC0 /* SNFPasswordReset.xib in Resources */,
 				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
 				0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */,
 			);
@@ -453,6 +496,7 @@
 				D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */,
 				D659DBF21BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m in Sources */,
 				D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */,
+				0707D6BF1BE2AFD1002F1FC0 /* SNFAcceptInvite.m in Sources */,
 				D65DF0E71BE2830C009CC6DF /* SNFDateManager.m in Sources */,
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
 				D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */,
@@ -482,6 +526,8 @@
 				D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */,
 				D6272FC11BE002160024CBC2 /* NSTimer+Blocks.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
+				0707D6B31BE2ABEB002F1FC0 /* SNFCreateAccount.m in Sources */,
+				0707D6B81BE2AE16002F1FC0 /* SNFPasswordReset.m in Sources */,
 				D65DF1101BE29A42009CC6DF /* SNFTabMenu.m in Sources */,
 				D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */,
 			);

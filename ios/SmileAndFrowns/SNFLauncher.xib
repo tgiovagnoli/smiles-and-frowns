@@ -45,7 +45,7 @@
                     </constraints>
                     <state key="normal" title="Accept an Invite"/>
                     <connections>
-                        <action selector="acceptInvite:" destination="-1" eventType="touchUpInside" id="LkC-Ey-zDp"/>
+                        <action selector="acceptInvite:" destination="-1" eventType="touchUpInside" id="Ls9-dv-usm"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwu-gI-Bcg">
