@@ -1,25 +1,37 @@
-//
-//  AppDelegate.m
-//  SmileAndFrowns
-//
-//  Created by Malcolm Wilson on 10/23/15.
-//  Copyright © 2015 apptitude. All rights reserved.
-//
 
 #import "AppDelegate.h"
 #import "SNFModel.h"
 #import "SNFDateManager.h"
+#import "SNFViewController.h"
+#import "SNFTutorial.h"
+
+static AppDelegate * _instance;
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
 
++ (AppDelegate *) instance {
+	return _instance;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	_instance = self;
+	
+	self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	
+	if(![SNFTutorial hasSeenTutorial]) {
+		self.window.rootViewController = [[SNFTutorial alloc] init];
+	} else {
+		self.window.rootViewController = [[SNFViewController alloc] init];
+	}
+	
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
 	[SNFDateManager unlock];
+	
+	[self.window makeKeyAndVisible];
+	
 	return YES;
 }
 
@@ -45,6 +57,10 @@
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	// Saves changes in the application's managed object context before the application terminates.
 	[self saveContext];
+}
+
+- (void) finishTutorial {
+	self.window.rootViewController = [[SNFViewController alloc] init];
 }
 
 #pragma mark - Core Data stack

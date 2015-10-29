@@ -10,6 +10,7 @@
 		0707D69F1BE28EC6002F1FC0 /* SNFTutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */; };
 		0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */; };
 		0707D6A31BE294A6002F1FC0 /* UIView+LayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */; };
+		0707D6A51BE29756002F1FC0 /* SNFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6A41BE29756002F1FC0 /* SNFViewController.xib */; };
 		D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */; };
 		D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAC1BDFD1FF0024CBC2 /* SNFError.m */; };
 		D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAF1BDFD88F0024CBC2 /* SNFService.m */; };
@@ -27,7 +28,6 @@
 		D659DBB11BDAE07F0048D3F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB01BDAE07F0048D3F7 /* main.m */; };
 		D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */; };
 		D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */; };
-		D659DBBA1BDAE07F0048D3F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D659DBB81BDAE07F0048D3F7 /* Main.storyboard */; };
 		D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */; };
 		D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */; };
 		D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D659DBC01BDAE07F0048D3F7 /* LaunchScreen.storyboard */; };
@@ -58,6 +58,7 @@
 		0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFTutorial.xib; sourceTree = "<group>"; };
 		0707D6A11BE294A6002F1FC0 /* UIView+LayoutHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+LayoutHelpers.h"; path = "submodules/apd-objc/UIView+LayoutHelpers.h"; sourceTree = "<group>"; };
 		0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+LayoutHelpers.m"; path = "submodules/apd-objc/UIView+LayoutHelpers.m"; sourceTree = "<group>"; };
+		0707D6A41BE29756002F1FC0 /* SNFViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFViewController.xib; sourceTree = "<group>"; };
 		D6272FA71BDFCD1A0024CBC2 /* SNFUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserService.h; sourceTree = "<group>"; };
 		D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserService.m; sourceTree = "<group>"; };
 		D6272FAB1BDFD1FF0024CBC2 /* SNFError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFError.h; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 		D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D659DBB51BDAE07F0048D3F7 /* SNFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNFViewController.h; sourceTree = "<group>"; };
 		D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNFViewController.m; sourceTree = "<group>"; };
-		D659DBB91BDAE07F0048D3F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmileAndFrowns.xcdatamodel; sourceTree = "<group>"; };
 		D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SmileAndFrowns/Assets.xcassets; sourceTree = "<group>"; };
 		D659DBC11BDAE07F0048D3F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -191,6 +191,7 @@
 				D62D378F1BDE7FC600102D6A /* SNFDebug.xib */,
 				D659DBB51BDAE07F0048D3F7 /* SNFViewController.h */,
 				D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */,
+				0707D6A41BE29756002F1FC0 /* SNFViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -233,7 +234,6 @@
 				D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */,
 				D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */,
 				D659DBC01BDAE07F0048D3F7 /* LaunchScreen.storyboard */,
-				D659DBB81BDAE07F0048D3F7 /* Main.storyboard */,
 				D659DBFC1BDAEA110048D3F7 /* Models */,
 				D62D37991BDEEFA900102D6A /* Services */,
 				D659DBFE1BDAF98F0048D3F7 /* Util */,
@@ -388,9 +388,9 @@
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
 				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
 				D6272FC41BE002330024CBC2 /* APDDjangoErrorViewer.xib in Resources */,
+				0707D6A51BE29756002F1FC0 /* SNFViewController.xib in Resources */,
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
 				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
-				D659DBBA1BDAE07F0048D3F7 /* Main.storyboard in Resources */,
 				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,14 +444,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D659DBB81BDAE07F0048D3F7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D659DBB91BDAE07F0048D3F7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D659DBC01BDAE07F0048D3F7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

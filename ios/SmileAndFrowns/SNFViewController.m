@@ -1,22 +1,37 @@
+
 #import "SNFViewController.h"
 #import "SNFBoard.h"
 #import "SNFModel.h"
-
 #import "NSTimer+Blocks.h"
+#import "SNFTutorial.h"
+
+static SNFViewController * _instance;
 
 @implementation SNFViewController
 
-- (void)viewDidLoad {
-	[super viewDidLoad];
-	[NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
-		[self showDebug];
-	} repeats:NO];
++ (SNFViewController *) instance {
+	return _instance;
 }
 
-- (void)showDebug{
+- (void) viewDidLoad {
+	[super viewDidLoad];
+	
+	_instance = self;
+	
+	if(![SNFTutorial hasSeenTutorial]) {
+		[self showTutorial];
+	}
+}
+
+- (void) showDebug {
 	SNFDebug *debug = [[SNFDebug alloc] init];
 	debug.delegate = self;
 	[self presentViewController:debug animated:YES completion:^{}];
+}
+
+- (void) showTutorial {
+	SNFTutorial * tutorial = [[SNFTutorial alloc] init];
+	[self.view addSubview:tutorial.view];
 }
 
 - (void)debugViewControllerIsDone:(APDDebugViewController *)debugViewController{

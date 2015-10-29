@@ -1,0 +1,101 @@
+{
+    "boards": [
+        {
+            "owner": {
+                "username": "admin"
+            },
+            "deleted": false,
+            "transaction_id": null,
+            "id": 0,
+            "title": "Custom Board Created on Device",
+            "updated_date": "2015-10-28T20:39:13Z",
+            "uuid": "2851AFAB-8D18-4299-8986-509BC0CCF206",
+            "device_date": "2015-10-28T20:39:13Z"
+        }
+    ],
+    "smiles": [
+        {
+            "created_date": "2015-10-28T20:39:13Z",
+            "behavior": {
+                "uuid": "A13CD288-AD1F-4610-BA39-006FA8FFB5F8"
+            },
+            "deleted": false,
+            "id": 0,
+            "updated_date": "2015-10-28T20:39:13Z",
+            "uuid": "D82AA7AC-2877-48D5-9324-B2960EFBE856",
+            "collected": 0,
+            "board": {
+                "uuid": "2851AFAB-8D18-4299-8986-509BC0CCF206"
+            },
+            "user": {
+                "username": "admin"
+            }
+        }
+    ],
+    "frowns": [
+        {
+            "behavior": {
+                "uuid": "A13CD288-AD1F-4610-BA39-006FA8FFB5F8"
+            },
+            "deleted": false,
+            "id": 0,
+            "device_date": "2015-10-28T20:39:13Z",
+            "updated_date": "2015-10-28T20:39:13Z",
+            "uuid": "35F9708F-5DF1-4DC2-9853-FD91A9FC4C7F",
+            "board": {
+                "uuid": "2851AFAB-8D18-4299-8986-509BC0CCF206"
+            },
+            "user": {
+                "username": "admin"
+            }
+        }
+    ],
+    "rewards": [
+        {
+            "currency_type": "money",
+            "deleted": false,
+            "id": 0,
+            "device_date": "2015-10-28T20:39:13Z",
+            "title": "Dollars",
+            "updated_date": "2015-10-28T20:39:13Z",
+            "uuid": "77C74F29-D56C-4071-9E79-02089F4470C6",
+            "currency_amount": 0.25,
+            "smile_amount": 1,
+            "board": null
+        }
+    ],
+    "behaviors": [
+        {
+            "deleted": false,
+            "note": null,
+            "device_date": "2015-10-28T20:39:13Z",
+            "title": "Cleaning up room",
+            "updated_date": "2015-10-28T20:39:13Z",
+            "id": 0,
+            "uuid": "A13CD288-AD1F-4610-BA39-006FA8FFB5F8",
+            "board": {
+                "uuid": "2851AFAB-8D18-4299-8986-509BC0CCF206"
+            }
+        }
+    ],
+    "user_roles": [
+        {
+            "device_date": "2015-10-28T20:39:13Z",
+            "id": 0,
+            "updated_date": "2015-10-28T20:39:13Z",
+            "user": {
+                "age": 39,
+                "username": "admin",
+                "last_name": "",
+                "gender": "male",
+                "id": 1,
+                "first_name": ""
+            },
+            "board": {
+                "uuid": "2851AFAB-8D18-4299-8986-509BC0CCF206"
+            },
+            "uuid": "7A28A239-6CA2-4710-ADCD-DBC5578F3926"
+        }
+    ],
+    "client_sync_date": "1970-01-01T00:00:00Z"
+}
