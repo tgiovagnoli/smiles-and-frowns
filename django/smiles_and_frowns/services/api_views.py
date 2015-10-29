@@ -467,6 +467,11 @@ def invite(request):
 
 @csrf_exempt
 def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behaviors':[],'smiles':[],'frowns':[],'rewards':[],'user_roles':[]}):
+	'''
+	sync_date can be None, string, or datetime.
+	created_object_uuids are objects that won't be included in query to get objects to return to user.
+	'''
+
 	#handle sync_date
 	if not sync_date:
 		sync_date = UTC.localize(datetime(2015,1,1))
@@ -487,7 +492,10 @@ def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behavi
 		if role.board and not role.board in boards:
 			boards.append(role.board)
 
-	#get associate objects for all boards where device_date is greater than the sync date provided
+	#get associate objects for all boards.
+	#uuid can't be one of the created uuids in created_object_uuids.
+	#board has to be a board IN the boards array
+	#device_date has to be greater than the sync_date.
 	behaviors = models.Behavior.objects.filter(~Q(uuid__in=created_object_uuids['behaviors']),board__in=boards,device_date__gt=sync_date)
 	smiles = models.Smile.objects.filter(~Q(uuid__in=created_object_uuids['smiles']),board__in=boards,device_date__gt=sync_date)
 	frowns = models.Frown.objects.filter(~Q(uuid__in=created_object_uuids['frowns']),board__in=boards,device_date__gt=sync_date)
