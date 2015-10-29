@@ -63,6 +63,9 @@
                         <segment title="Name"/>
                         <segment title="Date"/>
                     </segments>
+                    <connections>
+                        <action selector="changeSorting:" destination="-1" eventType="valueChanged" id="cIN-YO-xUC"/>
+                    </connections>
                 </segmentedControl>
             </subviews>
             <animations/>
