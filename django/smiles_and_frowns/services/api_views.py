@@ -483,7 +483,7 @@ def sync_pull(request, sync_date=None):
 			boards.append(role.board)
 
 	#if post, grab sync date
-	if not sync_date and request.method == "POST":
+	if not sync_date:
 		sync_date = request.POST.get('sync_date')
 
 	#if json, grab out of body
@@ -491,25 +491,29 @@ def sync_pull(request, sync_date=None):
 		data = json.loads(request.body)
 		sync_date = data['sync_date']
 
-	#if first sync, add predefined boards.
+	#if no sync date set back to 
 	if not sync_date:
 		sync_date = UTC.localize(datetime(2015,1,1))
-		#predefined_boards = models.PredefinedBoard.objects.all()
-		#for board in predefined_boards:
-		#	if not board in boards:
-		#		boards.append(board.board)
-	
-	#convert string to date
 	else:
+		#convert string to date
 		sync_date = json_utils.date_fromstring(sync_date)
 	
-
+	#get associate objects for all boards.
 	behaviors = models.Behavior.objects.filter(board__in=boards,device_date__gt=sync_date)
 	smiles = models.Smile.objects.filter(board__in=boards,device_date__gt=sync_date)
 	frowns = models.Frown.objects.filter(board__in=boards,device_date__gt=sync_date)
 	rewards = models.Reward.objects.filter(board__in=boards,device_date__gt=sync_date)
-	user_roles = models.UserRole.objects.filter(user=request.user)
+	user_roles = models.UserRole.objects.filter(user=request.user,device_date__gt=sync_date)
 
+	#remove boards that don't need to be returned to user.
+	remove = []
+	for board in boards:
+		if board.created_date < sync_date and board.device_date < sync_date:
+			remove.append(board)
+	for board in remove:
+		boards.remove(board)
+
+	#create output
 	output = {'sync_date': json_utils.datestring(UTC.localize(datetime.utcnow())) }
 	output['boards'] = json_utils.board_info_dictionary_collection(boards)
 	output['behaviors'] = json_utils.behavior_info_dictionary_collection(behaviors)
@@ -542,8 +546,15 @@ def sync_from_client(request):
 		board,created = models.Board.objects.get_or_create(uuid=client_board.get("uuid"))
 		board_client_date = json_utils.date_fromstring(client_board.get('updated_date'))
 		
-		#check dates
+		#board wasn't created, check date and predefinied.
 		if not created:
+
+			#check if board is a predefined board.
+			predefined = models.PredefinedBoard.objects.filter(board=board).count()
+			if predefined > 0:
+				return json_response_error("Sync error, board with uuid (%s) is a predefinied board. These can't be used.")
+
+			#board is newer in database than what the client sent. ignore it.
 			if board.device_date > board_client_date:
 				continue
 		
@@ -574,29 +585,21 @@ def sync_from_client(request):
 		if not userinfo:
 			return json_response_error("Client sync error, userinfo not provided for role with uuid %s" (client_role.get('uuid')))
 
-		#find or create role
-		uuid = client_role.get('uuid')
-		role, created = models.UserRole.objects.get_or_create(uuid=uuid)
-		if not created:
-			if role.device_date > client_role_date:
-				continue
-
 		#try and find existing user in DB
-		created = False
-		user = None
-		try:
-			user = User.objects.get(username=userinfo.get('username'))
-		except:
-			created = True
-			user = User(username=userinfo.get('username'))
-
+		user,created = User.objects.get_or_create(username=userinfo.get('username'))
 		if created:
 			user.email = userinfo.get('email', "")
 			user.first_name = userinfo.get('first_name', "")
 			user.last_name = userinfo.get('last_name', "")
 			#sets a random password for new users.
 			user.set_password(utils.random_password())
-		user.save()
+			user.save()
+
+		#find or create role
+		role, created = models.UserRole.objects.get_or_create(uuid=client_role.get('uuid'))
+		if not created:
+			if role.device_date > client_role_date:
+				continue
 
 		#set role data
 		role.role = client_role.get('role')
