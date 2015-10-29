@@ -6,6 +6,7 @@
 #import "SNFUserService.h"
 #import "SNFModel.h"
 #import "MBProgressHUD.h"
+#import "NSString+Additions.h"
 
 @interface SNFLogin ()
 @property SNFUserService * service;
@@ -19,6 +20,28 @@
 }
 
 - (IBAction) login:(id) sender {
+	
+	if(self.email.text.length < 1 || [self.email.text stringByReplacingOccurrencesOfString:@" " withString:@""].length < 1) {
+		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Form Error" message:@"Enter your email address" preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
+		[self presentViewController:alert animated:TRUE completion:NULL];
+		return;
+	}
+	
+	if(![self.email.text isValidEmail]) {
+		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Form Error" message:@"Incorrect email format" preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
+		[self presentViewController:alert animated:TRUE completion:NULL];
+		return;
+	}
+	
+	if(self.password.text.length < 1 || [self.password.text stringByReplacingOccurrencesOfString:@" " withString:@""].length < 1) {
+		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Form Error" message:@"Enter your password" preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
+		[self presentViewController:alert animated:TRUE completion:NULL];
+		return;
+	}
+	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
 	[self.service loginWithEmail:self.email.text andPassword:self.password.text withCompletion:^(NSError *error, SNFUser *user) {
