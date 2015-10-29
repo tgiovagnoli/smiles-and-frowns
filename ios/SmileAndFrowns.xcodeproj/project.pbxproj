@@ -13,6 +13,8 @@
 		0707D6A51BE29756002F1FC0 /* SNFViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6A41BE29756002F1FC0 /* SNFViewController.xib */; };
 		0707D6A91BE29BC4002F1FC0 /* SNFLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6A71BE29BC4002F1FC0 /* SNFLauncher.m */; };
 		0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6A81BE29BC4002F1FC0 /* SNFLauncher.xib */; };
+		0707D6AE1BE2A1C9002F1FC0 /* SNFLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6AC1BE2A1C9002F1FC0 /* SNFLogin.m */; };
+		0707D6AF1BE2A1C9002F1FC0 /* SNFLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6AD1BE2A1C9002F1FC0 /* SNFLogin.xib */; };
 		D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */; };
 		D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAC1BDFD1FF0024CBC2 /* SNFError.m */; };
 		D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAF1BDFD88F0024CBC2 /* SNFService.m */; };
@@ -69,6 +71,9 @@
 		0707D6A61BE29BC4002F1FC0 /* SNFLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFLauncher.h; sourceTree = "<group>"; };
 		0707D6A71BE29BC4002F1FC0 /* SNFLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFLauncher.m; sourceTree = "<group>"; };
 		0707D6A81BE29BC4002F1FC0 /* SNFLauncher.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFLauncher.xib; sourceTree = "<group>"; };
+		0707D6AB1BE2A1C9002F1FC0 /* SNFLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFLogin.h; sourceTree = "<group>"; };
+		0707D6AC1BE2A1C9002F1FC0 /* SNFLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFLogin.m; sourceTree = "<group>"; };
+		0707D6AD1BE2A1C9002F1FC0 /* SNFLogin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFLogin.xib; sourceTree = "<group>"; };
 		D6272FA71BDFCD1A0024CBC2 /* SNFUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserService.h; sourceTree = "<group>"; };
 		D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserService.m; sourceTree = "<group>"; };
 		D6272FAB1BDFD1FF0024CBC2 /* SNFError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFError.h; sourceTree = "<group>"; };
@@ -166,12 +171,15 @@
 		0707D69B1BE28EA8002F1FC0 /* Startup */ = {
 			isa = PBXGroup;
 			children = (
-				0707D69C1BE28EC6002F1FC0 /* SNFTutorial.h */,
-				0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */,
-				0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */,
 				0707D6A61BE29BC4002F1FC0 /* SNFLauncher.h */,
 				0707D6A71BE29BC4002F1FC0 /* SNFLauncher.m */,
 				0707D6A81BE29BC4002F1FC0 /* SNFLauncher.xib */,
+				0707D69C1BE28EC6002F1FC0 /* SNFTutorial.h */,
+				0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */,
+				0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */,
+				0707D6AB1BE2A1C9002F1FC0 /* SNFLogin.h */,
+				0707D6AC1BE2A1C9002F1FC0 /* SNFLogin.m */,
+				0707D6AD1BE2A1C9002F1FC0 /* SNFLogin.xib */,
 			);
 			name = Startup;
 			sourceTree = "<group>";
@@ -414,6 +422,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0707D6AF1BE2A1C9002F1FC0 /* SNFLogin.xib in Resources */,
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
 				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
 				D65DF1111BE29A42009CC6DF /* SNFTabMenu.xib in Resources */,
@@ -461,6 +470,7 @@
 				D65DF1091BE299D3009CC6DF /* UIViewControllerStack.m in Sources */,
 				0707D6A91BE29BC4002F1FC0 /* SNFLauncher.m in Sources */,
 				D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */,
+				0707D6AE1BE2A1C9002F1FC0 /* SNFLogin.m in Sources */,
 				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,
 				D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */,
 				D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */,
