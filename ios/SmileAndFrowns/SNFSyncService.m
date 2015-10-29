@@ -64,8 +64,6 @@
 		[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
 		NSString *dateString = [formatter stringFromDate:lastSyncDate];
 		[postData setObject:dateString forKey:@"sync_date"];
-	}else{
-		[postData setObject:[NSNull null] forKey:@"sync_date"];
 	}
 	
 	NSDate *fromDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
