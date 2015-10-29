@@ -13,6 +13,7 @@
 @property (weak) IBOutlet UITextField *emailField;
 @property (weak) IBOutlet UITextField *passwordField;
 @property (weak) IBOutlet UITextField *passwordConfirmField;
+@property IBOutlet UIView *blockingView;
 
 - (void)loadAuthedUser;
 

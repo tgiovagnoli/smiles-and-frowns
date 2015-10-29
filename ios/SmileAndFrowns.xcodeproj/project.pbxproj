@@ -60,6 +60,8 @@
 		D65DF1121BE29A42009CC6DF /* SNFUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF10E1BE29A42009CC6DF /* SNFUserProfile.m */; };
 		D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF10F1BE29A42009CC6DF /* SNFUserProfile.xib */; };
 		D65DF1251BE2A4FB009CC6DF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1241BE2A4FB009CC6DF /* MBProgressHUD.m */; };
+		D65DF1291BE2AA50009CC6DF /* SNFBoardList.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1271BE2AA50009CC6DF /* SNFBoardList.m */; };
+		D65DF12A1BE2AA50009CC6DF /* SNFBoardList.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF1281BE2AA50009CC6DF /* SNFBoardList.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +160,9 @@
 		D65DF10F1BE29A42009CC6DF /* SNFUserProfile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFUserProfile.xib; sourceTree = "<group>"; };
 		D65DF1231BE2A4FB009CC6DF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = libraries/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		D65DF1241BE2A4FB009CC6DF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = libraries/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
+		D65DF1261BE2AA50009CC6DF /* SNFBoardList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBoardList.h; sourceTree = "<group>"; };
+		D65DF1271BE2AA50009CC6DF /* SNFBoardList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoardList.m; sourceTree = "<group>"; };
+		D65DF1281BE2AA50009CC6DF /* SNFBoardList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFBoardList.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +225,9 @@
 		D62D37921BDE7FCA00102D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D65DF1261BE2AA50009CC6DF /* SNFBoardList.h */,
+				D65DF1271BE2AA50009CC6DF /* SNFBoardList.m */,
+				D65DF1281BE2AA50009CC6DF /* SNFBoardList.xib */,
 				D62D378D1BDE7FC600102D6A /* SNFDebug.h */,
 				D62D378E1BDE7FC600102D6A /* SNFDebug.m */,
 				D62D378F1BDE7FC600102D6A /* SNFDebug.xib */,
@@ -443,6 +451,7 @@
 				0707D6A51BE29756002F1FC0 /* SNFViewController.xib in Resources */,
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
 				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
+				D65DF12A1BE2AA50009CC6DF /* SNFBoardList.xib in Resources */,
 				D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */,
 				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
 				0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */,
@@ -456,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D65DF1291BE2AA50009CC6DF /* SNFBoardList.m in Sources */,
 				D62D379C1BDEEFC400102D6A /* SNFSyncService.m in Sources */,
 				D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */,
 				D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */,

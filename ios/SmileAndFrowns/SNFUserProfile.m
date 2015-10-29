@@ -1,5 +1,7 @@
 #import "SNFUserProfile.h"
+#import "SNFViewController.h"
 #import "SNFModel.h"
+#import "SNFLogin.h"
 
 @implementation SNFUserProfile
 
@@ -21,18 +23,28 @@
 			}else{
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"You must be logged in to edit your profile.  Would you like to login now?" preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-					
+					[self showLogin];
 				}]];
-				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-					
-				}]];
+				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
+				[[SNFViewController instance] presentViewController:alert animated:YES completion:^{}];
+				[self showLoggedInBlocker];
 			}
 		}];
 	}
 }
 
+- (IBAction)onLogin:(UIButton *)sender{
+	[self showLogin];
+}
+
+- (void)showLogin{
+	SNFLogin *login = [[SNFLogin alloc] init];
+	[[SNFViewController instance] presentViewController:login animated:YES completion:^{}];
+}
+
 - (void)showLoggedInBlocker{
-	
+	[self.view addSubview:self.blockingView];
+	[self.blockingView matchFrameSizeOfView:self.view];
 }
 
 - (void)setUser:(SNFUser *)user{

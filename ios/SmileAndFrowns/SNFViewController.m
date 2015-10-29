@@ -5,6 +5,7 @@
 #import "UIViewControllerStack.h"
 #import "NSTimer+Blocks.h"
 #import "SNFTutorial.h"
+#import "SNFBoardList.h"
 
 static SNFViewController * _instance;
 
@@ -45,7 +46,8 @@ static SNFViewController * _instance;
 }
 
 - (void)showBoards{
-	[self.viewControllerStack eraseStack];
+	SNFBoardList *boardsList = [[SNFBoardList alloc] init];
+	[self.viewControllerStack eraseStackAndPushViewController:boardsList animated:NO];
 }
 
 - (void)showProfile{
