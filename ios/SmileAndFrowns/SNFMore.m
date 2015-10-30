@@ -1,4 +1,9 @@
+
 #import "SNFMore.h"
+#import "AppDelegate.h"
+#import "SNFLauncher.h"
+#import "SNFUserService.h"
+#import "SNFModel.h"
 
 @implementation SNFMore
 
@@ -12,6 +17,7 @@
 					   [self tableItemWithName:@"Remove Ads" andSelector:@selector(removeAds)],
 					   [self tableItemWithName:@"Terms and Privacy" andSelector:@selector(termsAndPrivacy)],
 					   [self tableItemWithName:@"App Settings" andSelector:@selector(appSettings)],
+					   [self tableItemWithName:@"Launcher" andSelector:@selector(launcher)],
 					   [self tableItemWithName:@"Logout" andSelector:@selector(logout)],
 					   ];
 	[self.tableView reloadData];
@@ -41,6 +47,9 @@
 	return item;
 }
 
+- (void) launcher {
+	[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+}
 
 - (void)theFiveCs{
 	
@@ -70,14 +79,28 @@
 	
 }
 
-- (void)logout{
+- (void) logout {
 	
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	
+	SNFUserService * service = [[SNFUserService alloc] init];
+	
+	[service logoutWithCompletion:^(NSError *error) {
+		
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
+		if(error) {
+			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+			[self presentViewController:alert animated:TRUE completion:nil];
+			return;
+		}
+		
+		[SNFModel sharedInstance].loggedInUser = nil;
+		
+		[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+		
+	}];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

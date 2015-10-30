@@ -36,22 +36,24 @@
 }
 
 - (void)logoutWithCompletion:(void(^)(NSError *error))completion{
-	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"logout"];
-	NSURLSession *session = [NSURLSession sharedSession];
-	NSURLSessionDataTask *task = [session dataTaskWithURL:serviceURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
-			if(error){
+	NSURL * serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"logout"];
+	NSURLSession * session = [NSURLSession sharedSession];
+	NSURLSessionDataTask * task = [session dataTaskWithURL:serviceURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+		dispatch_async(dispatch_get_main_queue(), ^{
+			if(error) {
 				completion(error);
 				return;
 			}
-			NSError *jsonError;
+			
+			NSError * jsonError;
 			[self responseObjectFromData:data withError:&jsonError];
-			if(jsonError){
+			if(jsonError) {
 				completion(jsonError);
 				return;
 			}
-			completion(nil);
+			
 			[SNFModel sharedInstance].loggedInUser = nil;
+			completion(nil);
 		});
 	}];
 	[task resume];
@@ -92,7 +94,7 @@
 	NSString *firstName = [data objectForKey:@"invitee_firstname"];
 	NSString *lastName = [data objectForKey:@"invitee_lastname"];
 	
-	if(!email || ![email isValidEmail] || email.em){
+	if(!email || ![email isValidEmail] || email.isEmpty){
 		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"email must be valid"]);
 	}
 	if(!boardUUID || [boardUUID isEmpty]){
@@ -138,6 +140,36 @@
 }
 
 - (void) createAccountWithData:(NSDictionary *) data andCompletion:(SNFCreateAccountCompletion) completion; {
+	if([data[@"email"] isEmpty]) {
+		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Email required"],nil);
+		return;
+	}
+	
+	if(![data[@"email"] isValidEmail]) {
+		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Incorrect email format"],nil);
+		return;
+	}
+	
+	if([data[@"firstname"] isEmpty]) {
+		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"First Name required"],nil);
+		return;
+	}
+	
+	if([data[@"lastname"] isEmpty]) {
+		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Last Name required"],nil);
+		return;
+	}
+	
+	if([data[@"password"] isEmpty]) {
+		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Password Required"],nil);
+		return;
+	}
+	
+	if(![data[@"password_confirm"] isEqualToString:data[@"password"]]) {
+		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Passwords don't match"],nil);
+		return;
+	}
+	
 	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"signup"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
 	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -147,9 +179,10 @@
 				return;
 			}
 			
-			NSError *jsonError;
-			NSObject *dataObject = [self responseObjectFromData:data withError:&jsonError];
-			if(jsonError){
+			NSError * jsonError = nil;
+			NSObject * dataObject = [self responseObjectFromData:data withError:&jsonError];
+			
+			if(jsonError) {
 				completion(jsonError, nil);
 				return;
 			}
@@ -163,6 +196,39 @@
 			completion(nil,userData);
 		});
 	}];
+	[task resume];
+}
+
+- (void) acceptInviteCode:(NSString *) inviteCode andCompletion:(SNFAcceptInviteCompletion)completion; {
+	
+	if(!inviteCode) {
+		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Invite code required"]);
+	}
+	
+	NSDictionary * data = @{@"code":inviteCode};
+	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"invite_accept"];
+	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
+	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			if(error) {
+				completion(error);
+				return;
+			}
+			
+			NSError * jsonError = nil;
+			[self responseObjectFromData:data withError:&jsonError];
+			
+			if(jsonError) {
+				completion(jsonError);
+				return;
+			}
+			
+			completion(nil);
+		});
+		
+	}];
+	
 	[task resume];
 }
 

@@ -1,5 +1,7 @@
+
 #import <UIKit/UIKit.h>
 #import "APDDebugViewController.h"
+#import "MBProgressHUD.h"
 
 @interface SNFMore : UIViewController <UITableViewDataSource, UITableViewDelegate>{
 	NSArray *_tableContents;
