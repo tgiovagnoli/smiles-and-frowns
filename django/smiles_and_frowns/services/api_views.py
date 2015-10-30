@@ -118,17 +118,19 @@ def user_signup(request):
 	@param email
 	@param firstname
 	@param lastname
-	@param gender
-	@param age
 	@param password
+	@param password_confirm
+	@param (optional) gender
+	@param (optional) age
 	'''
 
 	#check for POST
 	if request.method != "POST":
 		return json_response_error("method not allowed")
-
+	
 	email = request.POST.get('email',None)
 	password = request.POST.get('password',None)
+	password_confirm = request.POST.get('password_confirm',None)
 	firstname = request.POST.get('firstname',None)
 	lastname = request.POST.get('lastname',None)
 	gender = request.POST.get('gender',None)
@@ -153,16 +155,20 @@ def user_signup(request):
 		return json_response_error("lastname required")
 
 	#check gender
-	if not gender or len(gender) < 1:
-		return json_response_error("gender required")
+	#if not gender or len(gender) < 1:
+	#	return json_response_error("gender required")
 
 	#check age
-	if not age or len(age) < 1:
-		return json_response_error("age required")
+	#if not age or len(age) < 1:
+	#	return json_response_error("age required")
 
 	#check for password
 	if not password or len(password) < 1:
 		return json_response_error("password required")
+
+	#check password confirm match
+	if password != password_confirm:
+		return json_response_error("password does not match password confirm")
 
 	#create random username with uuid
 	username = str(uuid.uuid4())
@@ -171,12 +177,13 @@ def user_signup(request):
 	try:
 		new_user = User(email=email,username=username,first_name=firstname,last_name=lastname,password=make_password(password))
 		new_user.save()
-		new_user.profile.age = age
-		new_user.profile.gender = gender
+		if age: new_user.profile.age = age
+		if gender: new_user.profile.gender = gender
 		new_user.profile.save()
 	except Exception as e:
 		return json_response_error('error creating user %s' % str(e))
 
+	#return new user
 	output = json_utils.user_info_dictionary(new_user)
 	return json_response(output)
 
