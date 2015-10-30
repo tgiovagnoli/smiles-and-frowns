@@ -8,7 +8,7 @@
 #import "SNFBoardList.h"
 #import "SNFMore.h"
 
-static SNFViewController * _instance;
+static __weak SNFViewController * _instance;
 
 @implementation SNFViewController
 
