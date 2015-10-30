@@ -9,6 +9,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SNFBoard : NSManagedObject
 
 
+- (void)reset;
+
 @end
 
 NS_ASSUME_NONNULL_END

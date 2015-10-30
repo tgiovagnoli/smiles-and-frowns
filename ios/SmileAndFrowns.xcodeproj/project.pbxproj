@@ -84,6 +84,9 @@
 		D65DF1501BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF14E1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib */; };
 		D65DF15A1BE2F59F009CC6DF /* SNFAddUserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1581BE2F59F009CC6DF /* SNFAddUserRole.m */; };
 		D65DF15B1BE2F59F009CC6DF /* SNFAddUserRole.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF1591BE2F59F009CC6DF /* SNFAddUserRole.xib */; };
+		D65DF1761BE3ED9F009CC6DF /* SNFSwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1751BE3ED9F009CC6DF /* SNFSwipeCell.m */; };
+		D65DF17A1BE3F884009CC6DF /* SNFBoardEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1781BE3F884009CC6DF /* SNFBoardEdit.m */; };
+		D65DF17B1BE3F884009CC6DF /* SNFBoardEdit.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF1791BE3F884009CC6DF /* SNFBoardEdit.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -219,6 +222,11 @@
 		D65DF1571BE2F59F009CC6DF /* SNFAddUserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFAddUserRole.h; sourceTree = "<group>"; };
 		D65DF1581BE2F59F009CC6DF /* SNFAddUserRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFAddUserRole.m; sourceTree = "<group>"; };
 		D65DF1591BE2F59F009CC6DF /* SNFAddUserRole.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFAddUserRole.xib; sourceTree = "<group>"; };
+		D65DF1741BE3ED9F009CC6DF /* SNFSwipeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFSwipeCell.h; sourceTree = "<group>"; };
+		D65DF1751BE3ED9F009CC6DF /* SNFSwipeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFSwipeCell.m; sourceTree = "<group>"; };
+		D65DF1771BE3F884009CC6DF /* SNFBoardEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBoardEdit.h; sourceTree = "<group>"; };
+		D65DF1781BE3F884009CC6DF /* SNFBoardEdit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoardEdit.m; sourceTree = "<group>"; };
+		D65DF1791BE3F884009CC6DF /* SNFBoardEdit.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFBoardEdit.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +347,7 @@
 		D62D37921BDE7FCA00102D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D65DF1731BE3ED83009CC6DF /* Util */,
 				0707D6C11BE2B2CB002F1FC0 /* Accept Invite */,
 				D65DF13C1BE2B8F1009CC6DF /* Boards */,
 				0707D6D61BE2E3AF002F1FC0 /* CreateAccount */,
@@ -516,21 +525,24 @@
 		D65DF13C1BE2B8F1009CC6DF /* Boards */ = {
 			isa = PBXGroup;
 			children = (
+				D65DF13D1BE2BB88009CC6DF /* SNFBoardDetail.h */,
+				D65DF13E1BE2BB88009CC6DF /* SNFBoardDetail.m */,
+				D65DF13F1BE2BB88009CC6DF /* SNFBoardDetail.xib */,
+				D65DF14C1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.h */,
+				D65DF14D1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.m */,
+				D65DF14E1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib */,
+				D65DF1471BE2BF94009CC6DF /* SNFBoardDetailChildCell.h */,
+				D65DF1481BE2BF94009CC6DF /* SNFBoardDetailChildCell.m */,
+				D65DF1491BE2BF94009CC6DF /* SNFBoardDetailChildCell.xib */,
+				D65DF1771BE3F884009CC6DF /* SNFBoardEdit.h */,
+				D65DF1781BE3F884009CC6DF /* SNFBoardEdit.m */,
+				D65DF1791BE3F884009CC6DF /* SNFBoardEdit.xib */,
 				D65DF1261BE2AA50009CC6DF /* SNFBoardList.h */,
 				D65DF1271BE2AA50009CC6DF /* SNFBoardList.m */,
 				D65DF1281BE2AA50009CC6DF /* SNFBoardList.xib */,
 				D65DF1371BE2B8EE009CC6DF /* SNFBoardListCell.h */,
 				D65DF1381BE2B8EE009CC6DF /* SNFBoardListCell.m */,
 				D65DF1391BE2B8EE009CC6DF /* SNFBoardListCell.xib */,
-				D65DF13D1BE2BB88009CC6DF /* SNFBoardDetail.h */,
-				D65DF13E1BE2BB88009CC6DF /* SNFBoardDetail.m */,
-				D65DF13F1BE2BB88009CC6DF /* SNFBoardDetail.xib */,
-				D65DF1471BE2BF94009CC6DF /* SNFBoardDetailChildCell.h */,
-				D65DF1481BE2BF94009CC6DF /* SNFBoardDetailChildCell.m */,
-				D65DF1491BE2BF94009CC6DF /* SNFBoardDetailChildCell.xib */,
-				D65DF14C1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.h */,
-				D65DF14D1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.m */,
-				D65DF14E1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib */,
 			);
 			name = Boards;
 			sourceTree = "<group>";
@@ -546,6 +558,15 @@
 				D65DF1591BE2F59F009CC6DF /* SNFAddUserRole.xib */,
 			);
 			name = User;
+			sourceTree = "<group>";
+		};
+		D65DF1731BE3ED83009CC6DF /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D65DF1741BE3ED9F009CC6DF /* SNFSwipeCell.h */,
+				D65DF1751BE3ED9F009CC6DF /* SNFSwipeCell.m */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -624,6 +645,7 @@
 				D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */,
 				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
 				D65DF1301BE2AE6D009CC6DF /* SNFMore.xib in Resources */,
+				D65DF17B1BE3F884009CC6DF /* SNFBoardEdit.xib in Resources */,
 				D65DF13B1BE2B8EE009CC6DF /* SNFBoardListCell.xib in Resources */,
 				0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */,
 				D65DF1411BE2BB88009CC6DF /* SNFBoardDetail.xib in Resources */,
@@ -643,6 +665,8 @@
 				D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */,
 				D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */,
 				D62D37A01BDEF0D400102D6A /* SNFConfig.m in Sources */,
+				D65DF17A1BE3F884009CC6DF /* SNFBoardEdit.m in Sources */,
+				D65DF1761BE3ED9F009CC6DF /* SNFSwipeCell.m in Sources */,
 				D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */,
 				D65DF1121BE29A42009CC6DF /* SNFUserProfile.m in Sources */,
 				D659DBF41BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m in Sources */,
