@@ -342,7 +342,7 @@ def invite_accept(request):
 	invite.delete()
 
 	#returns all new data
-	return sync_pull(request,request.get('sync_date',None))
+	return json_response({})
 
 @csrf_exempt
 def invite(request):
