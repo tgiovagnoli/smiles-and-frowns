@@ -114,12 +114,12 @@
 						//if main view controller is being shown, show invites.
 						if([SNFViewController instance]) {
 							
-							[[SNFViewController instance] showInvites];
+							[[SNFViewController instance] showInvitesAnimated:TRUE];
 						
 						} else {
 							
 							[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
-							[[SNFViewController instance] showInvites];
+							[[SNFViewController instance] showInvitesAnimated:FALSE];
 							
 						}
 						

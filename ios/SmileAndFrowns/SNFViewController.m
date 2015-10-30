@@ -11,23 +11,29 @@
 
 static __weak SNFViewController * _instance;
 
+@interface SNFViewController ()
+@property BOOL firstlayout;
+@end
+
 @implementation SNFViewController
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	_instance = self;
-	
+	self.firstlayout = true;
 	self.viewControllerStack.alwaysResizePushedViews = YES;
-	
-	[NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
-		[self insertMenu];
-	} repeats:NO];
-	
-	[self showBoards];
 }
 
 - (void) dealloc {
 	_instance = nil;
+}
+
+- (void) viewDidLayoutSubviews {
+	if(self.firstlayout) {
+		self.firstlayout = false;
+		[self insertMenu];
+		[self showBoardsAnimated:NO];
+	}
 }
 
 - (void)insertMenu{
@@ -36,8 +42,12 @@ static __weak SNFViewController * _instance;
 	self.tabMenu.view.width = self.tabMenuContainer.width;
 	self.tabMenu.view.height = self.tabMenuContainer.height;
 	self.tabMenu.view.alpha = 0.0;
-	[UIView animateWithDuration:0.1 animations:^{
+	
+	UIViewAnimationOptions options = UIViewAnimationOptionCurveEaseInOut;
+	[UIView animateWithDuration:.25 delay:.1 options:options animations:^{
 		self.tabMenu.view.alpha = 1.0;
+	} completion:^(BOOL finished) {
+		
 	}];
 }
 
@@ -47,32 +57,32 @@ static __weak SNFViewController * _instance;
 
 - (void) showDebug {
 	SNFDebug *debug = [[SNFDebug alloc] init];
-	[self.viewControllerStack eraseStackAndPushViewController:debug animated:NO];
+	[self.viewControllerStack eraseStackAndPushViewController:debug animated:YES];
 }
 
-- (void)showBoards{
-	SNFBoardList *boardsList = [[SNFBoardList alloc] init];
-	[self.viewControllerStack eraseStackAndPushViewController:boardsList animated:NO];
+- (void) showBoardsAnimated:(BOOL) animated {
+	SNFBoardList * boardsList = [[SNFBoardList alloc] init];
+	[self.viewControllerStack eraseStackAndPushViewController:boardsList animated:animated];
 }
 
 - (void)showProfile{
 	SNFUserProfile *profile = [[SNFUserProfile alloc] init];
-	[self.viewControllerStack eraseStackAndPushViewController:profile animated:NO];
+	[self.viewControllerStack eraseStackAndPushViewController:profile animated:YES];
 	[profile loadAuthedUser];
 }
 
 - (void)showMore{
 	SNFMore *more = [[SNFMore alloc] init];
-	[self.viewControllerStack eraseStackAndPushViewController:more animated:NO];
+	[self.viewControllerStack eraseStackAndPushViewController:more animated:YES];
 }
 
 - (void)debugViewControllerIsDone:(APDDebugViewController *)debugViewController{
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-- (void)showInvites{
+- (void)showInvitesAnimated:(BOOL) animated; {
 	SNFInvites * invites = [[SNFInvites alloc] init];
-	[self.viewControllerStack eraseStackAndPushViewController:invites animated:TRUE];
+	[self.viewControllerStack eraseStackAndPushViewController:invites animated:animated];
 }
 
 - (void)didReceiveMemoryWarning {

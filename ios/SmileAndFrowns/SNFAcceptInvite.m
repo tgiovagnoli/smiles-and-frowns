@@ -73,7 +73,7 @@
 		}
 		
 		[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
-		[[SNFViewController instance] showBoards];
+		[[SNFViewController instance] showBoardsAnimated:FALSE];
 		
 	}];
 }

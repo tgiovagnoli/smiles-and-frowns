@@ -1,6 +1,7 @@
 
 #import "SNFInvite.h"
 #import "SNFBoard.h"
+#import "SNFModel.h"
 
 @implementation SNFInvite
 
@@ -16,6 +17,19 @@
 		@"created_date": @"created_date",
 		@"accepted": @"accepted",
 	};
+}
+
++ (NSArray *) all; {
+	NSError * error = nil;
+	NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
+	NSEntityDescription * entity = [NSEntityDescription entityForName:@"SNFInvite" inManagedObjectContext:[SNFModel sharedInstance].managedObjectContext];
+	[fetchRequest setEntity:entity];
+	NSArray * fetchedObjects = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:fetchRequest error:&error];
+	if(error) {
+		NSLog(@"error making query: %@",error);
+		return nil;
+	}
+	return fetchedObjects;
 }
 
 @end

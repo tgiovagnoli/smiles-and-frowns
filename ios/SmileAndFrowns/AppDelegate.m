@@ -57,7 +57,7 @@ static AppDelegate * _instance;
 		if([path isEqualToString:@"snf://invites"]) {
 			
 			if([[AppDelegate rootViewController] isKindOfClass:[SNFViewController class]]) {
-				[[SNFViewController instance] showInvites];
+				[[SNFViewController instance] showInvitesAnimated:FALSE];
 			} else {
 				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Login Required" message:@"Login to see your board invitations" preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
@@ -93,7 +93,7 @@ static AppDelegate * _instance;
 						if(![SNFViewController instance]) {
 							self.window.rootViewController = [[SNFViewController alloc] init];
 						}
-						[[SNFViewController instance] showInvites];
+						[[SNFViewController instance] showInvitesAnimated:FALSE];
 						
 					}];
 					
@@ -104,7 +104,7 @@ static AppDelegate * _instance;
 						self.window.rootViewController = [[SNFViewController alloc] init];
 					}
 					
-					[[SNFViewController instance] showInvites];
+					[[SNFViewController instance] showInvitesAnimated:FALSE];
 				}
 			}
 		}

@@ -1,13 +1,9 @@
-//
-//  SNFInvites.h
-//  SmileAndFrowns
-//
-//  Created by Aaron Smith on 10/30/15.
-//  Copyright © 2015 apptitude. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
-@interface SNFInvites : UIViewController
+@interface SNFInvites : UIViewController <UITableViewDataSource,UITableViewDelegate>
+
+@property (weak) IBOutlet UITableView * tableView;
 
 @end

@@ -4,9 +4,12 @@
 @implementation SNFInvite (CoreDataProperties)
 
 @dynamic uuid;
-@dynamic role;
-@dynamic code;
 @dynamic remote_id;
-@dynamic board;
+@dynamic board_title;
+@dynamic board_uuid;
+@dynamic code;
+@dynamic sender_first_name;
+@dynamic sender_last_name;
+@dynamic created_date;
 
 @end

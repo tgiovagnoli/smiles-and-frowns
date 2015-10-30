@@ -14,9 +14,9 @@
 
 + (SNFViewController *)instance;
 - (void)showDebug;
-- (void)showBoards;
+- (void)showBoardsAnimated:(BOOL) animated;
 - (void)showProfile;
 - (void)showMore;
-- (void)showInvites;
+- (void)showInvitesAnimated:(BOOL) animated;
 
 @end

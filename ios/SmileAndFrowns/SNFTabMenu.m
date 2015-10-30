@@ -8,7 +8,7 @@
 }
 
 - (IBAction)onBoards:(UIButton *)sender{
-	[[SNFViewController instance] showBoards];
+	[[SNFViewController instance] showBoardsAnimated:TRUE];
 }
 
 - (IBAction)onProfile:(UIButton *)sender{
@@ -16,7 +16,7 @@
 }
 
 - (IBAction)onInvites:(UIButton *)sender{
-	[[SNFViewController instance] showInvites];
+	[[SNFViewController instance] showInvitesAnimated:TRUE];
 }
 
 - (IBAction)onMore:(UIButton *)sender{
