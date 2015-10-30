@@ -21,6 +21,10 @@ static SNFViewController * _instance;
 	} repeats:NO];
 }
 
+- (void) dealloc {
+	_instance = nil;
+}
+
 - (void)insertMenu{
 	self.tabMenu = [[SNFTabMenu alloc] init];
 	[self.tabMenuContainer addSubview:self.tabMenu.view];

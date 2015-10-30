@@ -242,15 +242,9 @@
 		0707D6C71BE2B2EB002F1FC0 /* Launcher */ = {
 			isa = PBXGroup;
 			children = (
-				0707D6C81BE2B2F8002F1FC0 /* SNFCreateAccount.h */,
-				0707D6C91BE2B2F8002F1FC0 /* SNFCreateAccount.m */,
-				0707D6CA1BE2B2F8002F1FC0 /* SNFCreateAccount.xib */,
 				0707D6A61BE29BC4002F1FC0 /* SNFLauncher.h */,
 				0707D6A71BE29BC4002F1FC0 /* SNFLauncher.m */,
 				0707D6A81BE29BC4002F1FC0 /* SNFLauncher.xib */,
-				0707D6CD1BE2B301002F1FC0 /* SNFPasswordReset.h */,
-				0707D6CE1BE2B301002F1FC0 /* SNFPasswordReset.m */,
-				0707D6CF1BE2B301002F1FC0 /* SNFPasswordReset.xib */,
 			);
 			name = Launcher;
 			sourceTree = "<group>";
@@ -263,6 +257,26 @@
 				0707D6AD1BE2A1C9002F1FC0 /* SNFLogin.xib */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		0707D6D61BE2E3AF002F1FC0 /* CreateAccount */ = {
+			isa = PBXGroup;
+			children = (
+				0707D6C81BE2B2F8002F1FC0 /* SNFCreateAccount.h */,
+				0707D6C91BE2B2F8002F1FC0 /* SNFCreateAccount.m */,
+				0707D6CA1BE2B2F8002F1FC0 /* SNFCreateAccount.xib */,
+			);
+			name = CreateAccount;
+			sourceTree = "<group>";
+		};
+		0707D6D71BE2E3BC002F1FC0 /* PasswordReset */ = {
+			isa = PBXGroup;
+			children = (
+				0707D6CD1BE2B301002F1FC0 /* SNFPasswordReset.h */,
+				0707D6CE1BE2B301002F1FC0 /* SNFPasswordReset.m */,
+				0707D6CF1BE2B301002F1FC0 /* SNFPasswordReset.xib */,
+			);
+			name = PasswordReset;
 			sourceTree = "<group>";
 		};
 		D6272FB41BE0020A0024CBC2 /* apd-objc */ = {
@@ -300,11 +314,13 @@
 		D62D37921BDE7FCA00102D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D65DF13C1BE2B8F1009CC6DF /* Boards */,
 				0707D6C11BE2B2CB002F1FC0 /* Accept Invite */,
+				D65DF13C1BE2B8F1009CC6DF /* Boards */,
+				0707D6D61BE2E3AF002F1FC0 /* CreateAccount */,
 				0707D6C71BE2B2EB002F1FC0 /* Launcher */,
 				0707D6D21BE2B852002F1FC0 /* Login */,
 				D65DF12B1BE2AE5A009CC6DF /* More */,
+				0707D6D71BE2E3BC002F1FC0 /* PasswordReset */,
 				D62D378D1BDE7FC600102D6A /* SNFDebug.h */,
 				D62D378E1BDE7FC600102D6A /* SNFDebug.m */,
 				D62D378F1BDE7FC600102D6A /* SNFDebug.xib */,

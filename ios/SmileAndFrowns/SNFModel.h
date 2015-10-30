@@ -10,7 +10,7 @@
 @property (readonly) SNFConfig *config;
 @property (readonly) SNFUserSettings *userSettings;
 @property SNFUser *loggedInUser;
-
+@property NSString * pendingInviteCode;
 
 + (SNFModel *)sharedInstance;
 

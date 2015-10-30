@@ -5,6 +5,8 @@
 #import "SNFViewController.h"
 #import "SNFTutorial.h"
 #import "SNFLauncher.h"
+#import "SNFAcceptInvite.h"
+#import "SNFLogin.h"
 
 static AppDelegate * _instance;
 
@@ -21,13 +23,10 @@ static AppDelegate * _instance;
 	return _instance.window.rootViewController;
 }
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	_instance = self;
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	SNFViewController *vc = [[SNFViewController alloc] init];
-	self.window.rootViewController = vc;
-	[self.window makeKeyAndVisible];
 	
 	if(![SNFTutorial hasSeenTutorial]) {
 		self.window.rootViewController = [[SNFTutorial alloc] init];
@@ -37,12 +36,69 @@ static AppDelegate * _instance;
 		self.window.rootViewController = [[SNFViewController alloc] init];
 	}
 	
+	[self.window makeKeyAndVisible];
+	
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
 	[SNFDateManager unlock];
 	
 	application.statusBarHidden = YES;
 	
 	return YES;
+}
+
+- (BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+	if([url.scheme isEqualToString:@"snf"]) {
+		
+		//gat absolute path - like snf://invite/09sdf84
+		//look for handled url routes below
+		NSString * path = [url absoluteString];
+		
+		//look for invite code.
+		NSArray * parts = [path componentsSeparatedByString:@"snf://invite/"];
+		if(parts.count == 2) {
+			
+			//set pending invite code.
+			NSString * inviteCode = [parts objectAtIndex:1];
+			[SNFModel sharedInstance].pendingInviteCode = inviteCode;
+			
+			if(![SNFModel sharedInstance].loggedInUser) {
+				
+				//show login view,
+				SNFLogin * login = [[SNFLogin alloc] init];
+				SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] init];
+				login.nextViewController = acceptInvite;
+				[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
+				
+			} else {
+				
+				if(self.window.rootViewController.presentingViewController) {
+					
+					[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+						
+						//user is logged in here, show the invites view.
+						if(![SNFViewController instance]) {
+							self.window.rootViewController = [[SNFViewController alloc] init];
+						}
+						[[SNFViewController instance] showInvites];
+						
+					}];
+					
+				} else {
+					
+					//user is logged in here, show the invites view.
+					if([self.window.rootViewController isKindOfClass:[SNFLauncher class]]) {
+						self.window.rootViewController = [[SNFViewController alloc] init];
+					}
+					
+					[[SNFViewController instance] showInvites];
+				}
+			}
+		}
+		
+		return TRUE;
+	}
+	
+	return FALSE;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

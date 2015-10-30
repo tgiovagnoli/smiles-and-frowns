@@ -25,11 +25,11 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I want to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jla-hQ-MhW">
-                    <rect key="frame" x="267" y="351" width="66" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I want to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jla-hQ-MhW">
+                    <rect key="frame" x="257" y="351" width="87" height="21"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="66" id="7dt-7q-pVD"/>
+                        <constraint firstAttribute="width" constant="87" id="7dt-7q-pVD"/>
                         <constraint firstAttribute="height" constant="21" id="yuf-aA-rWb"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -84,19 +84,8 @@
                         <action selector="login:" destination="-1" eventType="touchUpInside" id="uaH-b5-gR7"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show this screen on launch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l98-O4-0q6">
-                    <rect key="frame" x="186" y="546" width="214" height="21"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="214" id="fqJ-iN-Fyy"/>
-                        <constraint firstAttribute="height" constant="21" id="saS-iB-2t2"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXF-OV-gDJ">
-                    <rect key="frame" x="129" y="541" width="51" height="31"/>
+                    <rect key="frame" x="180" y="541" width="51" height="31"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="49" id="ezm-oT-MRT"/>
@@ -106,6 +95,17 @@
                         <action selector="showAtStartup:" destination="-1" eventType="valueChanged" id="OGs-KA-cnL"/>
                     </connections>
                 </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show this screen on launch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l98-O4-0q6">
+                    <rect key="frame" x="237" y="546" width="183" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="183" id="fqJ-iN-Fyy"/>
+                        <constraint firstAttribute="height" constant="21" id="saS-iB-2t2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -127,7 +127,7 @@
                 <constraint firstItem="3kq-mh-ITC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cU6-NQ-DmD"/>
                 <constraint firstItem="kwu-gI-Bcg" firstAttribute="top" secondItem="3kq-mh-ITC" secondAttribute="bottom" constant="1" id="d55-95-KXK"/>
                 <constraint firstItem="l98-O4-0q6" firstAttribute="leading" secondItem="eXF-OV-gDJ" secondAttribute="trailing" constant="8" id="kg7-Bo-PDl"/>
-                <constraint firstItem="l98-O4-0q6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="-7" id="lpd-Cw-KRZ"/>
+                <constraint firstItem="l98-O4-0q6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="28.5" id="lpd-Cw-KRZ"/>
                 <constraint firstItem="l98-O4-0q6" firstAttribute="top" secondItem="uGA-iT-z3T" secondAttribute="bottom" constant="19" id="wf2-ah-vge"/>
                 <constraint firstItem="eR4-QF-gvg" firstAttribute="top" secondItem="kwu-gI-Bcg" secondAttribute="bottom" constant="1" id="wvo-7e-Yun"/>
             </constraints>
