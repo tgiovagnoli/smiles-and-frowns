@@ -15,7 +15,7 @@
 	}
 }
 
-- (IBAction) joinBoard:(id)sender {
+- (IBAction) joinBoard:(id) sender {
 	
 }
 

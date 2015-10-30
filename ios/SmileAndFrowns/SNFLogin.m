@@ -84,9 +84,8 @@
 						}
 						
 					} else {
-						[self presentViewController:self.nextViewController animated:TRUE completion:nil];
+						[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
 					}
-
 				}
 				
 				if(self.delegate){
@@ -113,7 +112,7 @@
 		if(self.nextViewController) {
 			createAccount.nextViewController = self.nextViewController;
 		}
-		[self presentViewController:createAccount animated:TRUE completion:^{
+		[[AppDelegate rootViewController] presentViewController:createAccount animated:TRUE completion:^{
 			
 		}];
 		
@@ -124,7 +123,7 @@
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 		SNFPasswordReset * reset = [[SNFPasswordReset alloc] init];
-		[self presentViewController:reset animated:TRUE completion:^{
+		[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:^{
 			
 		}];
 		
