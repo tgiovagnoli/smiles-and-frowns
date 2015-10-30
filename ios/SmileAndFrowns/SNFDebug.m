@@ -1,3 +1,4 @@
+
 #import "SNFDebug.h"
 #import "SNFModel.h"
 #import "SNFBoard.h"
@@ -12,6 +13,7 @@
 #import "SNFUserService.h"
 #import "APDDjangoErrorViewer.h"
 #import "AppDelegate.h"
+#import "UIAlertAction+Additions.h"
 
 @implementation SNFDebug
 
@@ -89,7 +91,7 @@
 
 - (void)alertWithMessage:(NSString *)message{
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
-	[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}]];
+	[alert addAction:[UIAlertAction OKAction]];
 	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 }
 
@@ -286,7 +288,7 @@
 		}
 		
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Enter a title" preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
 			NSString *title;
 			NSString *uuid;
 			for(UITextField *tf in alert.textFields){
@@ -341,7 +343,7 @@
 	[[SNFModel sharedInstance].managedObjectContext save:&error];
 	if(error){
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Something went wrong trying to save." preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}]];
+		[alert addAction:[UIAlertAction OKAction]];
 		[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 	}
 }

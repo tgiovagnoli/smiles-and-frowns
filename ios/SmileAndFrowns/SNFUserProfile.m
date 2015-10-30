@@ -23,7 +23,7 @@
 				self.user = user;
 			}else{
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"You must be logged in to edit your profile.  Would you like to login now?" preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 					[self showLogin];
 				}]];
 				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];

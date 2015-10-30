@@ -300,6 +300,9 @@
 				for(NSDictionary * dict in invites) {
 					[SNFInvite editOrCreatefromInfoDictionary:dict withContext:[SNFModel sharedInstance].managedObjectContext];
 				}
+				
+				[[SNFModel sharedInstance].managedObjectContext save:nil];
+				
 				completion(nil);
 				
 			} else {

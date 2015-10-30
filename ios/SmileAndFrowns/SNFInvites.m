@@ -58,11 +58,21 @@
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SNFInvites"];
 	}
 	cell.textLabel.text = [NSString stringWithFormat:@"%@ invited you to %@", invite.sender_first_name, invite.board_title];
+	if(invite.accepted.boolValue) {
+		cell.textLabel.textColor = [UIColor grayColor];
+	}
 	return cell;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	SNFInvite * invite = [self.invites objectAtIndex:indexPath.row];
+	
+	if(invite.accepted.boolValue) {
+		return;
+	}
+	
+	invite.accepted = @(TRUE);
+	
 	NSLog(@"accept invite %@ for board %@", invite.code, invite.board_title);
 	[self.service acceptInviteCode:invite.code andCompletion:^(NSError *error) {
 		if(error) {
@@ -71,6 +81,9 @@
 			[self presentViewController:alert animated:TRUE completion:nil];
 		}
 	}];
+	
+	UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	cell.textLabel.textColor = [UIColor grayColor];
 }
 
 @end

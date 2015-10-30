@@ -1,8 +1,10 @@
+
 #import "SNFAddUserRole.h"
 #import "AppDelegate.h"
 #import "SNFModel.h"
 #import "SNFUserService.h"
 #import "MBProgressHUD.h"
+#import "UIAlertAction+Additions.h"
 
 @implementation SNFAddUserRole
 
@@ -187,13 +189,13 @@
 				NSLog(@"%@", error.localizedDescription);
 			}else{
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){}]];
+				[alert addAction:[UIAlertAction OKAction]];
 				[self presentViewController:alert animated:YES completion:^{}];
 			}
 		}else{
 			NSString *message = [NSString stringWithFormat:@"%@ has been invited to your board %@.", self.emailField.text, self.board.title];
 			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){}]];
+			[alert addAction:[UIAlertAction OKAction]];
 			[self presentViewController:alert animated:YES completion:^{}];
 			_completion(nil, nil);
 		}

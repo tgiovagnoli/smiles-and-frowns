@@ -42,6 +42,7 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" inverseName="frowns" inverseEntity="SNFUser" syncable="YES"/>
     </entity>
     <entity name="SNFInvite" representedClassName="SNFInvite" syncable="YES">
+        <attribute name="accepted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="board_title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="board_uuid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
@@ -105,7 +106,7 @@
         <element name="SNFBehavior" positionX="-711" positionY="-189" width="128" height="208"/>
         <element name="SNFBoard" positionX="-110" positionY="-315" width="128" height="255"/>
         <element name="SNFFrown" positionX="-434" positionY="126" width="128" height="195"/>
-        <element name="SNFInvite" positionX="-135" positionY="213" width="128" height="165"/>
+        <element name="SNFInvite" positionX="-135" positionY="213" width="128" height="180"/>
         <element name="SNFReward" positionX="61" positionY="51" width="128" height="208"/>
         <element name="SNFSmile" positionX="-711" positionY="153" width="128" height="210"/>
         <element name="SNFUser" positionX="-504" positionY="-399" width="128" height="210"/>

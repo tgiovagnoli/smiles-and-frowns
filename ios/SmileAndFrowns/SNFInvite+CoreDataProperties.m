@@ -1,8 +1,9 @@
+
 #import "SNFInvite+CoreDataProperties.h"
-#import "SNFUserRole.h"
 
 @implementation SNFInvite (CoreDataProperties)
 
+@dynamic accepted;
 @dynamic uuid;
 @dynamic remote_id;
 @dynamic board_title;

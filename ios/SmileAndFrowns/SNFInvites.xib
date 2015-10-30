@@ -15,14 +15,17 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Invites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5S-pm-EG9">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5S-pm-EG9">
                     <rect key="frame" x="275" y="8" width="50" height="21"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="BS1-8r-UKm"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bRf-Tm-bMP">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bRf-Tm-bMP">
                     <rect key="frame" x="0.0" y="37" width="600" height="563"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -30,6 +33,14 @@
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="bRf-Tm-bMP" secondAttribute="bottom" id="6Mf-3w-u0H"/>
+                <constraint firstAttribute="trailing" secondItem="bRf-Tm-bMP" secondAttribute="trailing" id="FrO-qJ-vkj"/>
+                <constraint firstItem="i5S-pm-EG9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="YPx-Sg-8nH"/>
+                <constraint firstItem="bRf-Tm-bMP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="a0y-1N-FaI"/>
+                <constraint firstItem="i5S-pm-EG9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="ii1-LE-uxN"/>
+                <constraint firstItem="bRf-Tm-bMP" firstAttribute="top" secondItem="i5S-pm-EG9" secondAttribute="bottom" constant="8" id="w3c-RL-qLp"/>
+            </constraints>
             <point key="canvasLocation" x="679" y="667"/>
         </view>
     </objects>

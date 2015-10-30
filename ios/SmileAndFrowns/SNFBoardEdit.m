@@ -1,12 +1,13 @@
+
 #import "SNFBoardEdit.h"
 #import "SNFModel.h"
+#import "UIAlertAction+Additions.h"
 
 @implementation SNFBoardEdit
 
-- (void)viewDidLoad{
-	
+- (void) viewDidLoad {
+	[super viewDidLoad];
 }
-
 
 - (void)setBoard:(SNFBoard *)board{
 	_board = board;
@@ -40,7 +41,7 @@
 - (IBAction)onUpdateBoard:(UIButton *)sender{
 	if([self.boardTitleField.text isEmpty]){
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"You must set a title for this board" preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
+		[alert addAction:[UIAlertAction OKAction]];
 		[self presentViewController:alert animated:YES completion:^{}];
 		return;
 	}
