@@ -5,6 +5,7 @@ typedef NS_ENUM(NSUInteger, SNFErrorCode){
 	SNFErrorCodeParseError,
 	SNFErrorCodeDjangoDebugError,
 	SNFErrorCodeInvalidModel,
+	SNFErrorCodeFormInputError
 };
 
 @interface SNFError : NSError

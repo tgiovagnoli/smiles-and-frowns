@@ -1,6 +1,8 @@
 #import "SNFAddUserRole.h"
 #import "AppDelegate.h"
 #import "SNFModel.h"
+#import "SNFUserService.h"
+#import "MBProgressHUD.h"
 
 @implementation SNFAddUserRole
 
@@ -43,7 +45,47 @@
 }
 
 - (IBAction)onAddFromContacts:(UIButton *)sender{
+	CNContactPickerViewController  *picker = [[CNContactPickerViewController  alloc] init];
+	picker.delegate = self;
+	[self presentViewController:picker animated:YES completion:^{}];
+}
+
+- (void)contactPicker:(CNContactPickerViewController *)picker didSelectContact:(CNContact *)contact{
+	[self dismissViewControllerAnimated:YES completion:^{}];
+	if(contact.emailAddresses.count > 0){
+		self.emailField.text = [contact.emailAddresses firstObject].value;
+	}else{
+		self.emailField.text = @"";
+	}
 	
+	if(contact.givenName){
+		self.firstNameField.text = contact.givenName;
+	}else{
+		self.firstNameField.text = @"";
+	}
+	
+	if(contact.familyName){
+		self.lastNameField.text = contact.familyName;
+	}else{
+		self.lastNameField.text = @"";
+	}
+	
+	if(contact.birthday){
+		NSDate *bday = [contact.birthday date];
+		NSDate *now = [NSDate date];
+		NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+		// pass as many or as little units as you like here, separated by pipes
+		NSUInteger units = NSCalendarUnitYear;
+		NSDateComponents *components = [gregorian components:units fromDate:bday toDate:now options:0];
+		NSInteger years = [components year];
+		self.ageField.text = [NSString stringWithFormat:@"%ld", (long)years];
+	}else{
+		self.ageField.text = @"";
+	}
+}
+
+- (void)contactPickerDidCancel:(CNContactPickerViewController *)picker{
+	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void)addChildRole{
@@ -102,8 +144,38 @@
 }
 
 - (void)createInvite{
-	// TODO: Create an invite
-	_completion(nil, nil);
+	NSString *role = SNFUserRoleGuardian;
+	if(self.roleControl.selectedSegmentIndex == SNFUserRoleAddParent){
+		role = SNFUserRoleParent;
+	}
+	
+	NSDictionary *userRoleData = @{
+								   @"role": role,
+								   @"board_uuid": self.board.uuid,
+								   @"invitee_email": self.emailField.text,
+								   @"invitee_firstname": self.firstNameField.text,
+								   @"invitee_lastname": self.lastNameField.text
+								   };
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	SNFUserService *userService = [[SNFUserService alloc] init];
+	[userService inviteWithData:userRoleData andCompletion:^(NSError *error) {
+		[MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+		if(error){
+			if(error.code == SNFErrorCodeDjangoDebugError){
+				NSLog(@"%@", error.localizedDescription);
+			}else{
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){}]];
+				[self presentViewController:alert animated:YES completion:^{}];
+			}
+		}else{
+			NSString *message = [NSString stringWithFormat:@"%@ has been invited to your board %@.", self.emailField.text, self.board.title];
+			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){}]];
+			[self presentViewController:alert animated:YES completion:^{}];
+			_completion(nil, nil);
+		}
+	}];
 }
 
 - (BOOL)validBoard{
