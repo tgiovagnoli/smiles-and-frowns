@@ -12,16 +12,19 @@ typedef void(^SNFUserServiceCallback)(NSError *error, SNFUser *user);
 typedef void(^SNFInviteCallback)(NSError *error);
 typedef void(^SNFCreateAccountCompletion)(NSError * error,SNFUser * user);
 typedef void(^SNFAcceptInviteCompletion)(NSError * error);
+typedef void(^SNFInvitesCompletion)(NSError * error);
 
 @interface SNFUserService : SNFService
 
+- (void)createAccountWithData:(NSDictionary *) data andCompletion:(SNFCreateAccountCompletion)completion;
+
+- (void)authedUserInfoWithCompletion:(SNFUserServiceCallback)completion;
 - (void)loginWithEmail:(NSString *)email andPassword:(NSString *)password withCompletion:(SNFUserServiceCallback)completion;
 - (void)logoutWithCompletion:(void(^)(NSError *error))completion;
-- (void)authedUserInfoWithCompletion:(SNFUserServiceCallback)completion;
-- (void)inviteWithData:(NSDictionary *)data andCompletion:(SNFInviteCallback)completion;
+- (void)resetPasswordForEmail:(NSString *) email andCompletion:(void(^)(NSError *error))completion;
 
-- (void) createAccountWithData:(NSDictionary *) data andCompletion:(SNFCreateAccountCompletion)completion;
-- (void) acceptInviteCode:(NSString *) inviteCode andCompletion:(SNFAcceptInviteCompletion)completion;
-- (void) resetPasswordForEmail:(NSString *) email andCompletion:(void(^)(NSError *error))completion;
+- (void)invitesWithCompletion:(SNFInvitesCompletion) completion;
+- (void)inviteWithData:(NSDictionary *)data andCompletion:(SNFInviteCallback)completion;
+- (void)acceptInviteCode:(NSString *) inviteCode andCompletion:(SNFAcceptInviteCompletion)completion;
 
 @end

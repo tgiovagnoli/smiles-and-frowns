@@ -22,6 +22,9 @@
 		0707D6D01BE2B301002F1FC0 /* SNFPasswordReset.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6CE1BE2B301002F1FC0 /* SNFPasswordReset.m */; };
 		0707D6D11BE2B301002F1FC0 /* SNFPasswordReset.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6CF1BE2B301002F1FC0 /* SNFPasswordReset.xib */; };
 		0707D6D51BE2D16D002F1FC0 /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6D41BE2D16D002F1FC0 /* NSString+Additions.m */; };
+		0707D6DC1BE428BA002F1FC0 /* SNFInvites.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6DA1BE428BA002F1FC0 /* SNFInvites.m */; };
+		0707D6DD1BE428BA002F1FC0 /* SNFInvites.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6DB1BE428BA002F1FC0 /* SNFInvites.xib */; };
+		0707D6E01BE42970002F1FC0 /* UIAlertAction+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */; };
 		D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */; };
 		D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAC1BDFD1FF0024CBC2 /* SNFError.m */; };
 		D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAF1BDFD88F0024CBC2 /* SNFService.m */; };
@@ -107,6 +110,11 @@
 		0707D6CF1BE2B301002F1FC0 /* SNFPasswordReset.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFPasswordReset.xib; sourceTree = "<group>"; };
 		0707D6D31BE2D16D002F1FC0 /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Additions.h"; path = "submodules/apd-objc/NSString+Additions.h"; sourceTree = "<group>"; };
 		0707D6D41BE2D16D002F1FC0 /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Additions.m"; path = "submodules/apd-objc/NSString+Additions.m"; sourceTree = "<group>"; };
+		0707D6D91BE428BA002F1FC0 /* SNFInvites.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFInvites.h; sourceTree = "<group>"; };
+		0707D6DA1BE428BA002F1FC0 /* SNFInvites.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFInvites.m; sourceTree = "<group>"; };
+		0707D6DB1BE428BA002F1FC0 /* SNFInvites.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFInvites.xib; sourceTree = "<group>"; };
+		0707D6DE1BE42970002F1FC0 /* UIAlertAction+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertAction+Additions.h"; path = "submodules/apd-objc/UIAlertAction+Additions.h"; sourceTree = "<group>"; };
+		0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertAction+Additions.m"; path = "submodules/apd-objc/UIAlertAction+Additions.m"; sourceTree = "<group>"; };
 		D6272FA71BDFCD1A0024CBC2 /* SNFUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserService.h; sourceTree = "<group>"; };
 		D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserService.m; sourceTree = "<group>"; };
 		D6272FAB1BDFD1FF0024CBC2 /* SNFError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFError.h; sourceTree = "<group>"; };
@@ -284,6 +292,16 @@
 			name = PasswordReset;
 			sourceTree = "<group>";
 		};
+		0707D6D81BE428AB002F1FC0 /* Invites */ = {
+			isa = PBXGroup;
+			children = (
+				0707D6D91BE428BA002F1FC0 /* SNFInvites.h */,
+				0707D6DA1BE428BA002F1FC0 /* SNFInvites.m */,
+				0707D6DB1BE428BA002F1FC0 /* SNFInvites.xib */,
+			);
+			name = Invites;
+			sourceTree = "<group>";
+		};
 		D6272FB41BE0020A0024CBC2 /* apd-objc */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +321,8 @@
 				0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */,
 				D65DF1071BE299D3009CC6DF /* UIViewControllerStack.h */,
 				D65DF1081BE299D3009CC6DF /* UIViewControllerStack.m */,
+				0707D6DE1BE42970002F1FC0 /* UIAlertAction+Additions.h */,
+				0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */,
 			);
 			name = "apd-objc";
 			sourceTree = "<group>";
@@ -322,6 +342,7 @@
 				0707D6C11BE2B2CB002F1FC0 /* Accept Invite */,
 				D65DF13C1BE2B8F1009CC6DF /* Boards */,
 				0707D6D61BE2E3AF002F1FC0 /* CreateAccount */,
+				0707D6D81BE428AB002F1FC0 /* Invites */,
 				0707D6C71BE2B2EB002F1FC0 /* Launcher */,
 				0707D6D21BE2B852002F1FC0 /* Login */,
 				D65DF12B1BE2AE5A009CC6DF /* More */,
@@ -586,6 +607,7 @@
 			files = (
 				0707D6AF1BE2A1C9002F1FC0 /* SNFLogin.xib in Resources */,
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
+				0707D6DD1BE428BA002F1FC0 /* SNFInvites.xib in Resources */,
 				D65DF15B1BE2F59F009CC6DF /* SNFAddUserRole.xib in Resources */,
 				0707D6D11BE2B301002F1FC0 /* SNFPasswordReset.xib in Resources */,
 				0707D6C61BE2B2D8002F1FC0 /* SNFAcceptInvite.xib in Resources */,
@@ -660,11 +682,13 @@
 				D6272FC01BE002160024CBC2 /* APDDjangoErrorViewer.m in Sources */,
 				D6272FC21BE002160024CBC2 /* NSURLRequest+Additions.m in Sources */,
 				D659DBEF1BDAEA000048D3F7 /* SNFBehavior.m in Sources */,
+				0707D6E01BE42970002F1FC0 /* UIAlertAction+Additions.m in Sources */,
 				0707D6D01BE2B301002F1FC0 /* SNFPasswordReset.m in Sources */,
 				D65DF12F1BE2AE6D009CC6DF /* SNFMore.m in Sources */,
 				D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */,
 				D6272FC11BE002160024CBC2 /* NSTimer+Blocks.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
+				0707D6DC1BE428BA002F1FC0 /* SNFInvites.m in Sources */,
 				0707D6CB1BE2B2F8002F1FC0 /* SNFCreateAccount.m in Sources */,
 				D65DF1101BE29A42009CC6DF /* SNFTabMenu.m in Sources */,
 				D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */,

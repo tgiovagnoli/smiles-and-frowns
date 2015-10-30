@@ -3,6 +3,8 @@
 #import "SNFModel.h"
 #import "SNFError.h"
 #import "SNFUser.h"
+#import "NSManagedObject+InfoDictionary.h"
+#import "SNFInvite.h"
 
 @implementation SNFUserService
 
@@ -224,6 +226,8 @@
 				return;
 			}
 			
+			NSLog(@"TODO: Need to handle response board data");
+			
 			completion(nil);
 		});
 		
@@ -264,6 +268,47 @@
 			
 			completion(nil);
 		});
+	}];
+	
+	[task resume];
+}
+
+- (void) invitesWithCompletion:(SNFInvitesCompletion) completion; {
+	
+	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"invites"];
+	NSURLRequest * request = [NSURLRequest requestWithURL:url];
+	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			if(error) {
+				completion(error);
+				return;
+			}
+			
+			NSError * jsonError = nil;
+			NSObject * responseObject = [self responseObjectFromData:data withError:&jsonError];
+			
+			if(jsonError) {
+				completion(jsonError);
+				return;
+			}
+			
+			if([responseObject isKindOfClass:[NSArray class]]) {
+				
+				//load the invites into core data.
+				NSArray * invites = (NSArray *)responseObject;
+				for(NSDictionary * dict in invites) {
+					[SNFInvite editOrCreatefromInfoDictionary:dict withContext:[SNFModel sharedInstance].managedObjectContext];
+				}
+				completion(nil);
+				
+			} else {
+				
+				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Error parsing invites"]);
+				
+			}
+		});
+		
 	}];
 	
 	[task resume];

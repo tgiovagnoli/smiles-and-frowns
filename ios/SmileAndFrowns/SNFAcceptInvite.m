@@ -57,7 +57,6 @@
 }
 
 - (IBAction) joinBoard:(id) sender {
-	
 	self.service = [[SNFUserService alloc] init];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
@@ -72,8 +71,6 @@
 			[self presentViewController:alert animated:TRUE completion:nil];
 			return;
 		}
-		
-		NSLog(@"TODO: Need to sync in order to get new boards the user just joines");
 		
 		[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
 		[[SNFViewController instance] showBoards];

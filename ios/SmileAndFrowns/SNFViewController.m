@@ -7,6 +7,7 @@
 #import "SNFTutorial.h"
 #import "SNFBoardList.h"
 #import "SNFMore.h"
+#import "SNFInvites.h"
 
 static __weak SNFViewController * _instance;
 
@@ -70,7 +71,8 @@ static __weak SNFViewController * _instance;
 }
 
 - (void)showInvites{
-	[self.viewControllerStack eraseStack];
+	SNFInvites * invites = [[SNFInvites alloc] init];
+	[self.viewControllerStack eraseStackAndPushViewController:invites animated:TRUE];
 }
 
 - (void)didReceiveMemoryWarning {
