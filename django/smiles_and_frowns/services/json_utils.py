@@ -143,7 +143,8 @@ def smile_info_dictionary(smile, with_board=False, with_user=False):
 	smile_data = {
 		"behavior": {"uuid": smile.behavior.uuid},
 		"id": smile.id,
-		"collected": smile.collected
+		"collected": smile.collected,
+		"note": smile.note
 	}
 	append_sync_info(smile, smile_data)
 	
@@ -169,7 +170,8 @@ def frown_info_dictionary_collection(frowns, with_boards=False, with_users=False
 def frown_info_dictionary(frown, with_board=False, with_user=False):
 	frown_data = {
 		"behavior": {"uuid": frown.behavior.uuid},
-		"id": frown.id
+		"id": frown.id,
+		"note": frown.note
 	}
 	append_sync_info(frown, frown_data)
 	

@@ -16,5 +16,6 @@
 @dynamic board;
 @dynamic user;
 @dynamic behavior;
+@dynamic note;
 
 @end

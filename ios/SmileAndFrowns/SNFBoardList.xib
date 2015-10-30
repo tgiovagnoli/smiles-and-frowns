@@ -10,6 +10,7 @@
                 <outlet property="filterControl" destination="RpQ-c6-pcS" id="oEz-A1-Xkg"/>
                 <outlet property="purchaseButton" destination="sfm-E0-cfS" id="D8L-h6-o3J"/>
                 <outlet property="searchButton" destination="OjW-Rd-ePF" id="wi5-B4-9Eh"/>
+                <outlet property="searchField" destination="C0h-fF-oYr" id="auk-7c-6ch"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -55,6 +56,9 @@
                         <constraint firstAttribute="height" constant="30" id="rUh-LV-6NE"/>
                     </constraints>
                     <state key="normal" title="Search"/>
+                    <connections>
+                        <action selector="showSeachField:" destination="-1" eventType="touchUpInside" id="aZh-t6-nKd"/>
+                    </connections>
                 </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RpQ-c6-pcS">
                     <rect key="frame" x="20" y="40" width="491" height="29"/>
@@ -67,6 +71,15 @@
                         <action selector="changeSorting:" destination="-1" eventType="valueChanged" id="cIN-YO-xUC"/>
                     </connections>
                 </segmentedControl>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="C0h-fF-oYr">
+                    <rect key="frame" x="20" y="40" width="492" height="30"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="ZAu-oK-umK"/>
+                    </connections>
+                </textField>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -74,6 +87,7 @@
                 <constraint firstItem="sfm-E0-cfS" firstAttribute="top" secondItem="3G0-te-iwP" secondAttribute="bottom" id="02E-Od-09u"/>
                 <constraint firstAttribute="bottom" secondItem="sfm-E0-cfS" secondAttribute="bottom" id="5a3-qI-Ka2"/>
                 <constraint firstItem="OLd-Gr-Jor" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DGM-VX-UhL"/>
+                <constraint firstItem="C0h-fF-oYr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="L35-mh-M1g"/>
                 <constraint firstItem="RpQ-c6-pcS" firstAttribute="top" secondItem="OLd-Gr-Jor" secondAttribute="bottom" constant="10" id="ReM-b9-udI"/>
                 <constraint firstItem="OjW-Rd-ePF" firstAttribute="top" secondItem="OLd-Gr-Jor" secondAttribute="bottom" constant="9" id="X1B-65-SaV"/>
                 <constraint firstAttribute="trailing" secondItem="OLd-Gr-Jor" secondAttribute="trailing" id="XYk-Mh-jnN"/>
@@ -85,6 +99,8 @@
                 <constraint firstItem="OLd-Gr-Jor" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fnw-RN-iOg"/>
                 <constraint firstItem="sfm-E0-cfS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hT9-rw-Ip6"/>
                 <constraint firstAttribute="trailing" secondItem="OjW-Rd-ePF" secondAttribute="trailing" constant="17" id="l0W-hm-uYZ"/>
+                <constraint firstItem="OjW-Rd-ePF" firstAttribute="leading" secondItem="C0h-fF-oYr" secondAttribute="trailing" constant="15" id="luY-Mg-DrY"/>
+                <constraint firstItem="C0h-fF-oYr" firstAttribute="top" secondItem="OLd-Gr-Jor" secondAttribute="bottom" constant="10" id="mY1-oY-P4W"/>
                 <constraint firstAttribute="trailing" secondItem="3G0-te-iwP" secondAttribute="trailing" id="ufc-ty-a6I"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

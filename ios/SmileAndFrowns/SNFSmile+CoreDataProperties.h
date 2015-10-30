@@ -10,6 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SNFSmile (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSNumber *collected;
+@property (nullable, nonatomic, retain) NSString *note;
 @property (nullable, nonatomic, retain) SNFBoard *board;
 @property (nullable, nonatomic, retain) SNFUser *user;
 @property (nullable, nonatomic, retain) SNFBehavior *behavior;

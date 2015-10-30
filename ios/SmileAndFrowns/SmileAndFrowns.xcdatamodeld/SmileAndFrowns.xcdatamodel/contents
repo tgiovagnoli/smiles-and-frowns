@@ -34,6 +34,7 @@
         <attribute name="created_date" attributeType="Date" syncable="YES"/>
         <attribute name="deleted" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="device_date" attributeType="Date" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" maxValueString="256" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="updated_date" attributeType="Date" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
@@ -66,6 +67,7 @@
         <attribute name="created_date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="deleted" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="device_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" maxValueString="256" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="updated_date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
@@ -101,10 +103,10 @@
     <elements>
         <element name="SNFBehavior" positionX="-711" positionY="-189" width="128" height="208"/>
         <element name="SNFBoard" positionX="-110" positionY="-315" width="128" height="268"/>
-        <element name="SNFFrown" positionX="-434" positionY="126" width="128" height="178"/>
+        <element name="SNFFrown" positionX="-434" positionY="126" width="128" height="195"/>
         <element name="SNFInvite" positionX="-135" positionY="213" width="128" height="118"/>
         <element name="SNFReward" positionX="61" positionY="51" width="128" height="208"/>
-        <element name="SNFSmile" positionX="-711" positionY="153" width="128" height="193"/>
+        <element name="SNFSmile" positionX="-711" positionY="153" width="128" height="210"/>
         <element name="SNFUser" positionX="-504" positionY="-399" width="128" height="210"/>
         <element name="SNFUserRole" positionX="-272" positionY="-36" width="128" height="193"/>
     </elements>
