@@ -88,12 +88,19 @@
 					}
 
 				}
+				
+				if(self.delegate){
+					[self.delegate login:self didLoginWithUser:user];
+				}
 			}];
 		}
 	}];
 }
 
 - (IBAction) cancel:(id)sender {
+	if(self.delegate){
+		[self.delegate loginCancelled:self];
+	}
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 	}];

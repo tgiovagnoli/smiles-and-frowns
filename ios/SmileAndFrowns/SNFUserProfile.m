@@ -1,7 +1,7 @@
 #import "SNFUserProfile.h"
 #import "SNFViewController.h"
 #import "SNFModel.h"
-#import "SNFLogin.h"
+
 
 @implementation SNFUserProfile
 
@@ -39,7 +39,16 @@
 
 - (void)showLogin{
 	SNFLogin *login = [[SNFLogin alloc] init];
+	login.delegate = self;
 	[[SNFViewController instance] presentViewController:login animated:YES completion:^{}];
+}
+
+- (void)login:(SNFLogin *)login didLoginWithUser:(SNFUser *)user{
+	self.user = user;
+}
+
+- (void)loginCancelled:(SNFLogin *)login{
+	
 }
 
 - (void)showLoggedInBlocker{
@@ -53,6 +62,9 @@
 }
 
 - (void)updateFieldsWithUserInfo{
+	if(_user){
+		[self.blockingView removeFromSuperview];
+	}
 	self.firstNameField.text = self.user.first_name;
 	self.lastNameField.text = self.user.last_name;
 	self.emailField.text = self.user.email;

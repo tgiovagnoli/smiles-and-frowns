@@ -3,8 +3,9 @@
 #import "SNFUser.h"
 #import "UIViewControllerStack.h"
 #import "SNFUserService.h"
+#import "SNFLogin.h"
 
-@interface SNFUserProfile : UIViewController <UITextFieldDelegate>
+@interface SNFUserProfile : UIViewController <UITextFieldDelegate, SNFLoginDelegate>
 
 @property (nonatomic) SNFUser *user;
 
