@@ -39,9 +39,14 @@
 	if(self.filter == SNFBoardListFilterDate){
 		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"created_date" ascending:YES]];
 	}else if(self.filter == SNFBoardListFilterName){
-		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
+		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
 	}
 	NSArray *results = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:request error:&error];
+
+	for(SNFBoard *board in results){
+		NSLog(@"%@", board.title);
+	}
+	NSLog(@"-----");
 	if(error){
 		NSLog(@"error loading boards");
 	}else{

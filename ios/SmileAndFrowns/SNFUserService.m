@@ -91,7 +91,7 @@
 	NSString *firstName = [data objectForKey:@"invitee_firstname"];
 	NSString *lastName = [data objectForKey:@"invitee_lastname"];
 	
-	if(!email || ![email isValidEmail] || [email isEmpty]){
+	if(!email || ![email isValidEmail] || email.em){
 		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"email must be valid"]);
 	}
 	if(!boardUUID || [boardUUID isEmpty]){
