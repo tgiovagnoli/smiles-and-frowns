@@ -1,3 +1,4 @@
+
 #import "SNFUserService.h"
 #import "SNFModel.h"
 #import "SNFError.h"
@@ -136,6 +137,33 @@
 	[task resume];
 }
 
-
+- (void) createAccountWithData:(NSDictionary *) data andCompletion:(SNFCreateAccountCompletion) completion; {
+	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"signup"];
+	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
+	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		dispatch_async(dispatch_get_main_queue(), ^{
+			if(error) {
+				completion(error,nil);
+				return;
+			}
+			
+			NSError *jsonError;
+			NSObject *dataObject = [self responseObjectFromData:data withError:&jsonError];
+			if(jsonError){
+				completion(jsonError, nil);
+				return;
+			}
+			
+			SNFUser *userData = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:(NSDictionary *)dataObject withContext:[SNFModel sharedInstance].managedObjectContext];
+			if(!userData){
+				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Not logged in."], nil);
+				return;
+			}
+			
+			completion(nil,userData);
+		});
+	}];
+	[task resume];
+}
 
 @end

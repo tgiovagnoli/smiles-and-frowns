@@ -49,9 +49,23 @@ static AppDelegate * _instance;
 - (BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
 	if([url.scheme isEqualToString:@"snf"]) {
 		
-		//gat absolute path - like snf://invite/09sdf84
+		//get absolute path - like snf://invite/09sdf84
 		//look for handled url routes below
 		NSString * path = [url absoluteString];
+		
+		//look for generic go to invites
+		if([path isEqualToString:@"snf://invites"]) {
+			
+			if([[AppDelegate rootViewController] isKindOfClass:[SNFViewController class]]) {
+				[[SNFViewController instance] showInvites];
+			} else {
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Login Required" message:@"Login to see your board invitations" preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+				[[AppDelegate rootViewController] presentViewController:alert animated:TRUE completion:nil];
+			};
+			
+			return TRUE;
+		}
 		
 		//look for invite code.
 		NSArray * parts = [path componentsSeparatedByString:@"snf://invite/"];
