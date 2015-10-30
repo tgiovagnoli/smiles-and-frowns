@@ -1,7 +1,6 @@
 #import "SNFBoardDetail.h"
 #import "SNFViewController.h"
-
-
+#import "AppDelegate.h"
 
 @implementation SNFBoardDetail
 
@@ -30,6 +29,17 @@
 		return cell;
 	}
 	return nil;
+}
+
+- (IBAction)onAddUserRole:(id)sender{
+	SNFAddUserRole *addUserRole = [[SNFAddUserRole alloc] init];
+	[[AppDelegate rootViewController] presentViewController:addUserRole animated:YES completion:^{}];
+	[addUserRole setBoard:self.board andCompletion:^(NSError *error, SNFUserRole *userRole) {
+		[[AppDelegate rootViewController] dismissViewControllerAnimated:YES completion:^{}];
+		if(userRole){
+			[self reloadUserRoles];
+		}
+	}];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -79,6 +79,8 @@
 		D65DF14B1BE2BF94009CC6DF /* SNFBoardDetailChildCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF1491BE2BF94009CC6DF /* SNFBoardDetailChildCell.xib */; };
 		D65DF14F1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF14D1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.m */; };
 		D65DF1501BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF14E1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib */; };
+		D65DF15A1BE2F59F009CC6DF /* SNFAddUserRole.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1581BE2F59F009CC6DF /* SNFAddUserRole.m */; };
+		D65DF15B1BE2F59F009CC6DF /* SNFAddUserRole.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF1591BE2F59F009CC6DF /* SNFAddUserRole.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -206,6 +208,9 @@
 		D65DF14C1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBoardDetailAdultCell.h; sourceTree = "<group>"; };
 		D65DF14D1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoardDetailAdultCell.m; sourceTree = "<group>"; };
 		D65DF14E1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFBoardDetailAdultCell.xib; sourceTree = "<group>"; };
+		D65DF1571BE2F59F009CC6DF /* SNFAddUserRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFAddUserRole.h; sourceTree = "<group>"; };
+		D65DF1581BE2F59F009CC6DF /* SNFAddUserRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFAddUserRole.m; sourceTree = "<group>"; };
+		D65DF1591BE2F59F009CC6DF /* SNFAddUserRole.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFAddUserRole.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -515,6 +520,9 @@
 				D65DF10D1BE29A42009CC6DF /* SNFUserProfile.h */,
 				D65DF10E1BE29A42009CC6DF /* SNFUserProfile.m */,
 				D65DF10F1BE29A42009CC6DF /* SNFUserProfile.xib */,
+				D65DF1571BE2F59F009CC6DF /* SNFAddUserRole.h */,
+				D65DF1581BE2F59F009CC6DF /* SNFAddUserRole.m */,
+				D65DF1591BE2F59F009CC6DF /* SNFAddUserRole.xib */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -578,6 +586,7 @@
 			files = (
 				0707D6AF1BE2A1C9002F1FC0 /* SNFLogin.xib in Resources */,
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
+				D65DF15B1BE2F59F009CC6DF /* SNFAddUserRole.xib in Resources */,
 				0707D6D11BE2B301002F1FC0 /* SNFPasswordReset.xib in Resources */,
 				0707D6C61BE2B2D8002F1FC0 /* SNFAcceptInvite.xib in Resources */,
 				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
@@ -620,6 +629,7 @@
 				D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */,
 				D659DBF21BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m in Sources */,
 				D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */,
+				D65DF15A1BE2F59F009CC6DF /* SNFAddUserRole.m in Sources */,
 				D65DF0E71BE2830C009CC6DF /* SNFDateManager.m in Sources */,
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
 				D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */,

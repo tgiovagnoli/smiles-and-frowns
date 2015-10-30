@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import "SNFUserRole.h"
+#import "SNFUser.h"
 
 @class SNFBoardDetailChildCell;
 

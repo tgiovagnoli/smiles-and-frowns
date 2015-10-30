@@ -26,21 +26,21 @@
 	if(self.email.text.length < 1 || [self.email.text stringByReplacingOccurrencesOfString:@" " withString:@""].length < 1) {
 		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Form Error" message:@"Enter your email address" preferredStyle:UIAlertControllerStyleAlert];
 		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
-		[[AppDelegate rootViewController] presentViewController:alert animated:TRUE completion:NULL];
+		[self presentViewController:alert animated:TRUE completion:NULL];
 		return;
 	}
 	
 	if(![self.email.text isValidEmail]) {
 		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Form Error" message:@"Incorrect email format" preferredStyle:UIAlertControllerStyleAlert];
 		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
-		[[AppDelegate rootViewController] presentViewController:alert animated:TRUE completion:NULL];
+		[self presentViewController:alert animated:TRUE completion:NULL];
 		return;
 	}
 	
 	if(self.password.text.length < 1 || [self.password.text stringByReplacingOccurrencesOfString:@" " withString:@""].length < 1) {
 		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Form Error" message:@"Enter your password" preferredStyle:UIAlertControllerStyleAlert];
 		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
-		[[AppDelegate rootViewController] presentViewController:alert animated:TRUE completion:NULL];
+		[self presentViewController:alert animated:TRUE completion:NULL];
 		return;
 	}
 	
@@ -57,7 +57,7 @@
 				
 			}]];
 			
-			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+			[self presentViewController:alert animated:YES completion:^{}];
 			
 		} else {
 			
@@ -84,7 +84,7 @@
 						}
 						
 					} else {
-						[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
+						[self presentViewController:self.nextViewController animated:TRUE completion:nil];
 					}
 
 				}
@@ -113,7 +113,7 @@
 		if(self.nextViewController) {
 			createAccount.nextViewController = self.nextViewController;
 		}
-		[[AppDelegate rootViewController] presentViewController:createAccount animated:TRUE completion:^{
+		[self presentViewController:createAccount animated:TRUE completion:^{
 			
 		}];
 		
@@ -124,7 +124,7 @@
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 		SNFPasswordReset * reset = [[SNFPasswordReset alloc] init];
-		[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:^{
+		[self presentViewController:reset animated:TRUE completion:^{
 			
 		}];
 		

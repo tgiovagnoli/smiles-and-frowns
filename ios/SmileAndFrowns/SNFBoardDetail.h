@@ -3,6 +3,7 @@
 #import "SNFUserRole.h"
 #import "SNFBoardDetailAdultCell.h"
 #import "SNFBoardDetailChildCell.h"
+#import "SNFAddUserRole.h"
 
 @interface SNFBoardDetail : UIViewController <UITableViewDelegate, UITableViewDataSource, SNFBoardDetailChildCellDelegate>{
 	NSArray *_userRoles;

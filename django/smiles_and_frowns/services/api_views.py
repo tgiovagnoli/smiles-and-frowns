@@ -569,10 +569,6 @@ def sync(request):
 		#board wasn't created, check date and predefinied.
 		if not created:
 
-			#check if board is a predefined board.
-			predefined = models.PredefinedBoard.objects.filter(board=board).count()
-			if predefined > 0:
-				return json_response_error("Sync error, board with uuid (%s) is a predefinied board. These can't be used.")
 
 			#board is newer in database than what the client sent. ignore it.
 			if board.device_date > board_client_date:

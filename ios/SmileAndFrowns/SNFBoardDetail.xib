@@ -37,6 +37,9 @@
                         <constraint firstAttribute="height" constant="30" id="2Tx-sb-kuq"/>
                     </constraints>
                     <state key="normal" title="+ Add Child, Parent, Or Guardian"/>
+                    <connections>
+                        <action selector="onAddUserRole:" destination="-1" eventType="touchUpInside" id="bNf-zH-rbk"/>
+                    </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="md8-2Q-eLn">
                     <rect key="frame" x="0.0" y="60" width="600" height="540"/>

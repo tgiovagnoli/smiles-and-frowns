@@ -30,6 +30,8 @@
 	}
 	NSUInteger frownsCount = [[SNFModel sharedInstance].managedObjectContext countForFetchRequest:frownFetchRequest error:&frownFetchError];
 	self.frownsCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)frownsCount];
+	
+	self.nameLabel.text = self.userRole.user.first_name;
 }
 
 - (IBAction)onSmile:(UIButton *)sender{
