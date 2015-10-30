@@ -190,24 +190,18 @@ def frown_info_dictionary(frown, with_board=False, with_user=False):
 	
 	return frown_data
 
-def invite_info_dictionary_collection(invites, with_boards=False, with_users=False):
+def invite_info_dictionary_collection(invites):
 	invite_data = []
 	for invite in invites:
-		invite_data.append(invite_info_dictionary(invite, with_board=with_boards, with_user=with_users))
+		invite_data.append(invite_info_dictionary(invite))
 	return invite_data
 
-def invite_info_dictionary(invite, with_board=False, with_user=False):
+def invite_info_dictionary(invite):
 	invite_data = {
 		"code": invite.code,
-		"role": invite.role,
-		"id": invite.id
+		"board_title": invite.board.title,
+		#"sender_first_name": invite.sender.first_name,
+		#"sender_last_name": invite.sender.last_name,
+		"created_date":datestring(invite.created_date),
 	}
-	if with_board:
-		invite_data["board"] = board_info_dictionary(invite.board)
-	else:
-		invite_data["board_uuid"] = invite.board.uuid
-	if with_user:
-		invite_data["user"] = user_info_dictionary(invite.user)
-	else:
-		invite_data["user_username"] = invite.user.username
 	return invite_data

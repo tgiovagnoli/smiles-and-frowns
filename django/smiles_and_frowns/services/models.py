@@ -135,6 +135,8 @@ class Frown(SyncModel):
 		return self.board.title
 
 class Invite(models.Model):
+	created_date = models.DateTimeField(auto_now_add=True)
+	updated_date = models.DateTimeField(auto_now=True)
 	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	user = models.ForeignKey(User,blank=True,on_delete=models.SET_NULL,null=True)
 	code = models.CharField(max_length=64)

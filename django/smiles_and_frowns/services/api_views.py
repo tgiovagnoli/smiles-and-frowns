@@ -307,15 +307,6 @@ def user_info(request):
 	return json_response(data)
 
 @csrf_exempt
-def invites(request):
-	#check auth
-	if not request.user.is_authenticated():
-		return login_required_response()
-	invites = models.Invite.objects.filter(user=request.user)
-	output = json_utils.invite_info_dictionary_collection(invites,with_boards=True,with_users=True)
-	return json_response(output)
-
-@csrf_exempt
 def invite_accept(request):
 	'''
 	@param code
@@ -471,6 +462,15 @@ def invite(request):
 
 	#response
 	return json_response({})
+
+@csrf_exempt
+def invites(request):
+	#check auth
+	if not request.user.is_authenticated():
+		return login_required_response()
+	invites = models.Invite.objects.filter(user=request.user)
+	output = json_utils.invite_info_dictionary_collection(invites)
+	return json_response(output)
 
 @csrf_exempt
 def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behaviors':[],'smiles':[],'frowns':[],'rewards':[],'user_roles':[]}):
