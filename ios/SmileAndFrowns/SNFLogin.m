@@ -43,11 +43,21 @@
 	NSDictionary * userInfo = notification.userInfo;
 	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
+	if(self.scrollViewBottom.constant == keyboardFrameEnd.size.height) {
+		return;
+	}
+	self.formView.height -= 256;
 	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
+	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
+	if(self.scrollViewBottom.constant == 0) {
+		return;
+	}
 	self.scrollViewBottom.constant = 0;
+	self.formView.height += 256;
+	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.scrollView.height);
 }
 
 - (IBAction) login:(id) sender {
@@ -103,6 +113,7 @@
 						
 						//if main view controller is being shown, show invites.
 						if([SNFViewController instance]) {
+							
 							[[SNFViewController instance] showInvites];
 						
 						} else {
@@ -129,22 +140,19 @@
 	if(self.delegate) {
 		[self.delegate loginCancelled:self];
 	}
-	
-	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
-		
-	}];
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (IBAction) createAccount:(id) sender {
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 		SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] init];
+		
 		if(self.nextViewController) {
 			createAccount.nextViewController = self.nextViewController;
 		}
-		[[AppDelegate rootViewController] presentViewController:createAccount animated:TRUE completion:^{
-			
-		}];
+		
+		[[AppDelegate rootViewController] presentViewController:createAccount animated:TRUE completion:nil];
 		
 	}];
 }
@@ -153,9 +161,7 @@
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 		SNFPasswordReset * reset = [[SNFPasswordReset alloc] init];
-		[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:^{
-			
-		}];
+		[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:nil];
 		
 	}];
 }

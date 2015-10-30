@@ -6,8 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFAcceptInvite">
             <connections>
+                <outlet property="formView" destination="i5M-Pr-FkT" id="ewk-9N-Nbc"/>
                 <outlet property="inviteCodeField" destination="CRU-xb-EzO" id="RzW-Xw-6hQ"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="scrollView" destination="XbE-JG-PJa" id="hOX-yF-bYX"/>
+                <outlet property="scrollViewBottom" destination="XSE-Mj-8Lu" id="QCP-kL-DbH"/>
+                <outlet property="view" destination="NTD-rQ-TaB" id="jHI-LA-WYf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -15,27 +18,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Siles &amp; Frowns. Please enter your unique board code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCR-qM-Ohg">
-                    <rect key="frame" x="142" y="111" width="317" height="74"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="317" id="j6s-PS-HAJ"/>
-                        <constraint firstAttribute="height" constant="74" id="n1N-GV-pPM"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Invite Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CRU-xb-EzO">
-                    <rect key="frame" x="218" y="193" width="164" height="30"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="164" id="QsZ-fV-A5n"/>
-                        <constraint firstAttribute="height" constant="30" id="jMU-AI-SLz"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2l-8j-rX3">
                     <rect key="frame" x="233" y="524" width="135" height="30"/>
                     <animations/>
@@ -62,6 +44,46 @@
                         <action selector="cancel:" destination="-1" eventType="touchUpInside" id="9xL-dk-fkd"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Siles &amp; Frowns. Please enter your unique board code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCR-qM-Ohg">
+                    <rect key="frame" x="142" y="0.0" width="317" height="74"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="317" id="j6s-PS-HAJ"/>
+                        <constraint firstAttribute="height" constant="74" id="n1N-GV-pPM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Invite Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CRU-xb-EzO">
+                    <rect key="frame" x="218" y="82" width="164" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="164" id="QsZ-fV-A5n"/>
+                        <constraint firstAttribute="height" constant="30" id="jMU-AI-SLz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                </textField>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="CCR-qM-Ohg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3JE-mh-DM5"/>
+                <constraint firstAttribute="bottom" secondItem="Uuo-e6-GTn" secondAttribute="bottom" constant="8" id="T5w-c3-gcy"/>
+                <constraint firstItem="CRU-xb-EzO" firstAttribute="top" secondItem="CCR-qM-Ohg" secondAttribute="bottom" constant="8" id="TcA-mz-KWQ"/>
+                <constraint firstItem="CCR-qM-Ohg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZEm-w3-YZt"/>
+                <constraint firstItem="Uuo-e6-GTn" firstAttribute="top" secondItem="d2l-8j-rX3" secondAttribute="bottom" constant="8" id="aY8-oa-tGH"/>
+                <constraint firstItem="d2l-8j-rX3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sNv-qr-NWx"/>
+                <constraint firstItem="Uuo-e6-GTn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="waZ-uk-QFx"/>
+                <constraint firstItem="CRU-xb-EzO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zXo-DO-L8R"/>
+            </constraints>
+            <point key="canvasLocation" x="496" y="660"/>
+        </view>
+        <view contentMode="scaleToFill" id="NTD-rQ-TaB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accept Board Invite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ea5-iW-nOF">
                     <rect key="frame" x="210" y="8" width="180" height="21"/>
                     <animations/>
@@ -73,22 +95,22 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbE-JG-PJa">
+                    <rect key="frame" x="0.0" y="37" width="600" height="563"/>
+                    <animations/>
+                </scrollView>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="CCR-qM-Ohg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3JE-mh-DM5"/>
-                <constraint firstItem="Ea5-iW-nOF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6BB-8F-bIw"/>
-                <constraint firstItem="CCR-qM-Ohg" firstAttribute="top" secondItem="Ea5-iW-nOF" secondAttribute="bottom" constant="82" id="HwU-qn-UgO"/>
-                <constraint firstItem="Ea5-iW-nOF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="NzA-FX-xyU"/>
-                <constraint firstAttribute="bottom" secondItem="Uuo-e6-GTn" secondAttribute="bottom" constant="8" id="T5w-c3-gcy"/>
-                <constraint firstItem="CRU-xb-EzO" firstAttribute="top" secondItem="CCR-qM-Ohg" secondAttribute="bottom" constant="8" id="TcA-mz-KWQ"/>
-                <constraint firstItem="Uuo-e6-GTn" firstAttribute="top" secondItem="d2l-8j-rX3" secondAttribute="bottom" constant="8" id="aY8-oa-tGH"/>
-                <constraint firstItem="d2l-8j-rX3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sNv-qr-NWx"/>
-                <constraint firstItem="Uuo-e6-GTn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="waZ-uk-QFx"/>
-                <constraint firstItem="CRU-xb-EzO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zXo-DO-L8R"/>
+                <constraint firstAttribute="trailing" secondItem="XbE-JG-PJa" secondAttribute="trailing" id="NQV-vx-mmc"/>
+                <constraint firstItem="Ea5-iW-nOF" firstAttribute="top" secondItem="NTD-rQ-TaB" secondAttribute="top" constant="8" id="Tig-a6-ohV"/>
+                <constraint firstAttribute="bottom" secondItem="XbE-JG-PJa" secondAttribute="bottom" id="XSE-Mj-8Lu"/>
+                <constraint firstItem="Ea5-iW-nOF" firstAttribute="centerX" secondItem="NTD-rQ-TaB" secondAttribute="centerX" id="aHN-By-gMb"/>
+                <constraint firstItem="XbE-JG-PJa" firstAttribute="leading" secondItem="NTD-rQ-TaB" secondAttribute="leading" id="rZA-yb-ykJ"/>
+                <constraint firstItem="XbE-JG-PJa" firstAttribute="top" secondItem="NTD-rQ-TaB" secondAttribute="top" constant="37" id="tHQ-Nf-C5F"/>
             </constraints>
-            <point key="canvasLocation" x="691" y="671"/>
+            <point key="canvasLocation" x="1150" y="661"/>
         </view>
     </objects>
 </document>

@@ -36,52 +36,24 @@
 	NSDictionary * userInfo = notification.userInfo;
 	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
+	if(self.scrollViewBottom.constant == keyboardFrameEnd.size.height) {
+		return;
+	}
 	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
+	self.formView.height -= 220;
+	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
-	self.scrollViewBottom.constant = 0;
-}
-
-- (IBAction) signup:(id)sender {
-	NSString * msg = nil;
-	NSString * title = @"Form Error";
-	
-	if([self.email.text isEmpty]) {
-		msg = @"Email required";
-	}
-	
-	if(!msg && ![self.email.text isValidEmail]) {
-		msg = @"Incorrect email format";
-	}
-	
-	if(!msg && self.firstname.text.isEmpty) {
-		msg = @"First Name required";
-	}
-	
-	if(!msg && self.lastname.text.isEmpty) {
-		msg = @"Last Name required";
-	}
-	
-	if(!msg && self.password.text.isEmpty) {
-		msg = @"Password required";
-	}
-	
-	if(!msg && self.passwordConfirm.text.isEmpty) {
-		msg = @"Password Confirm required";
-	}
-	
-	if(!msg && ![self.passwordConfirm.text isEqualToString:self.password.text]) {
-		msg = @"Password and Password Confirm do not match";
-	}
-	
-	if(msg) {
-		UIAlertController * alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-		[self presentViewController:alert animated:TRUE completion:nil];
+	if(self.scrollViewBottom.constant == 0) {
 		return;
 	}
-	
+	self.scrollViewBottom.constant = 0;
+	self.formView.height += 220;
+	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
+}
+
+- (IBAction) signup:(id) sender {
 	SNFUserService * service = [[SNFUserService alloc] init];
 	
 	NSDictionary * data = @{
@@ -100,7 +72,7 @@
 		
 		if(error) {
 			
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Signup Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
 			[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
 			[self presentViewController:alert animated:TRUE completion:nil];
 			

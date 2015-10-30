@@ -127,7 +127,7 @@ def user_signup(request):
 	#check for POST
 	if request.method != "POST":
 		return json_response_error("method not allowed")
-	
+
 	email = request.POST.get('email',None)
 	password = request.POST.get('password',None)
 	password_confirm = request.POST.get('password_confirm',None)
@@ -143,8 +143,9 @@ def user_signup(request):
 	#check for user with email
 	try:
 		user = User.objects.get(email=email)
-	except:
 		return json_response_error("email already registered")
+	except:
+		pass
 
 	#check for firstname
 	if not firstname or len(firstname) < 1:
@@ -318,7 +319,6 @@ def invites(request):
 def invite_accept(request):
 	'''
 	@param code
-	@param sync_date
 	'''
 
 	#check for POST

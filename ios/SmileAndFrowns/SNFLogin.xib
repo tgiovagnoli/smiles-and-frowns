@@ -45,7 +45,7 @@
                         <constraint firstAttribute="width" constant="311" id="ytI-d6-P2I"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="abc123$" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xrm-ng-EsY">
                     <rect key="frame" x="145" y="182" width="311" height="30"/>
@@ -55,7 +55,7 @@
                         <constraint firstAttribute="height" constant="30" id="s6X-1v-yk0"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKB-km-HcN">
                     <rect key="frame" x="265" y="235" width="70" height="30"/>
@@ -156,7 +156,7 @@
                 <constraint firstItem="Lnz-zc-waB" firstAttribute="top" secondItem="qZo-u4-fSo" secondAttribute="bottom" constant="8" id="rf1-16-m3l"/>
                 <constraint firstItem="40k-jq-61R" firstAttribute="top" secondItem="xe0-63-PVi" secondAttribute="bottom" constant="8" id="rwQ-AA-06X"/>
             </constraints>
-            <point key="canvasLocation" x="372" y="593"/>
+            <point key="canvasLocation" x="394" y="593"/>
         </view>
         <view contentMode="scaleToFill" id="fOl-Xu-Fvq">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>

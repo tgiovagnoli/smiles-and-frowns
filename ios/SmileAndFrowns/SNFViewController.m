@@ -8,17 +8,21 @@
 #import "SNFBoardList.h"
 #import "SNFMore.h"
 
-static SNFViewController * _instance;
+static __weak SNFViewController * _instance;
 
 @implementation SNFViewController
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	_instance = self;
+	
 	self.viewControllerStack.alwaysResizePushedViews = YES;
+	
 	[NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
 		[self insertMenu];
 	} repeats:NO];
+	
+	[self showBoards];
 }
 
 - (void) dealloc {
