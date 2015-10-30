@@ -10,6 +10,23 @@
 - (void)setBoard:(SNFBoard *)board andCompletion:(SNFAddUserRoleCallback)completion{
 	_completion = completion;
 	_board = board;
+	
+	_pickerValues = @[
+					  @{@"": @"-----------"},
+					  @{@"male": @"Male"},
+					  @{@"female": @"Female"},
+					  ];
+	
+	[self.genderPicker reloadAllComponents];
+}
+
+- (void)viewDidLayoutSubviews{
+	if(!_hasLaidOut){
+		UIButton *genderOverlay = [[UIButton alloc] initWithFrame:self.genderField.frame];
+		[genderOverlay addTarget:self action:@selector(openGenderPicker:) forControlEvents:UIControlEventTouchUpInside];
+		[self.view addSubview:genderOverlay];
+		_hasLaidOut = YES;
+	}
 }
 
 - (IBAction)onAddRole:(UIButton *)sender{
@@ -127,6 +144,10 @@
 - (void)createRole{
 	NSNumber *age = [NSNumber numberWithInteger:[self.ageField.text integerValue]];
 	
+	NSString *gender = @"";
+	if(![self.genderField.text isEmpty]){
+		gender = [self.genderField.text lowercaseString];
+	}
 	NSDictionary *info = @{
 						   @"role": @"child",
 						   @"board": @{
@@ -137,6 +158,7 @@
 								   @"last_name": self.lastNameField.text,
 								   @"email": self.emailField.text,
 								   @"age": age,
+								   @"gender": gender
 								   }
 						   };
 	SNFUserRole *userRole = (SNFUserRole *)[SNFUserRole editOrCreatefromInfoDictionary:info withContext:[SNFModel sharedInstance].managedObjectContext];
@@ -217,6 +239,38 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
 	[textField resignFirstResponder];
 	return NO;
+}
+
+- (IBAction)openGenderPicker:(id)sender{
+	[self.genderPickerContainer matchFrameSizeOfView:self.view];
+	[self.view addSubview:self.genderPickerContainer];
+}
+
+- (IBAction)closeGenderPicker:(UIButton *)sender{
+	[self.genderPickerContainer removeFromSuperview];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+	return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+	return _pickerValues.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+	NSDictionary *pickerVal = [_pickerValues objectAtIndex:row];
+	for(NSString *key in pickerVal){
+		return [pickerVal objectForKey:key];
+	}
+	return @"";
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+	NSDictionary *pickerVal = [_pickerValues objectAtIndex:row];
+	for(NSString *key in pickerVal){
+		self.genderField.text = [pickerVal objectForKey:key];
+	}
 }
 
 @end
