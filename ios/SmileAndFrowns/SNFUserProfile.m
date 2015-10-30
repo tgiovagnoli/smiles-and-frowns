@@ -7,6 +7,7 @@
 
 
 - (void)viewDidLoad{
+	[super viewDidLoad];
 	[self updateFieldsWithUserInfo];
 }
 

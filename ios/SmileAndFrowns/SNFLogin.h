@@ -5,8 +5,8 @@
 @class SNFLogin;
 
 @protocol SNFLoginDelegate <NSObject>
-- (void)login:(SNFLogin *)login didLoginWithUser:(SNFUser *)user;
-- (void)loginCancelled:(SNFLogin *)login;
+- (void) login:(SNFLogin *) login didLoginWithUser:(SNFUser *) user;
+- (void) loginCancelled:(SNFLogin *) login;
 @end
 
 @interface SNFLogin : UIViewController

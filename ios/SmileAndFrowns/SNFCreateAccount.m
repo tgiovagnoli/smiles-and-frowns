@@ -17,17 +17,13 @@
 	
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		if(self.nextViewController) {
-			[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:^{
-				
-			}];
+			[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
 		}
 	}];
 }
 
 - (IBAction) cancel:(id)sender {
-	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
-		
-	}];
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 @end

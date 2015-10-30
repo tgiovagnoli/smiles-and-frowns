@@ -20,13 +20,6 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	self.firstlayout = true;
-}
-
-- (void) viewDidLayoutSubviews {
-	if(self.firstlayout) {
-		self.firstlayout = false;
-	}
 }
 
 - (IBAction) showAtStartup:(id)sender {
@@ -35,16 +28,11 @@
 
 - (IBAction) acceptInvite:(id)sender {
 	if(![SNFModel sharedInstance].loggedInUser) {
-		
 		SNFLogin * login = [[SNFLogin alloc] init];
 		login.nextViewController = [[SNFAcceptInvite alloc] init];
-		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:^{
-			
-		}];
+		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 	} else {
-		[[AppDelegate rootViewController] presentViewController:[[SNFAcceptInvite alloc] init] animated:TRUE completion:^{
-			
-		}];
+		[[AppDelegate rootViewController] presentViewController:[[SNFAcceptInvite alloc] init] animated:TRUE completion:nil];
 	}
 }
 
@@ -59,10 +47,7 @@
 }
 
 - (IBAction) login:(id) sender {
-	SNFLogin * login = [[SNFLogin alloc] init];
-	[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:^{
-		
-	}];
+	[[AppDelegate rootViewController] presentViewController:[[SNFLogin alloc] init] animated:TRUE completion:nil];
 }
 
 @end
