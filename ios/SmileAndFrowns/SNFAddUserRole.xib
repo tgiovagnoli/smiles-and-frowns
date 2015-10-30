@@ -10,6 +10,8 @@
                 <outlet property="emailField" destination="3Qp-Ok-17B" id="vcb-oV-kmK"/>
                 <outlet property="firstNameField" destination="O8m-WQ-sEV" id="Vmq-io-0Uz"/>
                 <outlet property="genderField" destination="vH9-w6-PgZ" id="Pym-yT-pwA"/>
+                <outlet property="genderPicker" destination="Si7-ki-djC" id="Uy0-iX-iTC"/>
+                <outlet property="genderPickerContainer" destination="1mo-s0-Z1d" id="q7J-W5-hGd"/>
                 <outlet property="lastNameField" destination="9ej-bk-4xe" id="yat-le-TPU"/>
                 <outlet property="profileImageView" destination="wf9-tg-Tqm" id="kWf-y8-x29"/>
                 <outlet property="roleControl" destination="X8t-j1-pfo" id="LSS-9L-5kx"/>
@@ -98,6 +100,9 @@
                         <segment title="Parent"/>
                         <segment title="Guardian"/>
                     </segments>
+                    <connections>
+                        <action selector="onRoleValueChanged:" destination="-1" eventType="valueChanged" id="ruP-v6-gd6"/>
+                    </connections>
                 </segmentedControl>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQa-Ly-hit">
                     <rect key="frame" x="116" y="345" width="79" height="30"/>
@@ -123,6 +128,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     <connections>
+                        <action selector="openGenderPicker:" destination="-1" eventType="touchDown" id="lF6-hF-Rkx"/>
                         <outlet property="delegate" destination="-1" id="IEA-DW-uPU"/>
                     </connections>
                 </textField>
@@ -160,7 +166,64 @@
                 <constraint firstItem="I9v-Iy-O0I" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ynb-Vx-fAs"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="511" y="533"/>
+            <point key="canvasLocation" x="335" y="509"/>
+        </view>
+        <view contentMode="scaleToFill" id="1mo-s0-Z1d">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iX3-up-c9n">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="228"/>
+                    <animations/>
+                    <connections>
+                        <action selector="closeGenderPicker:" destination="-1" eventType="touchUpInside" id="soY-IW-mOR"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5T-tf-z3V">
+                    <rect key="frame" x="0.0" y="373" width="600" height="227"/>
+                    <animations/>
+                    <connections>
+                        <action selector="closeGenderPicker:" destination="-1" eventType="touchUpInside" id="Mwb-KG-2UC"/>
+                    </connections>
+                </button>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Si7-ki-djC">
+                    <rect key="frame" x="0.0" y="228" width="600" height="145"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="145" id="jKq-Al-qyu"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="lxg-zp-H7a"/>
+                        <outlet property="delegate" destination="-1" id="GXY-t7-BEK"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.1223021582733813" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="iX3-up-c9n" firstAttribute="top" secondItem="1mo-s0-Z1d" secondAttribute="top" id="4fL-0S-Uk1"/>
+                <constraint firstAttribute="trailing" secondItem="Si7-ki-djC" secondAttribute="trailing" id="9F4-dc-vVf"/>
+                <constraint firstItem="K5T-tf-z3V" firstAttribute="top" secondItem="iX3-up-c9n" secondAttribute="bottom" id="BgR-aQ-3Kg"/>
+                <constraint firstAttribute="bottom" secondItem="Si7-ki-djC" secondAttribute="bottom" id="Bii-vN-JDM"/>
+                <constraint firstAttribute="trailing" secondItem="K5T-tf-z3V" secondAttribute="trailing" id="Fjz-VP-kPB"/>
+                <constraint firstItem="K5T-tf-z3V" firstAttribute="height" secondItem="iX3-up-c9n" secondAttribute="height" id="Gst-vv-fgt"/>
+                <constraint firstAttribute="bottom" secondItem="K5T-tf-z3V" secondAttribute="bottom" id="Nie-tK-05X"/>
+                <constraint firstItem="iX3-up-c9n" firstAttribute="leading" secondItem="1mo-s0-Z1d" secondAttribute="leading" id="R0C-cv-LcL"/>
+                <constraint firstAttribute="trailing" secondItem="iX3-up-c9n" secondAttribute="trailing" id="eUm-q1-ha5"/>
+                <constraint firstItem="K5T-tf-z3V" firstAttribute="top" secondItem="Si7-ki-djC" secondAttribute="bottom" id="g0J-gM-dkh"/>
+                <constraint firstItem="K5T-tf-z3V" firstAttribute="leading" secondItem="1mo-s0-Z1d" secondAttribute="leading" id="pQo-l5-bAO"/>
+                <constraint firstItem="Si7-ki-djC" firstAttribute="leading" secondItem="1mo-s0-Z1d" secondAttribute="leading" id="q93-U0-tqN"/>
+                <constraint firstItem="Si7-ki-djC" firstAttribute="top" secondItem="iX3-up-c9n" secondAttribute="bottom" id="y9P-Ya-ONq"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Bii-vN-JDM"/>
+                    <exclude reference="BgR-aQ-3Kg"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="986" y="509"/>
         </view>
     </objects>
 </document>

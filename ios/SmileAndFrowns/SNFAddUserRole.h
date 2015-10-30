@@ -3,6 +3,7 @@
 #import "SNFUserRole.h"
 #import "SNFBoard.h"
 #import "NSString+Additions.h"
+#import "UIView+LayoutHelpers.h"
 
 typedef NS_ENUM(NSInteger, SNFUserRoleAdd){
 	SNFUserRoleAddChild,
@@ -12,8 +13,10 @@ typedef NS_ENUM(NSInteger, SNFUserRoleAdd){
 
 typedef void(^SNFAddUserRoleCallback)(NSError *error, SNFUserRole *userRole);
 
-@interface SNFAddUserRole : UIViewController <UITextFieldDelegate, CNContactPickerDelegate>{
+@interface SNFAddUserRole : UIViewController <UITextFieldDelegate, CNContactPickerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>{
 	SNFAddUserRoleCallback _completion;
+	NSArray *_pickerValues;
+	BOOL _hasLaidOut;
 }
 
 @property (weak) IBOutlet UITextField *firstNameField;
@@ -23,6 +26,10 @@ typedef void(^SNFAddUserRoleCallback)(NSError *error, SNFUserRole *userRole);
 @property (weak) IBOutlet UITextField *genderField;
 @property (weak) IBOutlet UITextField *ageField;
 @property (weak) IBOutlet UIImageView *profileImageView;
+
+@property IBOutlet UIView *genderPickerContainer;
+@property (weak) IBOutlet UIPickerView *genderPicker;
+
 @property (readonly) SNFBoard *board;
 
 - (void)setBoard:(SNFBoard *)board andCompletion:(SNFAddUserRoleCallback)completion;
@@ -30,6 +37,7 @@ typedef void(^SNFAddUserRoleCallback)(NSError *error, SNFUserRole *userRole);
 - (IBAction)onAddRole:(UIButton *)sender;
 - (IBAction)onCancel:(UIButton *)sender;
 - (IBAction)onAddFromContacts:(UIButton *)sender;
+- (IBAction)closeGenderPicker:(UIButton *)sender;
 - (void)addChildRole;
 - (void)addParentRole;
 - (void)addGuardianRole;
