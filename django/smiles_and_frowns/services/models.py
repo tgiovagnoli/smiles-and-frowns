@@ -135,11 +135,17 @@ class Frown(SyncModel):
 		return self.board.title
 
 class Invite(models.Model):
-	created_date = models.DateTimeField(auto_now_add=True)
-	updated_date = models.DateTimeField(auto_now=True)
+	uuid = models.CharField(max_length=64, unique=True, null=True)
+	created_date = models.DateTimeField(auto_now_add=True,null=True)
+	updated_date = models.DateTimeField(auto_now=True,null=True)
 	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	user = models.ForeignKey(User,blank=True,on_delete=models.SET_NULL,null=True)
+	sender = models.ForeignKey(User,related_name='sender',blank=True,on_delete=models.SET_NULL,null=True)
 	code = models.CharField(max_length=64)
 	role = models.CharField(max_length=64, choices=PROFILE_ROLE_CHOICES, default="guardian")
 	def __unicode__(self):
 		return self.board.title
+	def save(self, *args, **kwargs):
+		if self.uuid == None or self.uuid == "" or len(self.uuid) == 0:
+			self.uuid = str(uuid.uuid4())
+		super(Invite,self).save(*args,**kwargs)

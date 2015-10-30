@@ -15,7 +15,6 @@ from services import models, json_utils, utils
 from smiles_and_frowns import settings
 from social.apps.django_app.utils import psa
 
-
 def json_response(response_data):
 	return HttpResponse(json.dumps(response_data, indent=4), content_type="application/json")
 
@@ -336,11 +335,14 @@ def invite_accept(request):
 	if created:
 		user_role.save()
 
+	#get return data
+	output = sync_data_for_board(invite.board)
+
 	#delete invite
 	invite.delete()
 
 	#returns all new data
-	return json_response({})
+	return json_response(output)
 
 @csrf_exempt
 def invite(request):
@@ -471,6 +473,28 @@ def invites(request):
 	invites = models.Invite.objects.filter(user=request.user)
 	output = json_utils.invite_info_dictionary_collection(invites)
 	return json_response(output)
+
+def sync_data_for_board(board):
+	'''
+	This doesn't take into account any sync dates. Returns ALL data for a board.
+	'''
+	#get associate objects for board
+	behaviors = models.Behavior.objects.filter(board=board)
+	smiles = models.Smile.objects.filter(board=board)
+	frowns = models.Frown.objects.filter(board=board)
+	rewards = models.Reward.objects.filter(board=board)
+	user_roles = models.UserRole.objects.filter(board=board)
+
+	#create output
+	output = {'sync_date': json_utils.datestring(UTC.localize(datetime.utcnow())) }
+	output['boards'] = json_utils.board_info_dictionary_collection(boards)
+	output['behaviors'] = json_utils.behavior_info_dictionary_collection(behaviors)
+	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
+	output['frowns'] = json_utils.frown_info_dictionary_collection(frowns)
+	output['rewards'] = json_utils.reward_info_dictionary_collection(rewards)
+	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles,with_users=True)
+
+	return output
 
 @csrf_exempt
 def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behaviors':[],'smiles':[],'frowns':[],'rewards':[],'user_roles':[]}):

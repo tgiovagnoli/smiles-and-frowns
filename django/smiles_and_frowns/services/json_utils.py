@@ -198,10 +198,18 @@ def invite_info_dictionary_collection(invites):
 
 def invite_info_dictionary(invite):
 	invite_data = {
+		"uuid":invite.uuid,
 		"code": invite.code,
 		"board_title": invite.board.title,
-		#"sender_first_name": invite.sender.first_name,
-		#"sender_last_name": invite.sender.last_name,
+		"board_uuid": invite.board.uuid,
 		"created_date":datestring(invite.created_date),
+		"id":invite.id,
 	}
+
+	if invite.sender and invite.sender.first_name:
+		invite_data['sender_first_name'] = invite.sender.first_name
+
+	if invite.sender and invite.sender.last_name:
+		invite_data['sender_last_name'] = invite.sender.last_name
+
 	return invite_data

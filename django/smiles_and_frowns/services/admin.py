@@ -44,10 +44,8 @@ class FrownAdmin(admin.ModelAdmin):
 
 class InviteAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("board", "user", "code", "role")
+	fields = ("board", "user", "sender", "code", "role")
 	list_display = ("board", "user")
-
-
 
 
 admin.site.register(models.Profile, ProfileAdmin)
@@ -58,5 +56,3 @@ admin.site.register(models.Reward, RewardAdmin)
 admin.site.register(models.Smile, SmileAdmin)
 admin.site.register(models.Frown, FrownAdmin)
 admin.site.register(models.Invite, InviteAdmin)
-
-
