@@ -77,13 +77,15 @@ def user_role_info_dictionary(user_role, with_user=False, with_board=False):
 def user_info_dictionary(user):
 	user_data = {
 		"username": user.username,
-		"gender": user.profile.gender,
-		"age": int(user.profile.age),
 		"first_name":user.first_name,
 		"last_name":user.last_name,
 		"email":user.email,
 		"id": user.id
 	}
+	if user.profile.gender:
+		user_data["gender"] = user.profile.gender
+	if user.profile.age:
+		user_data['age'] = int(user.profile.age)
 	return user_data
 
 def behavior_info_dictionary_collection(behaviors, with_boards=False):
