@@ -12,6 +12,7 @@
 		@"board": @"board",
 		@"behavior": @"behavior",
 		@"collected": @"collected",
+		@"note": @"note",
 		@"user": @"user"
 	};
 }
@@ -21,6 +22,9 @@
 	self.created_date = [NSDate date];
 	self.device_date = [NSDate date];
 	self.uuid = [[NSUUID UUID] UUIDString];
+	if(!self.note){
+		self.note = @"";
+	}
 	[super awakeFromInsert];
 }
 

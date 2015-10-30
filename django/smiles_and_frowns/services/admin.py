@@ -32,13 +32,13 @@ class RewardAdmin(admin.ModelAdmin):
 
 class SmileAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("board", "user", "behavior", "collected", "device_date", "deleted", "uuid")
+	fields = ("board", "user", "behavior", "collected", "device_date", "deleted", "uuid", "note")
 	list_display = ("board", "user", "updated_date")
 	readonly_fields = ('uuid',)
 
 class FrownAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("board", "user", "behavior", "device_date", "deleted", "uuid")
+	fields = ("board", "user", "behavior", "device_date", "deleted", "uuid", "note")
 	list_display = ("board", "user", "updated_date")
 	readonly_fields = ('uuid',)
 

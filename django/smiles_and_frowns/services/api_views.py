@@ -710,6 +710,7 @@ def sync(request):
 		smile.deleted = client_smile.get('deleted',False)
 		smile.device_date = smile_date
 		smile.collected = client_smile.get('collected')
+		smile.note = client_smile.get('note', '')
 		smile.save()
 
 		#set created uuid lookup. after save so uuid is available
@@ -754,6 +755,7 @@ def sync(request):
 		frown.behavior = behavior
 		frown.deleted = client_frown.get('deleted',False)
 		frown.device_date = client_frown_date
+		frown.note = client_smile.get('note', '')
 		frown.save()
 
 		#set created in lookup

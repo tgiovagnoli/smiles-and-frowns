@@ -6,7 +6,7 @@ typedef NS_ENUM(NSInteger, SNFBoardListFilter){
 };
 
 
-@interface SNFBoardList : UIViewController <UITableViewDelegate, UITableViewDataSource>{
+@interface SNFBoardList : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>{
 	NSArray *_boards;
 }
 
@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, SNFBoardListFilter){
 @property (weak) IBOutlet UISegmentedControl *filterControl;
 @property (weak) IBOutlet UIButton *searchButton;
 @property (weak) IBOutlet UIButton *purchaseButton;
+@property (weak) IBOutlet UITextField *searchField;
 @property SNFBoardListFilter filter;
 
 @end
