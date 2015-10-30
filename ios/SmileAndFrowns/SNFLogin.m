@@ -103,6 +103,7 @@
 						
 						//if main view controller is being shown, show invites.
 						if([SNFViewController instance]) {
+							
 							[[SNFViewController instance] showInvites];
 						
 						} else {
@@ -129,22 +130,19 @@
 	if(self.delegate) {
 		[self.delegate loginCancelled:self];
 	}
-	
-	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
-		
-	}];
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (IBAction) createAccount:(id) sender {
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 		SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] init];
+		
 		if(self.nextViewController) {
 			createAccount.nextViewController = self.nextViewController;
 		}
-		[[AppDelegate rootViewController] presentViewController:createAccount animated:TRUE completion:^{
-			
-		}];
+		
+		[[AppDelegate rootViewController] presentViewController:createAccount animated:TRUE completion:nil];
 		
 	}];
 }
@@ -153,9 +151,7 @@
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 		SNFPasswordReset * reset = [[SNFPasswordReset alloc] init];
-		[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:^{
-			
-		}];
+		[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:nil];
 		
 	}];
 }

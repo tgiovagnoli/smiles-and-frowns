@@ -15,10 +15,14 @@ static __weak SNFViewController * _instance;
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	_instance = self;
+	
 	self.viewControllerStack.alwaysResizePushedViews = YES;
+	
 	[NSTimer scheduledTimerWithTimeInterval:0.25 block:^{
 		[self insertMenu];
 	} repeats:NO];
+	
+	[self showBoards];
 }
 
 - (void) dealloc {

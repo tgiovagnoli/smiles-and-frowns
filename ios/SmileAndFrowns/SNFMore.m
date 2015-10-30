@@ -4,6 +4,7 @@
 #import "SNFLauncher.h"
 #import "SNFUserService.h"
 #import "SNFModel.h"
+#import "SNFTutorial.h"
 
 @implementation SNFMore
 
@@ -17,6 +18,7 @@
 					   [self tableItemWithName:@"Remove Ads" andSelector:@selector(removeAds)],
 					   [self tableItemWithName:@"Terms and Privacy" andSelector:@selector(termsAndPrivacy)],
 					   [self tableItemWithName:@"App Settings" andSelector:@selector(appSettings)],
+					   [self tableItemWithName:@"View the Tutorial" andSelector:@selector(tutorial)],
 					   [self tableItemWithName:@"Launcher" andSelector:@selector(launcher)],
 					   [self tableItemWithName:@"Logout" andSelector:@selector(logout)],
 					   ];
@@ -49,6 +51,12 @@
 
 - (void) launcher {
 	[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+}
+
+- (void) tutorial {
+	SNFTutorial * tutorial = [[SNFTutorial alloc] init];
+	tutorial.userInitiatedTutorial = TRUE;
+	[AppDelegate instance].window.rootViewController = tutorial;
 }
 
 - (void)theFiveCs{
