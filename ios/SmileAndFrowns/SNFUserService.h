@@ -22,5 +22,6 @@ typedef void(^SNFAcceptInviteCompletion)(NSError * error);
 
 - (void) createAccountWithData:(NSDictionary *) data andCompletion:(SNFCreateAccountCompletion)completion;
 - (void) acceptInviteCode:(NSString *) inviteCode andCompletion:(SNFAcceptInviteCompletion)completion;
+- (void) resetPasswordForEmail:(NSString *) email andCompletion:(void(^)(NSError *error))completion;
 
 @end

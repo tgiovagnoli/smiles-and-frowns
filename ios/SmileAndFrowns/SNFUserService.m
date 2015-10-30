@@ -232,4 +232,41 @@
 	[task resume];
 }
 
+- (void) resetPasswordForEmail:(NSString *) email andCompletion:(void(^)(NSError *error))completion; {
+	
+	if(email.isEmpty) {
+		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Email required"]);
+		return;
+	}
+	
+	if(!email.isValidEmail) {
+		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Incorrect email format"]);
+		return;
+	}
+	
+	NSDictionary * data = @{@"email":email};
+	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"reset_password"];
+	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
+	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		dispatch_async(dispatch_get_main_queue(), ^{
+			if(error) {
+				completion(error);
+				return;
+			}
+			
+			NSError * jsonError = nil;
+			[self responseObjectFromData:data withError:&jsonError];
+			
+			if(jsonError) {
+				completion(jsonError);
+				return;
+			}
+			
+			completion(nil);
+		});
+	}];
+	
+	[task resume];
+}
+
 @end
