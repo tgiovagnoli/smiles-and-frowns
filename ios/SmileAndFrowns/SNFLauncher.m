@@ -27,6 +27,9 @@
 }
 
 - (IBAction) acceptInvite:(id)sender {
+	[[AppDelegate rootViewController] presentViewController:[[SNFAcceptInvite alloc] init] animated:TRUE completion:nil];
+	return;
+	
 	if(![SNFModel sharedInstance].loggedInUser) {
 		SNFLogin * login = [[SNFLogin alloc] init];
 		login.nextViewController = [[SNFAcceptInvite alloc] init];

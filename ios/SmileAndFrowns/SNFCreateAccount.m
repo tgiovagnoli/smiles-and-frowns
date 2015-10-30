@@ -36,11 +36,21 @@
 	NSDictionary * userInfo = notification.userInfo;
 	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
+	if(self.scrollViewBottom.constant == keyboardFrameEnd.size.height) {
+		return;
+	}
 	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
+	self.formView.height -= 220;
+	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
+	if(self.scrollViewBottom.constant == 0) {
+		return;
+	}
 	self.scrollViewBottom.constant = 0;
+	self.formView.height += 220;
+	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
 }
 
 - (IBAction) signup:(id) sender {
