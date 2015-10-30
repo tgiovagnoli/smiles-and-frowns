@@ -208,7 +208,9 @@ def invite_info_dictionary(invite):
 
 	if invite.sender and invite.sender.first_name:
 		invite_data['sender_first_name'] = invite.sender.first_name
-
+	else:
+		invite_data['sender_first_name'] = 'Someone'
+	
 	if invite.sender and invite.sender.last_name:
 		invite_data['sender_last_name'] = invite.sender.last_name
 

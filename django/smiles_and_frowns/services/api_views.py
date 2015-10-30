@@ -487,7 +487,7 @@ def sync_data_for_board(board):
 
 	#create output
 	output = {'sync_date': json_utils.datestring(UTC.localize(datetime.utcnow())) }
-	output['boards'] = json_utils.board_info_dictionary_collection(boards)
+	output['boards'] = [json_utils.board_info_dictionary(board)]
 	output['behaviors'] = json_utils.behavior_info_dictionary_collection(behaviors)
 	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
 	output['frowns'] = json_utils.frown_info_dictionary_collection(frowns)
