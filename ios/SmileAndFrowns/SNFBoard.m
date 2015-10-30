@@ -1,6 +1,9 @@
 #import "SNFBoard.h"
 #import "SNFBehavior.h"
 #import "SNFSmile.h"
+#import "SNFFrown.h"
+#import "SNFInvite.h"
+#import "SNFReward.h"
 
 @implementation SNFBoard
 
@@ -26,6 +29,32 @@
 		self.title = @"Untitled";
 	}
 	[super awakeFromInsert];
+}
+
+- (void)reset{
+	self.title = @"Untitled";
+	for(SNFFrown *frown in self.frowns){
+		frown.deleted = @YES;
+	}
+	for(SNFSmile *smile in self.smiles){
+		smile.deleted = @YES;
+	}
+	for(SNFSmile *behavior in self.behaviors){
+		behavior.deleted = @YES;
+	}
+	for(SNFReward *reward in self.rewards){
+		reward.deleted = @YES;
+	}
+	for(SNFSmile *userRole in self.user_roles){
+		userRole.deleted = @YES;
+	}
+	
+	self.frowns = [NSSet set];
+	self.smiles = [NSSet set];
+	self.rewards = [NSSet set];
+	self.behaviors = [NSSet set];
+	self.user_roles = [NSSet set];
+	self.title = @"Untitled";
 }
 
 @end

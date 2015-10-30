@@ -1,8 +1,8 @@
 #import "SNFBoardList.h"
 #import "SNFModel.h"
-#import "SNFBoardListCell.h"
 #import "SNFBoardDetail.h"
 #import "SNFViewController.h"
+#import "AppDelegate.h"
 
 @implementation SNFBoardList
 
@@ -19,12 +19,31 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	SNFBoardListCell *cell = [self.boardsTable dequeueReusableCellWithIdentifier:@"SNFBoardListCell"];
+	
 	if(!cell){
 		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardListCell" owner:self options:nil];
 		cell = [topLevelObjects firstObject];
 	}
 	cell.board = [_boards objectAtIndex:indexPath.row];
+	cell.delegate = self;
 	return cell;
+}
+
+- (void)boardListCell:(SNFBoardListCell *)cell wantsToEditBoard:(SNFBoard *)board{
+	SNFBoardEdit *boardEdit = [[SNFBoardEdit alloc] init];
+	boardEdit.delegate = self;
+	[[AppDelegate rootViewController] presentViewController:boardEdit animated:YES completion:^{}];
+	boardEdit.board = board;
+}
+
+- (void)boardListCell:(SNFBoardListCell *)cell wantsToResetBoard:(SNFBoard *)board{
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Reset board?" message:@"Are you sure you want to reset this board? All board data will be lost and this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		[board reset];
+		[self reloadBoards];
+	}]];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+	[self presentViewController:alert animated:YES completion:^{}];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -47,6 +66,7 @@
 	}else if(self.filter == SNFBoardListFilterName){
 		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
 	}
+	
 	NSArray *results = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:request error:&error];
 	if(error){
 		NSLog(@"error loading boards");
@@ -69,10 +89,19 @@
 	}
 }
 
+- (void)boardEditor:(SNFBoardEdit *)be finishedWithBoard:(SNFBoard *)board{
+	[self reloadBoards];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+	return 60;
+}
+
 - (void)showSearch{
 	[self.searchButton setTitle:@"Done" forState:UIControlStateNormal];
 	self.searchField.hidden = NO;
 	self.filterControl.hidden = YES;
+	[self.searchField becomeFirstResponder];
 }
 
 - (void)hideSearch{
