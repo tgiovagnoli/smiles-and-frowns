@@ -1,7 +1,7 @@
 #import "SNFUserProfile.h"
 #import "SNFViewController.h"
 #import "SNFModel.h"
-#import "SNFLogin.h"
+#import "AppDelegate.h"
 
 @implementation SNFUserProfile
 
@@ -26,7 +26,7 @@
 					[self showLogin];
 				}]];
 				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
-				[[SNFViewController instance] presentViewController:alert animated:YES completion:^{}];
+				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 				[self showLoggedInBlocker];
 			}
 		}];
@@ -39,7 +39,16 @@
 
 - (void)showLogin{
 	SNFLogin *login = [[SNFLogin alloc] init];
-	[[SNFViewController instance] presentViewController:login animated:YES completion:^{}];
+	login.delegate = self;
+	[[AppDelegate rootViewController] presentViewController:login animated:YES completion:^{}];
+}
+
+- (void)login:(SNFLogin *)login didLoginWithUser:(SNFUser *)user{
+	self.user = user;
+}
+
+- (void)loginCancelled:(SNFLogin *)login{
+	
 }
 
 - (void)showLoggedInBlocker{
@@ -53,6 +62,9 @@
 }
 
 - (void)updateFieldsWithUserInfo{
+	if(_user){
+		[self.blockingView removeFromSuperview];
+	}
 	self.firstNameField.text = self.user.first_name;
 	self.lastNameField.text = self.user.last_name;
 	self.emailField.text = self.user.email;

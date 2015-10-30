@@ -12,4 +12,5 @@ typedef void(^SNFUserServiceCallback)(NSError *error, SNFUser *user);
 - (void)logoutWithCompletion:(void(^)(NSError *error))completion;
 - (void)authedUserInfoWithCompletion:(SNFUserServiceCallback)completion;
 
+
 @end

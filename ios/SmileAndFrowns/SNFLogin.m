@@ -84,9 +84,13 @@
 						}
 						
 					} else {
-						[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
+						[self presentViewController:self.nextViewController animated:TRUE completion:nil];
 					}
 
+				}
+				
+				if(self.delegate){
+					[self.delegate login:self didLoginWithUser:user];
 				}
 			}];
 		}
@@ -94,6 +98,9 @@
 }
 
 - (IBAction) cancel:(id)sender {
+	if(self.delegate){
+		[self.delegate loginCancelled:self];
+	}
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 	}];
@@ -106,7 +113,7 @@
 		if(self.nextViewController) {
 			createAccount.nextViewController = self.nextViewController;
 		}
-		[[AppDelegate rootViewController] presentViewController:createAccount animated:TRUE completion:^{
+		[self presentViewController:createAccount animated:TRUE completion:^{
 			
 		}];
 		
@@ -117,7 +124,7 @@
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 		SNFPasswordReset * reset = [[SNFPasswordReset alloc] init];
-		[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:^{
+		[self presentViewController:reset animated:TRUE completion:^{
 			
 		}];
 		

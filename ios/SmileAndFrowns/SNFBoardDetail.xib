@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFBoardDetail">
+            <connections>
+                <outlet property="addButton" destination="H4t-rc-jO4" id="49b-8a-2pb"/>
+                <outlet property="backButton" destination="FKO-le-D3j" id="boT-xc-YUj"/>
+                <outlet property="rolesTable" destination="md8-2Q-eLn" id="l5d-NO-6Os"/>
+                <outlet property="titleLabel" destination="e3T-mZ-wkw" id="bsc-dX-wxp"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-le-D3j">
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="WKd-7S-IEN"/>
+                        <constraint firstAttribute="height" constant="30" id="YNb-ox-5Ts"/>
+                    </constraints>
+                    <state key="normal" title="Boards"/>
+                    <connections>
+                        <action selector="backToBoards:" destination="-1" eventType="touchUpInside" id="45E-kX-Aub"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4t-rc-jO4">
+                    <rect key="frame" x="0.0" y="30" width="600" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="2Tx-sb-kuq"/>
+                    </constraints>
+                    <state key="normal" title="+ Add Child, Parent, Or Guardian"/>
+                    <connections>
+                        <action selector="onAddUserRole:" destination="-1" eventType="touchUpInside" id="bNf-zH-rbk"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="md8-2Q-eLn">
+                    <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="RRc-E8-CNN"/>
+                        <outlet property="delegate" destination="-1" id="ReQ-cr-co7"/>
+                    </connections>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3T-mZ-wkw">
+                    <rect key="frame" x="50" y="0.0" width="500" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="I1v-zH-Z8J"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="H4t-rc-jO4" secondAttribute="trailing" id="2i9-io-KOH"/>
+                <constraint firstItem="md8-2Q-eLn" firstAttribute="top" secondItem="H4t-rc-jO4" secondAttribute="bottom" id="EoF-K0-Niw"/>
+                <constraint firstItem="H4t-rc-jO4" firstAttribute="top" secondItem="e3T-mZ-wkw" secondAttribute="bottom" id="JdS-BK-Myn"/>
+                <constraint firstItem="H4t-rc-jO4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OIc-XM-M14"/>
+                <constraint firstAttribute="trailing" secondItem="md8-2Q-eLn" secondAttribute="trailing" id="P04-E7-82h"/>
+                <constraint firstAttribute="trailing" secondItem="e3T-mZ-wkw" secondAttribute="trailing" constant="50" id="Qsg-87-IEX"/>
+                <constraint firstItem="md8-2Q-eLn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bh2-a4-Xc5"/>
+                <constraint firstItem="FKO-le-D3j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gmB-Y0-Uen"/>
+                <constraint firstItem="FKO-le-D3j" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iUN-bU-l6q"/>
+                <constraint firstAttribute="bottom" secondItem="md8-2Q-eLn" secondAttribute="bottom" id="n2B-Sn-8eC"/>
+                <constraint firstItem="e3T-mZ-wkw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qSr-yw-Oz1"/>
+                <constraint firstItem="e3T-mZ-wkw" firstAttribute="leading" secondItem="FKO-le-D3j" secondAttribute="trailing" id="wvu-so-Xhu"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="535" y="360"/>
+        </view>
+    </objects>
+</document>

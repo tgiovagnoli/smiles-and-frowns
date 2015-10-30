@@ -139,8 +139,3 @@ class Invite(models.Model):
 	role = models.CharField(max_length=64, choices=PROFILE_ROLE_CHOICES, default="guardian")
 	def __unicode__(self):
 		return self.board.title
-
-class PredefinedBoard(models.Model):
-	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
-	def __unicode__(self):
-		return self.board.title
