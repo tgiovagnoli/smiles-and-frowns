@@ -26,21 +26,21 @@
 	if(self.email.text.length < 1 || [self.email.text stringByReplacingOccurrencesOfString:@" " withString:@""].length < 1) {
 		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Form Error" message:@"Enter your email address" preferredStyle:UIAlertControllerStyleAlert];
 		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
-		[self presentViewController:alert animated:TRUE completion:NULL];
+		[[AppDelegate rootViewController] presentViewController:alert animated:TRUE completion:NULL];
 		return;
 	}
 	
 	if(![self.email.text isValidEmail]) {
 		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Form Error" message:@"Incorrect email format" preferredStyle:UIAlertControllerStyleAlert];
 		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
-		[self presentViewController:alert animated:TRUE completion:NULL];
+		[[AppDelegate rootViewController] presentViewController:alert animated:TRUE completion:NULL];
 		return;
 	}
 	
 	if(self.password.text.length < 1 || [self.password.text stringByReplacingOccurrencesOfString:@" " withString:@""].length < 1) {
 		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Form Error" message:@"Enter your password" preferredStyle:UIAlertControllerStyleAlert];
 		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:NULL]];
-		[self presentViewController:alert animated:TRUE completion:NULL];
+		[[AppDelegate rootViewController] presentViewController:alert animated:TRUE completion:NULL];
 		return;
 	}
 	
@@ -57,7 +57,7 @@
 				
 			}]];
 			
-			[self presentViewController:alert animated:YES completion:^{}];
+			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 			
 		} else {
 			

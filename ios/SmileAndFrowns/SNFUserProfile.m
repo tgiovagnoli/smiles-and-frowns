@@ -1,7 +1,7 @@
 #import "SNFUserProfile.h"
 #import "SNFViewController.h"
 #import "SNFModel.h"
-
+#import "AppDelegate.h"
 
 @implementation SNFUserProfile
 
@@ -26,7 +26,7 @@
 					[self showLogin];
 				}]];
 				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
-				[[SNFViewController instance] presentViewController:alert animated:YES completion:^{}];
+				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 				[self showLoggedInBlocker];
 			}
 		}];
@@ -40,7 +40,7 @@
 - (void)showLogin{
 	SNFLogin *login = [[SNFLogin alloc] init];
 	login.delegate = self;
-	[[SNFViewController instance] presentViewController:login animated:YES completion:^{}];
+	[[AppDelegate rootViewController] presentViewController:login animated:YES completion:^{}];
 }
 
 - (void)login:(SNFLogin *)login didLoginWithUser:(SNFUser *)user{

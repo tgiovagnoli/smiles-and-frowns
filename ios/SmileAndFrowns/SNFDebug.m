@@ -11,6 +11,7 @@
 #import "SNFSyncService.h"
 #import "SNFUserService.h"
 #import "APDDjangoErrorViewer.h"
+#import "AppDelegate.h"
 
 @implementation SNFDebug
 
@@ -44,7 +45,7 @@
 		if(error){
 			if(error.code == SNFErrorCodeDjangoDebugError){
 				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
-				[self presentViewController:viewer animated:YES completion:^{
+				[[AppDelegate rootViewController] presentViewController:viewer animated:YES completion:^{
 					[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
 				}];
 			}else{
@@ -74,7 +75,7 @@
 		if(error){
 			if(error.code == SNFErrorCodeDjangoDebugError){
 				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
-				[self presentViewController:viewer animated:YES completion:^{
+				[[AppDelegate rootViewController] presentViewController:viewer animated:YES completion:^{
 					[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
 				}];
 			}else{
@@ -89,7 +90,7 @@
 - (void)alertWithMessage:(NSString *)message{
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}]];
-	[self presentViewController:alert animated:YES completion:^{}];
+	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 }
 
 - (void)createFromDictionaries{
@@ -183,7 +184,7 @@
 		}else if(error){
 			if(error.code == SNFErrorCodeDjangoDebugError){
 				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
-				[self presentViewController:viewer animated:YES completion:^{
+				[[AppDelegate rootViewController] presentViewController:viewer animated:YES completion:^{
 					[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
 				}];
 			}else{
@@ -258,7 +259,7 @@
 		}else if(error){
 			if(error.code == SNFErrorCodeDjangoDebugError){
 				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
-				[self presentViewController:viewer animated:YES completion:^{
+				[[AppDelegate rootViewController] presentViewController:viewer animated:YES completion:^{
 					[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
 				}];
 			}else{
@@ -277,7 +278,7 @@
 	[syncService syncWithCompletion:^(NSError *error, NSObject *boardData) {
 		if(error && error.code == SNFErrorCodeDjangoDebugError){
 			APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
-			[self presentViewController:viewer animated:YES completion:^{
+			[[AppDelegate rootViewController] presentViewController:viewer animated:YES completion:^{
 				[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
 			}];
 		}else if(error){
@@ -330,7 +331,7 @@
 			textField.text = @"A5B6E13E-A3F2-45D6-83AA-213677EE0FF9";
 		}];
 		
-		[self presentViewController:alert animated:YES completion:^{}];
+		[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 	}];
 	
 }
@@ -341,7 +342,7 @@
 	if(error){
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Something went wrong trying to save." preferredStyle:UIAlertControllerStyleAlert];
 		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}]];
-		[self presentViewController:alert animated:YES completion:^{}];
+		[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 	}
 }
 
