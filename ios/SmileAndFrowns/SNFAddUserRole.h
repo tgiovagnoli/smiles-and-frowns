@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+#import <ContactsUI/ContactsUI.h>
 #import "SNFUserRole.h"
 #import "SNFBoard.h"
 #import "NSString+Additions.h"
@@ -11,7 +12,7 @@ typedef NS_ENUM(NSInteger, SNFUserRoleAdd){
 
 typedef void(^SNFAddUserRoleCallback)(NSError *error, SNFUserRole *userRole);
 
-@interface SNFAddUserRole : UIViewController <UITextFieldDelegate>{
+@interface SNFAddUserRole : UIViewController <UITextFieldDelegate, CNContactPickerDelegate>{
 	SNFAddUserRoleCallback _completion;
 }
 
