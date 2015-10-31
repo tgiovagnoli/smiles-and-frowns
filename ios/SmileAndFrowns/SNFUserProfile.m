@@ -1,71 +1,83 @@
+
 #import "SNFUserProfile.h"
 #import "SNFViewController.h"
 #import "SNFModel.h"
 #import "AppDelegate.h"
+#import "UIAlertAction+Additions.h"
+#import "SNFLauncher.h"
+
+@interface SNFUserProfile ()
+@property BOOL firstlayout;
+@end
 
 @implementation SNFUserProfile
 
-
-- (void)viewDidLoad{
+- (void) viewDidLoad {
 	[super viewDidLoad];
-	[self updateFieldsWithUserInfo];
+	self.firstlayout = true;
+	[self loadAuthedUser];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)loadAuthedUser{
-	if([SNFModel sharedInstance].loggedInUser){
-		self.user = [SNFModel sharedInstance].loggedInUser;
-	}else{
-		SNFUserService *userService = [[SNFUserService alloc] init];
-		[MBProgressHUD showHUDAddedTo:self.view animated:YES];
-		[userService authedUserInfoWithCompletion:^(NSError *error, SNFUser *user) {
-			[MBProgressHUD hideHUDForView:self.view animated:YES];
-			if(!error && user){
-				self.user = user;
-			}else{
-				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"You must be logged in to edit your profile.  Would you like to login now?" preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-					[self showLogin];
-				}]];
-				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
-				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-				[self showLoggedInBlocker];
-			}
-		}];
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) viewDidLayoutSubviews {
+	if(self.firstlayout) {
+		self.firstlayout = false;
+		self.formView.frame = self.scrollView.bounds;
+		self.scrollView.contentSize = self.scrollView.size;
+		[self.scrollView addSubview:self.formView];
 	}
 }
 
-- (IBAction)onLogin:(UIButton *)sender{
-	[self showLogin];
+- (void) keyboardWillShow:(NSNotification *) notification {
+	NSDictionary * userInfo = notification.userInfo;
+	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
+	if(self.scrollViewBottom.constant == keyboardFrameEnd.size.height) {
+		return;
+	}
+	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
+	self.formView.height -= 330;
+	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
 }
 
-- (void)showLogin{
-	SNFLogin *login = [[SNFLogin alloc] init];
-	login.delegate = self;
-	[[AppDelegate rootViewController] presentViewController:login animated:YES completion:^{}];
+- (void) keyboardWillHide:(NSNotification *) notification {
+	if(self.scrollViewBottom.constant == 0) {
+		return;
+	}
+	self.scrollViewBottom.constant = 0;
+	self.formView.height += 330;
+	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
 }
 
-- (void)login:(SNFLogin *)login didLoginWithUser:(SNFUser *)user{
-	self.user = user;
+- (void) loadAuthedUser {
+	SNFUserService * userService = [[SNFUserService alloc] init];
+	[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+	[userService authedUserInfoWithCompletion:^(NSError *error, SNFUser *user) {
+		[MBProgressHUD hideHUDForView:self.view animated:YES];
+		if(error) {
+			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"You must be logged in to edit your profile." preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction OKActionWithCompletion:^(UIAlertAction * action) {
+				[SNFModel sharedInstance].loggedInUser = nil;
+				[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+			}]];
+			[self presentViewController:alert animated:TRUE completion:nil];
+			return;
+		}
+		self.user = user;
+	}];
 }
 
-- (void)loginCancelled:(SNFLogin *)login{
-	
-}
-
-- (void)showLoggedInBlocker{
-	[self.view addSubview:self.blockingView];
-	[self.blockingView matchFrameSizeOfView:self.view];
-}
-
-- (void)setUser:(SNFUser *)user{
+- (void) setUser:(SNFUser *) user {
 	_user = user;
 	[self updateFieldsWithUserInfo];
 }
 
-- (void)updateFieldsWithUserInfo{
-	if(_user){
-		[self.blockingView removeFromSuperview];
-	}
+- (void) updateFieldsWithUserInfo {
 	self.firstNameField.text = self.user.first_name;
 	self.lastNameField.text = self.user.last_name;
 	self.emailField.text = self.user.email;
@@ -73,7 +85,7 @@
 	self.passwordConfirmField.text = @"312764789326498321";
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL) textFieldShouldReturn:(UITextField *) textField {
 	[textField resignFirstResponder];
 	return NO;
 }
