@@ -75,22 +75,34 @@ static __weak SNFViewController * _instance;
 }
 
 - (void) showDebug {
+	if([[self.viewControllerStack currentViewController] isKindOfClass:[SNFDebug class]]) {
+		return;
+	}
 	SNFDebug *debug = [[SNFDebug alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:debug animated:YES];
 }
 
 - (void) showBoardsAnimated:(BOOL) animated {
+	if([[self.viewControllerStack currentViewController] isKindOfClass:[SNFBoardList class]]) {
+		return;
+	}
 	SNFBoardList * boardsList = [[SNFBoardList alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:boardsList animated:animated];
 }
 
 - (void)showProfile{
+	if([[self.viewControllerStack currentViewController] isKindOfClass:[SNFUserProfile class]]) {
+		return;
+	}
 	SNFUserProfile *profile = [[SNFUserProfile alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:profile animated:YES];
-	[profile loadAuthedUser];
+	//[profile loadAuthedUser];
 }
 
 - (void)showMore{
+	if([[self.viewControllerStack currentViewController] isKindOfClass:[SNFMore class]]) {
+		return;
+	}
 	SNFMore *more = [[SNFMore alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:more animated:YES];
 }
@@ -100,6 +112,9 @@ static __weak SNFViewController * _instance;
 }
 
 - (void)showInvitesAnimated:(BOOL) animated; {
+	if([[self.viewControllerStack currentViewController] isKindOfClass:[SNFInvites class]]) {
+		return;
+	}
 	SNFInvites * invites = [[SNFInvites alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:invites animated:animated];
 }
