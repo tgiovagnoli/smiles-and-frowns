@@ -20,7 +20,6 @@
 + (UIViewController *) rootViewController;
 - (void) saveContext;
 - (NSURL *) applicationDocumentsDirectory;
-- (void) finishTutorial:(BOOL) userInitiatedTutorial;
 
 @end
 

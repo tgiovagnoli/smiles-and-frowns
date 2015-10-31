@@ -125,14 +125,6 @@ static AppDelegate * _instance;
 	[self saveContext];
 }
 
-- (void) finishTutorial:(BOOL) userInitiatedTutorial {
-	if(!userInitiatedTutorial && [SNFLauncher showAtLaunch]) {
-		self.window.rootViewController = [[SNFLauncher alloc] init];
-	} else {
-		self.window.rootViewController = [[SNFViewController alloc] init];
-	}
-}
-
 #pragma mark - Core Data stack
 
 @synthesize managedObjectContext = _managedObjectContext;

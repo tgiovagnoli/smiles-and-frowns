@@ -2,6 +2,9 @@
 #import "SNFTutorial.h"
 #import "UIView+LayoutHelpers.h"
 #import "AppDelegate.h"
+#import "SNFModel.h"
+#import "SNFLauncher.h"
+#import "SNFViewController.h"
 
 @interface SNFTutorial ()
 @property BOOL firstlayout;
@@ -50,7 +53,16 @@
 
 - (IBAction) getStarted:(id)sender {
 	[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"HasSeenTutorial"];
-	[[AppDelegate instance] finishTutorial:self.userInitiatedTutorial];
+	
+	if([SNFModel sharedInstance].loggedInUser) {
+		if(!self.userInitiatedTutorial && [SNFLauncher showAtLaunch]) {
+			[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+		} else {
+			[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
+		}
+	} else {
+		[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+	}
 }
 
 - (void) trackPage {
