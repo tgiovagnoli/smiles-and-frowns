@@ -10,6 +10,9 @@
 #import "SNFAcceptInvite.h"
 #import "SNFViewController.h"
 #import "UIView+LayoutHelpers.h"
+#import "UIAlertAction+Additions.h"
+
+NSString * const SNFLoginDidLogin = @"SNFLoginDidLogin";
 
 @interface SNFLogin ()
 @property BOOL firstlayout;
@@ -92,10 +95,7 @@
 		if(error) {
 			
 			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Login Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-				
-			}]];
-			
+			[alert addAction:[UIAlertAction OKAction]];
 			[self presentViewController:alert animated:YES completion:^{}];
 			
 		} else {
@@ -125,22 +125,20 @@
 						}
 						
 					} else {
+						
 						[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
+						
 					}
 				}
 				
-				if(self.delegate) {
-					[self.delegate login:self didLoginWithUser:user];
-				}
+				[[NSNotificationCenter defaultCenter] postNotificationName:SNFLoginDidLogin object:nil];
+				
 			}];
 		}
 	}];
 }
 
 - (IBAction) cancel:(id)sender {
-	if(self.delegate) {
-		[self.delegate loginCancelled:self];
-	}
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
 }
 
