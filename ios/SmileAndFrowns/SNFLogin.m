@@ -104,31 +104,8 @@ NSString * const SNFLoginDidLogin = @"SNFLoginDidLogin";
 			
 			[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 				
-				//show next view controller if needed.
 				if(self.nextViewController) {
-					
-					//don't show next view controller if it's an accept invite code.
-					//if a user logs in successfully they can just accept the invite from the invites view.
-					if([self.nextViewController isKindOfClass:[SNFAcceptInvite class]]) {
-						
-						//if main view controller is being shown, show invites.
-						if([SNFViewController instance]) {
-							
-							[[SNFViewController instance] showInvitesAnimated:TRUE];
-						
-						} else {
-							
-							SNFViewController * root = [[SNFViewController alloc] init];
-							root.firstTab = SNFTabInvites;
-							[AppDelegate instance].window.rootViewController = root;
-							
-						}
-						
-					} else {
-						
-						[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
-						
-					}
+					[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
 				}
 				
 				[[NSNotificationCenter defaultCenter] postNotificationName:SNFLoginDidLogin object:nil];

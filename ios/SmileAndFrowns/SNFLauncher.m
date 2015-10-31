@@ -32,6 +32,7 @@
 	if(![SNFModel sharedInstance].loggedInUser) {
 		
 		SNFLogin * login = [[SNFLogin alloc] init];
+		login.nextViewController = [[SNFAcceptInvite alloc] init];
 		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 		
 	} else {

@@ -3,6 +3,8 @@
 #import "SNFUserService.h"
 #import "UIAlertAction+Additions.h"
 #import "SNFInvite.h"
+#import "SNFAcceptInvite.h"
+#import "AppDelegate.h"
 
 @interface SNFInvites ()
 @property SNFUserService * service;
@@ -19,28 +21,27 @@
 	self.tableView.dataSource = self;
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-	
 	[self.service invitesWithCompletion:^(NSError *error) {
-		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-		
 		if(error) {
-			
 			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
 			[alert addAction:[UIAlertAction OKAction]];
 			[self presentViewController:alert animated:TRUE completion:nil];
-			
 		} else {
-			
 			[self reload];
-			
 		}
 	}];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteAccepted:) name:SNFInviteAccepted object:nil];
 }
 
 - (void) reload {
 	self.invites = [SNFInvite all];
 	[self.tableView reloadData];
+}
+
+- (void) onInviteAccepted:(NSNotification *) note {
+	[self reload];
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
@@ -66,24 +67,12 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	SNFInvite * invite = [self.invites objectAtIndex:indexPath.row];
-	
 	if(invite.accepted.boolValue) {
 		return;
 	}
-	
-	invite.accepted = @(TRUE);
-	
-	NSLog(@"accept invite %@ for board %@", invite.code, invite.board_title);
-	[self.service acceptInviteCode:invite.code andCompletion:^(NSError *error) {
-		if(error) {
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[self presentViewController:alert animated:TRUE completion:nil];
-		}
-	}];
-	
-	UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
-	cell.textLabel.textColor = [UIColor grayColor];
+	SNFAcceptInvite * acceptor = [[SNFAcceptInvite alloc] init];
+	acceptor.invite = invite;
+	[[AppDelegate rootViewController] presentViewController:acceptor animated:TRUE completion:nil];
 }
 
 @end
