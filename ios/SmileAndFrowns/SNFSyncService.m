@@ -7,9 +7,18 @@
 #import "SNFFrown.h"
 #import "SNFUserRole.h"
 
+static SNFSyncService * _instance;
+
 @implementation SNFSyncService
 
-- (void)syncWithCompletion:(SNFSyncServiceCallback)completion{
++ (SNFSyncService *) instance {
+	if(!_instance) {
+		_instance = [[SNFSyncService alloc] init];
+	}
+	return _instance;
+}
+
+- (void) syncWithCompletion:(SNFSyncServiceCallback) completion {
 	NSError *saveError;
 	[[SNFModel sharedInstance].managedObjectContext save:&saveError]; // save the context in its current state before syncing so that any newer dates are committed.
 	
