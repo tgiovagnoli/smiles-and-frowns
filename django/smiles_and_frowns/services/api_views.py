@@ -154,14 +154,6 @@ def user_signup(request):
 	if not lastname or len(lastname) < 1:
 		return json_response_error("lastname required")
 
-	#check gender
-	#if not gender or len(gender) < 1:
-	#	return json_response_error("gender required")
-
-	#check age
-	#if not age or len(age) < 1:
-	#	return json_response_error("age required")
-
 	#check for password
 	if not password or len(password) < 1:
 		return json_response_error("password required")
@@ -179,9 +171,16 @@ def user_signup(request):
 		new_user.save()
 		if age: new_user.profile.age = age
 		if gender: new_user.profile.gender = gender
-		new_user.profile.save()
 	except Exception as e:
 		return json_response_error('error creating user %s' % str(e))
+
+	#try and authenticate user
+	user = None
+	try: 
+		user = authenticate(username=username,password=password)
+		login(request,user)
+	except Exception as e:
+		return json_response_error(str(e))
 
 	#return new user
 	output = json_utils.user_info_dictionary(new_user)
@@ -486,7 +485,7 @@ def sync_data_for_board(board):
 	user_roles = models.UserRole.objects.filter(board=board)
 
 	#create output
-	output = {'sync_date': json_utils.datestring(UTC.localize(datetime.utcnow())) }
+	output = {}
 	output['boards'] = [json_utils.board_info_dictionary(board)]
 	output['behaviors'] = json_utils.behavior_info_dictionary_collection(behaviors)
 	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
