@@ -41,7 +41,7 @@
 	NSURL * serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"logout"];
 	NSURLSession * session = [NSURLSession sharedSession];
 	NSURLSessionDataTask * task = [session dataTaskWithURL:serviceURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-		dispatch_async(dispatch_get_main_queue(), ^{
+		dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error);
 				return;
@@ -175,7 +175,7 @@
 	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"signup"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
 	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_async(dispatch_get_main_queue(), ^{
+		dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error,nil);
 				return;
@@ -212,7 +212,7 @@
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
 	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
-		dispatch_async(dispatch_get_main_queue(), ^{
+		dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error);
 				return;
@@ -252,7 +252,7 @@
 	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"reset_password"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
 	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_async(dispatch_get_main_queue(), ^{
+		dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error);
 				return;
@@ -279,7 +279,7 @@
 	NSURLRequest * request = [NSURLRequest requestWithURL:url];
 	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
-		dispatch_async(dispatch_get_main_queue(), ^{
+		dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error);
 				return;
