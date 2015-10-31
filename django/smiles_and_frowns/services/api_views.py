@@ -164,6 +164,7 @@ def user_signup(request):
 		new_user.save()
 		if age: new_user.profile.age = age
 		if gender: new_user.profile.gender = gender
+		new_user.profile.save()
 	except Exception as e:
 		return json_response_error('error creating user %s' % str(e))
 
