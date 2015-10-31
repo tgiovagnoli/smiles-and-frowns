@@ -125,7 +125,7 @@ def frown_info_dictionary(frown):
 		"note": frown.note
 	}
 	append_sync_info(frown, frown_data)
-	if frown.beheavior: frown_data["behavior"] = {"uuid": frown.behavior.uuid}
+	if frown.behavior: frown_data["behavior"] = {"uuid": frown.behavior.uuid}
 	if frown.board: frown_data['board'] = {'uuid':frown.board.uuid}
 	if frown.user: frown_data["user"] = {"username":frown.user.username}
 	return frown_data
