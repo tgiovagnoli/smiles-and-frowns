@@ -74,7 +74,7 @@ NSString * const SNFInviteAccepted;
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[self.service acceptInviteCode:self.inviteCodeField.text andCompletion:^(NSError *error) {
+	[self.service acceptInviteCode:self.inviteCodeField.text andCompletion:^(NSError *error, NSDictionary * data) {
 		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
@@ -85,8 +85,15 @@ NSString * const SNFInviteAccepted;
 			return;
 		}
 		
+		if(data[@"invite"]) {
+			//if invite was in response, load it into core data.
+			[SNFInvite editOrCreatefromInfoDictionary:data[@"invite"] withContext:[SNFModel sharedInstance].managedObjectContext];
+			[[SNFModel sharedInstance].managedObjectContext save:nil];
+		}
+		
 		if(self.invite) {
 			self.invite.accepted = @(TRUE);
+			[[SNFModel sharedInstance].managedObjectContext save:nil];
 		}
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:SNFInviteAccepted object:self];
