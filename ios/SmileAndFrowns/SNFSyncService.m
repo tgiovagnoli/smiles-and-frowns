@@ -114,14 +114,17 @@
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	
 	NSMutableArray *updates = [[NSMutableArray alloc] init];
+	
 	// update the user's local sync date
 	NSString *syncString = [results objectForKey:@"sync_date"];
-	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-	[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
-	NSDate *latestSyncDate = [formatter dateFromString:syncString];
-	if(latestSyncDate){
-		[SNFModel sharedInstance].userSettings.lastSyncDate = latestSyncDate;
+	if(syncString) {
+		NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+		[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+		[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+		NSDate *latestSyncDate = [formatter dateFromString:syncString];
+		if(latestSyncDate){
+			[SNFModel sharedInstance].userSettings.lastSyncDate = latestSyncDate;
+		}
 	}
 	
 	NSMutableDictionary *changeLog = [[NSMutableDictionary alloc] init];
