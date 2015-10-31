@@ -5,8 +5,9 @@
 #import "SNFUserService.h"
 #import "SNFViewController.h"
 #import "NSTimer+Blocks.h"
+#import "SNFSyncService.h"
 
-NSString * const SNFInviteAccepted;
+NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 
 @interface SNFAcceptInvite ()
 @property BOOL firstlayout;
@@ -88,9 +89,7 @@ NSString * const SNFInviteAccepted;
 		
 		if(data[@"invite"]) {
 			//if invite was in response, load it into core data.
-			SNFInvite * invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:data[@"invite"] withContext:[SNFModel sharedInstance].managedObjectContext];
-			invite.accepted = @(1);
-			[[SNFModel sharedInstance].managedObjectContext save:nil];
+			self.invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:data[@"invite"] withContext:[SNFModel sharedInstance].managedObjectContext];
 		}
 		
 		if(self.invite) {
@@ -100,23 +99,30 @@ NSString * const SNFInviteAccepted;
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:SNFInviteAccepted object:self];
 		
-		MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-		hud.labelText = @"Syncing New Board";
+		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 		
-		NSLog(@"TODO: This should trigger an actual sync");
-		
-		[NSTimer scheduledTimerWithTimeInterval:1 block:^{
+		[[SNFSyncService instance] updateLocalDataWithResults:data andCallCompletion:^(NSError *error, NSObject *boardData) {
+			
+			if(error) {
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Invitation Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+				[self presentViewController:alert animated:TRUE completion:nil];
+				return;
+			}
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 				if(![SNFViewController instance]) {
 					SNFViewController * root = [[SNFViewController alloc] init];
 					root.firstTab = SNFTabBoards;
 					[AppDelegate instance].window.rootViewController = root;
+				} else {
+					[[SNFViewController instance] showBoardsAnimated:TRUE];
 				}
 			}];
 			
-		} repeats:FALSE];
-		
+		}];
 	}];
 }
 
