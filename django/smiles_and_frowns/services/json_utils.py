@@ -29,10 +29,20 @@ def board_info_dictionary(board, with_users=False, with_behaviors=False, with_re
 		"title": board.title,
 		"id": board.id
 	}
-	if board.owner and with_users:
-		board_data["owner"] = user_role_info_dictionary_collection(board.owner, with_users=True)
-	elif board.owner:
-		board_data["owner"] = {"username": board.owner.username}
+	
+	if board.owner:
+		board_data["owner"] = {
+			"username": board.owner.username,
+			"first_name": board.owner.first_name,
+			"last_name": board.owner.last_name,
+			"email": board.owner.email,
+		}
+
+		if board.owner.profile.age:
+			board_data["age"] = int(board.owner.profile.age)
+		
+		if board.owner.profile.gender:
+			board_data["gender"] = board.owner.profile.gender
 
 
 	append_sync_info(board, board_data)
@@ -210,7 +220,7 @@ def invite_info_dictionary(invite):
 		invite_data['sender_first_name'] = invite.sender.first_name
 	else:
 		invite_data['sender_first_name'] = 'Someone'
-	
+
 	if invite.sender and invite.sender.last_name:
 		invite_data['sender_last_name'] = invite.sender.last_name
 

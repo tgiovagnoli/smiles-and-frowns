@@ -226,13 +226,6 @@
 										   };
 			SNFUserRole *userRole2 = (SNFUserRole *)[SNFUserRole editOrCreatefromInfoDictionary:userRoleInfo2 withContext:context];
 			
-			
-			NSDictionary *inviteInfo = @{
-								   @"role": @{@"uuid": userRole.uuid},
-								   @"board": @{@"uuid": board.uuid},
-								   };
-			SNFInvite *invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:inviteInfo withContext:context];
-			
 			NSDictionary *behaviorInfo = @{
 										   @"board": @{@"uuid": board.uuid},
 										   };
@@ -257,7 +250,7 @@
 										};
 			SNFSmile *smile = (SNFSmile *)[SNFSmile editOrCreatefromInfoDictionary:smileInfo withContext:context];
 			
-			NSLog(@"%@ %@ %@ %@ %@ %@ %@ %@ %@", user, userRole, userRole2, invite, reward, behavior, smile, frown, board);
+			NSLog(@"%@ %@ %@ %@ %@ %@ %@ %@", user, userRole, userRole2, reward, behavior, smile, frown, board);
 		}else if(error){
 			if(error.code == SNFErrorCodeDjangoDebugError){
 				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];

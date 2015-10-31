@@ -330,9 +330,9 @@ def invite_accept(request):
 		return json_response_error("invite not found")
 	
 	#create a user role
-	user_role,created = models.UserRole.objects.get_or_create(board=invite.board,user=request.user,role=invite.role)
-	if created:
-		user_role.save()
+	user_role,created = models.UserRole.objects.get_or_create(board=invite.board,user=request.user)
+	user_role.role = invite.role
+	user_role.save()
 
 	#get return data
 	output = sync_data_for_board(invite.board)
