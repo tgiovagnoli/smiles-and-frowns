@@ -3,7 +3,7 @@
 
 @interface SNFLauncher : UIViewController
 
-@property (weak) IBOutlet UIButton * showOnStartup;
+@property (weak) IBOutlet UISwitch * showOnStartup;
 
 + (BOOL) showAtLaunch;
 
