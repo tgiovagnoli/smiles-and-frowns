@@ -21,6 +21,4 @@ urlpatterns = [
     
     #syncing
     url(r'^api/sync/?', api_views.sync),
-
-    url(r'^api/boards/?', api_views.boards),
 ]

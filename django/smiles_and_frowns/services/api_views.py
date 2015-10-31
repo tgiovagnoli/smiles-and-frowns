@@ -24,13 +24,6 @@ def json_response_error(error_message):
 def login_required_response():
 	return json_response({"error": "login required"})
 
-def boards(request):
-	if not request.user.is_authenticated(): 
-		return login_required_response()
-	boards = models.Board.objects.all()
-	board_data = json_utils.board_info_dictionary_collection(boards, with_users=True, with_behaviors=True, with_rewards=True, with_smiles=True, with_frowns=True, with_invites=True)
-	return json_response(board_data)
-
 @psa('social:complete')
 def register_by_access_token(request,backend):
 	#http://python-social-auth.readthedocs.org/en/latest/use_cases.html
@@ -494,7 +487,7 @@ def sync_data_for_board(board):
 	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
 	output['frowns'] = json_utils.frown_info_dictionary_collection(frowns)
 	output['rewards'] = json_utils.reward_info_dictionary_collection(rewards)
-	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles,with_users=True)
+	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles)
 
 	return output
 
@@ -556,7 +549,7 @@ def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behavi
 	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
 	output['frowns'] = json_utils.frown_info_dictionary_collection(frowns)
 	output['rewards'] = json_utils.reward_info_dictionary_collection(rewards)
-	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles,with_users=True)
+	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles)
 
 	return json_response(output)
 
