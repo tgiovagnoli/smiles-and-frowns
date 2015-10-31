@@ -87,7 +87,8 @@ NSString * const SNFInviteAccepted;
 		
 		if(data[@"invite"]) {
 			//if invite was in response, load it into core data.
-			[SNFInvite editOrCreatefromInfoDictionary:data[@"invite"] withContext:[SNFModel sharedInstance].managedObjectContext];
+			SNFInvite * invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:data[@"invite"] withContext:[SNFModel sharedInstance].managedObjectContext];
+			invite.accepted = @(1);
 			[[SNFModel sharedInstance].managedObjectContext save:nil];
 		}
 		
