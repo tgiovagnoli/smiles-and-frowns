@@ -10,6 +10,7 @@ extern NSString * const SNFInviteAccepted;
 @property NSString * inviteCode;
 @property SNFInvite * invite;
 
+@property (weak) IBOutlet UILabel * joinLabel;
 @property (weak) IBOutlet UITextField * inviteCodeField;
 
 @property IBOutlet UIView * formView;

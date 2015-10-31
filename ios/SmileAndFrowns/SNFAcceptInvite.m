@@ -25,6 +25,7 @@ NSString * const SNFInviteAccepted;
 	
 	if(self.invite) {
 		self.inviteCodeField.text = self.invite.code;
+		//self.joinLabel.text = [NSString stringWithFormat:@"Would you like to join the board %@?", self.invite.board_title];
 	}
 	
 	if(self.inviteCode) {

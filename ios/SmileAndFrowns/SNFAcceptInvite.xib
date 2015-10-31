@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="formView" destination="i5M-Pr-FkT" id="ewk-9N-Nbc"/>
                 <outlet property="inviteCodeField" destination="CRU-xb-EzO" id="RzW-Xw-6hQ"/>
+                <outlet property="joinLabel" destination="CCR-qM-Ohg" id="uGi-Lt-Qjr"/>
                 <outlet property="scrollView" destination="XbE-JG-PJa" id="hOX-yF-bYX"/>
                 <outlet property="scrollViewBottom" destination="XSE-Mj-8Lu" id="QCP-kL-DbH"/>
                 <outlet property="view" destination="NTD-rQ-TaB" id="jHI-LA-WYf"/>
@@ -19,15 +20,20 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your unique board code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCR-qM-Ohg">
-                    <rect key="frame" x="142" y="0.0" width="317" height="23"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="23"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="317" id="j6s-PS-HAJ"/>
+                        <constraint firstAttribute="width" constant="600" id="j6s-PS-HAJ"/>
                         <constraint firstAttribute="height" constant="23" id="n1N-GV-pPM"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="j6s-PS-HAJ"/>
+                        </mask>
+                    </variation>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2l-8j-rX3">
                     <rect key="frame" x="233" y="524" width="135" height="30"/>
@@ -70,10 +76,12 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="CCR-qM-Ohg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3JE-mh-DM5"/>
+                <constraint firstAttribute="trailing" secondItem="CCR-qM-Ohg" secondAttribute="trailing" id="SxF-Yg-1x7"/>
                 <constraint firstAttribute="bottom" secondItem="Uuo-e6-GTn" secondAttribute="bottom" constant="8" id="T5w-c3-gcy"/>
                 <constraint firstItem="CRU-xb-EzO" firstAttribute="top" secondItem="CCR-qM-Ohg" secondAttribute="bottom" constant="8" id="TcA-mz-KWQ"/>
                 <constraint firstItem="CCR-qM-Ohg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZEm-w3-YZt"/>
                 <constraint firstItem="Uuo-e6-GTn" firstAttribute="top" secondItem="d2l-8j-rX3" secondAttribute="bottom" constant="8" id="aY8-oa-tGH"/>
+                <constraint firstItem="CCR-qM-Ohg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dlL-V4-ieI"/>
                 <constraint firstItem="d2l-8j-rX3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sNv-qr-NWx"/>
                 <constraint firstItem="Uuo-e6-GTn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="waZ-uk-QFx"/>
                 <constraint firstItem="CRU-xb-EzO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zXo-DO-L8R"/>
