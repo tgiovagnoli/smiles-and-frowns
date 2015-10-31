@@ -166,7 +166,7 @@
                 <constraint firstItem="I9v-Iy-O0I" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ynb-Vx-fAs"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="335" y="509"/>
+            <point key="canvasLocation" x="493" y="509"/>
         </view>
         <view contentMode="scaleToFill" id="1mo-s0-Z1d">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -198,6 +198,19 @@
                         <outlet property="delegate" destination="-1" id="GXY-t7-BEK"/>
                     </connections>
                 </pickerView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLF-bD-KG4">
+                    <rect key="frame" x="269" y="190" width="62" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="0qW-8r-n73"/>
+                        <constraint firstAttribute="width" constant="62" id="XIt-vW-90k"/>
+                    </constraints>
+                    <state key="normal" title="Done"/>
+                    <connections>
+                        <action selector="closeGenderPicker:" destination="-1" eventType="touchUpInside" id="Dgl-Ll-xw3"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.1223021582733813" colorSpace="calibratedRGB"/>
@@ -210,10 +223,12 @@
                 <constraint firstItem="K5T-tf-z3V" firstAttribute="height" secondItem="iX3-up-c9n" secondAttribute="height" id="Gst-vv-fgt"/>
                 <constraint firstAttribute="bottom" secondItem="K5T-tf-z3V" secondAttribute="bottom" id="Nie-tK-05X"/>
                 <constraint firstItem="iX3-up-c9n" firstAttribute="leading" secondItem="1mo-s0-Z1d" secondAttribute="leading" id="R0C-cv-LcL"/>
+                <constraint firstItem="iLF-bD-KG4" firstAttribute="centerX" secondItem="1mo-s0-Z1d" secondAttribute="centerX" id="R42-Jj-rYv"/>
                 <constraint firstAttribute="trailing" secondItem="iX3-up-c9n" secondAttribute="trailing" id="eUm-q1-ha5"/>
                 <constraint firstItem="K5T-tf-z3V" firstAttribute="top" secondItem="Si7-ki-djC" secondAttribute="bottom" id="g0J-gM-dkh"/>
                 <constraint firstItem="K5T-tf-z3V" firstAttribute="leading" secondItem="1mo-s0-Z1d" secondAttribute="leading" id="pQo-l5-bAO"/>
                 <constraint firstItem="Si7-ki-djC" firstAttribute="leading" secondItem="1mo-s0-Z1d" secondAttribute="leading" id="q93-U0-tqN"/>
+                <constraint firstItem="Si7-ki-djC" firstAttribute="top" secondItem="iLF-bD-KG4" secondAttribute="bottom" constant="8" id="vww-h2-rTl"/>
                 <constraint firstItem="Si7-ki-djC" firstAttribute="top" secondItem="iX3-up-c9n" secondAttribute="bottom" id="y9P-Ya-ONq"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -223,7 +238,7 @@
                     <exclude reference="BgR-aQ-3Kg"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="986" y="509"/>
+            <point key="canvasLocation" x="1251" y="514"/>
         </view>
     </objects>
 </document>
