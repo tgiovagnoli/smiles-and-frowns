@@ -19,6 +19,7 @@
 	self.service = [[SNFUserService alloc] init];
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
+	[self reload];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	[self.service invitesWithCompletion:^(NSError *error) {
