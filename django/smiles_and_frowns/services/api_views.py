@@ -337,6 +337,9 @@ def invite_accept(request):
 	#get return data
 	output = sync_data_for_board(invite.board)
 
+	#append invite to response output
+	output['invite'] = json_utils.invite_info_dictionary(invite)
+
 	#delete invite
 	invite.delete()
 
