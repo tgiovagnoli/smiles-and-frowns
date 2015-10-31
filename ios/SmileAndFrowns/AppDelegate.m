@@ -7,6 +7,7 @@
 #import "SNFLauncher.h"
 #import "SNFAcceptInvite.h"
 #import "SNFLogin.h"
+#import "SNFCreateAccount.h"
 
 static AppDelegate * _instance;
 
@@ -28,18 +29,18 @@ static AppDelegate * _instance;
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
+	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
+	[SNFDateManager unlock];
+	
 	if(![SNFTutorial hasSeenTutorial]) {
 		self.window.rootViewController = [[SNFTutorial alloc] init];
-	} else if([SNFLauncher showAtLaunch]) {
+	} else if([SNFLauncher showAtLaunch] || ![SNFModel sharedInstance].loggedInUser) {
 		self.window.rootViewController = [[SNFLauncher alloc] init];
 	} else {
 		self.window.rootViewController = [[SNFViewController alloc] init];
 	}
 	
 	[self.window makeKeyAndVisible];
-	
-	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
-	[SNFDateManager unlock];
 	
 	application.statusBarHidden = YES;
 	
@@ -77,36 +78,20 @@ static AppDelegate * _instance;
 			
 			if(![SNFModel sharedInstance].loggedInUser) {
 				
-				//show login view,
-				SNFLogin * login = [[SNFLogin alloc] init];
+				SNFCreateAccount * signup = [[SNFCreateAccount alloc] init];
 				SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] init];
-				login.nextViewController = acceptInvite;
-				[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
+				signup.nextViewController = acceptInvite;
+				[[AppDelegate rootViewController] presentViewController:signup animated:TRUE completion:nil];
 				
 			} else {
 				
-				if(self.window.rootViewController.presentingViewController) {
-					
-					[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
-						
-						//user is logged in here, show the invites view.
-						if(![SNFViewController instance]) {
-							SNFViewController * root = [[SNFViewController alloc] init];
-							root.firstTab = SNFTabInvites;
-							self.window.rootViewController = root;
-						}
-						
-					}];
-					
-				} else {
-					
-					//user is logged in here, show the invites view.
-					if([self.window.rootViewController isKindOfClass:[SNFLauncher class]]) {
-						SNFViewController * root = [[SNFViewController alloc] init];
-						root.firstTab = SNFTabInvites;
-						self.window.rootViewController = root;
-					}
+				//user is logged in here, show the invites view.
+				if(![SNFViewController instance]) {
+					SNFViewController * root = [[SNFViewController alloc] init];
+					root.firstTab = SNFTabInvites;
+					self.window.rootViewController = root;
 				}
+				
 			}
 		}
 		
