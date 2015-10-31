@@ -5,6 +5,7 @@
 #import "SNFUserService.h"
 #import "SNFModel.h"
 #import "SNFTutorial.h"
+#import "SNFAcceptInvite.h"
 
 @implementation SNFMore
 
@@ -20,6 +21,7 @@
 					   [self tableItemWithName:@"App Settings" andSelector:@selector(appSettings)],
 					   [self tableItemWithName:@"View the Tutorial" andSelector:@selector(tutorial)],
 					   [self tableItemWithName:@"Launcher" andSelector:@selector(launcher)],
+					   [self tableItemWithName:@"Accept An Invite Code" andSelector:@selector(acceptInviteFromCode)],
 					   [self tableItemWithName:@"Logout" andSelector:@selector(logout)],
 					   ];
 	[self.tableView reloadData];
@@ -57,6 +59,11 @@
 	SNFTutorial * tutorial = [[SNFTutorial alloc] init];
 	tutorial.userInitiatedTutorial = TRUE;
 	[AppDelegate instance].window.rootViewController = tutorial;
+}
+
+- (void) acceptInviteFromCode {
+	SNFAcceptInvite * accept = [[SNFAcceptInvite alloc] init];
+	[[AppDelegate rootViewController] presentViewController:accept animated:TRUE completion:nil];
 }
 
 - (void)theFiveCs{
