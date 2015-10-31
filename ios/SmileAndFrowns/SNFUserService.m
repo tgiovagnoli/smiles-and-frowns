@@ -203,8 +203,8 @@
 
 - (void) acceptInviteCode:(NSString *) inviteCode andCompletion:(SNFAcceptInviteCompletion)completion; {
 	
-	if(!inviteCode) {
-		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Invite code required"]);
+	if(!inviteCode || inviteCode.isEmpty) {
+		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Invite code required"],nil);
 	}
 	
 	NSDictionary * data = @{@"code":inviteCode};
@@ -214,21 +214,23 @@
 		
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
-				completion(error);
+				completion(error,nil);
 				return;
 			}
 			
 			NSError * jsonError = nil;
-			[self responseObjectFromData:data withError:&jsonError];
+			NSObject * responseData = [self responseObjectFromData:data withError:&jsonError];
 			
 			if(jsonError) {
-				completion(jsonError);
+				completion(jsonError,nil);
 				return;
 			}
 			
-			NSLog(@"TODO: Need to handle response board data");
+			if(![responseData isKindOfClass:[NSDictionary class]]) {
+				return completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Expected dictionary"],nil);
+			}
 			
-			completion(nil);
+			completion(nil,(NSDictionary *)responseData);
 		});
 		
 	}];

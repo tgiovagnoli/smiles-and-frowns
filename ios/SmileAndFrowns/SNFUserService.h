@@ -11,7 +11,7 @@
 typedef void(^SNFUserServiceCallback)(NSError *error, SNFUser *user);
 typedef void(^SNFInviteCallback)(NSError *error);
 typedef void(^SNFCreateAccountCompletion)(NSError * error,SNFUser * user);
-typedef void(^SNFAcceptInviteCompletion)(NSError * error);
+typedef void(^SNFAcceptInviteCompletion)(NSError * error, NSDictionary * data);
 typedef void(^SNFInvitesCompletion)(NSError * error);
 
 @interface SNFUserService : SNFService
