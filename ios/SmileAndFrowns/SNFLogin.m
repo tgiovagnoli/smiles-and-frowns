@@ -118,8 +118,9 @@
 						
 						} else {
 							
-							[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
-							[[SNFViewController instance] showInvitesAnimated:FALSE];
+							SNFViewController * root = [[SNFViewController alloc] init];
+							root.firstTab = SNFTabInvites;
+							[AppDelegate instance].window.rootViewController = root;
 							
 						}
 						

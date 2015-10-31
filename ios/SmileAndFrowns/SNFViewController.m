@@ -32,7 +32,26 @@ static __weak SNFViewController * _instance;
 	if(self.firstlayout) {
 		self.firstlayout = false;
 		[self insertMenu];
-		[self showBoardsAnimated:NO];
+		
+		if(self.firstTab == SNFTabBoards || self.firstTab == SNFTabDefault) {
+			[self showBoardsAnimated:NO];
+		}
+		
+		else if(self.firstTab == SNFTabInvites) {
+			[self showInvitesAnimated:NO];
+		}
+		
+		else if(self.firstTab == SNFTabProfile) {
+			[self showProfile];
+		}
+		
+		else if(self.firstTab == SNFTabMore) {
+			[self showMore];
+		}
+		
+		else if(self.firstTab == SNFTabDebug) {
+			[self showDebug];
+		}
 	}
 }
 

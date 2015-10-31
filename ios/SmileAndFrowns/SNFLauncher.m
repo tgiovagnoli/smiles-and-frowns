@@ -6,6 +6,7 @@
 #import "SNFLogin.h"
 #import "SNFViewController.h"
 #import "SNFAcceptInvite.h"
+#import "NSTimer+Blocks.h"
 
 @interface SNFLauncher ()
 @property BOOL firstlayout;
@@ -31,11 +32,17 @@
 	//return;
 	
 	if(![SNFModel sharedInstance].loggedInUser) {
+		
 		SNFLogin * login = [[SNFLogin alloc] init];
 		login.nextViewController = [[SNFAcceptInvite alloc] init];
 		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
+		
 	} else {
-		[[AppDelegate rootViewController] presentViewController:[[SNFAcceptInvite alloc] init] animated:TRUE completion:nil];
+		
+		SNFViewController * root = [[SNFViewController alloc] init];
+		root.firstTab = SNFTabInvites;
+		[AppDelegate instance].window.rootViewController = root;
+		
 	}
 }
 

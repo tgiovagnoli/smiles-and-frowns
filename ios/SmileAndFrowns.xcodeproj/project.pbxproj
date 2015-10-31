@@ -347,7 +347,6 @@
 		D62D37921BDE7FCA00102D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D65DF1731BE3ED83009CC6DF /* Util */,
 				0707D6C11BE2B2CB002F1FC0 /* Accept Invite */,
 				D65DF13C1BE2B8F1009CC6DF /* Boards */,
 				0707D6D61BE2E3AF002F1FC0 /* CreateAccount */,
@@ -367,6 +366,7 @@
 				0707D6A41BE29756002F1FC0 /* SNFViewController.xib */,
 				0707D69B1BE28EA8002F1FC0 /* Tutorial */,
 				D65DF1511BE2F138009CC6DF /* User */,
+				D65DF1731BE3ED83009CC6DF /* Util */,
 			);
 			name = Views;
 			sourceTree = "<group>";

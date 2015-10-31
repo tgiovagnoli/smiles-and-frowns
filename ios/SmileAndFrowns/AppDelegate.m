@@ -91,9 +91,10 @@ static AppDelegate * _instance;
 						
 						//user is logged in here, show the invites view.
 						if(![SNFViewController instance]) {
-							self.window.rootViewController = [[SNFViewController alloc] init];
+							SNFViewController * root = [[SNFViewController alloc] init];
+							root.firstTab = SNFTabInvites;
+							self.window.rootViewController = root;
 						}
-						[[SNFViewController instance] showInvitesAnimated:FALSE];
 						
 					}];
 					
@@ -101,10 +102,10 @@ static AppDelegate * _instance;
 					
 					//user is logged in here, show the invites view.
 					if([self.window.rootViewController isKindOfClass:[SNFLauncher class]]) {
-						self.window.rootViewController = [[SNFViewController alloc] init];
+						SNFViewController * root = [[SNFViewController alloc] init];
+						root.firstTab = SNFTabInvites;
+						self.window.rootViewController = root;
 					}
-					
-					[[SNFViewController instance] showInvitesAnimated:FALSE];
 				}
 			}
 		}
