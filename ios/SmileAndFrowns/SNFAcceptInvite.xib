@@ -18,6 +18,17 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your unique board code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCR-qM-Ohg">
+                    <rect key="frame" x="142" y="0.0" width="317" height="23"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="317" id="j6s-PS-HAJ"/>
+                        <constraint firstAttribute="height" constant="23" id="n1N-GV-pPM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2l-8j-rX3">
                     <rect key="frame" x="233" y="524" width="135" height="30"/>
                     <animations/>
@@ -44,19 +55,8 @@
                         <action selector="cancel:" destination="-1" eventType="touchUpInside" id="9xL-dk-fkd"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Siles &amp; Frowns. Please enter your unique board code." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCR-qM-Ohg">
-                    <rect key="frame" x="142" y="0.0" width="317" height="74"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="317" id="j6s-PS-HAJ"/>
-                        <constraint firstAttribute="height" constant="74" id="n1N-GV-pPM"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Invite Code" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CRU-xb-EzO">
-                    <rect key="frame" x="218" y="82" width="164" height="30"/>
+                    <rect key="frame" x="218" y="31" width="164" height="30"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="164" id="QsZ-fV-A5n"/>

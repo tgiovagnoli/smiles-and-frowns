@@ -4,6 +4,9 @@
 #import "SNFModel.h"
 #import "SNFUserService.h"
 #import "SNFViewController.h"
+#import "NSTimer+Blocks.h"
+
+NSString * const SNFInviteAccepted;
 
 @interface SNFAcceptInvite ()
 @property BOOL firstlayout;
@@ -15,9 +18,19 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	self.firstlayout = true;
+	
 	if([SNFModel sharedInstance].pendingInviteCode) {
 		self.inviteCodeField.text = [SNFModel sharedInstance].pendingInviteCode;
 	}
+	
+	if(self.invite) {
+		self.inviteCodeField.text = self.invite.code;
+	}
+	
+	if(self.inviteCode) {
+		self.inviteCodeField.text = self.inviteCode;
+	}
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
@@ -72,15 +85,28 @@
 			return;
 		}
 		
-		[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+		if(self.invite) {
+			self.invite.accepted = @(TRUE);
+		}
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:SNFInviteAccepted object:self];
+		
+		MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+		hud.labelText = @"Syncing New Board";
+		
+		NSLog(@"TODO: This should trigger an actual sync");
+		
+		[NSTimer scheduledTimerWithTimeInterval:1 block:^{
 			
-			if(![SNFViewController instance]) {
-				SNFViewController * root = [[SNFViewController alloc] init];
-				root.firstTab = SNFTabBoards;
-				[AppDelegate instance].window.rootViewController = root;
-			}
+			[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+				if(![SNFViewController instance]) {
+					SNFViewController * root = [[SNFViewController alloc] init];
+					root.firstTab = SNFTabBoards;
+					[AppDelegate instance].window.rootViewController = root;
+				}
+			}];
 			
-		}];
+		} repeats:FALSE];
 		
 	}];
 }
