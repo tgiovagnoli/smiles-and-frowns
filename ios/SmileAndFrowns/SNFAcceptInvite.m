@@ -72,8 +72,15 @@
 			return;
 		}
 		
-		[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
-		[[SNFViewController instance] showBoardsAnimated:FALSE];
+		[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+			
+			if(![SNFViewController instance]) {
+				SNFViewController * root = [[SNFViewController alloc] init];
+				root.firstTab = SNFTabBoards;
+				[AppDelegate instance].window.rootViewController = root;
+			}
+			
+		}];
 		
 	}];
 }
