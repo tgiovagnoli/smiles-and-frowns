@@ -5,6 +5,7 @@
 #import "SNFUserService.h"
 #import "SNFModel.h"
 #import "UIView+LayoutHelpers.h"
+#import "SNFLogin.h"
 
 @interface SNFCreateAccount ()
 @property BOOL firstlayout;
@@ -40,7 +41,7 @@
 		return;
 	}
 	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
-	self.formView.height -= 220;
+	self.formView.height -= 100;
 	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
 }
 
@@ -49,7 +50,7 @@
 		return;
 	}
 	self.scrollViewBottom.constant = 0;
-	self.formView.height += 220;
+	self.formView.height += 100;
 	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
 }
 
@@ -91,6 +92,12 @@
 
 - (IBAction) cancel:(id)sender {
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
+}
+
+- (IBAction) login:(id)sender {
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+		[[AppDelegate rootViewController] presentViewController:[[SNFLogin alloc] init] animated:TRUE completion:nil];
+	}];
 }
 
 @end
