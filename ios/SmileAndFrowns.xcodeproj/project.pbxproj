@@ -407,12 +407,12 @@
 		D62D37991BDEEFA900102D6A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D6272FAE1BDFD88F0024CBC2 /* SNFService.h */,
+				D6272FAF1BDFD88F0024CBC2 /* SNFService.m */,
 				D62D379A1BDEEFC400102D6A /* SNFSyncService.h */,
 				D62D379B1BDEEFC400102D6A /* SNFSyncService.m */,
 				D6272FA71BDFCD1A0024CBC2 /* SNFUserService.h */,
 				D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */,
-				D6272FAE1BDFD88F0024CBC2 /* SNFService.h */,
-				D6272FAF1BDFD88F0024CBC2 /* SNFService.m */,
 			);
 			name = Services;
 			sourceTree = "<group>";

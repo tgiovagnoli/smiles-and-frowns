@@ -68,6 +68,7 @@
 
 - (IBAction) facebookLogin:(id)sender {
 	[[ATIFacebookAuthHandler instance] loginWithCompletion:^(NSError *error, NSString *token) {
+		
 		if(error) {
 			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
 			[alert addAction:[UIAlertAction OKAction]];
@@ -81,6 +82,7 @@
 				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction OKAction]];
 				[self presentViewController:alert animated:TRUE completion:nil];
+				return;
 			}
 			
 			[SNFModel sharedInstance].loggedInUser = user;

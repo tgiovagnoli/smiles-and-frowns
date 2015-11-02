@@ -1,11 +1,12 @@
+
 #import "ATIFacebookAuthHandler.h"
 
-static ATIFacebookAuthHandler *_instance;
+static ATIFacebookAuthHandler * _instance;
 
 @implementation ATIFacebookAuthHandler
 
 + (ATIFacebookAuthHandler *) instance {
-	if(!_instance){
+	if(!_instance) {
 		_instance = [[ATIFacebookAuthHandler alloc] init];
 	}
 	return _instance;
@@ -15,7 +16,7 @@ static ATIFacebookAuthHandler *_instance;
 	if(FBSession.activeSession.state == FBSessionStateOpen || FBSession.activeSession.state == FBSessionStateOpenTokenExtended) {
 		completion(nil,FBSession.activeSession.accessTokenData.accessToken);
 	} else {
-		[FBSession openActiveSessionWithReadPermissions:@[@"public_profile"] allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
+		[FBSession openActiveSessionWithReadPermissions:@[@"public_profile",@"email"] allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
 			if(error) {
 				completion(error,nil);
 				return;
