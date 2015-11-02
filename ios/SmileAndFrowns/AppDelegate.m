@@ -1,5 +1,6 @@
 
 #import "AppDelegate.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "SNFModel.h"
 #import "SNFDateManager.h"
 #import "SNFViewController.h"
@@ -29,6 +30,9 @@ static AppDelegate * _instance;
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
+	[FBSDKAppEvents activateApp];
+	[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+	
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
 	[SNFDateManager unlock];
 	
@@ -48,6 +52,10 @@ static AppDelegate * _instance;
 }
 
 - (BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+	if([url.scheme hasPrefix:@"fb"]) {
+		return [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:nil];
+	}
+	
 	if([url.scheme isEqualToString:@"snf"]) {
 		
 		//get absolute path - like snf://invite/09sdf84

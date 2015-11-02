@@ -13,6 +13,7 @@
 #import "UIAlertAction+Additions.h"
 #import "SNFSyncService.h"
 #import "NSTimer+Blocks.h"
+#import "SNFFacebookAuthHandler.h"
 
 @interface SNFLogin ()
 @property BOOL firstlayout;
@@ -27,6 +28,7 @@
 	self.service = [[SNFUserService alloc] init];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookSessionChange:) name:SNFFacebookAuthHandlerSessionChange object:nil];
 }
 
 - (void) dealloc {
@@ -63,6 +65,25 @@
 	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
 		self.formView.height = self.scrollView.height;
 	} repeats:FALSE];
+}
+
+- (IBAction) facebookLogin:(id)sender {
+	[[SNFFacebookAuthHandler instance] login:^(NSError *error, NSString *token) {
+		if(error) {
+			NSLog(@"%@",error);
+			return;
+		}
+		
+		[self.service loginWithFacebookAuthToken:token withCompletion:^(NSError *error, SNFUser *user) {
+			if(error) {
+				NSLog(@"%@",error);
+				return;
+			}
+			
+			[SNFModel sharedInstance].loggedInUser = user;
+			[self syncAfterLogin];
+		}];
+	}];
 }
 
 - (IBAction) login:(id) sender {
@@ -124,18 +145,22 @@
 		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
-		[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
-			
-			if(self.nextViewController) {
-				[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
-			} else if([SNFViewController instance]) {
-				[[SNFViewController instance] showBoardsAnimated:TRUE];
-			} else {
-				SNFViewController * root = [[SNFViewController alloc] init];
-				[AppDelegate instance].window.rootViewController = root;
-			}
-			
-		}];
+		[self closeModal];
+		
+	}];
+}
+
+- (void) closeModal {
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+		
+		if(self.nextViewController) {
+			[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
+		} else if([SNFViewController instance]) {
+			[[SNFViewController instance] showBoardsAnimated:TRUE];
+		} else {
+			SNFViewController * root = [[SNFViewController alloc] init];
+			[AppDelegate instance].window.rootViewController = root;
+		}
 		
 	}];
 }

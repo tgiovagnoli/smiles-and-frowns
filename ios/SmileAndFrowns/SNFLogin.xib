@@ -27,6 +27,9 @@
                         <constraint firstAttribute="width" constant="100" id="iWc-8F-XWF"/>
                     </constraints>
                     <state key="normal" title="Facebook"/>
+                    <connections>
+                        <action selector="facebookLogin:" destination="-1" eventType="touchUpInside" id="X5N-ML-BIN"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tfs-bs-NId">
                     <rect key="frame" x="304" y="50" width="100" height="30"/>

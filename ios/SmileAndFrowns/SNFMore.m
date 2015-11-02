@@ -6,6 +6,7 @@
 #import "SNFModel.h"
 #import "SNFTutorial.h"
 #import "SNFAcceptInvite.h"
+#import "SNFFacebookAuthHandler.h"
 
 @implementation SNFMore
 
@@ -26,7 +27,6 @@
 					   ];
 	[self.tableView reloadData];
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 	return _tableContents.count;
@@ -95,6 +95,7 @@
 }
 
 - (void) logout {
+	[[SNFFacebookAuthHandler instance] logout];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
