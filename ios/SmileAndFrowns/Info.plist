@@ -51,13 +51,13 @@
 		<true/>
 	</dict>
 	<key>SNFConfig</key>
-	<string>SNFDebugImac</string>
+	<string>SNFDebug</string>
 	<key>SNFDebug</key>
 	<dict>
 		<key>apiPath</key>
 		<string>api</string>
 		<key>serverURL</key>
-		<string>http://imac.local:8000</string>
+		<string>http://127.0.0.1:8000</string>
 	</dict>
 	<key>SNFDebugImac</key>
 	<dict>

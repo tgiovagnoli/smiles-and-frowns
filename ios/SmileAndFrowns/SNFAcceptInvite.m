@@ -57,7 +57,7 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 	if(self.scrollViewBottom.constant == keyboardFrameEnd.size.height) {
 		return;
 	}
-	self.formView.height -= 380;
+	self.formView.height = 220;
 	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
 	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
 }
@@ -67,8 +67,10 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 		return;
 	}
 	self.scrollViewBottom.constant = 0;
-	self.formView.height += 380;
 	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.scrollView.height);
+	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
+		self.formView.height = self.scrollView.height;
+	} repeats:FALSE];
 }
 
 - (IBAction) joinBoard:(id) sender {

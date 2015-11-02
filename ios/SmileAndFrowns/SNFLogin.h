@@ -2,8 +2,6 @@
 #import <UIKit/UIKit.h>
 #import "SNFUser.h"
 
-extern NSString * const SNFLoginDidLogin;
-
 @class SNFLogin;
 
 @interface SNFLogin : UIViewController

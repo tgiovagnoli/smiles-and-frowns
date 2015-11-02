@@ -3,6 +3,7 @@
 #import "AppDelegate.h"
 #import "SNFUserService.h"
 #import "UIView+LayoutHelpers.h"
+#import "NSTimer+Blocks.h"
 
 @interface SNFPasswordReset ()
 @property BOOL firstlayout;
@@ -38,7 +39,7 @@
 		return;
 	}
 	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
-	self.formView.height -= 460;
+	self.formView.height = 140;
 	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
 }
 
@@ -47,8 +48,10 @@
 		return;
 	}
 	self.scrollViewBottom.constant = 0;
-	self.formView.height += 460;
 	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
+	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
+		self.formView.height = self.scrollView.height;
+	} repeats:FALSE];
 }
 
 - (IBAction) resetPassword:(id)sender {
