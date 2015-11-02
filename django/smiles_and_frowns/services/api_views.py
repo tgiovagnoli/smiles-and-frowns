@@ -392,11 +392,9 @@ def invite(request):
 		return json_response_error("invitee_lastname required")
 
 	#try and find a user with the provided invitee_email.
-	send_email_with_code = True
 	invitee_user = None
 	try:
 		invitee_user = User.objects.get(email=invitee_email)
-		send_email_with_code = False
 	except:
 		print "invitee_user not found, using no invitee_user for invite"
 
@@ -437,14 +435,8 @@ def invite(request):
 	subject = "You're invited to particiate in a Smiles and Frowns board!"
 	
 	#use template that has code included.
-	if send_email_with_code:
-		template_plain = loader.get_template("invite_with_code.txt")
-		template_html = loader.get_template("invite_with_code.html")
-	
-	#use template that has no code included.
-	else:
-		template_plain = loader.get_template("invite_no_code.txt")
-		template_html = loader.get_template("invite_no_code.html")
+	template_plain = loader.get_template("invite_with_code.txt")
+	template_html = loader.get_template("invite_with_code.html")
 	
 	#get body
 	body_plain = template_plain.render(context)
