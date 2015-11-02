@@ -3,6 +3,7 @@
 #import "SNFModel.h"
 #import "UIAlertAction+Additions.h"
 
+
 @implementation SNFBoardEdit
 
 - (void) viewDidLoad {
@@ -22,6 +23,7 @@
 
 - (void)updateUI{
 	self.boardTitleField.text = self.board.title;
+	[self.behaviorsTable reloadData];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -34,7 +36,38 @@
 
 // behaviors
 - (IBAction)onAddBehavior:(UIButton *)sender{
-	
+	SNFAddBehavior *addBehavior = [[SNFAddBehavior alloc] init];
+	[self presentViewController:addBehavior animated:YES completion:^{}];
+	addBehavior.board = self.board;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+	if(tableView == self.behaviorsTable){
+		return _board.behaviors.count;
+	}
+	return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+	if(tableView == self.behaviorsTable){
+		NSArray *behaviorsArray = [_board.behaviors allObjects];
+		SNFBehavior *behavior = [behaviorsArray objectAtIndex:indexPath.row];
+		SNFBoardEditBehaviorCell *cell = [self.behaviorsTable dequeueReusableCellWithIdentifier:@"SNFBoardEditBehaviorCell"];
+		if(!cell){
+			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardEditBehaviorCell" owner:self options:nil];
+			cell = [topLevelObjects firstObject];
+		}
+		cell.behavior = behavior;
+		cell.delegate = self;
+		return cell;
+	}
+	return nil;
+}
+
+- (void)behaviorCell:(SNFBoardEditBehaviorCell *)cell wantsToDeleteBehavior:(SNFBehavior *)behavior{
+	[self.board removeBehaviorsObject:behavior];
+	behavior.deleted = @YES;
+	[self.behaviorsTable reloadData];
 }
 
 // rewards

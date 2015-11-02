@@ -1,6 +1,9 @@
 #import <UIKit/UIKit.h>
 #import "SNFBoard.h"
+#import "SNFBehavior.h"
 #import "NSString+Additions.h"
+#import "SNFBoardEditBehaviorCell.h"
+#import "SNFAddBehavior.h"
 
 @class SNFBoardEdit;
 
@@ -8,7 +11,7 @@
 - (void)boardEditor:(SNFBoardEdit *)be finishedWithBoard:(SNFBoard *)board;
 @end
 
-@interface SNFBoardEdit : UIViewController <UITextFieldDelegate>
+@interface SNFBoardEdit : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, SNFBoardEditBehaviorCellDelegate>
 
 @property (weak) IBOutlet UITextField *boardTitleField;
 @property (weak) IBOutlet UITableView *behaviorsTable;

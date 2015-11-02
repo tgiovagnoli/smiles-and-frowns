@@ -9,6 +9,9 @@
 #import "SNFUser.h"
 #import "SNFUserRole.h"
 #import "SNFInvite.h"
+#import "SNFPredefinedBehaviorGroup.h"
+#import "SNFPredefinedBehavior.h"
+#import "SNFPredefinedBoard.h"
 #import "SNFSyncService.h"
 #import "SNFUserService.h"
 #import "APDDjangoErrorViewer.h"
@@ -26,6 +29,7 @@
 	[self insertItemWithName:@"Create Unique Board" andSelector:@selector(createUniqueBoard)];
 	[self insertItemWithName:@"Save Managed Context" andSelector:@selector(save)];
 	[self insertItemWithName:@"Sync" andSelector:@selector(sync)];
+	[self insertItemWithName:@"Sync Predefined Boards" andSelector:@selector(syncPredefinedBoards)];
 	[self insertItemWithName:@"Login" andSelector:@selector(login)];
 	[self insertItemWithName:@"Logout" andSelector:@selector(logout)];
 	[self insertItemWithName:@"Update Title On Board" andSelector:@selector(updateTitleOnBoard)];
@@ -37,6 +41,7 @@
 	[self insertItemWithName:@"Log Smiles" andSelector:@selector(logSmiles)];
 	[self insertItemWithName:@"Log Frowns" andSelector:@selector(logFrowns)];
 	[self insertItemWithName:@"Log User Roles" andSelector:@selector(logUserRoles)];
+	[self insertItemWithName:@"Log Predefiend Info" andSelector:@selector(logInfoForPredefinedBoards)];
 }
 
 
@@ -331,6 +336,13 @@
 	
 }
 
+- (void)syncPredefinedBoards{
+	SNFSyncService *syncService = [[SNFSyncService alloc] init];
+	[syncService syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
+		NSLog(@"%@", boardData);
+	}];
+}
+
 - (void)save{
 	NSError *error;
 	[[SNFModel sharedInstance].managedObjectContext save:&error];
@@ -366,6 +378,31 @@
 }
 
 
+- (void)logInfoForPredefinedBoards{
+	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
+	NSError *error;
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SNFPredefinedBoard"];
+	NSArray *results = [context executeFetchRequest:request error:&error];
+	NSLog(@"boards:");
+	for(SNFPredefinedBoard *board in results){
+		// NSLog(@"\n%@", [board infoDictionaryWithChildrenAsUIDs]);
+		for(SNFBehavior *behavior in board.behaviors){
+			
+		}
+	}
+	NSLog(@"behaviors:");
+	request = [NSFetchRequest fetchRequestWithEntityName:@"SNFPredefinedBehavior"];
+	results = [context executeFetchRequest:request error:&error];
+	for(NSManagedObject *behavior in results){
+		NSLog(@"\n%@", [behavior infoDictionaryWithChildrenAsUIDs]);
+	}
+	NSLog(@"behavior groups:");
+	request = [NSFetchRequest fetchRequestWithEntityName:@"SNFPredefinedBehaviorGroup"];
+	results = [context executeFetchRequest:request error:&error];
+	for(NSManagedObject *result in results){
+		NSLog(@"\n%@", [result infoDictionaryWithChildrenAsUIDs]);
+	}
+}
 
 - (void)logInfoForType:(NSString *)type{
 	NSError *error;

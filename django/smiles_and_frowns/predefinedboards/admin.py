@@ -9,13 +9,13 @@ class PredefinedBoardAdmin(admin.ModelAdmin):
 	list_display = ("title",)
 	filter_horizontal = ("behaviors",)
 
-class PredefinedBoardBehaviorAdmin(admin.ModelAdmin):
+class PredefinedBehaviorAdmin(admin.ModelAdmin):
 	save_on_top = True
 	fields = ("title", "uuid")
 	readonly_fields = ("uuid",)
 	list_display = ("title",)
 
-class PredefinedBoardBehaviorGroupAdmin(admin.ModelAdmin):
+class PredefinedBehaviorGroupAdmin(admin.ModelAdmin):
 	save_on_top = True
 	fields = ("title", "behaviors", "uuid")
 	readonly_fields = ("uuid",)
@@ -23,5 +23,5 @@ class PredefinedBoardBehaviorGroupAdmin(admin.ModelAdmin):
 	filter_horizontal = ("behaviors",)
 
 admin.site.register(models.PredefinedBoard, PredefinedBoardAdmin)
-admin.site.register(models.PredefinedBoardBehavior, PredefinedBoardBehaviorAdmin)
-admin.site.register(models.PredefinedBoardBehaviorGroup, PredefinedBoardBehaviorGroupAdmin)
+admin.site.register(models.PredefinedBehavior, PredefinedBehaviorAdmin)
+admin.site.register(models.PredefinedBehaviorGroup, PredefinedBehaviorGroupAdmin)

@@ -52,6 +52,22 @@
         <attribute name="sender_last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="SNFPredefinedBehavior" representedClassName="SNFPredefinedBehavior" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" maxValueString="128" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" maxValueString="64" syncable="YES"/>
+        <relationship name="predefined_behaviors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFPredefinedBehaviorGroup" inverseName="behaviors" inverseEntity="SNFPredefinedBehaviorGroup" syncable="YES"/>
+        <relationship name="predefined_boards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFPredefinedBoard" inverseName="behaviors" inverseEntity="SNFPredefinedBoard" syncable="YES"/>
+    </entity>
+    <entity name="SNFPredefinedBehaviorGroup" representedClassName="SNFPredefinedBehaviorGroup" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" maxValueString="128" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" maxValueString="64" syncable="YES"/>
+        <relationship name="behaviors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFPredefinedBehavior" inverseName="predefined_behaviors" inverseEntity="SNFPredefinedBehavior" syncable="YES"/>
+    </entity>
+    <entity name="SNFPredefinedBoard" representedClassName="SNFPredefinedBoard" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" maxValueString="128" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String" maxValueString="64" syncable="YES"/>
+        <relationship name="behaviors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFPredefinedBehavior" inverseName="predefined_boards" inverseEntity="SNFPredefinedBehavior" syncable="YES"/>
+    </entity>
     <entity name="SNFReward" representedClassName="SNFReward" syncable="YES">
         <attribute name="created_date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="currency_amount" attributeType="Float" defaultValueString="1" syncable="YES"/>
@@ -111,5 +127,8 @@
         <element name="SNFSmile" positionX="-711" positionY="153" width="128" height="210"/>
         <element name="SNFUser" positionX="-504" positionY="-399" width="128" height="210"/>
         <element name="SNFUserRole" positionX="-272" positionY="-36" width="128" height="180"/>
+        <element name="SNFPredefinedBoard" positionX="-513" positionY="-252" width="128" height="90"/>
+        <element name="SNFPredefinedBehavior" positionX="-504" positionY="-243" width="128" height="105"/>
+        <element name="SNFPredefinedBehaviorGroup" positionX="-495" positionY="-234" width="128" height="90"/>
     </elements>
 </model>

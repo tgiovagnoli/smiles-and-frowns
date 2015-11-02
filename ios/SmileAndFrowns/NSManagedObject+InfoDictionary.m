@@ -61,6 +61,10 @@
 			mappedKey = [[mappings allKeysForObject:key] lastObject];
 		}
 		
+		if(![[mappings allKeysForObject:key] lastObject]){
+			continue;
+		}
+		
 		objc_property_t property = class_getProperty([self class], [mappedKey UTF8String]);
 		if(!property) {
 			continue;

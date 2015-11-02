@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFAddBehavior">
+            <connections>
+                <outlet property="addBehaviorsButton" destination="eoQ-LU-UHK" id="8uE-Pi-wTU"/>
+                <outlet property="addNewBehaviorButton" destination="xbI-aD-e8X" id="Tec-5y-KZZ"/>
+                <outlet property="behaviorsTable" destination="1Ff-CQ-Zgg" id="Olb-81-Qlj"/>
+                <outlet property="closeButton" destination="Dlr-0x-QdB" id="PJb-ph-9XG"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlr-0x-QdB">
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="lfH-4b-Ehq"/>
+                        <constraint firstAttribute="width" constant="50" id="x51-Sv-vzj"/>
+                    </constraints>
+                    <state key="normal" title="Back"/>
+                    <connections>
+                        <action selector="onBack:" destination="-1" eventType="touchUpInside" id="R8u-lF-NG6"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Ff-CQ-Zgg">
+                    <rect key="frame" x="0.0" y="30" width="600" height="470"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="w11-iJ-Uy3"/>
+                        <outlet property="delegate" destination="-1" id="9tJ-t7-5JK"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-LU-UHK">
+                    <rect key="frame" x="250" y="550" width="100" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="I8g-af-2X9"/>
+                        <constraint firstAttribute="height" constant="30" id="K9F-ch-3tl"/>
+                    </constraints>
+                    <state key="normal" title="Add Behaviors"/>
+                    <connections>
+                        <action selector="onAddBehaviors:" destination="-1" eventType="touchUpInside" id="dam-hu-mfb"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbI-aD-e8X">
+                    <rect key="frame" x="20" y="500" width="560" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="2rT-0K-zgk"/>
+                    </constraints>
+                    <state key="normal" title="Define Cutom Behavior"/>
+                    <connections>
+                        <action selector="onNewBehavior:" destination="-1" eventType="touchUpInside" id="fnZ-0y-Yct"/>
+                    </connections>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="xbI-aD-e8X" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="3sY-us-eKX"/>
+                <constraint firstItem="eoQ-LU-UHK" firstAttribute="top" secondItem="xbI-aD-e8X" secondAttribute="bottom" constant="20" id="6qG-cd-FoV"/>
+                <constraint firstItem="xbI-aD-e8X" firstAttribute="top" secondItem="1Ff-CQ-Zgg" secondAttribute="bottom" id="CDR-4d-2oh"/>
+                <constraint firstAttribute="bottom" secondItem="eoQ-LU-UHK" secondAttribute="bottom" constant="20" id="CZi-Dq-Uus"/>
+                <constraint firstAttribute="trailing" secondItem="xbI-aD-e8X" secondAttribute="trailing" constant="20" id="Ebu-zp-qaW"/>
+                <constraint firstItem="1Ff-CQ-Zgg" firstAttribute="top" secondItem="Dlr-0x-QdB" secondAttribute="bottom" id="U1q-rW-diM"/>
+                <constraint firstItem="Dlr-0x-QdB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Vxm-3k-h0l"/>
+                <constraint firstAttribute="trailing" secondItem="1Ff-CQ-Zgg" secondAttribute="trailing" id="fnL-zf-pA3"/>
+                <constraint firstItem="eoQ-LU-UHK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pGY-uC-hh5"/>
+                <constraint firstItem="1Ff-CQ-Zgg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rnV-jw-z8g"/>
+                <constraint firstItem="Dlr-0x-QdB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zza-MZ-Fau"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+        </view>
+    </objects>
+</document>

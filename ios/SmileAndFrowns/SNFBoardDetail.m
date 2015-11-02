@@ -72,7 +72,7 @@
 		return NSOrderedAscending;
 	};
 	NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"role" ascending:YES comparator:comparisonBlock];
-	_userRoles= [_board.user_roles sortedArrayUsingDescriptors:@[descriptor]];
+	_userRoles = [_board.user_roles sortedArrayUsingDescriptors:@[descriptor]];
 	[self.rolesTable reloadData];
 }
 

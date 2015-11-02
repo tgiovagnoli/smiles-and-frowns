@@ -6,6 +6,9 @@
 #import "SNFSmile.h"
 #import "SNFFrown.h"
 #import "SNFUserRole.h"
+#import "SNFPredefinedBoard.h"
+#import "SNFPredefinedBehavior.h"
+#import "SNFPredefinedBehaviorGroup.h"
 
 static SNFSyncService * _instance;
 
@@ -40,21 +43,19 @@ static SNFSyncService * _instance;
 	NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error){
-				completion(error, nil);
-				return;
+				return completion(error, nil);
 			}
 			
 			NSError *jsonError;
 			NSObject *infoDict = [self responseObjectFromData:data withError:&jsonError];
 			if(jsonError){
-				completion(jsonError, nil);
-				return;
+				return completion(jsonError, nil);
 			}
 			
 			if([infoDict isMemberOfClass:[NSDictionary class]] || [infoDict isKindOfClass:[NSDictionary class]]){
 				[self updateLocalDataWithResults:(NSDictionary *)infoDict andCallCompletion:completion];
 			}else{
-				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"], nil);
+				return completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"], nil);
 			}
 		});
 	}];
@@ -210,8 +211,96 @@ static SNFSyncService * _instance;
 	[SNFDateManager lock]; // lock the date manager before saving the context so that all updates that are made keep the server date
 	NSError *saveError;
 	[context save:&saveError];
+	if(saveError){
+		return completion(saveError, nil);
+	}
 	[SNFDateManager unlock];
 	completion(saveError, updates);
+}
+
+
+- (void)syncPredefinedBoardsWithCompletion:(SNFSyncServiceCallback)completion{
+	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"predefined_boards/sync"];
+	NSURLSession *session = [NSURLSession sharedSession];
+	NSURLSessionTask *task = [session dataTaskWithURL:serviceURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			if(error){
+				completion(error, nil);
+				return;
+			}
+			
+			NSError *jsonError;
+			NSObject *infoDict = [self responseObjectFromData:data withError:&jsonError];
+			if(jsonError){
+				completion(jsonError, nil);
+				return;
+			}
+			
+			if([infoDict isMemberOfClass:[NSDictionary class]] || [infoDict isKindOfClass:[NSDictionary class]]){
+				[self updatePredefinedRecordsWithResults:(NSDictionary *)infoDict andCallCompletion:completion];
+			}else{
+				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"], nil);
+			}
+		});
+	}];
+	[task resume];
+}
+
+- (void)updatePredefinedRecordsWithResults:(NSDictionary *)results andCallCompletion:(SNFSyncServiceCallback)completion{
+	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
+	NSArray *remotePredefinedBehaviors = [results objectForKey:@"behaviors"];
+	NSArray *remotePredefinedBoards = [results objectForKey:@"boards"];
+	NSArray *remotePredefinedBehaviorGroups = [results objectForKey:@"behavior_groups"];
+	
+	
+	NSMutableArray *behaviorsReturned = [[NSMutableArray alloc] init];
+	NSMutableArray *boardsReturned = [[NSMutableArray alloc] init];
+	NSMutableArray *groupsReturned = [[NSMutableArray alloc] init];
+	NSDictionary *returnData = @{
+								 @"behaviors": behaviorsReturned,
+								 @"boards": boardsReturned,
+								 @"groups": groupsReturned,
+								 };
+	
+	
+	for(NSDictionary *behaviorInfo in remotePredefinedBehaviors){
+		SNFPredefinedBehavior *behavior = (SNFPredefinedBehavior *)[SNFPredefinedBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
+		if(behavior){
+			[behaviorsReturned addObject:behavior];
+		}
+	}
+	
+	for(NSDictionary *boardInfo in remotePredefinedBoards){
+		SNFPredefinedBoard *board = (SNFPredefinedBoard *)[SNFPredefinedBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
+		NSMutableArray *boardBehaviors = [[NSMutableArray alloc] init];
+		for(NSDictionary *behaviorInfo in [boardInfo objectForKey:@"behaviors"]){
+			SNFPredefinedBehavior *behavior = (SNFPredefinedBehavior *)[SNFPredefinedBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
+			[boardBehaviors addObject:behavior];
+		}
+		board.behaviors = [[NSSet alloc] initWithArray:boardBehaviors];
+		if(board){
+			[boardsReturned addObject:board];
+		}
+	}
+	
+	for(NSDictionary *groupInfo in remotePredefinedBehaviorGroups){
+		SNFPredefinedBehaviorGroup *group = (SNFPredefinedBehaviorGroup *)[SNFPredefinedBehaviorGroup editOrCreatefromInfoDictionary:groupInfo withContext:context];
+		NSMutableArray *groupBehaviors = [[NSMutableArray alloc] init];
+		for(NSDictionary *behaviorInfo in [groupInfo objectForKey:@"behaviors"]){
+			SNFPredefinedBehavior *behavior = (SNFPredefinedBehavior *)[SNFPredefinedBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
+			[groupBehaviors addObject:behavior];
+		}
+		group.behaviors = [[NSSet alloc] initWithArray:groupBehaviors];
+		if(group){
+			[groupsReturned addObject:group];
+		}
+	}
+	NSError *saveError;
+	[context save:&saveError];
+	if(saveError){
+		return completion(saveError, nil);
+	}
+	completion(nil, returnData);
 }
 
 @end
