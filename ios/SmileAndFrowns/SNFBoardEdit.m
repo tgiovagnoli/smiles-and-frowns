@@ -21,8 +21,10 @@
 	[self updateUI];
 }
 
+
 - (void)updateUI{
 	self.boardTitleField.text = self.board.title;
+	_sortedBehaviors = [[self.board.behaviors allObjects] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.title" ascending:YES]]];
 	[self.behaviorsTable reloadData];
 }
 
@@ -39,19 +41,19 @@
 	SNFAddBehavior *addBehavior = [[SNFAddBehavior alloc] init];
 	[self presentViewController:addBehavior animated:YES completion:^{}];
 	addBehavior.board = self.board;
+	addBehavior.delegate = self;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 	if(tableView == self.behaviorsTable){
-		return _board.behaviors.count;
+		return _sortedBehaviors.count;
 	}
 	return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	if(tableView == self.behaviorsTable){
-		NSArray *behaviorsArray = [_board.behaviors allObjects];
-		SNFBehavior *behavior = [behaviorsArray objectAtIndex:indexPath.row];
+		SNFBehavior *behavior = [_sortedBehaviors objectAtIndex:indexPath.row];
 		SNFBoardEditBehaviorCell *cell = [self.behaviorsTable dequeueReusableCellWithIdentifier:@"SNFBoardEditBehaviorCell"];
 		if(!cell){
 			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardEditBehaviorCell" owner:self options:nil];
@@ -67,7 +69,15 @@
 - (void)behaviorCell:(SNFBoardEditBehaviorCell *)cell wantsToDeleteBehavior:(SNFBehavior *)behavior{
 	[self.board removeBehaviorsObject:behavior];
 	behavior.deleted = @YES;
-	[self.behaviorsTable reloadData];
+	[self updateUI];
+}
+
+- (void)addBehavior:(SNFAddBehavior *)addBehavior addedBehaviors:(NSArray *)behaviors toBoard:(SNFBoard *)board{
+	[self updateUI];
+}
+
+- (void)addBehaviorCancelled:(SNFAddBehavior *)addBehavior{
+	[self updateUI];
 }
 
 // rewards

@@ -339,7 +339,18 @@
 - (void)syncPredefinedBoards{
 	SNFSyncService *syncService = [[SNFSyncService alloc] init];
 	[syncService syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
-		NSLog(@"%@", boardData);
+		if(error){
+			if(error.code == SNFErrorCodeDjangoDebugError){
+				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
+				[[AppDelegate rootViewController] presentViewController:viewer animated:YES completion:^{
+					[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
+				}];
+			}else{
+				[self alertWithMessage:error.localizedDescription];
+			}
+		}else{
+			[self alertWithMessage:@"predefined boards sync complete"];
+		}
 	}];
 }
 

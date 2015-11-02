@@ -98,6 +98,24 @@
 
 
 - (IBAction)onAddBehaviors:(UIButton *)sender{
+	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
+	NSMutableArray *addedBehaviors = [[NSMutableArray alloc] init];
+	for(NSIndexPath *indexPath in [self.behaviorsTable indexPathsForSelectedRows]){
+		SNFPredefinedBehaviorGroup *predefinedGroup = [_predefinedBehaviorGroups objectAtIndex:indexPath.section];
+		SNFPredefinedBehavior *predefinedBehavior = [[predefinedGroup.behaviors allObjects] objectAtIndex:indexPath.row];
+		if(predefinedBehavior && self.board){
+			NSDictionary *behaviorInfo = @{
+										  @"title": predefinedBehavior.title,
+										  @"uuid": [[NSUUID UUID] UUIDString]
+										  };
+			SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
+			behavior.board = self.board;
+			[addedBehaviors addObject:behavior];
+		}
+	}
+	if(self.delegate){
+		[self.delegate addBehavior:self addedBehaviors:addedBehaviors toBoard:self.board];
+	}
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 

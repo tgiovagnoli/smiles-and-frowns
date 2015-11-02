@@ -11,7 +11,9 @@
 - (void)boardEditor:(SNFBoardEdit *)be finishedWithBoard:(SNFBoard *)board;
 @end
 
-@interface SNFBoardEdit : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, SNFBoardEditBehaviorCellDelegate>
+@interface SNFBoardEdit : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate>{
+	NSArray *_sortedBehaviors;
+}
 
 @property (weak) IBOutlet UITextField *boardTitleField;
 @property (weak) IBOutlet UITableView *behaviorsTable;

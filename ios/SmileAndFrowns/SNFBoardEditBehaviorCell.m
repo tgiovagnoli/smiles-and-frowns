@@ -2,6 +2,8 @@
 
 @implementation SNFBoardEditBehaviorCell
 
+
+
 - (void)setBehavior:(SNFBehavior *)behavior{
 	_behavior = behavior;
 	self.titleLabel.text = behavior.title;
