@@ -68,11 +68,13 @@
 }
 
 - (IBAction) facebookLogin:(id)sender {
-	[[ATIFacebookAuthHandler sharedInstance] login];
+	[[ATIFacebookAuthHandler instance] login];
 }
 
 - (void) onLogin:(NSNotification *) notification {
 	FBSessionState state = (FBSessionState)[[[notification userInfo] objectForKey:@"state"] unsignedIntegerValue];
+	NSString * msg = [notification userInfo][@"msg"];
+	
 	if(state == FBSessionStateOpen) {
 		NSString * authToken = FBSession.activeSession.accessTokenData.accessToken;
 		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
@@ -83,6 +85,10 @@
 				[self syncAfterLogin];
 			}
 		}];
+	} else if(msg) {
+		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction OKAction]];
+		[self presentViewController:alert animated:TRUE completion:nil];
 	}
 }
 
