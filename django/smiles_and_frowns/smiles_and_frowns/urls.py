@@ -3,10 +3,13 @@ from django.contrib import admin
 from services import api_views, views
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    # social login
+    url('',include('social.apps.django_app.urls', namespace='social')),
     
+    url(r'^admin/', include(admin.site.urls)),
+     
     #user endpoints
-    url(r'^api/token_auth/(?P<backend>[^/]+)/$', api_views.register_by_access_token),
+    url(r'^api/token_auth/(?P<backend>[^/]+)/?$', api_views.register_by_access_token),
     url(r'^api/signup/?', api_views.user_signup),
     url(r'^api/update/?', api_views.user_update),
     url(r'^api/login/?', api_views.user_login),

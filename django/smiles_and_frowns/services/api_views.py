@@ -24,6 +24,7 @@ def json_response_error(error_message):
 def login_required_response():
 	return json_response({"error": "login required"})
 
+@csrf_exempt
 @psa('social:complete')
 def register_by_access_token(request,backend):
 	#http://python-social-auth.readthedocs.org/en/latest/use_cases.html
@@ -42,6 +43,7 @@ def register_by_access_token(request,backend):
 	if backend == "twitter":
 		if "access_token_secret" not in request.POST:
 			return json_response_error('no access token secret')
+			
 		access_token = {
 			"oauth_token":request.POST.get('access_token'),
 			"oauth_token_secret":request.POST.get('access_token_secret'),
@@ -51,7 +53,8 @@ def register_by_access_token(request,backend):
 	
 	if user:
 		login(request,user)
-		return json_response({})
+		output = json_utils.user_info_dictionary(user)
+		return json_response(output)
 	
 	return json_response_error("user not found")
 
