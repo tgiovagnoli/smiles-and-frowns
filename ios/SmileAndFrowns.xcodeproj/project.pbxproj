@@ -29,7 +29,7 @@
 		078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */; };
 		078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */; };
 		078DF4B91BE8109D00CBFAA4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B61BE8109D00CBFAA4 /* FBSDKLoginKit.framework */; };
-		078DF4BC1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4BB1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.m */; };
+		078DF4BF1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4BE1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
 		D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC21BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m */; };
@@ -139,8 +139,8 @@
 		078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
 		078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = libs/Facebook/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		078DF4B61BE8109D00CBFAA4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = libs/Facebook/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		078DF4BA1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATIFacebookAuthHandler.h; sourceTree = "<group>"; };
-		078DF4BB1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATIFacebookAuthHandler.m; sourceTree = "<group>"; };
+		078DF4BD1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATIFacebookAuthHandler.h; sourceTree = "<group>"; };
+		078DF4BE1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATIFacebookAuthHandler.m; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
 		D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPredefinedBehavior.m; sourceTree = "<group>"; };
 		D6270EBF1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFPredefinedBehavior+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -358,8 +358,8 @@
 		078DF49E1BE7E9AB00CBFAA4 /* SocialAuth */ = {
 			isa = PBXGroup;
 			children = (
-				078DF4BA1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.h */,
-				078DF4BB1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.m */,
+				078DF4BD1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.h */,
+				078DF4BE1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m */,
 			);
 			name = SocialAuth;
 			sourceTree = "<group>";
@@ -764,6 +764,7 @@
 				D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */,
 				D62D37A01BDEF0D400102D6A /* SNFConfig.m in Sources */,
 				D65DF17A1BE3F884009CC6DF /* SNFBoardEdit.m in Sources */,
+				078DF4BF1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m in Sources */,
 				D65DF1761BE3ED9F009CC6DF /* SNFSwipeCell.m in Sources */,
 				D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */,
 				D65DF1121BE29A42009CC6DF /* SNFUserProfile.m in Sources */,
@@ -799,7 +800,6 @@
 				D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */,
 				078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */,
 				0707D6C51BE2B2D8002F1FC0 /* SNFAcceptInvite.m in Sources */,
-				078DF4BC1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.m in Sources */,
 				D6270ED61BE817E900F7C39A /* SNFAddBehavior.m in Sources */,
 				0707D6AE1BE2A1C9002F1FC0 /* SNFLogin.m in Sources */,
 				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,

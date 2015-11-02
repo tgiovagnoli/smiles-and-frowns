@@ -28,6 +28,7 @@
 	self.service = [[SNFUserService alloc] init];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
 }
 
 - (void) dealloc {
@@ -67,30 +68,22 @@
 }
 
 - (IBAction) facebookLogin:(id)sender {
-	[[ATIFacebookAuthHandler instance] loginWithCompletion:^(NSError *error, NSString *token) {
-		
-		if(error) {
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[self presentViewController:alert animated:TRUE completion:nil];
-			return;
-		}
-		
-		[self.service loginWithFacebookAuthToken:token withCompletion:^(NSError *error, SNFUser *user) {
-			
-			if(error) {
-				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction OKAction]];
-				[self presentViewController:alert animated:TRUE completion:nil];
-				return;
+	[[ATIFacebookAuthHandler sharedInstance] login];
+}
+
+- (void) onLogin:(NSNotification *) notification {
+	FBSessionState state = (FBSessionState)[[[notification userInfo] objectForKey:@"state"] unsignedIntegerValue];
+	if(state == FBSessionStateOpen) {
+		NSString * authToken = FBSession.activeSession.accessTokenData.accessToken;
+		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+		[self.service loginWithFacebookAuthToken:authToken withCompletion:^(NSError *error, SNFUser *user) {
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			if(user) {
+				[SNFModel sharedInstance].loggedInUser = user;
+				[self syncAfterLogin];
 			}
-			
-			[SNFModel sharedInstance].loggedInUser = user;
-			
-			[self syncAfterLogin];
-			
 		}];
-	}];
+	}
 }
 
 - (IBAction) login:(id) sender {
