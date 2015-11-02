@@ -13,7 +13,7 @@
 #import "UIAlertAction+Additions.h"
 #import "SNFSyncService.h"
 #import "NSTimer+Blocks.h"
-#import "SNFFacebookAuthHandler.h"
+#import "ATIFacebookAuthHandler.h"
 
 @interface SNFLogin ()
 @property BOOL firstlayout;
@@ -28,7 +28,6 @@
 	self.service = [[SNFUserService alloc] init];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookSessionChange:) name:SNFFacebookAuthHandlerSessionChange object:nil];
 }
 
 - (void) dealloc {
@@ -68,20 +67,26 @@
 }
 
 - (IBAction) facebookLogin:(id)sender {
-	[[SNFFacebookAuthHandler instance] login:^(NSError *error, NSString *token) {
+	[[ATIFacebookAuthHandler instance] loginWithCompletion:^(NSError *error, NSString *token) {
 		if(error) {
-			NSLog(@"%@",error);
+			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction OKAction]];
+			[self presentViewController:alert animated:TRUE completion:nil];
 			return;
 		}
 		
 		[self.service loginWithFacebookAuthToken:token withCompletion:^(NSError *error, SNFUser *user) {
+			
 			if(error) {
-				NSLog(@"%@",error);
-				return;
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction OKAction]];
+				[self presentViewController:alert animated:TRUE completion:nil];
 			}
 			
 			[SNFModel sharedInstance].loggedInUser = user;
+			
 			[self syncAfterLogin];
+			
 		}];
 	}];
 }

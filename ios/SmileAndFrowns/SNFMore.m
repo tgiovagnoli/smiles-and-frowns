@@ -6,7 +6,7 @@
 #import "SNFModel.h"
 #import "SNFTutorial.h"
 #import "SNFAcceptInvite.h"
-#import "SNFFacebookAuthHandler.h"
+#import "ATIFacebookAuthHandler.h"
 
 @implementation SNFMore
 
@@ -95,7 +95,7 @@
 }
 
 - (void) logout {
-	[[SNFFacebookAuthHandler instance] logout];
+	[[ATIFacebookAuthHandler instance] logout];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	

@@ -52,8 +52,9 @@ static AppDelegate * _instance;
 }
 
 - (BOOL) application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+	
 	if([url.scheme hasPrefix:@"fb"]) {
-		return [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:nil];
+		return [FBAppCall handleOpenURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]];
 	}
 	
 	if([url.scheme isEqualToString:@"snf"]) {

@@ -25,9 +25,11 @@
 		0707D6DC1BE428BA002F1FC0 /* SNFInvites.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6DA1BE428BA002F1FC0 /* SNFInvites.m */; };
 		0707D6DD1BE428BA002F1FC0 /* SNFInvites.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6DB1BE428BA002F1FC0 /* SNFInvites.xib */; };
 		0707D6E01BE42970002F1FC0 /* UIAlertAction+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */; };
-		078DF4A11BE7E9D300CBFAA4 /* SNFFacebookAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4A01BE7E9D300CBFAA4 /* SNFFacebookAuthHandler.m */; };
-		078DF4AE1BE7F08A00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4AD1BE7F08A00CBFAA4 /* FBSDKCoreKit.framework */; };
-		078DF4B01BE7F0DB00CBFAA4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4AF1BE7F0DB00CBFAA4 /* FBSDKLoginKit.framework */; };
+		078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */; };
+		078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */; };
+		078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */; };
+		078DF4B91BE8109D00CBFAA4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B61BE8109D00CBFAA4 /* FBSDKLoginKit.framework */; };
+		078DF4BC1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4BB1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.m */; };
 		D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */; };
 		D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAC1BDFD1FF0024CBC2 /* SNFError.m */; };
 		D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */ = {isa = PBXBuildFile; fileRef = D6272FAF1BDFD88F0024CBC2 /* SNFService.m */; };
@@ -72,7 +74,6 @@
 		D65DF1111BE29A42009CC6DF /* SNFTabMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF10C1BE29A42009CC6DF /* SNFTabMenu.xib */; };
 		D65DF1121BE29A42009CC6DF /* SNFUserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF10E1BE29A42009CC6DF /* SNFUserProfile.m */; };
 		D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF10F1BE29A42009CC6DF /* SNFUserProfile.xib */; };
-		D65DF1251BE2A4FB009CC6DF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1241BE2A4FB009CC6DF /* MBProgressHUD.m */; };
 		D65DF1291BE2AA50009CC6DF /* SNFBoardList.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1271BE2AA50009CC6DF /* SNFBoardList.m */; };
 		D65DF12A1BE2AA50009CC6DF /* SNFBoardList.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF1281BE2AA50009CC6DF /* SNFBoardList.xib */; };
 		D65DF12F1BE2AE6D009CC6DF /* SNFMore.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF12D1BE2AE6D009CC6DF /* SNFMore.m */; };
@@ -121,10 +122,13 @@
 		0707D6DB1BE428BA002F1FC0 /* SNFInvites.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFInvites.xib; sourceTree = "<group>"; };
 		0707D6DE1BE42970002F1FC0 /* UIAlertAction+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertAction+Additions.h"; path = "submodules/apd-objc/UIAlertAction+Additions.h"; sourceTree = "<group>"; };
 		0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertAction+Additions.m"; path = "submodules/apd-objc/UIAlertAction+Additions.m"; sourceTree = "<group>"; };
-		078DF49F1BE7E9D300CBFAA4 /* SNFFacebookAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFFacebookAuthHandler.h; sourceTree = "<group>"; };
-		078DF4A01BE7E9D300CBFAA4 /* SNFFacebookAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFFacebookAuthHandler.m; sourceTree = "<group>"; };
-		078DF4AD1BE7F08A00CBFAA4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "libs/FacebookSDKs-iOS-20151026/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
-		078DF4AF1BE7F0DB00CBFAA4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "libs/FacebookSDKs-iOS-20151026/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		078DF4B11BE8105300CBFAA4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = libs/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = libs/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
+		078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
+		078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = libs/Facebook/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		078DF4B61BE8109D00CBFAA4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = libs/Facebook/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		078DF4BA1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATIFacebookAuthHandler.h; sourceTree = "<group>"; };
+		078DF4BB1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATIFacebookAuthHandler.m; sourceTree = "<group>"; };
 		D6272FA71BDFCD1A0024CBC2 /* SNFUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserService.h; sourceTree = "<group>"; };
 		D6272FA81BDFCD1A0024CBC2 /* SNFUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserService.m; sourceTree = "<group>"; };
 		D6272FAB1BDFD1FF0024CBC2 /* SNFError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFError.h; sourceTree = "<group>"; };
@@ -206,8 +210,6 @@
 		D65DF10D1BE29A42009CC6DF /* SNFUserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserProfile.h; sourceTree = "<group>"; };
 		D65DF10E1BE29A42009CC6DF /* SNFUserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFUserProfile.m; sourceTree = "<group>"; };
 		D65DF10F1BE29A42009CC6DF /* SNFUserProfile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFUserProfile.xib; sourceTree = "<group>"; };
-		D65DF1231BE2A4FB009CC6DF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = libraries/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
-		D65DF1241BE2A4FB009CC6DF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = libraries/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		D65DF1261BE2AA50009CC6DF /* SNFBoardList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBoardList.h; sourceTree = "<group>"; };
 		D65DF1271BE2AA50009CC6DF /* SNFBoardList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoardList.m; sourceTree = "<group>"; };
 		D65DF1281BE2AA50009CC6DF /* SNFBoardList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFBoardList.xib; sourceTree = "<group>"; };
@@ -241,8 +243,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				078DF4B01BE7F0DB00CBFAA4 /* FBSDKLoginKit.framework in Frameworks */,
-				078DF4AE1BE7F08A00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */,
+				078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */,
+				078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */,
+				078DF4B91BE8109D00CBFAA4 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,8 +325,8 @@
 		078DF49E1BE7E9AB00CBFAA4 /* SocialAuth */ = {
 			isa = PBXGroup;
 			children = (
-				078DF49F1BE7E9D300CBFAA4 /* SNFFacebookAuthHandler.h */,
-				078DF4A01BE7E9D300CBFAA4 /* SNFFacebookAuthHandler.m */,
+				078DF4BA1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.h */,
+				078DF4BB1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.m */,
 			);
 			name = SocialAuth;
 			sourceTree = "<group>";
@@ -331,8 +334,9 @@
 		078DF4A21BE7E9D700CBFAA4 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
-				078DF4AF1BE7F0DB00CBFAA4 /* FBSDKLoginKit.framework */,
-				078DF4AD1BE7F08A00CBFAA4 /* FBSDKCoreKit.framework */,
+				078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */,
+				078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */,
+				078DF4B61BE8109D00CBFAA4 /* FBSDKLoginKit.framework */,
 			);
 			name = Facebook;
 			sourceTree = "<group>";
@@ -535,8 +539,8 @@
 		D65DF1141BE2A45B009CC6DF /* MBProgerssHUD */ = {
 			isa = PBXGroup;
 			children = (
-				D65DF1231BE2A4FB009CC6DF /* MBProgressHUD.h */,
-				D65DF1241BE2A4FB009CC6DF /* MBProgressHUD.m */,
+				078DF4B11BE8105300CBFAA4 /* MBProgressHUD.h */,
+				078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */,
 			);
 			name = MBProgerssHUD;
 			sourceTree = "<group>";
@@ -700,13 +704,11 @@
 				D65DF1121BE29A42009CC6DF /* SNFUserProfile.m in Sources */,
 				D659DBF41BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m in Sources */,
 				D65DF13A1BE2B8EE009CC6DF /* SNFBoardListCell.m in Sources */,
-				D65DF1251BE2A4FB009CC6DF /* MBProgressHUD.m in Sources */,
 				D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */,
 				D659DBF21BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m in Sources */,
 				D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */,
 				D65DF15A1BE2F59F009CC6DF /* SNFAddUserRole.m in Sources */,
 				D65DF0E71BE2830C009CC6DF /* SNFDateManager.m in Sources */,
-				078DF4A11BE7E9D300CBFAA4 /* SNFFacebookAuthHandler.m in Sources */,
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
 				D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */,
 				D659DC041BDB06010048D3F7 /* SNFModel.m in Sources */,
@@ -726,7 +728,9 @@
 				0707D6A91BE29BC4002F1FC0 /* SNFLauncher.m in Sources */,
 				D65DF14A1BE2BF94009CC6DF /* SNFBoardDetailChildCell.m in Sources */,
 				D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */,
+				078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */,
 				0707D6C51BE2B2D8002F1FC0 /* SNFAcceptInvite.m in Sources */,
+				078DF4BC1BE810AF00CBFAA4 /* ATIFacebookAuthHandler.m in Sources */,
 				0707D6AE1BE2A1C9002F1FC0 /* SNFLogin.m in Sources */,
 				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,
 				D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */,
@@ -849,7 +853,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/libs/FacebookSDKs-iOS-20151026",
+					"$(PROJECT_DIR)/libs/Facebook",
 				);
 				INFOPLIST_FILE = SmileAndFrowns/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -864,7 +868,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/libs/FacebookSDKs-iOS-20151026",
+					"$(PROJECT_DIR)/libs/Facebook",
 				);
 				INFOPLIST_FILE = SmileAndFrowns/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
