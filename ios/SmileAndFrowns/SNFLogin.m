@@ -11,8 +11,9 @@
 #import "SNFViewController.h"
 #import "UIView+LayoutHelpers.h"
 #import "UIAlertAction+Additions.h"
-
-NSString * const SNFLoginDidLogin = @"SNFLoginDidLogin";
+#import "SNFSyncService.h"
+#import "NSTimer+Blocks.h"
+#import "ATIFacebookAuthHandler.h"
 
 @interface SNFLogin ()
 @property BOOL firstlayout;
@@ -49,7 +50,7 @@ NSString * const SNFLoginDidLogin = @"SNFLoginDidLogin";
 	if(self.scrollViewBottom.constant == keyboardFrameEnd.size.height) {
 		return;
 	}
-	self.formView.height -= 256;
+	self.formView.height = 364;
 	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
 	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
 }
@@ -59,8 +60,37 @@ NSString * const SNFLoginDidLogin = @"SNFLoginDidLogin";
 		return;
 	}
 	self.scrollViewBottom.constant = 0;
-	self.formView.height += 256;
 	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.scrollView.height);
+	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
+		self.formView.height = self.scrollView.height;
+	} repeats:FALSE];
+}
+
+- (IBAction) facebookLogin:(id)sender {
+	[[ATIFacebookAuthHandler instance] loginWithCompletion:^(NSError *error, NSString *token) {
+		
+		if(error) {
+			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction OKAction]];
+			[self presentViewController:alert animated:TRUE completion:nil];
+			return;
+		}
+		
+		[self.service loginWithFacebookAuthToken:token withCompletion:^(NSError *error, SNFUser *user) {
+			
+			if(error) {
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction OKAction]];
+				[self presentViewController:alert animated:TRUE completion:nil];
+				return;
+			}
+			
+			[SNFModel sharedInstance].loggedInUser = user;
+			
+			[self syncAfterLogin];
+			
+		}];
+	}];
 }
 
 - (IBAction) login:(id) sender {
@@ -100,22 +130,50 @@ NSString * const SNFLoginDidLogin = @"SNFLoginDidLogin";
 			
 		} else {
 			
-			[SNFModel sharedInstance].loggedInUser = user;
+			[self syncAfterLogin];
 			
-			[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
-				
-				if(self.nextViewController) {
-					[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
-				}
-				
-				[[NSNotificationCenter defaultCenter] postNotificationName:SNFLoginDidLogin object:nil];
-				
-			}];
 		}
 	}];
 }
 
+- (void) syncAfterLogin {
+	
+	MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	hud.labelText = @"Syncing Board Data";
+	
+	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
+		
+		if(error) {
+			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sync Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction OKAction]];
+			[self presentViewController:alert animated:TRUE completion:nil];
+			return;
+		}
+		
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
+		[self closeModal];
+		
+	}];
+}
+
+- (void) closeModal {
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+		
+		if(self.nextViewController) {
+			[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
+		} else if([SNFViewController instance]) {
+			[[SNFViewController instance] showBoardsAnimated:TRUE];
+		} else {
+			SNFViewController * root = [[SNFViewController alloc] init];
+			[AppDelegate instance].window.rootViewController = root;
+		}
+		
+	}];
+}
+
 - (IBAction) cancel:(id)sender {
+	[self.view endEditing:TRUE];
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
 }
 

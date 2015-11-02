@@ -60,6 +60,7 @@
 }
 
 - (IBAction)onCancel:(UIButton *)sender{
+	[self.view endEditing:TRUE];
 	_completion(nil, nil);
 }
 

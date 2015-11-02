@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>573D8BA0-86C8-4F5B-81EF-57D10E7C3AD1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HelloFacebookSample</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>548402B9-50C2-40F1-A548-E21D5291A54F</key>
+		<string>ssh://projects.git.vip.facebook.com/data/gitrepos/ios-sdk</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>samples/HelloFacebookSample/HelloFacebookSample.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>548402B9-50C2-40F1-A548-E21D5291A54F</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://projects.git.vip.facebook.com/data/gitrepos/ios-sdk</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>548402B9-50C2-40F1-A548-E21D5291A54F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>548402B9-50C2-40F1-A548-E21D5291A54F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-sdk</string>
+		</dict>
+	</array>
+</dict>
+</plist>

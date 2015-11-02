@@ -24,6 +24,7 @@ def json_response_error(error_message):
 def login_required_response():
 	return json_response({"error": "login required"})
 
+@csrf_exempt
 @psa('social:complete')
 def register_by_access_token(request,backend):
 	#http://python-social-auth.readthedocs.org/en/latest/use_cases.html
@@ -42,6 +43,7 @@ def register_by_access_token(request,backend):
 	if backend == "twitter":
 		if "access_token_secret" not in request.POST:
 			return json_response_error('no access token secret')
+			
 		access_token = {
 			"oauth_token":request.POST.get('access_token'),
 			"oauth_token_secret":request.POST.get('access_token_secret'),
@@ -51,7 +53,8 @@ def register_by_access_token(request,backend):
 	
 	if user:
 		login(request,user)
-		return json_response({})
+		output = json_utils.user_info_dictionary(user)
+		return json_response(output)
 	
 	return json_response_error("user not found")
 
@@ -392,11 +395,9 @@ def invite(request):
 		return json_response_error("invitee_lastname required")
 
 	#try and find a user with the provided invitee_email.
-	send_email_with_code = True
 	invitee_user = None
 	try:
 		invitee_user = User.objects.get(email=invitee_email)
-		send_email_with_code = False
 	except:
 		print "invitee_user not found, using no invitee_user for invite"
 
@@ -437,14 +438,8 @@ def invite(request):
 	subject = "You're invited to particiate in a Smiles and Frowns board!"
 	
 	#use template that has code included.
-	if send_email_with_code:
-		template_plain = loader.get_template("invite_with_code.txt")
-		template_html = loader.get_template("invite_with_code.html")
-	
-	#use template that has no code included.
-	else:
-		template_plain = loader.get_template("invite_no_code.txt")
-		template_html = loader.get_template("invite_no_code.html")
+	template_plain = loader.get_template("invite_with_code.txt")
+	template_html = loader.get_template("invite_with_code.html")
 	
 	#get body
 	body_plain = template_plain.render(context)

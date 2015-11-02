@@ -47,16 +47,10 @@
 - (IBAction) createBoard:(id)sender {
 	if(![SNFModel sharedInstance].loggedInUser) {
 		SNFLogin * login = [[SNFLogin alloc] init];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLogin:) name:SNFLoginDidLogin object:nil];
 		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 	} else {
 		[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
 	}
-}
-
-- (void) onLogin:(NSNotification *) note {
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:SNFLoginDidLogin object:nil];
-	[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
 }
 
 - (IBAction) viewTutorial:(id)sender {
