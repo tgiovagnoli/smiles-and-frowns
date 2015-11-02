@@ -95,7 +95,7 @@
 }
 
 - (void) logout {
-	[[ATIFacebookAuthHandler instance] logout];
+	[[ATIFacebookAuthHandler sharedInstance] logout];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
