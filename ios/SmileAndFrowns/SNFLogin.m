@@ -141,6 +141,7 @@
 }
 
 - (IBAction) cancel:(id)sender {
+	[self.view endEditing:TRUE];
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
 }
 
