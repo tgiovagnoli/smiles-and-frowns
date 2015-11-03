@@ -9,6 +9,7 @@
 #import "SNFUserService.h"
 
 @interface SNFUserProfile ()
+@property BOOL isUpdatingPassword;
 @property NSArray * genders;
 @property SNFUserService * service;
 @end
@@ -78,6 +79,7 @@
 			[self presentViewController:alert animated:TRUE completion:nil];
 			return;
 		}
+		
 		self.user = user;
 	}];
 }
@@ -91,8 +93,6 @@
 	self.firstNameField.text = self.user.first_name;
 	self.lastNameField.text = self.user.last_name;
 	self.emailField.text = self.user.email;
-	//self.passwordField.text = @"32764789326498326";
-	//self.passwordConfirmField.text = @"312764789326498321";
 }
 
 - (IBAction) update:(id) sender {
@@ -108,23 +108,66 @@
 }
 
 - (IBAction) updatePassword:(id)sender {
+	self.isUpdatingPassword = TRUE;
+	
 	NSMutableDictionary * data = [NSMutableDictionary dictionary];
+	data[@"first_name"] = self.firstNameField.text;
+	data[@"last_name"] = self.lastNameField.text;
+	data[@"email"] = self.emailField.text;
 	data[@"password"] = self.passwordField.text;
 	data[@"password_confirm"] = self.passwordConfirmField.text;
+	data[@"age"] = self.age.text;
+	data[@"gender"] = self.gender.text.lowercaseString;
+	
+	NSString * msg = nil;
+	
+	if([self.passwordField.text isEmpty]) {
+		msg = @"Password required";
+	}
+	
+	if(!msg && [self.passwordConfirmField.text isEmpty]) {
+		msg = @"Password confirm required";
+	}
+	
+	if(!msg && ![self.passwordField.text isEqualToString:self.passwordConfirmField.text]) {
+		msg = @"Passwords don't match";
+	}
+	
+	if(msg) {
+		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Form Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction OKAction]];
+		[self presentViewController:alert animated:TRUE completion:nil];
+		return;
+	}
+	
 	[self updateUserWithData:data];
 }
 
 - (void) updateUserWithData:(NSDictionary *) data {
 	self.service = [[SNFUserService alloc] init];
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-	[self.service updateUserWithData:data withCompletion:^(NSError *error, SNFUser *user) {
+	[self.service updateUserWithData:data withCompletion:^(NSError * error, SNFUser * user) {
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
 		if(error) {
 			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
 			[alert addAction:[UIAlertAction OKAction]];
 			[self presentViewController:alert animated:TRUE completion:nil];
 			return;
 		}
+		
+		self.passwordField.text = @"";
+		self.passwordConfirmField.text = @"";
+		self.user = user;
+		
+		UIAlertController * alert = nil;
+		if(self.isUpdatingPassword) {
+			alert = [UIAlertController alertControllerWithTitle:@"Profile Updated" message:@"Your password was updated" preferredStyle:UIAlertControllerStyleAlert];
+		} else {
+			alert = [UIAlertController alertControllerWithTitle:@"Profile Updated" message:@"Your profile was updated" preferredStyle:UIAlertControllerStyleAlert];
+		}
+		[alert addAction:[UIAlertAction OKAction]];
+		[self presentViewController:alert animated:TRUE completion:nil];
 	}];
 }
 

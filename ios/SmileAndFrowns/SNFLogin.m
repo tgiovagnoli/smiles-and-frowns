@@ -24,7 +24,7 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	self.service = [[SNFUserService alloc] init];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
 }
 
 - (void) dealloc {
@@ -35,28 +35,33 @@
 	[[ATIFacebookAuthHandler instance] login];
 }
 
-- (void) onLogin:(NSNotification *) notification {
+- (void) onFacebookLogin:(NSNotification *) notification {
 	FBSessionState state = (FBSessionState)[[[notification userInfo] objectForKey:@"state"] unsignedIntegerValue];
 	NSString * msg = [notification userInfo][@"msg"];
 	
 	if(state == FBSessionStateOpen) {
 		NSString * authToken = FBSession.activeSession.accessTokenData.accessToken;
 		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+		
 		[self.service loginWithFacebookAuthToken:authToken withCompletion:^(NSError *error, SNFUser *user) {
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
 			if(error) {
-				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction OKAction]];
-				[self presentViewController:alert animated:TRUE completion:nil];
+				[self displayAlert:error.localizedDescription withTitle:@"Error"];
 				return;
 			}
-			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			BOOL hasUserChanged = (![user.username isEqualToString:[[SNFModel sharedInstance] lastLoggedInUsername]]);
 			[SNFModel sharedInstance].loggedInUser = user;
-			[self syncAfterLogin];
+			[self syncAfterLogin:hasUserChanged];
+			
 		}];
+		
 	} else if(msg) {
-		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction OKAction]];
-		[self presentViewController:alert animated:TRUE completion:nil];
+		
+		[self displayAlert:msg withTitle:@"Error"];
+		
 	}
 }
 
@@ -85,43 +90,72 @@
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[self.service loginWithEmail:self.email.text andPassword:self.password.text withCompletion:^(NSError *error, SNFUser *user) {
+	[self.service loginWithEmail:self.email.text andPassword:self.password.text withCompletion:^(NSError * error, SNFUser * user) {
 		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
 			
-			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Login Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[self presentViewController:alert animated:YES completion:^{}];
+			[self displayAlert:error.localizedDescription withTitle:@"Login Error"];
 			
 		} else {
 			
-			[self syncAfterLogin];
+			BOOL hasUserChanged = (![user.username isEqualToString:[[SNFModel sharedInstance] lastLoggedInUsername]]);
+			[SNFModel sharedInstance].loggedInUser = user;
+			[self syncAfterLogin:hasUserChanged];
 			
 		}
 	}];
 }
 
-- (void) syncAfterLogin {
+- (void) syncAfterLogin:(BOOL) hasUserChanged {
 	
 	MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	hud.labelText = @"Syncing Board Data";
 	
+	if(hasUserChanged) {
+		[SNFModel sharedInstance].userSettings.lastSyncDate = nil;
+	}
+	
 	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
 		
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
 		if(error) {
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sync Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[self presentViewController:alert animated:TRUE completion:nil];
+			[self displayAlert:error.localizedDescription withTitle:@"Sync Error"];
 			return;
 		}
 		
+		//TODO:
+		//[[SNFSyncService instance] removeObjectsForOtherUsers:[SNFModel sharedInstance].loggedInUser];
+		
+		[self syncPredefinedBoards];
+	}];
+}
+
+- (void) syncPredefinedBoards {
+	
+	MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	hud.labelText = @"Syncing Board Data";
+	
+	[[SNFSyncService instance] syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
+		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
+		if(error) {
+			[self displayAlert:error.localizedDescription withTitle:@"Sync Error"];
+			return;
+		}
 		
 		[self closeModal];
 		
 	}];
+}
+
+- (void) displayAlert:(NSString *) msg withTitle:(NSString *) title {
+	UIAlertController * alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction OKAction]];
+	[self presentViewController:alert animated:TRUE completion:nil];
 }
 
 - (void) closeModal {
@@ -132,8 +166,8 @@
 		} else if([SNFViewController instance]) {
 			[[SNFViewController instance] showBoardsAnimated:TRUE];
 		} else {
-			SNFViewController * root = [[SNFViewController alloc] init];
-			[AppDelegate instance].window.rootViewController = root;
+			//SNFViewController * root = [[SNFViewController alloc] init];
+			//[AppDelegate instance].window.rootViewController = root;
 		}
 		
 	}];

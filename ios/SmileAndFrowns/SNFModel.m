@@ -22,10 +22,12 @@ static SNFModel *_instance;
 
 - (void) setLoggedInUser:(SNFUser *) loggedInUser {
 	_loggedInUser = loggedInUser;
-	if(!loggedInUser) {
-		[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SNFModel.LoggedInUser"];
-	} else {
+	if(loggedInUser) {
+		NSLog(@"set last logged in user: %@",loggedInUser.username);
+		[[NSUserDefaults standardUserDefaults] setObject:loggedInUser.username forKey:@"SNFModel.LastLoggedInUser"];
 		[[NSUserDefaults standardUserDefaults] setObject:loggedInUser.username forKey:@"SNFModel.LoggedInUser"];
+	} else {
+		[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SNFModel.LoggedInUser"];
 	}
 }
 
@@ -49,6 +51,10 @@ static SNFModel *_instance;
 		}
 	}
 	return _loggedInUser;
+}
+
+- (NSString *) lastLoggedInUsername; {
+	return [[NSUserDefaults standardUserDefaults] objectForKey:@"SNFModel.LastLoggedInUser"];
 }
 
 @end

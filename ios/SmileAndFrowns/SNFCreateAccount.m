@@ -7,8 +7,12 @@
 #import "UIView+LayoutHelpers.h"
 #import "SNFLogin.h"
 #import "NSTimer+Blocks.h"
+#import "ATIFacebookAuthHandler.h"
+#import "UIAlertAction+Additions.h"
+#import "SNFSyncService.h"
 
 @interface SNFCreateAccount ()
+@property SNFUserService * service;
 @property NSArray * genders;
 @property NSTimer * pickerTimer;
 @end
@@ -17,9 +21,11 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	self.service = [[SNFUserService alloc] init];
 	self.genders = @[@"--------",@"Male",@"Female"];
 	self.pickerView.delegate = self;
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
 }
 
 - (IBAction) onGender:(id)sender {
@@ -89,12 +95,9 @@
 		} else {
 			
 			[SNFModel sharedInstance].loggedInUser = user;
+			[SNFModel sharedInstance].userSettings.lastSyncDate = nil;
 			
-			[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
-				if(self.nextViewController) {
-					[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
-				}
-			}];
+			[self closeModal];
 		}
 	}];
 }
@@ -106,8 +109,103 @@
 
 - (IBAction) login:(id)sender {
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
-		[[AppDelegate rootViewController] presentViewController:[[SNFLogin alloc] init] animated:TRUE completion:nil];
+		
+		SNFLogin * login = [[SNFLogin alloc] init];
+		
+		if(self.nextViewController) {
+			login.nextViewController = self.nextViewController;
+		}
+		
+		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 	}];
+}
+
+- (IBAction) facebook:(id) sender {
+	[[ATIFacebookAuthHandler instance] login];
+}
+
+- (void) onFacebookLogin:(NSNotification *) notification {
+	FBSessionState state = (FBSessionState)[[[notification userInfo] objectForKey:@"state"] unsignedIntegerValue];
+	NSString * msg = [notification userInfo][@"msg"];
+	
+	if(state == FBSessionStateOpen) {
+		NSString * authToken = FBSession.activeSession.accessTokenData.accessToken;
+		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+		
+		[self.service loginWithFacebookAuthToken:authToken withCompletion:^(NSError *error, SNFUser *user) {
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			if(error) {
+				[self displayAlert:error.localizedDescription withTitle:@"Error"];
+				return;
+			}
+			
+			BOOL hasUserChanged = (![user.username isEqualToString:[[SNFModel sharedInstance] lastLoggedInUsername]]);
+			[SNFModel sharedInstance].loggedInUser = user;
+			
+			[self syncAfterLogin:hasUserChanged];
+			
+		}];
+		
+	} else if(msg) {
+		
+		[self displayAlert:msg withTitle:@"Error"];
+		
+	}
+}
+
+- (void) syncAfterLogin:(BOOL) hasUserChanged {
+	
+	MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	hud.labelText = @"Syncing Board Data";
+	
+	if(hasUserChanged) {
+		[SNFModel sharedInstance].userSettings.lastSyncDate = nil;
+	}
+	
+	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
+		
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
+		if(error) {
+			[self displayAlert:error.localizedDescription withTitle:@"Sync Error"];
+			return;
+		}
+		
+		[self syncPredefinedBoards];
+	}];
+}
+
+- (void) syncPredefinedBoards {
+	MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	hud.labelText = @"Syncing Board Data";
+	
+	[[SNFSyncService instance] syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
+		
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
+		if(error) {
+			[self displayAlert:error.localizedDescription withTitle:@"Sync Error"];
+			return;
+		}
+		
+		[self closeModal];
+	}];
+}
+
+- (void) closeModal {
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+		if(self.nextViewController) {
+			[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
+		}
+	}];
+}
+
+- (void) displayAlert:(NSString *) msg withTitle:(NSString *) title {
+	UIAlertController * alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction OKAction]];
+	[self presentViewController:alert animated:TRUE completion:nil];
 }
 
 @end
