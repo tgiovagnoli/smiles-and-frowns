@@ -53,12 +53,13 @@
 }
 
 - (void)reloadBoards{
+	;
 	NSError *error;
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SNFBoard"];
 	if([self.searchField.text isEmpty]){
-		request.predicate = [NSPredicate predicateWithFormat:@"deleted == 0"];
+		request.predicate = [NSPredicate predicateWithFormat:@"(deleted == 0)", [SNFModel sharedInstance].loggedInUser.email];
 	}else{
-		request.predicate = [NSPredicate predicateWithFormat:@"(deleted == 0) && (title CONTAINS[cd] %@)", self.searchField.text];
+		request.predicate = [NSPredicate predicateWithFormat:@"(deleted == 0) && (title CONTAINS[cd] %@)", self.searchField.text,[SNFModel sharedInstance].loggedInUser.email];
 	}
 	
 	if(self.filter == SNFBoardListFilterDate){
@@ -67,13 +68,39 @@
 		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
 	}
 	
+	
 	NSArray *results = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:request error:&error];
 	if(error){
 		NSLog(@"error loading boards");
 	}else{
-		_boards = results;
+		
+		NSMutableArray *permittedResults = [[NSMutableArray alloc] init];
+		for(SNFBoard *board in results){
+			if([self hasPermissionForBoard:board]){
+				[permittedResults addObject:board];
+			}
+		}
+		_boards = permittedResults;
 		[self.boardsTable reloadData];
 	}
+}
+
+- (BOOL)hasPermissionForBoard:(SNFBoard *)board{
+	SNFUser *authedUser = [SNFModel sharedInstance].loggedInUser;
+	if(!authedUser){
+		return NO;
+	}
+	if([board.owner.email isEqualToString:authedUser.email]){
+		return YES;
+	}
+	NSLog(@"title - %@", board.title);
+	for(SNFUserRole *userRole in board.user_roles){
+		NSLog(@"email - %@ username - %@", userRole.user.email, userRole.user.username);
+		if([userRole.user.email isEqualToString:authedUser.email]){
+			return YES;
+		}
+	}
+	return NO;
 }
 
 - (IBAction)changeSorting:(UISegmentedControl *)sender{

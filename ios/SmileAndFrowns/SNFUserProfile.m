@@ -85,7 +85,7 @@
 	self.lastNameField.text = self.user.last_name;
 	self.emailField.text = self.user.email;
 	self.passwordField.text = @"32764789326498326";
-	self.passwordConfirmField.text = @"312764789326498321";
+	self.passwordConfirmField.text = @"21764789326498356";
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *) textField {

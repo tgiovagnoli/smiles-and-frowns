@@ -15,23 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S1-d8-z9T">
-                    <rect key="frame" x="0.0" y="20" width="60" height="40"/>
-                    <animations/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="60" id="P87-Zx-PbH"/>
-                        <constraint firstAttribute="height" constant="40" id="qtk-LC-uIy"/>
-                    </constraints>
-                    <state key="normal" title="Close">
-                        <color key="titleColor" white="0.95555555560000005" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="onClose:" destination="-1" eventType="touchUpInside" id="4px-Rp-1Kb"/>
-                    </connections>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hO4-tL-hhW">
-                    <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -43,12 +28,10 @@
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="hO4-tL-hhW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="75X-Fg-nad"/>
                 <constraint firstItem="hO4-tL-hhW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="76r-TT-1mc"/>
                 <constraint firstAttribute="trailing" secondItem="hO4-tL-hhW" secondAttribute="trailing" id="7Uq-jM-uyB"/>
                 <constraint firstAttribute="bottom" secondItem="hO4-tL-hhW" secondAttribute="bottom" id="FCD-65-EmD"/>
-                <constraint firstItem="3S1-d8-z9T" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cIU-ra-wo7"/>
-                <constraint firstItem="hO4-tL-hhW" firstAttribute="top" secondItem="3S1-d8-z9T" secondAttribute="bottom" id="fgQ-G9-sxm"/>
-                <constraint firstItem="3S1-d8-z9T" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="mjA-Ka-3Ee"/>
             </constraints>
         </view>
     </objects>
