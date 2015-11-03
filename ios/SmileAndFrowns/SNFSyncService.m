@@ -207,6 +207,8 @@ static SNFSyncService * _instance;
 	
 	[updates addObject:changeLog];
 	
+	[self cleanUnownedBoards];
+	
 	// save the context so that if the user quits the app all records will work with sync date
 	[SNFDateManager lock]; // lock the date manager before saving the context so that all updates that are made keep the server date
 	NSError *saveError;
@@ -215,7 +217,49 @@ static SNFSyncService * _instance;
 		return completion(saveError, nil);
 	}
 	[SNFDateManager unlock];
+	
 	completion(saveError, updates);
+}
+
+- (void)cleanUnownedBoards{
+	SNFUser *user = [SNFModel sharedInstance].loggedInUser;
+	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
+	NSArray *allBoards = [SNFBoard allObjectsWithContext:context];
+	NSMutableArray *cleanBoards = [[NSMutableArray alloc] init];
+	for(SNFBoard *board in allBoards){
+		BOOL remove = YES;
+		if([user.email isEqualToString:board.owner.email]){
+			remove = NO;
+		}
+		for(SNFUserRole *userRole in board.user_roles){
+			if([userRole.user.email isEqualToString:user.email]){
+				remove = NO;
+			}
+		}
+		if(remove){
+			[cleanBoards addObject:board];
+		}
+	}
+	for(SNFBoard *board in cleanBoards){
+		NSLog(@"removing board: %@", board.title);
+		for(SNFBehavior *behavior in board.behaviors){
+			[context deleteObject:behavior];
+		}
+		for(SNFReward *reward in board.rewards){
+			[context deleteObject:reward];
+		}
+		for(SNFSmile *smile in board.smiles){
+			[context deleteObject:smile];
+		}
+		for(SNFFrown *frown in board.frowns){
+			[context deleteObject:frown];
+		}
+		for(SNFUserRole *userRole in board.user_roles){
+			[context deleteObject:userRole];
+		}
+		[context deleteObject:board];
+	}
+	
 }
 
 - (void)syncPredefinedBoardsWithCompletion:(SNFSyncServiceCallback)completion{
