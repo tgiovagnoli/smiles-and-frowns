@@ -89,6 +89,10 @@
 		} else {
 			
 			[SNFModel sharedInstance].loggedInUser = user;
+			[SNFModel sharedInstance].userSettings.lastSyncDate = nil;
+			
+			//TODO:
+			//[[SNFSyncService instance] removeObjectsForOtherUsers:[SNFModel sharedInstance].loggedInUser];
 			
 			[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 				if(self.nextViewController) {
