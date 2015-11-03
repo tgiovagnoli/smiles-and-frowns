@@ -91,9 +91,6 @@
 			[SNFModel sharedInstance].loggedInUser = user;
 			[SNFModel sharedInstance].userSettings.lastSyncDate = nil;
 			
-			//TODO:
-			//[[SNFSyncService instance] removeObjectsForOtherUsers:[SNFModel sharedInstance].loggedInUser];
-			
 			[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 				if(self.nextViewController) {
 					[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
@@ -110,7 +107,14 @@
 
 - (IBAction) login:(id)sender {
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
-		[[AppDelegate rootViewController] presentViewController:[[SNFLogin alloc] init] animated:TRUE completion:nil];
+		
+		SNFLogin * login = [[SNFLogin alloc] init];
+		
+		if(self.nextViewController) {
+			login.nextViewController = self.nextViewController;
+		}
+		
+		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 	}];
 }
 

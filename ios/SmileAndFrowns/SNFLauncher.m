@@ -7,6 +7,8 @@
 #import "SNFViewController.h"
 #import "SNFAcceptInvite.h"
 #import "NSTimer+Blocks.h"
+#import "UIAlertAction+Additions.h"
+#import "SNFCreateAccount.h"
 
 @interface SNFLauncher ()
 @property BOOL firstlayout;
@@ -22,6 +24,28 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	self.showOnStartup.on = [SNFLauncher showAtLaunch];
+	
+	if([SNFModel sharedInstance].loggedInUser) {
+		[self.loginButton setTitle:@"Logout" forState:UIControlStateNormal];
+		[self.createAccountButton setVisible:FALSE];
+	}
+	
+	[[SNFModel sharedInstance] addObserver:self forKeyPath:@"loggedInUser" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void) dealloc {
+	[[SNFModel sharedInstance] removeObserver:self forKeyPath:@"loggedInUser"];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+	if([keyPath isEqualToString:@"loggedInUser"] && [SNFModel sharedInstance].loggedInUser) {
+		[self.loginButton setTitle:@"Logout" forState:UIControlStateNormal];
+		[self.createAccountButton setVisible:FALSE];
+	} else {
+		[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
+		[self.createAccountButton setVisible:TRUE];
+	}
 }
 
 - (IBAction) showAtStartup:(id) sender {
@@ -60,7 +84,30 @@
 }
 
 - (IBAction) login:(id) sender {
-	[[AppDelegate rootViewController] presentViewController:[[SNFLogin alloc] init] animated:TRUE completion:nil];
+	if([SNFModel sharedInstance].loggedInUser) {
+		
+		SNFUserService * service = [[SNFUserService alloc] init];
+		[service logoutWithCompletion:^(NSError *error) {
+			
+			if(error) {
+				UIAlertController * alert = [[UIAlertController alloc] init];
+				[alert addAction:[UIAlertAction OKAction]];
+				[self presentViewController:alert animated:TRUE completion:nil];
+			} else {
+				[SNFModel sharedInstance].loggedInUser = nil;
+			}
+			
+		}];
+		
+	} else {
+		
+		[[AppDelegate rootViewController] presentViewController:[[SNFLogin alloc] init] animated:TRUE completion:nil];
+		
+	}
+}
+
+- (IBAction) createAccount:(id) sender {
+	[[AppDelegate rootViewController] presentViewController:[[SNFCreateAccount alloc] init] animated:TRUE completion:nil];
 }
 
 @end

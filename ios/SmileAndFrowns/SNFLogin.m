@@ -48,9 +48,7 @@
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction OKAction]];
-				[self presentViewController:alert animated:TRUE completion:nil];
+				[self displayAlert:error.localizedDescription withTitle:@"Error"];
 				return;
 			}
 			
@@ -62,9 +60,7 @@
 		
 	} else if(msg) {
 		
-		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction OKAction]];
-		[self presentViewController:alert animated:TRUE completion:nil];
+		[self displayAlert:msg withTitle:@"Error"];
 		
 	}
 }
@@ -100,16 +96,13 @@
 		
 		if(error) {
 			
-			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Login Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[self presentViewController:alert animated:YES completion:^{}];
+			[self displayAlert:error.localizedDescription withTitle:@"Login Error"];
 			
 		} else {
 			
 			BOOL hasUserChanged = user.username != [[SNFModel sharedInstance] lastLoggedInUsername];
 			[SNFModel sharedInstance].loggedInUser = user;
 			[self syncAfterLogin:hasUserChanged];
-			
 		}
 	}];
 }
@@ -128,18 +121,40 @@
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sync Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[self presentViewController:alert animated:TRUE completion:nil];
+			[self displayAlert:error.localizedDescription withTitle:@"Sync Error"];
 			return;
 		}
 		
 		//TODO:
 		//[[SNFSyncService instance] removeObjectsForOtherUsers:[SNFModel sharedInstance].loggedInUser];
 		
+		[self syncPredefinedBoards];
+	}];
+}
+
+- (void) syncPredefinedBoards {
+	
+	MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	hud.labelText = @"Syncing Board Data";
+	
+	[[SNFSyncService instance] syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
+		
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
+		if(error) {
+			[self displayAlert:error.localizedDescription withTitle:@"Sync Error"];
+			return;
+		}
+		
 		[self closeModal];
 		
 	}];
+}
+
+- (void) displayAlert:(NSString *) msg withTitle:(NSString *) title {
+	UIAlertController * alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction OKAction]];
+	[self presentViewController:alert animated:TRUE completion:nil];
 }
 
 - (void) closeModal {
@@ -150,8 +165,8 @@
 		} else if([SNFViewController instance]) {
 			[[SNFViewController instance] showBoardsAnimated:TRUE];
 		} else {
-			SNFViewController * root = [[SNFViewController alloc] init];
-			[AppDelegate instance].window.rootViewController = root;
+			//SNFViewController * root = [[SNFViewController alloc] init];
+			//[AppDelegate instance].window.rootViewController = root;
 		}
 		
 	}];
