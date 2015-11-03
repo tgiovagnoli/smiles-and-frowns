@@ -218,7 +218,6 @@ static SNFSyncService * _instance;
 	completion(saveError, updates);
 }
 
-
 - (void)syncPredefinedBoardsWithCompletion:(SNFSyncServiceCallback)completion{
 	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"predefined_boards/sync"];
 	NSURLSession *session = [NSURLSession sharedSession];

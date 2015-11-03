@@ -5,6 +5,7 @@
 
 @interface NSManagedObject (InfoDictionary)
 
++ (NSArray *)allObjectsWithContext:(NSManagedObjectContext *)context;
 + (NSDictionary *)keyMappings;
 + (NSString *)primaryLookup;
 + (NSManagedObject *)editOrCreatefromInfoDictionary:(NSDictionary *)infoDict withContext:(NSManagedObjectContext *)context;

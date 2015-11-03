@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SNFAddBehaviorCell" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Behavior Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nFw-eP-7lN">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SNFAddBehaviorCell" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Behavior Title" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nFw-eP-7lN">
                         <rect key="frame" x="8" y="8" width="304" height="27"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

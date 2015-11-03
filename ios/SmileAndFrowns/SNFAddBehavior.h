@@ -3,6 +3,7 @@
 #import "SNFPredefinedBehavior.h"
 #import "SNFAddBehaviorCell.h"
 #import "SNFBoard.h"
+#import "SNFBehavior.h"
 
 @class SNFAddBehavior;
 
@@ -22,6 +23,7 @@
 @property (weak) IBOutlet UIButton *addNewBehaviorButton;
 @property (weak) IBOutlet UIButton *addBehaviorsButton;
 @property (nonatomic) SNFBoard *board;
+
 
 - (IBAction)onBack:(UIButton *)sender;
 - (IBAction)onNewBehavior:(UIButton *)sender;

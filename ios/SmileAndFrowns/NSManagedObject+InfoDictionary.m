@@ -12,6 +12,15 @@
 	return @{@"uuid": @"uuid"};
 }
 
++ (NSArray *)allObjectsWithContext:(NSManagedObjectContext *)context{
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([self class]) inManagedObjectContext:context];
+	[fetchRequest setEntity:entity];
+	NSError *error;
+	NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+	return fetchedObjects;
+}
+
 + (NSManagedObject *) editOrCreatefromInfoDictionary:(NSDictionary *) infoDict withContext:(NSManagedObjectContext *) context {
 	NSString * className = NSStringFromClass([self class]);
 	NSString * primaryKey = [[self class] primaryLookup];

@@ -109,6 +109,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.user.user_details',
 )
 
+
 WSGI_APPLICATION = 'smiles_and_frowns.wsgi.application'
 
 DATABASES = {
