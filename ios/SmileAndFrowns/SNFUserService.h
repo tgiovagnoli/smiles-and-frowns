@@ -23,6 +23,7 @@ typedef void(^SNFInvitesCompletion)(NSError * error);
 - (void)loginWithFacebookAuthToken:(NSString *) token withCompletion:(SNFUserServiceCallback)completion;
 - (void)logoutWithCompletion:(void(^)(NSError *error))completion;
 - (void)resetPasswordForEmail:(NSString *) email andCompletion:(void(^)(NSError *error))completion;
+- (void)updateUserWithData:(NSDictionary *) data withCompletion:(SNFUserServiceCallback)completion;
 
 - (void)invitesWithCompletion:(SNFInvitesCompletion) completion;
 - (void)inviteWithData:(NSDictionary *)data andCompletion:(SNFInviteCallback)completion;

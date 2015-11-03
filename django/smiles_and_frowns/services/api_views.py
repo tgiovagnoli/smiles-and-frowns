@@ -94,6 +94,8 @@ def user_password_reset(request):
 	body_html = template_html.render(context)
 	
 	#print "new password: " + new_password
+	user.set_password(new_password)
+	user.save()
 
 	#send email
 	try:
@@ -186,17 +188,17 @@ def user_signup(request):
 @csrf_exempt
 def user_update(request):
 	'''
+	@param first_name
+	@param last_name
 	@param email
-	@param password
-	@param password_confirm
-	@param firstname
-	@param lastname
 	@param age
 	@param gender
+	@param password
+	@param password_confirm
 	'''
 
 	#check post
-	if request.method != POST:
+	if request.method != "POST":
 		return json_response_error("method not allowed")
 
 	#check auth
@@ -206,8 +208,8 @@ def user_update(request):
 	email = request.POST.get('email',None)
 	password = request.POST.get('password',None)
 	password_confirm = request.POST.get('password_confirm',None)
-	firstname = request.POST.get('firstname',None)
-	lastname = request.POST.get('lastname',None)
+	firstname = request.POST.get('first_name',None)
+	lastname = request.POST.get('last_name',None)
 	age = request.POST.get('age',None)
 	gender = request.POST.get('gender',None)
 
@@ -221,7 +223,7 @@ def user_update(request):
 		request.user.last_name = lastname
 
 	if password and password_confirm and password == password_confirm:
-		user.set_password( make_password(password) )
+		request.user.set_password(password)
 
 	if age:
 		request.user.profile.age = age
@@ -232,7 +234,7 @@ def user_update(request):
 	request.user.save()
 	request.user.profile.save()
 	
-	data = json_utils.user_info_dictionary(user)
+	data = json_utils.user_info_dictionary(request.user)
 	return json_response(data)
 
 @csrf_exempt

@@ -30,6 +30,7 @@
 		078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */; };
 		078DF4B91BE8109D00CBFAA4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B61BE8109D00CBFAA4 /* FBSDKLoginKit.framework */; };
 		078DF4BF1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4BE1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m */; };
+		078DF4C21BE8810600CBFAA4 /* SNFFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4C11BE8810600CBFAA4 /* SNFFormViewController.m */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
 		D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC21BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m */; };
@@ -141,6 +142,8 @@
 		078DF4B61BE8109D00CBFAA4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = libs/Facebook/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		078DF4BD1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATIFacebookAuthHandler.h; sourceTree = "<group>"; };
 		078DF4BE1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATIFacebookAuthHandler.m; sourceTree = "<group>"; };
+		078DF4C01BE8810600CBFAA4 /* SNFFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFFormViewController.h; sourceTree = "<group>"; };
+		078DF4C11BE8810600CBFAA4 /* SNFFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFFormViewController.m; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
 		D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPredefinedBehavior.m; sourceTree = "<group>"; };
 		D6270EBF1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFPredefinedBehavior+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -645,12 +648,12 @@
 		D65DF1511BE2F138009CC6DF /* User */ = {
 			isa = PBXGroup;
 			children = (
-				D65DF10D1BE29A42009CC6DF /* SNFUserProfile.h */,
-				D65DF10E1BE29A42009CC6DF /* SNFUserProfile.m */,
-				D65DF10F1BE29A42009CC6DF /* SNFUserProfile.xib */,
 				D65DF1571BE2F59F009CC6DF /* SNFAddUserRole.h */,
 				D65DF1581BE2F59F009CC6DF /* SNFAddUserRole.m */,
 				D65DF1591BE2F59F009CC6DF /* SNFAddUserRole.xib */,
+				D65DF10D1BE29A42009CC6DF /* SNFUserProfile.h */,
+				D65DF10E1BE29A42009CC6DF /* SNFUserProfile.m */,
+				D65DF10F1BE29A42009CC6DF /* SNFUserProfile.xib */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -658,6 +661,8 @@
 		D65DF1731BE3ED83009CC6DF /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				078DF4C01BE8810600CBFAA4 /* SNFFormViewController.h */,
+				078DF4C11BE8810600CBFAA4 /* SNFFormViewController.m */,
 				D65DF1741BE3ED9F009CC6DF /* SNFSwipeCell.h */,
 				D65DF1751BE3ED9F009CC6DF /* SNFSwipeCell.m */,
 			);
@@ -805,6 +810,7 @@
 				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,
 				D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */,
 				D6270EDD1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.m in Sources */,
+				078DF4C21BE8810600CBFAA4 /* SNFFormViewController.m in Sources */,
 				D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */,
 				D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */,
 				D6270ED81BE817E900F7C39A /* SNFAddBehaviorCell.m in Sources */,
