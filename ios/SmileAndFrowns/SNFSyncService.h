@@ -11,5 +11,6 @@ typedef void(^SNFSyncServiceCallback)(NSError *error, NSObject *boardData);
 - (void)syncWithCompletion:(SNFSyncServiceCallback)completion;
 - (void)updateLocalDataWithResults:(NSDictionary *)results andCallCompletion:(SNFSyncServiceCallback)completion;
 - (void)syncPredefinedBoardsWithCompletion:(SNFSyncServiceCallback)completion;
+- (void)cleanUnownedBoards;
 
 @end

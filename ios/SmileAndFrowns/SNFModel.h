@@ -18,5 +18,6 @@
 + (SNFModel *)sharedInstance;
 
 - (NSString *) lastLoggedInUsername;
+- (void)setLoggedInUser:(SNFUser *)loggedInUser updateLastLoggedIn:(BOOL)updateLastLoggedIn;
 
 @end

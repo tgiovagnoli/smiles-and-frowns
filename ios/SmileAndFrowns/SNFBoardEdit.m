@@ -21,10 +21,20 @@
 	[self updateUI];
 }
 
-
 - (void)updateUI{
 	self.boardTitleField.text = self.board.title;
-	_sortedBehaviors = [[self.board.behaviors allObjects] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.title" ascending:YES]]];
+	[self reloadBehaviors];
+}
+
+- (void)reloadBehaviors{
+	NSArray *behaviors = [self.board.behaviors allObjects];
+	NSMutableArray *activeBehaviors = [[NSMutableArray alloc] init];
+	for(SNFBehavior *behavior in behaviors){
+		if(!behavior.deleted.boolValue){
+			[activeBehaviors addObject:behavior];
+		}
+	}
+	_sortedBehaviors = [activeBehaviors sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.title" ascending:YES]]];
 	[self.behaviorsTable reloadData];
 }
 
@@ -67,17 +77,16 @@
 }
 
 - (void)behaviorCell:(SNFBoardEditBehaviorCell *)cell wantsToDeleteBehavior:(SNFBehavior *)behavior{
-	[self.board removeBehaviorsObject:behavior];
 	behavior.deleted = @YES;
-	[self updateUI];
+	[self reloadBehaviors];
 }
 
 - (void)addBehavior:(SNFAddBehavior *)addBehavior addedBehaviors:(NSArray *)behaviors toBoard:(SNFBoard *)board{
-	[self updateUI];
+	[self reloadBehaviors];
 }
 
 - (void)addBehaviorCancelled:(SNFAddBehavior *)addBehavior{
-	[self updateUI];
+	[self reloadBehaviors];
 }
 
 // rewards

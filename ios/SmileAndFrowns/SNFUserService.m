@@ -31,8 +31,9 @@
 				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Could not create or update user."], nil);
 				return;
 			}
-			
+			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:NO];
 			completion(nil, userData);
+			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:YES];
 		});
 	}];
 	[task resume];
@@ -61,9 +62,9 @@
 				return;
 			}
 			
-			[SNFModel sharedInstance].loggedInUser = userData;
-			
+			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:NO];
 			completion(nil, userData);
+			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:YES];
 		});
 	}];
 	[task resume];
@@ -86,8 +87,9 @@
 				return;
 			}
 			
-			[SNFModel sharedInstance].loggedInUser = nil;
+			[[SNFModel sharedInstance] setLoggedInUser:nil updateLastLoggedIn:NO];
 			completion(nil);
+			[[SNFModel sharedInstance] setLoggedInUser:nil updateLastLoggedIn:YES];
 		});
 	}];
 	[task resume];
@@ -116,8 +118,9 @@
 				return;
 			}
 			
-			[SNFModel sharedInstance].loggedInUser = userData;
+			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:NO];
 			completion(nil, userData);
+			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:YES];
 		});
 	}];
 	[task resume];
