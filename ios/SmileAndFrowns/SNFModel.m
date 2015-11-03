@@ -22,9 +22,7 @@ static SNFModel *_instance;
 
 - (void) setLoggedInUser:(SNFUser *) loggedInUser {
 	_loggedInUser = loggedInUser;
-	if(!loggedInUser) {
-		[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"SNFModel.LoggedInUser"];
-	} else {
+	if(loggedInUser) {
 		[[NSUserDefaults standardUserDefaults] setObject:loggedInUser.username forKey:@"SNFModel.LoggedInUser"];
 	}
 }
