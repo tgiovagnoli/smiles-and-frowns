@@ -100,9 +100,10 @@
 			
 		} else {
 			
-			BOOL hasUserChanged = user.username != [[SNFModel sharedInstance] lastLoggedInUsername];
+			BOOL hasUserChanged = (![user.username isEqualToString:[[SNFModel sharedInstance] lastLoggedInUsername]]);
 			[SNFModel sharedInstance].loggedInUser = user;
 			[self syncAfterLogin:hasUserChanged];
+			
 		}
 	}];
 }
