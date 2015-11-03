@@ -171,7 +171,7 @@
                     </constraints>
                     <state key="normal" title="update"/>
                     <connections>
-                        <action selector="update:" destination="-1" eventType="touchUpInside" id="gaO-1C-J0K"/>
+                        <action selector="updatePassword:" destination="-1" eventType="touchUpInside" id="hw6-dH-HY3"/>
                     </connections>
                 </button>
             </subviews>

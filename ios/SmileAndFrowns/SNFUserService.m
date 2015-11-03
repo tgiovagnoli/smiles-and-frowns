@@ -8,7 +8,7 @@
 
 @implementation SNFUserService
 
-- (void)loginWithEmail:(NSString *)email andPassword:(NSString *)password withCompletion:(SNFUserServiceCallback)completion{
+- (void) loginWithEmail:(NSString *) email andPassword:(NSString *) password withCompletion:(SNFUserServiceCallback) completion {
 	NSURL * serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"login"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:serviceURL variables:@{@"email": email, @"password": password}];
 	NSURLSession * session = [NSURLSession sharedSession];
@@ -31,8 +31,6 @@
 				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Could not create or update user."], nil);
 				return;
 			}
-			
-			[SNFModel sharedInstance].loggedInUser = userData;
 			
 			completion(nil, userData);
 		});

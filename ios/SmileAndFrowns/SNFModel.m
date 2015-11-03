@@ -51,4 +51,8 @@ static SNFModel *_instance;
 	return _loggedInUser;
 }
 
+- (NSString *) lastLoggedInUsername; {
+	return [[NSUserDefaults standardUserDefaults] objectForKey:@"SNFModel.LoggedInUser"];
+}
+
 @end
