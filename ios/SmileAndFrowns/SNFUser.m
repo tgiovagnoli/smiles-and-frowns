@@ -1,7 +1,7 @@
+
 #import "SNFUser.h"
 
 @implementation SNFUser
-
 
 + (NSString *)primaryLookup{
 	return @"username";
@@ -12,6 +12,7 @@
 		@"username": @"username",
 		@"first_name": @"first_name",
 		@"last_name": @"last_name",
+		@"email":@"email",
 		@"age": @"age",
 		@"gender": @"gender",
 		@"remote_id": @"id",

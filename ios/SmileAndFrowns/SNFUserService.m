@@ -100,21 +100,24 @@
 	NSURLSession *session = [NSURLSession sharedSession];
 	NSURLSessionDataTask *task = [session dataTaskWithURL:serviceURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
 		dispatch_sync(dispatch_get_main_queue(), ^{
-			if(error){
+			if(error) {
 				completion(error, nil);
 				return;
 			}
+			
 			NSError *jsonError;
 			NSObject *dataObject = [self responseObjectFromData:data withError:&jsonError];
 			if(jsonError){
 				completion(jsonError, nil);
 				return;
 			}
+			
 			SNFUser *userData = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:(NSDictionary *)dataObject withContext:[SNFModel sharedInstance].managedObjectContext];
 			if(!userData){
 				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Not logged in."], nil);
 				return;
 			}
+			
 			[SNFModel sharedInstance].loggedInUser = userData;
 			completion(nil, userData);
 		});

@@ -1,11 +1,14 @@
+
 #import "ATIFacebookAuthHandler.h"
+
+NSString * const ATIFacebookAuthHandlerSessionChange = @"ATIFacebookAuthHandlerSessionChange";
 
 static ATIFacebookAuthHandler *_instance;
 
 @implementation ATIFacebookAuthHandler
 
-+ (ATIFacebookAuthHandler *)sharedInstance{
-	if(!_instance){
++ (ATIFacebookAuthHandler *) instance {
+	if(!_instance) {
 		_instance = [[ATIFacebookAuthHandler alloc] init];
 	}
 	return _instance;
@@ -26,59 +29,48 @@ static ATIFacebookAuthHandler *_instance;
 }
 
 - (void) sessionStateChanged:(FBSession *) session state:(FBSessionState) state error:(NSError *) error {
-	[[NSNotificationCenter defaultCenter] postNotificationName:ATIFacebookAuthHandlerSessionChange object:self userInfo:@{@"session": session, @"state": [NSNumber numberWithUnsignedInteger:state]}];
+	NSMutableDictionary * info = [NSMutableDictionary dictionaryWithDictionary:@{@"session":session,@"state":@(state)}];
 	
-	if (!error && state == FBSessionStateOpen) {
-		NSLog(@"Session opened");
-		NSObject * tokenData =  FBSession.activeSession.accessTokenData;
-		NSLog(@"%@", tokenData);
+	if(!error && state == FBSessionStateOpen) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:ATIFacebookAuthHandlerSessionChange object:self userInfo:info];
 		return;
 	}
 	
-	if (state == FBSessionStateClosed || state == FBSessionStateClosedLoginFailed){
+	if(error) {
+		info[@"error"] = error;
+	}
+	
+	if(state == FBSessionStateClosed || state == FBSessionStateClosedLoginFailed) {
 		NSLog(@"Session closed");
 	}
 	
-	// Handle errors
-	if (error){
-		NSLog(@"Error");
-		NSString *alertText;
-		NSString *alertTitle;
+	NSString * msg = nil;
+	
+	if(error) {
 		// If the error requires people using an app to make an action outside of the app in order to recover
-		if ([FBErrorUtility shouldNotifyUserForError:error] == YES){
-			alertTitle = @"Something went wrong";
-			alertText = [FBErrorUtility userMessageForError:error];
-			[self showMessage:alertText withTitle:alertTitle];
+		if ([FBErrorUtility shouldNotifyUserForError:error] == YES) {
+			msg = [FBErrorUtility userMessageForError:error];
 		} else {
 			// If the user cancelled login, do nothing
-			if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryUserCancelled) {
-				NSLog(@"User cancelled login");
-				// Handle session closures that happen outside of the app
+			if([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryUserCancelled) {
+				msg = @"You cancelled login";
 			} else if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryAuthenticationReopenSession){
-				alertTitle = @"Session Error";
-				alertText = @"Your current session is no longer valid. Please log in again.";
-				[self showMessage:alertText withTitle:alertTitle];
-				
-				// Here we will handle all other errors with a generic error message.
-				// We recommend you check our Handling Errors guide for more information
-				// https://developers.facebook.com/docs/ios/errors/
+				msg = @"Your current session is no longer valid. Please log in again.";
 			} else {
 				//Get more error information from the error
 				NSDictionary *errorInformation = [[[error.userInfo objectForKey:@"com.facebook.sdk:ParsedJSONResponseKey"] objectForKey:@"body"] objectForKey:@"error"];
-				
-				// Show the user an error message
-				alertTitle = @"Something went wrong";
-				alertText = [NSString stringWithFormat:@"Please retry. \n\n If the problem persists contact us and mention this error code: %@", [errorInformation objectForKey:@"message"]];
-				[self showMessage:alertText withTitle:alertTitle];
+				msg = [NSString stringWithFormat:@"Please retry. \n\n If the problem persists contact us and mention this error code: %@", [errorInformation objectForKey:@"message"]];
 			}
 		}
+		
 		[FBSession.activeSession closeAndClearTokenInformation];
 	}
-}
-
-- (void) showMessage:(NSString *) message withTitle:(NSString *) title {
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-	[alertView show];
+	
+	if(msg) {
+		info[@"msg"] = msg;
+	}
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:ATIFacebookAuthHandlerSessionChange object:self userInfo:info];
 }
 
 @end
