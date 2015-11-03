@@ -223,7 +223,17 @@ def user_update(request):
 		request.user.last_name = lastname
 
 	if password and password_confirm and password == password_confirm:
+		user = request.user
+		
+		#set password
 		request.user.set_password(password)
+
+		#try and authenticate user
+		try: 
+			user = authenticate(username=user.username,password=password)
+			login(request,user)
+		except Exception as e:
+			return json_response_error(str(e))
 
 	if age:
 		request.user.profile.age = age
