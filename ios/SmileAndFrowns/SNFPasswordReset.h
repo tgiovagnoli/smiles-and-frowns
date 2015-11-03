@@ -1,12 +1,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import "SNFFormViewController.h"
 
-@interface SNFPasswordReset : UIViewController
-
-@property IBOutlet UIView * formView;
-@property (weak) IBOutlet UIScrollView * scrollView;
-@property IBOutlet NSLayoutConstraint * scrollViewBottom;
+@interface SNFPasswordReset : SNFFormViewController
 
 @property (weak) IBOutlet UITextField * email;
 

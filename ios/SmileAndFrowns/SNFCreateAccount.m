@@ -9,7 +9,6 @@
 #import "NSTimer+Blocks.h"
 
 @interface SNFCreateAccount ()
-@property BOOL firstlayout;
 @property NSArray * genders;
 @property NSTimer * pickerTimer;
 @end
@@ -18,48 +17,9 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	self.firstlayout = true;
 	self.genders = @[@"--------",@"Male",@"Female"];
 	self.pickerView.delegate = self;
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void) dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void) viewDidLayoutSubviews {
-	if(self.firstlayout) {
-		self.firstlayout = false;
-		self.formView.frame = self.scrollView.bounds;
-		self.scrollView.contentSize = self.scrollView.size;
-		[self.scrollView addSubview:self.formView];
-	}
-}
-
-- (void) keyboardWillShow:(NSNotification *) notification {
-	NSDictionary * userInfo = notification.userInfo;
-	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
-	if(self.scrollViewBottom.constant == keyboardFrameEnd.size.height) {
-		return;
-	}
-	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
-	self.formView.height = 460;
-	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
-}
-
-- (void) keyboardWillHide:(NSNotification *) notification {
-	if(self.scrollViewBottom.constant == 0) {
-		return;
-	}
-	self.scrollViewBottom.constant = 0;
-	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
-	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
-		self.formView.height = self.scrollView.height;
-	} repeats:FALSE];
 }
 
 - (IBAction) onGender:(id)sender {
@@ -76,7 +36,6 @@
 	} completion:^(BOOL finished) {
 		
 	}];
-	
 }
 
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *) pickerView {

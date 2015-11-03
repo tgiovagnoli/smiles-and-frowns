@@ -361,4 +361,64 @@
 	[task resume];
 }
 
+- (void) updateUserWithData:(NSDictionary *) data withCompletion:(SNFUserServiceCallback)completion; {
+	
+	if([data[@"first_name"] isEmpty]) {
+		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"First Name required"],nil);
+	}
+	
+	if([data[@"last_name"] isEmpty]) {
+		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Last Name required"],nil);
+	}
+	
+	if([data[@"email"] isEmpty]) {
+		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Email required"],nil);
+	}
+	
+	if(![data[@"email"] isValidEmail]) {
+		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Incorrect email format"],nil);
+	}
+	
+	if(![data[@"age"] isEmpty] && ([data[@"age"] integerValue] < 0 || [data[@"age"] integerValue] > 99)) {
+		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Age must be between 0 and 99"],nil);
+	}
+	
+	if(![data[@"password"] isEmpty] && ![data[@"password_confirm"] isEmpty]) {
+		if(data[@"password"] != data[@"password_confirm"]) {
+			return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Passwords don't match"],nil);
+		}
+	}
+	
+	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"update"];
+	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
+	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			
+			if(error) {
+				completion(error,nil);
+				return;
+			}
+			
+			NSError * jsonError = nil;
+			NSObject * responseObject = [self responseObjectFromData:data withError:&jsonError];
+			
+			if(jsonError) {
+				completion(jsonError,nil);
+				return;
+			}
+			
+			SNFUser * userData = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:(NSDictionary *)responseObject withContext:[SNFModel sharedInstance].managedObjectContext];
+			if(!userData) {
+				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Not logged in."], nil);
+				return;
+			}
+			
+			[SNFModel sharedInstance].loggedInUser = userData;
+			
+			completion(nil,userData);
+		});
+	}];
+	[task resume];
+}
+
 @end

@@ -6,55 +6,62 @@
 #import "UIAlertAction+Additions.h"
 #import "SNFLauncher.h"
 #import "NSTimer+Blocks.h"
+#import "SNFUserService.h"
 
 @interface SNFUserProfile ()
-@property BOOL firstlayout;
+@property NSArray * genders;
+@property SNFUserService * service;
 @end
 
 @implementation SNFUserProfile
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	self.firstlayout = true;
+	self.genders = @[@"--------",@"Male",@"Female"];
+	self.pickerView.delegate = self;
+	self.pickerView.dataSource = self;
+	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
 	[self loadAuthedUser];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void) dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+- (IBAction) onGender:(id)sender {
+	[self.view endEditing:TRUE];
+	
+	self.pickerviewContainer.frame = self.view.bounds;
+	[self.pickerView reloadAllComponents];
+	
+	self.pickerviewContainer.alpha = 0;
+	[self.view addSubview:self.pickerviewContainer];
+	
+	UIViewAnimationOptions options = UIViewAnimationOptionCurveEaseInOut;
+	[UIView animateWithDuration:.25 delay:0 options:options animations:^{
+		self.pickerviewContainer.alpha = 1;
+	} completion:^(BOOL finished) {
+		
+	}];
 }
 
-- (void) viewDidLayoutSubviews {
-	if(self.firstlayout) {
-		self.firstlayout = false;
-		self.formView.frame = self.scrollView.bounds;
-		self.scrollView.contentSize = self.scrollView.size;
-		[self.scrollView addSubview:self.formView];
-	}
+- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *) pickerView {
+	return 1;
 }
 
-- (void) keyboardWillShow:(NSNotification *) notification {
-	NSDictionary * userInfo = notification.userInfo;
-	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
-	if(self.scrollViewBottom.constant == keyboardFrameEnd.size.height) {
+- (NSInteger) pickerView:(UIPickerView *) pickerView numberOfRowsInComponent:(NSInteger) component {
+	return self.genders.count;
+}
+
+- (NSString *) pickerView:(UIPickerView *) pickerView titleForRow:(NSInteger) row forComponent:(NSInteger) component {
+	return [self.genders objectAtIndex:row];
+}
+
+- (void) pickerView:(UIPickerView *) pickerView didSelectRow:(NSInteger) row inComponent:(NSInteger) component {
+	if(row == 0) {
 		return;
 	}
-	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
-	self.formView.height = 270;
-	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
+	self.gender.text = [self.genders objectAtIndex:row];
 }
 
-- (void) keyboardWillHide:(NSNotification *) notification {
-	if(self.scrollViewBottom.constant == 0) {
-		return;
-	}
-	self.scrollViewBottom.constant = 0;
-	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
-	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
-		self.formView.height = self.scrollView.height;
-	} repeats:FALSE];
+- (IBAction) closePicker:(id)sender {
+	[self.pickerviewContainer removeFromSuperview];
 }
 
 - (void) loadAuthedUser {
@@ -84,13 +91,41 @@
 	self.firstNameField.text = self.user.first_name;
 	self.lastNameField.text = self.user.last_name;
 	self.emailField.text = self.user.email;
-	self.passwordField.text = @"32764789326498326";
-	self.passwordConfirmField.text = @"312764789326498321";
+	//self.passwordField.text = @"32764789326498326";
+	//self.passwordConfirmField.text = @"312764789326498321";
 }
 
-- (BOOL) textFieldShouldReturn:(UITextField *) textField {
-	[textField resignFirstResponder];
-	return NO;
+- (IBAction) update:(id) sender {
+	NSMutableDictionary * data = [NSMutableDictionary dictionary];
+	data[@"first_name"] = self.firstNameField.text;
+	data[@"last_name"] = self.lastNameField.text;
+	data[@"email"] = self.emailField.text;
+	data[@"password"] = self.passwordField.text;
+	data[@"password_confirm"] = self.passwordConfirmField.text;
+	data[@"age"] = self.age.text;
+	data[@"gender"] = self.gender.text.lowercaseString;
+	[self updateUserWithData:data];
+}
+
+- (IBAction) updatePassword:(id)sender {
+	NSMutableDictionary * data = [NSMutableDictionary dictionary];
+	data[@"password"] = self.passwordField.text;
+	data[@"password_confirm"] = self.passwordConfirmField.text;
+	[self updateUserWithData:data];
+}
+
+- (void) updateUserWithData:(NSDictionary *) data {
+	self.service = [[SNFUserService alloc] init];
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	[self.service updateUserWithData:data withCompletion:^(NSError *error, SNFUser *user) {
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		if(error) {
+			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction OKAction]];
+			[self presentViewController:alert animated:TRUE completion:nil];
+			return;
+		}
+	}];
 }
 
 @end

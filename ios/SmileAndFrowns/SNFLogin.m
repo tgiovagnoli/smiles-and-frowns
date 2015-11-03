@@ -16,7 +16,6 @@
 #import "ATIFacebookAuthHandler.h"
 
 @interface SNFLogin ()
-@property BOOL firstlayout;
 @property SNFUserService * service;
 @end
 
@@ -24,47 +23,12 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	self.firstlayout = true;
 	self.service = [[SNFUserService alloc] init];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
 }
 
 - (void) dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void) viewDidLayoutSubviews {
-	if(self.firstlayout) {
-		self.firstlayout = false;
-		self.formView.frame = self.scrollView.bounds;
-		self.scrollView.contentSize = self.scrollView.size;
-		[self.scrollView addSubview:self.formView];
-	}
-}
-
-- (void) keyboardWillShow:(NSNotification *) notification {
-	NSDictionary * userInfo = notification.userInfo;
-	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
-	if(self.scrollViewBottom.constant == keyboardFrameEnd.size.height) {
-		return;
-	}
-	self.formView.height = 364;
-	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
-	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.formView.height);
-}
-
-- (void) keyboardWillHide:(NSNotification *) notification {
-	if(self.scrollViewBottom.constant == 0) {
-		return;
-	}
-	self.scrollViewBottom.constant = 0;
-	self.scrollView.contentSize = CGSizeMake(self.scrollView.width,self.scrollView.height);
-	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
-		self.formView.height = self.scrollView.height;
-	} repeats:FALSE];
 }
 
 - (IBAction) facebookLogin:(id)sender {
@@ -79,11 +43,15 @@
 		NSString * authToken = FBSession.activeSession.accessTokenData.accessToken;
 		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 		[self.service loginWithFacebookAuthToken:authToken withCompletion:^(NSError *error, SNFUser *user) {
-			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-			if(user) {
-				[SNFModel sharedInstance].loggedInUser = user;
-				[self syncAfterLogin];
+			if(error) {
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction OKAction]];
+				[self presentViewController:alert animated:TRUE completion:nil];
+				return;
 			}
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			[SNFModel sharedInstance].loggedInUser = user;
+			[self syncAfterLogin];
 		}];
 	} else if(msg) {
 		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
