@@ -69,24 +69,27 @@ static AppDelegate * _instance;
 			
 			//set pending invite code.
 			NSString * inviteCode = [parts objectAtIndex:1];
-			[SNFModel sharedInstance].pendingInviteCode = inviteCode;
 			
 			if(![SNFModel sharedInstance].loggedInUser) {
 				
-				SNFCreateAccount * signup = [[SNFCreateAccount alloc] init];
-				SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] init];
-				signup.nextViewController = acceptInvite;
-				[[AppDelegate rootViewController] presentViewController:signup animated:TRUE completion:nil];
+				[SNFModel sharedInstance].pendingInviteCode = inviteCode;
+				
+				if([[AppDelegate rootViewController] isKindOfClass:[SNFLauncher class]]) {
+					SNFCreateAccount * signup = [[SNFCreateAccount alloc] init];
+					SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] init];
+					signup.nextViewController = acceptInvite;
+					[[AppDelegate rootViewController] presentViewController:signup animated:TRUE completion:nil];
+				}
 				
 			} else {
 				
-				//user is logged in here, show the invites view.
 				if(![SNFViewController instance]) {
+					
 					SNFViewController * root = [[SNFViewController alloc] init];
 					root.firstTab = SNFTabInvites;
 					self.window.rootViewController = root;
+					
 				}
-				
 			}
 		}
 		
