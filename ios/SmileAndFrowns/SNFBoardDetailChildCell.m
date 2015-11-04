@@ -21,7 +21,7 @@
 	}
 	self.smilesCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)smilesCount];
 	
-	NSFetchRequest *frownFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFSmile"];
+	NSFetchRequest *frownFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFFrown"];
 	frownFetchRequest.resultType = NSCountResultType;
 	frownFetchRequest.predicate = snfPredacate;
 	NSError *frownFetchError = nil;

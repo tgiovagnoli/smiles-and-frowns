@@ -4,8 +4,9 @@
 #import "SNFBoardDetailAdultCell.h"
 #import "SNFBoardDetailChildCell.h"
 #import "SNFAddUserRole.h"
+#import "SNFAddSmileOrFrown.h"
 
-@interface SNFBoardDetail : UIViewController <UITableViewDelegate, UITableViewDataSource, SNFBoardDetailChildCellDelegate>{
+@interface SNFBoardDetail : UIViewController <UITableViewDelegate, UITableViewDataSource, SNFBoardDetailChildCellDelegate, SNFAddSmileOrFrownDelegate>{
 	NSArray *_userRoles;
 }
 

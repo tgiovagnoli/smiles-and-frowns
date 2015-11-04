@@ -47,11 +47,24 @@
 }
 
 - (void)childCellWantsToAddSmile:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	
+	[self addSNFFortype:SNFAddSmileOrFrownTypeSmile andUserRole:userRole];
 }
 
 - (void)childCellWantsToAddFrown:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	
+	[self addSNFFortype:SNFAddSmileOrFrownTypeFrown andUserRole:userRole];
+}
+
+- (void)addSNFFortype:(SNFAddSmileOrFrownType)type andUserRole:(SNFUserRole *)userRole{
+	SNFAddSmileOrFrown *addModal = [[SNFAddSmileOrFrown alloc] init];
+	addModal.type = type;
+	addModal.board = self.board;
+	addModal.user = userRole.user;
+	addModal.delegate = self;
+	[[AppDelegate rootViewController] presentViewController:addModal animated:YES completion:^{}];
+}
+
+- (void)addSmileOrFrownFinished:(SNFAddSmileOrFrown *)addSoF{
+	[self reloadUserRoles];
 }
 
 - (void)childCellWantsToSpend:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
