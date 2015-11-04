@@ -29,6 +29,7 @@
 	[self insertItemWithName:@"Create Unique Board" andSelector:@selector(createUniqueBoard)];
 	[self insertItemWithName:@"Save Managed Context" andSelector:@selector(save)];
 	[self insertItemWithName:@"Sync" andSelector:@selector(sync)];
+	[self insertItemWithName:@"Reset Date and Sync" andSelector:@selector(resetAndSync)];
 	[self insertItemWithName:@"Sync Predefined Boards" andSelector:@selector(syncPredefinedBoards)];
 	[self insertItemWithName:@"Login" andSelector:@selector(login)];
 	[self insertItemWithName:@"Logout" andSelector:@selector(logout)];
@@ -74,6 +75,11 @@
 			[self alertWithMessage:@"logged out"];
 		}
 	}];
+}
+
+- (void)resetAndSync{
+	[SNFModel sharedInstance].userSettings.lastSyncDate = nil;
+	[self sync];
 }
 
 - (void)sync{

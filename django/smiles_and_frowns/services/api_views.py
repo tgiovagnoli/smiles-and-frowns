@@ -551,7 +551,7 @@ def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behavi
 	smiles = models.Smile.objects.filter(~Q(uuid__in=created_object_uuids['smiles']),board__in=boards,device_date__gt=sync_date)
 	frowns = models.Frown.objects.filter(~Q(uuid__in=created_object_uuids['frowns']),board__in=boards,device_date__gt=sync_date)
 	rewards = models.Reward.objects.filter(~Q(uuid__in=created_object_uuids['rewards']),board__in=boards,device_date__gt=sync_date)
-	user_roles = models.UserRole.objects.filter(~Q(uuid__in=created_object_uuids['user_roles']),user=request.user,device_date__gt=sync_date)
+	user_roles = models.UserRole.objects.filter(~Q(uuid__in=created_object_uuids['user_roles']),board__in=boards,device_date__gt=sync_date)
 
 	#remove boards that don't need to be returned to user.
 	remove = []

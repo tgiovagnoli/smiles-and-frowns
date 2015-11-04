@@ -62,6 +62,7 @@ def create_user_profile(sender,instance,created,**kwargs):
 		profile, created = Profile.objects.get_or_create(user=instance)
 post_save.connect(create_user_profile, sender=User)
 
+
 class Board(SyncModel):
 	title = models.CharField(max_length=128)
 	owner = models.ForeignKey(User, unique=False, null=True, on_delete=models.SET_NULL)
