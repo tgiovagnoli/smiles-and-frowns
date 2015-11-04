@@ -213,6 +213,18 @@ def user_update(request):
 	age = request.POST.get('age',None)
 	gender = request.POST.get('gender',None)
 
+	#lookup existing user.
+	user = None
+	try:
+		user = User.objects.get(email=email)
+		return json_response_error("User not found")
+	except:
+		pass
+
+	#check the requesting users username against db record
+	if user and not user.username == request.user.username:
+		return json_response_error("Cannot update user record")
+
 	if email:
 		request.user.email = email
 
@@ -240,6 +252,12 @@ def user_update(request):
 
 	if gender:
 		request.user.profile.gender = gender
+
+	roles = models.UserRole.objects.filter(user=request.user)
+	device_date = UTC.localize( datetime.utcnow() )
+	for role in roles:
+		role.device_date = device_date
+		role.save()
 
 	request.user.save()
 	request.user.profile.save()
@@ -640,22 +658,25 @@ def sync(request):
 		if not userinfo:
 			return json_response_error("Client sync error, userinfo not provided for role with uuid %s" (client_role.get('uuid')))
 
-		#try and find existing user in DB
-		user,created = User.objects.get_or_create(username=userinfo.get('username'))
-		if created:
-			user.email = userinfo.get('email', "")
-			user.first_name = userinfo.get('first_name', "")
-			user.last_name = userinfo.get('last_name', "")
-			#sets a random password for new users.
-			user.set_password(utils.random_password())
-			user.save()
-
 		#find or create role
 		role, created = models.UserRole.objects.get_or_create(uuid=client_role.get('uuid'))
 		if not created:
 			if role.device_date > client_role_date:
 				continue
 
+		#create account if it's a child, other users signup through the normal signup process
+		if role.role == "child":
+			#try and find existing user in DB
+			user,created = User.objects.get_or_create(username=userinfo.get('username'))
+			if created:
+				user.email = ""
+				user.first_name = userinfo.get('first_name','')
+				user.last_name = userinfo.get('last_name','')
+				user.save()
+				user.profile.age = userinfo.get('age','')
+				user.profile.gender = userinfo.get('gender','')
+				user.profile.save()
+		
 		#set role data
 		role.role = client_role.get('role')
 		role.board = board
