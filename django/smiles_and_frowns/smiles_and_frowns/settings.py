@@ -89,6 +89,9 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'fields': 'id, name, email'
 }
 
+SOCIAL_AUTH_TWITTER_KEY = '7ghdn08ov5iF7DymXI1WVxYWn'
+SOCIAL_AUTH_TWITTER_SECRET = 'LuFNvUIq6c05jotBq8YWserlHcjWmlYcbfDnOhfxRp9XiVeov4'
+
 SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'
 SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'
 

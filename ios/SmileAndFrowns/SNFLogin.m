@@ -163,9 +163,6 @@
 			return;
 		}
 		
-		//TODO:
-		//[[SNFSyncService instance] removeObjectsForOtherUsers:[SNFModel sharedInstance].loggedInUser];
-		
 		[self syncPredefinedBoards];
 	}];
 }

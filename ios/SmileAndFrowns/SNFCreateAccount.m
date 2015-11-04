@@ -11,6 +11,7 @@
 #import "UIAlertAction+Additions.h"
 #import "SNFSyncService.h"
 #import "UIViewController+Alerts.h"
+#import "ATITwitterAuthHandler.h"
 
 @interface SNFCreateAccount ()
 @property SNFUserService * service;
@@ -27,6 +28,11 @@
 	self.pickerView.delegate = self;
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTwitterLogin:) name:ATITwitterAuthHandlerSessionChange object:nil];
+}
+
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (IBAction) onGender:(id)sender {
@@ -124,6 +130,44 @@
 	[[ATIFacebookAuthHandler instance] login];
 }
 
+- (IBAction) twitter:(id)sender {
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	[[ATITwitterAuthHandler instance] login];
+}
+
+- (void) onTwitterLogin:(NSNotification *) notification {
+	
+	[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+	
+	TWTRSession * session = [[notification userInfo] objectForKey:@"session"];
+	NSError * error = notification.userInfo[@"error"];
+	
+	if(error) {
+		NSError * error = notification.userInfo[@"error"];
+		[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+		return;
+	}
+	
+	if(session) {
+		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+		
+		[self.service loginWithTwitterAuthToken:session.authToken authSecret:session.authTokenSecret withCompletion:^(NSError *error, SNFUser *user) {
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			if(error) {
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+				return;
+			}
+			
+			BOOL hasUserChanged = (![user.username isEqualToString:[[SNFModel sharedInstance] lastLoggedInUsername]]);
+			[SNFModel sharedInstance].loggedInUser = user;
+			[self syncAfterLogin:hasUserChanged];
+			
+		}];
+	}
+}
+
 - (void) onFacebookLogin:(NSNotification *) notification {
 	FBSessionState state = (FBSessionState)[[[notification userInfo] objectForKey:@"state"] unsignedIntegerValue];
 	NSString * msg = [notification userInfo][@"msg"];
@@ -143,14 +187,13 @@
 			
 			BOOL hasUserChanged = (![user.username isEqualToString:[[SNFModel sharedInstance] lastLoggedInUsername]]);
 			[SNFModel sharedInstance].loggedInUser = user;
-			
 			[self syncAfterLogin:hasUserChanged];
 			
 		}];
 		
 	} else if(msg) {
 		
-		[self displayOKAlertWithTitle:@"Error:" message:msg completion:nil];
+		[self displayOKAlertWithTitle:@"Error" message:msg completion:nil];
 		
 	}
 }

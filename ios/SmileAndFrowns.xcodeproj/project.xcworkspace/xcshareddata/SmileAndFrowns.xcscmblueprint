@@ -4,11 +4,13 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "55AB270A471B75E65D6B77C1FF03D26876B228FD" : 0,
     "0183306A356AB83BA8CBFB37A0A13B9B272D69F4" : 0,
     "775E5D3697FE4E89F0EC1B339D6CA4E5ECD01DBF" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "7E70E3BC-4D5B-4F45-A683-015E4203393B",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "55AB270A471B75E65D6B77C1FF03D26876B228FD" : "AskTheInternet\/",
     "0183306A356AB83BA8CBFB37A0A13B9B272D69F4" : "smiles_and_frowns\/",
     "775E5D3697FE4E89F0EC1B339D6CA4E5ECD01DBF" : "smiles_and_frowns\/ios\/submodules\/apd-objc\/"
   },
@@ -20,6 +22,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ApptitudeDigital\/smiles-and-frowns.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0183306A356AB83BA8CBFB37A0A13B9B272D69F4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ApptitudeDigital\/AskTheInternet.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "55AB270A471B75E65D6B77C1FF03D26876B228FD"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ApptitudeDigital\/apd-objc.git",

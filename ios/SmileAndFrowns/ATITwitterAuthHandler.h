@@ -1,6 +1,7 @@
 
 #import <Foundation/Foundation.h>
 #import <TwitterKit/TwitterKit.h>
+#import <Fabric/Fabric.h>
 
 extern NSString * const ATITwitterAuthHandlerSessionChange;
 
