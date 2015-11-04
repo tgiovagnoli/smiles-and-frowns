@@ -36,6 +36,7 @@
 		078DF4CE1BEA939D00CBFAA4 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4CB1BEA939D00CBFAA4 /* TwitterKit.framework */; };
 		078DF4D31BEA9AF600CBFAA4 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */; };
 		078DF4D51BEA9B1100CBFAA4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */; };
+		078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
 		D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC21BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m */; };
@@ -164,6 +165,7 @@
 		078DF4CB1BEA939D00CBFAA4 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterKit.framework; path = libs/TwitterKit.framework; sourceTree = "<group>"; };
 		078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = libs/TwitterCore.framework; sourceTree = "<group>"; };
 		078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = libs/Fabric.framework; sourceTree = "<group>"; };
+		078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = libs/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
 		D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPredefinedBehavior.m; sourceTree = "<group>"; };
 		D6270EBF1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFPredefinedBehavior+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 		D62D37861BDE7E9700102D6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */,
 				078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */,
 				078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */,
 				078DF4CB1BEA939D00CBFAA4 /* TwitterKit.framework */,
@@ -805,6 +808,7 @@
 				D6DB2BDC1BEAAB3500F1CDFF /* SNFAddReward.xib in Resources */,
 				D6270EDE1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.xib in Resources */,
 				D6270ED91BE817E900F7C39A /* SNFAddBehaviorCell.xib in Resources */,
+				078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */,
 				0707D6C61BE2B2D8002F1FC0 /* SNFAcceptInvite.xib in Resources */,
 				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
 				D65DF1111BE29A42009CC6DF /* SNFTabMenu.xib in Resources */,
@@ -1011,6 +1015,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/Facebook",
@@ -1028,6 +1033,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/Facebook",

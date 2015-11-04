@@ -39,10 +39,13 @@
 }
 
 - (IBAction) twitterLogin:(id)sender {
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	[[ATITwitterAuthHandler instance] login];
 }
 
 - (void) onTwitterLogin:(NSNotification *) notification {
+	[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+	
 	TWTRSession * session = [[notification userInfo] objectForKey:@"session"];
 	NSError * error = notification.userInfo[@"error"];
 	
@@ -162,9 +165,6 @@
 			[self displayOKAlertWithTitle:@"Sync Error" message:error.localizedDescription completion:nil];
 			return;
 		}
-		
-		//TODO:
-		//[[SNFSyncService instance] removeObjectsForOtherUsers:[SNFModel sharedInstance].loggedInUser];
 		
 		[self syncPredefinedBoards];
 	}];
