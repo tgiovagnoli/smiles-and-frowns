@@ -28,13 +28,13 @@ static AppDelegate * _instance;
 - (BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	_instance = self;
 	
+	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
+	[SNFDateManager unlock];
+	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	[FBSDKAppEvents activateApp];
 	[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-	
-	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
-	[SNFDateManager unlock];
 	
 	if(![SNFTutorial hasSeenTutorial]) {
 		self.window.rootViewController = [[SNFTutorial alloc] init];

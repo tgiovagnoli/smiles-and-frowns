@@ -70,6 +70,37 @@
 	[task resume];
 }
 
+- (void)loginWithTwitterAuthToken:(NSString *) token authSecret:(NSString *) secret withCompletion:(SNFUserServiceCallback)completion; {
+	NSURL * serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"token_auth/twitter"];
+	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:serviceURL variables:@{@"access_token":token,@"access_token_secret":secret}];
+	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			if(error) {
+				completion(error, nil);
+				return;
+			}
+			
+			NSError * jsonError;
+			NSObject * dataObject = [self responseObjectFromData:data withError:&jsonError];
+			if(jsonError) {
+				completion(jsonError, nil);
+				return;
+			}
+			
+			SNFUser * userData = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:(NSDictionary *)dataObject withContext:[SNFModel sharedInstance].managedObjectContext];
+			if(!userData) {
+				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Could not create or update user."], nil);
+				return;
+			}
+			
+			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:NO];
+			completion(nil, userData);
+			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:YES];
+		});
+	}];
+	[task resume];
+}
+
 - (void)logoutWithCompletion:(void(^)(NSError *error))completion{
 	NSURL * serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"logout"];
 	NSURLSession * session = [NSURLSession sharedSession];

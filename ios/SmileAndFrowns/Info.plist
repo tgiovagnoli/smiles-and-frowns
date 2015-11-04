@@ -47,10 +47,40 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>dd9dae4444426d0773e7517acfffb755bf483efb</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>FacebookAppID</key>
 	<string>1641664296087724</string>
 	<key>FacebookDisplayName</key>
 	<string>Smiles And Frowns Test</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fbapi20130214</string>
+		<string>fbapi20130410</string>
+		<string>fbapi20130702</string>
+		<string>fbapi20131010</string>
+		<string>fbapi20131219</string>
+		<string>fbapi20140410</string>
+		<string>fbapi20140116</string>
+		<string>fbapi20150313</string>
+		<string>fbapi20150629</string>
+		<string>fbauth</string>
+		<string>fbauth2</string>
+		<string>fb-messenger-api20140430</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -62,6 +92,10 @@
 	<string>SNFDebugImac</string>
 	<key>SNFDebug</key>
 	<dict>
+		<key>TwitterKey</key>
+		<string>7ghdn08ov5iF7DymXI1WVxYWn</string>
+		<key>TwitterSecret</key>
+		<string>LuFNvUIq6c05jotBq8YWserlHcjWmlYcbfDnOhfxRp9XiVeov4</string>
 		<key>apiPath</key>
 		<string>api</string>
 		<key>serverURL</key>
@@ -69,6 +103,10 @@
 	</dict>
 	<key>SNFDebugImac</key>
 	<dict>
+		<key>TwitterKey</key>
+		<string>7ghdn08ov5iF7DymXI1WVxYWn</string>
+		<key>TwitterSecret</key>
+		<string>LuFNvUIq6c05jotBq8YWserlHcjWmlYcbfDnOhfxRp9XiVeov4</string>
 		<key>apiPath</key>
 		<string>api</string>
 		<key>serverURL</key>
@@ -86,21 +124,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>fbapi</string>
-		<string>fbapi20130214</string>
-		<string>fbapi20130410</string>
-		<string>fbapi20130702</string>
-		<string>fbapi20131010</string>
-		<string>fbapi20131219</string>
-		<string>fbapi20140410</string>
-		<string>fbapi20140116</string>
-		<string>fbapi20150313</string>
-		<string>fbapi20150629</string>
-		<string>fbauth</string>
-		<string>fbauth2</string>
-		<string>fb-messenger-api20140430</string>
-	</array>
 </dict>
 </plist>

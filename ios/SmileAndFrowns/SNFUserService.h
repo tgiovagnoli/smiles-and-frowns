@@ -21,6 +21,7 @@ typedef void(^SNFInvitesCompletion)(NSError * error);
 - (void)authedUserInfoWithCompletion:(SNFUserServiceCallback)completion;
 - (void)loginWithEmail:(NSString *)email andPassword:(NSString *)password withCompletion:(SNFUserServiceCallback)completion;
 - (void)loginWithFacebookAuthToken:(NSString *) token withCompletion:(SNFUserServiceCallback)completion;
+- (void)loginWithTwitterAuthToken:(NSString *) token authSecret:(NSString *) secret withCompletion:(SNFUserServiceCallback)completion;
 - (void)logoutWithCompletion:(void(^)(NSError *error))completion;
 - (void)resetPasswordForEmail:(NSString *) email andCompletion:(void(^)(NSError *error))completion;
 - (void)updateUserWithData:(NSDictionary *) data withCompletion:(SNFUserServiceCallback)completion;

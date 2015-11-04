@@ -6,5 +6,7 @@
 @property (readonly) NSURL *apiURL;
 
 - (NSURL *)apiURLForPath:(NSString *)path;
+- (NSString *) twitterKey;
+- (NSString *) twitterSecret;
 
 @end

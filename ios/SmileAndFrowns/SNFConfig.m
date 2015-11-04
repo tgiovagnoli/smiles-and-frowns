@@ -18,4 +18,16 @@
 	return [[self apiURL] URLByAppendingPathComponent:path];
 }
 
+- (NSString *) twitterKey {
+	NSString *configName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SNFConfig"];
+	NSDictionary *configData = [[NSBundle mainBundle] objectForInfoDictionaryKey:configName];
+	return configData[@"TwitterKey"];
+}
+
+- (NSString *) twitterSecret; {
+	NSString *configName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SNFConfig"];
+	NSDictionary *configData = [[NSBundle mainBundle] objectForInfoDictionaryKey:configName];
+	return configData[@"TwitterSecret"];
+}
+
 @end

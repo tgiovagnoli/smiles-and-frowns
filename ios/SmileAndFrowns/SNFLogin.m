@@ -14,6 +14,7 @@
 #import "SNFSyncService.h"
 #import "NSTimer+Blocks.h"
 #import "ATIFacebookAuthHandler.h"
+#import "ATITwitterAuthHandler.h"
 #import "UIViewController+Alerts.h"
 
 @interface SNFLogin ()
@@ -26,6 +27,7 @@
 	[super viewDidLoad];
 	self.service = [[SNFUserService alloc] init];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTwitterLogin:) name:ATITwitterAuthHandlerSessionChange object:nil];
 }
 
 - (void) dealloc {
@@ -34,6 +36,40 @@
 
 - (IBAction) facebookLogin:(id)sender {
 	[[ATIFacebookAuthHandler instance] login];
+}
+
+- (IBAction) twitterLogin:(id)sender {
+	[[ATITwitterAuthHandler instance] login];
+}
+
+- (void) onTwitterLogin:(NSNotification *) notification {
+	TWTRSession * session = [[notification userInfo] objectForKey:@"session"];
+	NSError * error = notification.userInfo[@"error"];
+	
+	if(error) {
+		NSError * error = notification.userInfo[@"error"];
+		[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+		return;
+	}
+	
+	if(session) {
+		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+		
+		[self.service loginWithTwitterAuthToken:session.authToken authSecret:session.authTokenSecret withCompletion:^(NSError *error, SNFUser *user) {
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			if(error) {
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+				return;
+			}
+			
+			BOOL hasUserChanged = (![user.username isEqualToString:[[SNFModel sharedInstance] lastLoggedInUsername]]);
+			[SNFModel sharedInstance].loggedInUser = user;
+			[self syncAfterLogin:hasUserChanged];
+			
+		}];
+	}
 }
 
 - (void) onFacebookLogin:(NSNotification *) notification {
@@ -52,10 +88,11 @@
 				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 				return;
 			}
-			NSLog(@"%@ : %@", user.username, [[SNFModel sharedInstance] lastLoggedInUsername]);
+			
 			BOOL hasUserChanged = (![user.username isEqualToString:[[SNFModel sharedInstance] lastLoggedInUsername]]);
 			[SNFModel sharedInstance].loggedInUser = user;
 			[self syncAfterLogin:hasUserChanged];
+			
 		}];
 		
 	} else if(msg) {
