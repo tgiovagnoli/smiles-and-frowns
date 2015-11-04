@@ -68,4 +68,15 @@
 	return [activeBehaviors sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.title" ascending:YES]]];
 }
 
+- (NSArray *)sortedActiveRewards{
+	NSArray *rewards = [self.rewards allObjects];
+	NSMutableArray *activeRewards = [[NSMutableArray alloc] init];
+	for(SNFBehavior *reward in rewards){
+		if(!reward.deleted.boolValue){
+			[activeRewards addObject:reward];
+		}
+	}
+	return [activeRewards sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.created_date" ascending:NO]]];
+}
+
 @end

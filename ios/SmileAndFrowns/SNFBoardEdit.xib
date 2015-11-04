@@ -10,6 +10,7 @@
                 <outlet property="behaviorsTable" destination="Vzw-KH-7l0" id="7EG-kB-xMA"/>
                 <outlet property="boardTitleField" destination="Hs5-M3-Y9s" id="Ii2-ct-gXQ"/>
                 <outlet property="cancelButton" destination="5bm-Bp-QfH" id="p9U-Yz-EQk"/>
+                <outlet property="rewardInfoLabel" destination="cgB-fl-b33" id="Evf-2T-pEw"/>
                 <outlet property="rewardsCollectionView" destination="IcH-QM-Bj3" id="XY9-Hu-dtZ"/>
                 <outlet property="useBoardButton" destination="3h8-f4-WaF" id="4NM-nj-ngt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -75,10 +76,23 @@
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caI-IA-KpP">
                     <rect key="frame" x="0.0" y="520" width="600" height="40"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgB-fl-b33">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="cgB-fl-b33" secondAttribute="trailing" id="kRe-Ru-Ra1"/>
+                        <constraint firstItem="cgB-fl-b33" firstAttribute="top" secondItem="caI-IA-KpP" secondAttribute="top" id="lvB-BN-tKL"/>
+                        <constraint firstItem="cgB-fl-b33" firstAttribute="leading" secondItem="caI-IA-KpP" secondAttribute="leading" id="pB8-7g-eV4"/>
                         <constraint firstAttribute="height" constant="40" id="spf-Dw-wFq"/>
+                        <constraint firstAttribute="bottom" secondItem="cgB-fl-b33" secondAttribute="bottom" id="yJF-91-bi1"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Md1-ZG-DHg">

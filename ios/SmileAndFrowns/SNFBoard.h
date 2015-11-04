@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)reset;
 - (NSArray *)sortedActiveBehaviors;
-
+- (NSArray *)sortedActiveRewards;
 
 @end
 

@@ -8,6 +8,7 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	self.rewardInfoLabel.text = @"";
 	[self.rewardsCollectionView registerClass:[SNFRewardCell class] forCellWithReuseIdentifier:@"SNFRewardCell"];
 	[self.rewardsCollectionView registerNib:[UINib nibWithNibName:@"SNFRewardCell" bundle:nil] forCellWithReuseIdentifier:@"SNFRewardCell"];
 	[self.rewardsCollectionView registerClass:[SNFAddCell class] forCellWithReuseIdentifier:@"SNFAddCell"];
@@ -89,6 +90,7 @@
 
 // rewards
 - (void)reloadRewards{
+	_sortedRewards = [self.board sortedActiveRewards];
 	[self.rewardsCollectionView reloadData];
 }
 
@@ -116,7 +118,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-	return self.board.rewards.count + 1;
+	return _sortedRewards.count + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -128,15 +130,21 @@
 	
 	SNFRewardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SNFRewardCell" forIndexPath:indexPath];
 	
-	NSArray *rewards = [self.board.rewards allObjects];
-	SNFReward *reward = [rewards objectAtIndex:indexPath.row - 1];
+	SNFReward *reward = [_sortedRewards objectAtIndex:indexPath.row - 1];
 	cell.reward = reward;
 	return cell;
 }
 
 - (void)addCellWantsToAdd:(SNFAddCell *)addCell{
 	NSLog(@"add new  reward");
-	
+	SNFAddReward *addReward = [[SNFAddReward alloc] init];
+	addReward.board = self.board;
+	addReward.delegate = self;
+	[self presentViewController:addReward animated:YES completion:^{}];
+}
+
+- (void)addRewardIsFinished:(SNFAddReward *)addReward{
+	[self reloadRewards];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -150,7 +158,8 @@
 	if(indexPath.row == 0){
 		return;
 	}
-
+	SNFReward *reward = [_sortedRewards objectAtIndex:indexPath.row - 1];
+	self.rewardInfoLabel.text = [NSString stringWithFormat:@"%.2f = %.2f %@", reward.smile_amount.floatValue, reward.currency_amount.floatValue, reward.title];
 }
 
 

@@ -29,6 +29,12 @@
 	if(!self.last_name){
 		self.last_name = @"";
 	}
+	if(!self.gender){
+		self.gender = @"";
+	}
+	if(!self.age){
+		self.age = [NSNumber numberWithInt:0];
+	}
 	[super awakeFromInsert];
 }
 
