@@ -194,7 +194,7 @@
 				[self presentViewController:alert animated:YES completion:^{}];
 			}
 		}else{
-			NSString *message = [NSString stringWithFormat:@"%@ has been invited to your board %@.", self.emailField.text, self.board.title];
+			NSString *message = [NSString stringWithFormat:@"%@ has been invited to your board %@.  They will show up once they have accepted the invite.", self.emailField.text, self.board.title];
 			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
 			[alert addAction:[UIAlertAction OKAction]];
 			[self presentViewController:alert animated:YES completion:^{}];

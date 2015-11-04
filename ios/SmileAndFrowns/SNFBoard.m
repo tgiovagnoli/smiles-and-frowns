@@ -57,4 +57,15 @@
 	self.title = @"Untitled";
 }
 
+- (NSArray *)sortedActiveBehaviors{
+	NSArray *behaviors = [self.behaviors allObjects];
+	NSMutableArray *activeBehaviors = [[NSMutableArray alloc] init];
+	for(SNFBehavior *behavior in behaviors){
+		if(!behavior.deleted.boolValue){
+			[activeBehaviors addObject:behavior];
+		}
+	}
+	return [activeBehaviors sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.title" ascending:YES]]];
+}
+
 @end

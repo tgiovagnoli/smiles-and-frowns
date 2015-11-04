@@ -27,14 +27,7 @@
 }
 
 - (void)reloadBehaviors{
-	NSArray *behaviors = [self.board.behaviors allObjects];
-	NSMutableArray *activeBehaviors = [[NSMutableArray alloc] init];
-	for(SNFBehavior *behavior in behaviors){
-		if(!behavior.deleted.boolValue){
-			[activeBehaviors addObject:behavior];
-		}
-	}
-	_sortedBehaviors = [activeBehaviors sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.title" ascending:YES]]];
+	_sortedBehaviors = [self.board sortedActiveBehaviors];
 	[self.behaviorsTable reloadData];
 }
 
