@@ -93,10 +93,14 @@
 	self.firstNameField.text = self.user.first_name;
 	self.lastNameField.text = self.user.last_name;
 	self.emailField.text = self.user.email;
-	self.age.text = [NSString stringWithFormat:@"%@",self.user.age];
+	
+	if([self.user.age integerValue] != 0) {
+		self.age.text = [NSString stringWithFormat:@"%@",self.user.age];
+	}
+	
 	if([self.user.gender isEqualToString:@"male"]) {
 		self.gender.text = @"Male";
-	} else {
+	} else if([self.user.gender isEqualToString:@"female"]) {
 		self.gender.text = @"Female";
 	}
 }
