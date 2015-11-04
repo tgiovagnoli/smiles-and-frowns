@@ -14,6 +14,7 @@
 #import "SNFSyncService.h"
 #import "NSTimer+Blocks.h"
 #import "ATIFacebookAuthHandler.h"
+#import "UIViewController+Alerts.h"
 
 @interface SNFLogin ()
 @property SNFUserService * service;
@@ -48,7 +49,7 @@
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				[self displayAlert:error.localizedDescription withTitle:@"Error"];
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 				return;
 			}
 			NSLog(@"%@ : %@", user.username, [[SNFModel sharedInstance] lastLoggedInUsername]);
@@ -59,7 +60,7 @@
 		
 	} else if(msg) {
 		
-		[self displayAlert:msg withTitle:@"Error"];
+		[self displayOKAlertWithTitle:@"Error:" message:msg completion:nil];
 		
 	}
 }
@@ -95,7 +96,7 @@
 		
 		if(error) {
 			
-			[self displayAlert:error.localizedDescription withTitle:@"Login Error"];
+			[self displayOKAlertWithTitle:@"Login Error" message:error.localizedDescription completion:nil];
 			
 		} else {
 			
@@ -121,7 +122,7 @@
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
-			[self displayAlert:error.localizedDescription withTitle:@"Sync Error"];
+			[self displayOKAlertWithTitle:@"Sync Error" message:error.localizedDescription completion:nil];
 			return;
 		}
 		
@@ -142,19 +143,13 @@
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
-			[self displayAlert:error.localizedDescription withTitle:@"Sync Error"];
+			[self displayOKAlertWithTitle:@"Sync Error" message:error.localizedDescription completion:nil];
 			return;
 		}
 		
 		[self closeModal];
 		
 	}];
-}
-
-- (void) displayAlert:(NSString *) msg withTitle:(NSString *) title {
-	UIAlertController * alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-	[alert addAction:[UIAlertAction OKAction]];
-	[self presentViewController:alert animated:TRUE completion:nil];
 }
 
 - (void) closeModal {

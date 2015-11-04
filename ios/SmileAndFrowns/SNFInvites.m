@@ -5,6 +5,7 @@
 #import "SNFInvite.h"
 #import "SNFAcceptInvite.h"
 #import "AppDelegate.h"
+#import "UIViewController+Alerts.h"
 
 @interface SNFInvites ()
 @property SNFUserService * service;
@@ -22,12 +23,13 @@
 	[self reload];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	
 	[self.service invitesWithCompletion:^(NSError *error) {
+		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
 		if(error) {
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[self presentViewController:alert animated:TRUE completion:nil];
+			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 		} else {
 			[self reload];
 		}

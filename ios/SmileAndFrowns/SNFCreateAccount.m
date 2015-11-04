@@ -10,6 +10,7 @@
 #import "ATIFacebookAuthHandler.h"
 #import "UIAlertAction+Additions.h"
 #import "SNFSyncService.h"
+#import "UIViewController+Alerts.h"
 
 @interface SNFCreateAccount ()
 @property SNFUserService * service;
@@ -88,9 +89,7 @@
 		
 		if(error) {
 			
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Signup Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-			[self presentViewController:alert animated:TRUE completion:nil];
+			[self displayOKAlertWithTitle:@"Signup Error" message:error.localizedDescription completion:nil];
 			
 		} else {
 			
@@ -105,6 +104,7 @@
 - (IBAction) cancel:(id)sender {
 	[self.view endEditing:TRUE];
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
+	[SNFModel sharedInstance].pendingInviteCode = nil;
 }
 
 - (IBAction) login:(id)sender {
@@ -137,7 +137,7 @@
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				[self displayAlert:error.localizedDescription withTitle:@"Error"];
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 				return;
 			}
 			
@@ -150,7 +150,7 @@
 		
 	} else if(msg) {
 		
-		[self displayAlert:msg withTitle:@"Error"];
+		[self displayOKAlertWithTitle:@"Error:" message:msg completion:nil];
 		
 	}
 }
@@ -169,7 +169,7 @@
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
-			[self displayAlert:error.localizedDescription withTitle:@"Sync Error"];
+			[self displayOKAlertWithTitle:@"Sync Error" message:error.localizedDescription completion:nil];
 			return;
 		}
 		
@@ -186,7 +186,7 @@
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
-			[self displayAlert:error.localizedDescription withTitle:@"Sync Error"];
+			[self displayOKAlertWithTitle:@"Sync Error" message:error.localizedDescription completion:nil];
 			return;
 		}
 		
@@ -200,12 +200,6 @@
 			[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
 		}
 	}];
-}
-
-- (void) displayAlert:(NSString *) msg withTitle:(NSString *) title {
-	UIAlertController * alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
-	[alert addAction:[UIAlertAction OKAction]];
-	[self presentViewController:alert animated:TRUE completion:nil];
 }
 
 @end

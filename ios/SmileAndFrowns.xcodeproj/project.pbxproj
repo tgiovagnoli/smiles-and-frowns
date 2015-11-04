@@ -31,6 +31,7 @@
 		078DF4B91BE8109D00CBFAA4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B61BE8109D00CBFAA4 /* FBSDKLoginKit.framework */; };
 		078DF4BF1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4BE1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m */; };
 		078DF4C21BE8810600CBFAA4 /* SNFFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4C11BE8810600CBFAA4 /* SNFFormViewController.m */; };
+		078DF4C51BEA62F600CBFAA4 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4C41BEA62F600CBFAA4 /* UIViewController+Alerts.m */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
 		D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC21BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m */; };
@@ -144,6 +145,8 @@
 		078DF4BE1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATIFacebookAuthHandler.m; sourceTree = "<group>"; };
 		078DF4C01BE8810600CBFAA4 /* SNFFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFFormViewController.h; sourceTree = "<group>"; };
 		078DF4C11BE8810600CBFAA4 /* SNFFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFFormViewController.m; sourceTree = "<group>"; };
+		078DF4C31BEA62F600CBFAA4 /* UIViewController+Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alerts.h"; sourceTree = "<group>"; };
+		078DF4C41BEA62F600CBFAA4 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alerts.m"; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
 		D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPredefinedBehavior.m; sourceTree = "<group>"; };
 		D6270EBF1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFPredefinedBehavior+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -665,6 +668,8 @@
 				078DF4C11BE8810600CBFAA4 /* SNFFormViewController.m */,
 				D65DF1741BE3ED9F009CC6DF /* SNFSwipeCell.h */,
 				D65DF1751BE3ED9F009CC6DF /* SNFSwipeCell.m */,
+				078DF4C31BEA62F600CBFAA4 /* UIViewController+Alerts.h */,
+				078DF4C41BEA62F600CBFAA4 /* UIViewController+Alerts.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -771,6 +776,7 @@
 				D65DF17A1BE3F884009CC6DF /* SNFBoardEdit.m in Sources */,
 				078DF4BF1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m in Sources */,
 				D65DF1761BE3ED9F009CC6DF /* SNFSwipeCell.m in Sources */,
+				078DF4C51BEA62F600CBFAA4 /* UIViewController+Alerts.m in Sources */,
 				D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */,
 				D65DF1121BE29A42009CC6DF /* SNFUserProfile.m in Sources */,
 				D659DBF41BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m in Sources */,
