@@ -4,6 +4,8 @@
 #import "NSString+Additions.h"
 #import "SNFBoardEditBehaviorCell.h"
 #import "SNFAddBehavior.h"
+#import "SNFRewardCell.h"
+#import "SNFAddCell.h"
 
 @class SNFBoardEdit;
 
@@ -11,8 +13,9 @@
 - (void)boardEditor:(SNFBoardEdit *)be finishedWithBoard:(SNFBoard *)board;
 @end
 
-@interface SNFBoardEdit : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate>{
+@interface SNFBoardEdit : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate, SNFAddCellDelegate>{
 	NSArray *_sortedBehaviors;
+	NSArray *_sortedRewards;
 }
 
 @property (weak) IBOutlet UITextField *boardTitleField;

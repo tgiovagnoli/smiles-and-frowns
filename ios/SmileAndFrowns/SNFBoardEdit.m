@@ -8,6 +8,10 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	[self.rewardsCollectionView registerClass:[SNFRewardCell class] forCellWithReuseIdentifier:@"SNFRewardCell"];
+	[self.rewardsCollectionView registerNib:[UINib nibWithNibName:@"SNFRewardCell" bundle:nil] forCellWithReuseIdentifier:@"SNFRewardCell"];
+	[self.rewardsCollectionView registerClass:[SNFAddCell class] forCellWithReuseIdentifier:@"SNFAddCell"];
+	[self.rewardsCollectionView registerNib:[UINib nibWithNibName:@"SNFAddCell" bundle:nil] forCellWithReuseIdentifier:@"SNFAddCell"];
 }
 
 - (void)setBoard:(SNFBoard *)board{
@@ -24,6 +28,7 @@
 - (void)updateUI{
 	self.boardTitleField.text = self.board.title;
 	[self reloadBehaviors];
+	[self reloadRewards];
 }
 
 - (void)reloadBehaviors{
@@ -83,6 +88,10 @@
 }
 
 // rewards
+- (void)reloadRewards{
+	[self.rewardsCollectionView reloadData];
+}
+
 - (IBAction)onUpdateBoard:(UIButton *)sender{
 	if([self.boardTitleField.text isEmpty]){
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"You must set a title for this board" preferredStyle:UIAlertControllerStyleAlert];
@@ -105,5 +114,45 @@
 		[self.delegate boardEditor:self finishedWithBoard:self.board];
 	}
 }
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+	return self.board.rewards.count + 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+	if(indexPath.row == 0){
+		SNFAddCell *addCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SNFAddCell" forIndexPath:indexPath];
+		addCell.delegate = self;
+		return addCell;
+	}
+	
+	SNFRewardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SNFRewardCell" forIndexPath:indexPath];
+	
+	NSArray *rewards = [self.board.rewards allObjects];
+	SNFReward *reward = [rewards objectAtIndex:indexPath.row - 1];
+	cell.reward = reward;
+	return cell;
+}
+
+- (void)addCellWantsToAdd:(SNFAddCell *)addCell{
+	NSLog(@"add new  reward");
+	
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+	if(indexPath.row == 0){
+		return NO;
+	}
+	return YES;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+	if(indexPath.row == 0){
+		return;
+	}
+
+}
+
+
 
 @end

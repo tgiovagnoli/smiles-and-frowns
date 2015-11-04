@@ -111,6 +111,12 @@
 		D65DF1761BE3ED9F009CC6DF /* SNFSwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1751BE3ED9F009CC6DF /* SNFSwipeCell.m */; };
 		D65DF17A1BE3F884009CC6DF /* SNFBoardEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1781BE3F884009CC6DF /* SNFBoardEdit.m */; };
 		D65DF17B1BE3F884009CC6DF /* SNFBoardEdit.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF1791BE3F884009CC6DF /* SNFBoardEdit.xib */; };
+		D6DB2BD01BEAA03300F1CDFF /* SNFRewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BCE1BEAA03300F1CDFF /* SNFRewardCell.m */; };
+		D6DB2BD11BEAA03300F1CDFF /* SNFRewardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DB2BCF1BEAA03300F1CDFF /* SNFRewardCell.xib */; };
+		D6DB2BD51BEAA0BA00F1CDFF /* SNFAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BD31BEAA0BA00F1CDFF /* SNFAddCell.m */; };
+		D6DB2BD61BEAA0BA00F1CDFF /* SNFAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DB2BD41BEAA0BA00F1CDFF /* SNFAddCell.xib */; };
+		D6DB2BDB1BEAAB3500F1CDFF /* SNFAddReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BD91BEAAB3500F1CDFF /* SNFAddReward.m */; };
+		D6DB2BDC1BEAAB3500F1CDFF /* SNFAddReward.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DB2BDA1BEAAB3500F1CDFF /* SNFAddReward.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -289,6 +295,15 @@
 		D65DF1771BE3F884009CC6DF /* SNFBoardEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBoardEdit.h; sourceTree = "<group>"; };
 		D65DF1781BE3F884009CC6DF /* SNFBoardEdit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoardEdit.m; sourceTree = "<group>"; };
 		D65DF1791BE3F884009CC6DF /* SNFBoardEdit.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFBoardEdit.xib; sourceTree = "<group>"; };
+		D6DB2BCD1BEAA03300F1CDFF /* SNFRewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFRewardCell.h; sourceTree = "<group>"; };
+		D6DB2BCE1BEAA03300F1CDFF /* SNFRewardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFRewardCell.m; sourceTree = "<group>"; };
+		D6DB2BCF1BEAA03300F1CDFF /* SNFRewardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFRewardCell.xib; sourceTree = "<group>"; };
+		D6DB2BD21BEAA0BA00F1CDFF /* SNFAddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFAddCell.h; sourceTree = "<group>"; };
+		D6DB2BD31BEAA0BA00F1CDFF /* SNFAddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFAddCell.m; sourceTree = "<group>"; };
+		D6DB2BD41BEAA0BA00F1CDFF /* SNFAddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFAddCell.xib; sourceTree = "<group>"; };
+		D6DB2BD81BEAAB3500F1CDFF /* SNFAddReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFAddReward.h; sourceTree = "<group>"; };
+		D6DB2BD91BEAAB3500F1CDFF /* SNFAddReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFAddReward.m; sourceTree = "<group>"; };
+		D6DB2BDA1BEAAB3500F1CDFF /* SNFAddReward.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFAddReward.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,6 +468,7 @@
 		D62D37921BDE7FCA00102D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D6DB2BD71BEAAAAD00F1CDFF /* Rewards */,
 				D62E1CE31BEA6B9100EF8725 /* Smiles And Frowns */,
 				D6270ECF1BE817DA00F7C39A /* Behaviors */,
 				0707D6C11BE2B2CB002F1FC0 /* Accept Invite */,
@@ -656,6 +672,9 @@
 		D65DF13C1BE2B8F1009CC6DF /* Boards */ = {
 			isa = PBXGroup;
 			children = (
+				D6DB2BD21BEAA0BA00F1CDFF /* SNFAddCell.h */,
+				D6DB2BD31BEAA0BA00F1CDFF /* SNFAddCell.m */,
+				D6DB2BD41BEAA0BA00F1CDFF /* SNFAddCell.xib */,
 				D65DF13D1BE2BB88009CC6DF /* SNFBoardDetail.h */,
 				D65DF13E1BE2BB88009CC6DF /* SNFBoardDetail.m */,
 				D65DF13F1BE2BB88009CC6DF /* SNFBoardDetail.xib */,
@@ -705,6 +724,19 @@
 				078DF4C41BEA62F600CBFAA4 /* UIViewController+Alerts.m */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		D6DB2BD71BEAAAAD00F1CDFF /* Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				D6DB2BCD1BEAA03300F1CDFF /* SNFRewardCell.h */,
+				D6DB2BCE1BEAA03300F1CDFF /* SNFRewardCell.m */,
+				D6DB2BCF1BEAA03300F1CDFF /* SNFRewardCell.xib */,
+				D6DB2BD81BEAAB3500F1CDFF /* SNFAddReward.h */,
+				D6DB2BD91BEAAB3500F1CDFF /* SNFAddReward.m */,
+				D6DB2BDA1BEAAB3500F1CDFF /* SNFAddReward.xib */,
+			);
+			name = Rewards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -770,6 +802,7 @@
 				D6270ED71BE817E900F7C39A /* SNFAddBehavior.xib in Resources */,
 				D65DF15B1BE2F59F009CC6DF /* SNFAddUserRole.xib in Resources */,
 				0707D6D11BE2B301002F1FC0 /* SNFPasswordReset.xib in Resources */,
+				D6DB2BDC1BEAAB3500F1CDFF /* SNFAddReward.xib in Resources */,
 				D6270EDE1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.xib in Resources */,
 				D6270ED91BE817E900F7C39A /* SNFAddBehaviorCell.xib in Resources */,
 				0707D6C61BE2B2D8002F1FC0 /* SNFAcceptInvite.xib in Resources */,
@@ -782,7 +815,9 @@
 				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
 				D65DF14B1BE2BF94009CC6DF /* SNFBoardDetailChildCell.xib in Resources */,
 				D65DF12A1BE2AA50009CC6DF /* SNFBoardList.xib in Resources */,
+				D6DB2BD11BEAA03300F1CDFF /* SNFRewardCell.xib in Resources */,
 				D62E1CE81BEA6BBD00EF8725 /* SNFAddSmileOrFrown.xib in Resources */,
+				D6DB2BD61BEAA0BA00F1CDFF /* SNFAddCell.xib in Resources */,
 				0707D6CC1BE2B2F8002F1FC0 /* SNFCreateAccount.xib in Resources */,
 				D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */,
 				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
@@ -839,6 +874,7 @@
 				D6270ECC1BE817D200F7C39A /* SNFPredefinedBehaviorGroup+CoreDataProperties.m in Sources */,
 				D6270ECE1BE817D200F7C39A /* SNFPredefinedBoard+CoreDataProperties.m in Sources */,
 				D65DF1401BE2BB88009CC6DF /* SNFBoardDetail.m in Sources */,
+				D6DB2BDB1BEAAB3500F1CDFF /* SNFAddReward.m in Sources */,
 				0707D6A91BE29BC4002F1FC0 /* SNFLauncher.m in Sources */,
 				D65DF14A1BE2BF94009CC6DF /* SNFBoardDetailChildCell.m in Sources */,
 				D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */,
@@ -863,8 +899,10 @@
 				D659DBEF1BDAEA000048D3F7 /* SNFBehavior.m in Sources */,
 				0707D6E01BE42970002F1FC0 /* UIAlertAction+Additions.m in Sources */,
 				0707D6D01BE2B301002F1FC0 /* SNFPasswordReset.m in Sources */,
+				D6DB2BD01BEAA03300F1CDFF /* SNFRewardCell.m in Sources */,
 				D62E1CE71BEA6BBD00EF8725 /* SNFAddSmileOrFrown.m in Sources */,
 				D65DF12F1BE2AE6D009CC6DF /* SNFMore.m in Sources */,
+				D6DB2BD51BEAA0BA00F1CDFF /* SNFAddCell.m in Sources */,
 				D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */,
 				D6272FC11BE002160024CBC2 /* NSTimer+Blocks.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
