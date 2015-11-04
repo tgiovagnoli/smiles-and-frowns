@@ -6,6 +6,7 @@
 #import "SNFViewController.h"
 #import "NSTimer+Blocks.h"
 #import "SNFSyncService.h"
+#import "UIViewController+Alerts.h"
 
 NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 
@@ -42,9 +43,7 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Invitation Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-			[self presentViewController:alert animated:TRUE completion:nil];
+			[self displayOKAlertWithTitle:@"Invitation Error" message:error.localizedDescription completion:nil];
 			return;
 		}
 		
@@ -65,11 +64,11 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 		[[SNFSyncService instance] updateLocalDataWithResults:data andCallCompletion:^(NSError *error, NSObject *boardData) {
 			
 			if(error) {
-				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Invitation Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-				[self presentViewController:alert animated:TRUE completion:nil];
+				[self displayOKAlertWithTitle:@"Invitation Error" message:error.localizedDescription completion:nil];
 				return;
 			}
+			
+			[SNFModel sharedInstance].pendingInviteCode = nil;
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
@@ -90,6 +89,7 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 - (IBAction) cancel:(id) sender {
 	[self.view endEditing:TRUE];
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
+	[SNFModel sharedInstance].pendingInviteCode = nil;
 }
 
 @end

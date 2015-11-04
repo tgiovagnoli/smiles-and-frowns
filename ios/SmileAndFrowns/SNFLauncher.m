@@ -9,6 +9,7 @@
 #import "NSTimer+Blocks.h"
 #import "UIAlertAction+Additions.h"
 #import "SNFCreateAccount.h"
+#import "UIViewController+Alerts.h"
 
 @interface SNFLauncher ()
 @property BOOL firstlayout;
@@ -31,6 +32,20 @@
 	}
 	
 	[[SNFModel sharedInstance] addObserver:self forKeyPath:@"loggedInUser" options:NSKeyValueObservingOptionNew context:nil];
+	
+	if([SNFModel sharedInstance].pendingInviteCode) {
+		[NSTimer scheduledTimerWithTimeInterval:.3 block:^{
+			SNFCreateAccount * create = [[SNFCreateAccount alloc] init];
+			create.nextViewController = [[SNFAcceptInvite alloc] init];
+			[[AppDelegate rootViewController] presentViewController:create animated:TRUE completion:nil];
+		} repeats:FALSE];
+	}
+}
+
+- (void) viewDidLayoutSubviews {
+	if(self.firstlayout) {
+		self.firstlayout = false;
+	}
 }
 
 - (void) dealloc {
@@ -85,24 +100,16 @@
 
 - (IBAction) login:(id) sender {
 	if([SNFModel sharedInstance].loggedInUser) {
-		
 		SNFUserService * service = [[SNFUserService alloc] init];
 		[service logoutWithCompletion:^(NSError *error) {
-			
 			if(error) {
-				UIAlertController * alert = [[UIAlertController alloc] init];
-				[alert addAction:[UIAlertAction OKAction]];
-				[self presentViewController:alert animated:TRUE completion:nil];
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 			} else {
 				[SNFModel sharedInstance].loggedInUser = nil;
 			}
-			
 		}];
-		
 	} else {
-		
 		[[AppDelegate rootViewController] presentViewController:[[SNFLogin alloc] init] animated:TRUE completion:nil];
-		
 	}
 }
 

@@ -7,6 +7,7 @@
 #import "SNFLauncher.h"
 #import "NSTimer+Blocks.h"
 #import "SNFUserService.h"
+#import "UIViewController+Alerts.h"
 
 @interface SNFUserProfile ()
 @property BOOL isUpdatingPassword;
@@ -79,7 +80,6 @@
 			[self presentViewController:alert animated:TRUE completion:nil];
 			return;
 		}
-		
 		self.user = user;
 	}];
 }
@@ -93,6 +93,12 @@
 	self.firstNameField.text = self.user.first_name;
 	self.lastNameField.text = self.user.last_name;
 	self.emailField.text = self.user.email;
+	self.age.text = [NSString stringWithFormat:@"%@",self.user.age];
+	if([self.user.gender isEqualToString:@"male"]) {
+		self.gender.text = @"Male";
+	} else {
+		self.gender.text = @"Female";
+	}
 }
 
 - (IBAction) update:(id) sender {
@@ -134,9 +140,7 @@
 	}
 	
 	if(msg) {
-		UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Form Error" message:msg preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction OKAction]];
-		[self presentViewController:alert animated:TRUE completion:nil];
+		[self displayOKAlertWithTitle:@"Form Error" message:msg completion:nil];
 		return;
 	}
 	
@@ -145,29 +149,31 @@
 
 - (void) updateUserWithData:(NSDictionary *) data {
 	self.service = [[SNFUserService alloc] init];
+	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	
 	[self.service updateUserWithData:data withCompletion:^(NSError * error, SNFUser * user) {
+		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[self presentViewController:alert animated:TRUE completion:nil];
+			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 			return;
 		}
 		
 		self.passwordField.text = @"";
 		self.passwordConfirmField.text = @"";
 		self.user = user;
+		NSString * msg = nil;
+		NSString * title = @"Profile Updated";
 		
-		UIAlertController * alert = nil;
 		if(self.isUpdatingPassword) {
-			alert = [UIAlertController alertControllerWithTitle:@"Profile Updated" message:@"Your password was updated" preferredStyle:UIAlertControllerStyleAlert];
+			msg = @"Your password was updated";
 		} else {
-			alert = [UIAlertController alertControllerWithTitle:@"Profile Updated" message:@"Your profile was updated" preferredStyle:UIAlertControllerStyleAlert];
+			msg = @"Your profile was updated";
 		}
-		[alert addAction:[UIAlertAction OKAction]];
-		[self presentViewController:alert animated:TRUE completion:nil];
+		
+		[self displayOKAlertWithTitle:title message:msg completion:nil];
 	}];
 }
 
