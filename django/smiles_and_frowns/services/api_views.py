@@ -217,13 +217,12 @@ def user_update(request):
 	user = None
 	try:
 		user = User.objects.get(email=email)
-		return json_response_error("User not found")
-	except:
-		pass
+	except Exception as e:
+		return json_response_error(str(e))
 
-	#check the requesting users username against db record
-	if user and not user.username == request.user.username:
-		return json_response_error("Cannot update user record")
+	#check the requesting user's username against db record
+	if user and user.username != request.user.username:
+		return json_response_error("Cannot update user record, email address is already used")
 
 	if email:
 		request.user.email = email
@@ -676,7 +675,7 @@ def sync(request):
 				user.profile.age = userinfo.get('age','')
 				user.profile.gender = userinfo.get('gender','')
 				user.profile.save()
-		
+
 		#set role data
 		role.role = client_role.get('role')
 		role.board = board
