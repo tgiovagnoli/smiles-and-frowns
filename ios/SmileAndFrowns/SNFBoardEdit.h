@@ -30,7 +30,6 @@
 @property (nonatomic) IBOutlet SNFBoard *board;
 @property (weak) NSObject <SNFBoardEditDelegate> *delegate;
 
-
 - (IBAction)onUpdateBoard:(UIButton *)sender;
 - (IBAction)onCancel:(UIButton *)sender;
 

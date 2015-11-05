@@ -76,6 +76,9 @@
 				break;
 		}
 	}
+	if(self.delegate){
+		[self.delegate addSmileOrFrownFinished:self];
+	}
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
@@ -100,6 +103,9 @@
 }
 
 - (IBAction)onCancel:(UIButton *)sender{
+	if(self.delegate){
+		[self.delegate addSmileOrFrownFinished:self];
+	}
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 

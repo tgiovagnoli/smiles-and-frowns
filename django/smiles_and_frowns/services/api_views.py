@@ -802,7 +802,7 @@ def sync(request):
 		frown.behavior = behavior
 		frown.deleted = client_frown.get('deleted',False)
 		frown.device_date = client_frown_date
-		frown.note = client_smile.get('note', '')
+		frown.note = client_frown.get('note', '')
 		frown.save()
 
 		#set created in lookup

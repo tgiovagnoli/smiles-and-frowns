@@ -4,6 +4,7 @@
 #import "SNFFrown.h"
 #import "SNFInvite.h"
 #import "SNFReward.h"
+#import "SNFUser.h"
 
 @implementation SNFBoard
 
@@ -77,6 +78,43 @@
 		}
 	}
 	return [activeRewards sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.created_date" ascending:NO]]];
+}
+
+- (NSArray *)smilesForUser:(SNFUser *)user{
+	NSMutableArray *usersSmiles = [[NSMutableArray alloc] init];
+	for(SNFSmile *smile in self.smiles){
+		if([smile.user.username isEqualToString:user.username] && !smile.deleted.boolValue){
+			[usersSmiles addObject:smile];
+		}
+	}
+	return usersSmiles;
+}
+
+- (NSArray *)frownsForUser:(SNFUser *)user{
+	NSMutableArray *usersFrowns = [[NSMutableArray alloc] init];
+	for(SNFSmile *frown in self.frowns){
+		if([frown.user.username isEqualToString:user.username] && !frown.deleted.boolValue){
+			[usersFrowns addObject:frown];
+		}
+	}
+	return usersFrowns;
+}
+
+- (NSInteger)smileCurrencyForUser:(SNFUser *)user{
+	NSInteger smileCurrency = 0;
+	NSArray *smiles = [self smilesForUser:user];
+	SNFSmile *smile;
+	for(smile in smiles){
+		if(!smile.collected.boolValue){
+			smileCurrency += 1;
+		}
+	}
+	NSArray *frowns = [self frownsForUser:user];
+	SNFFrown *frown;
+	for(frown in frowns){
+		smileCurrency -= 1;
+	}
+	return smileCurrency;
 }
 
 @end

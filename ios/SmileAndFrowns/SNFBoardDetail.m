@@ -4,7 +4,6 @@
 
 @implementation SNFBoardDetail
 
-
 - (void)viewDidLoad{
 	[super viewDidLoad];
 	[self updateUI];
@@ -79,7 +78,15 @@
 }
 
 - (void)childCellWantsToSpend:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	
+	SNFSpendRewards *rewards = [[SNFSpendRewards alloc] init];
+	rewards.board = self.board;
+	rewards.user = userRole.user;
+	rewards.delegate = self;
+	[self presentViewController:rewards animated:YES completion:^{}];
+}
+
+- (void)spendRewardsIsDone:(SNFSpendRewards *)spendRewards{
+	[self reloadUserRoles];
 }
 
 - (IBAction)backToBoards:(UIButton *)sender{

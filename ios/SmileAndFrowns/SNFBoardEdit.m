@@ -129,7 +129,6 @@
 	}
 	
 	SNFRewardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SNFRewardCell" forIndexPath:indexPath];
-	
 	SNFReward *reward = [_sortedRewards objectAtIndex:indexPath.row - 1];
 	cell.reward = reward;
 	return cell;
@@ -159,7 +158,7 @@
 		return;
 	}
 	SNFReward *reward = [_sortedRewards objectAtIndex:indexPath.row - 1];
-	self.rewardInfoLabel.text = [NSString stringWithFormat:@"%.2f = %.2f %@", reward.smile_amount.floatValue, reward.currency_amount.floatValue, reward.title];
+	self.rewardInfoLabel.text = [NSString stringWithFormat:@"%.2f Smiles = %.2f %@", reward.smile_amount.floatValue, reward.currency_amount.floatValue, reward.title];
 }
 
 
