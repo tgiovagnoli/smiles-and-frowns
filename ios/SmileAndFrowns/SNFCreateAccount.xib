@@ -35,7 +35,7 @@
                         <constraint firstAttribute="height" constant="30" id="cXk-0I-1R2"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="CMr-qP-rfk"/>
@@ -50,7 +50,7 @@
                         <constraint firstAttribute="height" constant="30" id="Nka-jr-K8J"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="I1q-Kj-5d8"/>
@@ -65,7 +65,7 @@
                         <constraint firstAttribute="width" constant="350" id="RSK-yu-WKc"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="RSK-yu-WKc"/>
@@ -80,7 +80,7 @@
                         <constraint firstAttribute="height" constant="30" id="6WX-Ad-dKd"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="0HS-Rs-0HR"/>
@@ -95,7 +95,7 @@
                         <constraint firstAttribute="height" constant="30" id="sPC-9x-iZf"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="JSY-id-TcH"/>
@@ -175,7 +175,7 @@
                         <constraint firstAttribute="height" constant="30" id="PfN-gz-97c"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="done"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="Mll-3I-Ii2"/>

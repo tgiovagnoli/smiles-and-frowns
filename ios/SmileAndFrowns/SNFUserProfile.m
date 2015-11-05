@@ -45,7 +45,7 @@
 }
 
 - (CGFloat) minViewHeightForViewStackController:(UIViewControllerStack *)viewStack isScrollView:(BOOL)isScrollView {
-	return self.formView.height+self.scrollView.top;
+	return self.initialFormHeight + self.scrollView.top;
 }
 
 - (void) viewStack:(UIViewControllerStack *) viewStack didResizeViewController:(UIViewController *) viewController {

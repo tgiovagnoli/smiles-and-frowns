@@ -6,7 +6,7 @@
 
 @interface SNFFormViewController ()
 @property BOOL firstlayout;
-@property CGFloat initialFormHeight;
+@property CGFloat superScrollViewHeight;
 @end
 
 @implementation SNFFormViewController
@@ -49,14 +49,28 @@
 
 - (void) keyboardWillShow:(NSNotification *) notification {
 	CGFloat bottom = [self scrollViewBottomConstraint:notification];
-	self.scrollViewBottom.constant = bottom;
-	[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
-		self.formView.height = self.initialFormHeight;
-	} repeats:FALSE];
+	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
+		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
+		self.superScrollViewHeight = containerScrollView.height;
+		containerScrollView.height -= bottom;
+		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
+			self.formView.height = self.initialFormHeight;
+		} repeats:FALSE];
+	} else {
+		self.scrollViewBottom.constant = bottom;
+		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
+			self.formView.height = self.initialFormHeight;
+		} repeats:FALSE];
+	}
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
-	self.scrollViewBottom.constant = 0;
+	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
+		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
+		containerScrollView.height = self.superScrollViewHeight;
+	} else {
+		self.scrollViewBottom.constant = 0;
+	}
 }
 
 @end
