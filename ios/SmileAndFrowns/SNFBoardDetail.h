@@ -1,3 +1,4 @@
+
 #import <UIKit/UIKit.h>
 #import "SNFBoard.h"
 #import "SNFUserRole.h"
@@ -7,7 +8,7 @@
 #import "SNFAddSmileOrFrown.h"
 
 @interface SNFBoardDetail : UIViewController <UITableViewDelegate, UITableViewDataSource, SNFBoardDetailChildCellDelegate, SNFAddSmileOrFrownDelegate>{
-	NSArray *_userRoles;
+	NSArray * _userRoles;
 }
 
 @property (weak) IBOutlet UITableView *rolesTable;
