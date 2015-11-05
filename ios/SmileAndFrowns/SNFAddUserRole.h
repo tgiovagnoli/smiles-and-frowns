@@ -4,6 +4,7 @@
 #import "MBProgressHUD.h"
 #import "SNFFormViewController.h"
 #import "SNFBoard.h"
+#import "SNFTaggedAlertAction.h"
 
 extern NSString * const SNFAddUserRoleAddedChild;
 

@@ -54,4 +54,10 @@
 	}
 }
 
+- (IBAction)onReport:(UIButton *)sender{
+	if(self.delegate){
+		[self.delegate childCellWantsToOpenReport:self forUserRole:self.userRole];
+	}
+}
+
 @end

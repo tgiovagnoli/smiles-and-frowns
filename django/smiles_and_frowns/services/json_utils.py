@@ -111,6 +111,7 @@ def smile_info_dictionary(smile):
 	if smile.behavior: smile_data["behavior"] = {"uuid": smile.behavior.uuid}
 	if smile.board: smile_data['board'] = {'uuid':smile.board.uuid}
 	if smile.user: smile_data["user"] = {"username": smile.user.username}
+	if smile.creator: smile_data["creator"] = {"username": smile.creator.username}
 	return smile_data
 
 def frown_info_dictionary_collection(frowns):
@@ -128,6 +129,7 @@ def frown_info_dictionary(frown):
 	if frown.behavior: frown_data["behavior"] = {"uuid": frown.behavior.uuid}
 	if frown.board: frown_data['board'] = {'uuid':frown.board.uuid}
 	if frown.user: frown_data["user"] = {"username":frown.user.username}
+	if frown.creator: frown_data["creator"] = {"username": frown.creator.username}
 	return frown_data
 
 def invite_info_dictionary_collection(invites):

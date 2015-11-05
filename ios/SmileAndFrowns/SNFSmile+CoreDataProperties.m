@@ -15,6 +15,7 @@
 @dynamic remote_id;
 @dynamic board;
 @dynamic user;
+@dynamic creator;
 @dynamic behavior;
 @dynamic note;
 

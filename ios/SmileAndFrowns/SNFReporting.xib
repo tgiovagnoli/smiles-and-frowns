@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFReporting">
+            <connections>
+                <outlet property="filterType" destination="OGB-TS-eoU" id="o9J-t8-0pi"/>
+                <outlet property="reportTable" destination="Qr6-YS-1m6" id="WJ2-Nx-wWw"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qr6-YS-1m6">
+                    <rect key="frame" x="0.0" y="98" width="600" height="502"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="6q5-ED-TOF"/>
+                        <outlet property="delegate" destination="-1" id="EiK-6a-1IF"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lca-i1-e2I">
+                    <rect key="frame" x="0.0" y="0.0" width="34" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Jnb-pc-qdd"/>
+                    </constraints>
+                    <state key="normal" title="Back"/>
+                    <connections>
+                        <action selector="onCancel:" destination="-1" eventType="touchUpInside" id="lZl-Hw-yES"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bM7-74-bW4">
+                    <rect key="frame" x="50" y="0.0" width="500" height="30"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="eVZ-gW-mSz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7B-zS-VQG">
+                    <rect key="frame" x="554" y="0.0" width="46" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="1fA-8j-zCV"/>
+                    </constraints>
+                    <state key="normal" title="Export"/>
+                </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OGB-TS-eoU">
+                    <rect key="frame" x="20" y="50" width="560" height="29"/>
+                    <animations/>
+                    <segments>
+                        <segment title="This Board"/>
+                        <segment title="All"/>
+                    </segments>
+                    <connections>
+                        <action selector="onFilterChange:" destination="-1" eventType="valueChanged" id="Aa9-v6-LqO"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="bM7-74-bW4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="09Q-l0-sbr"/>
+                <constraint firstItem="W7B-zS-VQG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0Dx-h3-Jrx"/>
+                <constraint firstItem="OGB-TS-eoU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="6wh-qB-L5a"/>
+                <constraint firstItem="Lca-i1-e2I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7O1-a7-asT"/>
+                <constraint firstAttribute="trailing" secondItem="bM7-74-bW4" secondAttribute="trailing" constant="50" id="B7F-NI-w9i"/>
+                <constraint firstItem="Lca-i1-e2I" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GAE-8Y-2eE"/>
+                <constraint firstAttribute="trailing" secondItem="Qr6-YS-1m6" secondAttribute="trailing" id="SmQ-K5-gGB"/>
+                <constraint firstItem="Qr6-YS-1m6" firstAttribute="top" secondItem="OGB-TS-eoU" secondAttribute="bottom" constant="20" id="Xwe-JB-eSx"/>
+                <constraint firstItem="bM7-74-bW4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="50" id="dLb-lo-ASz"/>
+                <constraint firstAttribute="bottom" secondItem="Qr6-YS-1m6" secondAttribute="bottom" id="fEv-Nj-MDJ"/>
+                <constraint firstItem="Qr6-YS-1m6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gFM-9I-LDQ"/>
+                <constraint firstItem="OGB-TS-eoU" firstAttribute="top" secondItem="bM7-74-bW4" secondAttribute="bottom" constant="20" id="gKO-KZ-cIG"/>
+                <constraint firstAttribute="trailing" secondItem="W7B-zS-VQG" secondAttribute="trailing" id="pwz-Dq-JrI"/>
+                <constraint firstAttribute="trailing" secondItem="OGB-TS-eoU" secondAttribute="trailing" constant="20" id="vaO-AR-s5f"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <point key="canvasLocation" x="505" y="429"/>
+        </view>
+    </objects>
+</document>

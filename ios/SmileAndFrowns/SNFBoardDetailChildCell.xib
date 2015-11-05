@@ -66,6 +66,14 @@
                             <action selector="onFrown:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6Oy-Sb-frF"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2o-fQ-YZg">
+                        <rect key="frame" x="8" y="8" width="76" height="52"/>
+                        <animations/>
+                        <state key="normal" title="r"/>
+                        <connections>
+                            <action selector="onReport:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nFD-ci-OAM"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <animations/>
                 <constraints>
@@ -76,14 +84,18 @@
                     <constraint firstItem="QDd-CV-W1X" firstAttribute="width" secondItem="ss8-yC-l4c" secondAttribute="width" id="9cd-cg-Bhx"/>
                     <constraint firstItem="ss8-yC-l4c" firstAttribute="centerY" secondItem="m05-MF-XYM" secondAttribute="centerY" id="Bth-sz-VS8"/>
                     <constraint firstItem="QDd-CV-W1X" firstAttribute="centerY" secondItem="ss8-yC-l4c" secondAttribute="centerY" id="DO1-MO-atg"/>
+                    <constraint firstItem="Q2o-fQ-YZg" firstAttribute="width" secondItem="zWm-LH-Teg" secondAttribute="width" id="Eii-OS-t96"/>
                     <constraint firstItem="zWm-LH-Teg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Imk-m0-GmR"/>
+                    <constraint firstItem="Q2o-fQ-YZg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="L4j-jo-Opd"/>
                     <constraint firstItem="grE-lr-Wgr" firstAttribute="centerX" secondItem="QDd-CV-W1X" secondAttribute="centerX" id="P76-uc-lB1"/>
                     <constraint firstItem="ss8-yC-l4c" firstAttribute="leading" secondItem="m05-MF-XYM" secondAttribute="trailing" id="PDr-Zp-az7"/>
                     <constraint firstItem="RCh-dq-XBc" firstAttribute="centerX" secondItem="ss8-yC-l4c" secondAttribute="centerX" id="Qm2-xl-oGw"/>
                     <constraint firstItem="ss8-yC-l4c" firstAttribute="top" secondItem="RCh-dq-XBc" secondAttribute="bottom" id="Stt-de-XSh"/>
+                    <constraint firstItem="Q2o-fQ-YZg" firstAttribute="centerX" secondItem="zWm-LH-Teg" secondAttribute="centerX" id="Wpy-Sx-oDF"/>
                     <constraint firstAttribute="topMargin" secondItem="grE-lr-Wgr" secondAttribute="top" id="WuV-TG-cfC"/>
                     <constraint firstAttribute="topMargin" secondItem="RCh-dq-XBc" secondAttribute="top" id="ZKL-sq-qgc"/>
                     <constraint firstItem="QDd-CV-W1X" firstAttribute="top" secondItem="grE-lr-Wgr" secondAttribute="bottom" id="ZLr-en-4O6"/>
+                    <constraint firstItem="zWm-LH-Teg" firstAttribute="top" secondItem="Q2o-fQ-YZg" secondAttribute="bottom" id="a2e-hA-kpp"/>
                     <constraint firstItem="m05-MF-XYM" firstAttribute="centerY" secondItem="zWm-LH-Teg" secondAttribute="centerY" id="csd-7C-rPx"/>
                     <constraint firstItem="m05-MF-XYM" firstAttribute="width" secondItem="zWm-LH-Teg" secondAttribute="width" id="kiv-9X-uNv"/>
                     <constraint firstItem="RCh-dq-XBc" firstAttribute="width" secondItem="ss8-yC-l4c" secondAttribute="width" id="njw-Gs-Ozg"/>

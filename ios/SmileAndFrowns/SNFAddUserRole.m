@@ -53,7 +53,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	self.gender.text = [self.genders objectAtIndex:row];
 }
 
-- (void) addChildRole {
+- (void)addChildRole{
 	if(!self.board) {
 		[self displayOKAlertWithTitle:@"Error" message:@"Board required" completion:nil];
 		return;
@@ -68,25 +68,57 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		[self displayOKAlertWithTitle:@"Form Error" message:@"Last Name required" completion:nil];
 		return;
 	}
-	
-	NSString * gender = @"";
-	
-	if(![self.gender.text isEmpty]) {
-		gender = [self.gender.text lowercaseString];
+	// check to see if a child exists
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SNFUser"];
+	request.predicate = [NSPredicate predicateWithFormat:@"(first_name CONTAINS[cd] %@) && (last_name CONTAINS[cd] %@)", self.firstname.text, self.lastname.text];
+	NSArray *results = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:request error:nil];
+	if(results.count > 0){
+		NSString *message = [NSString stringWithFormat:@"Would you like to associate one of these existing users with this board?"];
+		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleActionSheet];
+		NSInteger userIndex = 0;
+		for(SNFUser *user in results){
+			NSString *userName = [NSString stringWithFormat:@"%@ %@", user.first_name, user.last_name];
+			SNFTaggedAlertAction *childAction = [SNFTaggedAlertAction actionWithTitle:userName style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+				SNFTaggedAlertAction *alertAction = (SNFTaggedAlertAction *)action;
+				SNFUser *selectedUser = [results objectAtIndex:alertAction.tag];
+				[self addChildRoleWithUser:selectedUser];
+			}];
+			childAction.tag = userIndex;
+			[alert addAction:childAction];
+			userIndex ++;
+		}
+		[alert addAction:[UIAlertAction actionWithTitle:@"Create As New Child" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {}]];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+		[self presentViewController:alert animated:YES completion:^{}];
+		return;
+	}
+}
+
+- (void) addChildRoleWithUser:(SNFUser *)user{
+	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
+	if(!user){
+		NSString * gender = @"";
+		
+		if(![self.gender.text isEmpty]) {
+			gender = [self.gender.text lowercaseString];
+		}
+		
+		NSNumber * age = [NSNumber numberWithInteger:[self.age.text integerValue]];
+		NSDictionary *userInfo = @{
+								   @"first_name": self.firstname.text,
+								   @"last_name": self.lastname.text,
+								   @"email": self.email.text,
+								   @"age":age,
+								   @"gender":gender
+								   };
+		user = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:userInfo withContext:context];
 	}
 	
-	NSNumber * age = [NSNumber numberWithInteger:[self.age.text integerValue]];
 	
 	NSDictionary *info = @{
 		@"role":@"child",
 		@"board":@{@"uuid": self.board.uuid},
-		@"user":@{
-			@"first_name": self.firstname.text,
-			@"last_name": self.lastname.text,
-			@"email": self.email.text,
-			@"age":age,
-			@"gender":gender
-		}
+		@"user": [user infoDictionary]
 	};
 	
 	[SNFUserRole editOrCreatefromInfoDictionary:info withContext:[SNFModel sharedInstance].managedObjectContext];
