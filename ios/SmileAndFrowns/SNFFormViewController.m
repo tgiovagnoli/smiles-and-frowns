@@ -22,6 +22,8 @@
 
 - (void) viewDidLayoutSubviews {
 	if(self.firstlayout) {
+		//self.formView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:.4];
+		//self.scrollView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:.4];
 		self.firstlayout = false;
 		self.formView.width = self.scrollView.width;
 		self.scrollView.contentSize = self.formView.size;

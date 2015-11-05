@@ -1,45 +1,25 @@
+
 #import <UIKit/UIKit.h>
 #import <ContactsUI/ContactsUI.h>
-#import "SNFUserRole.h"
+#import "MBProgressHUD.h"
+#import "SNFFormViewController.h"
 #import "SNFBoard.h"
-#import "NSString+Additions.h"
-#import "UIView+LayoutHelpers.h"
 
-typedef NS_ENUM(NSInteger, SNFUserRoleAdd){
-	SNFUserRoleAddChild,
-	SNFUserRoleAddParent,
-	SNFUserRoleAddGuardian
-};
+extern NSString * const SNFAddUserRoleAddedChild;
 
-typedef void(^SNFAddUserRoleCallback)(NSError *error, SNFUserRole *userRole);
+@interface SNFAddUserRole : SNFFormViewController <UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,CNContactPickerDelegate>
 
-@interface SNFAddUserRole : UIViewController <UITextFieldDelegate, CNContactPickerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>{
-	SNFAddUserRoleCallback _completion;
-	NSArray *_pickerValues;
-	BOOL _hasLaidOut;
-}
+@property SNFBoard * board;
 
-@property (weak) IBOutlet UITextField *firstNameField;
-@property (weak) IBOutlet UITextField *lastNameField;
-@property (weak) IBOutlet UISegmentedControl *roleControl;
-@property (weak) IBOutlet UITextField *emailField;
-@property (weak) IBOutlet UITextField *genderField;
-@property (weak) IBOutlet UITextField *ageField;
-@property (weak) IBOutlet UIImageView *profileImageView;
+@property (weak) IBOutlet UISegmentedControl * segment;
+@property (weak) IBOutlet UITextField * firstname;
+@property (weak) IBOutlet UITextField * lastname;
+@property (weak) IBOutlet UITextField * email;
+@property (weak) IBOutlet UIButton * genderOverlay;
+@property (weak) IBOutlet UITextField * gender;
+@property (weak) IBOutlet UITextField * age;
 
-@property IBOutlet UIView *genderPickerContainer;
-@property (weak) IBOutlet UIPickerView *genderPicker;
-
-@property (readonly) SNFBoard *board;
-
-- (void)setBoard:(SNFBoard *)board andCompletion:(SNFAddUserRoleCallback)completion;
-
-- (IBAction)onAddRole:(UIButton *)sender;
-- (IBAction)onCancel:(UIButton *)sender;
-- (IBAction)onAddFromContacts:(UIButton *)sender;
-- (IBAction)closeGenderPicker:(UIButton *)sender;
-- (void)addChildRole;
-- (void)addParentRole;
-- (void)addGuardianRole;
+@property (weak) IBOutlet UIPickerView * pickerview;
+@property IBOutlet UIView * pickerviewContainer;
 
 @end

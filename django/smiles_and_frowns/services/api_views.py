@@ -252,6 +252,7 @@ def user_update(request):
 	if gender:
 		request.user.profile.gender = gender
 
+	#update the device_date for all the user roles. this triggers a sync for anyone else on next sync
 	roles = models.UserRole.objects.filter(user=request.user)
 	device_date = UTC.localize( datetime.utcnow() )
 	for role in roles:

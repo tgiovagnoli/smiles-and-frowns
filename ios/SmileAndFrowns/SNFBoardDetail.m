@@ -4,14 +4,24 @@
 
 @implementation SNFBoardDetail
 
-- (void)viewDidLoad{
+- (void) viewDidLoad {
 	[super viewDidLoad];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserRoleAddedChild:) name:SNFAddUserRoleAddedChild object:nil];
 	[self updateUI];
 }
 
 - (void)updateUI{
 	self.titleLabel.text = self.board.title;
 	[self reloadUserRoles];
+}
+
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) onUserRoleAddedChild:(NSNotification *) note {
+	[self reloadUserRoles];
+	[self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -43,13 +53,8 @@
 
 - (IBAction)onAddUserRole:(id)sender{
 	SNFAddUserRole *addUserRole = [[SNFAddUserRole alloc] init];
-	[[AppDelegate rootViewController] presentViewController:addUserRole animated:YES completion:^{}];
-	[addUserRole setBoard:self.board andCompletion:^(NSError *error, SNFUserRole *userRole) {
-		[[AppDelegate rootViewController] dismissViewControllerAnimated:YES completion:^{}];
-		if(userRole){
-			[self reloadUserRoles];
-		}
-	}];
+	addUserRole.board = self.board;
+	[self presentViewController:addUserRole animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
