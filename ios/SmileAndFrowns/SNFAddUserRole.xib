@@ -164,12 +164,12 @@
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYH-t5-3YD">
-                    <rect key="frame" x="244" y="289" width="112" height="30"/>
+                    <rect key="frame" x="212" y="289" width="176" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="SWz-fc-48O"/>
-                        <constraint firstAttribute="width" constant="112" id="nVB-vV-lth"/>
+                        <constraint firstAttribute="width" constant="176" id="nVB-vV-lth"/>
                     </constraints>
                     <state key="normal" title="Add Person"/>
                     <connections>
@@ -177,12 +177,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rK7-yY-OwN">
-                    <rect key="frame" x="244" y="327" width="112" height="30"/>
+                    <rect key="frame" x="212" y="327" width="176" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166949999995" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="9ca-hX-4w5"/>
-                        <constraint firstAttribute="width" constant="112" id="GW9-dY-knw"/>
+                        <constraint firstAttribute="width" constant="176" id="GW9-dY-knw"/>
                     </constraints>
                     <state key="normal" title="Cancel"/>
                     <connections>
@@ -249,7 +249,7 @@
                     <exclude reference="rq7-PH-A3c"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="423" y="147.5"/>
+            <point key="canvasLocation" x="423" y="92.5"/>
         </view>
         <view contentMode="scaleToFill" id="kC3-0g-fkj">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
