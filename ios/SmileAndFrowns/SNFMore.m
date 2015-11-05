@@ -28,6 +28,10 @@
 	[self.tableView reloadData];
 }
 
+- (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
+	return TRUE;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 	return _tableContents.count;
 }

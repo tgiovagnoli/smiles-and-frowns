@@ -23,16 +23,30 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	
 	self.service = [[SNFUserService alloc] init];
 	self.genders = @[@"--------",@"Male",@"Female"];
 	self.pickerView.delegate = self;
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
+	
+	self.firstname.delegate = self;
+	self.lastname.delegate = self;
+	self.email.delegate = self;
+	self.age.delegate = self;
+	self.password.delegate = self;
+	self.passwordConfirm.delegate = self;
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTwitterLogin:) name:ATITwitterAuthHandlerSessionChange object:nil];
 }
 
 - (void) dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+	[self.view endEditing:TRUE];
+	return YES;
 }
 
 - (IBAction) onGender:(id)sender {

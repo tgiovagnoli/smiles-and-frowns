@@ -7,7 +7,7 @@
 #import "SNFLogin.h"
 #import "SNFFormViewController.h"
 
-@interface SNFUserProfile : SNFFormViewController <UIPickerViewDataSource,UIPickerViewDelegate>
+@interface SNFUserProfile : SNFFormViewController <UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate,UIViewControllerStackUpdating>
 
 @property (nonatomic) SNFUser * user;
 

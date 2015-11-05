@@ -22,11 +22,38 @@
 	self.genders = @[@"--------",@"Male",@"Female"];
 	self.pickerView.delegate = self;
 	self.pickerView.dataSource = self;
+	
+	self.firstNameField.delegate = self;
+	self.lastNameField.delegate = self;
+	self.emailField.delegate = self;
+	self.passwordConfirmField.delegate = self;
+	self.passwordField.delegate = self;
+	self.age.delegate = self;
+	
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
 	[self loadAuthedUser];
 }
 
-- (IBAction) onGender:(id)sender {
+- (CGFloat) scrollViewBottomConstraint:(NSNotification *) notification {
+	CGFloat defaultValue = [super scrollViewBottomConstraint:notification];
+	defaultValue -= 50;
+	return defaultValue;
+}
+
+- (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
+	return TRUE;
+}
+
+- (CGFloat) minViewHeightForViewStackController:(UIViewControllerStack *)viewStack isScrollView:(BOOL)isScrollView {
+	return self.initialFormHeight + self.scrollView.top;
+}
+
+- (void) viewStack:(UIViewControllerStack *) viewStack didResizeViewController:(UIViewController *) viewController {
+	self.pickerviewContainer.height = self.view.height;
+	self.pickerviewContainer.width = self.view.width;
+}
+
+- (IBAction) onGender:(id) sender {
 	[self.view endEditing:TRUE];
 	
 	self.pickerviewContainer.frame = self.view.bounds;
@@ -41,6 +68,11 @@
 	} completion:^(BOOL finished) {
 		
 	}];
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *) textField {
+	[self.view endEditing:TRUE];
+	return YES;
 }
 
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *) pickerView {

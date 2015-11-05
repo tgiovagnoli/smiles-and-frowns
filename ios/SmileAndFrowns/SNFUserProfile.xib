@@ -18,7 +18,7 @@
                 <outlet property="pickerView" destination="HFz-oJ-yl3" id="kh5-Qh-yS5"/>
                 <outlet property="pickerviewContainer" destination="vxT-Ip-DfR" id="8vQ-hK-x5p"/>
                 <outlet property="scrollView" destination="e2C-SM-K3L" id="cNC-fe-0c1"/>
-                <outlet property="scrollViewBottom" destination="aVz-M1-6S6" id="nw6-KN-fy8"/>
+                <outlet property="scrollViewBottom" destination="aVz-M1-6S6" id="S9U-Bj-9BS"/>
                 <outlet property="view" destination="J61-dJ-hgB" id="Dzg-AS-NRd"/>
             </connections>
         </placeholder>
@@ -347,13 +347,13 @@
             </constraints>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="h6i-VU-WFt"/>
-                    <exclude reference="fIT-If-qkO"/>
                     <exclude reference="bP2-li-Jo6"/>
+                    <exclude reference="fIT-If-qkO"/>
+                    <exclude reference="h6i-VU-WFt"/>
                     <exclude reference="0Kq-Ko-Qje"/>
-                    <exclude reference="sbb-rd-n3T"/>
                     <exclude reference="hiu-sz-kfe"/>
                     <exclude reference="oXc-l0-zVg"/>
+                    <exclude reference="sbb-rd-n3T"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="1138" y="1204"/>

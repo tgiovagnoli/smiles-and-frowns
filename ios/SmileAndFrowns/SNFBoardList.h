@@ -1,6 +1,8 @@
+
 #import <UIKit/UIKit.h>
 #import "SNFBoardListCell.h"
 #import "SNFBoardEdit.h"
+#import "UIViewControllerStack.h"
 
 typedef NS_ENUM(NSInteger, SNFBoardListFilter){
 	SNFBoardListFilterName,
@@ -8,7 +10,7 @@ typedef NS_ENUM(NSInteger, SNFBoardListFilter){
 };
 
 
-@interface SNFBoardList : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SNFBoardListCellDelegate, SNFBoardEditDelegate>{
+@interface SNFBoardList : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SNFBoardListCellDelegate, SNFBoardEditDelegate, UIViewControllerStackUpdating>{
 	NSArray *_boards;
 }
 

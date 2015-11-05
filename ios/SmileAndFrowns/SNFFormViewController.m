@@ -2,9 +2,11 @@
 #import "SNFFormViewController.h"
 #import "UIView+LayoutHelpers.h"
 #import "NSTimer+Blocks.h"
+#import "SNFViewController.h"
 
 @interface SNFFormViewController ()
 @property BOOL firstlayout;
+@property CGFloat superScrollViewHeight;
 @end
 
 @implementation SNFFormViewController
@@ -22,30 +24,53 @@
 
 - (void) viewDidLayoutSubviews {
 	if(self.firstlayout) {
-		//self.formView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:.4];
-		//self.scrollView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:.4];
+		//self.formView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
+		//self.scrollView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:1];
 		self.firstlayout = false;
+		self.initialFormHeight = self.formView.height;
 		self.formView.width = self.scrollView.width;
 		self.scrollView.contentSize = self.formView.size;
 		[self.scrollView addSubview:self.formView];
 	}
 }
 
-- (void) keyboardWillShow:(NSNotification *) notification {
+- (CGFloat) scrollViewBottomConstraint:(NSNotification *) notification {
 	NSDictionary * userInfo = notification.userInfo;
 	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
-	if(self.scrollViewBottom.constant == keyboardFrameEnd.size.height) {
-		return;
+	CGFloat bottom = keyboardFrameEnd.size.height;
+	if([SNFViewController instance]) {
+		if([SNFViewController instance].isAdDisplayed) {
+			bottom -= [SNFViewController instance].bannerView.height;
+		}
 	}
-	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
+	return bottom;
+}
+
+- (void) keyboardWillShow:(NSNotification *) notification {
+	CGFloat bottom = [self scrollViewBottomConstraint:notification];
+	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
+		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
+		self.superScrollViewHeight = containerScrollView.height;
+		containerScrollView.height -= bottom;
+		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
+			self.formView.height = self.initialFormHeight;
+		} repeats:FALSE];
+	} else {
+		self.scrollViewBottom.constant = bottom;
+		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
+			self.formView.height = self.initialFormHeight;
+		} repeats:FALSE];
+	}
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
-	if(self.scrollViewBottom.constant == 0) {
-		return;
+	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
+		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
+		containerScrollView.height = self.superScrollViewHeight;
+	} else {
+		self.scrollViewBottom.constant = 0;
 	}
-	self.scrollViewBottom.constant = 0;
 }
 
 @end

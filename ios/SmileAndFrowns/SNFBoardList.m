@@ -1,3 +1,4 @@
+
 #import "SNFBoardList.h"
 #import "SNFModel.h"
 #import "SNFBoardDetail.h"
@@ -13,14 +14,17 @@
 	[self.searchField addTarget:self action:@selector(searchFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
+- (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
+	return TRUE;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 	return _boards.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	SNFBoardListCell *cell = [self.boardsTable dequeueReusableCellWithIdentifier:@"SNFBoardListCell"];
-	
-	if(!cell){
+	if(!cell) {
 		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardListCell" owner:self options:nil];
 		cell = [topLevelObjects firstObject];
 	}

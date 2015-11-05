@@ -1,4 +1,3 @@
-
 #import <UIKit/UIKit.h>
 #import "SNFBoard.h"
 #import "SNFUserRole.h"
@@ -8,8 +7,9 @@
 #import "SNFAddSmileOrFrown.h"
 #import "SNFSpendRewards.h"
 #import "SNFReporting.h"
+#import "UIViewControllerStack.h"
 
-@interface SNFBoardDetail : UIViewController <UITableViewDelegate, UITableViewDataSource, SNFBoardDetailChildCellDelegate, SNFAddSmileOrFrownDelegate, SNFSpendRewardsDelegate>{
+@interface SNFBoardDetail : UIViewController <UIViewControllerStackUpdating, UITableViewDelegate, UITableViewDataSource, SNFBoardDetailChildCellDelegate, SNFAddSmileOrFrownDelegate, SNFSpendRewardsDelegate> {
 	NSArray *_userRoles;
 }
 

@@ -130,7 +130,7 @@
                 <constraint firstItem="IgO-eV-L5C" firstAttribute="width" secondItem="hPo-Ac-XCS" secondAttribute="width" id="xpD-0h-1yp"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="503" y="418"/>
+            <point key="canvasLocation" x="524" y="417"/>
         </view>
     </objects>
 </document>
