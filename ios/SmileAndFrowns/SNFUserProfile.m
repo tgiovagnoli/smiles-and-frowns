@@ -22,11 +22,31 @@
 	self.genders = @[@"--------",@"Male",@"Female"];
 	self.pickerView.delegate = self;
 	self.pickerView.dataSource = self;
+	
+	self.firstNameField.delegate = self;
+	self.lastNameField.delegate = self;
+	self.emailField.delegate = self;
+	self.passwordConfirmField.delegate = self;
+	self.passwordField.delegate = self;
+	self.age.delegate = self;
+	
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
 	[self loadAuthedUser];
 }
 
-- (IBAction) onGender:(id)sender {
+- (CGRect) viewFrameForViewStackController:(UIViewControllerStack *)viewStack isScrollView:(BOOL)isScrollView {
+	if(isScrollView) {
+		if(viewStack.height > self.formView.height) {
+			return viewStack.bounds;
+		}
+		return CGRectMake(0,0,viewStack.width,self.formView.height+self.scrollView.top);
+	} else {
+		return viewStack.bounds;
+	}
+	return CGRectZero;
+}
+
+- (IBAction) onGender:(id) sender {
 	[self.view endEditing:TRUE];
 	
 	self.pickerviewContainer.frame = self.view.bounds;
@@ -41,6 +61,11 @@
 	} completion:^(BOOL finished) {
 		
 	}];
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *) textField {
+	[self.view endEditing:TRUE];
+	return YES;
 }
 
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *) pickerView {

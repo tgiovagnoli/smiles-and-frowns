@@ -39,6 +39,9 @@
 	[self insertItemWithName:@"Log Predefiend Info" andSelector:@selector(logInfoForPredefinedBoards)];
 }
 
+- (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
+	return TRUE;
+}
 
 - (void)login{
 	SNFUserService *userService = [[SNFUserService alloc] init];

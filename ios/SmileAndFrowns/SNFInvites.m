@@ -6,6 +6,7 @@
 #import "SNFAcceptInvite.h"
 #import "AppDelegate.h"
 #import "UIViewController+Alerts.h"
+#import "UIView+LayoutHelpers.h"
 
 @interface SNFInvites ()
 @property SNFUserService * service;
@@ -36,6 +37,10 @@
 	}];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteAccepted:) name:SNFInviteAccepted object:nil];
+}
+
+- (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
+	return TRUE;
 }
 
 - (void) reload {

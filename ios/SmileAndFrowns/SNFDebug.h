@@ -1,5 +1,7 @@
-#import "APDDebugViewController.h"
 
-@interface SNFDebug : APDDebugViewController
+#import "APDDebugViewController.h"
+#import "UIViewControllerStack.h"
+
+@interface SNFDebug : APDDebugViewController <UIViewControllerStackUpdating>
 
 @end

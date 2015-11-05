@@ -37,6 +37,7 @@
 		078DF4D31BEA9AF600CBFAA4 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */; };
 		078DF4D51BEA9B1100CBFAA4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */; };
 		078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */; };
+		07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E7055A1BEBD1520013FB75 /* iAd.framework */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
 		D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC21BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m */; };
@@ -168,6 +169,8 @@
 		078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = libs/TwitterCore.framework; sourceTree = "<group>"; };
 		078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = libs/Fabric.framework; sourceTree = "<group>"; };
 		078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = libs/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		07E7055A1BEBD1520013FB75 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSLog+Geom.h"; path = "submodules/apd-objc/NSLog+Geom.h"; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
 		D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPredefinedBehavior.m; sourceTree = "<group>"; };
 		D6270EBF1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFPredefinedBehavior+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -318,6 +321,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */,
 				078DF4D31BEA9AF600CBFAA4 /* TwitterCore.framework in Frameworks */,
 				078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */,
 				078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */,
@@ -437,6 +441,7 @@
 		D6272FB41BE0020A0024CBC2 /* apd-objc */ = {
 			isa = PBXGroup;
 			children = (
+				07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */,
 				D6272FB51BE002160024CBC2 /* APDDebugViewController.h */,
 				D6272FB61BE002160024CBC2 /* APDDebugViewController.m */,
 				D6272FB71BE002160024CBC2 /* APDDebugViewController.xib */,
@@ -449,12 +454,12 @@
 				D6272FBB1BE002160024CBC2 /* NSTimer+Blocks.m */,
 				D6272FBC1BE002160024CBC2 /* NSURLRequest+Additions.h */,
 				D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */,
+				0707D6DE1BE42970002F1FC0 /* UIAlertAction+Additions.h */,
+				0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */,
 				0707D6A11BE294A6002F1FC0 /* UIView+LayoutHelpers.h */,
 				0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */,
 				D65DF1071BE299D3009CC6DF /* UIViewControllerStack.h */,
 				D65DF1081BE299D3009CC6DF /* UIViewControllerStack.m */,
-				0707D6DE1BE42970002F1FC0 /* UIAlertAction+Additions.h */,
-				0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */,
 			);
 			name = "apd-objc";
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 		D62D37861BDE7E9700102D6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07E7055A1BEBD1520013FB75 /* iAd.framework */,
 				078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */,
 				078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */,
 				078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */,

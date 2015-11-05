@@ -8,6 +8,7 @@
 #import "SNFBoardList.h"
 #import "SNFMore.h"
 #import "SNFInvites.h"
+#import "NSLog+Geom.h"
 
 static __weak SNFViewController * _instance;
 
@@ -21,11 +22,19 @@ static __weak SNFViewController * _instance;
 	[super viewDidLoad];
 	_instance = self;
 	self.firstlayout = true;
-	self.viewControllerStack.alwaysResizePushedViews = YES;
+	//self.viewControllerStack.alwaysResizePushedViews = YES;
+	self.viewControllerStack.updateScrollViewContentSizeAfterResize = TRUE;
+	
+	//self.bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+	//self.bannerView.delegate = self;
 }
 
 - (void) dealloc {
 	_instance = nil;
+}
+
+- (BOOL) isAdDisplayed; {
+	return !(self.bannerView.superview == nil);
 }
 
 - (void) viewDidLayoutSubviews {
@@ -55,7 +64,20 @@ static __weak SNFViewController * _instance;
 	}
 }
 
-- (void)insertMenu{
+- (void) bannerViewDidLoadAd:(ADBannerView *) banner {
+	CGRect f = banner.frame;
+	f.origin.y = self.view.height - banner.height;
+	self.bannerView.frame = f;
+	self.tabMenuContainerBottom.constant = banner.height;
+	[self.view addSubview:self.bannerView];
+}
+
+- (void) bannerView:(ADBannerView *) banner didFailToReceiveAdWithError:(NSError *) error {
+	[self.bannerView removeFromSuperview];
+	self.tabMenuContainerBottom.constant = 0;
+}
+
+- (void) insertMenu {
 	self.tabMenu = [[SNFTabMenu alloc] init];
 	[self.tabMenuContainer addSubview:self.tabMenu.view];
 	self.tabMenu.view.width = self.tabMenuContainer.width;
@@ -66,7 +88,6 @@ static __weak SNFViewController * _instance;
 	[UIView animateWithDuration:.25 delay:.1 options:options animations:^{
 		self.tabMenu.view.alpha = 1.0;
 	} completion:^(BOOL finished) {
-		
 	}];
 }
 

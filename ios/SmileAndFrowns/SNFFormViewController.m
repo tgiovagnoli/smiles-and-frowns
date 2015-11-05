@@ -2,6 +2,7 @@
 #import "SNFFormViewController.h"
 #import "UIView+LayoutHelpers.h"
 #import "NSTimer+Blocks.h"
+#import "SNFViewController.h"
 
 @interface SNFFormViewController ()
 @property BOOL firstlayout;
@@ -35,16 +36,23 @@
 	NSDictionary * userInfo = notification.userInfo;
 	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
-	if(self.scrollViewBottom.constant == keyboardFrameEnd.size.height) {
-		return;
+	
+	CGFloat bottom = keyboardFrameEnd.size.height;
+	
+	NSLog(@"keyboard height: %f",bottom);
+	
+	if([SNFViewController instance]) {
+		if([SNFViewController instance].isAdDisplayed) {
+			bottom -= [SNFViewController instance].bannerView.height;
+		}
 	}
-	self.scrollViewBottom.constant = keyboardFrameEnd.size.height;
+	
+	self.scrollViewBottom.constant = bottom;
+	
+	NSLog(@"bottom: %f, height: %f, top: %f",bottom, self.scrollView.height,self.scrollView.y);
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
-	if(self.scrollViewBottom.constant == 0) {
-		return;
-	}
 	self.scrollViewBottom.constant = 0;
 }
 
