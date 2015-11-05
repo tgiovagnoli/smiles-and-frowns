@@ -118,6 +118,8 @@
 		D6DB2BD61BEAA0BA00F1CDFF /* SNFAddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DB2BD41BEAA0BA00F1CDFF /* SNFAddCell.xib */; };
 		D6DB2BDB1BEAAB3500F1CDFF /* SNFAddReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BD91BEAAB3500F1CDFF /* SNFAddReward.m */; };
 		D6DB2BDC1BEAAB3500F1CDFF /* SNFAddReward.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DB2BDA1BEAAB3500F1CDFF /* SNFAddReward.xib */; };
+		D6DB2BE01BEAC3E300F1CDFF /* SNFSpendRewards.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BDE1BEAC3E300F1CDFF /* SNFSpendRewards.m */; };
+		D6DB2BE11BEAC3E300F1CDFF /* SNFSpendRewards.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DB2BDF1BEAC3E300F1CDFF /* SNFSpendRewards.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -306,6 +308,9 @@
 		D6DB2BD81BEAAB3500F1CDFF /* SNFAddReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFAddReward.h; sourceTree = "<group>"; };
 		D6DB2BD91BEAAB3500F1CDFF /* SNFAddReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFAddReward.m; sourceTree = "<group>"; };
 		D6DB2BDA1BEAAB3500F1CDFF /* SNFAddReward.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFAddReward.xib; sourceTree = "<group>"; };
+		D6DB2BDD1BEAC3E300F1CDFF /* SNFSpendRewards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFSpendRewards.h; sourceTree = "<group>"; };
+		D6DB2BDE1BEAC3E300F1CDFF /* SNFSpendRewards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFSpendRewards.m; sourceTree = "<group>"; };
+		D6DB2BDF1BEAC3E300F1CDFF /* SNFSpendRewards.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFSpendRewards.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -738,6 +743,9 @@
 				D6DB2BD81BEAAB3500F1CDFF /* SNFAddReward.h */,
 				D6DB2BD91BEAAB3500F1CDFF /* SNFAddReward.m */,
 				D6DB2BDA1BEAAB3500F1CDFF /* SNFAddReward.xib */,
+				D6DB2BDD1BEAC3E300F1CDFF /* SNFSpendRewards.h */,
+				D6DB2BDE1BEAC3E300F1CDFF /* SNFSpendRewards.m */,
+				D6DB2BDF1BEAC3E300F1CDFF /* SNFSpendRewards.xib */,
 			);
 			name = Rewards;
 			sourceTree = "<group>";
@@ -828,6 +836,7 @@
 				D65DF1301BE2AE6D009CC6DF /* SNFMore.xib in Resources */,
 				D65DF17B1BE3F884009CC6DF /* SNFBoardEdit.xib in Resources */,
 				D65DF13B1BE2B8EE009CC6DF /* SNFBoardListCell.xib in Resources */,
+				D6DB2BE11BEAC3E300F1CDFF /* SNFSpendRewards.xib in Resources */,
 				0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */,
 				D65DF1411BE2BB88009CC6DF /* SNFBoardDetail.xib in Resources */,
 			);
@@ -860,6 +869,7 @@
 				D65DF15A1BE2F59F009CC6DF /* SNFAddUserRole.m in Sources */,
 				D65DF0E71BE2830C009CC6DF /* SNFDateManager.m in Sources */,
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
+				D6DB2BE01BEAC3E300F1CDFF /* SNFSpendRewards.m in Sources */,
 				D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */,
 				D659DC041BDB06010048D3F7 /* SNFModel.m in Sources */,
 				D6272FA91BDFCD1A0024CBC2 /* SNFUserService.m in Sources */,

@@ -276,12 +276,13 @@
 }
 
 - (void) acceptInviteCode:(NSString *) inviteCode andCompletion:(SNFAcceptInviteCompletion)completion; {
-	
+	NSDictionary * data = nil;
 	if(!inviteCode || inviteCode.isEmpty) {
 		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Invite code required"],nil);
+	}else{
+		data = @{@"code":inviteCode};
 	}
 	
-	NSDictionary * data = @{@"code":inviteCode};
 	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"invite_accept"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
 	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {

@@ -4,6 +4,17 @@
 
 @implementation SNFBoardDetail
 
+
+- (void)viewDidLoad{
+	[super viewDidLoad];
+	[self updateUI];
+}
+
+- (void)updateUI{
+	self.titleLabel.text = self.board.title;
+	[self reloadUserRoles];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 	return _userRoles.count;
 }
@@ -77,7 +88,7 @@
 
 - (void)setBoard:(SNFBoard *)board{
 	_board = board;
-	[self reloadUserRoles];
+	[self updateUI];
 }
 
 - (void)reloadUserRoles{

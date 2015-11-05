@@ -22,10 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// TODO: Apple reccomends modifying dates using notifications instead of overriding the save command.  Need to put this somewhere it makes sense.
-	// 
-	
-	[self insertItemWithName:@"Create/Update From Dictionaries" andSelector:@selector(createFromDictionaries)];
 	[self insertItemWithName:@"Create Unique Board" andSelector:@selector(createUniqueBoard)];
 	[self insertItemWithName:@"Save Managed Context" andSelector:@selector(save)];
 	[self insertItemWithName:@"Sync" andSelector:@selector(sync)];
@@ -33,8 +29,6 @@
 	[self insertItemWithName:@"Sync Predefined Boards" andSelector:@selector(syncPredefinedBoards)];
 	[self insertItemWithName:@"Login" andSelector:@selector(login)];
 	[self insertItemWithName:@"Logout" andSelector:@selector(logout)];
-	[self insertItemWithName:@"Update Title On Board" andSelector:@selector(updateTitleOnBoard)];
-	
 	
 	[self insertItemWithName:@"Log Boards" andSelector:@selector(logBoards)];
 	[self insertItemWithName:@"Log Rewards" andSelector:@selector(logRewards)];
@@ -44,7 +38,6 @@
 	[self insertItemWithName:@"Log User Roles" andSelector:@selector(logUserRoles)];
 	[self insertItemWithName:@"Log Predefiend Info" andSelector:@selector(logInfoForPredefinedBoards)];
 }
-
 
 
 - (void)login{
@@ -104,107 +97,6 @@
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
 	[alert addAction:[UIAlertAction OKAction]];
 	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-}
-
-- (void)createFromDictionaries{
-	SNFUserService *userService = [[SNFUserService alloc] init];
-	[userService authedUserInfoWithCompletion:^(NSError *error, SNFUser *user) {
-		if(user){
-			NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
-			
-			NSDictionary *boardInfo = @{
-										@"edit_count": @1,
-										@"uuid": @"sample-board-uuid",
-										@"title": @"Custom Board Created on Device",
-										@"deleted": @NO,
-										@"device_date": @"2015-10-21T21:20:38Z",
-										@"created_date": @"2015-10-21T21:20:38Z",
-										@"id": @1
-										};
-			SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
-			board.owner = user;
-			
-			NSDictionary *userRoleInfo = @{
-										   @"uuid": @"sample-user-role-uuid",
-										   @"user": @{@"username": user.username},
-										   @"role": @"parent",
-										   @"board": @{@"uuid": board.uuid},
-										   @"id": @1
-										   };
-			SNFUserRole *userRole = (SNFUserRole *)[SNFUserRole editOrCreatefromInfoDictionary:userRoleInfo withContext:context];
-			
-			NSDictionary *inviteInfo = @{
-								   @"uuid": @"sample-invite-uuid",
-								   @"code": @"sample-code",
-								   @"role": @{@"uuid": userRole.uuid},
-								   @"board": @{@"uuid": board.uuid},
-								   @"id": @1
-								   };
-			SNFInvite *invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:inviteInfo withContext:context];
-			
-			
-			NSDictionary *behaviorInfo = @{
-										   @"uuid": @"sample-behavior-uuid",
-										   @"title": @"Cleaning up room",
-										   @"deleted": @NO,
-										   @"note": @"",
-										   @"device_date": @"2015-10-21T21:34:54Z",
-										   @"created_date": @"2015-10-21T21:34:54Z",
-										   @"board": @{@"uuid": board.uuid},
-										   @"id": @1
-										   };
-			SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
-			
-			NSDictionary *rewardInfo = @{
-										 @"smile_amount": @1.0,
-										 @"uuid": @"sample-reward-uuid",
-										 @"title": @"Dollars",
-										 @"deleted": @NO,
-										 @"currency_type": @"money",
-										 @"device_date": @"2015-10-21T21:37:01Z",
-										 @"created_date": @"2015-10-21T21:37:01Z",
-										 @"currency_amount": @0.25,
-										 @"board": @{@"uuid": board.uuid},
-										 @"id": @1
-										 };
-			SNFReward *reward = (SNFReward *)[SNFReward editOrCreatefromInfoDictionary:rewardInfo withContext:context];
-			
-			NSDictionary *frownInfo = @{
-										@"uuid": @"sample-frown-uuid",
-										@"deleted": @NO,
-										@"device_date": @"2015-10-21T21:20:38Z",
-										@"created_date": @"2015-10-21T21:20:38Z",
-										@"id": @1,
-										@"board": @{@"uuid": board.uuid,},
-										@"behavior": @{@"uuid": behavior.uuid},
-										@"user": @{@"username": user.username},
-										};
-			SNFFrown *frown = (SNFFrown *)[SNFFrown editOrCreatefromInfoDictionary:frownInfo withContext:context];
-			
-			NSDictionary *smileInfo = @{
-										@"uuid": @"sample-smile-uuid",
-										@"deleted": @NO,
-										@"device_date": @"2015-10-21T21:20:38Z",
-										@"created_date": @"2015-10-21T21:20:38Z",
-										@"id": @1,
-										@"board": @{@"uuid": board.uuid,},
-										@"behavior": @{@"uuid": behavior.uuid},
-										@"user": @{@"username": user.username},
-										};
-			SNFSmile *smile = (SNFSmile *)[SNFSmile editOrCreatefromInfoDictionary:smileInfo withContext:context];
-			
-			NSLog(@"%@ %@ %@ %@ %@ %@ %@ %@", user, userRole, invite, reward, behavior, smile, frown, board);
-		}else if(error){
-			if(error.code == SNFErrorCodeDjangoDebugError){
-				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
-				[[AppDelegate rootViewController] presentViewController:viewer animated:YES completion:^{
-					[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
-				}];
-			}else{
-				[self alertWithMessage:error.localizedDescription];
-			}
-		}
-	}];
 }
 
 - (void)createUniqueBoard{
@@ -275,72 +167,6 @@
 	}];
 }
 
-- (void)updateTitleOnBoard{
-	const NSInteger uuidTag = 1;
-	const NSInteger titleTag = 2;
-	
-	
-	SNFSyncService *syncService = [[SNFSyncService alloc] init];
-	[syncService syncWithCompletion:^(NSError *error, NSObject *boardData) {
-		if(error && error.code == SNFErrorCodeDjangoDebugError){
-			APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
-			[[AppDelegate rootViewController] presentViewController:viewer animated:YES completion:^{
-				[viewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
-			}];
-		}else if(error){
-			[self alertWithMessage:error.localizedDescription];
-		}
-		
-		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Enter a title" preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-			NSString *title;
-			NSString *uuid;
-			for(UITextField *tf in alert.textFields){
-				if(tf.tag == titleTag){
-					title = tf.text;
-				}else if(tf.tag == uuidTag){
-					uuid = tf.text;
-				}
-			}
-			
-			
-			NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
-			NSFetchRequest * fetchRequest = [[NSFetchRequest alloc] init];
-			NSEntityDescription * entity = [NSEntityDescription entityForName:@"SNFBoard" inManagedObjectContext:context];
-			[fetchRequest setEntity:entity];
-			
-			NSPredicate * predicate = [NSPredicate predicateWithFormat:@"uuid==%@", uuid];
-			[fetchRequest setPredicate:predicate];
-			
-			NSError *error;
-			NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-			if(fetchedObjects.count <= 0){
-				[self alertWithMessage:[NSString stringWithFormat:@"could not find board with uuid %@", uuid]];
-			}else{
-				for(UITextField *tf in alert.textFields){
-					if(tf.tag == titleTag){
-						SNFBoard *board = [fetchedObjects objectAtIndex:0];
-						board.title = title;
-						NSLog(@"new value is %@", tf.text);
-					}
-				}
-			}
-		}]];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}]];
-		[alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-			textField.placeholder = @"Title";
-			textField.tag = titleTag;
-		}];
-		[alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-			textField.placeholder = @"UUID";
-			textField.tag = uuidTag;
-			textField.text = @"A5B6E13E-A3F2-45D6-83AA-213677EE0FF9";
-		}];
-		
-		[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-	}];
-	
-}
 
 - (void)syncPredefinedBoards{
 	SNFSyncService *syncService = [[SNFSyncService alloc] init];
@@ -402,10 +228,7 @@
 	NSArray *results = [context executeFetchRequest:request error:&error];
 	NSLog(@"boards:");
 	for(SNFPredefinedBoard *board in results){
-		// NSLog(@"\n%@", [board infoDictionaryWithChildrenAsUIDs]);
-		for(SNFBehavior *behavior in board.behaviors){
-			
-		}
+		NSLog(@"\n%@", [board infoDictionaryWithChildrenAsUIDs]);
 	}
 	NSLog(@"behaviors:");
 	request = [NSFetchRequest fetchRequestWithEntityName:@"SNFPredefinedBehavior"];
@@ -430,18 +253,5 @@
 		NSLog(@"\n%@", [result infoDictionaryWithChildrenAsUIDs]);
 	}
 }
-
-- (void)objectContextWillSave:(NSNotification *)notification{
-	NSManagedObjectContext *context = [notification object];
-	NSSet *allModified = [context.insertedObjects setByAddingObjectsFromSet:context.updatedObjects];
-	NSDate *now = [NSDate date];
-	for(NSManagedObject *object in allModified){
-		if([object respondsToSelector:NSSelectorFromString(@"updated_date")]){
-			[object setValue:now forKey:@"updated_date"];
-		}
-	}
-}
-
-
 
 @end
