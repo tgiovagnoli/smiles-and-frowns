@@ -81,15 +81,17 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		@"role":@"child",
 		@"board":@{@"uuid": self.board.uuid},
 		@"user":@{
-				@"first_name": self.firstname.text,
-				@"last_name": self.lastname.text,
-				@"email": self.email.text,
-				@"age":age,
-				@"gender":gender
+			@"first_name": self.firstname.text,
+			@"last_name": self.lastname.text,
+			@"email": self.email.text,
+			@"age":age,
+			@"gender":gender
 		}
 	};
 	
 	[SNFUserRole editOrCreatefromInfoDictionary:info withContext:[SNFModel sharedInstance].managedObjectContext];
+	[[SNFModel sharedInstance].managedObjectContext save:nil];
+	
 	[[NSNotificationCenter defaultCenter] postNotificationName:SNFAddUserRoleAddedChild object:nil];
 }
 
