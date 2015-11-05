@@ -26,12 +26,20 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	self.service = [[SNFUserService alloc] init];
+	self.email.delegate = self;
+	self.password.delegate = self;
+	[self starBannerAd];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTwitterLogin:) name:ATITwitterAuthHandlerSessionChange object:nil];
 }
 
 - (void) dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+	[self.view endEditing:TRUE];
+	return TRUE;
 }
 
 - (IBAction) facebookLogin:(id)sender {

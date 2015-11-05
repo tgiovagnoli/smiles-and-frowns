@@ -22,6 +22,11 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void) starBannerAd {
+	self.bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+	self.bannerView.delegate = self;
+}
+
 - (void) viewDidLayoutSubviews {
 	if(self.firstlayout) {
 		//self.formView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
@@ -49,18 +54,23 @@
 
 - (void) keyboardWillShow:(NSNotification *) notification {
 	CGFloat bottom = [self scrollViewBottomConstraint:notification];
+	
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
+		
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
 		self.superScrollViewHeight = containerScrollView.height;
 		containerScrollView.height -= bottom;
 		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
 			self.formView.height = self.initialFormHeight;
 		} repeats:FALSE];
+	
 	} else {
+		
 		self.scrollViewBottom.constant = bottom;
 		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
 			self.formView.height = self.initialFormHeight;
 		} repeats:FALSE];
+		
 	}
 }
 
@@ -69,7 +79,26 @@
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
 		containerScrollView.height = self.superScrollViewHeight;
 	} else {
-		self.scrollViewBottom.constant = 0;
+		if(self.bannerView.superview) {
+			self.scrollViewBottom.constant = self.bannerView.height;
+		} else {
+			self.scrollViewBottom.constant = 0;
+		}
+	}
+}
+
+- (void) bannerViewDidLoadAd:(ADBannerView *)banner {
+	[self.view addSubview:banner];
+	banner.y = self.view.height - banner.height;
+	if(self.scrollViewBottom.constant <= banner.height) {
+		self.scrollViewBottom.constant = banner.height;
+	}
+}
+
+- (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+	[self.bannerView removeFromSuperview];
+	if(self.scrollViewBottom.constant > banner.height) {
+		self.scrollViewBottom.constant -= banner.height;
 	}
 }
 

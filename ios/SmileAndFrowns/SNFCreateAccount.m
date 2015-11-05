@@ -36,6 +36,8 @@
 	self.password.delegate = self;
 	self.passwordConfirm.delegate = self;
 	
+	[self starBannerAd];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTwitterLogin:) name:ATITwitterAuthHandlerSessionChange object:nil];
 }
