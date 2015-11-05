@@ -166,7 +166,9 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 }
 
 - (IBAction) cancel:(id)sender {
-	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
+	if(self.presentingViewController) {
+		[self.presentingViewController dismissViewControllerAnimated:TRUE completion:nil];
+	}
 }
 
 - (IBAction) addFromContacts:(id) sender {
