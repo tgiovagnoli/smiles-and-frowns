@@ -88,18 +88,22 @@
 									   @"board": @{@"uuid": self.board.uuid},
 									   @"behavior": @{@"uuid": behavior.uuid},
 									   @"user": [self.user infoDictionary],
+									   @"creator": [[SNFModel sharedInstance].loggedInUser infoDictionary],
 									  };
 	[SNFSmile editOrCreatefromInfoDictionary:smileDictionary withContext:[SNFModel sharedInstance].managedObjectContext];
 }
 
 - (void)addFrownForBehavior:(SNFBehavior *)behavior{
+	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	NSDictionary *frownDictionary = @{
 									  @"note": self.noteField.text,
 									  @"board": @{@"uuid": self.board.uuid},
 									  @"behavior": @{@"uuid": behavior.uuid},
 									  @"user": [self.user infoDictionary],
+									  @"creator": [[SNFModel sharedInstance].loggedInUser infoDictionary],
 									  };
-	[SNFFrown editOrCreatefromInfoDictionary:frownDictionary withContext:[SNFModel sharedInstance].managedObjectContext];
+	[SNFFrown editOrCreatefromInfoDictionary:frownDictionary withContext:context];
+	[context save:nil];
 }
 
 - (IBAction)onCancel:(UIButton *)sender{

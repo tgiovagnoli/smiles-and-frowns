@@ -14,7 +14,8 @@
 		@"board": @"board",
 		@"behavior": @"behavior",
 		@"note": @"note",
-		@"user": @"user"
+		@"user": @"user",
+		@"creator": @"creator",
 	};
 }
 

@@ -730,6 +730,12 @@ def sync(request):
 			user = User.objects.get(username=user_dict.get('username'))
 		except:
 			return json_response_error("Client sync error, User with username(%s) for smile not found on server." % (user_dict.get('user')))
+
+		try:
+			creator_dict = client_smile.get('creator')
+			creator = User.objects.get(username=creator_dict.get('username'))
+		except:
+			return json_response_error("Client sync error, Creator with username(%s) for smile not found on server." % (creator_dict.get('user')))
 		
 		#get board for smile.board
 		try:
@@ -753,6 +759,7 @@ def sync(request):
 
 		#set smile data
 		smile.user = user
+		smile.creator = creator
 		smile.board = board
 		smile.behavior = behavior
 		smile.deleted = client_smile.get('deleted',False)
@@ -776,6 +783,12 @@ def sync(request):
 			user = User.objects.get(username=user_dict.get('username'))
 		except:
 			return json_response_error("Client sync error, User with username(%s) for frown not found on server." % (user_dict.get('username')))
+
+		try:
+			creator_dict = client_frown.get('creator')
+			creator = User.objects.get(username=creator_dict.get('username'))
+		except:
+			return json_response_error("Client sync error, Creator with username(%s) for frown not found on server." % (creator_dict.get('user')))
 		
 		#get board for frown.board
 		try:
@@ -799,6 +812,7 @@ def sync(request):
 
 		#set frown data
 		frown.user = user
+		frown.creator = creator
 		frown.board = board
 		frown.behavior = behavior
 		frown.deleted = client_frown.get('deleted',False)

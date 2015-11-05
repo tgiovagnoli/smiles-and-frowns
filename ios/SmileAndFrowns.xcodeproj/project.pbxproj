@@ -120,6 +120,16 @@
 		D6DB2BDC1BEAAB3500F1CDFF /* SNFAddReward.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DB2BDA1BEAAB3500F1CDFF /* SNFAddReward.xib */; };
 		D6DB2BE01BEAC3E300F1CDFF /* SNFSpendRewards.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BDE1BEAC3E300F1CDFF /* SNFSpendRewards.m */; };
 		D6DB2BE11BEAC3E300F1CDFF /* SNFSpendRewards.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DB2BDF1BEAC3E300F1CDFF /* SNFSpendRewards.xib */; };
+		D6F442191BEB90A4009C2866 /* SNFReporting.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F442171BEB90A4009C2866 /* SNFReporting.m */; };
+		D6F4421A1BEB90A4009C2866 /* SNFReporting.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6F442181BEB90A4009C2866 /* SNFReporting.xib */; };
+		D6F4421E1BEB95C5009C2866 /* SNFReportCellSmileFrown.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F4421C1BEB95C5009C2866 /* SNFReportCellSmileFrown.m */; };
+		D6F4421F1BEB95C5009C2866 /* SNFReportCellSmileFrown.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6F4421D1BEB95C5009C2866 /* SNFReportCellSmileFrown.xib */; };
+		D6F442231BEB95E9009C2866 /* SNFReportGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F442221BEB95E9009C2866 /* SNFReportGeneration.m */; };
+		D6F442261BEBA877009C2866 /* SNFReportDateGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F442251BEBA877009C2866 /* SNFReportDateGroup.m */; };
+		D6F442291BEBA8CD009C2866 /* SNFReportBehaviorGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F442281BEBA8CD009C2866 /* SNFReportBehaviorGroup.m */; };
+		D6F4422C1BEBD76F009C2866 /* SNFTaggedAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F4422B1BEBD76F009C2866 /* SNFTaggedAlertAction.m */; };
+		D6F4422F1BEBF411009C2866 /* SNFReportingSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F4422E1BEBF411009C2866 /* SNFReportingSectionHeader.m */; };
+		D6F442311BEBF425009C2866 /* SNFReportingSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6F442301BEBF425009C2866 /* SNFReportingSectionHeader.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -311,6 +321,23 @@
 		D6DB2BDD1BEAC3E300F1CDFF /* SNFSpendRewards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFSpendRewards.h; sourceTree = "<group>"; };
 		D6DB2BDE1BEAC3E300F1CDFF /* SNFSpendRewards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFSpendRewards.m; sourceTree = "<group>"; };
 		D6DB2BDF1BEAC3E300F1CDFF /* SNFSpendRewards.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFSpendRewards.xib; sourceTree = "<group>"; };
+		D6F442161BEB90A4009C2866 /* SNFReporting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReporting.h; sourceTree = "<group>"; };
+		D6F442171BEB90A4009C2866 /* SNFReporting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReporting.m; sourceTree = "<group>"; };
+		D6F442181BEB90A4009C2866 /* SNFReporting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFReporting.xib; sourceTree = "<group>"; };
+		D6F4421B1BEB95C5009C2866 /* SNFReportCellSmileFrown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportCellSmileFrown.h; sourceTree = "<group>"; };
+		D6F4421C1BEB95C5009C2866 /* SNFReportCellSmileFrown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportCellSmileFrown.m; sourceTree = "<group>"; };
+		D6F4421D1BEB95C5009C2866 /* SNFReportCellSmileFrown.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFReportCellSmileFrown.xib; sourceTree = "<group>"; };
+		D6F442211BEB95E9009C2866 /* SNFReportGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportGeneration.h; sourceTree = "<group>"; };
+		D6F442221BEB95E9009C2866 /* SNFReportGeneration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportGeneration.m; sourceTree = "<group>"; };
+		D6F442241BEBA877009C2866 /* SNFReportDateGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportDateGroup.h; sourceTree = "<group>"; };
+		D6F442251BEBA877009C2866 /* SNFReportDateGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportDateGroup.m; sourceTree = "<group>"; };
+		D6F442271BEBA8CD009C2866 /* SNFReportBehaviorGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportBehaviorGroup.h; sourceTree = "<group>"; };
+		D6F442281BEBA8CD009C2866 /* SNFReportBehaviorGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportBehaviorGroup.m; sourceTree = "<group>"; };
+		D6F4422A1BEBD76F009C2866 /* SNFTaggedAlertAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFTaggedAlertAction.h; sourceTree = "<group>"; };
+		D6F4422B1BEBD76F009C2866 /* SNFTaggedAlertAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFTaggedAlertAction.m; sourceTree = "<group>"; };
+		D6F4422D1BEBF411009C2866 /* SNFReportingSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportingSectionHeader.h; sourceTree = "<group>"; };
+		D6F4422E1BEBF411009C2866 /* SNFReportingSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportingSectionHeader.m; sourceTree = "<group>"; };
+		D6F442301BEBF425009C2866 /* SNFReportingSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFReportingSectionHeader.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -485,6 +512,7 @@
 				0707D6D21BE2B852002F1FC0 /* Login */,
 				D65DF12B1BE2AE5A009CC6DF /* More */,
 				0707D6D71BE2E3BC002F1FC0 /* PasswordReset */,
+				D6F442151BEB9080009C2866 /* Reporting */,
 				D6DB2BD71BEAAAAD00F1CDFF /* Rewards */,
 				D62E1CE31BEA6B9100EF8725 /* Smiles And Frowns */,
 				D62D378D1BDE7FC600102D6A /* SNFDebug.h */,
@@ -583,6 +611,7 @@
 		D659DBFC1BDAEA110048D3F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D6F442201BEB95CC009C2866 /* Reporting */,
 				D659DC021BDB06010048D3F7 /* SNFModel.h */,
 				D659DC031BDB06010048D3F7 /* SNFModel.m */,
 				D659DBFD1BDAEAE80048D3F7 /* Entities */,
@@ -730,6 +759,8 @@
 				D65DF1751BE3ED9F009CC6DF /* SNFSwipeCell.m */,
 				078DF4C31BEA62F600CBFAA4 /* UIViewController+Alerts.h */,
 				078DF4C41BEA62F600CBFAA4 /* UIViewController+Alerts.m */,
+				D6F4422A1BEBD76F009C2866 /* SNFTaggedAlertAction.h */,
+				D6F4422B1BEBD76F009C2866 /* SNFTaggedAlertAction.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -748,6 +779,35 @@
 				D6DB2BDF1BEAC3E300F1CDFF /* SNFSpendRewards.xib */,
 			);
 			name = Rewards;
+			sourceTree = "<group>";
+		};
+		D6F442151BEB9080009C2866 /* Reporting */ = {
+			isa = PBXGroup;
+			children = (
+				D6F442161BEB90A4009C2866 /* SNFReporting.h */,
+				D6F442171BEB90A4009C2866 /* SNFReporting.m */,
+				D6F442181BEB90A4009C2866 /* SNFReporting.xib */,
+				D6F4421B1BEB95C5009C2866 /* SNFReportCellSmileFrown.h */,
+				D6F4421C1BEB95C5009C2866 /* SNFReportCellSmileFrown.m */,
+				D6F4421D1BEB95C5009C2866 /* SNFReportCellSmileFrown.xib */,
+				D6F4422D1BEBF411009C2866 /* SNFReportingSectionHeader.h */,
+				D6F4422E1BEBF411009C2866 /* SNFReportingSectionHeader.m */,
+				D6F442301BEBF425009C2866 /* SNFReportingSectionHeader.xib */,
+			);
+			name = Reporting;
+			sourceTree = "<group>";
+		};
+		D6F442201BEB95CC009C2866 /* Reporting */ = {
+			isa = PBXGroup;
+			children = (
+				D6F442211BEB95E9009C2866 /* SNFReportGeneration.h */,
+				D6F442221BEB95E9009C2866 /* SNFReportGeneration.m */,
+				D6F442241BEBA877009C2866 /* SNFReportDateGroup.h */,
+				D6F442251BEBA877009C2866 /* SNFReportDateGroup.m */,
+				D6F442271BEBA8CD009C2866 /* SNFReportBehaviorGroup.h */,
+				D6F442281BEBA8CD009C2866 /* SNFReportBehaviorGroup.m */,
+			);
+			name = Reporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -808,6 +868,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0707D6AF1BE2A1C9002F1FC0 /* SNFLogin.xib in Resources */,
+				D6F4421F1BEB95C5009C2866 /* SNFReportCellSmileFrown.xib in Resources */,
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
 				0707D6DD1BE428BA002F1FC0 /* SNFInvites.xib in Resources */,
 				D6270ED71BE817E900F7C39A /* SNFAddBehavior.xib in Resources */,
@@ -819,11 +880,13 @@
 				078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */,
 				0707D6C61BE2B2D8002F1FC0 /* SNFAcceptInvite.xib in Resources */,
 				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
+				D6F4421A1BEB90A4009C2866 /* SNFReporting.xib in Resources */,
 				D65DF1111BE29A42009CC6DF /* SNFTabMenu.xib in Resources */,
 				D6272FC41BE002330024CBC2 /* APDDjangoErrorViewer.xib in Resources */,
 				0707D6A51BE29756002F1FC0 /* SNFViewController.xib in Resources */,
 				D65DF1501BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib in Resources */,
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
+				D6F442311BEBF425009C2866 /* SNFReportingSectionHeader.xib in Resources */,
 				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
 				D65DF14B1BE2BF94009CC6DF /* SNFBoardDetailChildCell.xib in Resources */,
 				D65DF12A1BE2AA50009CC6DF /* SNFBoardList.xib in Resources */,
@@ -858,6 +921,7 @@
 				D65DF17A1BE3F884009CC6DF /* SNFBoardEdit.m in Sources */,
 				078DF4BF1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m in Sources */,
 				D65DF1761BE3ED9F009CC6DF /* SNFSwipeCell.m in Sources */,
+				D6F4422C1BEBD76F009C2866 /* SNFTaggedAlertAction.m in Sources */,
 				078DF4C51BEA62F600CBFAA4 /* UIViewController+Alerts.m in Sources */,
 				D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */,
 				D65DF1121BE29A42009CC6DF /* SNFUserProfile.m in Sources */,
@@ -880,7 +944,9 @@
 				D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */,
 				0707D6A31BE294A6002F1FC0 /* UIView+LayoutHelpers.m in Sources */,
 				D659DBED1BDAEA000048D3F7 /* SNFSmile.m in Sources */,
+				D6F442231BEB95E9009C2866 /* SNFReportGeneration.m in Sources */,
 				0707D69F1BE28EC6002F1FC0 /* SNFTutorial.m in Sources */,
+				D6F4421E1BEB95C5009C2866 /* SNFReportCellSmileFrown.m in Sources */,
 				D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */,
 				D659DBF11BDAEA000048D3F7 /* SNFBoard.m in Sources */,
 				D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */,
@@ -891,6 +957,7 @@
 				D6DB2BDB1BEAAB3500F1CDFF /* SNFAddReward.m in Sources */,
 				0707D6A91BE29BC4002F1FC0 /* SNFLauncher.m in Sources */,
 				D65DF14A1BE2BF94009CC6DF /* SNFBoardDetailChildCell.m in Sources */,
+				D6F442291BEBA8CD009C2866 /* SNFReportBehaviorGroup.m in Sources */,
 				D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */,
 				D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */,
 				078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */,
@@ -898,6 +965,7 @@
 				D6270ED61BE817E900F7C39A /* SNFAddBehavior.m in Sources */,
 				0707D6AE1BE2A1C9002F1FC0 /* SNFLogin.m in Sources */,
 				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,
+				D6F442261BEBA877009C2866 /* SNFReportDateGroup.m in Sources */,
 				D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */,
 				D6270EDD1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.m in Sources */,
 				078DF4C81BEA932200CBFAA4 /* ATITwitterAuthHandler.m in Sources */,
@@ -919,11 +987,13 @@
 				D6DB2BD51BEAA0BA00F1CDFF /* SNFAddCell.m in Sources */,
 				D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */,
 				D6272FC11BE002160024CBC2 /* NSTimer+Blocks.m in Sources */,
+				D6F442191BEB90A4009C2866 /* SNFReporting.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
 				0707D6DC1BE428BA002F1FC0 /* SNFInvites.m in Sources */,
 				0707D6CB1BE2B2F8002F1FC0 /* SNFCreateAccount.m in Sources */,
 				D65DF1101BE29A42009CC6DF /* SNFTabMenu.m in Sources */,
 				D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */,
+				D6F4422F1BEBF411009C2866 /* SNFReportingSectionHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

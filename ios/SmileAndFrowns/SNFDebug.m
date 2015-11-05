@@ -104,56 +104,9 @@
 	[userService authedUserInfoWithCompletion:^(NSError *error, SNFUser *user) {
 		if(user){
 			NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
-			
 			NSDictionary *boardInfo = @{@"title": @"Custom Board Created on Device"};
 			SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
 			board.owner = user;
-			
-			// add a random user
-			NSDictionary *userInfo = @{
-							@"gender": SNFUserGenderMale,
-							};
-			SNFUser *childUser = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:userInfo withContext:context];
-			
-			NSDictionary *userRoleInfo = @{
-										   @"user": @{@"username": user.username},
-										   @"board": @{@"uuid": board.uuid},
-										   };
-			SNFUserRole *userRole = (SNFUserRole *)[SNFUserRole editOrCreatefromInfoDictionary:userRoleInfo withContext:context];
-			
-			
-			NSDictionary *userRoleInfo2 = @{
-										   @"user": @{@"username": childUser.username},
-										   @"role": SNFUserRoleChild,
-										   @"board": @{@"uuid": board.uuid},
-										   };
-			SNFUserRole *userRole2 = (SNFUserRole *)[SNFUserRole editOrCreatefromInfoDictionary:userRoleInfo2 withContext:context];
-			
-			NSDictionary *behaviorInfo = @{
-										   @"board": @{@"uuid": board.uuid},
-										   };
-			SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
-			
-			NSDictionary *rewardInfo = @{
-										 @"board": @{@"uuid": board.uuid},
-										 };
-			SNFReward *reward = (SNFReward *)[SNFReward editOrCreatefromInfoDictionary:rewardInfo withContext:context];
-			
-			NSDictionary *frownInfo = @{
-										@"board": @{@"uuid": board.uuid,},
-										@"behavior": @{@"uuid": behavior.uuid},
-										@"user": @{@"username": user.username},
-										};
-			SNFFrown *frown = (SNFFrown *)[SNFFrown editOrCreatefromInfoDictionary:frownInfo withContext:context];
-			
-			NSDictionary *smileInfo = @{
-										@"board": @{@"uuid": board.uuid,},
-										@"behavior": @{@"uuid": behavior.uuid},
-										@"user": @{@"username": user.username},
-										};
-			SNFSmile *smile = (SNFSmile *)[SNFSmile editOrCreatefromInfoDictionary:smileInfo withContext:context];
-			
-			NSLog(@"%@ %@ %@ %@ %@ %@ %@ %@", user, userRole, userRole2, reward, behavior, smile, frown, board);
 		}else if(error){
 			if(error.code == SNFErrorCodeDjangoDebugError){
 				APDDjangoErrorViewer *viewer = [[APDDjangoErrorViewer alloc] init];
@@ -219,7 +172,6 @@
 - (void)logUserRoles{
 	[self logInfoForType:@"SNFUserRole"];
 }
-
 
 - (void)logInfoForPredefinedBoards{
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;

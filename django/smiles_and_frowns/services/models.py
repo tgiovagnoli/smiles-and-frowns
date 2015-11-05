@@ -119,7 +119,8 @@ class Reward(SyncModel):
 		return self.title
 
 class Smile(SyncModel):
-	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="%(class)s_user")
+	creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="%(class)s_creator")
 	board = models.ForeignKey(Board, on_delete=models.SET_NULL, null=True)
 	behavior = models.ForeignKey(Behavior, null=True)
 	collected = models.BooleanField(default=False)
@@ -128,7 +129,8 @@ class Smile(SyncModel):
 		return self.board.title
 
 class Frown(SyncModel):
-	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="%(class)s_user")
+	creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="%(class)s_creator")
 	board = models.ForeignKey(Board, on_delete=models.SET_NULL, null=True)
 	behavior = models.ForeignKey(Behavior, null=True)
 	note = models.CharField(max_length=256, blank=True, default="")

@@ -13,7 +13,8 @@
 		@"behavior": @"behavior",
 		@"collected": @"collected",
 		@"note": @"note",
-		@"user": @"user"
+		@"user": @"user",
+		@"creator": @"creator",
 	};
 }
 

@@ -39,6 +39,7 @@
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="behavior" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBehavior" inverseName="frowns" inverseEntity="SNFBehavior" syncable="YES"/>
         <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="frowns" inverseEntity="SNFBoard" syncable="YES"/>
+        <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" inverseName="frowns_created" inverseEntity="SNFUser" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" inverseName="frowns" inverseEntity="SNFUser" syncable="YES"/>
     </entity>
     <entity name="SNFInvite" representedClassName="SNFInvite" syncable="YES">
@@ -92,6 +93,7 @@
         <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="behavior" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBehavior" inverseName="smiles" inverseEntity="SNFBehavior" syncable="YES"/>
         <relationship name="board" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="smiles" inverseEntity="SNFBoard" syncable="YES"/>
+        <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" inverseName="smiles_created" inverseEntity="SNFUser" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" inverseName="smiles" inverseEntity="SNFUser" syncable="YES"/>
     </entity>
     <entity name="SNFUser" representedClassName="SNFUser" syncable="YES">
@@ -103,8 +105,10 @@
         <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="frowns" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFFrown" inverseName="user" inverseEntity="SNFFrown" syncable="YES"/>
+        <relationship name="frowns_created" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFFrown" inverseName="creator" inverseEntity="SNFFrown" syncable="YES"/>
         <relationship name="owned_boards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFBoard" inverseName="owner" inverseEntity="SNFBoard" syncable="YES"/>
         <relationship name="smiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFSmile" inverseName="user" inverseEntity="SNFSmile" syncable="YES"/>
+        <relationship name="smiles_created" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFSmile" inverseName="creator" inverseEntity="SNFSmile" syncable="YES"/>
         <relationship name="user_roles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFUserRole" inverseName="user" inverseEntity="SNFUserRole" syncable="YES"/>
     </entity>
     <entity name="SNFUserRole" representedClassName="SNFUserRole" syncable="YES">
@@ -119,16 +123,16 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" inverseName="user_roles" inverseEntity="SNFUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SNFBehavior" positionX="-711" positionY="-189" width="128" height="208"/>
-        <element name="SNFBoard" positionX="-110" positionY="-315" width="128" height="255"/>
-        <element name="SNFFrown" positionX="-434" positionY="126" width="128" height="195"/>
-        <element name="SNFInvite" positionX="-135" positionY="213" width="128" height="180"/>
-        <element name="SNFReward" positionX="61" positionY="51" width="128" height="208"/>
-        <element name="SNFSmile" positionX="-711" positionY="153" width="128" height="210"/>
-        <element name="SNFUser" positionX="-504" positionY="-399" width="128" height="210"/>
-        <element name="SNFUserRole" positionX="-272" positionY="-36" width="128" height="180"/>
-        <element name="SNFPredefinedBoard" positionX="-513" positionY="-252" width="128" height="90"/>
-        <element name="SNFPredefinedBehavior" positionX="-504" positionY="-243" width="128" height="105"/>
-        <element name="SNFPredefinedBehaviorGroup" positionX="-495" positionY="-234" width="128" height="90"/>
+        <element name="SNFBehavior" positionX="-882" positionY="-225" width="128" height="208"/>
+        <element name="SNFBoard" positionX="-1107" positionY="-111" width="128" height="255"/>
+        <element name="SNFFrown" positionX="-389" positionY="27" width="128" height="208"/>
+        <element name="SNFInvite" positionX="279" positionY="54" width="128" height="180"/>
+        <element name="SNFPredefinedBehavior" positionX="-639" positionY="-369" width="128" height="105"/>
+        <element name="SNFPredefinedBehaviorGroup" positionX="-477" positionY="-369" width="128" height="90"/>
+        <element name="SNFPredefinedBoard" positionX="-801" positionY="-369" width="128" height="90"/>
+        <element name="SNFReward" positionX="-1397" positionY="-19" width="128" height="208"/>
+        <element name="SNFSmile" positionX="-477" positionY="306" width="128" height="223"/>
+        <element name="SNFUser" positionX="-1089" positionY="201" width="128" height="238"/>
+        <element name="SNFUserRole" positionX="-108" positionY="0" width="128" height="180"/>
     </elements>
 </model>

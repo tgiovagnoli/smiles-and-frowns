@@ -90,6 +90,13 @@
 	[self presentViewController:rewards animated:YES completion:^{}];
 }
 
+- (void)childCellWantsToOpenReport:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
+	SNFReporting *reporting = [[SNFReporting alloc] init];
+	reporting.board = userRole.board;
+	reporting.user = userRole.user;
+	[self presentViewController:reporting animated:YES completion:^{}];
+}
+
 - (void)spendRewardsIsDone:(SNFSpendRewards *)spendRewards{
 	[self reloadUserRoles];
 }
@@ -104,11 +111,9 @@
 }
 
 - (void)reloadUserRoles{
-	NSComparator comparisonBlock = ^(id first,id second) {
-		return NSOrderedAscending;
-	};
-	NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"role" ascending:YES comparator:comparisonBlock];
-	_userRoles = [_board.user_roles sortedArrayUsingDescriptors:@[descriptor]];
+	NSSortDescriptor *roleDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self.role" ascending:NO];
+	NSSortDescriptor *userDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self.user.first_name" ascending:YES];
+	_userRoles = [_board.user_roles sortedArrayUsingDescriptors:@[roleDescriptor, userDescriptor]];
 	[self.rolesTable reloadData];
 }
 

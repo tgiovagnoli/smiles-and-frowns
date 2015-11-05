@@ -8,6 +8,7 @@
 - (void)childCellWantsToAddSmile:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
 - (void)childCellWantsToAddFrown:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
 - (void)childCellWantsToSpend:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
+- (void)childCellWantsToOpenReport:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
 @end
 
 @interface SNFBoardDetailChildCell : UITableViewCell
@@ -27,5 +28,6 @@
 - (IBAction)onSmile:(UIButton *)sender;
 - (IBAction)onFrown:(UIButton *)sender;
 - (IBAction)onSpend:(UIButton *)sender;
+- (IBAction)onReport:(UIButton *)sender;
 
 @end
