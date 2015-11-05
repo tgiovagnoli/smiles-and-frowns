@@ -23,8 +23,8 @@
 
 - (void) viewDidLayoutSubviews {
 	if(self.firstlayout) {
-		//self.formView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:.4];
-		//self.scrollView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:.4];
+		self.formView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:.4];
+		self.scrollView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:.4];
 		self.firstlayout = false;
 		self.formView.width = self.scrollView.width;
 		self.scrollView.contentSize = self.formView.size;
@@ -32,24 +32,22 @@
 	}
 }
 
-- (void) keyboardWillShow:(NSNotification *) notification {
+- (CGFloat) scrollViewBottomConstraint:(NSNotification *) notification {
 	NSDictionary * userInfo = notification.userInfo;
 	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
-	
 	CGFloat bottom = keyboardFrameEnd.size.height;
-	
-	NSLog(@"keyboard height: %f",bottom);
-	
 	if([SNFViewController instance]) {
 		if([SNFViewController instance].isAdDisplayed) {
 			bottom -= [SNFViewController instance].bannerView.height;
 		}
 	}
-	
+	return bottom;
+}
+
+- (void) keyboardWillShow:(NSNotification *) notification {
+	CGFloat bottom = [self scrollViewBottomConstraint:notification];
 	self.scrollViewBottom.constant = bottom;
-	
-	NSLog(@"bottom: %f, height: %f, top: %f",bottom, self.scrollView.height,self.scrollView.y);
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
