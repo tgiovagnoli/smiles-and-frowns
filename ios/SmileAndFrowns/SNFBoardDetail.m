@@ -1,3 +1,4 @@
+
 #import "SNFBoardDetail.h"
 #import "SNFViewController.h"
 #import "AppDelegate.h"
@@ -8,6 +9,10 @@
 	[super viewDidLoad];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserRoleAddedChild:) name:SNFAddUserRoleAddedChild object:nil];
 	[self updateUI];
+}
+
+- (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
+	return TRUE;
 }
 
 - (void)updateUI{

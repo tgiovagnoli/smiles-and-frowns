@@ -3,7 +3,6 @@
 #import "SNFModel.h"
 #import "UIAlertAction+Additions.h"
 
-
 @implementation SNFBoardEdit
 
 - (void) viewDidLoad {

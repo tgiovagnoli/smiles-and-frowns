@@ -22,11 +22,8 @@ static __weak SNFViewController * _instance;
 	[super viewDidLoad];
 	_instance = self;
 	self.firstlayout = true;
-	//self.viewControllerStack.alwaysResizePushedViews = YES;
-	self.viewControllerStack.updateScrollViewContentSizeAfterResize = TRUE;
-	
-	//self.bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
-	//self.bannerView.delegate = self;
+	self.bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+	self.bannerView.delegate = self;
 }
 
 - (void) dealloc {

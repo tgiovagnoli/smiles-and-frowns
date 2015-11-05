@@ -8,4 +8,6 @@
 @property IBOutlet NSLayoutConstraint * scrollViewBottom;
 @property CGFloat minFormViewHeight;
 
+- (CGFloat) scrollViewBottomConstraint:(NSNotification *) notification;
+
 @end

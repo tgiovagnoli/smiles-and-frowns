@@ -6,6 +6,7 @@
 
 @interface SNFFormViewController ()
 @property BOOL firstlayout;
+@property CGFloat initialFormHeight;
 @end
 
 @implementation SNFFormViewController
@@ -23,9 +24,10 @@
 
 - (void) viewDidLayoutSubviews {
 	if(self.firstlayout) {
-		self.formView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:.4];
-		self.scrollView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:.4];
+		//self.formView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
+		//self.scrollView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:1];
 		self.firstlayout = false;
+		self.initialFormHeight = self.formView.height;
 		self.formView.width = self.scrollView.width;
 		self.scrollView.contentSize = self.formView.size;
 		[self.scrollView addSubview:self.formView];
@@ -48,6 +50,9 @@
 - (void) keyboardWillShow:(NSNotification *) notification {
 	CGFloat bottom = [self scrollViewBottomConstraint:notification];
 	self.scrollViewBottom.constant = bottom;
+	[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
+		self.formView.height = self.initialFormHeight;
+	} repeats:FALSE];
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {

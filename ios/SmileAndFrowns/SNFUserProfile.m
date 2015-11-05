@@ -34,16 +34,23 @@
 	[self loadAuthedUser];
 }
 
-- (CGRect) viewFrameForViewStackController:(UIViewControllerStack *)viewStack isScrollView:(BOOL)isScrollView {
-	if(isScrollView) {
-		if(viewStack.height > self.formView.height) {
-			return viewStack.bounds;
-		}
-		return CGRectMake(0,0,viewStack.width,self.formView.height+self.scrollView.top);
-	} else {
-		return viewStack.bounds;
-	}
-	return CGRectZero;
+- (CGFloat) scrollViewBottomConstraint:(NSNotification *) notification {
+	CGFloat defaultValue = [super scrollViewBottomConstraint:notification];
+	defaultValue -= 50;
+	return defaultValue;
+}
+
+- (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
+	return TRUE;
+}
+
+- (CGFloat) minViewHeightForViewStackController:(UIViewControllerStack *)viewStack isScrollView:(BOOL)isScrollView {
+	return self.formView.height+self.scrollView.top;
+}
+
+- (void) viewStack:(UIViewControllerStack *) viewStack didResizeViewController:(UIViewController *) viewController {
+	self.pickerviewContainer.height = self.view.height;
+	self.pickerviewContainer.width = self.view.width;
 }
 
 - (IBAction) onGender:(id) sender {
