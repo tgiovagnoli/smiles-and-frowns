@@ -9,6 +9,8 @@
                 <outlet property="createAccountButton" destination="A4E-m0-Q5T" id="Uw9-8i-2Tf"/>
                 <outlet property="loginButton" destination="uGA-iT-z3T" id="p3F-wx-vd5"/>
                 <outlet property="showOnStartup" destination="eXF-OV-gDJ" id="E3l-Wd-wtW"/>
+                <outlet property="showOnStartupLabel" destination="l98-O4-0q6" id="Cfx-I6-dUS"/>
+                <outlet property="showOnStartupLabelBottom" destination="QL0-P7-IlB" id="wKP-SB-HJv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -137,24 +139,18 @@
                 <constraint firstAttribute="trailing" secondItem="3kq-mh-ITC" secondAttribute="trailing" id="MaL-ZX-xje"/>
                 <constraint firstItem="kwu-gI-Bcg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NFP-xp-FMu"/>
                 <constraint firstAttribute="bottom" secondItem="l98-O4-0q6" secondAttribute="bottom" constant="13" id="QL0-P7-IlB"/>
-                <constraint firstAttribute="bottom" secondItem="eXF-OV-gDJ" secondAttribute="bottom" constant="8" id="Sq9-Os-as8"/>
                 <constraint firstItem="eR4-QF-gvg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UHB-mf-bwu"/>
                 <constraint firstAttribute="trailing" secondItem="eR4-QF-gvg" secondAttribute="trailing" id="YTT-oD-1d7"/>
                 <constraint firstItem="xEn-pn-T6I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="ZW3-Pk-3Rq"/>
                 <constraint firstAttribute="trailing" secondItem="kwu-gI-Bcg" secondAttribute="trailing" id="aCc-7m-Ykb"/>
+                <constraint firstItem="eXF-OV-gDJ" firstAttribute="bottom" secondItem="l98-O4-0q6" secondAttribute="bottom" constant="5" id="bka-CX-7uz"/>
                 <constraint firstItem="3kq-mh-ITC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cU6-NQ-DmD"/>
                 <constraint firstItem="kwu-gI-Bcg" firstAttribute="top" secondItem="3kq-mh-ITC" secondAttribute="bottom" constant="1" id="d55-95-KXK"/>
                 <constraint firstItem="A4E-m0-Q5T" firstAttribute="top" secondItem="uGA-iT-z3T" secondAttribute="bottom" constant="1" id="dcM-ON-Zmy"/>
                 <constraint firstItem="l98-O4-0q6" firstAttribute="leading" secondItem="eXF-OV-gDJ" secondAttribute="trailing" constant="8" id="kg7-Bo-PDl"/>
                 <constraint firstItem="l98-O4-0q6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="28.5" id="lpd-Cw-KRZ"/>
-                <constraint firstItem="l98-O4-0q6" firstAttribute="top" secondItem="uGA-iT-z3T" secondAttribute="bottom" constant="19" id="wf2-ah-vge"/>
                 <constraint firstItem="eR4-QF-gvg" firstAttribute="top" secondItem="kwu-gI-Bcg" secondAttribute="bottom" constant="1" id="wvo-7e-Yun"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="wf2-ah-vge"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="596" y="468"/>
         </view>
     </objects>

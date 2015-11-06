@@ -13,6 +13,7 @@
 
 @interface SNFLauncher ()
 @property BOOL firstlayout;
+@property ADBannerView * bannerView;
 @end
 
 @implementation SNFLauncher
@@ -40,6 +41,9 @@
 			[[AppDelegate rootViewController] presentViewController:create animated:TRUE completion:nil];
 		} repeats:FALSE];
 	}
+	
+	self.bannerView = [[ADBannerView alloc] init];
+	self.bannerView.delegate = self;
 }
 
 - (void) viewDidLayoutSubviews {
@@ -51,6 +55,17 @@
 - (void) dealloc {
 	[[SNFModel sharedInstance] removeObserver:self forKeyPath:@"loggedInUser"];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+	self.showOnStartupLabelBottom.constant = 0;
+	[self.bannerView removeFromSuperview];
+}
+
+- (void) bannerViewDidLoadAd:(ADBannerView *)banner {
+	banner.y = self.view.height - banner.height;
+	self.showOnStartupLabelBottom.constant = banner.height + 20;
+	[self.view addSubview:banner];
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
@@ -85,7 +100,7 @@
 
 - (IBAction) createBoard:(id)sender {
 	if(![SNFModel sharedInstance].loggedInUser) {
-		SNFLogin * login = [[SNFLogin alloc] init];
+		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,400)];
 		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 	} else {
 		[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
