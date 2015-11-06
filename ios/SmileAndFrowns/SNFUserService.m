@@ -375,7 +375,7 @@
 				//load the invites into core data.
 				NSArray * invites = (NSArray *)responseObject;
 				for(NSDictionary * dict in invites) {
-					[SNFInvite editOrCreatefromInfoDictionary:dict withContext:[SNFModel sharedInstance].managedObjectContext];
+					__unused SNFInvite * invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:dict withContext:[SNFModel sharedInstance].managedObjectContext];
 				}
 				
 				[[SNFModel sharedInstance].managedObjectContext save:nil];

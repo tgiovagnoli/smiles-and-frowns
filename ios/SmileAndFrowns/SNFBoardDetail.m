@@ -2,6 +2,7 @@
 #import "SNFBoardDetail.h"
 #import "SNFViewController.h"
 #import "AppDelegate.h"
+#import "UIViewController+ModalCreation.h"
 
 @implementation SNFBoardDetail
 
@@ -57,7 +58,7 @@
 }
 
 - (IBAction)onAddUserRole:(id)sender{
-	SNFAddUserRole *addUserRole = [[SNFAddUserRole alloc] init];
+	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
 	addUserRole.board = self.board;
 	[self presentViewController:addUserRole animated:YES completion:nil];
 }

@@ -70,7 +70,7 @@
 			mappedKey = [[mappings allKeysForObject:key] lastObject];
 		}
 		
-		if(![[mappings allKeysForObject:key] lastObject]){
+		if(![[mappings allKeysForObject:key] lastObject]) {
 			continue;
 		}
 		

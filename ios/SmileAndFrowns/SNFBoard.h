@@ -8,6 +8,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SNFBoard : NSManagedObject
 
++ (SNFBoard *)boardByUUID:(NSString *) uuid;
 
 - (void)reset;
 - (NSArray *)sortedActiveBehaviors;

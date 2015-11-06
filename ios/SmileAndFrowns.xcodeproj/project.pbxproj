@@ -37,6 +37,7 @@
 		078DF4D31BEA9AF600CBFAA4 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */; };
 		078DF4D51BEA9B1100CBFAA4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */; };
 		078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */; };
+		07C0F3B01BEC4C460075A6B9 /* UIViewController+ModalCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */; };
 		07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E7055A1BEBD1520013FB75 /* iAd.framework */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
@@ -179,6 +180,8 @@
 		078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = libs/TwitterCore.framework; sourceTree = "<group>"; };
 		078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = libs/Fabric.framework; sourceTree = "<group>"; };
 		078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = libs/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		07C0F3AE1BEC4C460075A6B9 /* UIViewController+ModalCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ModalCreation.h"; sourceTree = "<group>"; };
+		07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ModalCreation.m"; sourceTree = "<group>"; };
 		07E7055A1BEBD1520013FB75 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSLog+Geom.h"; path = "submodules/apd-objc/NSLog+Geom.h"; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
@@ -767,6 +770,8 @@
 				078DF4C41BEA62F600CBFAA4 /* UIViewController+Alerts.m */,
 				D6F4422A1BEBD76F009C2866 /* SNFTaggedAlertAction.h */,
 				D6F4422B1BEBD76F009C2866 /* SNFTaggedAlertAction.m */,
+				07C0F3AE1BEC4C460075A6B9 /* UIViewController+ModalCreation.h */,
+				07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -939,6 +944,7 @@
 				D65DF15A1BE2F59F009CC6DF /* SNFAddUserRole.m in Sources */,
 				D65DF0E71BE2830C009CC6DF /* SNFDateManager.m in Sources */,
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
+				07C0F3B01BEC4C460075A6B9 /* UIViewController+ModalCreation.m in Sources */,
 				D6DB2BE01BEAC3E300F1CDFF /* SNFSpendRewards.m in Sources */,
 				D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */,
 				D659DC041BDB06010048D3F7 /* SNFModel.m in Sources */,

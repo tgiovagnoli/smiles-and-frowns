@@ -16,12 +16,31 @@
 #import "ATIFacebookAuthHandler.h"
 #import "ATITwitterAuthHandler.h"
 #import "UIViewController+Alerts.h"
+#import "SNFLauncher.h"
 
 @interface SNFLogin ()
 @property SNFUserService * service;
 @end
 
 @implementation SNFLogin
+
++ (SNFLogin *) loginModalAtSourceView:(UIView *) view sourceRect:(CGRect) rect contentSize:(CGSize) contentSize {
+	SNFLogin * login = [[SNFLogin alloc] init];
+	login.modalPresentationStyle = UIModalPresentationPopover;
+	login.popoverPresentationController.sourceView = view;
+	
+	if(CGSizeEqualToSize(contentSize, CGSizeZero)) {
+		login.preferredContentSize = CGSizeMake(500, 400);
+	} else {
+		login.preferredContentSize = contentSize;
+	}
+	
+	if(!CGRectEqualToRect(rect, CGRectZero)) {
+		login.popoverPresentationController.sourceRect = rect;
+	}
+	
+	return login;
+}
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
@@ -212,32 +231,42 @@
 	}];
 }
 
-- (IBAction) cancel:(id)sender {
+- (IBAction) cancel:(id) sender {
 	[self.view endEditing:TRUE];
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (IBAction) createAccount:(id) sender {
-	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+	if([[AppDelegate rootViewController] isKindOfClass:[SNFLauncher class]]) {
 		
-		SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] init];
+		SNFLauncher * launcher = (SNFLauncher *)[AppDelegate rootViewController];
 		
-		if(self.nextViewController) {
-			createAccount.nextViewController = self.nextViewController;
-		}
-		
-		[[AppDelegate rootViewController] presentViewController:createAccount animated:TRUE completion:nil];
-		
-	}];
+		[launcher dismissViewControllerAnimated:TRUE completion:^{
+			SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+			
+			if(self.nextViewController) {
+				createAccount.nextViewController = self.nextViewController;
+			}
+			
+			[[AppDelegate rootViewController] presentViewController:createAccount animated:TRUE completion:nil];
+			
+		}];
+	}
 }
 
 - (IBAction) forgotPassword:(id) sender {
-	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+	if([[AppDelegate rootViewController] isKindOfClass:[SNFLauncher class]]) {
 		
-		SNFPasswordReset * reset = [[SNFPasswordReset alloc] init];
-		[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:nil];
+		SNFLauncher * launcher = (SNFLauncher *)[AppDelegate rootViewController];
 		
-	}];
+		[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+			
+			SNFPasswordReset * reset = [[SNFPasswordReset alloc] initWithSourceView:launcher.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+			[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:nil];
+			
+		}];
+	}
+	
 }
 
 @end

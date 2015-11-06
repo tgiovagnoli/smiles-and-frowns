@@ -1,5 +1,6 @@
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+ModalCreation.h"
 
 @interface SNFLauncher : UIViewController
 

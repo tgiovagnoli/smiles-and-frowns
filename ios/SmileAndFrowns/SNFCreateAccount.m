@@ -12,6 +12,7 @@
 #import "SNFSyncService.h"
 #import "UIViewController+Alerts.h"
 #import "ATITwitterAuthHandler.h"
+#import "SNFLauncher.h"
 
 @interface SNFCreateAccount ()
 @property SNFUserService * service;
@@ -129,17 +130,23 @@
 	[SNFModel sharedInstance].pendingInviteCode = nil;
 }
 
-- (IBAction) login:(id)sender {
-	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+- (IBAction) login:(id) sender {
+	if([[AppDelegate rootViewController] isKindOfClass:[SNFLauncher class]]) {
 		
-		SNFLogin * login = [[SNFLogin alloc] init];
+		SNFLauncher * launcher = (SNFLauncher *)[AppDelegate rootViewController];
 		
-		if(self.nextViewController) {
-			login.nextViewController = self.nextViewController;
-		}
+		[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+			
+			SNFLogin * login = [[SNFLogin alloc] initWithSourceView:launcher.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+			
+			if(self.nextViewController) {
+				login.nextViewController = self.nextViewController;
+			}
+			
+			[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
+		}];
 		
-		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
-	}];
+	}
 }
 
 - (IBAction) facebook:(id) sender {

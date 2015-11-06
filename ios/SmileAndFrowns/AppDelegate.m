@@ -75,9 +75,12 @@ static AppDelegate * _instance;
 				[SNFModel sharedInstance].pendingInviteCode = inviteCode;
 				
 				if([[AppDelegate rootViewController] isKindOfClass:[SNFLauncher class]]) {
-					SNFCreateAccount * signup = [[SNFCreateAccount alloc] init];
-					SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] init];
+					
+					SNFLauncher * launcher = (SNFLauncher *)[AppDelegate rootViewController];
+					SNFCreateAccount * signup = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+					SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] initWithSourceView:launcher.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
 					signup.nextViewController = acceptInvite;
+					
 					[[AppDelegate rootViewController] presentViewController:signup animated:TRUE completion:nil];
 				}
 				

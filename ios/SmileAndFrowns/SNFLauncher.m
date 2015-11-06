@@ -109,23 +109,13 @@
 			}
 		}];
 	} else {
-		
-		SNFLogin * login = [[SNFLogin alloc] init];
-		login.modalPresentationStyle = UIModalPresentationPopover;
-		login.popoverPresentationController.sourceView = self.loginButton;
-		login.popoverPresentationController.sourceRect = CGRectMake(self.loginButton.width/2,0,10,10);
-		
+		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,400)];
 		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 	}
 }
 
 - (IBAction) createAccount:(id) sender {
-	
-	SNFCreateAccount * account = [[SNFCreateAccount alloc] init];
-	account.modalPresentationStyle = UIModalPresentationPopover;
-	account.popoverPresentationController.sourceView = self.createAccountButton;
-	account.popoverPresentationController.sourceRect = CGRectMake(self.createAccountButton.width/2,0,10,10);
-	
+	SNFCreateAccount * account = [[SNFCreateAccount alloc] initWithSourceView:self.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
 	[[AppDelegate rootViewController] presentViewController:account animated:TRUE completion:nil];
 }
 

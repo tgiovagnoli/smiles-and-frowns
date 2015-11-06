@@ -5,6 +5,7 @@
 #import "SNFInvite.h"
 #import "SNFReward.h"
 #import "SNFUser.h"
+#import "SNFModel.h"
 
 @implementation SNFBoard
 
@@ -97,6 +98,23 @@
 	self.behaviors = [NSSet set];
 	self.user_roles = [NSSet set];
 	self.title = @"Untitled";
+}
+
++ (SNFBoard *) boardByUUID:(NSString *) uuid; {
+	NSError * error = nil;
+	NSFetchRequest * findRequest = [[NSFetchRequest alloc] init];
+	NSEntityDescription * findEntity = [NSEntityDescription entityForName:@"SNFBoard" inManagedObjectContext:[SNFModel sharedInstance].managedObjectContext];
+	[findRequest setEntity:findEntity];
+	[findRequest setPredicate:[NSPredicate predicateWithFormat:@"uuid=%@", uuid]];
+	NSArray * fetchedObjects = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:findRequest error:&error];
+	if(error) {
+		NSLog(@"fetch boardByUUID error: %@",error);
+		return nil;
+	}
+	if(fetchedObjects.count > 0) {
+		return [fetchedObjects objectAtIndex:0];
+	}
+	return nil;
 }
 
 - (NSArray *)sortedActiveBehaviors{

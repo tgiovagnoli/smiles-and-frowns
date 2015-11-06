@@ -4,6 +4,7 @@
 #import "SNFUser.h"
 #import "SNFFormViewController.h"
 #import "UIView+LayoutHelpers.h"
+#import "UIViewController+ModalCreation.h"
 
 @class SNFLogin;
 
