@@ -2,20 +2,21 @@
 #import <CoreData/CoreData.h>
 #import "NSManagedObject+InfoDictionary.h"
 
-@class SNFBehavior, SNFSmile, SNFUser, SNFSmile, SNFFrown;
+@class SNFBehavior, SNFSmile, SNFUser, SNFSmile, SNFFrown, SNFPredefinedBoard;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SNFBoard : NSManagedObject
 
 + (SNFBoard *)boardByUUID:(NSString *) uuid;
-
++ (SNFBoard *)boardFromPredefinedBoard:(SNFPredefinedBoard *)pdb andContext:(NSManagedObjectContext *)context;
 - (void)reset;
 - (NSArray *)sortedActiveBehaviors;
 - (NSArray *)sortedActiveRewards;
 - (NSArray *)smilesForUser:(SNFUser *)user;
 - (NSArray *)frownsForUser:(SNFUser *)user;
 - (NSInteger)smileCurrencyForUser:(SNFUser *)user;
+
 
 @end
 
