@@ -6,7 +6,7 @@
 		<key>Name</key>
 		<string>NewBoard</string>
 		<key>ProductId</key>
-		<string>com.smilesandfrowns.SmilesAndFrowns.NewBoard</string>
+		<string>com.apptitude.SmilesAndFrowns.NewBoard</string>
 	</dict>
 </array>
 </plist>
