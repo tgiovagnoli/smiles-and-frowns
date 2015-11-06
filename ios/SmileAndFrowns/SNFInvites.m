@@ -12,6 +12,7 @@
 #import "SNFViewController.h"
 #import "SNFBoardDetail.h"
 #import "SNFInvitesCell.h"
+#import "SNFModel.h"
 
 @interface SNFInvites ()
 @property SNFUserService * service;
@@ -24,6 +25,12 @@
 	[super viewDidLoad];
 	
 	self.service = [[SNFUserService alloc] init];
+	
+	self.segment.selectedSegmentIndex = 1;
+	self.search.visible = FALSE;
+	self.search.delegate = self;
+	[self.search addTarget:self action:@selector(searchFieldChanged:) forControlEvents:UIControlEventEditingChanged];
+	
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
 	[self reload];
@@ -42,14 +49,78 @@
 	}];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteAccepted:) name:SNFInviteAccepted object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardShow:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
 	return TRUE;
 }
 
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+	[self.view endEditing:TRUE];
+	return YES;
+}
+
+- (void) onKeyboardShow:(NSNotification *) notification {
+	NSDictionary * userInfo = notification.userInfo;
+	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
+	CGFloat bottom = keyboardFrameEnd.size.height;
+	if([SNFViewController instance].bannerView.superview) {
+		bottom -= 50;
+	}
+	self.tableViewBottom.constant = bottom - 50;
+}
+
+- (void) onKeyboardHide:(NSNotification *) notification {
+	self.tableViewBottom.constant = 0;
+}
+
+- (void) searchFieldChanged:(UITextField *) searchField {
+	[self reload];
+}
+
+- (IBAction) segmentChanged:(UISegmentedControl *) sender {
+	[self reload];
+}
+
+- (IBAction) search:(id) sender {
+	if([[self.searchButton titleForState:UIControlStateNormal] isEqualToString:@"Done"]) {
+		self.search.text = @"";
+		self.search.visible = FALSE;
+		[self.searchButton setTitle:@"Search" forState:UIControlStateNormal];
+		self.segment.visible = TRUE;
+		[self.view endEditing:TRUE];
+	} else {
+		[self.search becomeFirstResponder];
+		self.search.visible = TRUE;
+		[self.searchButton setTitle:@"Done" forState:UIControlStateNormal];
+		self.segment.visible = FALSE;
+	}
+}
+
 - (void) reload {
-	self.invites = [SNFInvite all];
+	NSError * error;
+	NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"SNFInvite"];
+	
+	if([self.search.text isEmpty]) {
+		
+	} else {
+		request.predicate = [NSPredicate predicateWithFormat:@"(sender_first_name CONTAINS[cd] %@) || (sender_last_name CONTAINS[cd] %@)", self.search.text,self.search.text];
+	}
+	
+	if(self.segment.selectedSegmentIndex == 0) {
+		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"sender_first_name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+		
+	} else {
+		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"created_date" ascending:NO]];
+	}
+	
+	NSArray * results = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:request error:&error];
+	
+	self.invites = results;
+	
 	[self.tableView reloadData];
 }
 
