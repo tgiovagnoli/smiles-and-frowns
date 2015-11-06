@@ -268,7 +268,6 @@
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		NSString *product = [IAPHelper productFromPlistByName:@"NewBoard"];
 		NSLog(@"NewBoard product id: %@", product);
-		
 		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			if(error){
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
