@@ -192,7 +192,7 @@
                 <constraint firstItem="QQi-nD-uhg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="z1C-Hh-jRI"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="315" y="480.5"/>
+            <point key="canvasLocation" x="312" y="465.5"/>
         </view>
         <view contentMode="scaleToFill" id="fOl-Xu-Fvq">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -224,7 +224,7 @@
                 <constraint firstAttribute="bottom" secondItem="lH1-CG-NrK" secondAttribute="bottom" id="rz0-tD-3fL"/>
                 <constraint firstItem="TSn-IZ-78r" firstAttribute="top" secondItem="fOl-Xu-Fvq" secondAttribute="top" constant="8" id="wcT-0Z-ay6"/>
             </constraints>
-            <point key="canvasLocation" x="1026" y="593"/>
+            <point key="canvasLocation" x="957" y="451"/>
         </view>
     </objects>
 </document>

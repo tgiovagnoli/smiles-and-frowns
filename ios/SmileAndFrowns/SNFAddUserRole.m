@@ -96,15 +96,15 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 			userIndex++;
 		}
 		
-		[alert addAction:[UIAlertAction actionWithTitle:@"Create As New Child" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {}]];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Create As New Child" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+			[self addChildRoleWithUser:nil];
+		}]];
 		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
 		
 		[self presentViewController:alert animated:YES completion:^{}];
 		
 	} else {
-		
 		[self addChildRoleWithUser:nil];
-		
 	}
 }
 

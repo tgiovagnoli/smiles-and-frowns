@@ -9,13 +9,13 @@
 	NSString *note;
 	switch (_behaviorGroup.type) {
 		case SNFReportBehaviorGroupTypeFrown:
-			self.countLabel.text = [NSString stringWithFormat:@":( %lu", behaviorGroup.frowns.count];
+			self.countLabel.text = [NSString stringWithFormat:@":( %lu", (unsigned long)behaviorGroup.frowns.count];
 			behavior = [[[behaviorGroup frowns] firstObject] behavior];
 			creator = [[[behaviorGroup frowns] firstObject] creator];
 			note = [[[behaviorGroup frowns] firstObject] note];
 			break;
 		case SNFReportBehaviorGroupTypeSmile:
-			self.countLabel.text = [NSString stringWithFormat:@":) %lu", behaviorGroup.smiles.count];
+			self.countLabel.text = [NSString stringWithFormat:@":) %lu", (unsigned long)behaviorGroup.smiles.count];
 			behavior = [[[behaviorGroup smiles] firstObject] behavior];
 			creator = [[[behaviorGroup smiles] firstObject] creator];
 			note = [[[behaviorGroup smiles] firstObject] note];
