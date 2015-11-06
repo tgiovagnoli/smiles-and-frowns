@@ -17,9 +17,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUS-b6-z5Z">
                     <rect key="frame" x="78" y="0.0" width="78" height="75"/>
                     <animations/>
-                    <state key="normal" title="Profile"/>
+                    <state key="normal" title="Invites"/>
                     <connections>
-                        <action selector="onProfile:" destination="-1" eventType="touchUpInside" id="rYN-cL-Rwk"/>
+                        <action selector="onInvites:" destination="-1" eventType="touchUpInside" id="bs9-kY-hwC"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rke-rT-aXy">
@@ -33,9 +33,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lng-w1-mWo">
                     <rect key="frame" x="156" y="0.0" width="78" height="75"/>
                     <animations/>
-                    <state key="normal" title="Invites"/>
+                    <state key="normal" title="Profile"/>
                     <connections>
-                        <action selector="onInvites:" destination="-1" eventType="touchUpInside" id="c2M-2D-ozh"/>
+                        <action selector="onProfile:" destination="-1" eventType="touchUpInside" id="9og-Qf-x2V"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVQ-Rv-SEh">

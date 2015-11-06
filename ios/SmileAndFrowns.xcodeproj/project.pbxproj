@@ -38,6 +38,10 @@
 		078DF4D51BEA9B1100CBFAA4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */; };
 		078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */; };
 		07C0F3B01BEC4C460075A6B9 /* UIViewController+ModalCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */; };
+		07C0F3B31BED047B0075A6B9 /* SNFInvitesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3B21BED047B0075A6B9 /* SNFInvitesCell.m */; };
+		07C0F3B51BED049B0075A6B9 /* SNFInvitesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3B41BED049B0075A6B9 /* SNFInvitesCell.xib */; };
+		07C0F3B81BED26420075A6B9 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3B71BED26420075A6B9 /* IAPHelper.m */; };
+		07C0F3BA1BED37C70075A6B9 /* InAppPurchases.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */; };
 		07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E7055A1BEBD1520013FB75 /* iAd.framework */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
@@ -116,7 +120,6 @@
 		D65DF17B1BE3F884009CC6DF /* SNFBoardEdit.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF1791BE3F884009CC6DF /* SNFBoardEdit.xib */; };
 		D694011B1BED25530073119E /* SNFPredefinedBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69401191BED25530073119E /* SNFPredefinedBoardCell.m */; };
 		D694011C1BED25530073119E /* SNFPredefinedBoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D694011A1BED25530073119E /* SNFPredefinedBoardCell.xib */; };
-		D694011F1BED32120073119E /* SNFPurchasing.m in Sources */ = {isa = PBXBuildFile; fileRef = D694011E1BED32120073119E /* SNFPurchasing.m */; };
 		D6DB2BD01BEAA03300F1CDFF /* SNFRewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BCE1BEAA03300F1CDFF /* SNFRewardCell.m */; };
 		D6DB2BD11BEAA03300F1CDFF /* SNFRewardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DB2BCF1BEAA03300F1CDFF /* SNFRewardCell.xib */; };
 		D6DB2BD51BEAA0BA00F1CDFF /* SNFAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BD31BEAA0BA00F1CDFF /* SNFAddCell.m */; };
@@ -185,6 +188,12 @@
 		078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = libs/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		07C0F3AE1BEC4C460075A6B9 /* UIViewController+ModalCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ModalCreation.h"; sourceTree = "<group>"; };
 		07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ModalCreation.m"; sourceTree = "<group>"; };
+		07C0F3B11BED047B0075A6B9 /* SNFInvitesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFInvitesCell.h; sourceTree = "<group>"; };
+		07C0F3B21BED047B0075A6B9 /* SNFInvitesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFInvitesCell.m; sourceTree = "<group>"; };
+		07C0F3B41BED049B0075A6B9 /* SNFInvitesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFInvitesCell.xib; sourceTree = "<group>"; };
+		07C0F3B61BED26420075A6B9 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAPHelper.h; path = "submodules/apd-objc/IAPHelper.h"; sourceTree = "<group>"; };
+		07C0F3B71BED26420075A6B9 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAPHelper.m; path = "submodules/apd-objc/IAPHelper.m"; sourceTree = "<group>"; };
+		07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = InAppPurchases.plist; path = SmileAndFrowns/InAppPurchases.plist; sourceTree = "<group>"; };
 		07E7055A1BEBD1520013FB75 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSLog+Geom.h"; path = "submodules/apd-objc/NSLog+Geom.h"; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
@@ -321,8 +330,6 @@
 		D69401181BED25530073119E /* SNFPredefinedBoardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBoardCell.h; sourceTree = "<group>"; };
 		D69401191BED25530073119E /* SNFPredefinedBoardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPredefinedBoardCell.m; sourceTree = "<group>"; };
 		D694011A1BED25530073119E /* SNFPredefinedBoardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFPredefinedBoardCell.xib; sourceTree = "<group>"; };
-		D694011D1BED32120073119E /* SNFPurchasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPurchasing.h; sourceTree = "<group>"; };
-		D694011E1BED32120073119E /* SNFPurchasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPurchasing.m; sourceTree = "<group>"; };
 		D6DB2BCD1BEAA03300F1CDFF /* SNFRewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFRewardCell.h; sourceTree = "<group>"; };
 		D6DB2BCE1BEAA03300F1CDFF /* SNFRewardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFRewardCell.m; sourceTree = "<group>"; };
 		D6DB2BCF1BEAA03300F1CDFF /* SNFRewardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFRewardCell.xib; sourceTree = "<group>"; };
@@ -438,6 +445,9 @@
 				0707D6D91BE428BA002F1FC0 /* SNFInvites.h */,
 				0707D6DA1BE428BA002F1FC0 /* SNFInvites.m */,
 				0707D6DB1BE428BA002F1FC0 /* SNFInvites.xib */,
+				07C0F3B11BED047B0075A6B9 /* SNFInvitesCell.h */,
+				07C0F3B21BED047B0075A6B9 /* SNFInvitesCell.m */,
+				07C0F3B41BED049B0075A6B9 /* SNFInvitesCell.xib */,
 			);
 			name = Invites;
 			sourceTree = "<group>";
@@ -479,6 +489,8 @@
 		D6272FB41BE0020A0024CBC2 /* apd-objc */ = {
 			isa = PBXGroup;
 			children = (
+				07C0F3B61BED26420075A6B9 /* IAPHelper.h */,
+				07C0F3B71BED26420075A6B9 /* IAPHelper.m */,
 				07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */,
 				D6272FB51BE002160024CBC2 /* APDDebugViewController.h */,
 				D6272FB61BE002160024CBC2 /* APDDebugViewController.m */,
@@ -619,8 +631,9 @@
 		D659DBCA1BDAE0B30048D3F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */,
 				D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */,
+				07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */,
+				D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -638,8 +651,6 @@
 				D6272FC61BE04E010024CBC2 /* SNFUserSettings.m */,
 				D65DF0E51BE2830C009CC6DF /* SNFDateManager.h */,
 				D65DF0E61BE2830C009CC6DF /* SNFDateManager.m */,
-				D694011D1BED32120073119E /* SNFPurchasing.h */,
-				D694011E1BED32120073119E /* SNFPurchasing.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -899,10 +910,12 @@
 				D65DF15B1BE2F59F009CC6DF /* SNFAddUserRole.xib in Resources */,
 				0707D6D11BE2B301002F1FC0 /* SNFPasswordReset.xib in Resources */,
 				D6DB2BDC1BEAAB3500F1CDFF /* SNFAddReward.xib in Resources */,
+				07C0F3BA1BED37C70075A6B9 /* InAppPurchases.plist in Resources */,
 				D6270EDE1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.xib in Resources */,
 				D6270ED91BE817E900F7C39A /* SNFAddBehaviorCell.xib in Resources */,
 				078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */,
 				0707D6C61BE2B2D8002F1FC0 /* SNFAcceptInvite.xib in Resources */,
+				07C0F3B51BED049B0075A6B9 /* SNFInvitesCell.xib in Resources */,
 				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
 				D6F4421A1BEB90A4009C2866 /* SNFReporting.xib in Resources */,
 				D65DF1111BE29A42009CC6DF /* SNFTabMenu.xib in Resources */,
@@ -998,11 +1011,11 @@
 				078DF4C81BEA932200CBFAA4 /* ATITwitterAuthHandler.m in Sources */,
 				078DF4C21BE8810600CBFAA4 /* SNFFormViewController.m in Sources */,
 				D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */,
-				D694011F1BED32120073119E /* SNFPurchasing.m in Sources */,
 				D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */,
 				D6270ED81BE817E900F7C39A /* SNFAddBehaviorCell.m in Sources */,
 				D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */,
 				D6270ECD1BE817D200F7C39A /* SNFPredefinedBoard.m in Sources */,
+				07C0F3B31BED047B0075A6B9 /* SNFInvitesCell.m in Sources */,
 				D659DBFB1BDAEA000048D3F7 /* SNFUserRole.m in Sources */,
 				D6272FC01BE002160024CBC2 /* APDDjangoErrorViewer.m in Sources */,
 				D6272FC21BE002160024CBC2 /* NSURLRequest+Additions.m in Sources */,
@@ -1016,6 +1029,7 @@
 				D6272FAD1BDFD1FF0024CBC2 /* SNFError.m in Sources */,
 				D6272FC11BE002160024CBC2 /* NSTimer+Blocks.m in Sources */,
 				D6F442191BEB90A4009C2866 /* SNFReporting.m in Sources */,
+				07C0F3B81BED26420075A6B9 /* IAPHelper.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
 				0707D6DC1BE428BA002F1FC0 /* SNFInvites.m in Sources */,
 				0707D6CB1BE2B2F8002F1FC0 /* SNFCreateAccount.m in Sources */,

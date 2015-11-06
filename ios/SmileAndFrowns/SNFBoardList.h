@@ -6,6 +6,7 @@
 #import "SNFPredefinedBoard.h"
 #import "UIViewControllerStack.h"
 #import "SNFPurchasing.h"
+#import "IAPHelper.h"
 
 typedef NS_ENUM(NSInteger, SNFBoardListFilter){
 	SNFBoardListFilterName,

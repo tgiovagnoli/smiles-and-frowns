@@ -19,6 +19,7 @@ extern NSString * const SNFAddUserRoleAddedChild;
 @property (weak) IBOutlet UIButton * genderOverlay;
 @property (weak) IBOutlet UITextField * gender;
 @property (weak) IBOutlet UITextField * age;
+@property (weak) IBOutlet UIImageView * image;
 
 @property (weak) IBOutlet UIPickerView * pickerview;
 @property IBOutlet UIView * pickerviewContainer;

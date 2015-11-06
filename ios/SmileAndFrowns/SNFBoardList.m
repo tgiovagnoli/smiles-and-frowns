@@ -256,22 +256,42 @@
 	return behaviors;
 }
 
+
+- (IBAction) purchase:(id)sender {
+	IAPHelper * helper = [[IAPHelper alloc] init];
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	[helper loadItunesProductsCompletion:^(NSError *error) {
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		NSString * product = [helper productIdForName:@"NewBoard"];
+		NSLog(@"NewBoard product id: %@",product);
+		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+			if(error) {
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction OKAction]];
+				[self presentViewController:alert animated:TRUE completion:nil];
+				return;
+			}
+			NSLog(@"transaction id: %@",transaction.transactionIdentifier);
+		}];
+	}];
+}
+
 - (void)purchaseNewBoard:(SNFPredefinedBoard *)pdb{
-	// check to see if they need to purchase a board
-	SNFPurchasing *purchasing = [[SNFPurchasing alloc] init];
-	// TODO replace with in app purchase logic
-	[purchasing purchaseNewBoardWithCompletion:^(NSError *error, NSObject *transactionInfo, BOOL cancelled) {
-		if(cancelled){
-			return;
-		}
-		if(error){
-			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-			return;
-		}
-		NSDictionary *i = (NSDictionary *)transactionInfo;
-		[self addNewBoard:pdb withTransactionID:[i objectForKey:@"id"]];
+	IAPHelper * helper = [[IAPHelper alloc] init];
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	[helper loadItunesProductsCompletion:^(NSError *error) {
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		NSString * product = [helper productIdForName:@"NewBoard"];
+		NSLog(@"NewBoard product id: %@",product);
+		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+			if(error){
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction OKAction]];
+				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+				return;
+			}
+			[self addNewBoard:pdb withTransactionID:transaction.transactionIdentifier];
+		}];
 	}];
 }
 
