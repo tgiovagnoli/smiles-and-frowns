@@ -58,11 +58,7 @@
 
 - (void) keyboardWillShow:(NSNotification *) notification {
 	
-	NSLog(@"%@",self.view.superview);
-	NSLog(@"%@",self.view.superview.superview);
-	
-	if(self.modalPresentationStyle == UIModalPresentationPopover) {
-		NSLog(@"popover");
+	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		return;
 	}
 	
@@ -88,8 +84,7 @@
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
-	if(self.modalPresentationStyle == UIModalPresentationPopover) {
-		NSLog(@"popover");
+	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		return;
 	}
 	

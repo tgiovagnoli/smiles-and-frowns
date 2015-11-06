@@ -1,8 +1,9 @@
 
 #import <UIKit/UIKit.h>
 #import <iAd/iAd.h>
+#import "SNFModalViewController.h"
 
-@interface SNFFormViewController : UIViewController <ADBannerViewDelegate>
+@interface SNFFormViewController : SNFModalViewController <ADBannerViewDelegate>
 
 @property IBOutlet UIView * formView;
 @property IBOutlet UIScrollView * scrollView;
