@@ -325,6 +325,7 @@ static SNFSyncService * _instance;
 			[groupsReturned addObject:group];
 		}
 	}
+	
 	NSError *saveError;
 	[context save:&saveError];
 	if(saveError){

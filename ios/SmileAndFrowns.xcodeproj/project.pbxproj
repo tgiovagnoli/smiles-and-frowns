@@ -114,6 +114,9 @@
 		D65DF1761BE3ED9F009CC6DF /* SNFSwipeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1751BE3ED9F009CC6DF /* SNFSwipeCell.m */; };
 		D65DF17A1BE3F884009CC6DF /* SNFBoardEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = D65DF1781BE3F884009CC6DF /* SNFBoardEdit.m */; };
 		D65DF17B1BE3F884009CC6DF /* SNFBoardEdit.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF1791BE3F884009CC6DF /* SNFBoardEdit.xib */; };
+		D694011B1BED25530073119E /* SNFPredefinedBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69401191BED25530073119E /* SNFPredefinedBoardCell.m */; };
+		D694011C1BED25530073119E /* SNFPredefinedBoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D694011A1BED25530073119E /* SNFPredefinedBoardCell.xib */; };
+		D694011F1BED32120073119E /* SNFPurchasing.m in Sources */ = {isa = PBXBuildFile; fileRef = D694011E1BED32120073119E /* SNFPurchasing.m */; };
 		D6DB2BD01BEAA03300F1CDFF /* SNFRewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BCE1BEAA03300F1CDFF /* SNFRewardCell.m */; };
 		D6DB2BD11BEAA03300F1CDFF /* SNFRewardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DB2BCF1BEAA03300F1CDFF /* SNFRewardCell.xib */; };
 		D6DB2BD51BEAA0BA00F1CDFF /* SNFAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BD31BEAA0BA00F1CDFF /* SNFAddCell.m */; };
@@ -315,6 +318,11 @@
 		D65DF1771BE3F884009CC6DF /* SNFBoardEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBoardEdit.h; sourceTree = "<group>"; };
 		D65DF1781BE3F884009CC6DF /* SNFBoardEdit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoardEdit.m; sourceTree = "<group>"; };
 		D65DF1791BE3F884009CC6DF /* SNFBoardEdit.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFBoardEdit.xib; sourceTree = "<group>"; };
+		D69401181BED25530073119E /* SNFPredefinedBoardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBoardCell.h; sourceTree = "<group>"; };
+		D69401191BED25530073119E /* SNFPredefinedBoardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPredefinedBoardCell.m; sourceTree = "<group>"; };
+		D694011A1BED25530073119E /* SNFPredefinedBoardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFPredefinedBoardCell.xib; sourceTree = "<group>"; };
+		D694011D1BED32120073119E /* SNFPurchasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPurchasing.h; sourceTree = "<group>"; };
+		D694011E1BED32120073119E /* SNFPurchasing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPurchasing.m; sourceTree = "<group>"; };
 		D6DB2BCD1BEAA03300F1CDFF /* SNFRewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFRewardCell.h; sourceTree = "<group>"; };
 		D6DB2BCE1BEAA03300F1CDFF /* SNFRewardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFRewardCell.m; sourceTree = "<group>"; };
 		D6DB2BCF1BEAA03300F1CDFF /* SNFRewardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFRewardCell.xib; sourceTree = "<group>"; };
@@ -630,6 +638,8 @@
 				D6272FC61BE04E010024CBC2 /* SNFUserSettings.m */,
 				D65DF0E51BE2830C009CC6DF /* SNFDateManager.h */,
 				D65DF0E61BE2830C009CC6DF /* SNFDateManager.m */,
+				D694011D1BED32120073119E /* SNFPurchasing.h */,
+				D694011E1BED32120073119E /* SNFPurchasing.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -742,6 +752,9 @@
 				D65DF1371BE2B8EE009CC6DF /* SNFBoardListCell.h */,
 				D65DF1381BE2B8EE009CC6DF /* SNFBoardListCell.m */,
 				D65DF1391BE2B8EE009CC6DF /* SNFBoardListCell.xib */,
+				D69401181BED25530073119E /* SNFPredefinedBoardCell.h */,
+				D69401191BED25530073119E /* SNFPredefinedBoardCell.m */,
+				D694011A1BED25530073119E /* SNFPredefinedBoardCell.xib */,
 			);
 			name = Boards;
 			sourceTree = "<group>";
@@ -910,6 +923,7 @@
 				D65DF1301BE2AE6D009CC6DF /* SNFMore.xib in Resources */,
 				D65DF17B1BE3F884009CC6DF /* SNFBoardEdit.xib in Resources */,
 				D65DF13B1BE2B8EE009CC6DF /* SNFBoardListCell.xib in Resources */,
+				D694011C1BED25530073119E /* SNFPredefinedBoardCell.xib in Resources */,
 				D6DB2BE11BEAC3E300F1CDFF /* SNFSpendRewards.xib in Resources */,
 				0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */,
 				D65DF1411BE2BB88009CC6DF /* SNFBoardDetail.xib in Resources */,
@@ -923,6 +937,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D694011B1BED25530073119E /* SNFPredefinedBoardCell.m in Sources */,
 				D65DF1291BE2AA50009CC6DF /* SNFBoardList.m in Sources */,
 				D65DF14F1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.m in Sources */,
 				D62D379C1BDEEFC400102D6A /* SNFSyncService.m in Sources */,
@@ -983,6 +998,7 @@
 				078DF4C81BEA932200CBFAA4 /* ATITwitterAuthHandler.m in Sources */,
 				078DF4C21BE8810600CBFAA4 /* SNFFormViewController.m in Sources */,
 				D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */,
+				D694011F1BED32120073119E /* SNFPurchasing.m in Sources */,
 				D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */,
 				D6270ED81BE817E900F7C39A /* SNFAddBehaviorCell.m in Sources */,
 				D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */,

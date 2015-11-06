@@ -6,6 +6,8 @@
 #import "SNFReward.h"
 #import "SNFUser.h"
 #import "SNFModel.h"
+#import "SNFPredefinedBoard.h"
+#import "SNFPredefinedBehavior.h"
 
 @implementation SNFBoard
 
@@ -115,6 +117,29 @@
 		return [fetchedObjects objectAtIndex:0];
 	}
 	return nil;
+}
+
++ (SNFBoard *)boardFromPredefinedBoard:(SNFPredefinedBoard *)pdb andContext:(NSManagedObjectContext *)context{
+	
+	NSDictionary *boardInfo = @{
+								@"title": pdb.title,
+								@"owner": [[SNFModel sharedInstance].loggedInUser infoDictionary]
+								};
+	if(!pdb){
+		boardInfo = @{
+					  @"title": @"Untitled",
+					  @"owner": [[SNFModel sharedInstance].loggedInUser infoDictionary]
+					  };
+	}
+	SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
+	for(SNFPredefinedBehavior *pdBehavior in pdb.behaviors){
+		NSDictionary *behaviorInfo = @{
+									   @"title": pdBehavior.title,
+									   @"board": @{@"uuid": board.uuid},
+									   };
+		[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
+	}
+	return board;
 }
 
 - (NSArray *)sortedActiveBehaviors{
