@@ -46,6 +46,9 @@
                         <constraint firstAttribute="height" constant="30" id="WdV-q4-PuJ"/>
                     </constraints>
                     <state key="normal" title="Purchase new board"/>
+                    <connections>
+                        <action selector="purchase:" destination="-1" eventType="touchUpInside" id="huL-dV-jFn"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-Rd-ePF">
                     <rect key="frame" x="527" y="39" width="56" height="30"/>
