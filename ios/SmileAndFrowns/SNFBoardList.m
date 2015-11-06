@@ -89,7 +89,6 @@
 }
 
 - (void)reloadBoards{
-	;
 	NSError *error;
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SNFBoard"];
 	if([self.searchField.text isEmpty]){
@@ -259,23 +258,27 @@
 
 - (void)purchaseNewBoard:(SNFPredefinedBoard *)pdb{
 	NSArray * productIds = [IAPHelper productsFromPlistByName:@[@"NewBoard"]];
-	IAPHelper *helper = [[IAPHelper alloc] init];
+	IAPHelper * helper = [[IAPHelper alloc] init];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
 	[helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
 		
-		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		NSString *product = [IAPHelper productFromPlistByName:@"NewBoard"];
 		NSLog(@"NewBoard product id: %@", product);
 		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
-			if(error){
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			if(error) {
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction OKAction]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 				return;
 			}
+			
 			[self addNewBoard:pdb withTransactionID:transaction.transactionIdentifier];
+			
 		}];
 	}];
 }
