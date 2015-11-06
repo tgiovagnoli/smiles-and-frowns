@@ -120,16 +120,11 @@
 }
 
 + (SNFBoard *)boardFromPredefinedBoard:(SNFPredefinedBoard *)pdb andContext:(NSManagedObjectContext *)context{
-	
-	NSDictionary *boardInfo = @{
-								@"title": pdb.title,
-								@"owner": [[SNFModel sharedInstance].loggedInUser infoDictionary]
-								};
+	NSDictionary *boardInfo;
 	if(!pdb){
-		boardInfo = @{
-					  @"title": @"Untitled",
-					  @"owner": [[SNFModel sharedInstance].loggedInUser infoDictionary]
-					  };
+		boardInfo = @{@"title": @"Untitled", @"owner": [[SNFModel sharedInstance].loggedInUser infoDictionary]};
+	}else{
+		boardInfo = @{@"title": pdb.title, @"owner": [[SNFModel sharedInstance].loggedInUser infoDictionary]};
 	}
 	SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
 	for(SNFPredefinedBehavior *pdBehavior in pdb.behaviors){
