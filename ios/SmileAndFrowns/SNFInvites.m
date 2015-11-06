@@ -11,6 +11,7 @@
 #import "SNFBoard.h"
 #import "SNFViewController.h"
 #import "SNFBoardDetail.h"
+#import "SNFInvitesCell.h"
 
 @interface SNFInvites ()
 @property SNFUserService * service;
@@ -66,16 +67,23 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	SNFInvite * invite = [self.invites objectAtIndex:indexPath.row];
-	UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SNFInvites"];
+	SNFInvitesCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SNFInvites"];
 	
 	if(!cell) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SNFInvites"];
+		NSArray * nib = [[NSBundle mainBundle] loadNibNamed:@"SNFInvitesCell" owner:nil options:nil];
+		cell = [nib objectAtIndex:0];
 	}
 	
-	cell.textLabel.text = [NSString stringWithFormat:@"%@ invited you to %@", invite.sender_first_name, invite.board_title];
+	cell.titleLabel.text = [NSString stringWithFormat:@"%@ invited you to %@", invite.sender_first_name, invite.board_title];
+	
+	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+	formatter.dateFormat = @"MM dd, YYYY";
+	[formatter setTimeZone:[NSTimeZone localTimeZone]];
+	formatter.locale = [NSLocale currentLocale];
+	cell.dateLabel.text = [formatter stringFromDate:invite.created_date];
 	
 	if(invite.accepted.boolValue) {
-		cell.textLabel.textColor = [UIColor grayColor];
+		cell.titleLabel.textColor = [UIColor grayColor];
 	}
 	
 	return cell;
@@ -100,7 +108,7 @@
 	
 	UIView * cell = [self.tableView cellForRowAtIndexPath:indexPath];
 	
-	SNFAcceptInvite * acceptor = [[SNFAcceptInvite alloc] initWithSourceView:cell sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+	SNFAcceptInvite * acceptor = [[SNFAcceptInvite alloc] initWithSourceView:cell sourceRect:CGRectZero contentSize:CGSizeMake(300,220)];
 	acceptor.invite = invite;
 	
 	[[AppDelegate rootViewController] presentViewController:acceptor animated:TRUE completion:nil];
