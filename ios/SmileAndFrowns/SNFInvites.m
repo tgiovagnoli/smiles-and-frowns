@@ -77,13 +77,14 @@
 	cell.titleLabel.text = [NSString stringWithFormat:@"%@ invited you to %@", invite.sender_first_name, invite.board_title];
 	
 	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
-	formatter.dateFormat = @"MM dd, YYYY";
+	formatter.dateFormat = @"MMMM dd, YYYY";
 	[formatter setTimeZone:[NSTimeZone localTimeZone]];
 	formatter.locale = [NSLocale currentLocale];
 	cell.dateLabel.text = [formatter stringFromDate:invite.created_date];
 	
 	if(invite.accepted.boolValue) {
 		cell.titleLabel.textColor = [UIColor grayColor];
+		cell.dateLabel.textColor = [UIColor grayColor];
 	}
 	
 	return cell;
@@ -96,13 +97,13 @@
 		
 		if(invite.board_uuid) {
 			SNFBoard * board = [SNFBoard boardByUUID:invite.board_uuid];
-			SNFBoardDetail * detail = [[SNFBoardDetail alloc] init];
-			detail.board = board;
-			[[SNFViewController instance].viewControllerStack pushViewController:detail animated:TRUE];
-			return;
+			if(board) {
+				SNFBoardDetail * detail = [[SNFBoardDetail alloc] init];
+				detail.board = board;
+				[[SNFViewController instance].viewControllerStack pushViewController:detail animated:TRUE];
+			}
 		}
 		
-		//TODO: Lookup board and go to detail view.
 		return;
 	}
 	
