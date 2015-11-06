@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qr6-YS-1m6">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qr6-YS-1m6">
                     <rect key="frame" x="0.0" y="98" width="600" height="502"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -57,7 +57,7 @@
                     <state key="normal" title="Export"/>
                 </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OGB-TS-eoU">
-                    <rect key="frame" x="20" y="50" width="560" height="29"/>
+                    <rect key="frame" x="20" y="50" width="510" height="29"/>
                     <animations/>
                     <segments>
                         <segment title="This Board"/>
@@ -67,12 +67,26 @@
                         <action selector="onFilterChange:" destination="-1" eventType="valueChanged" id="Aa9-v6-LqO"/>
                     </connections>
                 </segmentedControl>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIb-Od-3uX">
+                    <rect key="frame" x="550" y="49" width="30" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="2Xn-lL-Wel"/>
+                        <constraint firstAttribute="height" constant="30" id="ex4-pY-uBg"/>
+                    </constraints>
+                    <state key="normal" title="asc"/>
+                    <connections>
+                        <action selector="onChangeAscending:" destination="-1" eventType="touchUpInside" id="xlq-jk-0aB"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="bM7-74-bW4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="09Q-l0-sbr"/>
                 <constraint firstItem="W7B-zS-VQG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0Dx-h3-Jrx"/>
+                <constraint firstItem="bIb-Od-3uX" firstAttribute="centerY" secondItem="OGB-TS-eoU" secondAttribute="centerY" id="4Q3-28-esz"/>
                 <constraint firstItem="OGB-TS-eoU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="6wh-qB-L5a"/>
                 <constraint firstItem="Lca-i1-e2I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7O1-a7-asT"/>
                 <constraint firstAttribute="trailing" secondItem="bM7-74-bW4" secondAttribute="trailing" constant="50" id="B7F-NI-w9i"/>
@@ -83,11 +97,18 @@
                 <constraint firstAttribute="bottom" secondItem="Qr6-YS-1m6" secondAttribute="bottom" id="fEv-Nj-MDJ"/>
                 <constraint firstItem="Qr6-YS-1m6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gFM-9I-LDQ"/>
                 <constraint firstItem="OGB-TS-eoU" firstAttribute="top" secondItem="bM7-74-bW4" secondAttribute="bottom" constant="20" id="gKO-KZ-cIG"/>
+                <constraint firstAttribute="trailing" secondItem="bIb-Od-3uX" secondAttribute="trailing" constant="20" id="lTi-pF-wE3"/>
                 <constraint firstAttribute="trailing" secondItem="W7B-zS-VQG" secondAttribute="trailing" id="pwz-Dq-JrI"/>
+                <constraint firstItem="bIb-Od-3uX" firstAttribute="leading" secondItem="OGB-TS-eoU" secondAttribute="trailing" constant="20" id="q1k-ZJ-YXk"/>
                 <constraint firstAttribute="trailing" secondItem="OGB-TS-eoU" secondAttribute="trailing" constant="20" id="vaO-AR-s5f"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="vaO-AR-s5f"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="505" y="429"/>
         </view>
     </objects>

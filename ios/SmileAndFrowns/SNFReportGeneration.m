@@ -12,11 +12,11 @@
 		predicate = [NSPredicate predicateWithFormat:@"user==%@", user];
 	}
 	NSSortDescriptor *dateSort = [[NSSortDescriptor alloc] initWithKey:@"created_date" ascending:ascending];
-	
-	
+
 	NSFetchRequest *smileFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFSmile"];
 	smileFetchRequest.predicate = predicate;
 	smileFetchRequest.sortDescriptors = @[dateSort];
+	
 	NSError *smilesFetchError = nil;
 	NSArray *allSmiles = [context executeFetchRequest:smileFetchRequest error:&smilesFetchError];
 	if(smilesFetchError){
@@ -77,6 +77,7 @@
 		if(!selectedDateGroup){
 			selectedDateGroup = [[SNFReportDateGroup alloc] init];
 			selectedDateGroup.daysSinceEpoch = daysSinceEpoch;
+			selectedDateGroup.date = [[NSCalendar currentCalendar] startOfDayForDate:frown.created_date];
 			[daysGrouped addObject:selectedDateGroup];
 			// TODO: need to update the NSDate to the rounded day.
 		}
@@ -94,9 +95,9 @@
 		}
 		[selectedBehaviorGroup.frowns addObject:frown];
 	}
-	return daysGrouped;
+	
+	return [daysGrouped sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.date" ascending:ascending]]];
 }
-
 
 - (NSInteger)dayForObjectCreatedSinceEpoch:(NSManagedObject *)object{
 	if([object respondsToSelector:NSSelectorFromString(@"created_date")]){

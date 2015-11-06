@@ -10,6 +10,7 @@
 	dateFormatter.doesRelativeDateFormatting = YES;
 	[dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
 	dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+	//dateFormatter.dateFormat = @"MM/d/yy"; 
 	self.dateLabel.text = [dateFormatter stringFromDate:dateGroup.date];
 }
 

@@ -13,6 +13,7 @@ typedef NS_ENUM(NSInteger, SNFReportingFilter){
 
 @interface SNFReporting : UIViewController <UITableViewDataSource, UITableViewDelegate>{
 	NSArray *_reportData;
+	BOOL _ascending;
 }
 
 
