@@ -95,13 +95,25 @@
 	
 	if(invite.accepted.boolValue) {
 		
+		BOOL showError = TRUE;
+		
 		if(invite.board_uuid) {
+			
 			SNFBoard * board = [SNFBoard boardByUUID:invite.board_uuid];
+			
 			if(board) {
+				showError = FALSE;
 				SNFBoardDetail * detail = [[SNFBoardDetail alloc] init];
 				detail.board = board;
 				[[SNFViewController instance].viewControllerStack pushViewController:detail animated:TRUE];
+				
 			}
+		}
+		
+		if(showError) {
+			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Board Not Found" preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction OKAction]];
+			[self presentViewController:alert animated:TRUE completion:nil];
 		}
 		
 		return;
