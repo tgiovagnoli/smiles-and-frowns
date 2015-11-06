@@ -23,6 +23,10 @@
 }
 
 - (void) starBannerAd {
+	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		return;
+	}
+	
 	self.bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
 	self.bannerView.delegate = self;
 }
@@ -53,6 +57,15 @@
 }
 
 - (void) keyboardWillShow:(NSNotification *) notification {
+	
+	NSLog(@"%@",self.view.superview);
+	NSLog(@"%@",self.view.superview.superview);
+	
+	if(self.modalPresentationStyle == UIModalPresentationPopover) {
+		NSLog(@"popover");
+		return;
+	}
+	
 	CGFloat bottom = [self scrollViewBottomConstraint:notification];
 	
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
@@ -75,6 +88,11 @@
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
+	if(self.modalPresentationStyle == UIModalPresentationPopover) {
+		NSLog(@"popover");
+		return;
+	}
+	
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
 		containerScrollView.height = self.superScrollViewHeight;
