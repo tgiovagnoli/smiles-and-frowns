@@ -12,6 +12,7 @@
                 <outlet property="formView" destination="Kgn-KV-JRl" id="SHr-dk-bWM"/>
                 <outlet property="gender" destination="f2T-yA-zoS" id="T8t-JD-dnH"/>
                 <outlet property="genderOverlay" destination="ySG-lI-iu7" id="KY0-0g-K3u"/>
+                <outlet property="image" destination="GQx-pL-nCJ" id="VgS-I5-rbx"/>
                 <outlet property="lastname" destination="eVl-ju-Z9j" id="obK-9B-zjN"/>
                 <outlet property="pickerview" destination="b6T-sS-BgH" id="ulm-7J-wgB"/>
                 <outlet property="pickerviewContainer" destination="kC3-0g-fkj" id="HJQ-Bg-eas"/>
@@ -132,7 +133,7 @@
                         <action selector="segmentChange:" destination="-1" eventType="valueChanged" id="hR6-DQ-rcW"/>
                     </connections>
                 </segmentedControl>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fRT-85-qgb">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fRT-85-qgb">
                     <rect key="frame" x="20" y="196" width="560" height="30"/>
                     <animations/>
                     <constraints>
@@ -327,12 +328,12 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="W3f-ie-sdf"/>
-                    <exclude reference="kD9-ty-T2V"/>
                     <exclude reference="jdf-Ao-Ajv"/>
+                    <exclude reference="kD9-ty-T2V"/>
+                    <exclude reference="PDe-L4-Rz3"/>
                     <exclude reference="dhF-wX-b6P"/>
                     <exclude reference="hBq-0C-IBb"/>
                     <exclude reference="loj-bc-Vc5"/>
-                    <exclude reference="PDe-L4-Rz3"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="423" y="711"/>
