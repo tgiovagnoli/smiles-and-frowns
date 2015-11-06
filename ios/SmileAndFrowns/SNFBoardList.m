@@ -264,6 +264,13 @@
 	
 	[helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
 		
+		if(error) {
+			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction OKAction]];
+			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+			return;
+		}
+		
 		NSString *product = [IAPHelper productFromPlistByName:@"NewBoard"];
 		NSLog(@"NewBoard product id: %@", product);
 		
@@ -272,7 +279,7 @@
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction OKAction]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 				return;
