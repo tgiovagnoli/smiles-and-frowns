@@ -20,15 +20,17 @@
 }
 
 - (IBAction) purchase:(id)sender {
+	NSArray * productIds = [IAPHelper productsFromPlistByName:@[@"NewBoard"]];
+	
 	IAPHelper * helper = [[IAPHelper alloc] init];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[helper loadItunesProductsCompletion:^(NSError *error) {
+	[helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
 		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
-		NSString * product = [helper productIdForName:@"NewBoard"];
+		NSString * product = [IAPHelper productFromPlistByName:@"NewBoard"];
 		NSLog(@"NewBoard product id: %@",product);
 		
 		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
