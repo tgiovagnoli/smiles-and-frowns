@@ -1,21 +1,23 @@
-//
-//  SNFADBannerView.m
-//  SmileAndFrowns
-//
-//  Created by Aaron Smith on 11/6/15.
-//  Copyright © 2015 apptitude. All rights reserved.
-//
 
 #import "SNFADBannerView.h"
+#import "IAPHelper.h"
 
 @implementation SNFADBannerView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (id) init {
+	if([IAPHelper hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
+		return nil;
+	}
+	self = [super init];
+	return self;
 }
-*/
+
+- (id) initWithAdType:(ADAdType)type {
+	if([IAPHelper hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
+		return nil;
+	}
+	self = [super initWithAdType:type];
+	return self;
+}
 
 @end

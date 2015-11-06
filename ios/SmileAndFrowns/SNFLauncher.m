@@ -10,10 +10,11 @@
 #import "UIAlertAction+Additions.h"
 #import "SNFCreateAccount.h"
 #import "UIViewController+Alerts.h"
+#import "SNFADBannerView.h"
 
 @interface SNFLauncher ()
 @property BOOL firstlayout;
-@property ADBannerView * bannerView;
+@property SNFADBannerView * bannerView;
 @end
 
 @implementation SNFLauncher
@@ -42,7 +43,7 @@
 		} repeats:FALSE];
 	}
 	
-	self.bannerView = [[ADBannerView alloc] init];
+	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 	self.bannerView.delegate = self;
 }
 
@@ -69,12 +70,14 @@
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-	if([keyPath isEqualToString:@"loggedInUser"] && [SNFModel sharedInstance].loggedInUser) {
-		[self.loginButton setTitle:@"Logout" forState:UIControlStateNormal];
-		[self.createAccountButton setVisible:FALSE];
-	} else {
-		[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
-		[self.createAccountButton setVisible:TRUE];
+	if([keyPath isEqualToString:@"loggedInUser"]) {
+		if([SNFModel sharedInstance].loggedInUser) {
+			[self.loginButton setTitle:@"Logout" forState:UIControlStateNormal];
+			[self.createAccountButton setVisible:FALSE];
+		} else {
+			[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
+			[self.createAccountButton setVisible:TRUE];
+		}
 	}
 }
 

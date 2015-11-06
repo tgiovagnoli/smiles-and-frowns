@@ -257,7 +257,7 @@
 
 
 - (void)purchaseNewBoard:(SNFPredefinedBoard *)pdb{
-	NSArray * productIds = [IAPHelper productsFromPlistByName:@[@"NewBoard"]];
+	NSArray * productIds = [IAPHelper productIdsByNames:@[@"NewBoard"]];
 	IAPHelper * helper = [[IAPHelper alloc] init];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
@@ -271,7 +271,7 @@
 			return;
 		}
 		
-		NSString *product = [IAPHelper productFromPlistByName:@"NewBoard"];
+		NSString * product = [IAPHelper productIdByName:@"NewBoard"];
 		NSLog(@"NewBoard product id: %@", product);
 		
 		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {

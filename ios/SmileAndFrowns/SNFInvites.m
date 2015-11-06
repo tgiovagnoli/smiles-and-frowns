@@ -53,6 +53,10 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
 	return TRUE;
 }

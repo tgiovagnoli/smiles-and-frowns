@@ -9,6 +9,7 @@
 #import "SNFMore.h"
 #import "SNFInvites.h"
 #import "NSLog+Geom.h"
+#import "SNFADBannerView.h"
 
 static __weak SNFViewController * _instance;
 
@@ -22,7 +23,7 @@ static __weak SNFViewController * _instance;
 	[super viewDidLoad];
 	_instance = self;
 	self.firstlayout = true;
-	self.bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 	self.bannerView.delegate = self;
 }
 

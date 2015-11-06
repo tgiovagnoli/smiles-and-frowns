@@ -7,6 +7,7 @@
 #import "SNFTutorial.h"
 #import "SNFAcceptInvite.h"
 #import "ATIFacebookAuthHandler.h"
+#import "UIAlertAction+Additions.h"
 
 @implementation SNFMore
 
@@ -86,7 +87,31 @@
 	
 }
 
-- (void)removeAds{
+- (void) removeAds {
+	
+	IAPHelper * helper = [[IAPHelper alloc] init];
+	
+	NSArray * products = [IAPHelper productIdsByNames:@[@"RemoveAds"]];
+	
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	
+	[helper loadItunesProducts:products withCompletion:^(NSError *error) {
+		
+		NSString * product = [IAPHelper productIdByName:@"RemoveAds"];
+		
+		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			if(error) {
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction OKAction]];
+				[self presentViewController:alert animated:TRUE completion:nil];
+			}
+			
+		}];
+		
+	}];
 	
 }
 

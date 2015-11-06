@@ -261,7 +261,7 @@
 		
 		[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 			
-			SNFPasswordReset * reset = [[SNFPasswordReset alloc] initWithSourceView:launcher.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+			SNFPasswordReset * reset = [[SNFPasswordReset alloc] initWithSourceView:launcher.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,200)];
 			[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:nil];
 			
 		}];

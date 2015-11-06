@@ -27,7 +27,7 @@
 		return;
 	}
 	
-	self.bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 	self.bannerView.delegate = self;
 }
 
