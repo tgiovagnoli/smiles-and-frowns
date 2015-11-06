@@ -257,32 +257,18 @@
 }
 
 
-- (IBAction) purchase:(id)sender {
-	IAPHelper * helper = [[IAPHelper alloc] init];
-	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-	[helper loadItunesProductsCompletion:^(NSError *error) {
-		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-		NSString * product = [helper productIdForName:@"NewBoard"];
-		NSLog(@"NewBoard product id: %@",product);
-		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
-			if(error) {
-				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction OKAction]];
-				[self presentViewController:alert animated:TRUE completion:nil];
-				return;
-			}
-			NSLog(@"transaction id: %@",transaction.transactionIdentifier);
-		}];
-	}];
-}
-
 - (void)purchaseNewBoard:(SNFPredefinedBoard *)pdb{
-	IAPHelper * helper = [[IAPHelper alloc] init];
+	NSArray * productIds = [IAPHelper productsFromPlistByName:@[@"NewBoard"]];
+	IAPHelper *helper = [[IAPHelper alloc] init];
+	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-	[helper loadItunesProductsCompletion:^(NSError *error) {
+	
+	[helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
+		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-		NSString * product = [helper productIdForName:@"NewBoard"];
-		NSLog(@"NewBoard product id: %@",product);
+		NSString *product = [IAPHelper productFromPlistByName:@"NewBoard"];
+		NSLog(@"NewBoard product id: %@", product);
+		
 		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			if(error){
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];

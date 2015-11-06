@@ -1,11 +1,9 @@
-
 #import <UIKit/UIKit.h>
 #import "SNFBoardListCell.h"
 #import "SNFPredefinedBoardCell.h"
 #import "SNFBoardEdit.h"
 #import "SNFPredefinedBoard.h"
 #import "UIViewControllerStack.h"
-#import "SNFPurchasing.h"
 #import "IAPHelper.h"
 
 typedef NS_ENUM(NSInteger, SNFBoardListFilter){
