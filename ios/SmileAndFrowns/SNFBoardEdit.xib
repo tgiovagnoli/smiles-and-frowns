@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vzw-KH-7l0">
-                    <rect key="frame" x="20" y="0.0" width="560" height="200"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -92,11 +92,11 @@
                 <constraint firstAttribute="trailing" secondItem="IcH-QM-Bj3" secondAttribute="trailing" id="0BV-nH-gc1"/>
                 <constraint firstItem="3h8-f4-WaF" firstAttribute="top" secondItem="bdS-kO-6JB" secondAttribute="bottom" constant="8" id="2Pr-RL-zhZ"/>
                 <constraint firstItem="IcH-QM-Bj3" firstAttribute="top" secondItem="Md1-ZG-DHg" secondAttribute="bottom" constant="10" id="39l-Wm-f8G"/>
-                <constraint firstAttribute="trailing" secondItem="Vzw-KH-7l0" secondAttribute="trailing" constant="20" id="Akq-GS-Xor"/>
+                <constraint firstAttribute="trailing" secondItem="Vzw-KH-7l0" secondAttribute="trailing" id="Akq-GS-Xor"/>
                 <constraint firstAttribute="trailing" secondItem="bdS-kO-6JB" secondAttribute="trailing" constant="20" id="FVd-ec-nHZ"/>
                 <constraint firstItem="2Ur-w3-S89" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="G1E-Yo-wm9"/>
                 <constraint firstAttribute="trailing" secondItem="3h8-f4-WaF" secondAttribute="trailing" constant="20" id="Oxk-Od-Nuu"/>
-                <constraint firstItem="Vzw-KH-7l0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="PqA-Po-kLW"/>
+                <constraint firstItem="Vzw-KH-7l0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PqA-Po-kLW"/>
                 <constraint firstItem="bdS-kO-6JB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="auJ-Xu-3hQ"/>
                 <constraint firstItem="3h8-f4-WaF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="bfL-ho-WWS"/>
                 <constraint firstAttribute="trailing" secondItem="Md1-ZG-DHg" secondAttribute="trailing" constant="20" id="dlg-w5-75B"/>
@@ -118,7 +118,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdq-sD-9wl">
-                    <rect key="frame" x="0.0" y="58" width="600" height="542"/>
+                    <rect key="frame" x="0.0" y="70" width="600" height="530"/>
                     <animations/>
                 </scrollView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Board Title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hs5-M3-Y9s">
@@ -147,7 +147,7 @@
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="rdq-sD-9wl" firstAttribute="top" secondItem="Hs5-M3-Y9s" secondAttribute="bottom" constant="8" id="0em-J8-VXV"/>
+                <constraint firstItem="rdq-sD-9wl" firstAttribute="top" secondItem="Hs5-M3-Y9s" secondAttribute="bottom" constant="20" id="0em-J8-VXV"/>
                 <constraint firstAttribute="trailing" secondItem="rdq-sD-9wl" secondAttribute="trailing" id="CCv-dl-Ouh"/>
                 <constraint firstItem="Hs5-M3-Y9s" firstAttribute="leading" secondItem="5iE-x8-Lfy" secondAttribute="leading" constant="20" id="Ifx-qm-HVE"/>
                 <constraint firstItem="rdq-sD-9wl" firstAttribute="leading" secondItem="5iE-x8-Lfy" secondAttribute="leading" id="KIh-5S-PhB"/>

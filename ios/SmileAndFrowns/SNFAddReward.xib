@@ -83,7 +83,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNG-r0-h4R">
                     <rect key="frame" x="20" y="218" width="560" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Add"/>
                     <connections>
                         <action selector="onAddReward:" destination="-1" eventType="touchUpInside" id="cwY-Rc-AGi"/>
@@ -139,10 +139,13 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ld1-Ou-enU">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ld1-Ou-enU">
                     <rect key="frame" x="527" y="15" width="60" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="1v3-TM-11n"/>
+                    </constraints>
                     <state key="normal" title="Cancel"/>
                     <connections>
                         <action selector="onCancel:" destination="-1" eventType="touchUpInside" id="KSh-ug-zRj"/>
@@ -161,7 +164,7 @@
                 <constraint firstItem="ld1-Ou-enU" firstAttribute="top" secondItem="B8r-hh-lJc" secondAttribute="top" constant="15" id="sQ7-aE-Ze8"/>
                 <constraint firstItem="Az6-f7-2Fm" firstAttribute="top" secondItem="B8r-hh-lJc" secondAttribute="top" constant="53" id="wMj-Ug-8pM"/>
             </constraints>
-            <point key="canvasLocation" x="1152" y="399"/>
+            <point key="canvasLocation" x="1121" y="384"/>
         </view>
     </objects>
 </document>

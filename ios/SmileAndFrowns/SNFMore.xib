@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZLo-ZE-WWb">
-                    <rect key="frame" x="0.0" y="30" width="600" height="570"/>
+                    <rect key="frame" x="0.0" y="55" width="600" height="545"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -24,13 +24,14 @@
                         <outlet property="delegate" destination="-1" id="bhQ-zU-eNz"/>
                     </connections>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozg-kS-7ga">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cw5-dZ-fCt">
+                    <rect key="frame" x="248" y="20" width="104" height="21"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="J5j-or-MnQ"/>
+                        <constraint firstAttribute="height" constant="21" id="o5D-DV-WTb"/>
+                        <constraint firstAttribute="width" constant="104" id="sbD-97-Ehm"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -39,12 +40,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ZLo-ZE-WWb" secondAttribute="trailing" id="6re-Em-38P"/>
-                <constraint firstItem="ZLo-ZE-WWb" firstAttribute="top" secondItem="Ozg-kS-7ga" secondAttribute="bottom" id="7AF-gk-IFx"/>
                 <constraint firstAttribute="bottom" secondItem="ZLo-ZE-WWb" secondAttribute="bottom" id="A9l-nA-3IU"/>
                 <constraint firstItem="ZLo-ZE-WWb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HoP-P5-K5E"/>
-                <constraint firstAttribute="trailing" secondItem="Ozg-kS-7ga" secondAttribute="trailing" id="PNy-y1-8Jf"/>
-                <constraint firstItem="Ozg-kS-7ga" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="X62-cA-Da9"/>
-                <constraint firstItem="Ozg-kS-7ga" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uOg-nw-4aX"/>
+                <constraint firstItem="ZLo-ZE-WWb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="55" id="WW0-iL-3rh"/>
+                <constraint firstItem="Cw5-dZ-fCt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WzC-21-LoW"/>
+                <constraint firstItem="Cw5-dZ-fCt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="uEc-tG-QfH"/>
             </constraints>
         </view>
     </objects>

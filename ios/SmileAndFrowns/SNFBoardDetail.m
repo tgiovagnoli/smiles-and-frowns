@@ -27,7 +27,7 @@
 
 - (void) onUserRoleAddedChild:(NSNotification *) note {
 	[self reloadUserRoles];
-	[self dismissViewControllerAnimated:TRUE completion:nil];
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -60,7 +60,7 @@
 - (IBAction)onAddUserRole:(id)sender{
 	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,400)];
 	addUserRole.board = self.board;
-	[self presentViewController:addUserRole animated:YES completion:nil];
+	[[AppDelegate rootViewController] presentViewController:addUserRole animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -100,14 +100,14 @@
 	rewards.board = self.board;
 	rewards.user = userRole.user;
 	rewards.delegate = self;
-	[self presentViewController:rewards animated:YES completion:^{}];
+	[[AppDelegate rootViewController] presentViewController:rewards animated:YES completion:^{}];
 }
 
 - (void)childCellWantsToOpenReport:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFReporting *reporting = [[SNFReporting alloc] init];
+	SNFReporting *reporting = [[SNFReporting alloc] initWithSourceView:cell sourceRect:cell.reportingButton.frame contentSize:CGSizeMake(600,700)];
 	reporting.board = userRole.board;
 	reporting.user = userRole.user;
-	[self presentViewController:reporting animated:YES completion:^{}];
+	[[AppDelegate rootViewController] presentViewController:reporting animated:YES completion:^{}];
 }
 
 - (void)spendRewardsIsDone:(SNFSpendRewards *)spendRewards{

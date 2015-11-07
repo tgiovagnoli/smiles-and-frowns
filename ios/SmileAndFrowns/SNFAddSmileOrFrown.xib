@@ -83,7 +83,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25e-GV-9nU">
                     <rect key="frame" x="20" y="379" width="560" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Add behavior"/>
                     <connections>
                         <action selector="onAddBehavior:" destination="-1" eventType="touchUpInside" id="Eae-SI-mHE"/>
@@ -92,7 +92,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPo-Ac-XCS">
                     <rect key="frame" x="20" y="492" width="560" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Give Smile"/>
                     <connections>
                         <action selector="onAddSmileOrFrown:" destination="-1" eventType="touchUpInside" id="GsX-P6-T8p"/>
@@ -174,7 +174,7 @@
                 <constraint firstItem="gq4-ma-1cA" firstAttribute="top" secondItem="Zog-gx-xv3" secondAttribute="top" constant="20" id="kgC-ou-tAZ"/>
                 <constraint firstItem="7rr-Az-mVp" firstAttribute="leading" secondItem="Zog-gx-xv3" secondAttribute="leading" id="lUr-Sd-TcM"/>
             </constraints>
-            <point key="canvasLocation" x="1047" y="361"/>
+            <point key="canvasLocation" x="1047" y="284"/>
         </view>
     </objects>
 </document>

@@ -22,6 +22,7 @@
 @property (weak) IBOutlet UIButton *smileButton;
 @property (weak) IBOutlet UIButton *frownButton;
 @property (weak) IBOutlet UIButton *spendButton;
+@property (weak) IBOutlet UIButton * reportingButton;
 
 @property (weak) NSObject <SNFBoardDetailChildCellDelegate> *delegate;
 

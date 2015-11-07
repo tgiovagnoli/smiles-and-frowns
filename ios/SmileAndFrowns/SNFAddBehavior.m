@@ -1,5 +1,7 @@
+
 #import "SNFAddBehavior.h"
 #import "SNFModel.h"
+#import "UIView+LayoutHelpers.h"
 
 @implementation SNFAddBehavior
 
@@ -49,8 +51,9 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 	SNFPredefinedBehaviorGroup *group = [_predefinedBehaviorGroups objectAtIndex:section];
-	UILabel *label = [[UILabel alloc] init];
-	label.backgroundColor = [UIColor grayColor];
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.behaviorsTable.width,40)];
+	label.backgroundColor = [UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1];
+	label.x = 20;
 	label.text = group.title;
 	return label;
 }
