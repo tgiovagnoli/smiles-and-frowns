@@ -65,25 +65,37 @@
 		return;
 	}
 	
+	CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+	
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
 		
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
 		self.superScrollViewHeight = containerScrollView.height;
-		CGFloat diff = (containerScrollView.bottom - bottom) - [SNFViewController instance].tabMenu.view.height;
-		containerScrollView.height -= diff;
+		
+		CGFloat csb = containerScrollView.bottom;
+		CGFloat heightDiff = screenHeight - csb;
+		CGFloat newBottom = heightDiff - bottom;
+		if(newBottom < 0) {
+			newBottom *= -1;
+		}
+		
+		containerScrollView.height -= newBottom;
 		
 	} else {
 		
-		if([SNFViewController instance]) {
-			if([SNFViewController instance].isAdDisplayed) {
-				bottom += [SNFViewController instance].bannerView.height;
-			}
-			bottom -= [SNFViewController instance].tabMenu.view.height;
+		CGFloat csb = self.scrollView.bottom;
+		CGFloat heightDiff = screenHeight - csb;
+		CGFloat newBottom = heightDiff - bottom;
+		
+		if(newBottom < 0) {
+			newBottom *= -1;
 		}
 		
-		self.scrollViewBottom.constant = bottom;
-		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
+		self.scrollViewBottom.constant = newBottom;
+		
+		[NSTimer scheduledTimerWithTimeInterval:.02 block:^{
 			self.formView.height = self.initialFormHeight;
+			self.scrollView.contentSize = CGSizeMake(self.formView.width, self.initialFormHeight);
 		} repeats:FALSE];
 		
 	}
