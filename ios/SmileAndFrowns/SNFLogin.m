@@ -24,24 +24,6 @@
 
 @implementation SNFLogin
 
-+ (SNFLogin *) loginModalAtSourceView:(UIView *) view sourceRect:(CGRect) rect contentSize:(CGSize) contentSize {
-	SNFLogin * login = [[SNFLogin alloc] init];
-	login.modalPresentationStyle = UIModalPresentationPopover;
-	login.popoverPresentationController.sourceView = view;
-	
-	if(CGSizeEqualToSize(contentSize, CGSizeZero)) {
-		login.preferredContentSize = CGSizeMake(500, 400);
-	} else {
-		login.preferredContentSize = contentSize;
-	}
-	
-	if(!CGRectEqualToRect(rect, CGRectZero)) {
-		login.popoverPresentationController.sourceRect = rect;
-	}
-	
-	return login;
-}
-
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	self.service = [[SNFUserService alloc] init];

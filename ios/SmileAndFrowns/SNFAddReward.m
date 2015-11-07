@@ -6,6 +6,7 @@
 - (void)viewDidLoad{
 	[super viewDidLoad];
 	[self updateUI];
+	[self startBannerAd];
 }
 
 - (void)updateUI{

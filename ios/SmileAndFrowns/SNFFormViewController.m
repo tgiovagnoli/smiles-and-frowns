@@ -85,10 +85,10 @@
 		
 		CGFloat csb = self.scrollView.bottom;
 		CGFloat heightDiff = screenHeight - csb;
-		CGFloat newBottom = heightDiff - bottom;
+		CGFloat newBottom = bottom - heightDiff;
 		
-		if(newBottom < 0) {
-			newBottom *= -1;
+		if(self.bannerView.superview) {
+			newBottom += self.bannerView.height;
 		}
 		
 		self.scrollViewBottom.constant = newBottom;

@@ -8,6 +8,7 @@
 - (void)setBoard:(SNFBoard *)board{
 	_board = board;
 	[self updateBehaviors];
+	[self startBannerAd];
 }
 
 - (void)updateBehaviors{

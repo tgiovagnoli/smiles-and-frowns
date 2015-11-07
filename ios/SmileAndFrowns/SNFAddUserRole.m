@@ -17,6 +17,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	[self startBannerAd];
 	self.genders = @[@"--------",@"Male",@"Female"];
 	self.pickerview.delegate = self;
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];

@@ -31,6 +31,8 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 	if(self.inviteCode) {
 		self.inviteCodeField.text = self.inviteCode;
 	}
+	
+	[self startBannerAd];
 }
 
 - (IBAction) joinBoard:(id) sender {
