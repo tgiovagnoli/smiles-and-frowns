@@ -6,6 +6,7 @@
 #import "SNFBehavior.h"
 #import "SNFBoardEditBehaviorCell.h"
 #import "SNFAddBehavior.h"
+#import "SNFFormViewController.h"
 
 
 typedef NS_ENUM(NSInteger, SNFAddSmileOrFrownType){
@@ -31,6 +32,9 @@ typedef NS_ENUM(NSInteger, SNFAddSmileOrFrownType){
 @property (weak) IBOutlet UIButton *addSNFButton;
 @property (weak) IBOutlet UIButton *cancelButton;
 @property (weak) IBOutlet UITextView *noteField;
+
+@property IBOutlet NSLayoutConstraint * cancelButtonBottom;
+
 @property (nonatomic) SNFBoard *board;
 @property (nonatomic) SNFAddSmileOrFrownType type;
 @property SNFUser *user;

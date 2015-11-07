@@ -22,7 +22,7 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void) starBannerAd {
+- (void) startBannerAd {
 	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		return;
 	}
@@ -43,37 +43,31 @@
 	}
 }
 
-- (CGFloat) scrollViewBottomConstraint:(NSNotification *) notification {
+- (void) keyboardWillShow:(NSNotification *) notification {
 	NSDictionary * userInfo = notification.userInfo;
 	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
 	CGFloat bottom = keyboardFrameEnd.size.height;
-	if([SNFViewController instance]) {
-		if([SNFViewController instance].isAdDisplayed) {
-			bottom -= [SNFViewController instance].bannerView.height;
-		}
-	}
-	return bottom;
-}
-
-- (void) keyboardWillShow:(NSNotification *) notification {
 	
 	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		return;
 	}
 	
-	CGFloat bottom = [self scrollViewBottomConstraint:notification];
-	
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
 		
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
 		self.superScrollViewHeight = containerScrollView.height;
-		containerScrollView.height -= bottom;
-		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
-			self.formView.height = self.initialFormHeight;
-		} repeats:FALSE];
-	
+		CGFloat diff = (containerScrollView.bottom - bottom) - [SNFViewController instance].tabMenu.view.height;
+		containerScrollView.height -= diff;
+		
 	} else {
+		
+		if([SNFViewController instance]) {
+			if([SNFViewController instance].isAdDisplayed) {
+				bottom += [SNFViewController instance].bannerView.height;
+			}
+			bottom -= [SNFViewController instance].tabMenu.view.height;
+		}
 		
 		self.scrollViewBottom.constant = bottom;
 		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{

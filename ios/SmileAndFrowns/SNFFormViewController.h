@@ -11,7 +11,6 @@
 @property CGFloat initialFormHeight;
 @property SNFADBannerView * bannerView;
 
-- (CGFloat) scrollViewBottomConstraint:(NSNotification *) notification;
-- (void) starBannerAd;
+- (void) startBannerAd;
 
 @end
