@@ -9,6 +9,10 @@
 #import "ATIFacebookAuthHandler.h"
 #import "UIAlertAction+Additions.h"
 
+@interface SNFMore ()
+@property IAPHelper * helper;
+@end
+
 @implementation SNFMore
 
 - (void)viewDidLoad {
@@ -83,7 +87,30 @@
 	
 }
 
-- (void)restorePurchases{
+- (void) restorePurchases {
+	
+	if(!self.helper) {
+		self.helper = [[IAPHelper alloc] init];
+	}
+	
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	
+	[self.helper restorePurchasesWithCompletion:^(NSError *error, SKPaymentTransaction *transaction, BOOL completed) {
+		
+		NSString * productId = transaction.payment.productIdentifier;
+		NSString * type = [IAPHelper productTypeForProductId:productId];
+		
+		NSLog(@"restore product id: %@, transaction id: %@",productId,transaction.transactionIdentifier);
+		
+		if([type isEqualToString:@"Consumable"]) {
+			//TODO: handle looking up board based on product identifier and show an error if it doesn't exist?
+		}
+		
+		if(completed) {
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		}
+		
+	}];
 	
 }
 
