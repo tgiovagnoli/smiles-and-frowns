@@ -84,7 +84,7 @@
                     <rect key="frame" x="20" y="218" width="560" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Add"/>
+                    <state key="normal" title="Add Reward"/>
                     <connections>
                         <action selector="onAddReward:" destination="-1" eventType="touchUpInside" id="cwY-Rc-AGi"/>
                     </connections>
@@ -108,6 +108,7 @@
                 <constraint firstItem="IKM-b9-e7F" firstAttribute="leading" secondItem="qam-VC-uzm" secondAttribute="trailing" constant="8" id="Xgw-RK-6bY"/>
                 <constraint firstItem="qam-VC-uzm" firstAttribute="centerY" secondItem="IKM-b9-e7F" secondAttribute="centerY" id="bCT-w1-RgH"/>
                 <constraint firstItem="JNG-r0-h4R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="cln-yD-fgv"/>
+                <constraint firstItem="JNG-r0-h4R" firstAttribute="top" secondItem="QrK-kD-9Ev" secondAttribute="bottom" constant="20" id="hDq-Xr-4aZ"/>
                 <constraint firstItem="QrK-kD-9Ev" firstAttribute="top" secondItem="R8m-Gb-XYs" secondAttribute="bottom" constant="16" id="hY8-ax-gUc"/>
                 <constraint firstItem="O3y-LZ-SEe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="rGM-3A-4Fe"/>
                 <constraint firstItem="qam-VC-uzm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="suU-Pd-dd9"/>
@@ -118,6 +119,11 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="IeA-Zd-ZYc"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="454" y="233"/>
         </view>
         <view contentMode="scaleToFill" id="B8r-hh-lJc">
