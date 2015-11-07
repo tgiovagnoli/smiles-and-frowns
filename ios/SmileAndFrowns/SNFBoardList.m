@@ -197,7 +197,7 @@
 		// buy board confirm
 		NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Would you like to purchase \"%@\"?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 			[self purchaseNewBoard:pdb];
 		}]];
 		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
@@ -206,7 +206,7 @@
 		// free board confirm
 		NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Are you sure you want to use \"%@\" as your free board?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 			[self addNewBoard:pdb withTransactionID:nil];
 		}]];
 		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
@@ -215,7 +215,7 @@
 		// empty board
 		NSString *messageString = @"This will create an empty board.  You will need to add behaviors to this board before using it.  Continue?";
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 			if(needsPurchase){
 				[self purchaseNewBoard:pdb];
 			}else{
