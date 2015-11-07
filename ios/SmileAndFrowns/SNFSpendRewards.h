@@ -1,3 +1,4 @@
+
 #import <UIKit/UIKit.h>
 #import "UIAlertAction+Additions.h"
 #import "SNFAddReward.h"
@@ -7,6 +8,7 @@
 #import "SNFAddCell.h"
 #import "SNFSmile.h"
 #import "SNFFrown.h"
+#import "SNFFormViewController.h"
 
 @class SNFSpendRewards;
 
@@ -14,7 +16,7 @@
 - (void)spendRewardsIsDone:(SNFSpendRewards *)spendRewards;
 @end
 
-@interface SNFSpendRewards : UIViewController <UICollectionViewDataSource, UICollectionViewDataSource, SNFAddCellDelegate, SNFAddRewardDelegate>{
+@interface SNFSpendRewards : SNFFormViewController <UICollectionViewDataSource, UICollectionViewDataSource, SNFAddCellDelegate, SNFAddRewardDelegate> {
 	NSArray *_sortedRewards;
 	NSInteger _smilesAvailable;
 	SNFReward *_selectedReward;

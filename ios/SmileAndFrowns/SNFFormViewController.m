@@ -38,8 +38,20 @@
 		self.firstlayout = false;
 		self.initialFormHeight = self.formView.height;
 		self.formView.width = self.scrollView.width;
+		
+		if(self.formView.height < self.scrollView.height) {
+			self.formView.height = self.scrollView.height;
+		}
+		
 		self.scrollView.contentSize = self.formView.size;
 		[self.scrollView addSubview:self.formView];
+		
+	} else {
+		
+		if(self.scrollView.height > self.initialFormHeight) {
+			self.formView.height = self.scrollView.height;
+			self.scrollView.contentSize = self.formView.size;
+		}
 	}
 }
 

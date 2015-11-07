@@ -1,3 +1,4 @@
+
 #import <UIKit/UIKit.h>
 #import "SNFBoard.h"
 #import "SNFBehavior.h"
@@ -7,14 +8,15 @@
 #import "SNFRewardCell.h"
 #import "SNFAddCell.h"
 #import "SNFAddReward.h"
+#import "SNFFormViewController.h"
 
 @class SNFBoardEdit;
 
-@protocol  SNFBoardEditDelegate <NSObject>
+@protocol SNFBoardEditDelegate <NSObject>
 - (void)boardEditor:(SNFBoardEdit *)be finishedWithBoard:(SNFBoard *)board;
 @end
 
-@interface SNFBoardEdit : UIViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate, SNFAddCellDelegate, SNFAddRewardDelegate>{
+@interface SNFBoardEdit : SNFFormViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate, SNFAddCellDelegate, SNFAddRewardDelegate>{
 	NSArray *_sortedBehaviors;
 	NSArray *_sortedRewards;
 }

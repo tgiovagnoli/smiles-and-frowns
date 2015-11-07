@@ -20,10 +20,11 @@ typedef NS_ENUM(NSInteger, SNFAddSmileOrFrownType){
 - (void)addSmileOrFrownFinished:(SNFAddSmileOrFrown *)addSoF;
 @end
 
-@interface SNFAddSmileOrFrown : UIViewController <UITableViewDelegate, UITableViewDataSource, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate>{
+@interface SNFAddSmileOrFrown : SNFFormViewController <UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate> {
 	NSArray *_behaviors;
 }
 
+@property (weak) IBOutlet UILabel * titleLabel;
 @property (weak) IBOutlet UITableView *behaviorsTable;
 @property (weak) IBOutlet UIStepper *amountStepper;
 @property (weak) IBOutlet UITextField *amountField;

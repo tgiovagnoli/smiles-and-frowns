@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFLauncher">
             <connections>
+                <outlet property="acceptInviteButton" destination="3kq-mh-ITC" id="2tC-0H-Hxz"/>
                 <outlet property="createAccountButton" destination="A4E-m0-Q5T" id="Uw9-8i-2Tf"/>
                 <outlet property="loginButton" destination="uGA-iT-z3T" id="p3F-wx-vd5"/>
                 <outlet property="showOnStartup" destination="eXF-OV-gDJ" id="E3l-Wd-wtW"/>

@@ -13,6 +13,7 @@
 
 @property (weak) IBOutlet UILabel *titleLabel;
 @property (weak) IBOutlet UILabel *dateLabel;
+@property IBOutlet UIButton * editButton;
 @property (weak, nonatomic) SNFBoard *board;
 @property (weak) NSObject <SNFBoardListCellDelegate> *delegate;
 

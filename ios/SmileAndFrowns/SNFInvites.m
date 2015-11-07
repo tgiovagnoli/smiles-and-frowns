@@ -196,7 +196,7 @@
 	
 	UIView * cell = [self.tableView cellForRowAtIndexPath:indexPath];
 	
-	SNFAcceptInvite * acceptor = [[SNFAcceptInvite alloc] initWithSourceView:cell sourceRect:CGRectZero contentSize:CGSizeMake(300,220)];
+	SNFAcceptInvite * acceptor = [[SNFAcceptInvite alloc] initWithSourceView:cell sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
 	acceptor.invite = invite;
 	
 	[[AppDelegate rootViewController] presentViewController:acceptor animated:TRUE completion:nil];

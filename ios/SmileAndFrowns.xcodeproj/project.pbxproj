@@ -43,6 +43,14 @@
 		07C0F3B81BED26420075A6B9 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3B71BED26420075A6B9 /* IAPHelper.m */; };
 		07C0F3BA1BED37C70075A6B9 /* InAppPurchases.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */; };
 		07C0F3BD1BED70BC0075A6B9 /* SNFADBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3BC1BED70BC0075A6B9 /* SNFADBannerView.m */; };
+		07C0F3C31BEE646E0075A6B9 /* fb.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3C11BEE646E0075A6B9 /* fb.png */; };
+		07C0F3C41BEE646E0075A6B9 /* fb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3C21BEE646E0075A6B9 /* fb@2x.png */; };
+		07C0F3C71BEE64CF0075A6B9 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3C51BEE64CF0075A6B9 /* twitter.png */; };
+		07C0F3C81BEE64CF0075A6B9 /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3C61BEE64CF0075A6B9 /* twitter@2x.png */; };
+		07C0F3CD1BEE6FC80075A6B9 /* female.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3C91BEE6FC80075A6B9 /* female.png */; };
+		07C0F3CE1BEE6FC80075A6B9 /* female@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3CA1BEE6FC80075A6B9 /* female@2x.png */; };
+		07C0F3CF1BEE6FC80075A6B9 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3CB1BEE6FC80075A6B9 /* male.png */; };
+		07C0F3D01BEE6FC80075A6B9 /* male@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3CC1BEE6FC80075A6B9 /* male@2x.png */; };
 		07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E7055A1BEBD1520013FB75 /* iAd.framework */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
@@ -197,6 +205,14 @@
 		07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = InAppPurchases.plist; path = SmileAndFrowns/InAppPurchases.plist; sourceTree = "<group>"; };
 		07C0F3BB1BED70BC0075A6B9 /* SNFADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFADBannerView.h; sourceTree = "<group>"; };
 		07C0F3BC1BED70BC0075A6B9 /* SNFADBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFADBannerView.m; sourceTree = "<group>"; };
+		07C0F3C11BEE646E0075A6B9 /* fb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fb.png; sourceTree = "<group>"; };
+		07C0F3C21BEE646E0075A6B9 /* fb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fb@2x.png"; sourceTree = "<group>"; };
+		07C0F3C51BEE64CF0075A6B9 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
+		07C0F3C61BEE64CF0075A6B9 /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@2x.png"; sourceTree = "<group>"; };
+		07C0F3C91BEE6FC80075A6B9 /* female.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = female.png; sourceTree = "<group>"; };
+		07C0F3CA1BEE6FC80075A6B9 /* female@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "female@2x.png"; sourceTree = "<group>"; };
+		07C0F3CB1BEE6FC80075A6B9 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
+		07C0F3CC1BEE6FC80075A6B9 /* male@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "male@2x.png"; sourceTree = "<group>"; };
 		07E7055A1BEBD1520013FB75 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSLog+Geom.h"; path = "submodules/apd-objc/NSLog+Geom.h"; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
@@ -476,6 +492,22 @@
 			name = Facebook;
 			sourceTree = "<group>";
 		};
+		07C0F3C01BEE646E0075A6B9 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				07C0F3C91BEE6FC80075A6B9 /* female.png */,
+				07C0F3CA1BEE6FC80075A6B9 /* female@2x.png */,
+				07C0F3CB1BEE6FC80075A6B9 /* male.png */,
+				07C0F3CC1BEE6FC80075A6B9 /* male@2x.png */,
+				07C0F3C51BEE64CF0075A6B9 /* twitter.png */,
+				07C0F3C61BEE64CF0075A6B9 /* twitter@2x.png */,
+				07C0F3C11BEE646E0075A6B9 /* fb.png */,
+				07C0F3C21BEE646E0075A6B9 /* fb@2x.png */,
+			);
+			name = images;
+			path = SmileAndFrowns/images;
+			sourceTree = "<group>";
+		};
 		D6270ECF1BE817DA00F7C39A /* Behaviors */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +666,7 @@
 		D659DBCA1BDAE0B30048D3F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				07C0F3C01BEE646E0075A6B9 /* images */,
 				D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */,
 				07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */,
 				D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */,
@@ -913,19 +946,24 @@
 				0707D6DD1BE428BA002F1FC0 /* SNFInvites.xib in Resources */,
 				D6270ED71BE817E900F7C39A /* SNFAddBehavior.xib in Resources */,
 				D65DF15B1BE2F59F009CC6DF /* SNFAddUserRole.xib in Resources */,
+				07C0F3C41BEE646E0075A6B9 /* fb@2x.png in Resources */,
 				0707D6D11BE2B301002F1FC0 /* SNFPasswordReset.xib in Resources */,
 				D6DB2BDC1BEAAB3500F1CDFF /* SNFAddReward.xib in Resources */,
 				07C0F3BA1BED37C70075A6B9 /* InAppPurchases.plist in Resources */,
 				D6270EDE1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.xib in Resources */,
+				07C0F3CF1BEE6FC80075A6B9 /* male.png in Resources */,
 				D6270ED91BE817E900F7C39A /* SNFAddBehaviorCell.xib in Resources */,
 				078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */,
 				0707D6C61BE2B2D8002F1FC0 /* SNFAcceptInvite.xib in Resources */,
 				07C0F3B51BED049B0075A6B9 /* SNFInvitesCell.xib in Resources */,
 				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
+				07C0F3CE1BEE6FC80075A6B9 /* female@2x.png in Resources */,
 				D6F4421A1BEB90A4009C2866 /* SNFReporting.xib in Resources */,
 				D65DF1111BE29A42009CC6DF /* SNFTabMenu.xib in Resources */,
 				D6272FC41BE002330024CBC2 /* APDDjangoErrorViewer.xib in Resources */,
 				0707D6A51BE29756002F1FC0 /* SNFViewController.xib in Resources */,
+				07C0F3CD1BEE6FC80075A6B9 /* female.png in Resources */,
+				07C0F3C81BEE64CF0075A6B9 /* twitter@2x.png in Resources */,
 				D65DF1501BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib in Resources */,
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
 				D6F442311BEBF425009C2866 /* SNFReportingSectionHeader.xib in Resources */,
@@ -933,6 +971,8 @@
 				D65DF14B1BE2BF94009CC6DF /* SNFBoardDetailChildCell.xib in Resources */,
 				D65DF12A1BE2AA50009CC6DF /* SNFBoardList.xib in Resources */,
 				D6DB2BD11BEAA03300F1CDFF /* SNFRewardCell.xib in Resources */,
+				07C0F3D01BEE6FC80075A6B9 /* male@2x.png in Resources */,
+				07C0F3C31BEE646E0075A6B9 /* fb.png in Resources */,
 				D62E1CE81BEA6BBD00EF8725 /* SNFAddSmileOrFrown.xib in Resources */,
 				D6DB2BD61BEAA0BA00F1CDFF /* SNFAddCell.xib in Resources */,
 				0707D6CC1BE2B2F8002F1FC0 /* SNFCreateAccount.xib in Resources */,
@@ -944,6 +984,7 @@
 				D694011C1BED25530073119E /* SNFPredefinedBoardCell.xib in Resources */,
 				D6DB2BE11BEAC3E300F1CDFF /* SNFSpendRewards.xib in Resources */,
 				0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */,
+				07C0F3C71BEE64CF0075A6B9 /* twitter.png in Resources */,
 				D65DF1411BE2BB88009CC6DF /* SNFBoardDetail.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

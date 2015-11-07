@@ -242,7 +242,7 @@
 		SNFLauncher * launcher = (SNFLauncher *)[AppDelegate rootViewController];
 		
 		[launcher dismissViewControllerAnimated:TRUE completion:^{
-			SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+			SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
 			
 			if(self.nextViewController) {
 				createAccount.nextViewController = self.nextViewController;

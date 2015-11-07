@@ -8,6 +8,7 @@
 	
 	self.modalPresentationStyle = UIModalPresentationPopover;
 	self.popoverPresentationController.sourceView = view;
+	self.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
 	
 	if(CGRectEqualToRect(sourceRect, CGRectZero)) {
 		self.popoverPresentationController.sourceRect = CGRectMake((view.width/2)-5,(view.height/2)-5,10,10);

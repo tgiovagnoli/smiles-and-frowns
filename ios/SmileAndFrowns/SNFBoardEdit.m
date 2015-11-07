@@ -2,12 +2,13 @@
 #import "SNFBoardEdit.h"
 #import "SNFModel.h"
 #import "UIAlertAction+Additions.h"
+#import "UIViewController+ModalCreation.h"
 
 @implementation SNFBoardEdit
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	self.rewardInfoLabel.text = @"";
+	self.rewardInfoLabel.text = @" ";
 	[self.rewardsCollectionView registerClass:[SNFRewardCell class] forCellWithReuseIdentifier:@"SNFRewardCell"];
 	[self.rewardsCollectionView registerNib:[UINib nibWithNibName:@"SNFRewardCell" bundle:nil] forCellWithReuseIdentifier:@"SNFRewardCell"];
 	[self.rewardsCollectionView registerClass:[SNFAddCell class] forCellWithReuseIdentifier:@"SNFAddCell"];
@@ -31,7 +32,7 @@
 	[self reloadRewards];
 }
 
-- (void)reloadBehaviors{
+- (void) reloadBehaviors {
 	_sortedBehaviors = [self.board sortedActiveBehaviors];
 	[self.behaviorsTable reloadData];
 }
@@ -46,7 +47,7 @@
 
 // behaviors
 - (IBAction)onAddBehavior:(UIButton *)sender{
-	SNFAddBehavior *addBehavior = [[SNFAddBehavior alloc] init];
+	SNFAddBehavior * addBehavior = [[SNFAddBehavior alloc] initWithSourceView:self.addBehaviorButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
 	[self presentViewController:addBehavior animated:YES completion:^{}];
 	addBehavior.board = self.board;
 	addBehavior.delegate = self;
@@ -134,8 +135,7 @@
 }
 
 - (void)addCellWantsToAdd:(SNFAddCell *)addCell{
-	NSLog(@"add new  reward");
-	SNFAddReward *addReward = [[SNFAddReward alloc] init];
+	SNFAddReward *addReward = [[SNFAddReward alloc] initWithSourceView:addCell sourceRect:CGRectZero contentSize:CGSizeMake(500,325)];
 	addReward.board = self.board;
 	addReward.delegate = self;
 	[self presentViewController:addReward animated:YES completion:^{}];

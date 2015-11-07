@@ -1,5 +1,6 @@
 #import "SNFSpendRewards.h"
 #import "SNFModel.h"
+#import "UIViewController+ModalCreation.h"
 
 @implementation SNFSpendRewards
 
@@ -92,7 +93,7 @@
 }
 
 - (void)addCellWantsToAdd:(SNFAddCell *)addCell{
-	SNFAddReward *addReward = [[SNFAddReward alloc] init];
+	SNFAddReward * addReward = [[SNFAddReward alloc] initWithSourceView:addCell sourceRect:CGRectZero contentSize:CGSizeMake(500,325)];
 	addReward.board = self.board;
 	addReward.delegate = self;
 	[self presentViewController:addReward animated:YES completion:^{}];

@@ -58,7 +58,7 @@
 }
 
 - (IBAction)onAddUserRole:(id)sender{
-	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,420)];
+	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,400)];
 	addUserRole.board = self.board;
 	[self presentViewController:addUserRole animated:YES completion:nil];
 }
@@ -68,15 +68,22 @@
 }
 
 - (void)childCellWantsToAddSmile:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	[self addSNFFortype:SNFAddSmileOrFrownTypeSmile andUserRole:userRole];
+	[self addSNFFortype:SNFAddSmileOrFrownTypeSmile andUserRole:userRole cell:cell];
 }
 
 - (void)childCellWantsToAddFrown:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	[self addSNFFortype:SNFAddSmileOrFrownTypeFrown andUserRole:userRole];
+	[self addSNFFortype:SNFAddSmileOrFrownTypeFrown andUserRole:userRole cell:cell];
 }
 
-- (void)addSNFFortype:(SNFAddSmileOrFrownType)type andUserRole:(SNFUserRole *)userRole{
-	SNFAddSmileOrFrown *addModal = [[SNFAddSmileOrFrown alloc] init];
+- (void)addSNFFortype:(SNFAddSmileOrFrownType)type andUserRole:(SNFUserRole *)userRole cell:(SNFBoardDetailChildCell *) cell {
+	SNFAddSmileOrFrown *addModal = nil;
+	
+	if(type == SNFAddSmileOrFrownTypeSmile) {
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.smileButton.frame contentSize:CGSizeMake(500,600)];
+	} else {
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.frownButton.frame contentSize:CGSizeMake(500,600)];
+	}
+	
 	addModal.type = type;
 	addModal.board = self.board;
 	addModal.user = userRole.user;
@@ -89,7 +96,7 @@
 }
 
 - (void)childCellWantsToSpend:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFSpendRewards *rewards = [[SNFSpendRewards alloc] init];
+	SNFSpendRewards * rewards = [[SNFSpendRewards alloc] initWithSourceView:cell sourceRect:cell.spendButton.frame contentSize:CGSizeMake(500,490)];
 	rewards.board = self.board;
 	rewards.user = userRole.user;
 	rewards.delegate = self;
