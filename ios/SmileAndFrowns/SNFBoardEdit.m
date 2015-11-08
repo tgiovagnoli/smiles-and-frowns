@@ -39,10 +39,21 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-	if(textField == self.boardTitleField){
+	if(textField == self.boardTitleField) {
+		
+		if([textField.text isEmpty]) {
+			return NO;
+		}
+		
 		[textField resignFirstResponder];
-		return NO;
+		
+		_board.title = self.boardTitleField.text;
+		[[SNFModel sharedInstance].managedObjectContext save:nil];
+		
+		return YES;
+		
 	}
+	
 	return YES;
 }
 

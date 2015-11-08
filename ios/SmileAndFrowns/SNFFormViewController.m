@@ -6,6 +6,7 @@
 
 @interface SNFFormViewController ()
 @property BOOL firstlayout;
+@property BOOL keyboardIsVisible;
 @property CGFloat superScrollViewHeight;
 @end
 
@@ -56,6 +57,8 @@
 }
 
 - (void) keyboardWillShow:(NSNotification *) notification {
+	self.keyboardIsVisible = TRUE;
+	
 	NSDictionary * userInfo = notification.userInfo;
 	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
@@ -102,6 +105,8 @@
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
+	self.keyboardIsVisible = FALSE;
+	
 	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		return;
 	}
@@ -128,6 +133,9 @@
 
 - (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
 	[self.bannerView removeFromSuperview];
+	if(self.keyboardIsVisible) {
+		return;
+	}
 	if(self.scrollViewBottom.constant > banner.height) {
 		self.scrollViewBottom.constant -= banner.height;
 	}
