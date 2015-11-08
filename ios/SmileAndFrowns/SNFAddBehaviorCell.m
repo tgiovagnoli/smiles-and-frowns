@@ -65,7 +65,7 @@
 		return;
 	}
 	self.behavior.title = self.behaviorTitleField.text;
-	[[SNFModel sharedInstance].managedObjectContext save:nil];
+	//[[SNFModel sharedInstance].managedObjectContext save:nil];
 }
 
 @end

@@ -84,7 +84,7 @@
                     <rect key="frame" x="20" y="379" width="560" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Add behavior"/>
+                    <state key="normal" title="Add Behavior"/>
                     <connections>
                         <action selector="onAddBehavior:" destination="-1" eventType="touchUpInside" id="Eae-SI-mHE"/>
                     </connections>

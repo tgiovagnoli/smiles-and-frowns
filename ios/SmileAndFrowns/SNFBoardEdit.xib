@@ -140,8 +140,8 @@
                     <rect key="frame" x="0.0" y="53" width="600" height="547"/>
                     <animations/>
                 </scrollView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Board Title" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hs5-M3-Y9s">
-                    <rect key="frame" x="64" y="10" width="470" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Board Title" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hs5-M3-Y9s">
+                    <rect key="frame" x="8" y="10" width="526" height="30"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="BZT-yb-Vxh"/>
@@ -160,7 +160,7 @@
                         <constraint firstAttribute="width" constant="45" id="8N8-Q9-qjc"/>
                         <constraint firstAttribute="height" constant="30" id="kHP-Zh-UTc"/>
                     </constraints>
-                    <state key="normal" title="Close"/>
+                    <state key="normal" title="Done"/>
                     <connections>
                         <action selector="onCancel:" destination="-1" eventType="touchUpInside" id="tFQ-se-dfT"/>
                     </connections>
@@ -177,7 +177,7 @@
                 <constraint firstAttribute="bottom" secondItem="rdq-sD-9wl" secondAttribute="bottom" id="kUp-My-yJR"/>
                 <constraint firstItem="5bm-Bp-QfH" firstAttribute="leading" secondItem="Hs5-M3-Y9s" secondAttribute="trailing" constant="8" id="q85-W3-vLe"/>
                 <constraint firstItem="Hs5-M3-Y9s" firstAttribute="top" secondItem="5iE-x8-Lfy" secondAttribute="top" constant="10" id="r9l-jx-P4o"/>
-                <constraint firstItem="Hs5-M3-Y9s" firstAttribute="leading" secondItem="5iE-x8-Lfy" secondAttribute="leading" constant="64" id="sYC-Yg-CPt"/>
+                <constraint firstItem="Hs5-M3-Y9s" firstAttribute="leading" secondItem="5iE-x8-Lfy" secondAttribute="leading" constant="8" id="sYC-Yg-CPt"/>
             </constraints>
             <point key="canvasLocation" x="1083" y="278"/>
         </view>

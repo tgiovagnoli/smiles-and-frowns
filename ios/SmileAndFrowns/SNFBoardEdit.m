@@ -113,20 +113,36 @@
 		[self presentViewController:alert animated:YES completion:^{}];
 		return;
 	}
+	
 	_board.title = self.boardTitleField.text;
-	[[SNFModel sharedInstance].managedObjectContext undo];
-	[self dismissViewControllerAnimated:YES completion:^{}];
+	//[[SNFModel sharedInstance].managedObjectContext undo];
+	
 	if(self.delegate){
 		[self.delegate boardEditor:self finishedWithBoard:self.board];
 	}
+	
+	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (IBAction)onCancel:(UIButton *)sender{
-	[[SNFModel sharedInstance].managedObjectContext undo];
-	[self dismissViewControllerAnimated:YES completion:^{}];
-	if(self.delegate){
+	
+	if([self.boardTitleField.text isEmpty]) {
+		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"You must set a title for this board" preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction OKAction]];
+		[self presentViewController:alert animated:YES completion:^{}];
+		return;
+	}
+	
+	_board.title = self.boardTitleField.text;
+	
+	[[SNFModel sharedInstance].managedObjectContext save:nil];
+	//[[SNFModel sharedInstance].managedObjectContext undo];
+	
+	if(self.delegate) {
 		[self.delegate boardEditor:self finishedWithBoard:self.board];
 	}
+	
+	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
