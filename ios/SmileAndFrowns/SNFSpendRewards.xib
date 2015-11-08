@@ -209,7 +209,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spend Rewards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epy-Ix-oHa">
-                    <rect key="frame" x="222" y="20" width="157" height="21"/>
+                    <rect key="frame" x="222" y="10" width="157" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="157" id="aTm-Du-Nvp"/>
@@ -220,7 +220,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqH-NK-KiA">
-                    <rect key="frame" x="527" y="15" width="60" height="30"/>
+                    <rect key="frame" x="527" y="5" width="60" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -233,17 +233,17 @@
                     </connections>
                 </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pqT-LU-Qmd">
-                    <rect key="frame" x="0.0" y="53" width="600" height="547"/>
+                    <rect key="frame" x="0.0" y="39" width="600" height="561"/>
                     <animations/>
                 </scrollView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="epy-Ix-oHa" firstAttribute="top" secondItem="1W3-ff-SKE" secondAttribute="top" constant="20" id="FgP-CE-4ky"/>
-                <constraint firstItem="pqT-LU-Qmd" firstAttribute="top" secondItem="1W3-ff-SKE" secondAttribute="top" constant="53" id="Iw5-Gb-80p"/>
+                <constraint firstItem="epy-Ix-oHa" firstAttribute="top" secondItem="1W3-ff-SKE" secondAttribute="top" constant="10" id="FgP-CE-4ky"/>
+                <constraint firstItem="pqT-LU-Qmd" firstAttribute="top" secondItem="1W3-ff-SKE" secondAttribute="top" constant="39" id="Iw5-Gb-80p"/>
                 <constraint firstItem="pqT-LU-Qmd" firstAttribute="leading" secondItem="1W3-ff-SKE" secondAttribute="leading" id="Y68-vI-XBN"/>
-                <constraint firstItem="kqH-NK-KiA" firstAttribute="top" secondItem="1W3-ff-SKE" secondAttribute="top" constant="15" id="ZYG-Mx-SAb"/>
+                <constraint firstItem="kqH-NK-KiA" firstAttribute="top" secondItem="1W3-ff-SKE" secondAttribute="top" constant="5" id="ZYG-Mx-SAb"/>
                 <constraint firstAttribute="trailing" secondItem="kqH-NK-KiA" secondAttribute="trailing" constant="13" id="aC7-XT-osg"/>
                 <constraint firstItem="epy-Ix-oHa" firstAttribute="centerX" secondItem="1W3-ff-SKE" secondAttribute="centerX" id="jIa-os-n9a"/>
                 <constraint firstAttribute="bottom" secondItem="pqT-LU-Qmd" secondAttribute="bottom" id="o8d-PN-bdR"/>

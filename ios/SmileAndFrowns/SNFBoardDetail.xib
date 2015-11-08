@@ -19,17 +19,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA7-Ce-4XU">
-                    <rect key="frame" x="0.0" y="20" width="600" height="21"/>
+                    <rect key="frame" x="0.0" y="10" width="600" height="21"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-le-D3j">
-                    <rect key="frame" x="8" y="15" width="82" height="30"/>
+                    <rect key="frame" x="8" y="5" width="69" height="30"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="82" id="WKd-7S-IEN"/>
+                        <constraint firstAttribute="width" constant="69" id="WKd-7S-IEN"/>
                         <constraint firstAttribute="height" constant="30" id="YNb-ox-5Ts"/>
                     </constraints>
                     <state key="normal" title="&lt; Boards"/>
@@ -38,7 +38,7 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="md8-2Q-eLn">
-                    <rect key="frame" x="0.0" y="106" width="600" height="494"/>
+                    <rect key="frame" x="0.0" y="96" width="600" height="504"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -47,7 +47,7 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4t-rc-jO4">
-                    <rect key="frame" x="0.0" y="60" width="600" height="46"/>
+                    <rect key="frame" x="0.0" y="50" width="600" height="46"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -71,8 +71,8 @@
                 <constraint firstItem="XA7-Ce-4XU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bMt-BF-qeD"/>
                 <constraint firstItem="md8-2Q-eLn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bh2-a4-Xc5"/>
                 <constraint firstItem="FKO-le-D3j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="gmB-Y0-Uen"/>
-                <constraint firstItem="FKO-le-D3j" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="iUN-bU-l6q"/>
-                <constraint firstItem="XA7-Ce-4XU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="mgD-az-j6M"/>
+                <constraint firstItem="FKO-le-D3j" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="iUN-bU-l6q"/>
+                <constraint firstItem="XA7-Ce-4XU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="mgD-az-j6M"/>
                 <constraint firstAttribute="bottom" secondItem="md8-2Q-eLn" secondAttribute="bottom" id="n2B-Sn-8eC"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
