@@ -88,11 +88,12 @@ static __weak SNFViewController * _instance;
 }
 
 - (void) bannerView:(ADBannerView *) banner didFailToReceiveAdWithError:(NSError *) error {
+	[self.bannerView removeFromSuperview];
+	
 	if(self.isKeyboardShown) {
 		return;
 	}
 	
-	[self.bannerView removeFromSuperview];
 	self.tabMenuContainerBottom.constant = 0;
 }
 
