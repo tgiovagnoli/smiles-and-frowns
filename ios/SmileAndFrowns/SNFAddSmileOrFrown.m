@@ -1,12 +1,36 @@
+
 #import "SNFAddSmileOrFrown.h"
 #import "SNFModel.h"
+#import "UIViewController+ModalCreation.h"
 
 @implementation SNFAddSmileOrFrown
 
 
 - (void)viewDidLoad{
 	[super viewDidLoad];
+	[self startBannerAd];
 	[self updateUI];
+	
+	self.noteField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+	self.noteField.layer.borderWidth = 1;
+}
+
+- (void) textViewDidBeginEditing:(UITextView *)textView {
+	if(textView == self.noteField) {
+		if([self.noteField.text isEqualToString:@"Add a note (Optional)"]) {
+			textView.text = @"";
+			textView.textColor = [UIColor blackColor];
+		}
+	}
+}
+
+- (void) textViewDidEndEditing:(UITextView *)textView {
+	if(textView == self.noteField) {
+		if([self.noteField.text isEmpty]) {
+			textView.text = @"Add a note (Optional)";
+			textView.textColor = [UIColor lightGrayColor];
+		}
+	}
 }
 
 - (void)updateUI{
@@ -15,9 +39,11 @@
 	
 	switch(self.type){
 		case SNFAddSmileOrFrownTypeFrown:
+			self.titleLabel.text = @"Give Frowns";
 			[self.addSNFButton setTitle:@"Add Frown" forState:UIControlStateNormal];
 			break;
 		case SNFAddSmileOrFrownTypeSmile:
+			self.titleLabel.text = @"Give Smiles";
 			[self.addSNFButton setTitle:@"Add Smile" forState:UIControlStateNormal];
 			break;
 	}
@@ -39,7 +65,7 @@
 }
 
 - (IBAction)onAddBehavior:(UIButton *)sender{
-	SNFAddBehavior *addBehavior = [[SNFAddBehavior alloc] init];
+	SNFAddBehavior *addBehavior = [[SNFAddBehavior alloc] initWithSourceView:sender sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
 	addBehavior.board = self.board;
 	addBehavior.delegate = self;
 	[self presentViewController:addBehavior animated:YES completion:^{}];

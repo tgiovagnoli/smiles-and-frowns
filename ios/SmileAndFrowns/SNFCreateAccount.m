@@ -37,7 +37,7 @@
 	self.password.delegate = self;
 	self.passwordConfirm.delegate = self;
 	
-	[self starBannerAd];
+	[self startBannerAd];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTwitterLogin:) name:ATITwitterAuthHandlerSessionChange object:nil];
@@ -52,8 +52,7 @@
 	return YES;
 }
 
-- (IBAction) onGender:(id)sender {
-	[self.view endEditing:TRUE];
+- (IBAction) onGender:(id) sender {
 	self.pickerviewContainer.frame = self.view.bounds;
 	[self.pickerView reloadAllComponents];
 	
@@ -137,7 +136,7 @@
 		
 		[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 			
-			SNFLogin * login = [[SNFLogin alloc] initWithSourceView:launcher.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+			SNFLogin * login = [[SNFLogin alloc] initWithSourceView:launcher.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,360)];
 			
 			if(self.nextViewController) {
 				login.nextViewController = self.nextViewController;

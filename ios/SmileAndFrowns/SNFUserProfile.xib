@@ -151,7 +151,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dct-xl-b1c">
                     <rect key="frame" x="260" y="198" width="80" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="AHJ-dh-FVf"/>
                         <constraint firstAttribute="width" constant="80" id="dgM-lk-Onw"/>
@@ -164,7 +164,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVP-yE-40I">
                     <rect key="frame" x="260" y="353" width="80" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="qYa-Al-9wI"/>
                         <constraint firstAttribute="width" constant="80" id="skR-aL-GbT"/>
@@ -237,14 +237,19 @@
                     <exclude reference="5lY-Y8-gDR"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="454" y="445.5"/>
+            <point key="canvasLocation" x="475" y="436.5"/>
         </view>
         <view contentMode="scaleToFill" id="J61-dJ-hgB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2C-SM-K3L">
+                    <rect key="frame" x="0.0" y="39" width="600" height="561"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </scrollView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9W-SR-goy">
-                    <rect key="frame" x="259" y="8" width="83" height="21"/>
+                    <rect key="frame" x="259" y="10" width="83" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="dA6-lk-QfE"/>
@@ -254,11 +259,6 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2C-SM-K3L">
-                    <rect key="frame" x="0.0" y="37" width="600" height="563"/>
-                    <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </scrollView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -267,10 +267,10 @@
                 <constraint firstAttribute="trailing" secondItem="e2C-SM-K3L" secondAttribute="trailing" id="Luq-RN-Y0l"/>
                 <constraint firstAttribute="bottom" secondItem="e2C-SM-K3L" secondAttribute="bottom" id="aVz-M1-6S6"/>
                 <constraint firstItem="e2C-SM-K3L" firstAttribute="leading" secondItem="J61-dJ-hgB" secondAttribute="leading" id="cpP-sL-E8p"/>
-                <constraint firstItem="e2C-SM-K3L" firstAttribute="top" secondItem="J61-dJ-hgB" secondAttribute="top" constant="37" id="nSw-L1-0E9"/>
-                <constraint firstItem="h9W-SR-goy" firstAttribute="top" secondItem="J61-dJ-hgB" secondAttribute="top" constant="8" id="xC4-hb-JJ2"/>
+                <constraint firstItem="e2C-SM-K3L" firstAttribute="top" secondItem="J61-dJ-hgB" secondAttribute="top" constant="39" id="nSw-L1-0E9"/>
+                <constraint firstItem="h9W-SR-goy" firstAttribute="top" secondItem="J61-dJ-hgB" secondAttribute="top" constant="10" id="xC4-hb-JJ2"/>
             </constraints>
-            <point key="canvasLocation" x="1138" y="550"/>
+            <point key="canvasLocation" x="1132" y="541"/>
         </view>
         <view contentMode="scaleToFill" id="vxT-Ip-DfR">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>

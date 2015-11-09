@@ -7,6 +7,12 @@
 #import "SNFTutorial.h"
 #import "SNFAcceptInvite.h"
 #import "ATIFacebookAuthHandler.h"
+#import "UIAlertAction+Additions.h"
+#import "SNFADBannerView.h"
+
+@interface SNFMore ()
+@property IAPHelper * helper;
+@end
 
 @implementation SNFMore
 
@@ -82,11 +88,66 @@
 	
 }
 
-- (void)restorePurchases{
+- (void) restorePurchases {
+	
+	if(!self.helper) {
+		self.helper = [[IAPHelper alloc] init];
+	}
+	
+	__weak SNFMore * weakself = self;
+	
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	
+	[self.helper restorePurchasesWithCompletion:^(NSError *error, SKPaymentTransaction *transaction, BOOL completed) {
+		
+		NSString * productId = transaction.payment.productIdentifier;
+		NSString * type = [IAPHelper productTypeForProductId:productId];
+		
+		if([[IAPHelper productNameByProductId:productId] isEqualToString:@"RemoveAds"]) {
+			[[NSNotificationCenter defaultCenter] postNotificationName:SNFADBannerViewPurchasedRemoveAds object:nil];
+		}
+		
+		NSLog(@"restore product id: %@, transaction id: %@",productId,transaction.transactionIdentifier);
+		
+		if([type isEqualToString:@"Consumable"]) {
+			//TODO: handle looking up board based on product identifier and show an error if it doesn't exist?
+		}
+		
+		if(completed) {
+			[MBProgressHUD hideHUDForView:weakself.view animated:TRUE];
+		}
+		
+	}];
 	
 }
 
-- (void)removeAds{
+- (void) removeAds {
+	
+	IAPHelper * helper = [[IAPHelper alloc] init];
+	
+	NSArray * products = [IAPHelper productIdsByNames:@[@"RemoveAds"]];
+	
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	
+	[helper loadItunesProducts:products withCompletion:^(NSError *error) {
+		
+		NSString * product = [IAPHelper productIdByName:@"RemoveAds"];
+		
+		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			if(error) {
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction OKAction]];
+				[self presentViewController:alert animated:TRUE completion:nil];
+			} else {
+				[[NSNotificationCenter defaultCenter] postNotificationName:SNFADBannerViewPurchasedRemoveAds object:nil];
+			}
+			
+		}];
+		
+	}];
 	
 }
 

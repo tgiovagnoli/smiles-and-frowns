@@ -5,6 +5,10 @@
 #import "SNFViewController.h"
 #import "AppDelegate.h"
 
+@interface SNFBoardList ()
+@property IAPHelper * helper;
+@end
+
 @implementation SNFBoardList
 
 - (void)viewDidLoad{
@@ -58,7 +62,7 @@
 }
 
 - (void)boardListCell:(SNFBoardListCell *)cell wantsToEditBoard:(SNFBoard *)board{
-	SNFBoardEdit *boardEdit = [[SNFBoardEdit alloc] init];
+	SNFBoardEdit * boardEdit = [[SNFBoardEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
 	boardEdit.delegate = self;
 	[[AppDelegate rootViewController] presentViewController:boardEdit animated:YES completion:^{}];
 	boardEdit.board = board;
@@ -197,7 +201,7 @@
 		// buy board confirm
 		NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Would you like to purchase \"%@\"?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 			[self purchaseNewBoard:pdb];
 		}]];
 		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
@@ -206,7 +210,7 @@
 		// free board confirm
 		NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Are you sure you want to use \"%@\" as your free board?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 			[self addNewBoard:pdb withTransactionID:nil];
 		}]];
 		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
@@ -215,7 +219,7 @@
 		// empty board
 		NSString *messageString = @"This will create an empty board.  You will need to add behaviors to this board before using it.  Continue?";
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 			if(needsPurchase){
 				[self purchaseNewBoard:pdb];
 			}else{
@@ -257,21 +261,32 @@
 
 
 - (void)purchaseNewBoard:(SNFPredefinedBoard *)pdb{
-	NSArray * productIds = [IAPHelper productsFromPlistByName:@[@"NewBoard"]];
-	IAPHelper * helper = [[IAPHelper alloc] init];
+	
+	NSArray * productIds = [IAPHelper productIdsByNames:@[@"NewBoard"]];
+	
+	self.helper = [[IAPHelper alloc] init];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
+	[self.helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
 		
-		NSString *product = [IAPHelper productFromPlistByName:@"NewBoard"];
+		if(error) {
+			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction OKAction]];
+			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+			return;
+		}
+		
+		NSString * product = [IAPHelper productIdByName:@"NewBoard"];
 		NSLog(@"NewBoard product id: %@", product);
-		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+
+		[self.helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction OKAction]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 				return;
@@ -289,9 +304,11 @@
 		newBoard.transaction_id = transactionId;
 	}
 	[self reloadBoards];
-	SNFBoardDetail *boardDetail = [[SNFBoardDetail alloc] init];
+	
+	SNFBoardDetail * boardDetail = [[SNFBoardDetail alloc] init];
 	[[SNFViewController instance].viewControllerStack pushViewController:boardDetail animated:YES];
 	boardDetail.board = newBoard;
+	
 	[self boardListCell:nil wantsToEditBoard:newBoard];
 }
 

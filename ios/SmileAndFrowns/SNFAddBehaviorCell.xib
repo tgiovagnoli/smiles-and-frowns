@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SNFAddBehaviorCell" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Behavior Title" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nFw-eP-7lN">
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SNFAddBehaviorCell" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Behavior Title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nFw-eP-7lN">
                         <rect key="frame" x="8" y="8" width="304" height="27"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -23,18 +23,34 @@
                             <outlet property="delegate" destination="KGk-i7-Jjw" id="6hb-lj-qan"/>
                         </connections>
                     </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGM-lZ-ab0">
+                        <rect key="frame" x="275" y="15" width="32" height="14"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="eoJ-EZ-Yug"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                        <state key="normal" title="Edit"/>
+                        <connections>
+                            <action selector="onEdit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8OU-Qr-m2j"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <animations/>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="nFw-eP-7lN" secondAttribute="bottom" id="0hb-xf-deP"/>
+                    <constraint firstAttribute="bottom" secondItem="CGM-lZ-ab0" secondAttribute="bottom" constant="14" id="2wh-C6-CYW"/>
+                    <constraint firstItem="CGM-lZ-ab0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="F7T-8I-v0j"/>
                     <constraint firstItem="nFw-eP-7lN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="JJH-ea-2eL"/>
                     <constraint firstAttribute="trailingMargin" secondItem="nFw-eP-7lN" secondAttribute="trailing" id="OB1-8X-CcH"/>
+                    <constraint firstAttribute="trailing" secondItem="CGM-lZ-ab0" secondAttribute="trailing" constant="13" id="jsv-XG-xDe"/>
                     <constraint firstItem="nFw-eP-7lN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="vzK-zI-R0E"/>
                 </constraints>
             </tableViewCellContentView>
             <animations/>
             <connections>
                 <outlet property="behaviorTitleField" destination="nFw-eP-7lN" id="afW-J8-wN3"/>
+                <outlet property="editButton" destination="CGM-lZ-ab0" id="uzj-aV-c9a"/>
             </connections>
         </tableViewCell>
     </objects>

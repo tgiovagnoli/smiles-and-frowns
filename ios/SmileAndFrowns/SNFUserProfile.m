@@ -34,11 +34,11 @@
 	[self loadAuthedUser];
 }
 
-- (CGFloat) scrollViewBottomConstraint:(NSNotification *) notification {
-	CGFloat defaultValue = [super scrollViewBottomConstraint:notification];
-	defaultValue -= 50;
-	return defaultValue;
-}
+//- (CGFloat) scrollViewBottomConstraint:(NSNotification *) notification {
+//	CGFloat defaultValue = [super scrollViewBottomConstraint:notification];
+//	defaultValue -= 50;
+//	return defaultValue;
+//}
 
 - (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
 	return TRUE;

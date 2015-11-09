@@ -18,7 +18,7 @@
                         <rect key="frame" x="8" y="8" width="304" height="43"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0YW-Bn-EPh">
-                                <rect key="frame" x="20" y="0.0" width="181" height="43"/>
+                                <rect key="frame" x="14" y="0.0" width="187" height="43"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,7 +43,7 @@
                             <constraint firstAttribute="bottom" secondItem="0YW-Bn-EPh" secondAttribute="bottom" id="GrL-1m-uSa"/>
                             <constraint firstItem="0YW-Bn-EPh" firstAttribute="top" secondItem="CWq-Q3-wR3" secondAttribute="top" id="K6b-Ec-2nV"/>
                             <constraint firstAttribute="trailing" secondItem="k3l-re-D9u" secondAttribute="trailing" constant="20" id="Sn1-fc-wtj"/>
-                            <constraint firstItem="0YW-Bn-EPh" firstAttribute="leading" secondItem="CWq-Q3-wR3" secondAttribute="leading" constant="20" id="j4S-Sa-xCf"/>
+                            <constraint firstItem="0YW-Bn-EPh" firstAttribute="leading" secondItem="CWq-Q3-wR3" secondAttribute="leading" constant="14" id="j4S-Sa-xCf"/>
                             <constraint firstItem="k3l-re-D9u" firstAttribute="leading" secondItem="0YW-Bn-EPh" secondAttribute="trailing" constant="33" id="pJG-wP-J3I"/>
                         </constraints>
                     </view>
@@ -60,6 +60,7 @@
             <connections>
                 <outlet property="controlsUnderlay" destination="j4f-y3-q5W" id="h8Q-pJ-Q7p"/>
                 <outlet property="dateLabel" destination="k3l-re-D9u" id="5fr-mD-Nwa"/>
+                <outlet property="editButton" destination="JOV-Ha-PYT" id="pbG-ML-Haa"/>
                 <outlet property="overlayView" destination="CWq-Q3-wR3" id="inj-DJ-i1o"/>
                 <outlet property="titleLabel" destination="0YW-Bn-EPh" id="CSJ-af-7X3"/>
             </connections>
@@ -72,6 +73,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tdm-so-Ntx">
                     <rect key="frame" x="76" y="0.0" width="75" height="60"/>
                     <animations/>
+                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Reset"/>
                     <connections>
                         <action selector="onReset:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bli-Lt-qwu"/>
@@ -80,6 +82,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JOV-Ha-PYT">
                     <rect key="frame" x="0.0" y="0.0" width="76" height="60"/>
                     <animations/>
+                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Edit"/>
                     <connections>
                         <action selector="onEdit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TtR-sx-qRF"/>

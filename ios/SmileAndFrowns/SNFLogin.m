@@ -24,30 +24,12 @@
 
 @implementation SNFLogin
 
-+ (SNFLogin *) loginModalAtSourceView:(UIView *) view sourceRect:(CGRect) rect contentSize:(CGSize) contentSize {
-	SNFLogin * login = [[SNFLogin alloc] init];
-	login.modalPresentationStyle = UIModalPresentationPopover;
-	login.popoverPresentationController.sourceView = view;
-	
-	if(CGSizeEqualToSize(contentSize, CGSizeZero)) {
-		login.preferredContentSize = CGSizeMake(500, 400);
-	} else {
-		login.preferredContentSize = contentSize;
-	}
-	
-	if(!CGRectEqualToRect(rect, CGRectZero)) {
-		login.popoverPresentationController.sourceRect = rect;
-	}
-	
-	return login;
-}
-
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	self.service = [[SNFUserService alloc] init];
 	self.email.delegate = self;
 	self.password.delegate = self;
-	[self starBannerAd];
+	[self startBannerAd];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTwitterLogin:) name:ATITwitterAuthHandlerSessionChange object:nil];
 }
@@ -242,7 +224,7 @@
 		SNFLauncher * launcher = (SNFLauncher *)[AppDelegate rootViewController];
 		
 		[launcher dismissViewControllerAnimated:TRUE completion:^{
-			SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+			SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
 			
 			if(self.nextViewController) {
 				createAccount.nextViewController = self.nextViewController;
@@ -261,7 +243,7 @@
 		
 		[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 			
-			SNFPasswordReset * reset = [[SNFPasswordReset alloc] initWithSourceView:launcher.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+			SNFPasswordReset * reset = [[SNFPasswordReset alloc] initWithSourceView:launcher.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,200)];
 			[[AppDelegate rootViewController] presentViewController:reset animated:TRUE completion:nil];
 			
 		}];

@@ -1,5 +1,6 @@
 #import "SNFSpendRewards.h"
 #import "SNFModel.h"
+#import "UIViewController+ModalCreation.h"
 
 @implementation SNFSpendRewards
 
@@ -10,7 +11,7 @@
 	[self.rewardsCollection registerNib:[UINib nibWithNibName:@"SNFRewardCell" bundle:nil] forCellWithReuseIdentifier:@"SNFRewardCell"];
 	[self.rewardsCollection registerClass:[SNFAddCell class] forCellWithReuseIdentifier:@"SNFAddCell"];
 	[self.rewardsCollection registerNib:[UINib nibWithNibName:@"SNFAddCell" bundle:nil] forCellWithReuseIdentifier:@"SNFAddCell"];
-	
+	[self startBannerAd];
 	[self updateUI];
 }
 
@@ -22,19 +23,29 @@
 - (void)updateUserInfo{
 	self.userFirstLastLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.first_name, self.user.last_name];
 	self.userGenderAgeLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.gender, self.user.age];
+	
 	// calculate the number of smiles available from the board
 	_smilesAvailable = 0;
+	
 	for(SNFSmile *smile in [self.board smilesForUser:self.user]){
 		if(!smile.collected.boolValue && !smile.deleted.boolValue){
 			_smilesAvailable ++;
 		}
 	}
+	
 	for(SNFFrown *frown in [self.board frownsForUser:self.user]){
 		if(!frown.deleted.boolValue){
 			_smilesAvailable --;
 		}
 	}
+	
 	self.totalSmilestoSpendLabel.text = [NSString stringWithFormat:@"%ld", (long)_smilesAvailable];
+	
+	if([self.user.gender.lowercaseString isEqualToString:@"male"]) {
+		self.userProfileImageView.image = [UIImage imageNamed:@"male"];
+	} else {
+		self.userProfileImageView.image = [UIImage imageNamed:@"female"];
+	}
 }
 
 - (void)reloadRewards{
@@ -92,7 +103,7 @@
 }
 
 - (void)addCellWantsToAdd:(SNFAddCell *)addCell{
-	SNFAddReward *addReward = [[SNFAddReward alloc] init];
+	SNFAddReward * addReward = [[SNFAddReward alloc] initWithSourceView:addCell sourceRect:CGRectZero contentSize:CGSizeMake(500,325)];
 	addReward.board = self.board;
 	addReward.delegate = self;
 	[self presentViewController:addReward animated:YES completion:^{}];
@@ -149,7 +160,7 @@
 		NSString *alertMessage = [NSString stringWithFormat:@"Are you sure you want to spend %.0f smiles?", smiles];
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
 		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 			[self redeemReward];
 		}]];
 		[self presentViewController:alert animated:YES completion:^{}];

@@ -1,9 +1,11 @@
+
 #import <UIKit/UIKit.h>
 #import "SNFPredefinedBehaviorGroup.h"
 #import "SNFPredefinedBehavior.h"
 #import "SNFAddBehaviorCell.h"
 #import "SNFBoard.h"
 #import "SNFBehavior.h"
+#import "SNFFormViewController.h"
 
 @class SNFAddBehavior;
 
@@ -12,7 +14,7 @@
 - (void)addBehaviorCancelled:(SNFAddBehavior *)addBehavior;
 @end
 
-@interface SNFAddBehavior : UIViewController <UITableViewDataSource, UITableViewDelegate>{
+@interface SNFAddBehavior : SNFFormViewController <UITableViewDataSource, UITableViewDelegate>{
 	NSArray *_predefinedBehaviorGroups;
 	SNFPredefinedBehavior *_selectedBehavior;
 }

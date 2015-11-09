@@ -9,11 +9,13 @@
 #import "SNFMore.h"
 #import "SNFInvites.h"
 #import "NSLog+Geom.h"
+#import "SNFADBannerView.h"
 
 static __weak SNFViewController * _instance;
 
 @interface SNFViewController ()
 @property BOOL firstlayout;
+@property BOOL isKeyboardShown;
 @end
 
 @implementation SNFViewController
@@ -22,12 +24,24 @@ static __weak SNFViewController * _instance;
 	[super viewDidLoad];
 	_instance = self;
 	self.firstlayout = true;
-	self.bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 	self.bannerView.delegate = self;
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	_instance = nil;
+}
+
+- (void) onKeyboardWillShow:(NSNotification *) npte {
+	self.isKeyboardShown = TRUE;
+}
+
+- (void) onKeyboardWillHide:(NSNotification *) note {
+	self.isKeyboardShown = FALSE;
 }
 
 - (BOOL) isAdDisplayed; {
@@ -62,6 +76,10 @@ static __weak SNFViewController * _instance;
 }
 
 - (void) bannerViewDidLoadAd:(ADBannerView *) banner {
+	if(self.isKeyboardShown) {
+		return;
+	}
+	
 	CGRect f = banner.frame;
 	f.origin.y = self.view.height - banner.height;
 	self.bannerView.frame = f;
@@ -70,6 +88,10 @@ static __weak SNFViewController * _instance;
 }
 
 - (void) bannerView:(ADBannerView *) banner didFailToReceiveAdWithError:(NSError *) error {
+	if(self.isKeyboardShown) {
+		return;
+	}
+	
 	[self.bannerView removeFromSuperview];
 	self.tabMenuContainerBottom.constant = 0;
 }

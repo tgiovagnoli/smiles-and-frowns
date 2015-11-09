@@ -28,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Person" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKU-WT-vtG">
-                    <rect key="frame" x="235" y="8" width="131" height="21"/>
+                    <rect key="frame" x="235" y="10" width="131" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="131" id="0Ac-rm-3Vh"/>
@@ -39,14 +39,29 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ha5-06-0QB">
-                    <rect key="frame" x="0.0" y="37" width="600" height="563"/>
+                    <rect key="frame" x="0.0" y="39" width="600" height="561"/>
                     <animations/>
                 </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rK7-yY-OwN">
+                    <rect key="frame" x="527" y="6" width="60" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.86394166949999995" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="9ca-hX-4w5"/>
+                        <constraint firstAttribute="width" constant="60" id="GW9-dY-knw"/>
+                    </constraints>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="6AO-E0-nnh"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="wKU-WT-vtG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="3g2-od-K7c"/>
+                <constraint firstItem="rK7-yY-OwN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="6" id="1Fb-1T-4lb"/>
+                <constraint firstItem="wKU-WT-vtG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="3g2-od-K7c"/>
+                <constraint firstAttribute="trailing" secondItem="rK7-yY-OwN" secondAttribute="trailing" constant="13" id="6KX-Pv-dQD"/>
                 <constraint firstItem="Ha5-06-0QB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VXp-OD-upP"/>
                 <constraint firstItem="wKU-WT-vtG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cF5-Wm-LEi"/>
                 <constraint firstAttribute="bottom" secondItem="Ha5-06-0QB" secondAttribute="bottom" id="msw-MW-TPg"/>
@@ -57,7 +72,7 @@
             <point key="canvasLocation" x="1085" y="264"/>
         </view>
         <view contentMode="scaleToFill" id="Kgn-KV-JRl">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="367"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="334"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zuB-7c-PTh">
@@ -89,7 +104,7 @@
                         <action selector="addFromContacts:" destination="-1" eventType="touchUpInside" id="bZY-9s-vpJ"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-pL-nCJ">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male.png" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-pL-nCJ">
                     <rect key="frame" x="20" y="59" width="68" height="68"/>
                     <animations/>
                     <constraints>
@@ -164,8 +179,16 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySG-lI-iu7">
+                    <rect key="frame" x="20" y="234" width="276" height="30"/>
+                    <animations/>
+                    <state key="normal" title="Gender Overlay"/>
+                    <connections>
+                        <action selector="genderOverlay:" destination="-1" eventType="touchUpInside" id="pKy-fP-e35"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYH-t5-3YD">
-                    <rect key="frame" x="212" y="289" width="176" height="30"/>
+                    <rect key="frame" x="212" y="284" width="176" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -177,34 +200,11 @@
                         <action selector="addPerson:" destination="-1" eventType="touchUpInside" id="THU-di-qQq"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rK7-yY-OwN">
-                    <rect key="frame" x="212" y="327" width="176" height="30"/>
-                    <animations/>
-                    <color key="backgroundColor" white="0.86394166949999995" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="9ca-hX-4w5"/>
-                        <constraint firstAttribute="width" constant="176" id="GW9-dY-knw"/>
-                    </constraints>
-                    <state key="normal" title="Cancel"/>
-                    <connections>
-                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="6AO-E0-nnh"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySG-lI-iu7">
-                    <rect key="frame" x="20" y="234" width="276" height="30"/>
-                    <animations/>
-                    <state key="normal" title="Gender Overlay"/>
-                    <connections>
-                        <action selector="genderOverlay:" destination="-1" eventType="touchUpInside" id="pKy-fP-e35"/>
-                    </connections>
-                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="rK7-yY-OwN" firstAttribute="centerX" secondItem="Kgn-KV-JRl" secondAttribute="centerX" id="0D0-HT-6i0"/>
                 <constraint firstItem="OV1-y3-5ZJ" firstAttribute="top" secondItem="eVl-ju-Z9j" secondAttribute="bottom" constant="20" id="0oj-oW-oYu"/>
-                <constraint firstAttribute="trailing" secondItem="zuB-7c-PTh" secondAttribute="trailing" constant="26" id="23g-eW-jgo"/>
                 <constraint firstItem="e4y-fJ-tGB" firstAttribute="centerX" secondItem="Kgn-KV-JRl" secondAttribute="centerX" id="2bz-C0-0NA"/>
                 <constraint firstItem="ySG-lI-iu7" firstAttribute="width" secondItem="f2T-yA-zoS" secondAttribute="width" id="5c2-bb-I26"/>
                 <constraint firstItem="f2T-yA-zoS" firstAttribute="leading" secondItem="Kgn-KV-JRl" secondAttribute="leading" constant="20" id="BzP-j4-TqF"/>
@@ -213,44 +213,28 @@
                 <constraint firstItem="zuB-7c-PTh" firstAttribute="leading" secondItem="GQx-pL-nCJ" secondAttribute="trailing" constant="8" id="CeE-x3-wZb"/>
                 <constraint firstItem="GQx-pL-nCJ" firstAttribute="leading" secondItem="Kgn-KV-JRl" secondAttribute="leading" constant="20" id="Cxm-yn-zkU"/>
                 <constraint firstItem="eVl-ju-Z9j" firstAttribute="leading" secondItem="GQx-pL-nCJ" secondAttribute="trailing" constant="8" id="F0o-mV-n20"/>
-                <constraint firstItem="eVl-ju-Z9j" firstAttribute="leading" secondItem="GQx-pL-nCJ" secondAttribute="trailing" constant="8" id="GHu-wL-Zt7"/>
                 <constraint firstAttribute="trailing" secondItem="fRT-85-qgb" secondAttribute="trailing" constant="20" id="HNf-B9-myP"/>
                 <constraint firstItem="DBh-Zt-aTx" firstAttribute="width" secondItem="f2T-yA-zoS" secondAttribute="width" id="IOx-tU-pVo"/>
                 <constraint firstItem="zuB-7c-PTh" firstAttribute="top" secondItem="e4y-fJ-tGB" secondAttribute="bottom" constant="21" id="K9t-Zq-w2V"/>
                 <constraint firstItem="f2T-yA-zoS" firstAttribute="top" secondItem="fRT-85-qgb" secondAttribute="bottom" constant="8" id="NZE-cG-jJS"/>
                 <constraint firstItem="e4y-fJ-tGB" firstAttribute="top" secondItem="Kgn-KV-JRl" secondAttribute="top" constant="8" id="OFa-rU-Qa2"/>
                 <constraint firstItem="ySG-lI-iu7" firstAttribute="top" secondItem="f2T-yA-zoS" secondAttribute="top" id="Ose-jf-IFq"/>
-                <constraint firstItem="zuB-7c-PTh" firstAttribute="leading" secondItem="GQx-pL-nCJ" secondAttribute="trailing" constant="8" id="SZj-du-kuF"/>
-                <constraint firstItem="rK7-yY-OwN" firstAttribute="top" secondItem="RYH-t5-3YD" secondAttribute="bottom" constant="8" id="WdM-7c-vYi"/>
                 <constraint firstItem="DBh-Zt-aTx" firstAttribute="top" secondItem="fRT-85-qgb" secondAttribute="bottom" constant="8" id="ath-HW-sH4"/>
-                <constraint firstItem="zuB-7c-PTh" firstAttribute="top" secondItem="e4y-fJ-tGB" secondAttribute="bottom" constant="21" id="bXJ-0Z-93v"/>
                 <constraint firstItem="ySG-lI-iu7" firstAttribute="leading" secondItem="f2T-yA-zoS" secondAttribute="leading" id="dmZ-Cb-Zaa"/>
                 <constraint firstItem="fRT-85-qgb" firstAttribute="top" secondItem="OV1-y3-5ZJ" secondAttribute="bottom" constant="21" id="fLe-cf-jrQ"/>
                 <constraint firstItem="fRT-85-qgb" firstAttribute="leading" secondItem="Kgn-KV-JRl" secondAttribute="leading" constant="20" id="fla-H1-FlT"/>
-                <constraint firstItem="eVl-ju-Z9j" firstAttribute="top" secondItem="zuB-7c-PTh" secondAttribute="bottom" constant="8" id="gNG-HD-K6v"/>
                 <constraint firstItem="DBh-Zt-aTx" firstAttribute="leading" secondItem="f2T-yA-zoS" secondAttribute="trailing" constant="8" id="gYJ-lL-j7z"/>
                 <constraint firstAttribute="trailing" secondItem="OV1-y3-5ZJ" secondAttribute="trailing" constant="20" id="jQz-1L-0FE"/>
                 <constraint firstItem="eVl-ju-Z9j" firstAttribute="top" secondItem="zuB-7c-PTh" secondAttribute="bottom" constant="8" id="joY-Ub-v3E"/>
-                <constraint firstAttribute="trailing" secondItem="eVl-ju-Z9j" secondAttribute="trailing" constant="26" id="rq7-PH-A3c"/>
                 <constraint firstItem="ySG-lI-iu7" firstAttribute="height" secondItem="f2T-yA-zoS" secondAttribute="height" id="un4-00-Q5c"/>
                 <constraint firstAttribute="trailing" secondItem="DBh-Zt-aTx" secondAttribute="trailing" constant="20" id="unZ-5Q-UuB"/>
                 <constraint firstItem="GQx-pL-nCJ" firstAttribute="top" secondItem="Kgn-KV-JRl" secondAttribute="top" constant="59" id="v8K-cR-7yH"/>
-                <constraint firstItem="RYH-t5-3YD" firstAttribute="top" secondItem="f2T-yA-zoS" secondAttribute="bottom" constant="25" id="xS2-0H-NMG"/>
+                <constraint firstItem="RYH-t5-3YD" firstAttribute="top" secondItem="f2T-yA-zoS" secondAttribute="bottom" constant="20" id="xS2-0H-NMG"/>
                 <constraint firstAttribute="trailing" secondItem="eVl-ju-Z9j" secondAttribute="trailing" constant="20" id="xi2-71-vOZ"/>
                 <constraint firstAttribute="trailing" secondItem="zuB-7c-PTh" secondAttribute="trailing" constant="20" id="yNV-Hj-vs0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="23g-eW-jgo"/>
-                    <exclude reference="SZj-du-kuF"/>
-                    <exclude reference="bXJ-0Z-93v"/>
-                    <exclude reference="GHu-wL-Zt7"/>
-                    <exclude reference="gNG-HD-K6v"/>
-                    <exclude reference="rq7-PH-A3c"/>
-                </mask>
-            </variation>
-            <point key="canvasLocation" x="443" y="147.5"/>
+            <point key="canvasLocation" x="423" y="76"/>
         </view>
         <view contentMode="scaleToFill" id="kC3-0g-fkj">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -336,7 +320,10 @@
                     <exclude reference="loj-bc-Vc5"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="443" y="684"/>
+            <point key="canvasLocation" x="423" y="711"/>
         </view>
     </objects>
+    <resources>
+        <image name="male.png" width="64" height="64"/>
+    </resources>
 </document>

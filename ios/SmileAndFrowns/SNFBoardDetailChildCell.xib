@@ -109,9 +109,13 @@
             </tableViewCellContentView>
             <animations/>
             <connections>
+                <outlet property="frownButton" destination="RCh-dq-XBc" id="22h-0J-UUQ"/>
                 <outlet property="frownsCountLabel" destination="ss8-yC-l4c" id="WZf-9d-kMv"/>
                 <outlet property="nameLabel" destination="zWm-LH-Teg" id="xqi-ha-Zd1"/>
+                <outlet property="reportingButton" destination="Q2o-fQ-YZg" id="5PS-Vf-CBI"/>
+                <outlet property="smileButton" destination="3VG-5B-RHJ" id="iBh-nh-qO6"/>
                 <outlet property="smilesCountLabel" destination="m05-MF-XYM" id="nPj-2m-DuR"/>
+                <outlet property="spendButton" destination="grE-lr-Wgr" id="wCh-aM-q7L"/>
                 <outlet property="spendLabel" destination="QDd-CV-W1X" id="Rgo-3o-9DE"/>
             </connections>
             <point key="canvasLocation" x="554" y="389"/>

@@ -92,7 +92,7 @@
 	if(offset.x < halfSize){
 		offset.x = -self.controlsUnderlay.frame.size.width;
 	}else{
-		offset.x = 0.0f;
+		offset.x = 0;
 	}
 	[UIView animateWithDuration:0.2f animations:^{
 		self.overlayView.frame = CGRectMake(offset.x, offset.y, self.overlayView.frame.size.width, self.overlayView.frame.size.height);

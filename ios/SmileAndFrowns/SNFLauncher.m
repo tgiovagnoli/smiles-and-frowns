@@ -10,10 +10,11 @@
 #import "UIAlertAction+Additions.h"
 #import "SNFCreateAccount.h"
 #import "UIViewController+Alerts.h"
+#import "SNFADBannerView.h"
 
 @interface SNFLauncher ()
 @property BOOL firstlayout;
-@property ADBannerView * bannerView;
+@property SNFADBannerView * bannerView;
 @end
 
 @implementation SNFLauncher
@@ -36,13 +37,13 @@
 	
 	if([SNFModel sharedInstance].pendingInviteCode) {
 		[NSTimer scheduledTimerWithTimeInterval:.3 block:^{
-			SNFCreateAccount * create = [[SNFCreateAccount alloc] init];
-			create.nextViewController = [[SNFAcceptInvite alloc] init];
+			SNFCreateAccount * create = [[SNFCreateAccount alloc] initWithSourceView:self.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
+			create.nextViewController = [[SNFAcceptInvite alloc] initWithSourceView:self.acceptInviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
 			[[AppDelegate rootViewController] presentViewController:create animated:TRUE completion:nil];
 		} repeats:FALSE];
 	}
 	
-	self.bannerView = [[ADBannerView alloc] init];
+	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 	self.bannerView.delegate = self;
 }
 
@@ -58,7 +59,7 @@
 }
 
 - (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-	self.showOnStartupLabelBottom.constant = 0;
+	self.showOnStartupLabelBottom.constant = 20;
 	[self.bannerView removeFromSuperview];
 }
 
@@ -69,12 +70,14 @@
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-	if([keyPath isEqualToString:@"loggedInUser"] && [SNFModel sharedInstance].loggedInUser) {
-		[self.loginButton setTitle:@"Logout" forState:UIControlStateNormal];
-		[self.createAccountButton setVisible:FALSE];
-	} else {
-		[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
-		[self.createAccountButton setVisible:TRUE];
+	if([keyPath isEqualToString:@"loggedInUser"]) {
+		if([SNFModel sharedInstance].loggedInUser) {
+			[self.loginButton setTitle:@"Logout" forState:UIControlStateNormal];
+			[self.createAccountButton setVisible:FALSE];
+		} else {
+			[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
+			[self.createAccountButton setVisible:TRUE];
+		}
 	}
 }
 
@@ -85,8 +88,8 @@
 - (IBAction) acceptInvite:(id) sender {
 	if(![SNFModel sharedInstance].loggedInUser) {
 		
-		SNFLogin * login = [[SNFLogin alloc] init];
-		login.nextViewController = [[SNFAcceptInvite alloc] init];
+		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,360)];
+		login.nextViewController = [[SNFAcceptInvite alloc] initWithSourceView:self.acceptInviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
 		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 		
 	} else {
@@ -100,7 +103,7 @@
 
 - (IBAction) createBoard:(id)sender {
 	if(![SNFModel sharedInstance].loggedInUser) {
-		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,400)];
+		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,360)];
 		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 	} else {
 		[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
@@ -124,13 +127,13 @@
 			}
 		}];
 	} else {
-		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,400)];
+		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,360)];
 		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 	}
 }
 
 - (IBAction) createAccount:(id) sender {
-	SNFCreateAccount * account = [[SNFCreateAccount alloc] initWithSourceView:self.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+	SNFCreateAccount * account = [[SNFCreateAccount alloc] initWithSourceView:self.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
 	[[AppDelegate rootViewController] presentViewController:account animated:TRUE completion:nil];
 }
 

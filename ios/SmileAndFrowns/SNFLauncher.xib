@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFLauncher">
             <connections>
+                <outlet property="acceptInviteButton" destination="3kq-mh-ITC" id="2tC-0H-Hxz"/>
                 <outlet property="createAccountButton" destination="A4E-m0-Q5T" id="Uw9-8i-2Tf"/>
                 <outlet property="loginButton" destination="uGA-iT-z3T" id="p3F-wx-vd5"/>
                 <outlet property="showOnStartup" destination="eXF-OV-gDJ" id="E3l-Wd-wtW"/>
@@ -19,17 +20,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Smiles &amp; Frowns" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEn-pn-T6I">
-                    <rect key="frame" x="196" y="8" width="209" height="52"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="52" id="6Cl-ID-hOJ"/>
-                        <constraint firstAttribute="width" constant="209" id="vWm-vX-7cA"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I want to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jla-hQ-MhW">
                     <rect key="frame" x="257" y="340" width="87" height="21"/>
                     <animations/>
@@ -123,6 +113,17 @@
                         <action selector="createAccount:" destination="-1" eventType="touchUpInside" id="uPG-Uq-tGJ"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smiles &amp; Frowns" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEn-pn-T6I">
+                    <rect key="frame" x="196" y="10" width="209" height="23"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="23" id="6Cl-ID-hOJ"/>
+                        <constraint firstAttribute="width" constant="209" id="vWm-vX-7cA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,7 +142,7 @@
                 <constraint firstAttribute="bottom" secondItem="l98-O4-0q6" secondAttribute="bottom" constant="13" id="QL0-P7-IlB"/>
                 <constraint firstItem="eR4-QF-gvg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UHB-mf-bwu"/>
                 <constraint firstAttribute="trailing" secondItem="eR4-QF-gvg" secondAttribute="trailing" id="YTT-oD-1d7"/>
-                <constraint firstItem="xEn-pn-T6I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="ZW3-Pk-3Rq"/>
+                <constraint firstItem="xEn-pn-T6I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="ZW3-Pk-3Rq"/>
                 <constraint firstAttribute="trailing" secondItem="kwu-gI-Bcg" secondAttribute="trailing" id="aCc-7m-Ykb"/>
                 <constraint firstItem="eXF-OV-gDJ" firstAttribute="bottom" secondItem="l98-O4-0q6" secondAttribute="bottom" constant="5" id="bka-CX-7uz"/>
                 <constraint firstItem="3kq-mh-ITC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cU6-NQ-DmD"/>

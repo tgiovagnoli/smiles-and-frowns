@@ -1,11 +1,14 @@
+
 #import "SNFAddBehavior.h"
 #import "SNFModel.h"
+#import "UIView+LayoutHelpers.h"
 
 @implementation SNFAddBehavior
 
 - (void)setBoard:(SNFBoard *)board{
 	_board = board;
 	[self updateBehaviors];
+	[self startBannerAd];
 }
 
 - (void)updateBehaviors{
@@ -35,9 +38,11 @@
 		cell = [topLevelObjects firstObject];
 	}
 	if([group.title isEqualToString:SNFPredefinedBehaviorGroupUserName]){
-		cell.behaviorTitleField.userInteractionEnabled = YES;
-	}else{
 		cell.behaviorTitleField.userInteractionEnabled = NO;
+	}else{
+		cell.behaviorTitleField.borderStyle = UITextBorderStyleNone;
+		cell.behaviorTitleField.userInteractionEnabled = NO;
+		cell.editButton.hidden = TRUE;
 	}
 	cell.behavior = behavior;
 	if(_selectedBehavior == cell.behavior){
@@ -49,8 +54,9 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 	SNFPredefinedBehaviorGroup *group = [_predefinedBehaviorGroups objectAtIndex:section];
-	UILabel *label = [[UILabel alloc] init];
-	label.backgroundColor = [UIColor grayColor];
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.behaviorsTable.width,40)];
+	label.backgroundColor = [UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1];
+	label.x = 20;
 	label.text = group.title;
 	return label;
 }

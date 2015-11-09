@@ -3,13 +3,23 @@
 #import "SNFViewController.h"
 #import "AppDelegate.h"
 #import "UIViewController+ModalCreation.h"
+#import "SNFBoardEdit.h"
 
 @implementation SNFBoardDetail
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserRoleAddedChild:) name:SNFAddUserRoleAddedChild object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onBoardEditFinished:) name:SNFBoardEditFinished object:nil];
 	[self updateUI];
+}
+
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) onBoardEditFinished:(NSNotification *) note {
+	self.titleLabel.text = self.board.title;
 }
 
 - (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
@@ -21,13 +31,9 @@
 	[self reloadUserRoles];
 }
 
-- (void) dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void) onUserRoleAddedChild:(NSNotification *) note {
 	[self reloadUserRoles];
-	[self dismissViewControllerAnimated:TRUE completion:nil];
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -58,9 +64,9 @@
 }
 
 - (IBAction)onAddUserRole:(id)sender{
-	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,420)];
+	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,400)];
 	addUserRole.board = self.board;
-	[self presentViewController:addUserRole animated:YES completion:nil];
+	[[AppDelegate rootViewController] presentViewController:addUserRole animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -68,15 +74,22 @@
 }
 
 - (void)childCellWantsToAddSmile:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	[self addSNFFortype:SNFAddSmileOrFrownTypeSmile andUserRole:userRole];
+	[self addSNFFortype:SNFAddSmileOrFrownTypeSmile andUserRole:userRole cell:cell];
 }
 
 - (void)childCellWantsToAddFrown:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	[self addSNFFortype:SNFAddSmileOrFrownTypeFrown andUserRole:userRole];
+	[self addSNFFortype:SNFAddSmileOrFrownTypeFrown andUserRole:userRole cell:cell];
 }
 
-- (void)addSNFFortype:(SNFAddSmileOrFrownType)type andUserRole:(SNFUserRole *)userRole{
-	SNFAddSmileOrFrown *addModal = [[SNFAddSmileOrFrown alloc] init];
+- (void)addSNFFortype:(SNFAddSmileOrFrownType)type andUserRole:(SNFUserRole *)userRole cell:(SNFBoardDetailChildCell *) cell {
+	SNFAddSmileOrFrown *addModal = nil;
+	
+	if(type == SNFAddSmileOrFrownTypeSmile) {
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.smileButton.frame contentSize:CGSizeMake(500,600)];
+	} else {
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.frownButton.frame contentSize:CGSizeMake(500,600)];
+	}
+	
 	addModal.type = type;
 	addModal.board = self.board;
 	addModal.user = userRole.user;
@@ -89,18 +102,18 @@
 }
 
 - (void)childCellWantsToSpend:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFSpendRewards *rewards = [[SNFSpendRewards alloc] init];
+	SNFSpendRewards * rewards = [[SNFSpendRewards alloc] initWithSourceView:cell sourceRect:cell.spendButton.frame contentSize:CGSizeMake(500,490)];
 	rewards.board = self.board;
 	rewards.user = userRole.user;
 	rewards.delegate = self;
-	[self presentViewController:rewards animated:YES completion:^{}];
+	[[AppDelegate rootViewController] presentViewController:rewards animated:YES completion:^{}];
 }
 
 - (void)childCellWantsToOpenReport:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFReporting *reporting = [[SNFReporting alloc] init];
+	SNFReporting *reporting = [[SNFReporting alloc] initWithSourceView:cell sourceRect:cell.reportingButton.frame contentSize:CGSizeMake(600,700)];
 	reporting.board = userRole.board;
 	reporting.user = userRole.user;
-	[self presentViewController:reporting animated:YES completion:^{}];
+	[[AppDelegate rootViewController] presentViewController:reporting animated:YES completion:^{}];
 }
 
 - (void)spendRewardsIsDone:(SNFSpendRewards *)spendRewards{

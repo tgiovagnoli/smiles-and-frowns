@@ -13,7 +13,7 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	[self starBannerAd];
+	[self startBannerAd];
 }
 
 - (IBAction) resetPassword:(id) sender {

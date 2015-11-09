@@ -16,7 +16,7 @@
 
 @property SNFTabMenu * tabMenu;
 @property SNFTab firstTab;
-@property ADBannerView * bannerView;
+@property SNFADBannerView * bannerView;
 
 + (SNFViewController *) instance;
 

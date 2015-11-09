@@ -6,6 +6,7 @@
 
 @interface SNFFormViewController ()
 @property BOOL firstlayout;
+@property BOOL keyboardIsVisible;
 @property CGFloat superScrollViewHeight;
 @end
 
@@ -22,12 +23,12 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void) starBannerAd {
+- (void) startBannerAd {
 	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		return;
 	}
 	
-	self.bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 	self.bannerView.delegate = self;
 }
 
@@ -38,52 +39,74 @@
 		self.firstlayout = false;
 		self.initialFormHeight = self.formView.height;
 		self.formView.width = self.scrollView.width;
+		
+		if(self.formView.height < self.scrollView.height) {
+			self.formView.height = self.scrollView.height;
+		}
+		
 		self.scrollView.contentSize = self.formView.size;
 		[self.scrollView addSubview:self.formView];
+		
+	} else {
+		
+		if(self.scrollView.height > self.initialFormHeight) {
+			self.formView.height = self.scrollView.height;
+			self.scrollView.contentSize = self.formView.size;
+		}
 	}
 }
 
-- (CGFloat) scrollViewBottomConstraint:(NSNotification *) notification {
+- (void) keyboardWillShow:(NSNotification *) notification {
+	self.keyboardIsVisible = TRUE;
+	
 	NSDictionary * userInfo = notification.userInfo;
 	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
 	CGFloat bottom = keyboardFrameEnd.size.height;
-	if([SNFViewController instance]) {
-		if([SNFViewController instance].isAdDisplayed) {
-			bottom -= [SNFViewController instance].bannerView.height;
-		}
-	}
-	return bottom;
-}
-
-- (void) keyboardWillShow:(NSNotification *) notification {
 	
 	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		return;
 	}
 	
-	CGFloat bottom = [self scrollViewBottomConstraint:notification];
+	CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
 	
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
 		
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
 		self.superScrollViewHeight = containerScrollView.height;
-		containerScrollView.height -= bottom;
-		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
-			self.formView.height = self.initialFormHeight;
-		} repeats:FALSE];
-	
+		
+		CGFloat csb = containerScrollView.bottom;
+		CGFloat heightDiff = screenHeight - csb;
+		CGFloat newBottom = heightDiff - bottom;
+		if(newBottom < 0) {
+			newBottom *= -1;
+		}
+		
+		containerScrollView.height -= newBottom;
+		
 	} else {
 		
-		self.scrollViewBottom.constant = bottom;
-		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
+		CGFloat csb = self.scrollView.bottom;
+		CGFloat heightDiff = screenHeight - csb;
+		CGFloat newBottom = bottom - heightDiff;
+		
+		if(self.bannerView.superview) {
+			newBottom += self.bannerView.height;
+		}
+		
+		self.scrollViewBottom.constant = newBottom;
+		
+		[NSTimer scheduledTimerWithTimeInterval:.02 block:^{
 			self.formView.height = self.initialFormHeight;
+			self.scrollView.contentSize = CGSizeMake(self.formView.width, self.initialFormHeight);
 		} repeats:FALSE];
 		
 	}
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
+	self.keyboardIsVisible = FALSE;
+	
 	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		return;
 	}
@@ -110,6 +133,9 @@
 
 - (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
 	[self.bannerView removeFromSuperview];
+	if(self.keyboardIsVisible) {
+		return;
+	}
 	if(self.scrollViewBottom.constant > banner.height) {
 		self.scrollViewBottom.constant -= banner.height;
 	}

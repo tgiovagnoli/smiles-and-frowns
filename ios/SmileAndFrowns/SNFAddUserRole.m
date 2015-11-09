@@ -17,6 +17,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	[self startBannerAd];
 	self.genders = @[@"--------",@"Male",@"Female"];
 	self.pickerview.delegate = self;
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
@@ -56,6 +57,14 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		return;
 	}
 	self.gender.text = [self.genders objectAtIndex:row];
+	
+	if(row == 1) {
+		self.image.image = [UIImage imageNamed:@"male"];
+	}
+	
+	if(row == 2) {
+		self.image.image = [UIImage imageNamed:@"female"];
+	}
 }
 
 - (void) addChildRole {

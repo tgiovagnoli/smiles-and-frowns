@@ -2,16 +2,20 @@
 #import "SNFBoardEdit.h"
 #import "SNFModel.h"
 #import "UIAlertAction+Additions.h"
+#import "UIViewController+ModalCreation.h"
+
+NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 
 @implementation SNFBoardEdit
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	self.rewardInfoLabel.text = @"";
+	self.rewardInfoLabel.text = @" ";
 	[self.rewardsCollectionView registerClass:[SNFRewardCell class] forCellWithReuseIdentifier:@"SNFRewardCell"];
 	[self.rewardsCollectionView registerNib:[UINib nibWithNibName:@"SNFRewardCell" bundle:nil] forCellWithReuseIdentifier:@"SNFRewardCell"];
 	[self.rewardsCollectionView registerClass:[SNFAddCell class] forCellWithReuseIdentifier:@"SNFAddCell"];
 	[self.rewardsCollectionView registerNib:[UINib nibWithNibName:@"SNFAddCell" bundle:nil] forCellWithReuseIdentifier:@"SNFAddCell"];
+	[self startBannerAd];
 }
 
 - (void)setBoard:(SNFBoard *)board{
@@ -31,22 +35,33 @@
 	[self reloadRewards];
 }
 
-- (void)reloadBehaviors{
+- (void) reloadBehaviors {
 	_sortedBehaviors = [self.board sortedActiveBehaviors];
 	[self.behaviorsTable reloadData];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-	if(textField == self.boardTitleField){
+	if(textField == self.boardTitleField) {
+		
+		if([textField.text isEmpty]) {
+			return NO;
+		}
+		
 		[textField resignFirstResponder];
-		return NO;
+		
+		_board.title = self.boardTitleField.text;
+		[[SNFModel sharedInstance].managedObjectContext save:nil];
+		
+		return YES;
+		
 	}
+	
 	return YES;
 }
 
 // behaviors
 - (IBAction)onAddBehavior:(UIButton *)sender{
-	SNFAddBehavior *addBehavior = [[SNFAddBehavior alloc] init];
+	SNFAddBehavior * addBehavior = [[SNFAddBehavior alloc] initWithSourceView:self.addBehaviorButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
 	[self presentViewController:addBehavior animated:YES completion:^{}];
 	addBehavior.board = self.board;
 	addBehavior.delegate = self;
@@ -100,20 +115,38 @@
 		[self presentViewController:alert animated:YES completion:^{}];
 		return;
 	}
+	
 	_board.title = self.boardTitleField.text;
-	[[SNFModel sharedInstance].managedObjectContext undo];
-	[self dismissViewControllerAnimated:YES completion:^{}];
+	//[[SNFModel sharedInstance].managedObjectContext undo];
+	
 	if(self.delegate){
 		[self.delegate boardEditor:self finishedWithBoard:self.board];
 	}
+	
+	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (IBAction)onCancel:(UIButton *)sender{
-	[[SNFModel sharedInstance].managedObjectContext undo];
-	[self dismissViewControllerAnimated:YES completion:^{}];
-	if(self.delegate){
+	
+	if([self.boardTitleField.text isEmpty]) {
+		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"You must set a title for this board" preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction OKAction]];
+		[self presentViewController:alert animated:YES completion:^{}];
+		return;
+	}
+	
+	_board.title = self.boardTitleField.text;
+	
+	[[SNFModel sharedInstance].managedObjectContext save:nil];
+	//[[SNFModel sharedInstance].managedObjectContext undo];
+	
+	if(self.delegate) {
 		[self.delegate boardEditor:self finishedWithBoard:self.board];
 	}
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:SNFBoardEditFinished object:nil];
+	
+	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -134,8 +167,7 @@
 }
 
 - (void)addCellWantsToAdd:(SNFAddCell *)addCell{
-	NSLog(@"add new  reward");
-	SNFAddReward *addReward = [[SNFAddReward alloc] init];
+	SNFAddReward *addReward = [[SNFAddReward alloc] initWithSourceView:addCell sourceRect:CGRectZero contentSize:CGSizeMake(500,325)];
 	addReward.board = self.board;
 	addReward.delegate = self;
 	[self presentViewController:addReward animated:YES completion:^{}];

@@ -7,6 +7,16 @@
 		<string>NewBoard</string>
 		<key>ProductId</key>
 		<string>com.apptitude.SmilesAndFrowns.NewBoard</string>
+		<key>Type</key>
+		<string>Consumable</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>RemoveAds</string>
+		<key>ProductId</key>
+		<string>com.apptitude.SmilesAndFrowns.RemoveAds</string>
+		<key>Type</key>
+		<string>Non-Consumable</string>
 	</dict>
 </array>
 </plist>
