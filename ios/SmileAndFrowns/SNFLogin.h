@@ -6,6 +6,8 @@
 #import "UIView+LayoutHelpers.h"
 #import "UIViewController+ModalCreation.h"
 
+extern NSString * const SNFLoginLoggedIn;
+
 @class SNFLogin;
 
 @interface SNFLogin : SNFFormViewController <UITextFieldDelegate>
