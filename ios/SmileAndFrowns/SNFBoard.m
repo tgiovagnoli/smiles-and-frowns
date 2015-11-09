@@ -32,9 +32,6 @@
 	if(!self.title){
 		self.title = @"Untitled";
 	}
-	if(self.rewards.count < 1){
-		[self addInitialRewards];
-	}
 	[super awakeFromInsert];
 }
 
@@ -134,6 +131,7 @@
 									   };
 		[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 	}
+	[board addInitialRewards];
 	return board;
 }
 

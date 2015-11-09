@@ -8,5 +8,6 @@
 @property (weak) IBOutlet UITextField * behaviorTitleField;
 @property (weak) IBOutlet UIButton * editButton;
 @property (nonatomic) SNFPredefinedBehavior * behavior;
+@property (nonatomic) BOOL editable;
 
 @end
