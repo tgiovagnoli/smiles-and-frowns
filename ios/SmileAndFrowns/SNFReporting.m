@@ -5,6 +5,8 @@
 - (void)viewDidLoad{
 	[super viewDidLoad];
 	
+	_ascending = NO;
+	
 	[self.reportTable registerClass:[SNFReportingSectionHeader class] forHeaderFooterViewReuseIdentifier:@"SNFReportingSectionHeader"];
 	[self.reportTable registerNib:[UINib nibWithNibName:@"SNFReportingSectionHeader" bundle:nil] forCellReuseIdentifier:@"SNFReportingSectionHeader"];
 	
@@ -23,10 +25,10 @@
 		SNFReportGeneration *reportGeneration = [[SNFReportGeneration alloc] init];
 		switch ((SNFReportingFilter)self.filterType.selectedSegmentIndex) {
 			case SNFReportingFilterCurrentBoard:
-				_reportData = [reportGeneration smilesFrownsReportForUser:self.user board:self.board ascending:YES];
+				_reportData = [reportGeneration smilesFrownsReportForUser:self.user board:self.board ascending:_ascending];
 				break;
 			case SNFReportingFilterAllBoards:
-				_reportData = [reportGeneration smilesFrownsReportForUser:self.user board:nil ascending:YES];
+				_reportData = [reportGeneration smilesFrownsReportForUser:self.user board:nil ascending:_ascending];
 				break;
 		}
 	}
@@ -77,6 +79,11 @@
 	SNFReportingSectionHeader *sectionHeader = [topLevelObjects objectAtIndex:0];
 	sectionHeader.dateGroup = [_reportData objectAtIndex:section];
 	return sectionHeader;
+}
+
+- (IBAction)onChangeAscending:(UIButton *)sender{
+	_ascending = !_ascending;
+	[self reloadReport];
 }
 
 @end

@@ -21,6 +21,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	self.genders = @[@"--------",@"Male",@"Female"];
 	self.pickerview.delegate = self;
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
+	[self segmentChange:self.segment];
 }
 
 - (IBAction) segmentChange:(id)sender {
@@ -29,11 +30,13 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		self.genderOverlay.hidden = TRUE;
 		self.gender.hidden = TRUE;
 		self.email.placeholder = @"Email";
+		
 	} else {
 		self.age.hidden = FALSE;
 		self.genderOverlay.hidden = FALSE;
 		self.gender.hidden = FALSE;
 		self.email.placeholder = @"Email (Optional)";
+		self.email.hidden = YES; // do not use email to create users that are not part of the invite system.
 	}
 }
 

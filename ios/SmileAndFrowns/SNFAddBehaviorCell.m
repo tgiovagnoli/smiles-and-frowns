@@ -34,6 +34,7 @@
 	self.editButton.layer.cornerRadius = 8;
 	self.editButton.layer.backgroundColor = [[UIColor colorWithRed:0.801 green:0.801 blue:0.801 alpha:1] CGColor];
 	[self.editButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	self.behaviorTitleField.userInteractionEnabled = NO;
 }
 
 - (void) setBehavior:(SNFPredefinedBehavior *) behavior {
@@ -66,6 +67,23 @@
 	}
 	self.behavior.title = self.behaviorTitleField.text;
 	//[[SNFModel sharedInstance].managedObjectContext save:nil];
+}
+
+- (void)setEditable:(BOOL)editable{
+	_editable = editable;
+	for(UIGestureRecognizer *rec in self.gestureRecognizers){
+		[self removeGestureRecognizer:rec];
+	}
+	if(editable){
+		UILongPressGestureRecognizer *gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPress:)];
+		gr.minimumPressDuration = 0.5;
+		[self addGestureRecognizer:gr];
+	}
+}
+
+- (void)onLongPress:(UIGestureRecognizer *)gr{
+	NSLog(@"on long press");
+	[self.textLabel becomeFirstResponder];
 }
 
 @end

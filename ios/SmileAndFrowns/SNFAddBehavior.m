@@ -39,9 +39,11 @@
 	}
 	if([group.title isEqualToString:SNFPredefinedBehaviorGroupUserName]){
 		cell.behaviorTitleField.userInteractionEnabled = NO;
+		cell.editable = NO;
 	}else{
 		cell.behaviorTitleField.borderStyle = UITextBorderStyleNone;
-		cell.behaviorTitleField.userInteractionEnabled = NO;
+		cell.editable = YES;
+		
 		cell.editButton.hidden = TRUE;
 	}
 	cell.behavior = behavior;

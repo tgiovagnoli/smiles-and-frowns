@@ -279,8 +279,9 @@
 		
 		NSString * product = [IAPHelper productIdByName:@"NewBoard"];
 		NSLog(@"NewBoard product id: %@", product);
-		
+
 		[self.helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			

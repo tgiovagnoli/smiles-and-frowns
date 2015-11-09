@@ -10,6 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (SNFBoard *)boardByUUID:(NSString *) uuid;
 + (SNFBoard *)boardFromPredefinedBoard:(SNFPredefinedBoard *)pdb andContext:(NSManagedObjectContext *)context;
+- (void)addInitialRewards;
 - (void)reset;
 - (NSArray *)sortedActiveBehaviors;
 - (NSArray *)sortedActiveRewards;
