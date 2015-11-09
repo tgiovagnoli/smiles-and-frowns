@@ -70,10 +70,9 @@ static AppDelegate * _instance;
 			
 			//set pending invite code.
 			NSString * inviteCode = [parts objectAtIndex:1];
+			[SNFModel sharedInstance].pendingInviteCode = inviteCode;
 			
 			if(![SNFModel sharedInstance].loggedInUser) {
-				
-				[SNFModel sharedInstance].pendingInviteCode = inviteCode;
 				
 				if([[AppDelegate rootViewController] isKindOfClass:[SNFLauncher class]]) {
 					
@@ -86,13 +85,24 @@ static AppDelegate * _instance;
 				
 			} else {
 				
+				//not currently on main view controller. go to invites and show modal.
 				if(![SNFViewController instance]) {
-					
-					[SNFModel sharedInstance].pendingInviteCode = inviteCode;
 					
 					SNFViewController * root = [[SNFViewController alloc] init];
 					root.firstTab = SNFTabInvites;
 					self.window.rootViewController = root;
+					
+					[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
+						SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] initWithSourceView:root.tabMenu.invitesButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
+						acceptInvite.inviteCode = inviteCode;
+						[[AppDelegate rootViewController] presentViewController:acceptInvite animated:TRUE completion:nil];
+					} repeats:FALSE];
+					
+				} else {
+					
+					//already at main view controller, go to invites and show modal.
+					SNFViewController * root = [SNFViewController instance];
+					[root showInvitesAnimated:TRUE];
 					
 					[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
 						SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] initWithSourceView:root.tabMenu.invitesButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
