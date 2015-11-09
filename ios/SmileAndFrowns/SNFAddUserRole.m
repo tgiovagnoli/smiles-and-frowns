@@ -193,18 +193,28 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	}
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-	
-	[service inviteWithData:data andCompletion:^(NSError *error) {
-		
-		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-		
-		if(error) {
+	if([SNFSyncService instance].syncing){
+		// TODO: add a listener for when the service is done syncing if it is in the process.
+	}
+	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
+		if(!error){
+			// first make sure boards are synced
+			[service inviteWithData:data andCompletion:^(NSError *error) {
+				[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+				if(error) {
+					[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+				} else {
+					[self displayOKAlertWithTitle:@"Success" message:[NSString stringWithFormat:@"Invited %@ to board %@",self.email.text,self.board.title] completion:nil];
+					[self dismissViewControllerAnimated:YES completion:^{}];
+				}
+			}];
+		}else{
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
-		} else {
-			[self displayOKAlertWithTitle:@"Success" message:[NSString stringWithFormat:@"Invited %@ to board %@",self.email.text,self.board.title] completion:nil];
 		}
 	}];
 }
+
 
 - (IBAction) genderOverlay:(id) sender {
 	self.pickerviewContainer.frame = self.view.bounds;
