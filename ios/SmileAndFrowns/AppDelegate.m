@@ -9,6 +9,7 @@
 #import "SNFAcceptInvite.h"
 #import "SNFLogin.h"
 #import "SNFCreateAccount.h"
+#import "NSTimer+Blocks.h"
 
 static AppDelegate * _instance;
 
@@ -87,9 +88,17 @@ static AppDelegate * _instance;
 				
 				if(![SNFViewController instance]) {
 					
+					[SNFModel sharedInstance].pendingInviteCode = inviteCode;
+					
 					SNFViewController * root = [[SNFViewController alloc] init];
 					root.firstTab = SNFTabInvites;
 					self.window.rootViewController = root;
+					
+					[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
+						SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] initWithSourceView:root.tabMenu.invitesButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
+						acceptInvite.inviteCode = inviteCode;
+						[[AppDelegate rootViewController] presentViewController:acceptInvite animated:TRUE completion:nil];
+					} repeats:FALSE];
 					
 				}
 			}

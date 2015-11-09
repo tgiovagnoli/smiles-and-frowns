@@ -17,4 +17,6 @@ typedef NS_ENUM(NSInteger, SNFTab) {
 - (IBAction)onInvites:(UIButton *)sender;
 - (IBAction)onMore:(UIButton *)sender;
 
+@property (weak) IBOutlet UIButton * invitesButton;
+
 @end
