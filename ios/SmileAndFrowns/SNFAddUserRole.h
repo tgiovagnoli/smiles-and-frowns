@@ -5,6 +5,7 @@
 #import "SNFFormViewController.h"
 #import "SNFBoard.h"
 #import "SNFTaggedAlertAction.h"
+#import "SNFSyncService.h"
 
 extern NSString * const SNFAddUserRoleAddedChild;
 

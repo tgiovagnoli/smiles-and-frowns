@@ -282,6 +282,11 @@
 	
 	self.helper = [[IAPHelper alloc] init];
 	
+	#ifdef TARGET_IPHONE_SIMULATOR
+	[self addNewBoard:pdb withTransactionID:[[NSUUID UUID] UUIDString]];
+	return;
+	#endif
+	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
 	[self.helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
