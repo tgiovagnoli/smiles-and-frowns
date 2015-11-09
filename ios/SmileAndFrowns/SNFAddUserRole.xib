@@ -250,7 +250,7 @@
                     <exclude reference="rq7-PH-A3c"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="423" y="92.5"/>
+            <point key="canvasLocation" x="443" y="147.5"/>
         </view>
         <view contentMode="scaleToFill" id="kC3-0g-fkj">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -336,7 +336,7 @@
                     <exclude reference="loj-bc-Vc5"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="423" y="711"/>
+            <point key="canvasLocation" x="443" y="684"/>
         </view>
     </objects>
 </document>
