@@ -179,7 +179,7 @@
                 <constraint firstItem="Hs5-M3-Y9s" firstAttribute="top" secondItem="5iE-x8-Lfy" secondAttribute="top" constant="10" id="r9l-jx-P4o"/>
                 <constraint firstItem="Hs5-M3-Y9s" firstAttribute="leading" secondItem="5iE-x8-Lfy" secondAttribute="leading" constant="8" id="sYC-Yg-CPt"/>
             </constraints>
-            <point key="canvasLocation" x="1083" y="278"/>
+            <point key="canvasLocation" x="1082" y="260"/>
         </view>
     </objects>
 </document>

@@ -4,6 +4,8 @@
 #import "UIAlertAction+Additions.h"
 #import "UIViewController+ModalCreation.h"
 
+NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
+
 @implementation SNFBoardEdit
 
 - (void) viewDidLoad {
@@ -141,6 +143,8 @@
 	if(self.delegate) {
 		[self.delegate boardEditor:self finishedWithBoard:self.board];
 	}
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:SNFBoardEditFinished object:nil];
 	
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }

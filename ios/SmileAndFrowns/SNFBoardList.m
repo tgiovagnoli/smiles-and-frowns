@@ -5,6 +5,10 @@
 #import "SNFViewController.h"
 #import "AppDelegate.h"
 
+@interface SNFBoardList ()
+@property IAPHelper * helper;
+@end
+
 @implementation SNFBoardList
 
 - (void)viewDidLoad{
@@ -257,12 +261,14 @@
 
 
 - (void)purchaseNewBoard:(SNFPredefinedBoard *)pdb{
+	
 	NSArray * productIds = [IAPHelper productIdsByNames:@[@"NewBoard"]];
-	IAPHelper * helper = [[IAPHelper alloc] init];
+	
+	self.helper = [[IAPHelper alloc] init];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
+	[self.helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
 		
 		if(error) {
 			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
@@ -274,7 +280,7 @@
 		NSString * product = [IAPHelper productIdByName:@"NewBoard"];
 		NSLog(@"NewBoard product id: %@", product);
 		
-		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+		[self.helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
@@ -297,9 +303,11 @@
 		newBoard.transaction_id = transactionId;
 	}
 	[self reloadBoards];
-	SNFBoardDetail *boardDetail = [[SNFBoardDetail alloc] init];
+	
+	SNFBoardDetail * boardDetail = [[SNFBoardDetail alloc] init];
 	[[SNFViewController instance].viewControllerStack pushViewController:boardDetail animated:YES];
 	boardDetail.board = newBoard;
+	
 	[self boardListCell:nil wantsToEditBoard:newBoard];
 }
 

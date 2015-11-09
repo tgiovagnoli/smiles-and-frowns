@@ -3,13 +3,23 @@
 #import "SNFViewController.h"
 #import "AppDelegate.h"
 #import "UIViewController+ModalCreation.h"
+#import "SNFBoardEdit.h"
 
 @implementation SNFBoardDetail
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserRoleAddedChild:) name:SNFAddUserRoleAddedChild object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onBoardEditFinished:) name:SNFBoardEditFinished object:nil];
 	[self updateUI];
+}
+
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) onBoardEditFinished:(NSNotification *) note {
+	self.titleLabel.text = self.board.title;
 }
 
 - (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
@@ -19,10 +29,6 @@
 - (void)updateUI{
 	self.titleLabel.text = self.board.title;
 	[self reloadUserRoles];
-}
-
-- (void) dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void) onUserRoleAddedChild:(NSNotification *) note {

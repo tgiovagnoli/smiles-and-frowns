@@ -10,6 +10,8 @@
 #import "SNFAddReward.h"
 #import "SNFFormViewController.h"
 
+extern NSString * const SNFBoardEditFinished;
+
 @class SNFBoardEdit;
 
 @protocol SNFBoardEditDelegate <NSObject>
