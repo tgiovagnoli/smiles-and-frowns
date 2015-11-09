@@ -18,7 +18,7 @@
 #import "UIViewController+Alerts.h"
 #import "SNFLauncher.h"
 
-extern NSString * const SNFLoginLoggedIn = @"SNFLoginLoggedIn";
+NSString * const SNFLoginLoggedIn = @"SNFLoginLoggedIn";
 
 @interface SNFLogin ()
 @property SNFUserService * service;
