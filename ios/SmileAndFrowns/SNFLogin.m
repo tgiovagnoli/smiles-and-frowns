@@ -18,6 +18,8 @@
 #import "UIViewController+Alerts.h"
 #import "SNFLauncher.h"
 
+NSString * const SNFLoginLoggedIn = @"SNFLoginLoggedIn";
+
 @interface SNFLogin ()
 @property SNFUserService * service;
 @end
@@ -78,6 +80,9 @@
 			
 			BOOL hasUserChanged = (![user.username isEqualToString:[[SNFModel sharedInstance] lastLoggedInUsername]]);
 			[SNFModel sharedInstance].loggedInUser = user;
+			
+			[[NSNotificationCenter defaultCenter] postNotificationName:SNFLoginLoggedIn object:nil];
+			
 			[self syncAfterLogin:hasUserChanged];
 			
 		}];
@@ -103,6 +108,9 @@
 			
 			BOOL hasUserChanged = (![user.username isEqualToString:[[SNFModel sharedInstance] lastLoggedInUsername]]);
 			[SNFModel sharedInstance].loggedInUser = user;
+			
+			[[NSNotificationCenter defaultCenter] postNotificationName:SNFLoginLoggedIn object:nil];
+			
 			[self syncAfterLogin:hasUserChanged];
 			
 		}];
@@ -151,8 +159,10 @@
 			
 			BOOL hasUserChanged = (![user.username isEqualToString:[[SNFModel sharedInstance] lastLoggedInUsername]]);
 			[SNFModel sharedInstance].loggedInUser = user;
-			[self syncAfterLogin:hasUserChanged];
 			
+			[[NSNotificationCenter defaultCenter] postNotificationName:SNFLoginLoggedIn object:nil];
+			
+			[self syncAfterLogin:hasUserChanged];
 		}
 	}];
 }

@@ -75,7 +75,7 @@
 		<true/>
 	</dict>
 	<key>SNFConfig</key>
-	<string>SNFDebugImac</string>
+	<string>SNFDebug</string>
 	<key>SNFDebug</key>
 	<dict>
 		<key>TwitterKey</key>
@@ -97,6 +97,17 @@
 		<string>api</string>
 		<key>serverURL</key>
 		<string>http://imac.local:8000</string>
+	</dict>
+	<key>SNFServices</key>
+	<dict>
+		<key>TwitterKey</key>
+		<string>7ghdn08ov5iF7DymXI1WVxYWn</string>
+		<key>TwitterSecret</key>
+		<string>LuFNvUIq6c05jotBq8YWserlHcjWmlYcbfDnOhfxRp9XiVeov4</string>
+		<key>apiPath</key>
+		<string>api</string>
+		<key>serverURL</key>
+		<string>http://services.smilesandfrowns.com</string>
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

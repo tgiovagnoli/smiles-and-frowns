@@ -115,6 +115,10 @@
 		
 		if(completed) {
 			[MBProgressHUD hideHUDForView:weakself.view animated:TRUE];
+			
+			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Success" message:@"Your purchases were restored" preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction OKAction]];
+			[self presentViewController:alert animated:TRUE completion:nil];
 		}
 		
 	}];
