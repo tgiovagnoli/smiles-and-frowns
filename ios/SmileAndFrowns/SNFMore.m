@@ -8,6 +8,7 @@
 #import "SNFAcceptInvite.h"
 #import "ATIFacebookAuthHandler.h"
 #import "UIAlertAction+Additions.h"
+#import "SNFADBannerView.h"
 
 @interface SNFMore ()
 @property IAPHelper * helper;
@@ -100,6 +101,10 @@
 		NSString * productId = transaction.payment.productIdentifier;
 		NSString * type = [IAPHelper productTypeForProductId:productId];
 		
+		if([[IAPHelper productNameByProductId:productId] isEqualToString:@"RemoveAds"]) {
+			[[NSNotificationCenter defaultCenter] postNotificationName:SNFADBannerViewPurchasedRemoveAds object:nil];
+		}
+		
 		NSLog(@"restore product id: %@, transaction id: %@",productId,transaction.transactionIdentifier);
 		
 		if([type isEqualToString:@"Consumable"]) {
@@ -134,6 +139,8 @@
 				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction OKAction]];
 				[self presentViewController:alert animated:TRUE completion:nil];
+			} else {
+				[[NSNotificationCenter defaultCenter] postNotificationName:SNFADBannerViewPurchasedRemoveAds object:nil];
 			}
 			
 		}];
