@@ -48,9 +48,24 @@
 		}
 	}];
 	
+	UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+	[refreshControl addTarget:self action:@selector(onInviteRefresh:) forControlEvents:UIControlEventValueChanged];
+	[self.tableView addSubview:refreshControl];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteAccepted:) name:SNFInviteAccepted object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)onInviteRefresh:(UIRefreshControl *)refresh{
+	[self.service invitesWithCompletion:^(NSError *error) {
+		[refresh endRefreshing];
+		if(error) {
+			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+		} else {
+			[self reload];
+		}
+	}];
 }
 
 - (void) dealloc {
