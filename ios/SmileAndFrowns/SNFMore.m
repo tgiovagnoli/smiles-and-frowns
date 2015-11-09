@@ -94,6 +94,8 @@
 		self.helper = [[IAPHelper alloc] init];
 	}
 	
+	__weak SNFMore * weakself = self;
+	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
 	[self.helper restorePurchasesWithCompletion:^(NSError *error, SKPaymentTransaction *transaction, BOOL completed) {
@@ -112,7 +114,7 @@
 		}
 		
 		if(completed) {
-			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			[MBProgressHUD hideHUDForView:weakself.view animated:TRUE];
 		}
 		
 	}];
