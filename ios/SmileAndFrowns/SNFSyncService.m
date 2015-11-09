@@ -21,7 +21,26 @@ static SNFSyncService * _instance;
 	return _instance;
 }
 
+- (id)init{
+	self = [super init];
+	_syncTimer = [NSTimer scheduledTimerWithTimeInterval:(60.0 * 10.0) target:self selector:@selector(attemptSync:) userInfo:nil repeats:YES];
+	[self attemptSync:nil];
+	return self;
+}
+
+- (void)attemptSync:(NSTimer *)syncTimer{
+	if([SNFModel sharedInstance].loggedInUser || _syncing){
+		return;
+	}
+	[self syncWithCompletion:^(NSError *error, NSObject *boardData) {
+		if(error){
+			NSLog(@"\n !!!! error syncing !!!! :\n\n %@", error.localizedDescription);
+		}
+	}];
+}
+
 - (void) syncWithCompletion:(SNFSyncServiceCallback) completion {
+	_syncing = YES;
 	NSError *saveError;
 	
 	if(![SNFModel sharedInstance].userSettings.lastSyncDate){
@@ -49,6 +68,7 @@ static SNFSyncService * _instance;
 	
 	NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		dispatch_sync(dispatch_get_main_queue(), ^{
+			_syncing = NO;
 			if(error){
 				return completion(error, nil);
 			}
@@ -332,6 +352,18 @@ static SNFSyncService * _instance;
 		return completion(saveError, nil);
 	}
 	completion(nil, returnData);
+}
+
+- (void)flagContextForSave{
+	if(_syncing){
+		// save will happen at end of sync no need to do it.
+		return;
+	}
+	NSError *error;
+	[[SNFModel sharedInstance].managedObjectContext save:&error];
+	if(error){
+		NSLog(@"%@", error);
+	}
 }
 
 @end

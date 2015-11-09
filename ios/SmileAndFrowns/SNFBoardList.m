@@ -4,6 +4,7 @@
 #import "SNFBoardDetail.h"
 #import "SNFViewController.h"
 #import "AppDelegate.h"
+#import "SNFSyncService.h"
 
 @interface SNFBoardList ()
 @property IAPHelper * helper;
@@ -17,7 +18,22 @@
 	self.searchField.hidden = YES;
 	[self.searchField addTarget:self action:@selector(searchFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 	
+	UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+	[refreshControl addTarget:self action:@selector(onBoardRefresh:) forControlEvents:UIControlEventValueChanged];
+	[self.boardsTable addSubview:refreshControl];
+	
 	[self reloadBoards];
+}
+
+- (void)onBoardRefresh:(UIRefreshControl *)refresh{
+	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
+		[refresh endRefreshing];
+		if(error){
+			NSLog(@"Error syncing");
+		}else{
+			[self reloadBoards];
+		}
+	}];
 }
 
 - (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {

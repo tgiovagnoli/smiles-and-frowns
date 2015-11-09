@@ -273,7 +273,7 @@
 		D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmileAndFrowns.xcdatamodel; sourceTree = "<group>"; };
 		D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SmileAndFrowns/Assets.xcassets; sourceTree = "<group>"; };
 		D659DBC11BDAE07F0048D3F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D659DBC31BDAE07F0048D3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D659DBC31BDAE07F0048D3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = SmileAndFrowns/Info.plist; sourceTree = "<group>"; };
 		D659DBCC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFSmile+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFSmile+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D659DBCE1BDAEA000048D3F7 /* SNFSmile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFSmile.h; sourceTree = "<group>"; };
@@ -656,7 +656,6 @@
 		D659DBAF1BDAE07F0048D3F7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D659DBC31BDAE07F0048D3F7 /* Info.plist */,
 				D659DBB01BDAE07F0048D3F7 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -666,6 +665,7 @@
 		D659DBCA1BDAE0B30048D3F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D659DBC31BDAE07F0048D3F7 /* Info.plist */,
 				07C0F3C01BEE646E0075A6B9 /* images */,
 				D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */,
 				07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */,

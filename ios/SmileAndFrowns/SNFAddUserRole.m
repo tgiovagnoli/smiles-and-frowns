@@ -30,7 +30,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		self.genderOverlay.hidden = TRUE;
 		self.gender.hidden = TRUE;
 		self.email.placeholder = @"Email";
-		
+		self.email.hidden = NO;
 	} else {
 		self.age.hidden = FALSE;
 		self.genderOverlay.hidden = FALSE;
