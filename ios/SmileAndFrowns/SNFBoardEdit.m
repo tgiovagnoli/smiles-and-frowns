@@ -20,7 +20,6 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 
 - (void)setBoard:(SNFBoard *)board{
 	_board = board;
-	// save the context in it's current state so that we can remove any objects that are used during editing here:
 	NSError *error;
 	[[SNFModel sharedInstance].managedObjectContext save:&error];
 	if(error){
