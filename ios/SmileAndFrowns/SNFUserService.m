@@ -5,6 +5,8 @@
 #import "SNFUser.h"
 #import "NSManagedObject+InfoDictionary.h"
 #import "SNFInvite.h"
+#import "ATITwitterAuthHandler.h"
+#import "ATIFacebookAuthHandler.h"
 
 @implementation SNFUserService
 
@@ -102,6 +104,9 @@
 }
 
 - (void)logoutWithCompletion:(void(^)(NSError *error))completion{
+	[[ATIFacebookAuthHandler instance] logout];
+	[[ATITwitterAuthHandler instance] logout];
+	
 	NSURL * serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"logout"];
 	NSURLSession * session = [NSURLSession sharedSession];
 	NSURLSessionDataTask * task = [session dataTaskWithURL:serviceURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {

@@ -9,6 +9,7 @@
 #import "ATIFacebookAuthHandler.h"
 #import "UIAlertAction+Additions.h"
 #import "SNFADBannerView.h"
+#import "ATITwitterAuthHandler.h"
 
 @interface SNFMore ()
 @property IAPHelper * helper;
@@ -164,8 +165,6 @@
 }
 
 - (void) logout {
-	[[ATIFacebookAuthHandler instance] logout];
-	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
 	SNFUserService * service = [[SNFUserService alloc] init];

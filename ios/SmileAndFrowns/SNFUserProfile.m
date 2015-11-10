@@ -106,7 +106,7 @@
 		if(error) {
 			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"You must be logged in to edit your profile." preferredStyle:UIAlertControllerStyleAlert];
 			[alert addAction:[UIAlertAction OKActionWithCompletion:^(UIAlertAction * action) {
-				[[SNFModel sharedInstance] setLoggedInUser:nil updateLastLoggedIn:NO];
+				[SNFModel sharedInstance].loggedInUser = nil;
 				[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
 			}]];
 			[self presentViewController:alert animated:TRUE completion:nil];
