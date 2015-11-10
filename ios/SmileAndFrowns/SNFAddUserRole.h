@@ -6,6 +6,7 @@
 #import "SNFBoard.h"
 #import "SNFTaggedAlertAction.h"
 #import "SNFSyncService.h"
+#import "APDDjangoErrorViewer.h"
 
 extern NSString * const SNFAddUserRoleAddedChild;
 

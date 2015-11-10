@@ -4,7 +4,7 @@
 
 @interface SNFBoardDetailAdultCell : UITableViewCell
 
-@property (nonatomic) SNFUserRole *userRole;
+@property (nonatomic) SNFUser *user;
 
 @property (weak) IBOutlet UILabel *nameLabel;
 @property (weak) IBOutlet UILabel *noteLabel;
