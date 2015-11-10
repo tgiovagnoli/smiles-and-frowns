@@ -11,10 +11,6 @@
 #import "SNFADBannerView.h"
 #import "ATITwitterAuthHandler.h"
 
-@interface SNFMore ()
-@property IAPHelper * helper;
-@end
-
 @implementation SNFMore
 
 - (void)viewDidLoad {
@@ -99,16 +95,14 @@
 
 - (void) restorePurchases {
 	
-	self.helper = [IAPHelper defaultHelper];
-	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[self.helper restorePurchasesWithCompletion:^(NSError *error, SKPaymentTransaction *transaction, BOOL completed) {
+	[[IAPHelper defaultHelper] restorePurchasesWithCompletion:^(NSError *error, SKPaymentTransaction *transaction, BOOL completed) {
 		
 		NSString * productId = transaction.payment.productIdentifier;
-		NSString * type = [self.helper productTypeForProductId:productId];
+		NSString * type = [[IAPHelper defaultHelper] productTypeForProductId:productId];
 		
-		if([[self.helper productNameByProductId:productId] isEqualToString:@"RemoveAds"]) {
+		if([[[IAPHelper defaultHelper] productNameByProductId:productId] isEqualToString:@"RemoveAds"]) {
 			[[NSNotificationCenter defaultCenter] postNotificationName:SNFADBannerViewPurchasedRemoveAds object:nil];
 		}
 		
@@ -132,17 +126,15 @@
 
 - (void) removeAds {
 	
-	self.helper = [IAPHelper defaultHelper];
-	
-	NSArray * products = [self.helper productIdsByNames:@[@"RemoveAds"]];
+	NSArray * products = [[IAPHelper defaultHelper] productIdsByNames:@[@"RemoveAds"]];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[self.helper loadItunesProducts:products withCompletion:^(NSError *error) {
+	[[IAPHelper defaultHelper] loadItunesProducts:products withCompletion:^(NSError *error) {
 		
-		NSString * product = [self.helper productIdByName:@"RemoveAds"];
+		NSString * product = [[IAPHelper defaultHelper] productIdByName:@"RemoveAds"];
 		
-		[self.helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+		[[IAPHelper defaultHelper] purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			

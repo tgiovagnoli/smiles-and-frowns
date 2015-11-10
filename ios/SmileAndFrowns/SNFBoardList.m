@@ -327,13 +327,11 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	return;
 	#endif
 	
-	IAPHelper * helper = [IAPHelper defaultHelper];
-	
-	NSArray * productIds = [helper productIdsByNames:@[@"NewBoard"]];
+	NSArray * productIds = [[IAPHelper defaultHelper] productIdsByNames:@[@"NewBoard"]];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
+	[[IAPHelper defaultHelper] loadItunesProducts:productIds withCompletion:^(NSError *error) {
 		
 		if(error) {
 			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
@@ -342,10 +340,10 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 			return;
 		}
 		
-		NSString * product = [helper productIdByName:@"NewBoard"];
+		NSString * product = [[IAPHelper defaultHelper] productIdByName:@"NewBoard"];
 		NSLog(@"NewBoard product id: %@", product);
 		
-		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+		[[IAPHelper defaultHelper] purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
