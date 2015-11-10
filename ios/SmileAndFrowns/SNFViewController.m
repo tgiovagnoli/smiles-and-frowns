@@ -25,10 +25,8 @@ static __weak SNFViewController * _instance;
 	_instance = self;
 	self.firstlayout = true;
 	
-//	if(![[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
-//		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
-//		self.bannerView.delegate = self;
-//	}
+	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
+	self.bannerView.delegate = self;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];

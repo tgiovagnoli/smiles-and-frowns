@@ -36,10 +36,8 @@
 	
 	[[SNFModel sharedInstance] addObserver:self forKeyPath:@"loggedInUser" options:NSKeyValueObservingOptionNew context:nil];
 	
-//	if(![[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
-//		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
-//		self.bannerView.delegate = self;
-//	}
+	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
+	self.bannerView.delegate = self;
 }
 
 - (void) viewDidLayoutSubviews {
