@@ -67,6 +67,7 @@
 	
 	CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
 	
+	//if the superview is a scroll view, we're running in the main view stack controller in SNFViewController
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
 		
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
@@ -80,10 +81,11 @@
 		}
 		
 		containerScrollView.height -= newBottom;
-		
+	
+	//otherwise we're running modally.
 	} else {
 		
-		//in this case the view controller is in a modal, so do'nt allow ipad popovers to be updated.
+		//don't allow the view content to be updated on ipad as the popover adjusts everything.
 		if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 			return;
 		}
@@ -109,12 +111,16 @@
 - (void) keyboardWillHide:(NSNotification *) notification {
 	self.keyboardIsVisible = FALSE;
 	
+	//if the superview is a scroll view, we're running in the main view stack controller in SNFViewController
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
+		
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
 		containerScrollView.height = self.superScrollViewHeight;
+		
+	//otherwise we're running modally.
 	} else {
 		
-		//in this case the view controller is in a modal, so do'nt allow ipad popovers to be updated.
+		//don't allow the view content to be updated on ipad as the popover adjusts everything.
 		if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 			return;
 		}

@@ -61,7 +61,7 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 
 // behaviors
 - (IBAction)onAddBehavior:(UIButton *)sender{
-	SNFAddBehavior * addBehavior = [[SNFAddBehavior alloc] initWithSourceView:self.addBehaviorButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft];
+	SNFAddBehavior * addBehavior = [[SNFAddBehavior alloc] initWithSourceView:self.addBehaviorButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight];
 	[self presentViewController:addBehavior animated:YES completion:^{}];
 	addBehavior.board = self.board;
 	addBehavior.delegate = self;

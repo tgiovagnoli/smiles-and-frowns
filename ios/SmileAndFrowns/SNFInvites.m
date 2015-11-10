@@ -80,21 +80,6 @@
 	return YES;
 }
 
-//- (void) onKeyboardShow:(NSNotification *) notification {
-//	NSDictionary * userInfo = notification.userInfo;
-//	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-//	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
-//	CGFloat bottom = keyboardFrameEnd.size.height;
-//	if([SNFViewController instance].bannerView.superview) {
-//		bottom -= 50;
-//	}
-//	self.tableViewBottom.constant = bottom - 50;
-//}
-//
-//- (void) onKeyboardHide:(NSNotification *) notification {
-//	self.tableViewBottom.constant = 0;
-//}
-
 - (void) searchFieldChanged:(UITextField *) searchField {
 	[self reload];
 }
