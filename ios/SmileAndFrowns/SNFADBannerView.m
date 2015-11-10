@@ -18,6 +18,10 @@ NSString * const SNFADBannerViewPurchasedRemoveAds = @"SNFADBannerViewPurchasedR
 	return self;
 }
 
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void) onAdsPurchased:(NSNotification *) note {
 	if(self.delegate) {
 		[self.delegate bannerView:self didFailToReceiveAdWithError:nil];
