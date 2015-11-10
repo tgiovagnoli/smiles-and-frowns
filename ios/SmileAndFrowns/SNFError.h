@@ -1,5 +1,7 @@
 #import <Foundation/Foundation.h>
 
+#define SNFErrorDomain @"com.apptitude.smilesandfrowns"
+
 typedef NS_ENUM(NSUInteger, SNFErrorCode){
 	SNFErrorCodeRemoteError,
 	SNFErrorCodeParseError,
@@ -7,6 +9,8 @@ typedef NS_ENUM(NSUInteger, SNFErrorCode){
 	SNFErrorCodeInvalidModel,
 	SNFErrorCodeFormInputError
 };
+
+
 
 @interface SNFError : NSError
 

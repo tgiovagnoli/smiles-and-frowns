@@ -12,7 +12,10 @@
 
 @property (weak) IBOutlet UIViewControllerStack * viewControllerStack;
 @property (weak) IBOutlet UIView * tabMenuContainer;
-@property IBOutlet NSLayoutConstraint * tabMenuContainerBottom;
+@property (weak) IBOutlet NSLayoutConstraint * tabMenuContainerBottom;
+@property (weak) IBOutlet NSLayoutConstraint * errorMessageHeightConstraint;
+@property (weak) IBOutlet UILabel *errorMessageLabel;
+@property (weak) IBOutlet UIButton *errorMessageCloseButton;
 
 @property SNFTabMenu * tabMenu;
 @property SNFTab firstTab;
@@ -27,5 +30,8 @@
 - (void) showInvitesAnimated:(BOOL) animated;
 
 - (BOOL) isAdDisplayed;
+
+- (void)showErrorMessage:(NSString *)errorMessage;
+- (IBAction)onCloseErrorMessage:(id)sender;
 
 @end

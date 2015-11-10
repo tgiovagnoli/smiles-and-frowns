@@ -12,6 +12,7 @@
 #import "SNFPredefinedBehaviorGroup.h"
 
 NSString * const SNFSyncServiceCompleted = @"SNFSyncServiceCompleted";
+NSString * const SNFSyncServiceError = @"SNFSyncServiceError";
 
 static SNFSyncService * _instance;
 
@@ -76,19 +77,23 @@ static SNFSyncService * _instance;
 			[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceCompleted object:nil];
 			
 			if(error){
+				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:error];
 				return completion(error, nil);
 			}
 			
 			NSError *jsonError;
 			NSObject *infoDict = [self responseObjectFromData:data withError:&jsonError];
 			if(jsonError){
+				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:jsonError];
 				return completion(jsonError, nil);
 			}
 			
 			if([infoDict isMemberOfClass:[NSDictionary class]] || [infoDict isKindOfClass:[NSDictionary class]]){
 				[self updateLocalDataWithResults:(NSDictionary *)infoDict andCallCompletion:completion];
 			}else{
-				return completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"], nil);
+				SNFError *error = [SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"];
+				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:error];
+				return completion(error, nil);
 			}
 		});
 	}];
@@ -268,6 +273,7 @@ static SNFSyncService * _instance;
 	NSError *saveError;
 	[context save:&saveError];
 	if(saveError){
+		[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:saveError];
 		return completion(saveError, nil);
 	}
 	[SNFDateManager unlock];

@@ -27,7 +27,9 @@
 	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
 		[refresh endRefreshing];
 		if(error){
-			NSLog(@"Error syncing");
+			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction OKAction]];
+			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
 		}else{
 			[self reloadBoards];
 		}
@@ -353,6 +355,8 @@
 	boardDetail.board = newBoard;
 	
 	[self boardListCell:nil wantsToEditBoard:newBoard];
+	
+	[[SNFSyncService instance] saveContext];
 }
 
 
