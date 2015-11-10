@@ -3,6 +3,7 @@
 #import "SNFModel.h"
 #import "UIAlertAction+Additions.h"
 #import "UIViewController+ModalCreation.h"
+#import "SNFSyncService.h"
 
 NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 
@@ -20,11 +21,7 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 
 - (void)setBoard:(SNFBoard *)board{
 	_board = board;
-	NSError *error;
-	[[SNFModel sharedInstance].managedObjectContext save:&error];
-	if(error){
-		NSLog(@"%@", error);
-	}
+	[[SNFSyncService instance] saveContext];
 	[self updateUI];
 }
 
@@ -49,7 +46,7 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 		[textField resignFirstResponder];
 		
 		_board.title = self.boardTitleField.text;
-		[[SNFModel sharedInstance].managedObjectContext save:nil];
+		[[SNFSyncService instance] saveContext];
 		
 		return YES;
 		
@@ -136,7 +133,7 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	
 	_board.title = self.boardTitleField.text;
 	
-	[[SNFModel sharedInstance].managedObjectContext save:nil];
+	[[SNFSyncService instance] saveContext];
 	//[[SNFModel sharedInstance].managedObjectContext undo];
 	
 	if(self.delegate) {

@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUS-b6-z5Z">
-                    <rect key="frame" x="78" y="0.0" width="78" height="75"/>
+                    <rect key="frame" x="98" y="0.0" width="97" height="75"/>
                     <animations/>
                     <state key="normal" title="Invites"/>
                     <connections>
@@ -24,7 +24,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rke-rT-aXy">
-                    <rect key="frame" x="234" y="0.0" width="78" height="75"/>
+                    <rect key="frame" x="293" y="0.0" width="97" height="75"/>
                     <animations/>
                     <state key="normal" title="More"/>
                     <connections>
@@ -32,23 +32,15 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lng-w1-mWo">
-                    <rect key="frame" x="156" y="0.0" width="78" height="75"/>
+                    <rect key="frame" x="195" y="0.0" width="98" height="75"/>
                     <animations/>
                     <state key="normal" title="Profile"/>
                     <connections>
                         <action selector="onProfile:" destination="-1" eventType="touchUpInside" id="9og-Qf-x2V"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVQ-Rv-SEh">
-                    <rect key="frame" x="312" y="0.0" width="78" height="75"/>
-                    <animations/>
-                    <state key="normal" title="Debug"/>
-                    <connections>
-                        <action selector="onDebug:" destination="-1" eventType="touchUpInside" id="R6V-04-EZ6"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqG-yX-QL9">
-                    <rect key="frame" x="0.0" y="0.0" width="78" height="75"/>
+                    <rect key="frame" x="0.0" y="0.0" width="98" height="75"/>
                     <animations/>
                     <state key="normal" title="Boards"/>
                     <connections>
@@ -66,14 +58,10 @@
                 <constraint firstItem="uUS-b6-z5Z" firstAttribute="centerY" secondItem="zqG-yX-QL9" secondAttribute="centerY" id="73i-PA-fDP"/>
                 <constraint firstItem="rke-rT-aXy" firstAttribute="centerY" secondItem="Lng-w1-mWo" secondAttribute="centerY" id="Eyf-ok-NOw"/>
                 <constraint firstItem="Lng-w1-mWo" firstAttribute="height" secondItem="uUS-b6-z5Z" secondAttribute="height" id="KFq-jY-sHA"/>
-                <constraint firstItem="pVQ-Rv-SEh" firstAttribute="width" secondItem="rke-rT-aXy" secondAttribute="width" id="M2f-ot-YMz"/>
-                <constraint firstItem="pVQ-Rv-SEh" firstAttribute="height" secondItem="rke-rT-aXy" secondAttribute="height" id="NKt-Cx-tzo"/>
                 <constraint firstItem="rke-rT-aXy" firstAttribute="leading" secondItem="Lng-w1-mWo" secondAttribute="trailing" id="Vb3-Il-FXx"/>
-                <constraint firstItem="pVQ-Rv-SEh" firstAttribute="centerY" secondItem="rke-rT-aXy" secondAttribute="centerY" id="Vch-uD-xJd"/>
-                <constraint firstAttribute="trailing" secondItem="pVQ-Rv-SEh" secondAttribute="trailing" id="W69-Ai-hzK"/>
                 <constraint firstItem="Lng-w1-mWo" firstAttribute="width" secondItem="uUS-b6-z5Z" secondAttribute="width" id="d8J-dG-TTP"/>
+                <constraint firstAttribute="trailing" secondItem="rke-rT-aXy" secondAttribute="trailing" id="h7i-BZ-VFB"/>
                 <constraint firstItem="zqG-yX-QL9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hYE-S6-jxy"/>
-                <constraint firstItem="pVQ-Rv-SEh" firstAttribute="leading" secondItem="rke-rT-aXy" secondAttribute="trailing" id="htK-Qi-x5B"/>
                 <constraint firstAttribute="bottom" secondItem="zqG-yX-QL9" secondAttribute="bottom" id="mUN-lk-9Ti"/>
                 <constraint firstItem="uUS-b6-z5Z" firstAttribute="leading" secondItem="zqG-yX-QL9" secondAttribute="trailing" id="puT-TN-dft"/>
                 <constraint firstItem="rke-rT-aXy" firstAttribute="height" secondItem="Lng-w1-mWo" secondAttribute="height" id="vN1-cP-u4r"/>

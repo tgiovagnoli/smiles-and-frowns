@@ -1,6 +1,7 @@
 
 #import "SNFAddBehaviorCell.h"
 #import "SNFModel.h"
+#import "SNFSyncService.h"
 
 @interface SNFAddBehaviorCell ()
 @property BOOL previousSelectedValue;
@@ -66,7 +67,10 @@
 		return;
 	}
 	self.behavior.title = self.behaviorTitleField.text;
-	//[[SNFModel sharedInstance].managedObjectContext save:nil];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+	[[SNFSyncService instance] saveContext];
 }
 
 - (void)setEditable:(BOOL)editable{

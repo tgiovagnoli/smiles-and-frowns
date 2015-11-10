@@ -7,6 +7,7 @@
 #import "SNFInvite.h"
 #import "ATITwitterAuthHandler.h"
 #import "ATIFacebookAuthHandler.h"
+#import "SNFSyncService.h"
 
 @implementation SNFUserService
 
@@ -383,7 +384,7 @@
 					__unused SNFInvite * invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:dict withContext:[SNFModel sharedInstance].managedObjectContext];
 				}
 				
-				[[SNFModel sharedInstance].managedObjectContext save:nil];
+				[[SNFSyncService instance] saveContext];
 				
 				completion(nil);
 				

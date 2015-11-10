@@ -149,7 +149,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	};
 	
 	[SNFUserRole editOrCreatefromInfoDictionary:info withContext:[SNFModel sharedInstance].managedObjectContext];
-	[[SNFModel sharedInstance].managedObjectContext save:nil];
+	[[SNFSyncService instance] saveContext];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:SNFAddUserRoleAddedChild object:nil];
 	

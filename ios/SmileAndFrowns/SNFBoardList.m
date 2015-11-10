@@ -206,48 +206,67 @@
 	return NO;
 }
 
-
 - (void)buyOrCreateBoard:(SNFPredefinedBoard *)pdb{
-	NSArray *allBoards = [SNFBoard allObjectsWithContext:[SNFModel sharedInstance].managedObjectContext];
-	BOOL needsPurchase = NO;
-	NSString *loggedInUserName = [SNFModel sharedInstance].loggedInUser.username;
-	for(SNFBoard *board in allBoards){
-		if([board.owner.username isEqualToString:loggedInUserName]){
-			needsPurchase = YES;
-		}
-	}
-	if(needsPurchase && pdb){
-		// buy board confirm
-		NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Would you like to purchase \"%@\"?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
-		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-			[self purchaseNewBoard:pdb];
-		}]];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
-		[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-	}else if(!needsPurchase && pdb){
-		// free board confirm
-		NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Are you sure you want to use \"%@\" as your free board?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
-		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-			[self addNewBoard:pdb withTransactionID:nil];
-		}]];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
-		[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-	}else{
-		// empty board
-		NSString *messageString = @"This will create an empty board.  You will need to add behaviors to this board before using it.  Continue?";
-		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-			if(needsPurchase){
-				[self purchaseNewBoard:pdb];
-			}else{
-				[self addNewBoard:pdb withTransactionID:nil];
+	// make sure that the user is logged in
+	SNFUserService *userService = [[SNFUserService alloc] init];
+	[userService authedUserInfoWithCompletion:^(NSError *error, SNFUser *user) {
+		if(!error && user){
+			NSArray *allBoards = [SNFBoard allObjectsWithContext:[SNFModel sharedInstance].managedObjectContext];
+			BOOL needsPurchase = NO;
+			NSString *loggedInUserName = [SNFModel sharedInstance].loggedInUser.username;
+			for(SNFBoard *board in allBoards){
+				if([board.owner.username isEqualToString:loggedInUserName]){
+					needsPurchase = YES;
+				}
 			}
-		}]];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
-		[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-	}
+			if(needsPurchase && pdb){
+				// buy board confirm
+				NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Would you like to purchase \"%@\"?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+					[self purchaseNewBoard:pdb];
+				}]];
+				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+			}else if(!needsPurchase && pdb){
+				// free board confirm
+				NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Are you sure you want to use \"%@\" as your free board?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+					[self addNewBoard:pdb withTransactionID:nil];
+				}]];
+				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+			}else{
+				// empty board
+				NSString *messageString = @"This will create an empty board.  You will need to add behaviors to this board before using it.  Continue?";
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+					if(needsPurchase){
+						[self purchaseNewBoard:pdb];
+					}else{
+						[self addNewBoard:pdb withTransactionID:nil];
+					}
+				}]];
+				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+			}
+		}else{
+			if([error.localizedDescription isEqualToString:@"login required"]){
+				// not authed
+				NSString *messageString = @"You are currently not signed into smiles and frowns.  You need to login and be online to create a board.";
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
+				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+			}else{
+				// likely offline
+				NSString *messageString = @"It appears you are offline. Please make sure you are online and logged in to purchase a new board.";
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
+				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+			}
+		}
+	}];
 }
 
 - (NSString *)behaviorsStringFromBoard:(SNFPredefinedBoard *)pdb{

@@ -1,6 +1,7 @@
 #import "SNFSpendRewards.h"
 #import "SNFModel.h"
 #import "UIViewController+ModalCreation.h"
+#import "SNFSyncService.h"
 
 @implementation SNFSpendRewards
 
@@ -176,7 +177,7 @@
 		}
 		smilesTaken ++;
 	}
-	[[SNFModel sharedInstance].managedObjectContext save:nil];
+	[[SNFSyncService instance] saveContext];
 	if(self.delegate){
 		[self.delegate spendRewardsIsDone:self];
 	}
