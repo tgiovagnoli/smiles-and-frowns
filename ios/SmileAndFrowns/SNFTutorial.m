@@ -60,15 +60,28 @@
 		
 		if(!self.userInitiatedTutorial && [SNFLauncher showAtLaunch]) {
 			
-			[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+			SNFLauncher * launcher = [[SNFLauncher alloc] init];
+			[AppDelegate instance].window.rootViewController = launcher;
 			
+			if([SNFModel sharedInstance].pendingInviteCode) {
+				SNFAcceptInvite * accept = [[SNFAcceptInvite alloc] initWithSourceView:launcher.acceptInviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
+				[[AppDelegate rootViewController] presentViewController:accept animated:TRUE completion:nil];
+			}
+		
 		} else {
 			
 			SNFViewController * root = [[SNFViewController alloc] init];
+			
 			if([SNFModel sharedInstance].pendingInviteCode) {
 				root.firstTab = SNFTabInvites;
 			}
+			
 			[AppDelegate instance].window.rootViewController = root;
+			
+			if([SNFModel sharedInstance].pendingInviteCode) {
+				SNFAcceptInvite * accept = [[SNFAcceptInvite alloc] initWithSourceView:root.tabMenu.invitesButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
+				[[AppDelegate rootViewController] presentViewController:accept animated:TRUE completion:nil];
+			}
 			
 		}
 		
