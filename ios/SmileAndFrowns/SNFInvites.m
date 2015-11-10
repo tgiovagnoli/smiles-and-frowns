@@ -51,6 +51,7 @@
 	UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
 	[refreshControl addTarget:self action:@selector(onInviteRefresh:) forControlEvents:UIControlEventValueChanged];
 	[self.tableView addSubview:refreshControl];
+	[self.tableView insertSubview:refreshControl atIndex:0];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteAccepted:) name:SNFInviteAccepted object:nil];
 }
