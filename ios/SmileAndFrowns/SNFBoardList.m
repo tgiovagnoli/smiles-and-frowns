@@ -21,6 +21,7 @@
 	UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
 	[refreshControl addTarget:self action:@selector(onBoardRefresh:) forControlEvents:UIControlEventValueChanged];
 	[self.boardsTable addSubview:refreshControl];
+	[self.boardsTable insertSubview:refreshControl atIndex:0];
 	
 	[self reloadBoards];
 }
