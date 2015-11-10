@@ -10,6 +10,7 @@
 #import "SNFLogin.h"
 #import "SNFCreateAccount.h"
 #import "NSTimer+Blocks.h"
+#import "SNFSyncService.h"
 #import <HockeySDK/HockeySDK.h>
 
 static AppDelegate * _instance;
@@ -28,6 +29,10 @@ static AppDelegate * _instance;
 }
 
 - (BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
+	UIUserNotificationType userNotificationTypes = UIUserNotificationTypeBadge;
+	UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
+	[application registerUserNotificationSettings:settings];
+	
 	_instance = self;
 	
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
@@ -144,13 +149,29 @@ static AppDelegate * _instance;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+	if(![SNFSyncService instance].syncing){
+		[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {}];
+	}
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	// Saves changes in the application's managed object context before the application terminates.
 	[self saveContext];
+}
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler{
+	if([SNFModel sharedInstance].loggedInUser){
+		SNFUserService *userService = [[SNFUserService alloc] init];
+		[userService invitesWithCompletion:^(NSError *error, NSArray *invites) {
+			if(error){
+				completionHandler(UIBackgroundFetchResultFailed);
+			}else{
+				[[UIApplication sharedApplication] setApplicationIconBadgeNumber:invites.count];
+				completionHandler(UIBackgroundFetchResultNewData);
+			}
+		}];
+	}
 }
 
 #pragma mark - Core Data stack
