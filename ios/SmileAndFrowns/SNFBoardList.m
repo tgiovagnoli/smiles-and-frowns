@@ -7,6 +7,8 @@
 #import "SNFSyncService.h"
 #import "NSTimer+Blocks.h"
 
+const NSString *SNFBoardListCustomTitle = @"Custom Board";
+
 @implementation SNFBoardList
 
 - (void)viewDidLoad{
@@ -48,9 +50,20 @@
 	if(section == SNFBoardListSectionBoards){
 		return _boards.count;
 	}else if(section == SNFBoardListSectionPredefinedBoards){
-		return _predefinedBoards.count + 1;
+		if([self showCustom]){
+			return _predefinedBoards.count + 1;
+		}else{
+			return _predefinedBoards.count;
+		}
 	}
 	return 0;
+}
+
+- (BOOL)showCustom{
+	if([[SNFBoardListCustomTitle lowercaseString] containsString:[self.searchField.text lowercaseString]] || [self.searchField.text isEmpty]){
+		return YES;
+	}
+	return NO;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -142,7 +155,14 @@
 	}
 	
 	// load up all the predefined boards
-	_predefinedBoards = [SNFPredefinedBoard allObjectsWithContext:[SNFModel sharedInstance].managedObjectContext];
+	NSFetchRequest *predefRequest = [NSFetchRequest fetchRequestWithEntityName:@"SNFPredefinedBoard"];
+	if(![self.searchField.text isEmpty]){
+		predefRequest.predicate = [NSPredicate predicateWithFormat:@"(title CONTAINS[cd] %@)", self.searchField.text];
+	}
+	_predefinedBoards = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:predefRequest error:&error];
+	if(error){
+		NSLog(@"error loading predefined boards");
+	}
 	[self.boardsTable reloadData];
 }
 
