@@ -66,7 +66,7 @@
                             <action selector="onFrown:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6Oy-Sb-frF"/>
                         </connections>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m5K-8z-sYb">
+                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m5K-8z-sYb">
                         <rect key="frame" x="8" y="8" width="76" height="52"/>
                         <animations/>
                     </imageView>

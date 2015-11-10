@@ -38,7 +38,6 @@
 	self.spendLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.userRole.board smileCurrencyForUser:self.userRole.user]];
 	
 	if(self.userRole.user.image){
-		NSLog(@"loading %@", self.userRole.user.image);
 		NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 		UIImage *image = [UIImage imageWithContentsOfFile:[docsPath stringByAppendingPathComponent:self.userRole.user.image]];
 		if(image){
