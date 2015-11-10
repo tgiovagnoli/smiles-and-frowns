@@ -4,6 +4,7 @@
 #import "AppDelegate.h"
 #import "UIViewController+ModalCreation.h"
 #import "SNFBoardEdit.h"
+#import "SNFModel.h"
 
 @implementation SNFBoardDetail
 
@@ -28,6 +29,15 @@
 
 - (void)updateUI{
 	self.titleLabel.text = self.board.title;
+	// check to see if we show the add user button
+	NSString *userRole = [self.board permissionForUser:[SNFModel sharedInstance].loggedInUser];
+	if(userRole == nil || [userRole isEqualToString:SNFUserRoleChild]){
+		self.addButtonHeightConstraint.constant = 0.0;
+		self.addButton.hidden = YES;
+	}else{
+		self.addButtonHeightConstraint.constant = 46.0;
+		self.addButton.hidden = NO;
+	}
 	[self reloadUserRoles];
 }
 

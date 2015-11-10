@@ -6,6 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface SNFBoard : NSManagedObject
 
 + (SNFBoard *)boardByUUID:(NSString *) uuid;
@@ -17,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray *)smilesForUser:(SNFUser *)user;
 - (NSArray *)frownsForUser:(SNFUser *)user;
 - (NSInteger)smileCurrencyForUser:(SNFUser *)user;
+- (NSString *)permissionForUser:(SNFUser *)user;
 
 
 @end

@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
 @property (weak) IBOutlet UIButton *addButton;
 @property (weak) IBOutlet UIButton *backButton;
 @property (weak) IBOutlet UILabel *titleLabel;
-
+@property (weak) IBOutlet NSLayoutConstraint *addButtonHeightConstraint;
 @property (nonatomic) SNFBoard *board;
 
 - (IBAction)backToBoards:(UIButton *)sender;

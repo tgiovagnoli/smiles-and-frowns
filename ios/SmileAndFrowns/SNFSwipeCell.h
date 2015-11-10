@@ -8,6 +8,7 @@
 
 @property (strong) IBOutlet UIView *overlayView;
 @property (strong) IBOutlet UIView *controlsUnderlay;
+@property (nonatomic) BOOL swipeEnabled;
 
 - (void)updateUIForDrag;
 - (void)finishUIForDrag;

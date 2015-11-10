@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFBoardDetail">
             <connections>
                 <outlet property="addButton" destination="H4t-rc-jO4" id="49b-8a-2pb"/>
+                <outlet property="addButtonHeightConstraint" destination="2Tx-sb-kuq" id="mWB-Fj-xFx"/>
                 <outlet property="backButton" destination="FKO-le-D3j" id="boT-xc-YUj"/>
                 <outlet property="rolesTable" destination="md8-2Q-eLn" id="l5d-NO-6Os"/>
                 <outlet property="titleLabel" destination="XA7-Ce-4XU" id="pZr-Ac-81l"/>
