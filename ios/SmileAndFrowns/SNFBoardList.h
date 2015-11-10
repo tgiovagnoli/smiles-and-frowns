@@ -1,3 +1,4 @@
+
 #import <UIKit/UIKit.h>
 #import "SNFBoardListCell.h"
 #import "SNFPredefinedBoardCell.h"
@@ -5,6 +6,7 @@
 #import "SNFPredefinedBoard.h"
 #import "UIViewControllerStack.h"
 #import "IAPHelper.h"
+#import "SNFFormViewController.h"
 
 typedef NS_ENUM(NSInteger, SNFBoardListFilter){
 	SNFBoardListFilterName,
@@ -16,9 +18,7 @@ typedef NS_ENUM(NSInteger, SNFBoardListSection){
 	SNFBoardListSectionPredefinedBoards
 };
 
-
-
-@interface SNFBoardList : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SNFBoardListCellDelegate, SNFBoardEditDelegate, UIViewControllerStackUpdating>{
+@interface SNFBoardList : SNFFormViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SNFBoardListCellDelegate, SNFBoardEditDelegate, UIViewControllerStackUpdating>{
 	NSArray *_boards;
 	NSArray *_predefinedBoards;
 }

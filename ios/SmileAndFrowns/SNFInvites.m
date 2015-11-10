@@ -48,16 +48,14 @@
 		}
 	}];
 	
-	UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+	UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
 	[refreshControl addTarget:self action:@selector(onInviteRefresh:) forControlEvents:UIControlEventValueChanged];
 	[self.tableView addSubview:refreshControl];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteAccepted:) name:SNFInviteAccepted object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardShow:) name:UIKeyboardWillShowNotification object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)onInviteRefresh:(UIRefreshControl *)refresh{
+- (void) onInviteRefresh:(UIRefreshControl *) refresh {
 	[self.service invitesWithCompletion:^(NSError *error) {
 		[refresh endRefreshing];
 		if(error) {
@@ -81,20 +79,20 @@
 	return YES;
 }
 
-- (void) onKeyboardShow:(NSNotification *) notification {
-	NSDictionary * userInfo = notification.userInfo;
-	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
-	CGFloat bottom = keyboardFrameEnd.size.height;
-	if([SNFViewController instance].bannerView.superview) {
-		bottom -= 50;
-	}
-	self.tableViewBottom.constant = bottom - 50;
-}
-
-- (void) onKeyboardHide:(NSNotification *) notification {
-	self.tableViewBottom.constant = 0;
-}
+//- (void) onKeyboardShow:(NSNotification *) notification {
+//	NSDictionary * userInfo = notification.userInfo;
+//	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
+//	CGFloat bottom = keyboardFrameEnd.size.height;
+//	if([SNFViewController instance].bannerView.superview) {
+//		bottom -= 50;
+//	}
+//	self.tableViewBottom.constant = bottom - 50;
+//}
+//
+//- (void) onKeyboardHide:(NSNotification *) notification {
+//	self.tableViewBottom.constant = 0;
+//}
 
 - (void) searchFieldChanged:(UITextField *) searchField {
 	[self reload];
