@@ -39,6 +39,8 @@
 	
 	[self.service invitesWithCompletion:^(NSError *error, NSArray *invites) {
 		
+		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:invites.count];
+		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
@@ -46,6 +48,7 @@
 		} else {
 			[self reload];
 		}
+		
 	}];
 	
 	UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
@@ -58,6 +61,7 @@
 
 - (void) onInviteRefresh:(UIRefreshControl *) refresh {
 	[self.service invitesWithCompletion:^(NSError *error, NSArray *invites) {
+		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:invites.count];
 		[refresh endRefreshing];
 		if(error) {
 			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
@@ -123,8 +127,6 @@
 	NSArray * results = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:request error:&error];
 	
 	self.invites = results;
-	
-	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:self.invites.count];
 	
 	[self.tableView reloadData];
 }
