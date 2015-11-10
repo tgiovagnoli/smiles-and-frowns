@@ -10,6 +10,7 @@
 #import "SNFInvites.h"
 #import "NSLog+Geom.h"
 #import "SNFADBannerView.h"
+#import "SNFSyncService.h"
 
 static __weak SNFViewController * _instance;
 
@@ -22,13 +23,19 @@ static __weak SNFViewController * _instance;
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	
+	self.errorMessageHeightConstraint.constant = 0.0;
+	
 	_instance = self;
 	self.firstlayout = true;
 	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 	self.bannerView.delegate = self;
 	
+	
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSyncError:) name:SNFSyncServiceError object:nil];
 }
 
 - (void) dealloc {
@@ -168,7 +175,38 @@ static __weak SNFViewController * _instance;
 	return YES;
 }
 
+- (void)onSyncError:(NSNotification *)notification{
+	NSError *error = [notification object];
+	if([error.domain isEqualToString:SNFErrorDomain]){
+		[self showErrorMessage:error.localizedDescription];
+	}
+}
 
+- (void)showErrorMessage:(NSString *)errorMessage{
+	self.errorMessageLabel.text = errorMessage;
+	self.errorMessageHeightConstraint.constant = 40.0;
+	[UIView animateWithDuration:0.2 animations:^{
+		[self.view layoutIfNeeded];
+	} completion:^(BOOL finished) {
+		[self updateSizeOnViewStack];
+	}];
+}
+
+- (IBAction)onCloseErrorMessage:(id)sender{
+	self.errorMessageHeightConstraint.constant = 0.0;
+	[UIView animateWithDuration:0.2 animations:^{
+		[self.view layoutIfNeeded];
+	} completion:^(BOOL finished) {
+		self.errorMessageLabel.text = @"";
+		[self updateSizeOnViewStack];
+	}];
+}
+
+- (void)updateSizeOnViewStack{
+	for(UIViewController *vc in [self.viewControllerStack allViewControllers]){
+		vc.view.height = self.viewControllerStack.height;
+	}
+}
 
 
 @end

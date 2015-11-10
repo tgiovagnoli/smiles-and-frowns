@@ -4,6 +4,7 @@
 #import "SNFDateManager.h"
 
 extern NSString * const SNFSyncServiceCompleted;
+extern NSString * const SNFSyncServiceError;
 
 typedef void(^SNFSyncServiceCallback)(NSError *error, NSObject *boardData);
 
