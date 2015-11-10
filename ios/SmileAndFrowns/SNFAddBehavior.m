@@ -56,11 +56,16 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 	SNFPredefinedBehaviorGroup *group = [_predefinedBehaviorGroups objectAtIndex:section];
-	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.behaviorsTable.width,40)];
-	label.backgroundColor = [UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1];
-	label.x = 20;
-	label.text = group.title;
-	return label;
+	
+	UITableViewHeaderFooterView *headerCell = [[UITableViewHeaderFooterView alloc] init];
+	headerCell.textLabel.text = group.title;
+	return headerCell;
+	
+	//UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.behaviorsTable.width,40)];
+	//label.backgroundColor = [UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1];
+	//label.x = 20;
+	//label.text = group.title;
+	//return label;
 }
 
 - (IBAction)onBack:(UIButton *)sender{

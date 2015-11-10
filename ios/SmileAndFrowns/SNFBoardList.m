@@ -78,7 +78,7 @@
 }
 
 - (void)boardListCell:(SNFBoardListCell *)cell wantsToEditBoard:(SNFBoard *)board{
-	SNFBoardEdit * boardEdit = [[SNFBoardEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+	SNFBoardEdit * boardEdit = [[SNFBoardEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionRight];
 	boardEdit.delegate = self;
 	[[AppDelegate rootViewController] presentViewController:boardEdit animated:YES completion:^{}];
 	boardEdit.board = board;
