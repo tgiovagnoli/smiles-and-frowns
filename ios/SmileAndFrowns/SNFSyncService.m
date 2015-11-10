@@ -1,3 +1,4 @@
+
 #import "SNFSyncService.h"
 #import "SNFModel.h"
 #import "SNFBoard.h"
@@ -9,6 +10,8 @@
 #import "SNFPredefinedBoard.h"
 #import "SNFPredefinedBehavior.h"
 #import "SNFPredefinedBehaviorGroup.h"
+
+NSString * const SNFSyncServiceCompleted = @"SNFSyncServiceCompleted";
 
 static SNFSyncService * _instance;
 
@@ -69,6 +72,9 @@ static SNFSyncService * _instance;
 	NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			_syncing = NO;
+			
+			[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceCompleted object:nil];
+			
 			if(error){
 				return completion(error, nil);
 			}

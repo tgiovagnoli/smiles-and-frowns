@@ -3,6 +3,8 @@
 #import "SNFService.h"
 #import "SNFDateManager.h"
 
+extern NSString * const SNFSyncServiceCompleted;
+
 typedef void(^SNFSyncServiceCallback)(NSError *error, NSObject *boardData);
 
 @interface SNFSyncService : SNFService{

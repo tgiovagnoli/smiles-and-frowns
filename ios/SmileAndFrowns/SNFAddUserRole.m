@@ -11,6 +11,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 
 @interface SNFAddUserRole ()
 @property NSArray * genders;
+@property NSDictionary * invitedata;
 @end
 
 @implementation SNFAddUserRole
@@ -179,7 +180,6 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		return;
 	}
 	
-	SNFUserService * service = [[SNFUserService alloc] init];
 	NSMutableDictionary * data = [NSMutableDictionary dictionary];
 	data[@"board_uuid"] = self.board.uuid;
 	data[@"invitee_email"] = self.email.text;
@@ -192,29 +192,44 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		data[@"role"] = @"guardian";
 	}
 	
-	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-	if([SNFSyncService instance].syncing){
-		// TODO: add a listener for when the service is done syncing if it is in the process.
-	}
-	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
-		if(!error){
-			// first make sure boards are synced
-			[service inviteWithData:data andCompletion:^(NSError *error) {
-				[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-				if(error) {
-					[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
-				} else {
-					[self displayOKAlertWithTitle:@"Success" message:[NSString stringWithFormat:@"Invited %@ to board %@",self.email.text,self.board.title] completion:nil];
-					[self dismissViewControllerAnimated:YES completion:^{}];
-				}
-			}];
-		}else{
-			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
-		}
-	}];
+	self.invitedata = data;
+	[self syncAndSendInvite:nil];
 }
 
+- (void) syncAndSendInvite:(NSNotification *) note {
+	[MBProgressHUD hideAllHUDsForView:self.view animated:TRUE];
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	
+	if([SNFSyncService instance].syncing) {
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(syncAndSendInvite:) name:SNFSyncServiceCompleted object:nil];
+		return;
+	}
+	
+	SNFUserService * service = [[SNFUserService alloc] init];
+	
+	//first make sure boards are syncd
+	[[SNFSyncService instance] syncWithCompletion:^(NSError * error, NSObject * boardData) {
+		
+		if(error) {
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			[[NSNotificationCenter defaultCenter] removeObserver:self name:SNFSyncServiceCompleted object:nil];
+			return;
+		}
+		
+		[service inviteWithData:self.invitedata andCompletion:^(NSError *error) {
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			if(error) {
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			} else {
+				[self displayOKAlertWithTitle:@"Success" message:[NSString stringWithFormat:@"Invited %@ to board %@",self.email.text,self.board.title] completion:nil];
+				[self dismissViewControllerAnimated:YES completion:^{}];
+			}
+		}];
+		
+	}];
+}
 
 - (IBAction) genderOverlay:(id) sender {
 	self.pickerviewContainer.frame = self.view.bounds;
