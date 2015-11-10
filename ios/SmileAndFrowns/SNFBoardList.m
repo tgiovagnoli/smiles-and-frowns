@@ -78,7 +78,12 @@
 }
 
 - (void)boardListCell:(SNFBoardListCell *)cell wantsToEditBoard:(SNFBoard *)board{
-	SNFBoardEdit * boardEdit = [[SNFBoardEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionRight];
+	SNFBoardEdit * boardEdit = nil;
+	if(cell) {
+		boardEdit = [[SNFBoardEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionRight];
+	} else {
+		boardEdit = [[SNFBoardEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionUp];
+	}
 	boardEdit.delegate = self;
 	[[AppDelegate rootViewController] presentViewController:boardEdit animated:YES completion:^{}];
 	boardEdit.board = board;
@@ -320,8 +325,8 @@
 }
 
 - (void)addNewBoard:(SNFPredefinedBoard *)pdb withTransactionID:(NSString *)transactionId{
-	SNFBoard *newBoard = [SNFBoard boardFromPredefinedBoard:pdb andContext:[SNFModel sharedInstance].managedObjectContext];
-	if(transactionId){
+	SNFBoard * newBoard = [SNFBoard boardFromPredefinedBoard:pdb andContext:[SNFModel sharedInstance].managedObjectContext];
+	if(transactionId) {
 		newBoard.transaction_id = transactionId;
 	}
 	[self reloadBoards];
