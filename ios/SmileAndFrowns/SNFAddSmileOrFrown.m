@@ -109,6 +109,9 @@
 }
 
 - (void)addSmileForBehavior:(SNFBehavior *)behavior{
+	if(![self validateAndWarnForBehavior:behavior]){
+		return;
+	}
 	NSDictionary *smileDictionary = @{
 									   @"note": self.noteField.text,
 									   @"board": @{@"uuid": self.board.uuid},
@@ -120,6 +123,9 @@
 }
 
 - (void)addFrownForBehavior:(SNFBehavior *)behavior{
+	if(![self validateAndWarnForBehavior:behavior]){
+		return;
+	}
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	NSDictionary *frownDictionary = @{
 									  @"note": self.noteField.text,
@@ -130,6 +136,33 @@
 									  };
 	[SNFFrown editOrCreatefromInfoDictionary:frownDictionary withContext:context];
 	[context save:nil];
+}
+
+- (BOOL)validateAndWarnForBehavior:(SNFBehavior *)behavior{
+	if(!self.board.uuid || [self.board.uuid isEmpty]){
+		[self errorAlertWithMessage:@"Something went wrong trying to create this smile.  The board does not exist."];
+		return NO;
+	}
+	if(!behavior || !behavior.uuid || [behavior.uuid isEmpty]){
+		[self errorAlertWithMessage:@"Something went wrong trying to create this smile.  The behavior does not exist."];
+		return NO;
+	}
+	if(!self.user || !self.user.username || [self.user.username isEmpty]){
+		[self errorAlertWithMessage:@"Something went wrong trying to create this smile.  The child does not exist."];
+		return NO;
+	}
+	SNFUser *loggedInUser = [SNFModel sharedInstance].loggedInUser;
+	if(!loggedInUser || !loggedInUser.username || [loggedInUser.username isEmpty]){
+		[self errorAlertWithMessage:@"You must login to use this feature."];
+		return NO;
+	}
+	return YES;
+}
+
+- (void)errorAlertWithMessage:(NSString *)message{
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Erro" message:message preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
+	[self presentViewController:alert animated:YES completion:^{}];
 }
 
 - (IBAction)onCancel:(UIButton *)sender{
