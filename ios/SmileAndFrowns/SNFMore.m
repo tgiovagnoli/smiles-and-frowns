@@ -89,6 +89,14 @@
 	
 }
 
+- (void)termsAndPrivacy{
+	
+}
+
+- (void)appSettings{
+	
+}
+
 - (void) restorePurchases {
 	
 	IAPHelper * helper = [IAPHelper defaultHelper];
@@ -152,13 +160,7 @@
 	
 }
 
-- (void)termsAndPrivacy{
-	
-}
 
-- (void)appSettings{
-	
-}
 
 - (void) logout {
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];

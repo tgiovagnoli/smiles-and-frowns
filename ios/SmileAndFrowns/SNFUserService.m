@@ -364,7 +364,7 @@
 		
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
-				completion(error);
+				completion(error, nil);
 				return;
 			}
 			
@@ -372,7 +372,7 @@
 			NSObject * responseObject = [self responseObjectFromData:data withError:&jsonError];
 			
 			if(jsonError) {
-				completion(jsonError);
+				completion(jsonError, nil);
 				return;
 			}
 			
@@ -386,11 +386,11 @@
 				
 				[[SNFSyncService instance] saveContext];
 				
-				completion(nil);
+				completion(nil, invites);
 				
 			} else {
 				
-				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Error parsing invites"]);
+				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Error parsing invites"], nil);
 				
 			}
 		});
