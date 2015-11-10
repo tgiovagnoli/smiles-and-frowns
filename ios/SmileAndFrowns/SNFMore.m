@@ -91,16 +91,16 @@
 
 - (void) restorePurchases {
 	
-	IAPHelper * helper = [IAPHelper defaultHelper];
+	self.helper = [IAPHelper defaultHelper];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[helper restorePurchasesWithCompletion:^(NSError *error, SKPaymentTransaction *transaction, BOOL completed) {
+	[self.helper restorePurchasesWithCompletion:^(NSError *error, SKPaymentTransaction *transaction, BOOL completed) {
 		
 		NSString * productId = transaction.payment.productIdentifier;
-		NSString * type = [helper productTypeForProductId:productId];
+		NSString * type = [self.helper productTypeForProductId:productId];
 		
-		if([[helper productNameByProductId:productId] isEqualToString:@"RemoveAds"]) {
+		if([[self.helper productNameByProductId:productId] isEqualToString:@"RemoveAds"]) {
 			[[NSNotificationCenter defaultCenter] postNotificationName:SNFADBannerViewPurchasedRemoveAds object:nil];
 		}
 		
@@ -124,17 +124,17 @@
 
 - (void) removeAds {
 	
-	IAPHelper * helper = [IAPHelper defaultHelper];
+	self.helper = [IAPHelper defaultHelper];
 	
-	NSArray * products = [helper productIdsByNames:@[@"RemoveAds"]];
+	NSArray * products = [self.helper productIdsByNames:@[@"RemoveAds"]];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[helper loadItunesProducts:products withCompletion:^(NSError *error) {
+	[self.helper loadItunesProducts:products withCompletion:^(NSError *error) {
 		
-		NSString * product = [helper productIdByName:@"RemoveAds"];
+		NSString * product = [self.helper productIdByName:@"RemoveAds"];
 		
-		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+		[self.helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			

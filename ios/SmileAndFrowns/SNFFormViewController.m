@@ -29,12 +29,13 @@
 		return;
 	}
 	
-//	if([[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
-//		return;
-//	}
-	
-	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
-	self.bannerView.delegate = self;
+	[NSTimer scheduledTimerWithTimeInterval:1 block:^{
+		IAPHelper * helper = [IAPHelper defaultHelper];
+		if(![helper hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
+			self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
+			self.bannerView.delegate = self;
+		}
+	} repeats:FALSE];
 }
 
 - (void) viewDidLayoutSubviews {

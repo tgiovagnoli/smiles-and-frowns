@@ -78,19 +78,21 @@ static AppDelegate * _instance;
 			[SNFModel sharedInstance].pendingInviteCode = inviteCode;
 			
 			if(![SNFModel sharedInstance].loggedInUser) {
+				//not logged in
 				
 				if([[AppDelegate rootViewController] isKindOfClass:[SNFLauncher class]]) {
 					
 					SNFLauncher * launcher = (SNFLauncher *)[AppDelegate rootViewController];
 					SNFCreateAccount * signup = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
 					signup.nextViewController = [[SNFAcceptInvite alloc] initWithSourceView:launcher.acceptInviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
-					
 					[[AppDelegate rootViewController] presentViewController:signup animated:TRUE completion:nil];
+					
 				}
 				
 			} else {
+				//logged in
 				
-				//not currently on main view controller. go to invites and show modal.
+				//not currently on main view controller. go to invites and show accept modal.
 				if(![SNFViewController instance]) {
 					
 					SNFViewController * root = [[SNFViewController alloc] init];
@@ -103,9 +105,10 @@ static AppDelegate * _instance;
 						[[AppDelegate rootViewController] presentViewController:acceptInvite animated:TRUE completion:nil];
 					} repeats:FALSE];
 					
-				} else {
+				} else if([SNFViewController instance]) {
 					
-					//already at main view controller, go to invites and show modal.
+					//already at main view controller, go to invites and show accept modal.
+					
 					SNFViewController * root = [SNFViewController instance];
 					[root showInvitesAnimated:TRUE];
 					
