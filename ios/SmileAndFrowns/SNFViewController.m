@@ -33,13 +33,10 @@ static __weak SNFViewController * _instance;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSyncError:) name:SNFSyncServiceError object:nil];
 	
-	[NSTimer scheduledTimerWithTimeInterval:1 block:^{
-		IAPHelper * helper = [IAPHelper defaultHelper];
-		if(![helper hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
-			//self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
-			//self.bannerView.delegate = self;
-		}
-	} repeats:FALSE];
+	if(![[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
+		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
+		self.bannerView.delegate = self;
+	}
 }
 
 - (void) dealloc {
