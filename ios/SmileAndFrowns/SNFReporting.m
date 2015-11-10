@@ -13,6 +13,11 @@
 	[self.reportTable registerClass:[SNFReportCellSmileFrown class] forCellReuseIdentifier:@"SNFReportCellSmileFrown"];
 	[self.reportTable registerNib:[UINib nibWithNibName:@"SNFReportCellSmileFrown" bundle:nil] forCellReuseIdentifier:@"SNFReportCellSmileFrown"];
 	
+	if(self.board.title){
+		self.titleLabel.text = self.board.title;
+	}else{
+		self.titleLabel.text = @"Reporting";
+	}
 	[self updateUI];
 }
 
