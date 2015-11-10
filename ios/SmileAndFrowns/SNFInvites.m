@@ -59,6 +59,10 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteAccepted:) name:SNFInviteAccepted object:nil];
 }
 
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void) onInviteRefresh:(UIRefreshControl *) refresh {
 	[self.service invitesWithCompletion:^(NSError *error, NSArray *invites) {
 		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:invites.count];
@@ -69,10 +73,6 @@
 			[self reload];
 		}
 	}];
-}
-
-- (void) dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
