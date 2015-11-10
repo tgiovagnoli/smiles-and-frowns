@@ -55,7 +55,7 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 		}
 		
 		if(self.invite) {
-			self.invite.accepted = @(TRUE);
+			[[SNFModel sharedInstance].managedObjectContext deleteObject:self.invite];
 			[[SNFSyncService instance] saveContext];
 		}
 		
