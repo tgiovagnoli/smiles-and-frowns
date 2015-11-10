@@ -23,6 +23,10 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	self.pickerview.delegate = self;
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
 	[self segmentChange:self.segment];
+	
+	UIGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickImage:)];
+	[self.image addGestureRecognizer:tapGestureRecognizer];
+	self.image.userInteractionEnabled = YES;
 }
 
 - (IBAction) segmentChange:(id)sender {
@@ -312,6 +316,42 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 
 - (void) contactPickerDidCancel:(CNContactPickerViewController *)picker {
 	[self dismissViewControllerAnimated:TRUE completion:nil];
+}
+
+- (void)pickImage:(UIGestureRecognizer *)gr{
+	UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+	imagePicker.delegate = self;
+	[self presentViewController:imagePicker animated:YES completion:^{}];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+	const CGSize baseSize = CGSizeMake(200.0, 200.0);
+	
+	[self dismissViewControllerAnimated:YES completion:^{}];
+	UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+	
+	CIContext *context = [CIContext contextWithOptions:nil];
+	CGFloat scaleX = baseSize.width/image.size.width;
+	CGFloat scaleY = baseSize.height/image.size.height;
+	CGFloat scaleOffset = scaleY;
+	CGAffineTransform transform;
+	if(scaleX < scaleY){
+		scaleOffset = scaleX;
+	}
+	transform = CGAffineTransformMakeScale(scaleOffset, scaleOffset);
+	CIFilter *transformFilter = [CIFilter filterWithName:@"CIAffineTransform"];
+	[transformFilter setValue:[NSValue valueWithBytes:&transform objCType:@encode(CGAffineTransform)] forKey:@"inputTransform"];
+	[transformFilter setValue:image.CIImage forKey:@"inputImage"];
+	
+	CGImageRef outputRef = [context createCGImage:transformFilter.outputImage fromRect:CGRectMake(0.0, 0.0, image.size.width, image.size.height)];
+	UIImage *newImage = [UIImage imageWithCGImage:outputRef];
+	NSData *pngData = UIImagePNGRepresentation(newImage);
+	// TODO: save image
+	NSLog(@"%@", newImage);
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 @end

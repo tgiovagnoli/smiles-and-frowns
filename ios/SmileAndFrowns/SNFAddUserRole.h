@@ -10,7 +10,7 @@
 
 extern NSString * const SNFAddUserRoleAddedChild;
 
-@interface SNFAddUserRole : SNFFormViewController <UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,CNContactPickerDelegate>
+@interface SNFAddUserRole : SNFFormViewController <UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,CNContactPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property SNFBoard * board;
 

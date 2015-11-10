@@ -101,6 +101,7 @@
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image_path" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
@@ -132,7 +133,7 @@
         <element name="SNFPredefinedBoard" positionX="-801" positionY="-369" width="128" height="90"/>
         <element name="SNFReward" positionX="-1397" positionY="-19" width="128" height="208"/>
         <element name="SNFSmile" positionX="-477" positionY="306" width="128" height="223"/>
-        <element name="SNFUser" positionX="-1089" positionY="201" width="128" height="238"/>
+        <element name="SNFUser" positionX="-1089" positionY="201" width="128" height="255"/>
         <element name="SNFUserRole" positionX="-108" positionY="0" width="128" height="180"/>
     </elements>
 </model>
