@@ -6,6 +6,8 @@
 
 - (void)setUserRole:(SNFUserRole *)userRole{
 	_userRole = userRole;
+	UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onReport:)];
+	[self.profileImage addGestureRecognizer:gr];
 	[self updateUI];
 }
 
@@ -34,6 +36,19 @@
 	
 	self.nameLabel.text = self.userRole.user.first_name;
 	self.spendLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.userRole.board smileCurrencyForUser:self.userRole.user]];
+	
+	if(self.userRole.user.image){
+		NSLog(@"loading %@", self.userRole.user.image);
+		NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+		UIImage *image = [UIImage imageWithContentsOfFile:[docsPath stringByAppendingPathComponent:self.userRole.user.image]];
+		if(image){
+			self.profileImage.image = image;
+		}
+	}else if([self.userRole.user.gender isEqualToString:SNFUserGenderFemale]){
+		self.profileImage.image = [UIImage imageNamed:@"female"];
+	}else{
+		self.profileImage.image = [UIImage imageNamed:@"male"];
+	}
 }
 
 - (IBAction)onSmile:(UIButton *)sender{
@@ -54,7 +69,7 @@
 	}
 }
 
-- (IBAction)onReport:(UIButton *)sender{
+- (void)onReport:(UITapGestureRecognizer *)sender{
 	if(self.delegate){
 		[self.delegate childCellWantsToOpenReport:self forUserRole:self.userRole];
 	}

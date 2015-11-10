@@ -199,7 +199,7 @@
 }
 
 - (void)childCellWantsToOpenReport:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFReporting *reporting = [[SNFReporting alloc] initWithSourceView:cell sourceRect:cell.reportingButton.frame contentSize:CGSizeMake(600,700) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionDown];
+	SNFReporting *reporting = [[SNFReporting alloc] initWithSourceView:cell sourceRect:cell.profileImage.frame contentSize:CGSizeMake(600,700) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionDown];
 	reporting.board = userRole.board;
 	reporting.user = userRole.user;
 	[[AppDelegate rootViewController] presentViewController:reporting animated:YES completion:^{}];

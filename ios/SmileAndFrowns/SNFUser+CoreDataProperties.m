@@ -8,6 +8,7 @@
 @dynamic username;
 @dynamic first_name;
 @dynamic last_name;
+@dynamic image;
 @dynamic email;
 @dynamic age;
 @dynamic gender;

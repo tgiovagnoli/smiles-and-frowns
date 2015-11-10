@@ -10,7 +10,6 @@
 @dynamic created_date;
 @dynamic device_date;
 @dynamic deleted;
-@dynamic image_path;
 @dynamic uuid;
 @dynamic collected;
 @dynamic remote_id;

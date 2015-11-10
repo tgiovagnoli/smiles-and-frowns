@@ -11,7 +11,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSNumber *collected;
 @property (nullable, nonatomic, retain) NSString *note;
-@property (nullable, nonatomic, retain) NSString *image_path;
 @property (nullable, nonatomic, retain) SNFBoard *board;
 @property (nullable, nonatomic, retain) SNFUser *user;
 @property (nullable, nonatomic, retain) SNFUser *creator;

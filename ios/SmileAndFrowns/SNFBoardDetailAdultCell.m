@@ -9,6 +9,12 @@
 	}
 	self.nameLabel.text = title;
 	self.noteLabel.text = @"";
+	
+	if([user.gender isEqualToString:SNFUserGenderFemale]){
+		self.profileImageView.image = [UIImage imageNamed:@"female"];
+	}else{
+		self.profileImageView.image = [UIImage imageNamed:@"male"];
+	}
 }
 
 @end
