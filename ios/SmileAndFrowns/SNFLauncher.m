@@ -36,13 +36,10 @@
 	
 	[[SNFModel sharedInstance] addObserver:self forKeyPath:@"loggedInUser" options:NSKeyValueObservingOptionNew context:nil];
 	
-	[NSTimer scheduledTimerWithTimeInterval:1 block:^{
-		IAPHelper * helper = [IAPHelper defaultHelper];
-		if(![helper hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
-			//self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
-			//self.bannerView.delegate = self;
-		}
-	} repeats:FALSE];
+	if(![[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
+		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
+		self.bannerView.delegate = self;
+	}
 }
 
 - (void) viewDidLayoutSubviews {
