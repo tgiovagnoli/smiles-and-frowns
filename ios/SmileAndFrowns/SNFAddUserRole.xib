@@ -104,7 +104,7 @@
                         <action selector="addFromContacts:" destination="-1" eventType="touchUpInside" id="bZY-9s-vpJ"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male.png" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-pL-nCJ">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male.png" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-pL-nCJ">
                     <rect key="frame" x="20" y="59" width="68" height="68"/>
                     <animations/>
                     <constraints>

@@ -66,37 +66,33 @@
                             <action selector="onFrown:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6Oy-Sb-frF"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2o-fQ-YZg">
+                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m5K-8z-sYb">
                         <rect key="frame" x="8" y="8" width="76" height="52"/>
                         <animations/>
-                        <state key="normal" title="r"/>
-                        <connections>
-                            <action selector="onReport:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nFD-ci-OAM"/>
-                        </connections>
-                    </button>
+                    </imageView>
                 </subviews>
                 <animations/>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="zWm-LH-Teg" secondAttribute="bottom" id="1Oa-da-KEm"/>
                     <constraint firstItem="m05-MF-XYM" firstAttribute="leading" secondItem="zWm-LH-Teg" secondAttribute="trailing" id="1wi-fg-faY"/>
+                    <constraint firstItem="zWm-LH-Teg" firstAttribute="top" secondItem="m5K-8z-sYb" secondAttribute="bottom" id="2tC-Zd-1PA"/>
                     <constraint firstItem="grE-lr-Wgr" firstAttribute="width" secondItem="QDd-CV-W1X" secondAttribute="width" id="4wd-6h-HVp"/>
                     <constraint firstAttribute="trailingMargin" secondItem="QDd-CV-W1X" secondAttribute="trailing" id="8K5-aU-7j3"/>
+                    <constraint firstItem="m5K-8z-sYb" firstAttribute="width" secondItem="3VG-5B-RHJ" secondAttribute="width" id="9Ht-jD-i9Q"/>
                     <constraint firstItem="QDd-CV-W1X" firstAttribute="width" secondItem="ss8-yC-l4c" secondAttribute="width" id="9cd-cg-Bhx"/>
                     <constraint firstItem="ss8-yC-l4c" firstAttribute="centerY" secondItem="m05-MF-XYM" secondAttribute="centerY" id="Bth-sz-VS8"/>
                     <constraint firstItem="QDd-CV-W1X" firstAttribute="centerY" secondItem="ss8-yC-l4c" secondAttribute="centerY" id="DO1-MO-atg"/>
-                    <constraint firstItem="Q2o-fQ-YZg" firstAttribute="width" secondItem="zWm-LH-Teg" secondAttribute="width" id="Eii-OS-t96"/>
                     <constraint firstItem="zWm-LH-Teg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Imk-m0-GmR"/>
-                    <constraint firstItem="Q2o-fQ-YZg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="L4j-jo-Opd"/>
+                    <constraint firstItem="m5K-8z-sYb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Lcy-qH-w3W"/>
                     <constraint firstItem="grE-lr-Wgr" firstAttribute="centerX" secondItem="QDd-CV-W1X" secondAttribute="centerX" id="P76-uc-lB1"/>
                     <constraint firstItem="ss8-yC-l4c" firstAttribute="leading" secondItem="m05-MF-XYM" secondAttribute="trailing" id="PDr-Zp-az7"/>
                     <constraint firstItem="RCh-dq-XBc" firstAttribute="centerX" secondItem="ss8-yC-l4c" secondAttribute="centerX" id="Qm2-xl-oGw"/>
                     <constraint firstItem="ss8-yC-l4c" firstAttribute="top" secondItem="RCh-dq-XBc" secondAttribute="bottom" id="Stt-de-XSh"/>
-                    <constraint firstItem="Q2o-fQ-YZg" firstAttribute="centerX" secondItem="zWm-LH-Teg" secondAttribute="centerX" id="Wpy-Sx-oDF"/>
                     <constraint firstAttribute="topMargin" secondItem="grE-lr-Wgr" secondAttribute="top" id="WuV-TG-cfC"/>
                     <constraint firstAttribute="topMargin" secondItem="RCh-dq-XBc" secondAttribute="top" id="ZKL-sq-qgc"/>
                     <constraint firstItem="QDd-CV-W1X" firstAttribute="top" secondItem="grE-lr-Wgr" secondAttribute="bottom" id="ZLr-en-4O6"/>
-                    <constraint firstItem="zWm-LH-Teg" firstAttribute="top" secondItem="Q2o-fQ-YZg" secondAttribute="bottom" id="a2e-hA-kpp"/>
                     <constraint firstItem="m05-MF-XYM" firstAttribute="centerY" secondItem="zWm-LH-Teg" secondAttribute="centerY" id="csd-7C-rPx"/>
+                    <constraint firstItem="3VG-5B-RHJ" firstAttribute="leading" secondItem="m5K-8z-sYb" secondAttribute="trailing" id="g50-zq-on7"/>
                     <constraint firstItem="m05-MF-XYM" firstAttribute="width" secondItem="zWm-LH-Teg" secondAttribute="width" id="kiv-9X-uNv"/>
                     <constraint firstItem="RCh-dq-XBc" firstAttribute="width" secondItem="ss8-yC-l4c" secondAttribute="width" id="njw-Gs-Ozg"/>
                     <constraint firstItem="ss8-yC-l4c" firstAttribute="width" secondItem="m05-MF-XYM" secondAttribute="width" id="noC-cC-m7N"/>
@@ -104,6 +100,7 @@
                     <constraint firstItem="QDd-CV-W1X" firstAttribute="leading" secondItem="ss8-yC-l4c" secondAttribute="trailing" id="rlr-5Y-TNB"/>
                     <constraint firstItem="3VG-5B-RHJ" firstAttribute="centerX" secondItem="m05-MF-XYM" secondAttribute="centerX" id="sKw-9Z-KKR"/>
                     <constraint firstItem="m05-MF-XYM" firstAttribute="top" secondItem="3VG-5B-RHJ" secondAttribute="bottom" id="tdE-g4-9me"/>
+                    <constraint firstItem="m5K-8z-sYb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tzw-OG-NUH"/>
                     <constraint firstItem="3VG-5B-RHJ" firstAttribute="width" secondItem="m05-MF-XYM" secondAttribute="width" id="zZc-h2-pwT"/>
                 </constraints>
             </tableViewCellContentView>
@@ -112,7 +109,7 @@
                 <outlet property="frownButton" destination="RCh-dq-XBc" id="22h-0J-UUQ"/>
                 <outlet property="frownsCountLabel" destination="ss8-yC-l4c" id="WZf-9d-kMv"/>
                 <outlet property="nameLabel" destination="zWm-LH-Teg" id="xqi-ha-Zd1"/>
-                <outlet property="reportingButton" destination="Q2o-fQ-YZg" id="5PS-Vf-CBI"/>
+                <outlet property="profileImage" destination="m5K-8z-sYb" id="fvJ-81-d8D"/>
                 <outlet property="smileButton" destination="3VG-5B-RHJ" id="iBh-nh-qO6"/>
                 <outlet property="smilesCountLabel" destination="m05-MF-XYM" id="nPj-2m-DuR"/>
                 <outlet property="spendButton" destination="grE-lr-Wgr" id="wCh-aM-q7L"/>

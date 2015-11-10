@@ -22,13 +22,13 @@
 @property (weak) IBOutlet UIButton *smileButton;
 @property (weak) IBOutlet UIButton *frownButton;
 @property (weak) IBOutlet UIButton *spendButton;
-@property (weak) IBOutlet UIButton * reportingButton;
+@property (weak) IBOutlet UIImageView *profileImage;
 
 @property (weak) NSObject <SNFBoardDetailChildCellDelegate> *delegate;
 
 - (IBAction)onSmile:(UIButton *)sender;
 - (IBAction)onFrown:(UIButton *)sender;
 - (IBAction)onSpend:(UIButton *)sender;
-- (IBAction)onReport:(UIButton *)sender;
+- (void)onReport:(UITapGestureRecognizer *)sender;
 
 @end

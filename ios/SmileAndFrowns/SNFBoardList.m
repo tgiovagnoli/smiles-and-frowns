@@ -174,9 +174,7 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	if([board.owner.email isEqualToString:authedUser.email]){
 		return YES;
 	}
-	NSLog(@"title - %@", board.title);
 	for(SNFUserRole *userRole in board.user_roles){
-		NSLog(@"email - %@ username - %@", userRole.user.email, userRole.user.username);
 		if([userRole.user.email isEqualToString:authedUser.email]){
 			return YES;
 		}
