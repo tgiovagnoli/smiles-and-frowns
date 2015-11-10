@@ -360,7 +360,7 @@ static SNFSyncService * _instance;
 	completion(nil, returnData);
 }
 
-- (void)flagContextForSave{
+- (void)saveContext{
 	if(_syncing){
 		// save will happen at end of sync no need to do it.
 		return;

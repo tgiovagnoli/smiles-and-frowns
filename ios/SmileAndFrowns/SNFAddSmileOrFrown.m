@@ -2,6 +2,7 @@
 #import "SNFAddSmileOrFrown.h"
 #import "SNFModel.h"
 #import "UIViewController+ModalCreation.h"
+#import "SNFSyncService.h"
 
 @implementation SNFAddSmileOrFrown
 
@@ -120,6 +121,7 @@
 									   @"creator": [[SNFModel sharedInstance].loggedInUser infoDictionary],
 									  };
 	[SNFSmile editOrCreatefromInfoDictionary:smileDictionary withContext:[SNFModel sharedInstance].managedObjectContext];
+	[[SNFSyncService instance] saveContext];
 }
 
 - (void)addFrownForBehavior:(SNFBehavior *)behavior{
@@ -135,7 +137,7 @@
 									  @"creator": [[SNFModel sharedInstance].loggedInUser infoDictionary],
 									  };
 	[SNFFrown editOrCreatefromInfoDictionary:frownDictionary withContext:context];
-	[context save:nil];
+	[[SNFSyncService instance] saveContext];
 }
 
 - (BOOL)validateAndWarnForBehavior:(SNFBehavior *)behavior{

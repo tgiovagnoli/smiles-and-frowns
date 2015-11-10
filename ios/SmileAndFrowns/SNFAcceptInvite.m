@@ -56,7 +56,7 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 		
 		if(self.invite) {
 			self.invite.accepted = @(TRUE);
-			[[SNFModel sharedInstance].managedObjectContext save:nil];
+			[[SNFSyncService instance] saveContext];
 		}
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:SNFInviteAccepted object:self];

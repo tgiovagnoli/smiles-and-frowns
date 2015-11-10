@@ -2,6 +2,7 @@
 #import "SNFAddBehavior.h"
 #import "SNFModel.h"
 #import "UIView+LayoutHelpers.h"
+#import "SNFSyncService.h"
 
 @implementation SNFAddBehavior
 
@@ -81,7 +82,7 @@
 									};
 	SNFPredefinedBehavior *behavior = (SNFPredefinedBehavior *)[SNFPredefinedBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 	[userGroup addBehaviorsObject:behavior];
-	[context save:nil];
+	[[SNFSyncService instance] saveContext];
 	_selectedBehavior = behavior;
 	
 	[self updateBehaviors];
@@ -105,7 +106,7 @@
 										@"title": SNFPredefinedBehaviorGroupUserName,
 										};
 		userGroup = (SNFPredefinedBehaviorGroup *)[SNFPredefinedBehaviorGroup editOrCreatefromInfoDictionary:userGroupInfo withContext:context];
-		[context save:nil];
+		[[SNFSyncService instance] saveContext];
 	}
 	return userGroup;
 }
