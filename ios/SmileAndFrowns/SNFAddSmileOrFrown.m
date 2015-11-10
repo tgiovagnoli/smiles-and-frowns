@@ -65,7 +65,7 @@
 }
 
 - (IBAction)onAddBehavior:(UIButton *)sender{
-	SNFAddBehavior *addBehavior = [[SNFAddBehavior alloc] initWithSourceView:sender sourceRect:CGRectZero contentSize:CGSizeMake(500,600)];
+	SNFAddBehavior *addBehavior = [[SNFAddBehavior alloc] initWithSourceView:sender sourceRect:CGRectZero contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft];
 	addBehavior.board = self.board;
 	addBehavior.delegate = self;
 	[self presentViewController:addBehavior animated:YES completion:^{}];
