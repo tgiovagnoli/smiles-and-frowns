@@ -10,8 +10,21 @@
 #import "SNFReporting.h"
 #import "UIViewControllerStack.h"
 
+
+typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
+	SNFBoardDetailUserRoleOwner,
+	SNFBoardDetailUserRoleChildren,
+	SNFBoardDetailUserRoleParents,
+	SNFBoardDetailUserRoleGuardians,
+};
+
+
 @interface SNFBoardDetail : UIViewController <UIViewControllerStackUpdating, UITableViewDelegate, UITableViewDataSource, SNFBoardDetailChildCellDelegate, SNFAddSmileOrFrownDelegate, SNFSpendRewardsDelegate> {
 	NSArray *_userRoles;
+	
+	NSArray *_children;
+	NSArray *_parents;
+	NSArray *_guardians;
 }
 
 @property (weak) IBOutlet UITableView *rolesTable;

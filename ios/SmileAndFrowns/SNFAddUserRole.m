@@ -151,6 +151,8 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	[[SNFModel sharedInstance].managedObjectContext save:nil];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:SNFAddUserRoleAddedChild object:nil];
+	
+	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void) sendInvite {
@@ -202,15 +204,28 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 			[service inviteWithData:data andCompletion:^(NSError *error) {
 				[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 				if(error) {
-					[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+					if(error.code == SNFErrorCodeDjangoDebugError){
+						APDDjangoErrorViewer *djangoView = [[APDDjangoErrorViewer alloc] init];
+						[djangoView showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"invite"]];
+						[self presentViewController:djangoView animated:YES completion:^{}];
+					}else{
+						[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+					}
 				} else {
-					[self displayOKAlertWithTitle:@"Success" message:[NSString stringWithFormat:@"Invited %@ to board %@",self.email.text,self.board.title] completion:nil];
-					[self dismissViewControllerAnimated:YES completion:^{}];
+					[self displayOKAlertWithTitle:@"Success" message:[NSString stringWithFormat:@"Invited %@ to board %@",self.email.text,self.board.title] completion:^(UIAlertAction *action) {
+						[self dismissViewControllerAnimated:YES completion:^{}];
+					}];
 				}
 			}];
 		}else{
-			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			if(error.code == SNFErrorCodeDjangoDebugError){
+				APDDjangoErrorViewer *djangoView = [[APDDjangoErrorViewer alloc] init];
+				[djangoView showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"invite"]];
+				[self presentViewController:djangoView animated:YES completion:^{}];
+			}else{
+				[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			}
 		}
 	}];
 }

@@ -18,8 +18,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XA7-Ce-4XU">
-                    <rect key="frame" x="0.0" y="10" width="600" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XA7-Ce-4XU">
+                    <rect key="frame" x="80" y="10" width="440" height="21"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -63,12 +63,12 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="H4t-rc-jO4" secondAttribute="trailing" id="2i9-io-KOH"/>
-                <constraint firstAttribute="trailing" secondItem="XA7-Ce-4XU" secondAttribute="trailing" id="BgS-3Y-y8R"/>
+                <constraint firstAttribute="trailing" secondItem="XA7-Ce-4XU" secondAttribute="trailing" constant="80" id="BgS-3Y-y8R"/>
                 <constraint firstItem="md8-2Q-eLn" firstAttribute="top" secondItem="H4t-rc-jO4" secondAttribute="bottom" id="EoF-K0-Niw"/>
                 <constraint firstItem="H4t-rc-jO4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OIc-XM-M14"/>
                 <constraint firstAttribute="trailing" secondItem="md8-2Q-eLn" secondAttribute="trailing" id="P04-E7-82h"/>
                 <constraint firstItem="H4t-rc-jO4" firstAttribute="top" secondItem="XA7-Ce-4XU" secondAttribute="bottom" constant="19" id="Y1s-S7-3rH"/>
-                <constraint firstItem="XA7-Ce-4XU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bMt-BF-qeD"/>
+                <constraint firstItem="XA7-Ce-4XU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="80" id="bMt-BF-qeD"/>
                 <constraint firstItem="md8-2Q-eLn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bh2-a4-Xc5"/>
                 <constraint firstItem="FKO-le-D3j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="gmB-Y0-Uen"/>
                 <constraint firstItem="FKO-le-D3j" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="iUN-bU-l6q"/>
