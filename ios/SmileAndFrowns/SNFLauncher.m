@@ -11,6 +11,7 @@
 #import "SNFCreateAccount.h"
 #import "UIViewController+Alerts.h"
 #import "SNFADBannerView.h"
+#import "IAPHelper.h"
 
 @interface SNFLauncher ()
 @property BOOL firstlayout;
@@ -34,14 +35,6 @@
 	}
 	
 	[[SNFModel sharedInstance] addObserver:self forKeyPath:@"loggedInUser" options:NSKeyValueObservingOptionNew context:nil];
-	
-	if([SNFModel sharedInstance].pendingInviteCode) {
-		[NSTimer scheduledTimerWithTimeInterval:.3 block:^{
-			SNFCreateAccount * create = [[SNFCreateAccount alloc] initWithSourceView:self.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
-			create.nextViewController = [[SNFAcceptInvite alloc] initWithSourceView:self.acceptInviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
-			[[AppDelegate rootViewController] presentViewController:create animated:TRUE completion:nil];
-		} repeats:FALSE];
-	}
 	
 	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 	self.bannerView.delegate = self;

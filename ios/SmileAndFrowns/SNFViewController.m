@@ -28,6 +28,7 @@ static __weak SNFViewController * _instance;
 	
 	_instance = self;
 	self.firstlayout = true;
+	
 	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 	self.bannerView.delegate = self;
 	

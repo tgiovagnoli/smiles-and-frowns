@@ -91,20 +91,16 @@
 
 - (void) restorePurchases {
 	
-	if(!self.helper) {
-		self.helper = [[IAPHelper alloc] init];
-	}
-	
-	__weak SNFMore * weakself = self;
+	IAPHelper * helper = [IAPHelper defaultHelper];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[self.helper restorePurchasesWithCompletion:^(NSError *error, SKPaymentTransaction *transaction, BOOL completed) {
+	[helper restorePurchasesWithCompletion:^(NSError *error, SKPaymentTransaction *transaction, BOOL completed) {
 		
 		NSString * productId = transaction.payment.productIdentifier;
-		NSString * type = [IAPHelper productTypeForProductId:productId];
+		NSString * type = [helper productTypeForProductId:productId];
 		
-		if([[IAPHelper productNameByProductId:productId] isEqualToString:@"RemoveAds"]) {
+		if([[helper productNameByProductId:productId] isEqualToString:@"RemoveAds"]) {
 			[[NSNotificationCenter defaultCenter] postNotificationName:SNFADBannerViewPurchasedRemoveAds object:nil];
 		}
 		
@@ -115,7 +111,7 @@
 		}
 		
 		if(completed) {
-			[MBProgressHUD hideHUDForView:weakself.view animated:TRUE];
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Success" message:@"Your purchases were restored" preferredStyle:UIAlertControllerStyleAlert];
 			[alert addAction:[UIAlertAction OKAction]];
@@ -128,15 +124,15 @@
 
 - (void) removeAds {
 	
-	IAPHelper * helper = [[IAPHelper alloc] init];
+	IAPHelper * helper = [IAPHelper defaultHelper];
 	
-	NSArray * products = [IAPHelper productIdsByNames:@[@"RemoveAds"]];
+	NSArray * products = [helper productIdsByNames:@[@"RemoveAds"]];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
 	[helper loadItunesProducts:products withCompletion:^(NSError *error) {
 		
-		NSString * product = [IAPHelper productIdByName:@"RemoveAds"];
+		NSString * product = [helper productIdByName:@"RemoveAds"];
 		
 		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			

@@ -5,10 +5,7 @@
 #import "SNFViewController.h"
 #import "AppDelegate.h"
 #import "SNFSyncService.h"
-
-@interface SNFBoardList ()
-@property IAPHelper * helper;
-@end
+#import "NSTimer+Blocks.h"
 
 @implementation SNFBoardList
 
@@ -303,20 +300,20 @@
 }
 
 
-- (void)purchaseNewBoard:(SNFPredefinedBoard *)pdb{
+- (void) purchaseNewBoard:(SNFPredefinedBoard *) pdb {
 	
-	NSArray * productIds = [IAPHelper productIdsByNames:@[@"NewBoard"]];
-	
-	self.helper = [[IAPHelper alloc] init];
-	
-	#ifdef TARGET_IPHONE_SIMULATOR
+	#if TARGET_IPHONE_SIMULATOR
 	[self addNewBoard:pdb withTransactionID:[[NSUUID UUID] UUIDString]];
 	return;
 	#endif
 	
+	IAPHelper * helper = [IAPHelper defaultHelper];
+	
+	NSArray * productIds = [helper productIdsByNames:@[@"NewBoard"]];
+	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[self.helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
+	[helper loadItunesProducts:productIds withCompletion:^(NSError *error) {
 		
 		if(error) {
 			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
@@ -325,11 +322,10 @@
 			return;
 		}
 		
-		NSString * product = [IAPHelper productIdByName:@"NewBoard"];
+		NSString * product = [helper productIdByName:@"NewBoard"];
 		NSLog(@"NewBoard product id: %@", product);
-
-		[self.helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
-
+		
+		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
@@ -340,13 +336,14 @@
 				return;
 			}
 			
-			[self addNewBoard:pdb withTransactionID:transaction.transactionIdentifier];
-			
+			[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
+				[self addNewBoard:pdb withTransactionID:transaction.transactionIdentifier];
+			} repeats:FALSE];
 		}];
 	}];
 }
 
-- (void)addNewBoard:(SNFPredefinedBoard *)pdb withTransactionID:(NSString *)transactionId{
+- (void) addNewBoard:(SNFPredefinedBoard *) pdb withTransactionID:(NSString *) transactionId {
 	SNFBoard * newBoard = [SNFBoard boardFromPredefinedBoard:pdb andContext:[SNFModel sharedInstance].managedObjectContext];
 	if(transactionId) {
 		newBoard.transaction_id = transactionId;

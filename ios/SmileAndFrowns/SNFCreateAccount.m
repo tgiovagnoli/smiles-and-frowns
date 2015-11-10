@@ -123,10 +123,9 @@
 	}];
 }
 
-- (IBAction) cancel:(id)sender {
+- (IBAction) cancel:(id) sender {
 	[self.view endEditing:TRUE];
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
-	[SNFModel sharedInstance].pendingInviteCode = nil;
 }
 
 - (IBAction) login:(id) sender {

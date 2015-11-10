@@ -10,6 +10,7 @@
 #import "SNFLogin.h"
 #import "SNFCreateAccount.h"
 #import "NSTimer+Blocks.h"
+#import <HockeySDK/HockeySDK.h>
 
 static AppDelegate * _instance;
 
@@ -33,6 +34,10 @@ static AppDelegate * _instance;
 	[SNFDateManager unlock];
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	
+	[[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"530994a421524ee9916ed2cc1a103f1f"];
+	[[BITHockeyManager sharedHockeyManager] startManager];
+	[[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 	
 	[FBSDKAppEvents activateApp];
 	[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];

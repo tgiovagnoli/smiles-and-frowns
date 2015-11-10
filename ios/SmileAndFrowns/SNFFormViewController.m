@@ -3,6 +3,7 @@
 #import "UIView+LayoutHelpers.h"
 #import "NSTimer+Blocks.h"
 #import "SNFViewController.h"
+#import "IAPHelper.h"
 
 @interface SNFFormViewController ()
 @property BOOL firstlayout;
@@ -27,6 +28,10 @@
 	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		return;
 	}
+	
+//	if([[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
+//		return;
+//	}
 	
 	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 	self.bannerView.delegate = self;
