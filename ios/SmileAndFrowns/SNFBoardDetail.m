@@ -164,9 +164,9 @@
 	SNFAddSmileOrFrown *addModal = nil;
 	
 	if(type == SNFAddSmileOrFrownTypeSmile) {
-		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.smileButton.frame contentSize:CGSizeMake(500,600)];
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.smileButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight];
 	} else {
-		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.frownButton.frame contentSize:CGSizeMake(500,600)];
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.frownButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight];
 	}
 	
 	addModal.type = type;
@@ -181,7 +181,7 @@
 }
 
 - (void)childCellWantsToSpend:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFSpendRewards * rewards = [[SNFSpendRewards alloc] initWithSourceView:cell sourceRect:cell.spendButton.frame contentSize:CGSizeMake(500,490)];
+	SNFSpendRewards * rewards = [[SNFSpendRewards alloc] initWithSourceView:cell sourceRect:cell.spendButton.frame contentSize:CGSizeMake(500,490) arrowDirections:UIPopoverArrowDirectionRight];
 	rewards.board = self.board;
 	rewards.user = userRole.user;
 	rewards.delegate = self;
@@ -189,7 +189,7 @@
 }
 
 - (void)childCellWantsToOpenReport:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFReporting *reporting = [[SNFReporting alloc] initWithSourceView:cell sourceRect:cell.reportingButton.frame contentSize:CGSizeMake(600,700)];
+	SNFReporting *reporting = [[SNFReporting alloc] initWithSourceView:cell sourceRect:cell.reportingButton.frame contentSize:CGSizeMake(600,700) arrowDirections:UIPopoverArrowDirectionLeft];
 	reporting.board = userRole.board;
 	reporting.user = userRole.user;
 	[[AppDelegate rootViewController] presentViewController:reporting animated:YES completion:^{}];

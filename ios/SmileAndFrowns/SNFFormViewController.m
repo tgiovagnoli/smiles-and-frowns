@@ -65,10 +65,6 @@
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
 	CGFloat bottom = keyboardFrameEnd.size.height;
 	
-	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		return;
-	}
-	
 	CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
 	
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
@@ -86,6 +82,11 @@
 		containerScrollView.height -= newBottom;
 		
 	} else {
+		
+		//in this case the view controller is in a modal, so do'nt allow ipad popovers to be updated.
+		if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+			return;
+		}
 		
 		CGFloat csb = self.scrollView.bottom;
 		CGFloat heightDiff = screenHeight - csb;
@@ -108,14 +109,16 @@
 - (void) keyboardWillHide:(NSNotification *) notification {
 	self.keyboardIsVisible = FALSE;
 	
-	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		return;
-	}
-	
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
 		containerScrollView.height = self.superScrollViewHeight;
 	} else {
+		
+		//in this case the view controller is in a modal, so do'nt allow ipad popovers to be updated.
+		if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+			return;
+		}
+		
 		if(self.bannerView.superview) {
 			self.scrollViewBottom.constant = self.bannerView.height;
 		} else {
