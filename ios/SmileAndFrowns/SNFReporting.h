@@ -1,17 +1,18 @@
+
 #import <UIKit/UIKit.h>
 #import "SNFUser.h"
 #import "SNFBoard.h"
 #import "SNFReportGeneration.h"
 #import "SNFReportCellSmileFrown.h"
 #import "SNFReportingSectionHeader.h"
-
+#import "SNFFormViewController.h"
 
 typedef NS_ENUM(NSInteger, SNFReportingFilter){
 	SNFReportingFilterCurrentBoard,
 	SNFReportingFilterAllBoards,
 };
 
-@interface SNFReporting : UIViewController <UITableViewDataSource, UITableViewDelegate>{
+@interface SNFReporting : SNFFormViewController <UITableViewDataSource, UITableViewDelegate>{
 	NSArray *_reportData;
 	BOOL _ascending;
 }
