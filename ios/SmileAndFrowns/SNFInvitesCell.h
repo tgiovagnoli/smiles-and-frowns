@@ -1,8 +1,12 @@
 
 #import <UIKit/UIKit.h>
+#import "SNFSwipeCell.h"
 
-@interface SNFInvitesCell : UITableViewCell
+extern NSString * const SNFInvitesCellDelete;
 
+@interface SNFInvitesCell : SNFSwipeCell
+
+@property NSString * inviteCode;
 @property (weak) IBOutlet UILabel * titleLabel;
 @property (weak) IBOutlet UILabel * dateLabel;
 
