@@ -284,7 +284,7 @@
 	NSDictionary * data = nil;
 	if(!inviteCode || inviteCode.isEmpty) {
 		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Invite code required"]);
-	}else{
+	} else {
 		data = @{@"code":inviteCode};
 	}
 	
