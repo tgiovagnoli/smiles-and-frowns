@@ -8,6 +8,7 @@
 	return @{
 			 @"uuid": @"uuid",
 			 @"title": @"title",
+			 @"positive": @"positive",
 			 };
 }
 

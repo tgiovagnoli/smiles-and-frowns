@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addInitialRewards;
 - (void)reset;
 - (NSArray *)sortedActiveBehaviors;
+- (NSArray *)sortedActivePositiveBehaviors;
+- (NSArray *)sortedActiveNegativeBehaviors;
 - (NSArray *)sortedActiveRewards;
 - (NSArray *)smilesForUser:(SNFUser *)user;
 - (NSArray *)frownsForUser:(SNFUser *)user;

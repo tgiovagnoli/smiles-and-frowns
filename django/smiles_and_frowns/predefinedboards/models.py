@@ -4,6 +4,7 @@ import uuid
 class PredefinedBehavior(models.Model):
 	title = models.CharField(max_length=128)
 	uuid = models.CharField(max_length=64)
+	positive = models.BooleanField(default=True)
 	def __unicode__(self):
 		return self.title
 	def save(self, *args, **kwargs):

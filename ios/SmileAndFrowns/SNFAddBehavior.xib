@@ -11,6 +11,7 @@
                 <outlet property="behaviorsTable" destination="1Ff-CQ-Zgg" id="Olb-81-Qlj"/>
                 <outlet property="closeButton" destination="Dlr-0x-QdB" id="PJb-ph-9XG"/>
                 <outlet property="formView" destination="i5M-Pr-FkT" id="hNy-Lw-VH4"/>
+                <outlet property="positiveNegativeSegment" destination="eYq-ki-A3y" id="tUH-AG-AyG"/>
                 <outlet property="scrollView" destination="Awv-dk-Olb" id="74c-hY-EjD"/>
                 <outlet property="scrollViewBottom" destination="FwU-ah-KIP" id="yVX-Rw-t7E"/>
                 <outlet property="view" destination="04U-4t-QMg" id="pCF-Jd-dd2"/>
@@ -21,15 +22,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="409"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Ff-CQ-Zgg">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="311"/>
-                    <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="w11-iJ-Uy3"/>
-                        <outlet property="delegate" destination="-1" id="9tJ-t7-5JK"/>
-                    </connections>
-                </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-LU-UHK">
                     <rect key="frame" x="164" y="359" width="273" height="30"/>
                     <animations/>
@@ -56,21 +48,50 @@
                         <action selector="onNewBehavior:" destination="-1" eventType="touchUpInside" id="fnZ-0y-Yct"/>
                     </connections>
                 </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eYq-ki-A3y">
+                    <rect key="frame" x="10" y="10" width="580" height="29"/>
+                    <animations/>
+                    <segments>
+                        <segment title="Positive"/>
+                        <segment title="Negative"/>
+                    </segments>
+                    <connections>
+                        <action selector="positiveNegativeSegmentChange:" destination="-1" eventType="valueChanged" id="tEd-hx-XAc"/>
+                    </connections>
+                </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Ff-CQ-Zgg">
+                    <rect key="frame" x="0.0" y="48" width="600" height="263"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="w11-iJ-Uy3"/>
+                        <outlet property="delegate" destination="-1" id="9tJ-t7-5JK"/>
+                    </connections>
+                </tableView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="1Ff-CQ-Zgg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0wF-H5-KUa"/>
                 <constraint firstItem="eoQ-LU-UHK" firstAttribute="top" secondItem="xbI-aD-e8X" secondAttribute="bottom" constant="8" id="2fU-db-1z2"/>
+                <constraint firstItem="eYq-ki-A3y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="4J2-ux-XzP"/>
                 <constraint firstAttribute="trailing" secondItem="1Ff-CQ-Zgg" secondAttribute="trailing" id="9aH-ge-mMF"/>
+                <constraint firstAttribute="trailing" secondItem="eYq-ki-A3y" secondAttribute="trailing" constant="10" id="BOs-FN-8sc"/>
+                <constraint firstItem="1Ff-CQ-Zgg" firstAttribute="top" secondItem="eYq-ki-A3y" secondAttribute="bottom" constant="10" id="HkD-Sk-AtO"/>
                 <constraint firstItem="xbI-aD-e8X" firstAttribute="top" secondItem="1Ff-CQ-Zgg" secondAttribute="bottom" constant="10" id="IDI-yY-Zko"/>
                 <constraint firstAttribute="bottom" secondItem="eoQ-LU-UHK" secondAttribute="bottom" constant="20" id="M7N-pc-Z9v"/>
                 <constraint firstItem="1Ff-CQ-Zgg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Sqr-wg-YcO"/>
                 <constraint firstItem="xbI-aD-e8X" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hoE-YA-dBd"/>
                 <constraint firstItem="eoQ-LU-UHK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jyj-u9-uBf"/>
+                <constraint firstItem="eYq-ki-A3y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="qeS-bx-uSV"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Sqr-wg-YcO"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="434" y="280.5"/>
         </view>
         <view contentMode="scaleToFill" id="04U-4t-QMg">
@@ -89,7 +110,7 @@
                         <constraint firstAttribute="height" constant="21" id="c9m-G3-ZNN"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlr-0x-QdB">

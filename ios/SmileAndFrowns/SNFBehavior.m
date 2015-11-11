@@ -13,6 +13,7 @@
 		@"device_date": @"device_date",
 		@"remote_id": @"id",
 		@"board": @"board",
+		@"positive": @"positive",
 	};
 }
 

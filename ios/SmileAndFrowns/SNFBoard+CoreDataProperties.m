@@ -2,7 +2,6 @@
 
 #import "SNFReward.h"
 #import "SNFUserRole.h"
-#import "SNFInvite.h"
 #import "SNFFrown.h"
 #import "SNFUser.h"
 

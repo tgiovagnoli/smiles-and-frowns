@@ -4,7 +4,6 @@
 #import "SNFError.h"
 #import "SNFUser.h"
 #import "NSManagedObject+InfoDictionary.h"
-#import "SNFInvite.h"
 #import "ATITwitterAuthHandler.h"
 #import "ATIFacebookAuthHandler.h"
 #import "SNFSyncService.h"

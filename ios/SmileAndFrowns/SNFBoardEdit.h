@@ -14,13 +14,19 @@ extern NSString * const SNFBoardEditFinished;
 
 @class SNFBoardEdit;
 
+typedef NS_ENUM(NSInteger, SNFBoardEditBehaviorType){
+	SNFBoardEditBehaviorTypePositive,
+	SNFBoardEditBehaviorTypeNegative
+};
+
 @protocol SNFBoardEditDelegate <NSObject>
 - (void)boardEditor:(SNFBoardEdit *)be finishedWithBoard:(SNFBoard *)board;
 @end
 
 @interface SNFBoardEdit : SNFFormViewController <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate, SNFAddCellDelegate, SNFAddRewardDelegate>{
-	NSArray *_sortedBehaviors;
 	NSArray *_sortedRewards;
+	NSArray *_positiveBehaviors;
+	NSArray *_negativeBehaviors;
 }
 
 @property (weak) IBOutlet UITextField *boardTitleField;

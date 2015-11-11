@@ -32,7 +32,8 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 }
 
 - (void) reloadBehaviors {
-	_sortedBehaviors = [self.board sortedActiveBehaviors];
+	_positiveBehaviors = [self.board sortedActivePositiveBehaviors];
+	_negativeBehaviors = [self.board sortedActiveNegativeBehaviors];
 	[self.behaviorsTable reloadData];
 }
 
@@ -63,16 +64,47 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	addBehavior.delegate = self;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+	return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-	if(tableView == self.behaviorsTable){
-		return _sortedBehaviors.count;
+	switch((SNFBoardEditBehaviorType)section) {
+		case SNFBoardEditBehaviorTypePositive:
+			return _positiveBehaviors.count;
+			break;
+		case SNFBoardEditBehaviorTypeNegative:
+			return _negativeBehaviors.count;
+			break;
 	}
 	return 0;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+	UILabel *label = [[UILabel alloc] init];
+	switch((SNFBoardEditBehaviorType)section) {
+		case SNFBoardEditBehaviorTypePositive:
+			label.text = @"Positive Behaviors";
+			break;
+		case SNFBoardEditBehaviorTypeNegative:
+			label.text = @"Negative Behaviors";
+			break;
+	}
+	label.backgroundColor = [UIColor lightGrayColor];
+	return label;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	if(tableView == self.behaviorsTable){
-		SNFBehavior *behavior = [_sortedBehaviors objectAtIndex:indexPath.row];
+		SNFBehavior *behavior;
+		switch((SNFBoardEditBehaviorType)indexPath.section) {
+			case SNFBoardEditBehaviorTypePositive:
+				behavior = [_positiveBehaviors objectAtIndex:indexPath.row];
+				break;
+			case SNFBoardEditBehaviorTypeNegative:
+				behavior = [_negativeBehaviors objectAtIndex:indexPath.row];
+				break;
+		}
 		SNFBoardEditBehaviorCell *cell = [self.behaviorsTable dequeueReusableCellWithIdentifier:@"SNFBoardEditBehaviorCell"];
 		if(!cell){
 			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardEditBehaviorCell" owner:self options:nil];

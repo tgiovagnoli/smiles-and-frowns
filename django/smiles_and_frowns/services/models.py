@@ -106,6 +106,7 @@ class Behavior(SyncModel):
 	title = models.CharField(max_length=128)
 	note = models.CharField(max_length=256, blank=True, null=True, default="")
 	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
+	positive = models.BooleanField(default=True)
 	def __unicode__(self):
 		return self.title
 

@@ -107,8 +107,6 @@
 		D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDB1BDAEA000048D3F7 /* SNFFrown.m */; };
 		D659DBF41BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDD1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m */; };
 		D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBDF1BDAEA000048D3F7 /* SNFReward.m */; };
-		D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */; };
-		D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE31BDAEA000048D3F7 /* SNFInvite.m */; };
 		D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE51BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m */; };
 		D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE71BDAEA000048D3F7 /* SNFUser.m */; };
 		D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBE91BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m */; };
@@ -316,10 +314,6 @@
 		D659DBDD1BDAEA000048D3F7 /* SNFReward+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFReward+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D659DBDE1BDAEA000048D3F7 /* SNFReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReward.h; sourceTree = "<group>"; };
 		D659DBDF1BDAEA000048D3F7 /* SNFReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReward.m; sourceTree = "<group>"; };
-		D659DBE01BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFInvite+CoreDataProperties.h"; sourceTree = "<group>"; };
-		D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFInvite+CoreDataProperties.m"; sourceTree = "<group>"; };
-		D659DBE21BDAEA000048D3F7 /* SNFInvite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFInvite.h; sourceTree = "<group>"; };
-		D659DBE31BDAEA000048D3F7 /* SNFInvite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFInvite.m; sourceTree = "<group>"; };
 		D659DBE41BDAEA000048D3F7 /* SNFUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFUser+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D659DBE51BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFUser+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D659DBE61BDAEA000048D3F7 /* SNFUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUser.h; sourceTree = "<group>"; };
@@ -741,10 +735,6 @@
 				D659DBDB1BDAEA000048D3F7 /* SNFFrown.m */,
 				D659DBD81BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.h */,
 				D659DBD91BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m */,
-				D659DBE21BDAEA000048D3F7 /* SNFInvite.h */,
-				D659DBE31BDAEA000048D3F7 /* SNFInvite.m */,
-				D659DBE01BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.h */,
-				D659DBE11BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m */,
 				D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */,
 				D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */,
 				D6270EBF1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.h */,
@@ -1093,7 +1083,6 @@
 				D6270EDD1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.m in Sources */,
 				078DF4C81BEA932200CBFAA4 /* ATITwitterAuthHandler.m in Sources */,
 				078DF4C21BE8810600CBFAA4 /* SNFFormViewController.m in Sources */,
-				D659DBF71BDAEA000048D3F7 /* SNFInvite.m in Sources */,
 				D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */,
 				D6270ED81BE817E900F7C39A /* SNFAddBehaviorCell.m in Sources */,
 				D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */,
@@ -1117,7 +1106,6 @@
 				0707D6DC1BE428BA002F1FC0 /* SNFInvites.m in Sources */,
 				0707D6CB1BE2B2F8002F1FC0 /* SNFCreateAccount.m in Sources */,
 				D65DF1101BE29A42009CC6DF /* SNFTabMenu.m in Sources */,
-				D659DBF61BDAEA000048D3F7 /* SNFInvite+CoreDataProperties.m in Sources */,
 				D6F4422F1BEBF411009C2866 /* SNFReportingSectionHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
