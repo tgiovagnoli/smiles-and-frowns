@@ -36,28 +36,7 @@
 	
 	self.tableView.delegate = self;
 	self.tableView.dataSource = self;
-	[self reload];
-	
-	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-	
-	[self.service invitesWithCompletion:^(NSError *error, NSArray * receivedInvites, NSArray * sentInvites) {
-		
-		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-		
-		if(error) {
-			
-			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
-			
-		} else {
-			
-			self.receivedInvites = receivedInvites;
-			self.sentInvites = sentInvites;
-			
-			[[UIApplication sharedApplication] setApplicationIconBadgeNumber:receivedInvites.count];
-			[self reload];
-		}
-		
-	}];
+	[self reloadDataFirst];
 	
 	UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
 	[refreshControl addTarget:self action:@selector(onInviteRefresh:) forControlEvents:UIControlEventValueChanged];
@@ -65,6 +44,7 @@
 	[self.tableView insertSubview:refreshControl atIndex:0];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteAccepted:) name:SNFInviteAccepted object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteDelete:) name:SNFInvitesCellDelete object:nil];
 }
 
 - (void) dealloc {
@@ -72,17 +52,11 @@
 }
 
 - (void) onInviteRefresh:(UIRefreshControl *) refresh {
-	//[SNFInvite deleteAllInvites];
-	
 	[self.service invitesWithCompletion:^(NSError * error, NSArray * receivedInvites, NSArray * sentInvites) {
 		[refresh endRefreshing];
-		
 		if(error) {
-			
 			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
-			
 		} else {
-			
 			[[UIApplication sharedApplication] setApplicationIconBadgeNumber:receivedInvites.count];
 			self.receivedInvites = receivedInvites;
 			self.sentInvites = sentInvites;
@@ -136,6 +110,21 @@
 	[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
 	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
 	return [formatter dateFromString:dateString];
+}
+
+- (void) reloadDataFirst {
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	[self.service invitesWithCompletion:^(NSError *error, NSArray *receivedInvites, NSArray *sentInvites) {
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		if(error) {
+			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			return;
+		}
+		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:receivedInvites.count];
+		self.receivedInvites = receivedInvites;
+		self.sentInvites = sentInvites;
+		[self reload];
+	}];
 }
 
 - (void) reload {
@@ -223,7 +212,19 @@
 }
 
 - (void) onInviteAccepted:(NSNotification *) note {
-	[self reload];
+	[self reloadDataFirst];
+}
+
+- (void) onInviteDelete:(NSNotification *) note {
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	[self.service deleteInviteCode:[note.userInfo objectForKey:@"code"] andCompletion:^(NSError *error) {
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		if(error) {
+			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			return;
+		}
+		[self reloadDataFirst];
+	}];
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
@@ -301,6 +302,7 @@
 	NSDate * date = [self dateFromString:invite[@"created_date"]];
 	
 	cell.dateLabel.text = [formatter stringFromDate:date];
+	cell.inviteCode = invite[@"code"];
 	
 	return cell;
 }

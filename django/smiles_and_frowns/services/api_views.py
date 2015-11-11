@@ -374,6 +374,22 @@ def invite_accept(request):
 	return json_response(output)
 
 @csrf_exempt
+def invite_delete(request):
+	'''
+	@param code
+	'''
+	#check auth
+	if not request.user.is_authenticated():
+		return login_required_response()
+	code = request.POST.get('code',None)
+	if not code:
+		return json_response_error("Invite code required")
+	invites = models.Invite.objects.filter(code=code)
+	for invite in invites:
+		invite.delete()
+	return json_response({})
+
+@csrf_exempt
 def invite(request):
 	'''
 	@param role - PROFILE_ROLE_CHOICES from models.py

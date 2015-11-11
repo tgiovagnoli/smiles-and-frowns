@@ -28,7 +28,7 @@
                         <constraint firstAttribute="height" constant="21" id="yuf-aA-rWb"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kq-mh-ITC">
@@ -98,7 +98,7 @@
                         <constraint firstAttribute="height" constant="21" id="saS-iB-2t2"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4E-m0-Q5T">
@@ -114,14 +114,14 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smiles &amp; Frowns" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEn-pn-T6I">
-                    <rect key="frame" x="196" y="10" width="209" height="23"/>
+                    <rect key="frame" x="196" y="20" width="209" height="23"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="6Cl-ID-hOJ"/>
                         <constraint firstAttribute="width" constant="209" id="vWm-vX-7cA"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -142,7 +142,7 @@
                 <constraint firstAttribute="bottom" secondItem="l98-O4-0q6" secondAttribute="bottom" constant="13" id="QL0-P7-IlB"/>
                 <constraint firstItem="eR4-QF-gvg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UHB-mf-bwu"/>
                 <constraint firstAttribute="trailing" secondItem="eR4-QF-gvg" secondAttribute="trailing" id="YTT-oD-1d7"/>
-                <constraint firstItem="xEn-pn-T6I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="ZW3-Pk-3Rq"/>
+                <constraint firstItem="xEn-pn-T6I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="ZW3-Pk-3Rq"/>
                 <constraint firstAttribute="trailing" secondItem="kwu-gI-Bcg" secondAttribute="trailing" id="aCc-7m-Ykb"/>
                 <constraint firstItem="eXF-OV-gDJ" firstAttribute="bottom" secondItem="l98-O4-0q6" secondAttribute="bottom" constant="5" id="bka-CX-7uz"/>
                 <constraint firstItem="3kq-mh-ITC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cU6-NQ-DmD"/>

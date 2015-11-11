@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZLo-ZE-WWb">
-                    <rect key="frame" x="0.0" y="45" width="600" height="555"/>
+                    <rect key="frame" x="0.0" y="49" width="600" height="551"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -25,14 +25,14 @@
                     </connections>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cw5-dZ-fCt">
-                    <rect key="frame" x="248" y="10" width="104" height="21"/>
+                    <rect key="frame" x="248" y="20" width="104" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="o5D-DV-WTb"/>
                         <constraint firstAttribute="width" constant="104" id="sbD-97-Ehm"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -42,9 +42,9 @@
                 <constraint firstAttribute="trailing" secondItem="ZLo-ZE-WWb" secondAttribute="trailing" id="6re-Em-38P"/>
                 <constraint firstAttribute="bottom" secondItem="ZLo-ZE-WWb" secondAttribute="bottom" id="A9l-nA-3IU"/>
                 <constraint firstItem="ZLo-ZE-WWb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HoP-P5-K5E"/>
-                <constraint firstItem="ZLo-ZE-WWb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="45" id="WW0-iL-3rh"/>
                 <constraint firstItem="Cw5-dZ-fCt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WzC-21-LoW"/>
-                <constraint firstItem="Cw5-dZ-fCt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="uEc-tG-QfH"/>
+                <constraint firstItem="ZLo-ZE-WWb" firstAttribute="top" secondItem="Cw5-dZ-fCt" secondAttribute="bottom" constant="8" id="t4O-A6-1bV"/>
+                <constraint firstItem="Cw5-dZ-fCt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="uEc-tG-QfH"/>
             </constraints>
         </view>
     </objects>

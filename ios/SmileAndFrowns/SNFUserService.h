@@ -12,6 +12,7 @@ typedef void(^SNFUserServiceCallback)(NSError *error, SNFUser *user);
 typedef void(^SNFInviteCallback)(NSError *error);
 typedef void(^SNFCreateAccountCompletion)(NSError * error,SNFUser * user);
 typedef void(^SNFAcceptInviteCompletion)(NSError * error, NSDictionary * data);
+typedef void(^SNFDeleteInviteCompletion)(NSError * error);
 typedef void(^SNFInvitesCompletion)(NSError * error, NSArray * receivedInvites, NSArray * sentInvites);
 
 @interface SNFUserService : SNFService
@@ -29,5 +30,6 @@ typedef void(^SNFInvitesCompletion)(NSError * error, NSArray * receivedInvites, 
 - (void)invitesWithCompletion:(SNFInvitesCompletion) completion;
 - (void)inviteWithData:(NSDictionary *)data andCompletion:(SNFInviteCallback)completion;
 - (void)acceptInviteCode:(NSString *) inviteCode andCompletion:(SNFAcceptInviteCompletion)completion;
+- (void)deleteInviteCode:(NSString *) inviteCode andCompletion:(SNFDeleteInviteCompletion)completion;
 
 @end

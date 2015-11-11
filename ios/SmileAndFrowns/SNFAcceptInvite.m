@@ -7,6 +7,7 @@
 #import "NSTimer+Blocks.h"
 #import "SNFSyncService.h"
 #import "UIViewController+Alerts.h"
+#import "SNFBoardDetail.h"
 
 NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 
@@ -60,6 +61,7 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+				
 				if(![SNFViewController instance]) {
 					SNFViewController * root = [[SNFViewController alloc] init];
 					root.firstTab = SNFTabBoards;
@@ -67,6 +69,20 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 				} else {
 					[[SNFViewController instance] showBoardsAnimated:TRUE];
 				}
+				
+				//go to board detail if possible
+				if([SNFViewController instance]) {
+					if([data isKindOfClass:[NSDictionary class]]) {
+						NSDictionary * boardData = (NSDictionary *)data;
+						NSDictionary * invite = boardData[@"invite"];
+						NSString * boardUUID = invite[@"board_uuid"];
+						SNFBoard * board = [SNFBoard boardByUUID:boardUUID];
+						SNFBoardDetail * detail = [[SNFBoardDetail alloc] init];
+						detail.board = board;
+						[[SNFViewController instance].viewControllerStack pushViewController:detail animated:TRUE];
+					}
+				}
+				
 			}];
 			
 		}];

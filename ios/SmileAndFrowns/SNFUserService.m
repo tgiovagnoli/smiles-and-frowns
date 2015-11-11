@@ -246,7 +246,7 @@
 		return;
 	}
 	
-	if([data[@"age"] integerValue] < 1 || [data[@"age"] integerValue] > 99) {
+	if(![data[@"age"] isEmpty] && ([data[@"age"] integerValue] < 1 || [data[@"age"] integerValue] > 99)) {
 		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Invalid age. Age must be between 1 and 99."],nil);
 		return;
 	}
@@ -277,6 +277,44 @@
 			completion(nil,userData);
 		});
 	}];
+	[task resume];
+}
+
+- (void)deleteInviteCode:(NSString *) inviteCode andCompletion:(SNFDeleteInviteCompletion)completion; {
+	NSDictionary * data = nil;
+	if(!inviteCode || inviteCode.isEmpty) {
+		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Invite code required"]);
+	} else {
+		data = @{@"code":inviteCode};
+	}
+	
+	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"invite_delete"];
+	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
+	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			if(error) {
+				completion(error);
+				return;
+			}
+			
+			NSError * jsonError = nil;
+			NSObject * responseData = [self responseObjectFromData:data withError:&jsonError];
+			
+			if(jsonError) {
+				completion(jsonError);
+				return;
+			}
+			
+			if(![responseData isKindOfClass:[NSDictionary class]]) {
+				return completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Expected dictionary"]);
+			}
+			
+			completion(nil);
+		});
+		
+	}];
+	
 	[task resume];
 }
 
