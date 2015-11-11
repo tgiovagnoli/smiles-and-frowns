@@ -246,7 +246,7 @@
 		return;
 	}
 	
-	if([data[@"age"] integerValue] < 1 || [data[@"age"] integerValue] > 99) {
+	if(![data[@"age"] isEmpty] && ([data[@"age"] integerValue] < 1 || [data[@"age"] integerValue] > 99)) {
 		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Invalid age. Age must be between 1 and 99."],nil);
 		return;
 	}
