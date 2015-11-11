@@ -205,6 +205,21 @@
 	[[AppDelegate rootViewController] presentViewController:reporting animated:YES completion:^{}];
 }
 
+- (void)childCellWantsToDelete:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Person?" message:@"Are you sure you want to delete this person? All board data for this person will be lost and this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		userRole.deleted = [NSNumber numberWithBool:YES];
+		[self reloadUserRoles];
+		[[SNFSyncService instance] saveContext];
+	}]];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)childCellWantsToEdit:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
+	NSLog(@"edit child");
+}
+
 - (void)spendRewardsIsDone:(SNFSpendRewards *)spendRewards{
 	[self reloadUserRoles];
 }
@@ -229,7 +244,13 @@
 	NSSortDescriptor *userDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self.user.first_name" ascending:YES];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"role==%@", role];
 	NSSet *results = [_board.user_roles filteredSetUsingPredicate:predicate];
-	return [results sortedArrayUsingDescriptors:@[userDescriptor]];
+	NSMutableArray *finalResults = [[NSMutableArray alloc] init];
+	for(SNFUserRole *role in results){
+		if(![role.deleted boolValue]){
+			[finalResults addObject:role];
+		}
+	}
+	return [finalResults sortedArrayUsingDescriptors:@[userDescriptor]];
 }
 
 

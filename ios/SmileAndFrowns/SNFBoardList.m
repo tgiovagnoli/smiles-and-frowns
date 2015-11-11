@@ -175,7 +175,7 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 		return YES;
 	}
 	for(SNFUserRole *userRole in board.user_roles){
-		if([userRole.user.email isEqualToString:authedUser.email]){
+		if([userRole.user.email isEqualToString:authedUser.email] && ![userRole.deleted boolValue]){
 			return YES;
 		}
 	}

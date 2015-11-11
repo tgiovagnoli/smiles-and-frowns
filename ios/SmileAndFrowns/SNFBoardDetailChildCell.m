@@ -74,4 +74,16 @@
 	}
 }
 
+- (IBAction)onDelete:(UIButton *)sender{
+	if(self.delegate){
+		[self.delegate childCellWantsToDelete:self forUserRole:self.userRole];
+	}
+}
+
+- (IBAction)onEdit:(UIButton *)sender{
+	if(self.delegate){
+		[self.delegate childCellWantsToEdit:self forUserRole:self.userRole];
+	}
+}
+
 @end
