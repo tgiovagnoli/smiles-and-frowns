@@ -11,9 +11,9 @@ class PredefinedBoardAdmin(admin.ModelAdmin):
 
 class PredefinedBehaviorAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("title", "uuid")
+	fields = ("title", "uuid", "positive")
 	readonly_fields = ("uuid",)
-	list_display = ("title",)
+	list_display = ("title", "positive")
 
 class PredefinedBehaviorGroupAdmin(admin.ModelAdmin):
 	save_on_top = True

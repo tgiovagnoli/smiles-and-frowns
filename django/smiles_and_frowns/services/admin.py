@@ -20,8 +20,8 @@ class BoardAdmin(admin.ModelAdmin):
 
 class BehaviorAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("board", "title", "note", "device_date", "deleted", "uuid")
-	list_display = ("title", "board", "updated_date")
+	fields = ("board", "title", "note", "device_date", "deleted", "positive", "uuid")
+	list_display = ("title", "board", "positive", "updated_date")
 	readonly_fields = ('uuid',)
 
 class RewardAdmin(admin.ModelAdmin):
