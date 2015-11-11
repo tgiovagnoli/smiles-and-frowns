@@ -128,6 +128,7 @@
 		NSDictionary *behaviorInfo = @{
 									   @"title": pdBehavior.title,
 									   @"board": @{@"uuid": board.uuid},
+									   @"positive": pdBehavior.positive,
 									   };
 		[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 	}
@@ -140,6 +141,28 @@
 	NSMutableArray *activeBehaviors = [[NSMutableArray alloc] init];
 	for(SNFBehavior *behavior in behaviors){
 		if(!behavior.deleted.boolValue){
+			[activeBehaviors addObject:behavior];
+		}
+	}
+	return [activeBehaviors sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.title" ascending:YES]]];
+}
+
+- (NSArray *)sortedActivePositiveBehaviors{
+	NSArray *behaviors = [self.behaviors allObjects];
+	NSMutableArray *activeBehaviors = [[NSMutableArray alloc] init];
+	for(SNFBehavior *behavior in behaviors){
+		if(!behavior.deleted.boolValue && [behavior.positive boolValue]){
+			[activeBehaviors addObject:behavior];
+		}
+	}
+	return [activeBehaviors sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.title" ascending:YES]]];
+}
+
+- (NSArray *)sortedActiveNegativeBehaviors{
+	NSArray *behaviors = [self.behaviors allObjects];
+	NSMutableArray *activeBehaviors = [[NSMutableArray alloc] init];
+	for(SNFBehavior *behavior in behaviors){
+		if(!behavior.deleted.boolValue && ![behavior.positive boolValue]){
 			[activeBehaviors addObject:behavior];
 		}
 	}

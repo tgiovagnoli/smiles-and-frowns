@@ -51,7 +51,14 @@
 }
 
 - (void)reloadBehaviors{
-	_behaviors = [self.board sortedActiveBehaviors];
+	switch (self.type) {
+		case SNFAddSmileOrFrownTypeSmile:
+			_behaviors = [self.board sortedActivePositiveBehaviors];
+			break;
+		case SNFAddSmileOrFrownTypeFrown:
+			_behaviors = [self.board sortedActiveNegativeBehaviors];
+			break;
+	}
 	[self.behaviorsTable reloadData];
 }
 
