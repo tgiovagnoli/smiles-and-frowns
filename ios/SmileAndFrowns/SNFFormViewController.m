@@ -51,6 +51,11 @@
 		self.scrollView.contentSize = self.formView.size;
 		[self.scrollView addSubview:self.formView];
 		
+		//adjust top margin for modals.
+		if(self.topMargin && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+			self.topMargin.constant = 10;
+		}
+		
 	} else {
 		
 		if(self.scrollView.height > self.initialFormHeight) {

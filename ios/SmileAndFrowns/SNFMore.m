@@ -25,7 +25,7 @@
 					   [self tableItemWithName:@"App Settings" andSelector:@selector(appSettings)],
 					   [self tableItemWithName:@"View the Tutorial" andSelector:@selector(tutorial)],
 					   [self tableItemWithName:@"Launcher" andSelector:@selector(launcher)],
-					   [self tableItemWithName:@"Accept An Invite Code" andSelector:@selector(acceptInviteFromCode)],
+					   [self tableItemWithName:@"Accept An Invite Code" andSelector:@selector(acceptInviteFromCode:)],
 					   [self tableItemWithName:@"Logout" andSelector:@selector(logout)],
 					   ];
 	[self.tableView reloadData];
@@ -48,7 +48,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	APDDebugViewControllerItem *item = [_tableContents objectAtIndex:indexPath.row];
-	[self performSelectorOnMainThread:item.selector withObject:nil waitUntilDone:YES];
+	UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	[self performSelectorOnMainThread:item.selector withObject:cell waitUntilDone:YES];
 }
 
 - (APDDebugViewControllerItem *)tableItemWithName:(NSString *)name andSelector:(SEL)selector{
@@ -68,8 +69,8 @@
 	[AppDelegate instance].window.rootViewController = tutorial;
 }
 
-- (void) acceptInviteFromCode {
-	SNFAcceptInvite * accept = [[SNFAcceptInvite alloc] init];
+- (void) acceptInviteFromCode:(UITableViewCell *) cell {
+	SNFAcceptInvite * accept = [[SNFAcceptInvite alloc] initWithSourceView:cell sourceRect:CGRectZero contentSize:CGSizeMake(360,190) arrowDirections:UIPopoverArrowDirectionUp|UIPopoverArrowDirectionDown];
 	[[AppDelegate rootViewController] presentViewController:accept animated:TRUE completion:nil];
 }
 

@@ -11,6 +11,7 @@
                 <outlet property="password" destination="xrm-ng-EsY" id="spg-MU-oOM"/>
                 <outlet property="scrollView" destination="lH1-CG-NrK" id="dES-qz-w22"/>
                 <outlet property="scrollViewBottom" destination="rz0-tD-3fL" id="CJS-Ww-hE3"/>
+                <outlet property="topMargin" destination="wcT-0Z-ay6" id="VEd-k0-lwe"/>
                 <outlet property="view" destination="fOl-Xu-Fvq" id="184-aJ-OZX"/>
             </connections>
         </placeholder>
@@ -185,22 +186,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lH1-CG-NrK">
-                    <rect key="frame" x="0.0" y="39" width="600" height="561"/>
+                    <rect key="frame" x="0.0" y="49" width="600" height="551"/>
                     <animations/>
                 </scrollView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSn-IZ-78r">
-                    <rect key="frame" x="267" y="10" width="66" height="21"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="66" id="5Vv-Yf-u9R"/>
-                        <constraint firstAttribute="height" constant="21" id="a1Q-OU-KYK"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xe0-63-PVi">
-                    <rect key="frame" x="526" y="6" width="60" height="30"/>
+                    <rect key="frame" x="526" y="16" width="60" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394165917266186" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -212,6 +202,17 @@
                         <action selector="cancel:" destination="-1" eventType="touchUpInside" id="Af2-os-WFM"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSn-IZ-78r">
+                    <rect key="frame" x="267" y="20" width="66" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="66" id="5Vv-Yf-u9R"/>
+                        <constraint firstAttribute="height" constant="21" id="a1Q-OU-KYK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -222,8 +223,8 @@
                 <constraint firstItem="lH1-CG-NrK" firstAttribute="top" secondItem="TSn-IZ-78r" secondAttribute="bottom" constant="8" id="bAx-91-2ai"/>
                 <constraint firstAttribute="trailing" secondItem="xe0-63-PVi" secondAttribute="trailing" constant="14" id="kfk-57-ag7"/>
                 <constraint firstAttribute="bottom" secondItem="lH1-CG-NrK" secondAttribute="bottom" id="rz0-tD-3fL"/>
-                <constraint firstItem="TSn-IZ-78r" firstAttribute="top" secondItem="fOl-Xu-Fvq" secondAttribute="top" constant="10" id="wcT-0Z-ay6"/>
-                <constraint firstItem="xe0-63-PVi" firstAttribute="top" secondItem="fOl-Xu-Fvq" secondAttribute="top" constant="6" id="xCV-Y5-KtJ"/>
+                <constraint firstItem="xe0-63-PVi" firstAttribute="top" secondItem="TSn-IZ-78r" secondAttribute="top" constant="-4" id="vZX-13-kI5"/>
+                <constraint firstItem="TSn-IZ-78r" firstAttribute="top" secondItem="fOl-Xu-Fvq" secondAttribute="top" constant="20" id="wcT-0Z-ay6"/>
             </constraints>
             <point key="canvasLocation" x="970" y="532"/>
         </view>

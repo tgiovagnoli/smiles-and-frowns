@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3G0-te-iwP">
-                    <rect key="frame" x="0.0" y="92" width="600" height="478"/>
+                    <rect key="frame" x="0.0" y="100" width="600" height="470"/>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -41,14 +41,14 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiM-8D-clb">
-                    <rect key="frame" x="0.0" y="10" width="600" height="21"/>
+                    <rect key="frame" x="0.0" y="20" width="600" height="21"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-Rd-ePF">
-                    <rect key="frame" x="504" y="39" width="76" height="30"/>
+                    <rect key="frame" x="504" y="49" width="76" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -61,7 +61,7 @@
                     </connections>
                 </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RpQ-c6-pcS">
-                    <rect key="frame" x="19" y="40" width="477" height="29"/>
+                    <rect key="frame" x="19" y="50" width="477" height="29"/>
                     <animations/>
                     <segments>
                         <segment title="Name"/>
@@ -72,7 +72,7 @@
                     </connections>
                 </segmentedControl>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="C0h-fF-oYr">
-                    <rect key="frame" x="19" y="40" width="477" height="30"/>
+                    <rect key="frame" x="19" y="50" width="477" height="30"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
@@ -86,13 +86,13 @@
             <constraints>
                 <constraint firstItem="sfm-E0-cfS" firstAttribute="top" secondItem="3G0-te-iwP" secondAttribute="bottom" id="02E-Od-09u"/>
                 <constraint firstAttribute="bottom" secondItem="sfm-E0-cfS" secondAttribute="bottom" id="5a3-qI-Ka2"/>
-                <constraint firstItem="UiM-8D-clb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="86l-UY-YR4"/>
+                <constraint firstItem="UiM-8D-clb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="86l-UY-YR4"/>
                 <constraint firstItem="RpQ-c6-pcS" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="9" id="9DI-rc-tgg"/>
                 <constraint firstItem="C0h-fF-oYr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="19" id="L35-mh-M1g"/>
                 <constraint firstItem="OjW-Rd-ePF" firstAttribute="leading" secondItem="RpQ-c6-pcS" secondAttribute="trailing" constant="8" id="Yf6-1G-mgg"/>
                 <constraint firstItem="3G0-te-iwP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dIv-kf-plz"/>
                 <constraint firstAttribute="trailing" secondItem="UiM-8D-clb" secondAttribute="trailing" id="dKJ-Xx-xdA"/>
-                <constraint firstItem="3G0-te-iwP" firstAttribute="top" secondItem="RpQ-c6-pcS" secondAttribute="bottom" constant="24" id="dcy-p3-caA"/>
+                <constraint firstItem="3G0-te-iwP" firstAttribute="top" secondItem="RpQ-c6-pcS" secondAttribute="bottom" constant="22" id="dcy-p3-caA"/>
                 <constraint firstAttribute="trailing" secondItem="sfm-E0-cfS" secondAttribute="trailing" id="eE0-n5-Duc"/>
                 <constraint firstItem="RpQ-c6-pcS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="19" id="ec2-Zi-jVf"/>
                 <constraint firstItem="OjW-Rd-ePF" firstAttribute="leading" secondItem="C0h-fF-oYr" secondAttribute="trailing" constant="8" id="evB-dg-2gb"/>
@@ -104,7 +104,7 @@
                 <constraint firstItem="UiM-8D-clb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x77-jT-H02"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="483" y="609"/>
+            <point key="canvasLocation" x="580" y="611"/>
         </view>
     </objects>
 </document>

@@ -57,8 +57,6 @@ static AppDelegate * _instance;
 	
 	[self.window makeKeyAndVisible];
 	
-	application.statusBarHidden = YES;
-	
 	return YES;
 }
 
