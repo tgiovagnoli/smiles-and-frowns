@@ -11,7 +11,6 @@
                 <outlet property="segment" destination="ywm-aD-4se" id="cnC-ha-xSx"/>
                 <outlet property="tableView" destination="bRf-Tm-bMP" id="7EL-cA-Icn"/>
                 <outlet property="tableViewBottom" destination="6Mf-3w-u0H" id="sZG-Mg-Dyi"/>
-                <outlet property="topMargin" destination="ii1-LE-uxN" id="0ow-jF-yIP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
