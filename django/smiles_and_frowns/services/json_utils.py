@@ -71,7 +71,8 @@ def behavior_info_dictionary(behavior):
 	behavior_data = {
 		"title": behavior.title,
 		"note": behavior.note,
-		"id": behavior.id
+		"id": behavior.id,
+		"positive": behavior.positive,
 	}
 	append_sync_info(behavior, behavior_data)
 	if behavior.board: behavior_data['board'] = {'uuid':behavior.board.uuid}

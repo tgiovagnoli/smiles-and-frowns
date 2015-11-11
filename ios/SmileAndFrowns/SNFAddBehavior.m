@@ -16,13 +16,31 @@
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	NSError *error;
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SNFPredefinedBehaviorGroup"];
-	_predefinedBehaviorGroups = [context executeFetchRequest:request error:&error];
+	NSArray *allGroups = [context executeFetchRequest:request error:&error];
+	BOOL positiveSelected = !self.positiveNegativeSegment.selectedSegmentIndex;
+	NSMutableArray *filteredBehaviorGroups = [[NSMutableArray alloc] init];
+	for(SNFPredefinedBehaviorGroup *pdbg in allGroups){
+		if(positiveSelected && pdbg.positiveBehaviors.count > 0){
+			[filteredBehaviorGroups addObject:pdbg];
+		}
+		if(!positiveSelected && pdbg.negativeBehaviors.count > 0){
+			[filteredBehaviorGroups addObject:pdbg];
+		}
+	}
+	
+	_predefinedBehaviorGroups = filteredBehaviorGroups;
 	[self.behaviorsTable reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 	SNFPredefinedBehaviorGroup *group = [_predefinedBehaviorGroups objectAtIndex:section];
-	return group.behaviors.count;
+	BOOL positiveSelected = !self.positiveNegativeSegment.selectedSegmentIndex;
+	if(positiveSelected){
+		return group.positiveBehaviors.count;
+	}else{
+		return group.negativeBehaviors.count;
+	}
+	return 0;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -31,7 +49,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	SNFPredefinedBehaviorGroup *group = [_predefinedBehaviorGroups objectAtIndex:indexPath.section];
-	NSArray *behaviors = [group.behaviors allObjects];
+	
+	NSArray *behaviors;
+	
+	BOOL positiveSelected = !self.positiveNegativeSegment.selectedSegmentIndex;
+	if(positiveSelected){
+		behaviors = group.positiveBehaviors;
+	}else{
+		behaviors = group.negativeBehaviors;
+	}
+
 	SNFPredefinedBehavior *behavior = [behaviors objectAtIndex:indexPath.row];
 	SNFAddBehaviorCell *cell = [self.behaviorsTable dequeueReusableCellWithIdentifier:@"SNFAddBehaviorCell"];
 	if(!cell){
@@ -76,9 +103,11 @@
 - (IBAction)onNewBehavior:(UIButton *)sender{
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	SNFPredefinedBehaviorGroup *userGroup = [self userGroup];
+	NSNumber *positive = [NSNumber numberWithBool:self.positiveNegativeSegment.selectedSegmentIndex];
 	NSDictionary *behaviorInfo = @{
 									@"uuid": [[NSUUID UUID] UUIDString],
 									@"title": @"Untitled",
+									@"positive": positive,
 									};
 	SNFPredefinedBehavior *behavior = (SNFPredefinedBehavior *)[SNFPredefinedBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 	[userGroup addBehaviorsObject:behavior];
@@ -139,7 +168,8 @@
 		if(predefinedBehavior && self.board){
 			NSDictionary *behaviorInfo = @{
 										  @"title": predefinedBehavior.title,
-										  @"uuid": [[NSUUID UUID] UUIDString]
+										  @"uuid": [[NSUUID UUID] UUIDString],
+										  @"positive": predefinedBehavior.positive,
 										  };
 			SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 			behavior.board = self.board;
@@ -152,5 +182,9 @@
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
+
+- (IBAction)positiveNegativeSegmentChange:(UISegmentedControl *)sender{
+	[self updateBehaviors];
+}
 
 @end

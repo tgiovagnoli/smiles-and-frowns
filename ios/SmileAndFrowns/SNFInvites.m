@@ -2,7 +2,6 @@
 #import "SNFInvites.h"
 #import "SNFUserService.h"
 #import "UIAlertAction+Additions.h"
-#import "SNFInvite.h"
 #import "SNFAcceptInvite.h"
 #import "AppDelegate.h"
 #import "UIViewController+Alerts.h"

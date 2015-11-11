@@ -1,7 +1,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
-#import "SNFInvite.h"
 #import "SNFFormViewController.h"
 
 extern NSString * const SNFInviteAccepted;

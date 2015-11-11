@@ -9,6 +9,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SNFPredefinedBehaviorGroup : NSManagedObject
 
+@property (readonly, nonatomic) NSArray *positiveBehaviors;
+@property (readonly, nonatomic) NSArray *negativeBehaviors;
+
 @end
 
 NS_ASSUME_NONNULL_END

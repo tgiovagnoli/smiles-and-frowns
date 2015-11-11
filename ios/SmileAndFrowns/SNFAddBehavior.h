@@ -24,11 +24,13 @@
 @property (weak) IBOutlet UIButton *closeButton;
 @property (weak) IBOutlet UIButton *addNewBehaviorButton;
 @property (weak) IBOutlet UIButton *addBehaviorsButton;
+@property (weak) IBOutlet UISegmentedControl *positiveNegativeSegment;
 @property (nonatomic) SNFBoard *board;
 
 
 - (IBAction)onBack:(UIButton *)sender;
 - (IBAction)onNewBehavior:(UIButton *)sender;
 - (IBAction)onAddBehaviors:(UIButton *)sender;
+- (IBAction)positiveNegativeSegmentChange:(UISegmentedControl *)sender;
 
 @end
