@@ -39,13 +39,12 @@
 	
 	[self.service invitesWithCompletion:^(NSError *error, NSArray *invites) {
 		
-		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:invites.count];
-		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
 			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 		} else {
+			[[UIApplication sharedApplication] setApplicationIconBadgeNumber:invites.count];
 			[self reload];
 		}
 		
@@ -65,11 +64,11 @@
 
 - (void) onInviteRefresh:(UIRefreshControl *) refresh {
 	[self.service invitesWithCompletion:^(NSError *error, NSArray *invites) {
-		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:invites.count];
 		[refresh endRefreshing];
 		if(error) {
 			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 		} else {
+			[[UIApplication sharedApplication] setApplicationIconBadgeNumber:invites.count];
 			[self reload];
 		}
 	}];
