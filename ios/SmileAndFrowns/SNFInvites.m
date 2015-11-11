@@ -73,7 +73,6 @@
 }
 
 - (void) onInviteRefresh:(UIRefreshControl *) refresh {
-	//[SNFInvite deleteAllInvites];
 	
 	[self.service invitesWithCompletion:^(NSError * error, NSArray * receivedInvites, NSArray * sentInvites) {
 		[refresh endRefreshing];
