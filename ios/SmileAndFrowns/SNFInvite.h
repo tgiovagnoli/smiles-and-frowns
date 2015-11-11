@@ -9,6 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SNFInvite : NSManagedObject
 
 + (NSArray *) all;
++ (void) deleteAllInvites;
 
 @end
 

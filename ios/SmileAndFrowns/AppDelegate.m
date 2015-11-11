@@ -9,6 +9,9 @@
 #import "SNFAcceptInvite.h"
 #import "SNFLogin.h"
 #import "SNFCreateAccount.h"
+#import "NSTimer+Blocks.h"
+#import "SNFSyncService.h"
+#import <HockeySDK/HockeySDK.h>
 
 static AppDelegate * _instance;
 
@@ -26,12 +29,20 @@ static AppDelegate * _instance;
 }
 
 - (BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
+	UIUserNotificationType userNotificationTypes = UIUserNotificationTypeBadge;
+	UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
+	[application registerUserNotificationSettings:settings];
+	
 	_instance = self;
 	
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
 	[SNFDateManager unlock];
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	
+	[[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"530994a421524ee9916ed2cc1a103f1f"];
+	[[BITHockeyManager sharedHockeyManager] startManager];
+	[[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 	
 	[FBSDKAppEvents activateApp];
 	[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
@@ -69,27 +80,48 @@ static AppDelegate * _instance;
 			
 			//set pending invite code.
 			NSString * inviteCode = [parts objectAtIndex:1];
+			[SNFModel sharedInstance].pendingInviteCode = inviteCode;
 			
 			if(![SNFModel sharedInstance].loggedInUser) {
-				
-				[SNFModel sharedInstance].pendingInviteCode = inviteCode;
+				//not logged in
 				
 				if([[AppDelegate rootViewController] isKindOfClass:[SNFLauncher class]]) {
 					
 					SNFLauncher * launcher = (SNFLauncher *)[AppDelegate rootViewController];
 					SNFCreateAccount * signup = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
 					signup.nextViewController = [[SNFAcceptInvite alloc] initWithSourceView:launcher.acceptInviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
-					
 					[[AppDelegate rootViewController] presentViewController:signup animated:TRUE completion:nil];
+					
 				}
 				
 			} else {
+				//logged in
 				
+				//not currently on main view controller. go to invites and show accept modal.
 				if(![SNFViewController instance]) {
 					
 					SNFViewController * root = [[SNFViewController alloc] init];
 					root.firstTab = SNFTabInvites;
 					self.window.rootViewController = root;
+					
+					[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
+						SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] initWithSourceView:root.tabMenu.invitesButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
+						acceptInvite.inviteCode = inviteCode;
+						[[AppDelegate rootViewController] presentViewController:acceptInvite animated:TRUE completion:nil];
+					} repeats:FALSE];
+					
+				} else if([SNFViewController instance]) {
+					
+					//already at main view controller, go to invites and show accept modal.
+					
+					SNFViewController * root = [SNFViewController instance];
+					[root showInvitesAnimated:TRUE];
+					
+					[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
+						SNFAcceptInvite * acceptInvite = [[SNFAcceptInvite alloc] initWithSourceView:root.tabMenu.invitesButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
+						acceptInvite.inviteCode = inviteCode;
+						[[AppDelegate rootViewController] presentViewController:acceptInvite animated:TRUE completion:nil];
+					} repeats:FALSE];
 					
 				}
 			}
@@ -117,13 +149,29 @@ static AppDelegate * _instance;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+	if(![SNFSyncService instance].syncing){
+		[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {}];
+	}
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	// Saves changes in the application's managed object context before the application terminates.
 	[self saveContext];
+}
+
+- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler{
+	if([SNFModel sharedInstance].loggedInUser){
+		SNFUserService *userService = [[SNFUserService alloc] init];
+		[userService invitesWithCompletion:^(NSError *error, NSArray * received_invites, NSArray * sent_invites) {
+			if(error){
+				completionHandler(UIBackgroundFetchResultFailed);
+			}else{
+				[[UIApplication sharedApplication] setApplicationIconBadgeNumber:received_invites.count];
+				completionHandler(UIBackgroundFetchResultNewData);
+			}
+		}];
+	}
 }
 
 #pragma mark - Core Data stack

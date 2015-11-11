@@ -143,13 +143,7 @@
 }
 
 - (void)save{
-	NSError *error;
-	[[SNFModel sharedInstance].managedObjectContext save:&error];
-	if(error){
-		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Something went wrong trying to save." preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction OKAction]];
-		[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-	}
+	[[SNFSyncService instance] saveContext];
 }
 
 - (void)logSmiles{

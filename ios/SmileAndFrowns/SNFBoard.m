@@ -5,6 +5,7 @@
 #import "SNFInvite.h"
 #import "SNFReward.h"
 #import "SNFUser.h"
+#import "SNFUserRole.h"
 #import "SNFModel.h"
 #import "SNFPredefinedBoard.h"
 #import "SNFPredefinedBehavior.h"
@@ -193,5 +194,19 @@
 	}
 	return smileCurrency;
 }
+
+- (NSString *)permissionForUser:(SNFUser *)user{
+	if([self.owner.username isEqualToString:user.username]){
+		return @"owner";
+	}
+	for(SNFUserRole *userRole in self.user_roles){
+		if([userRole.user.username isEqualToString:user.username]){
+			return userRole.role;
+		}
+	}
+	return nil;
+}
+
+
 
 @end

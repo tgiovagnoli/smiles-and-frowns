@@ -1,3 +1,4 @@
+
 #import "SNFSyncService.h"
 #import "SNFModel.h"
 #import "SNFBoard.h"
@@ -10,6 +11,9 @@
 #import "SNFPredefinedBehavior.h"
 #import "SNFPredefinedBehaviorGroup.h"
 
+NSString * const SNFSyncServiceCompleted = @"SNFSyncServiceCompleted";
+NSString * const SNFSyncServiceError = @"SNFSyncServiceError";
+
 static SNFSyncService * _instance;
 
 @implementation SNFSyncService
@@ -21,7 +25,26 @@ static SNFSyncService * _instance;
 	return _instance;
 }
 
+- (id)init{
+	self = [super init];
+	_syncTimer = [NSTimer scheduledTimerWithTimeInterval:(60.0 * 10.0) target:self selector:@selector(attemptSync:) userInfo:nil repeats:YES];
+	[self attemptSync:nil];
+	return self;
+}
+
+- (void)attemptSync:(NSTimer *)syncTimer{
+	if([SNFModel sharedInstance].loggedInUser || _syncing){
+		return;
+	}
+	[self syncWithCompletion:^(NSError *error, NSObject *boardData) {
+		if(error){
+			NSLog(@"\n !!!! error syncing !!!! :\n\n %@", error.localizedDescription);
+		}
+	}];
+}
+
 - (void) syncWithCompletion:(SNFSyncServiceCallback) completion {
+	_syncing = YES;
 	NSError *saveError;
 	
 	if(![SNFModel sharedInstance].userSettings.lastSyncDate){
@@ -49,20 +72,28 @@ static SNFSyncService * _instance;
 	
 	NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		dispatch_sync(dispatch_get_main_queue(), ^{
+			_syncing = NO;
+			
+			[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceCompleted object:nil];
+			
 			if(error){
+				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:error];
 				return completion(error, nil);
 			}
 			
 			NSError *jsonError;
 			NSObject *infoDict = [self responseObjectFromData:data withError:&jsonError];
 			if(jsonError){
+				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:jsonError];
 				return completion(jsonError, nil);
 			}
 			
 			if([infoDict isMemberOfClass:[NSDictionary class]] || [infoDict isKindOfClass:[NSDictionary class]]){
 				[self updateLocalDataWithResults:(NSDictionary *)infoDict andCallCompletion:completion];
 			}else{
-				return completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"], nil);
+				SNFError *error = [SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"];
+				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:error];
+				return completion(error, nil);
 			}
 		});
 	}];
@@ -242,6 +273,7 @@ static SNFSyncService * _instance;
 	NSError *saveError;
 	[context save:&saveError];
 	if(saveError){
+		[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:saveError];
 		return completion(saveError, nil);
 	}
 	[SNFDateManager unlock];
@@ -332,6 +364,18 @@ static SNFSyncService * _instance;
 		return completion(saveError, nil);
 	}
 	completion(nil, returnData);
+}
+
+- (void)saveContext{
+	if(_syncing){
+		// save will happen at end of sync no need to do it.
+		return;
+	}
+	NSError *error;
+	[[SNFModel sharedInstance].managedObjectContext save:&error];
+	if(error){
+		NSLog(@"%@", error);
+	}
 }
 
 @end

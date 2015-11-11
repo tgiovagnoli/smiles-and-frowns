@@ -25,6 +25,17 @@
 		0707D6DC1BE428BA002F1FC0 /* SNFInvites.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6DA1BE428BA002F1FC0 /* SNFInvites.m */; };
 		0707D6DD1BE428BA002F1FC0 /* SNFInvites.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D6DB1BE428BA002F1FC0 /* SNFInvites.xib */; };
 		0707D6E01BE42970002F1FC0 /* UIAlertAction+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */; };
+		071AC0EE1BF264CB005D63F2 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0ED1BF264CB005D63F2 /* HockeySDK.framework */; };
+		071AC0F01BF26505005D63F2 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0EF1BF26505005D63F2 /* AssetsLibrary.framework */; };
+		071AC0F21BF2650C005D63F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0F11BF2650C005D63F2 /* CoreGraphics.framework */; };
+		071AC0F41BF26511005D63F2 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0F31BF26511005D63F2 /* CoreText.framework */; };
+		071AC0F61BF26518005D63F2 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0F51BF26518005D63F2 /* MobileCoreServices.framework */; };
+		071AC0F81BF2651E005D63F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0F71BF2651E005D63F2 /* QuartzCore.framework */; };
+		071AC0FA1BF26522005D63F2 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0F91BF26522005D63F2 /* QuickLook.framework */; };
+		071AC0FC1BF26526005D63F2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0FB1BF26526005D63F2 /* Security.framework */; };
+		071AC0FE1BF2652B005D63F2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0FD1BF2652B005D63F2 /* SystemConfiguration.framework */; };
+		071AC1001BF26538005D63F2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0FF1BF26538005D63F2 /* libc++.tbd */; };
+		071AC1021BF2656E005D63F2 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 071AC1011BF2656E005D63F2 /* HockeySDKResources.bundle */; };
 		078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */; };
 		078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */; };
 		078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */; };
@@ -178,6 +189,17 @@
 		0707D6DB1BE428BA002F1FC0 /* SNFInvites.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFInvites.xib; sourceTree = "<group>"; };
 		0707D6DE1BE42970002F1FC0 /* UIAlertAction+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertAction+Additions.h"; path = "submodules/apd-objc/UIAlertAction+Additions.h"; sourceTree = "<group>"; };
 		0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertAction+Additions.m"; path = "submodules/apd-objc/UIAlertAction+Additions.m"; sourceTree = "<group>"; };
+		071AC0ED1BF264CB005D63F2 /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HockeySDK.framework; path = "libs/HockeySDK-iOS/HockeySDK.embeddedframework/HockeySDK.framework"; sourceTree = "<group>"; };
+		071AC0EF1BF26505005D63F2 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		071AC0F11BF2650C005D63F2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		071AC0F31BF26511005D63F2 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		071AC0F51BF26518005D63F2 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		071AC0F71BF2651E005D63F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		071AC0F91BF26522005D63F2 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		071AC0FB1BF26526005D63F2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		071AC0FD1BF2652B005D63F2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		071AC0FF1BF26538005D63F2 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		071AC1011BF2656E005D63F2 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = HockeySDKResources.bundle; path = "libs/HockeySDK-iOS/HockeySDK.embeddedframework/Resources/HockeySDKResources.bundle"; sourceTree = "<group>"; };
 		078DF4B11BE8105300CBFAA4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = libs/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = libs/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -273,7 +295,7 @@
 		D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmileAndFrowns.xcdatamodel; sourceTree = "<group>"; };
 		D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SmileAndFrowns/Assets.xcassets; sourceTree = "<group>"; };
 		D659DBC11BDAE07F0048D3F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D659DBC31BDAE07F0048D3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D659DBC31BDAE07F0048D3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = SmileAndFrowns/Info.plist; sourceTree = "<group>"; };
 		D659DBCC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFSmile+CoreDataProperties.h"; sourceTree = "<group>"; };
 		D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFSmile+CoreDataProperties.m"; sourceTree = "<group>"; };
 		D659DBCE1BDAEA000048D3F7 /* SNFSmile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFSmile.h; sourceTree = "<group>"; };
@@ -385,10 +407,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				071AC1001BF26538005D63F2 /* libc++.tbd in Frameworks */,
+				071AC0FE1BF2652B005D63F2 /* SystemConfiguration.framework in Frameworks */,
+				071AC0FC1BF26526005D63F2 /* Security.framework in Frameworks */,
+				071AC0FA1BF26522005D63F2 /* QuickLook.framework in Frameworks */,
+				071AC0F81BF2651E005D63F2 /* QuartzCore.framework in Frameworks */,
+				071AC0F61BF26518005D63F2 /* MobileCoreServices.framework in Frameworks */,
+				071AC0F41BF26511005D63F2 /* CoreText.framework in Frameworks */,
+				071AC0F21BF2650C005D63F2 /* CoreGraphics.framework in Frameworks */,
+				071AC0F01BF26505005D63F2 /* AssetsLibrary.framework in Frameworks */,
 				07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */,
 				078DF4D31BEA9AF600CBFAA4 /* TwitterCore.framework in Frameworks */,
 				078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */,
 				078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */,
+				071AC0EE1BF264CB005D63F2 /* HockeySDK.framework in Frameworks */,
 				078DF4B91BE8109D00CBFAA4 /* FBSDKLoginKit.framework in Frameworks */,
 				078DF4CE1BEA939D00CBFAA4 /* TwitterKit.framework in Frameworks */,
 				078DF4D51BEA9B1100CBFAA4 /* Fabric.framework in Frameworks */,
@@ -406,16 +438,6 @@
 				0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */,
 			);
 			name = Tutorial;
-			sourceTree = "<group>";
-		};
-		0707D6C11BE2B2CB002F1FC0 /* Accept Invite */ = {
-			isa = PBXGroup;
-			children = (
-				0707D6C21BE2B2D8002F1FC0 /* SNFAcceptInvite.h */,
-				0707D6C31BE2B2D8002F1FC0 /* SNFAcceptInvite.m */,
-				0707D6C41BE2B2D8002F1FC0 /* SNFAcceptInvite.xib */,
-			);
-			name = "Accept Invite";
 			sourceTree = "<group>";
 		};
 		0707D6C71BE2B2EB002F1FC0 /* Launcher */ = {
@@ -461,6 +483,9 @@
 		0707D6D81BE428AB002F1FC0 /* Invites */ = {
 			isa = PBXGroup;
 			children = (
+				0707D6C21BE2B2D8002F1FC0 /* SNFAcceptInvite.h */,
+				0707D6C31BE2B2D8002F1FC0 /* SNFAcceptInvite.m */,
+				0707D6C41BE2B2D8002F1FC0 /* SNFAcceptInvite.xib */,
 				0707D6D91BE428BA002F1FC0 /* SNFInvites.h */,
 				0707D6DA1BE428BA002F1FC0 /* SNFInvites.m */,
 				0707D6DB1BE428BA002F1FC0 /* SNFInvites.xib */,
@@ -552,14 +577,25 @@
 		D62D37861BDE7E9700102D6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				07E7055A1BEBD1520013FB75 /* iAd.framework */,
-				078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */,
+				D6272FB41BE0020A0024CBC2 /* apd-objc */,
+				071AC0EF1BF26505005D63F2 /* AssetsLibrary.framework */,
+				071AC0F11BF2650C005D63F2 /* CoreGraphics.framework */,
+				071AC0F31BF26511005D63F2 /* CoreText.framework */,
 				078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */,
+				078DF4A21BE7E9D700CBFAA4 /* Facebook */,
+				071AC0ED1BF264CB005D63F2 /* HockeySDK.framework */,
+				071AC1011BF2656E005D63F2 /* HockeySDKResources.bundle */,
+				07E7055A1BEBD1520013FB75 /* iAd.framework */,
+				071AC0FF1BF26538005D63F2 /* libc++.tbd */,
+				D65DF1141BE2A45B009CC6DF /* MBProgerssHUD */,
+				071AC0F51BF26518005D63F2 /* MobileCoreServices.framework */,
+				071AC0F71BF2651E005D63F2 /* QuartzCore.framework */,
+				071AC0F91BF26522005D63F2 /* QuickLook.framework */,
+				071AC0FB1BF26526005D63F2 /* Security.framework */,
+				071AC0FD1BF2652B005D63F2 /* SystemConfiguration.framework */,
 				078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */,
 				078DF4CB1BEA939D00CBFAA4 /* TwitterKit.framework */,
-				078DF4A21BE7E9D700CBFAA4 /* Facebook */,
-				D65DF1141BE2A45B009CC6DF /* MBProgerssHUD */,
-				D6272FB41BE0020A0024CBC2 /* apd-objc */,
+				078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -567,7 +603,6 @@
 		D62D37921BDE7FCA00102D6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0707D6C11BE2B2CB002F1FC0 /* Accept Invite */,
 				D6270ECF1BE817DA00F7C39A /* Behaviors */,
 				D65DF13C1BE2B8F1009CC6DF /* Boards */,
 				0707D6D61BE2E3AF002F1FC0 /* CreateAccount */,
@@ -656,7 +691,6 @@
 		D659DBAF1BDAE07F0048D3F7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D659DBC31BDAE07F0048D3F7 /* Info.plist */,
 				D659DBB01BDAE07F0048D3F7 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -666,6 +700,7 @@
 		D659DBCA1BDAE0B30048D3F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D659DBC31BDAE07F0048D3F7 /* Info.plist */,
 				07C0F3C01BEE646E0075A6B9 /* images */,
 				D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */,
 				07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */,
@@ -968,6 +1003,7 @@
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
 				D6F442311BEBF425009C2866 /* SNFReportingSectionHeader.xib in Resources */,
 				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
+				071AC1021BF2656E005D63F2 /* HockeySDKResources.bundle in Resources */,
 				D65DF14B1BE2BF94009CC6DF /* SNFBoardDetailChildCell.xib in Resources */,
 				D65DF12A1BE2AA50009CC6DF /* SNFBoardList.xib in Resources */,
 				D6DB2BD11BEAA03300F1CDFF /* SNFRewardCell.xib in Resources */,
@@ -1190,6 +1226,7 @@
 					"$(PROJECT_DIR)/libs/Facebook",
 					"$(PROJECT_DIR)/libs",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/libs/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = SmileAndFrowns/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1209,6 +1246,7 @@
 					"$(PROJECT_DIR)/libs/Facebook",
 					"$(PROJECT_DIR)/libs",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/libs/HockeySDK-iOS/HockeySDK.embeddedframework",
 				);
 				INFOPLIST_FILE = SmileAndFrowns/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -62,6 +62,8 @@
                 <outlet property="dateLabel" destination="k3l-re-D9u" id="5fr-mD-Nwa"/>
                 <outlet property="editButton" destination="JOV-Ha-PYT" id="pbG-ML-Haa"/>
                 <outlet property="overlayView" destination="CWq-Q3-wR3" id="inj-DJ-i1o"/>
+                <outlet property="resetButton" destination="Tdm-so-Ntx" id="Bte-L5-hAP"/>
+                <outlet property="resetButtonWidthConstraint" destination="ZkR-fn-5ad" id="h44-fF-sNQ"/>
                 <outlet property="titleLabel" destination="0YW-Bn-EPh" id="CSJ-af-7X3"/>
             </connections>
             <point key="canvasLocation" x="356" y="525"/>
@@ -74,6 +76,9 @@
                     <rect key="frame" x="76" y="0.0" width="75" height="60"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="ZkR-fn-5ad"/>
+                    </constraints>
                     <state key="normal" title="Reset"/>
                     <connections>
                         <action selector="onReset:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bli-Lt-qwu"/>
@@ -103,6 +108,11 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="sRn-wa-jy4"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="628.5" y="525"/>
         </view>
     </objects>

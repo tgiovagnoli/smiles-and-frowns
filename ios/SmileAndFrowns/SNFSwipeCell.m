@@ -4,18 +4,21 @@
 
 - (id)init{
 	self = [super init];
+	_swipeEnabled = YES;
 	[self setupGestureRecognizer];
 	return self;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder{
 	self = [super initWithCoder:aDecoder];
+	_swipeEnabled = YES;
 	[self setupGestureRecognizer];
 	return self;
 }
 
 - (id)initWithFrame:(CGRect)frame{
 	self = [super initWithFrame:frame];
+	_swipeEnabled = YES;
 	[self setupGestureRecognizer];
 	return self;
 }
@@ -43,6 +46,9 @@
 }
 
 - (void)onGestureChange:(UISwipeGestureRecognizer *)gr{
+	if(!_swipeEnabled){
+		return;
+	}
 	switch (gr.state) {
 		case UIGestureRecognizerStateBegan:
 			[self startSwipe:gr];

@@ -5,6 +5,8 @@
 #import "SNFModel.h"
 #import "SNFLauncher.h"
 #import "SNFViewController.h"
+#import "SNFCreateAccount.h"
+#import "SNFAcceptInvite.h"
 
 @interface SNFTutorial ()
 @property BOOL firstlayout;
@@ -55,13 +57,47 @@
 	[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"HasSeenTutorial"];
 	
 	if([SNFModel sharedInstance].loggedInUser) {
+		
 		if(!self.userInitiatedTutorial && [SNFLauncher showAtLaunch]) {
-			[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+			
+			SNFLauncher * launcher = [[SNFLauncher alloc] init];
+			[AppDelegate instance].window.rootViewController = launcher;
+			
+			if([SNFModel sharedInstance].pendingInviteCode) {
+				SNFAcceptInvite * accept = [[SNFAcceptInvite alloc] initWithSourceView:launcher.acceptInviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
+				[[AppDelegate rootViewController] presentViewController:accept animated:TRUE completion:nil];
+			}
+		
 		} else {
-			[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
+			
+			SNFViewController * root = [[SNFViewController alloc] init];
+			
+			if([SNFModel sharedInstance].pendingInviteCode) {
+				root.firstTab = SNFTabInvites;
+			}
+			
+			[AppDelegate instance].window.rootViewController = root;
+			
+			if([SNFModel sharedInstance].pendingInviteCode) {
+				SNFAcceptInvite * accept = [[SNFAcceptInvite alloc] initWithSourceView:root.tabMenu.invitesButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
+				[[AppDelegate rootViewController] presentViewController:accept animated:TRUE completion:nil];
+			}
+			
 		}
+		
 	} else {
-		[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+		
+		SNFLauncher * launcher = [[SNFLauncher alloc] init];
+		[AppDelegate instance].window.rootViewController = launcher;
+		
+		if([SNFModel sharedInstance].pendingInviteCode) {
+			
+			SNFCreateAccount * signup = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
+			signup.nextViewController = [[SNFAcceptInvite alloc] initWithSourceView:launcher.acceptInviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
+			[[AppDelegate rootViewController] presentViewController:signup animated:TRUE completion:nil];
+			
+		}
+		
 	}
 }
 

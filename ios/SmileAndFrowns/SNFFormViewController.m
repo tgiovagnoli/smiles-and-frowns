@@ -3,6 +3,7 @@
 #import "UIView+LayoutHelpers.h"
 #import "NSTimer+Blocks.h"
 #import "SNFViewController.h"
+#import "IAPHelper.h"
 
 @interface SNFFormViewController ()
 @property BOOL firstlayout;
@@ -28,14 +29,17 @@
 		return;
 	}
 	
-	self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
-	self.bannerView.delegate = self;
+	if(![[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
+		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
+		self.bannerView.delegate = self;
+	}
 }
 
 - (void) viewDidLayoutSubviews {
 	if(self.firstlayout) {
 		//self.formView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
 		//self.scrollView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:1];
+		
 		self.firstlayout = false;
 		self.initialFormHeight = self.formView.height;
 		self.formView.width = self.scrollView.width;
@@ -64,12 +68,9 @@
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
 	CGFloat bottom = keyboardFrameEnd.size.height;
 	
-	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		return;
-	}
-	
 	CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
 	
+	//if the superview is a scroll view, we're running in the main view stack controller in SNFViewController
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
 		
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
@@ -83,8 +84,14 @@
 		}
 		
 		containerScrollView.height -= newBottom;
-		
+	
+	//otherwise we're running modally.
 	} else {
+		
+		//don't allow the view content to be updated on ipad as the popover adjusts everything.
+		if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+			return;
+		}
 		
 		CGFloat csb = self.scrollView.bottom;
 		CGFloat heightDiff = screenHeight - csb;
@@ -107,14 +114,20 @@
 - (void) keyboardWillHide:(NSNotification *) notification {
 	self.keyboardIsVisible = FALSE;
 	
-	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		return;
-	}
-	
+	//if the superview is a scroll view, we're running in the main view stack controller in SNFViewController
 	if([self.view.superview isKindOfClass:[UIScrollView class]]) {
+		
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
 		containerScrollView.height = self.superScrollViewHeight;
+		
+	//otherwise we're running modally.
 	} else {
+		
+		//don't allow the view content to be updated on ipad as the popover adjusts everything.
+		if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+			return;
+		}
+		
 		if(self.bannerView.superview) {
 			self.scrollViewBottom.constant = self.bannerView.height;
 		} else {

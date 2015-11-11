@@ -2,6 +2,7 @@
 #import "SNFAddBehavior.h"
 #import "SNFModel.h"
 #import "UIView+LayoutHelpers.h"
+#import "SNFSyncService.h"
 
 @implementation SNFAddBehavior
 
@@ -56,11 +57,16 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 	SNFPredefinedBehaviorGroup *group = [_predefinedBehaviorGroups objectAtIndex:section];
-	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.behaviorsTable.width,40)];
-	label.backgroundColor = [UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1];
-	label.x = 20;
-	label.text = group.title;
-	return label;
+	
+	UITableViewHeaderFooterView *headerCell = [[UITableViewHeaderFooterView alloc] init];
+	headerCell.textLabel.text = group.title;
+	return headerCell;
+	
+	//UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.behaviorsTable.width,40)];
+	//label.backgroundColor = [UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1];
+	//label.x = 20;
+	//label.text = group.title;
+	//return label;
 }
 
 - (IBAction)onBack:(UIButton *)sender{
@@ -76,8 +82,9 @@
 									};
 	SNFPredefinedBehavior *behavior = (SNFPredefinedBehavior *)[SNFPredefinedBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 	[userGroup addBehaviorsObject:behavior];
-	[context save:nil];
+	[[SNFSyncService instance] saveContext];
 	_selectedBehavior = behavior;
+	
 	[self updateBehaviors];
 }
 
@@ -99,13 +106,31 @@
 										@"title": SNFPredefinedBehaviorGroupUserName,
 										};
 		userGroup = (SNFPredefinedBehaviorGroup *)[SNFPredefinedBehaviorGroup editOrCreatefromInfoDictionary:userGroupInfo withContext:context];
-		[context save:nil];
+		[[SNFSyncService instance] saveContext];
 	}
 	return userGroup;
 }
 
 
+
 - (IBAction)onAddBehaviors:(UIButton *)sender{
+	if(!self.board || [self.board.uuid isEmpty] || !self.board.uuid){
+		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Something went wrong.  The board does not rexist or is invalid." preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
+		[self presentViewController:alert animated:YES completion:nil];
+		return;
+	}
+	
+	if([self.behaviorsTable indexPathsForSelectedRows].count == 0){
+		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"You have not selected any behaviors to add to the board.  Are you sure?" preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+			[self dismissViewControllerAnimated:YES completion:^{}];
+		}]];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+		[self presentViewController:alert animated:YES completion:nil];
+		return;
+	}
+	
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	NSMutableArray *addedBehaviors = [[NSMutableArray alloc] init];
 	for(NSIndexPath *indexPath in [self.behaviorsTable indexPathsForSelectedRows]){

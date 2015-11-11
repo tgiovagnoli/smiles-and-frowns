@@ -4,6 +4,7 @@
 #import "AppDelegate.h"
 #import "UIViewController+ModalCreation.h"
 #import "SNFBoardEdit.h"
+#import "SNFModel.h"
 
 @implementation SNFBoardDetail
 
@@ -28,6 +29,15 @@
 
 - (void)updateUI{
 	self.titleLabel.text = self.board.title;
+	// check to see if we show the add user button
+	NSString *userRole = [self.board permissionForUser:[SNFModel sharedInstance].loggedInUser];
+	if(userRole == nil || [userRole isEqualToString:SNFUserRoleChild]){
+		self.addButtonHeightConstraint.constant = 0.0;
+		self.addButton.hidden = YES;
+	}else{
+		self.addButtonHeightConstraint.constant = 46.0;
+		self.addButton.hidden = NO;
+	}
 	[self reloadUserRoles];
 }
 
@@ -36,31 +46,110 @@
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+	UITableViewHeaderFooterView *headerCell = [[UITableViewHeaderFooterView alloc] init];
+	switch ((SNFBoardDetailUserRole)section) {
+		case SNFBoardDetailUserRoleOwner:
+			headerCell.textLabel.text = @"Owner";
+			break;
+		case SNFBoardDetailUserRoleChildren:
+			headerCell.textLabel.text = @"Children";
+			break;
+		case SNFBoardDetailUserRoleParents:
+			headerCell.textLabel.text = @"Parents";
+			break;
+		case SNFBoardDetailUserRoleGuardians:
+			headerCell.textLabel.text = @"Guardians";
+			break;
+	}
+	return headerCell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+	BOOL showHeader = NO;
+	switch ((SNFBoardDetailUserRole)section) {
+		case SNFBoardDetailUserRoleOwner:
+			showHeader = YES;
+			break;
+		case SNFBoardDetailUserRoleChildren:
+			showHeader = _children.count > 0;
+			break;
+		case SNFBoardDetailUserRoleParents:
+			showHeader = _parents.count > 0;
+			break;
+		case SNFBoardDetailUserRoleGuardians:
+			showHeader = _guardians.count > 0;
+			break;
+	}
+	if(showHeader){
+		return 20.0;
+	}
+	return 0.0;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+	return 4;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-	return _userRoles.count;
+	switch ((SNFBoardDetailUserRole)section) {
+		case SNFBoardDetailUserRoleOwner:
+			return 1;
+			break;
+		case SNFBoardDetailUserRoleChildren:
+			return _children.count;
+			break;
+		case SNFBoardDetailUserRoleParents:
+			return _parents.count;
+			break;
+		case SNFBoardDetailUserRoleGuardians:
+			return _guardians.count;
+			break;
+	}
+	return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-	SNFUserRole *userRole = [_userRoles objectAtIndex:indexPath.row];
-	if([userRole.role isEqualToString:SNFUserRoleChild]){
-		SNFBoardDetailChildCell *cell = [self.rolesTable dequeueReusableCellWithIdentifier:@"SNFBoardDetailChildCell"];
-		if(!cell){
-			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardDetailChildCell" owner:self options:nil];
-			cell = [topLevelObjects firstObject];
-		}
-		cell.delegate = self;
-		cell.userRole = userRole;
-		return cell;
-	}else{
-		SNFBoardDetailAdultCell *cell = [self.rolesTable dequeueReusableCellWithIdentifier:@"SNFBoardDetailAdultCell"];
-		if(!cell){
-			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardDetailAdultCell" owner:self options:nil];
-			cell = [topLevelObjects firstObject];
-		}
-		cell.userRole = userRole;
-		return cell;
+	SNFUserRole *userRole;
+	switch ((SNFBoardDetailUserRole)indexPath.section) {
+		case SNFBoardDetailUserRoleOwner:
+			return [self adultCellForUser:self.board.owner];
+			break;
+		case SNFBoardDetailUserRoleChildren:
+			userRole = [_children objectAtIndex:indexPath.row];
+			return [self childCellForUserRole:userRole];
+			break;
+		case SNFBoardDetailUserRoleParents:
+			userRole = [_parents objectAtIndex:indexPath.row];
+			return [self adultCellForUser:userRole.user];
+			break;
+		case SNFBoardDetailUserRoleGuardians:
+			userRole = [_guardians objectAtIndex:indexPath.row];
+			return [self adultCellForUser:userRole.user];
+			break;
 	}
 	return nil;
+}
+
+- (SNFBoardDetailAdultCell *)adultCellForUser:(SNFUser *)user{
+	SNFBoardDetailAdultCell *cell = [self.rolesTable dequeueReusableCellWithIdentifier:@"SNFBoardDetailAdultCell"];
+	if(!cell){
+		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardDetailAdultCell" owner:self options:nil];
+		cell = [topLevelObjects firstObject];
+	}
+	cell.user = user;
+	return cell;
+}
+
+- (SNFBoardDetailChildCell *)childCellForUserRole:(SNFUserRole *)userRole{
+	SNFBoardDetailChildCell *cell = [self.rolesTable dequeueReusableCellWithIdentifier:@"SNFBoardDetailChildCell"];
+	if(!cell){
+		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardDetailChildCell" owner:self options:nil];
+		cell = [topLevelObjects firstObject];
+	}
+	cell.delegate = self;
+	cell.userRole = userRole;
+	return cell;
 }
 
 - (IBAction)onAddUserRole:(id)sender{
@@ -85,9 +174,9 @@
 	SNFAddSmileOrFrown *addModal = nil;
 	
 	if(type == SNFAddSmileOrFrownTypeSmile) {
-		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.smileButton.frame contentSize:CGSizeMake(500,600)];
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.smileButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
 	} else {
-		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.frownButton.frame contentSize:CGSizeMake(500,600)];
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.frownButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
 	}
 	
 	addModal.type = type;
@@ -102,7 +191,7 @@
 }
 
 - (void)childCellWantsToSpend:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFSpendRewards * rewards = [[SNFSpendRewards alloc] initWithSourceView:cell sourceRect:cell.spendButton.frame contentSize:CGSizeMake(500,490)];
+	SNFSpendRewards * rewards = [[SNFSpendRewards alloc] initWithSourceView:cell sourceRect:cell.spendButton.frame contentSize:CGSizeMake(500,490) arrowDirections:UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
 	rewards.board = self.board;
 	rewards.user = userRole.user;
 	rewards.delegate = self;
@@ -110,7 +199,7 @@
 }
 
 - (void)childCellWantsToOpenReport:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFReporting *reporting = [[SNFReporting alloc] initWithSourceView:cell sourceRect:cell.reportingButton.frame contentSize:CGSizeMake(600,700)];
+	SNFReporting *reporting = [[SNFReporting alloc] initWithSourceView:cell sourceRect:cell.profileImage.frame contentSize:CGSizeMake(600,700) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionDown];
 	reporting.board = userRole.board;
 	reporting.user = userRole.user;
 	[[AppDelegate rootViewController] presentViewController:reporting animated:YES completion:^{}];
@@ -130,10 +219,17 @@
 }
 
 - (void)reloadUserRoles{
-	NSSortDescriptor *roleDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self.role" ascending:NO];
-	NSSortDescriptor *userDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self.user.first_name" ascending:YES];
-	_userRoles = [_board.user_roles sortedArrayUsingDescriptors:@[roleDescriptor, userDescriptor]];
+	_children = [self resultsForRole:SNFUserRoleChild];
+	_parents = [self resultsForRole:SNFUserRoleParent];
+	_guardians = [self resultsForRole:SNFUserRoleGuardian];
 	[self.rolesTable reloadData];
+}
+
+- (NSArray *)resultsForRole:(NSString *)role{
+	NSSortDescriptor *userDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self.user.first_name" ascending:YES];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"role==%@", role];
+	NSSet *results = [_board.user_roles filteredSetUsingPredicate:predicate];
+	return [results sortedArrayUsingDescriptors:@[userDescriptor]];
 }
 
 

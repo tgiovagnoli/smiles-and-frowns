@@ -2,8 +2,14 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 #import "UIViewControllerStack.h"
+#import "SNFFormViewController.h"
 
-@interface SNFInvites : UIViewController <UITableViewDataSource,UITableViewDelegate,UIViewControllerStackUpdating,UITextFieldDelegate>
+typedef NS_ENUM(NSInteger,SNFInvitesSection) {
+	SNFInvitesSectionReceived,
+	SNFInvitesSectionSent,
+};
+
+@interface SNFInvites : SNFFormViewController <UITableViewDataSource,UITableViewDelegate,UIViewControllerStackUpdating,UITextFieldDelegate>
 
 @property (weak) IBOutlet UITableView * tableView;
 @property (weak) IBOutlet UITextField * search;

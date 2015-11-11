@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *username;
 @property (nullable, nonatomic, retain) NSString *first_name;
 @property (nullable, nonatomic, retain) NSString *last_name;
+@property (nullable, nonatomic, retain) NSString *image;
 @property (nullable, nonatomic, retain) NSString *email;
 @property (nullable, nonatomic, retain) NSNumber *age;
 @property (nullable, nonatomic, retain) NSString *gender;

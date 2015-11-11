@@ -9,10 +9,7 @@
 #import "ATIFacebookAuthHandler.h"
 #import "UIAlertAction+Additions.h"
 #import "SNFADBannerView.h"
-
-@interface SNFMore ()
-@property IAPHelper * helper;
-@end
+#import "ATITwitterAuthHandler.h"
 
 @implementation SNFMore
 
@@ -88,22 +85,24 @@
 	
 }
 
+- (void)termsAndPrivacy{
+	
+}
+
+- (void)appSettings{
+	
+}
+
 - (void) restorePurchases {
-	
-	if(!self.helper) {
-		self.helper = [[IAPHelper alloc] init];
-	}
-	
-	__weak SNFMore * weakself = self;
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[self.helper restorePurchasesWithCompletion:^(NSError *error, SKPaymentTransaction *transaction, BOOL completed) {
+	[[IAPHelper defaultHelper] restorePurchasesWithCompletion:^(NSError *error, SKPaymentTransaction *transaction, BOOL completed) {
 		
 		NSString * productId = transaction.payment.productIdentifier;
-		NSString * type = [IAPHelper productTypeForProductId:productId];
+		NSString * type = [[IAPHelper defaultHelper] productTypeForProductId:productId];
 		
-		if([[IAPHelper productNameByProductId:productId] isEqualToString:@"RemoveAds"]) {
+		if([[[IAPHelper defaultHelper] productNameByProductId:productId] isEqualToString:@"RemoveAds"]) {
 			[[NSNotificationCenter defaultCenter] postNotificationName:SNFADBannerViewPurchasedRemoveAds object:nil];
 		}
 		
@@ -114,7 +113,7 @@
 		}
 		
 		if(completed) {
-			[MBProgressHUD hideHUDForView:weakself.view animated:TRUE];
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Success" message:@"Your purchases were restored" preferredStyle:UIAlertControllerStyleAlert];
 			[alert addAction:[UIAlertAction OKAction]];
@@ -127,17 +126,15 @@
 
 - (void) removeAds {
 	
-	IAPHelper * helper = [[IAPHelper alloc] init];
-	
-	NSArray * products = [IAPHelper productIdsByNames:@[@"RemoveAds"]];
+	NSArray * products = [[IAPHelper defaultHelper] productIdsByNames:@[@"RemoveAds"]];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[helper loadItunesProducts:products withCompletion:^(NSError *error) {
+	[[IAPHelper defaultHelper] loadItunesProducts:products withCompletion:^(NSError *error) {
 		
-		NSString * product = [IAPHelper productIdByName:@"RemoveAds"];
+		NSString * product = [[IAPHelper defaultHelper] productIdByName:@"RemoveAds"];
 		
-		[helper purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+		[[IAPHelper defaultHelper] purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
@@ -155,17 +152,9 @@
 	
 }
 
-- (void)termsAndPrivacy{
-	
-}
 
-- (void)appSettings{
-	
-}
 
 - (void) logout {
-	[[ATIFacebookAuthHandler instance] logout];
-	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
 	SNFUserService * service = [[SNFUserService alloc] init];

@@ -5,10 +5,14 @@
 #import "SNFFormViewController.h"
 #import "SNFBoard.h"
 #import "SNFTaggedAlertAction.h"
+#import "SNFSyncService.h"
+#import "APDDjangoErrorViewer.h"
 
 extern NSString * const SNFAddUserRoleAddedChild;
 
-@interface SNFAddUserRole : SNFFormViewController <UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,CNContactPickerDelegate>
+@interface SNFAddUserRole : SNFFormViewController <UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,CNContactPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
+	NSString *_imageName;
+}
 
 @property SNFBoard * board;
 

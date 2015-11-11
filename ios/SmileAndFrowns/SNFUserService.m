@@ -5,6 +5,9 @@
 #import "SNFUser.h"
 #import "NSManagedObject+InfoDictionary.h"
 #import "SNFInvite.h"
+#import "ATITwitterAuthHandler.h"
+#import "ATIFacebookAuthHandler.h"
+#import "SNFSyncService.h"
 
 @implementation SNFUserService
 
@@ -102,6 +105,9 @@
 }
 
 - (void)logoutWithCompletion:(void(^)(NSError *error))completion{
+	[[ATIFacebookAuthHandler instance] logout];
+	[[ATITwitterAuthHandler instance] logout];
+	
 	NSURL * serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"logout"];
 	NSURLSession * session = [NSURLSession sharedSession];
 	NSURLSessionDataTask * task = [session dataTaskWithURL:serviceURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -358,7 +364,7 @@
 		
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
-				completion(error);
+				completion(error, nil, nil);
 				return;
 			}
 			
@@ -366,25 +372,21 @@
 			NSObject * responseObject = [self responseObjectFromData:data withError:&jsonError];
 			
 			if(jsonError) {
-				completion(jsonError);
+				completion(jsonError, nil, nil);
 				return;
 			}
 			
-			if([responseObject isKindOfClass:[NSArray class]]) {
+			if([responseObject isKindOfClass:[NSDictionary class]]) {
 				
-				//load the invites into core data.
-				NSArray * invites = (NSArray *)responseObject;
-				for(NSDictionary * dict in invites) {
-					__unused SNFInvite * invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:dict withContext:[SNFModel sharedInstance].managedObjectContext];
-				}
+				NSDictionary * invites = (NSDictionary *)responseObject;
+				NSArray * received = invites[@"received_invites"];
+				NSArray * sent = invites[@"sent_invites"];
 				
-				[[SNFModel sharedInstance].managedObjectContext save:nil];
-				
-				completion(nil);
+				completion(nil,received,sent);
 				
 			} else {
 				
-				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Error parsing invites"]);
+				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Error parsing invites"], nil, nil);
 				
 			}
 		});

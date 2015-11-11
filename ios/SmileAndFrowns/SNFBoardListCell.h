@@ -1,6 +1,8 @@
 #import <UIKit/UIKit.h>
 #import "SNFBoard.h"
+#import "SNFUser.h"
 #import "SNFSwipeCell.h"
+#import "SNFModel.h"
 
 @class SNFBoardListCell;
 
@@ -13,8 +15,11 @@
 
 @property (weak) IBOutlet UILabel *titleLabel;
 @property (weak) IBOutlet UILabel *dateLabel;
-@property IBOutlet UIButton * editButton;
+@property (weak) IBOutlet UIButton *resetButton;
+@property (weak) IBOutlet UIButton *editButton;
+@property (weak) IBOutlet NSLayoutConstraint *resetButtonWidthConstraint;
 @property (weak, nonatomic) SNFBoard *board;
 @property (weak) NSObject <SNFBoardListCellDelegate> *delegate;
+
 
 @end
