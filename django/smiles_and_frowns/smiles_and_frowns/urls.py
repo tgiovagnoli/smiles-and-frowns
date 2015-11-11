@@ -20,6 +20,7 @@ urlpatterns = [
     
     #invite endpoints
     url(r'^api/invite_accept/?', api_views.invite_accept),
+    url(r'^api/invite_delete/?', api_views.invite_delete),
     url(r'^api/invites/?', api_views.invites),
     url(r'^api/invite/?', api_views.invite),
     
