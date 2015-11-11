@@ -15,6 +15,7 @@
 
 @dynamic uuid;
 @dynamic title;
+@dynamic positive;
 @dynamic predefined_boards;
 @dynamic predefined_behaviors;
 

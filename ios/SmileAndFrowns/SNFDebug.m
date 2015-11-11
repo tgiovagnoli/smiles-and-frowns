@@ -8,7 +8,6 @@
 #import "SNFReward.h"
 #import "SNFUser.h"
 #import "SNFUserRole.h"
-#import "SNFInvite.h"
 #import "SNFPredefinedBehaviorGroup.h"
 #import "SNFPredefinedBehavior.h"
 #import "SNFPredefinedBoard.h"

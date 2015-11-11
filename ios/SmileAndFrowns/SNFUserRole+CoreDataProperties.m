@@ -1,5 +1,4 @@
 #import "SNFUserRole+CoreDataProperties.h"
-#import "SNFInvite.h"
 
 @implementation SNFUserRole (CoreDataProperties)
 

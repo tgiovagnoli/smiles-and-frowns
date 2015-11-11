@@ -7,6 +7,7 @@
 @dynamic title;
 @dynamic note;
 @dynamic uuid;
+@dynamic positive;
 @dynamic deleted;
 @dynamic created_date;
 @dynamic updated_date;

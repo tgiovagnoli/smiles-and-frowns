@@ -29,7 +29,8 @@ def serialize_behaviors(behaviors, uuid_only=False):
 			behaviors_info.append({
 				"title": behavior.title,
 				"uuid": behavior.uuid,
-				"id": behavior.id
+				"id": behavior.id,
+				"positive": behavior.positive,
 			})
 	return behaviors_info;
 

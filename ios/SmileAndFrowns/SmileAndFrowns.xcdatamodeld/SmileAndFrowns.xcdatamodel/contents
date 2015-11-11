@@ -5,6 +5,7 @@
         <attribute name="deleted" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="device_date" attributeType="Date" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" maxValueString="256" syncable="YES"/>
+        <attribute name="positive" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="title" attributeType="String" maxValueString="128" defaultValueString="Untitled" syncable="YES"/>
         <attribute name="updated_date" attributeType="Date" syncable="YES"/>
@@ -42,18 +43,8 @@
         <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" inverseName="frowns_created" inverseEntity="SNFUser" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" inverseName="frowns" inverseEntity="SNFUser" syncable="YES"/>
     </entity>
-    <entity name="SNFInvite" representedClassName="SNFInvite" syncable="YES">
-        <attribute name="accepted" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="board_title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="board_uuid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="created_date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="sender_first_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sender_last_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="uuid" attributeType="String" syncable="YES"/>
-    </entity>
     <entity name="SNFPredefinedBehavior" representedClassName="SNFPredefinedBehavior" syncable="YES">
+        <attribute name="positive" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" maxValueString="128" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String" maxValueString="64" syncable="YES"/>
         <relationship name="predefined_behaviors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SNFPredefinedBehaviorGroup" inverseName="behaviors" inverseEntity="SNFPredefinedBehaviorGroup" syncable="YES"/>
@@ -124,11 +115,10 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" inverseName="user_roles" inverseEntity="SNFUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SNFBehavior" positionX="-882" positionY="-225" width="128" height="208"/>
+        <element name="SNFBehavior" positionX="-882" positionY="-225" width="128" height="225"/>
         <element name="SNFBoard" positionX="-1107" positionY="-111" width="128" height="255"/>
         <element name="SNFFrown" positionX="-389" positionY="27" width="128" height="208"/>
-        <element name="SNFInvite" positionX="279" positionY="54" width="128" height="180"/>
-        <element name="SNFPredefinedBehavior" positionX="-639" positionY="-369" width="128" height="105"/>
+        <element name="SNFPredefinedBehavior" positionX="-639" positionY="-369" width="128" height="120"/>
         <element name="SNFPredefinedBehaviorGroup" positionX="-477" positionY="-369" width="128" height="90"/>
         <element name="SNFPredefinedBoard" positionX="-801" positionY="-369" width="128" height="90"/>
         <element name="SNFReward" positionX="-1397" positionY="-19" width="128" height="208"/>
