@@ -23,11 +23,6 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 		self.inviteCodeField.text = [SNFModel sharedInstance].pendingInviteCode;
 	}
 	
-	if(self.invite) {
-		self.inviteCodeField.text = self.invite.code;
-		//self.joinLabel.text = [NSString stringWithFormat:@"Would you like to join the board %@?", self.invite.board_title];
-	}
-	
 	if(self.inviteCode) {
 		self.inviteCodeField.text = self.inviteCode;
 	}
@@ -47,16 +42,6 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 		if(error) {
 			[self displayOKAlertWithTitle:@"Invitation Error" message:error.localizedDescription completion:nil];
 			return;
-		}
-		
-		if(data[@"invite"]) {
-			//if invite was in response, load it into core data.
-			self.invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:data[@"invite"] withContext:[SNFModel sharedInstance].managedObjectContext];
-		}
-		
-		if(self.invite) {
-			[[SNFModel sharedInstance].managedObjectContext deleteObject:self.invite];
-			[[SNFSyncService instance] saveContext];
 		}
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:SNFInviteAccepted object:self];

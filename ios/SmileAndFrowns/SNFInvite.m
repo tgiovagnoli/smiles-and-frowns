@@ -32,4 +32,16 @@
 	return fetchedObjects;
 }
 
++ (void) deleteAllInvites {
+	NSArray * all = [SNFInvite all];
+	for(SNFInvite * invite in all) {
+		[[SNFModel sharedInstance].managedObjectContext deleteObject:invite];
+	}
+	NSError * error = nil;
+	[[SNFModel sharedInstance].managedObjectContext save:&error];
+	if(error) {
+		NSLog(@"deleteAllInvites error: %@",error);
+	}
+}
+
 @end

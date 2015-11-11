@@ -163,11 +163,11 @@ static AppDelegate * _instance;
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler{
 	if([SNFModel sharedInstance].loggedInUser){
 		SNFUserService *userService = [[SNFUserService alloc] init];
-		[userService invitesWithCompletion:^(NSError *error, NSArray *invites) {
+		[userService invitesWithCompletion:^(NSError *error, NSArray * received_invites, NSArray * sent_invites) {
 			if(error){
 				completionHandler(UIBackgroundFetchResultFailed);
 			}else{
-				[[UIApplication sharedApplication] setApplicationIconBadgeNumber:invites.count];
+				[[UIApplication sharedApplication] setApplicationIconBadgeNumber:received_invites.count];
 				completionHandler(UIBackgroundFetchResultNewData);
 			}
 		}];

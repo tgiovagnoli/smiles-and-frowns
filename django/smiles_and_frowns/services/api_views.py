@@ -400,10 +400,6 @@ def invite(request):
 	except:
 		return json_response_error("Board with uuid(%s) not found." % (board_uuid))
 
-	#check request user is owner or board
-	#if board.owner != request.user:
-	#	return json_response_error("Requesting user is not the board owner.")
-
 	#get role
 	role = request.POST.get('role',None)
 	if not role or len(role) < 1:
@@ -430,10 +426,11 @@ def invite(request):
 		invitee_user = User.objects.get(email=invitee_email)
 	except:
 		print "invitee_user not found, using no invitee_user for invite"
-
+	
 	#if the invitee has a user already, use the provided first name and last name from their user account
 	if invitee_user and invitee_user.first_name:
 		invitee_firstname = invitee_user.first_name
+
 	if invitee_user and invitee_user.last_name:
 		invitee_lastname = invitee_user.last_name
 
@@ -441,10 +438,14 @@ def invite(request):
 	code = utils.invite_code()
 
 	#lookup if there's an existing invite for user/board/role.
-	invite,created = models.Invite.objects.get_or_create(user=invitee_user,board=board,role=role)
-	
+	invite,created = models.Invite.objects.get_or_create(user=invitee_user,invitee_email=invitee_email,board=board,role=role)
+
 	#new invite, set new code
 	if created:
+		invite.sender = inviter_user
+		invite.invitee_firstname = invitee_firstname
+		invite.invitee_lastname = invitee_lastname
+		invite.invitee_email = invitee_email
 		invite.code = code
 	
 	#existing invite, use the invites existing code in the email
@@ -462,6 +463,7 @@ def invite(request):
 		'invitee_firstname':invitee_firstname,
 		'invitee_lastname':invitee_lastname
 	}
+
 	context = Context(data)
 	toEmail = [invitee_email]
 	fromEmail = settings.EMAIL_DO_NOT_REPLY
@@ -491,8 +493,11 @@ def invites(request):
 	#check auth
 	if not request.user.is_authenticated():
 		return login_required_response()
-	invites = models.Invite.objects.filter(user=request.user)
-	output = json_utils.invite_info_dictionary_collection(invites)
+	received_invites = models.Invite.objects.filter(user=request.user)
+	sent_invites = models.Invite.objects.filter(sender=request.user)
+	output = {}
+	output['received_invites'] = json_utils.invite_info_dictionary_collection(received_invites)
+	output['sent_invites'] = json_utils.invite_info_dictionary_collection(sent_invites)
 	return json_response(output)
 
 def sync_data_for_board(board):

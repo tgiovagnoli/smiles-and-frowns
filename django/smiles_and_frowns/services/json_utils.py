@@ -144,6 +144,8 @@ def invite_info_dictionary(invite):
 		"code": invite.code,
 		"board_title": invite.board.title,
 		"board_uuid": invite.board.uuid,
+		"invitee_firstname":invite.invitee_firstname,
+		"invitee_lastname":invite.invitee_lastname,
 		"created_date":datestring(invite.created_date),
 		"id":invite.id,
 	}
@@ -152,7 +154,7 @@ def invite_info_dictionary(invite):
 		invite_data['sender_first_name'] = invite.sender.first_name
 	else:
 		invite_data['sender_first_name'] = 'Someone'
-
+	
 	if invite.sender and invite.sender.last_name:
 		invite_data['sender_last_name'] = invite.sender.last_name
 

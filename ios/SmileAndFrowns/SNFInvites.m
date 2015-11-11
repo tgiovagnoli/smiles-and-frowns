@@ -13,10 +13,14 @@
 #import "SNFBoardDetail.h"
 #import "SNFInvitesCell.h"
 #import "SNFModel.h"
+#import "NSTimer+Blocks.h"
 
 @interface SNFInvites ()
 @property SNFUserService * service;
-@property NSArray * invites;
+@property NSArray * receivedInvites;
+@property NSArray * sentInvites;
+@property NSMutableArray * filteredReceivedInvites;
+@property NSMutableArray * filteredSentInvites;
 @end
 
 @implementation SNFInvites
@@ -37,14 +41,20 @@
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[self.service invitesWithCompletion:^(NSError *error, NSArray *invites) {
+	[self.service invitesWithCompletion:^(NSError *error, NSArray * receivedInvites, NSArray * sentInvites) {
 		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
+			
 			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			
 		} else {
-			[[UIApplication sharedApplication] setApplicationIconBadgeNumber:invites.count];
+			
+			self.receivedInvites = receivedInvites;
+			self.sentInvites = sentInvites;
+			
+			[[UIApplication sharedApplication] setApplicationIconBadgeNumber:receivedInvites.count];
 			[self reload];
 		}
 		
@@ -63,12 +73,20 @@
 }
 
 - (void) onInviteRefresh:(UIRefreshControl *) refresh {
-	[self.service invitesWithCompletion:^(NSError *error, NSArray *invites) {
+	//[SNFInvite deleteAllInvites];
+	
+	[self.service invitesWithCompletion:^(NSError * error, NSArray * receivedInvites, NSArray * sentInvites) {
 		[refresh endRefreshing];
+		
 		if(error) {
+			
 			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			
 		} else {
-			[[UIApplication sharedApplication] setApplicationIconBadgeNumber:invites.count];
+			
+			[[UIApplication sharedApplication] setApplicationIconBadgeNumber:receivedInvites.count];
+			self.receivedInvites = receivedInvites;
+			self.sentInvites = sentInvites;
 			[self reload];
 		}
 	}];
@@ -106,26 +124,101 @@
 	}
 }
 
+- (NSString *) stringFromDate:(NSDate *) date {
+	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+	[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+	return [formatter stringFromDate:date];
+}
+
+- (NSDate *) dateFromString:(NSString *) dateString {
+	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+	// 2015-10-21T21:34:54Z
+	[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+	[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+	return [formatter dateFromString:dateString];
+}
+
 - (void) reload {
-	NSError * error;
-	NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"SNFInvite"];
 	
-	if([self.search.text isEmpty]) {
+	//filter received invites first based on search field
+	self.filteredReceivedInvites = [NSMutableArray array];
+	
+	for(NSDictionary * invite in self.receivedInvites) {
+		NSString * firstname = invite[@"invitee_firstname"];
+		NSString * lastname = invite[@"invitee_lastname"];
+		NSString * board_title = invite[@"board_title"];
 		
-	} else {
-		request.predicate = [NSPredicate predicateWithFormat:@"(sender_first_name CONTAINS[cd] %@) || (sender_last_name CONTAINS[cd] %@)", self.search.text,self.search.text];
+		if(![self.search.text isEmpty]) {
+			if((id)firstname != [NSNull null] && [firstname rangeOfString:self.search.text].location != NSNotFound) {
+				[self.filteredReceivedInvites addObject:invite];
+			} else if((id)lastname != [NSNull null] && [lastname rangeOfString:self.search.text].location != NSNotFound) {
+				[self.filteredReceivedInvites addObject:invite];
+			} else if((id)board_title != [NSNull null] && [board_title rangeOfString:self.search.text].location != NSNotFound) {
+				[self.filteredReceivedInvites addObject:invite];
+			}
+		} else {
+			[self.filteredReceivedInvites addObject:invite];
+		}
 	}
 	
-	if(self.segment.selectedSegmentIndex == 0) {
-		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"sender_first_name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+	//filter sent invites first based on search field
+	self.filteredSentInvites = [NSMutableArray array];
+	for(NSDictionary * invite in self.sentInvites) {
+		NSString * firstname = invite[@"invitee_firstname"];
+		NSString * lastname = invite[@"invitee_lastname"];
+		NSString * board_title = invite[@"board_title"];
 		
-	} else {
-		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"created_date" ascending:NO]];
+		if(![self.search.text isEmpty]) {
+			if((id)firstname != [NSNull null] && [firstname rangeOfString:self.search.text].location != NSNotFound) {
+				[self.filteredSentInvites addObject:invite];
+			} else if((id)lastname != [NSNull null] && [lastname rangeOfString:self.search.text].location != NSNotFound) {
+				[self.filteredSentInvites addObject:invite];
+			} else if((id)board_title != [NSNull null] && [board_title rangeOfString:self.search.text].location != NSNotFound) {
+				[self.filteredSentInvites addObject:invite];
+			}
+		} else {
+			[self.filteredSentInvites addObject:invite];
+		}
 	}
 	
-	NSArray * results = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:request error:&error];
+	//sort the filtered arrays based to segment selection.
 	
-	self.invites = results;
+	[self.filteredReceivedInvites sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+		
+		NSDictionary * invite1 = (NSDictionary *) obj1;
+		NSDictionary * invite2 = (NSDictionary *) obj2;
+		NSDate * createdDate1 = [self dateFromString:invite1[@"created_date"]];
+		NSDate * createdDate2 = [self dateFromString:invite2[@"created_date"]];
+		NSString * firstname1 = invite1[@"invitee_firstname"];
+		NSString * firstname2 = invite2[@"invitee_firstname"];
+		
+		if(self.segment.selectedSegmentIndex == 0) {
+			return [firstname1 compare:firstname2 options:NSCaseInsensitiveSearch];
+		} else {
+			return [createdDate1 compare:createdDate2];
+		}
+		
+		return NSOrderedSame;
+	}];
+	
+	[self.filteredSentInvites sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+		
+		NSDictionary * invite1 = (NSDictionary *) obj1;
+		NSDictionary * invite2 = (NSDictionary *) obj2;
+		NSDate * createdDate1 = [self dateFromString:invite1[@"created_date"]];
+		NSDate * createdDate2 = [self dateFromString:invite2[@"created_date"]];
+		NSString * firstname1 = invite1[@"invitee_firstname"];
+		NSString * firstname2 = invite2[@"invitee_firstname"];
+		
+		if(self.segment.selectedSegmentIndex == 0) {
+			return [firstname1 compare:firstname2 options:NSCaseInsensitiveSearch];
+		} else {
+			return [createdDate1 compare:createdDate2];
+		}
+		
+		return NSOrderedSame;
+	}];
 	
 	[self.tableView reloadData];
 }
@@ -135,15 +228,59 @@
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
+	return 2;
+}
+
+- (CGFloat)tableView:(UITableView *) tableView heightForHeaderInSection:(NSInteger) section {
+	if(section == SNFInvitesSectionReceived &&  self.filteredReceivedInvites.count < 1) {
+		return 0;
+	}
+	
+	if(section == SNFInvitesSectionSent && self.filteredSentInvites.count < 1) {
+		return 0;
+	}
+	
+	return 22;
+}
+
+- (UIView *) tableView:(UITableView *) tableView viewForHeaderInSection:(NSInteger) section {
+	UITableViewHeaderFooterView * headerCell = [[UITableViewHeaderFooterView alloc] init];
+	
+	if(section == SNFInvitesSectionReceived) {
+		headerCell.textLabel.text = @"Received Invites";
+	}
+	
+	if(section == SNFInvitesSectionSent) {
+		headerCell.textLabel.text = @"Sent Invites";
+	}
+	
+	return headerCell;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return self.invites.count;
+	if(section == SNFInvitesSectionReceived) {
+		return self.filteredReceivedInvites.count;
+	}
+	
+	if (section == SNFInvitesSectionSent) {
+		return self.filteredSentInvites.count;
+	}
+	
+	return 0;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	SNFInvite * invite = [self.invites objectAtIndex:indexPath.row];
+	
+	NSDictionary * invite = nil;
+	
+	if(indexPath.section == SNFInvitesSectionReceived) {
+		invite = [self.filteredReceivedInvites objectAtIndex:indexPath.row];
+	}
+	
+	if(indexPath.section == SNFInvitesSectionSent) {
+		invite = [self.filteredSentInvites objectAtIndex:indexPath.row];
+	}
+	
 	SNFInvitesCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SNFInvites"];
 	
 	if(!cell) {
@@ -151,55 +288,34 @@
 		cell = [nib objectAtIndex:0];
 	}
 	
-	cell.titleLabel.text = [NSString stringWithFormat:@"%@ invited you to %@", invite.sender_first_name, invite.board_title];
+	if(indexPath.section == SNFInvitesSectionReceived) {
+		cell.titleLabel.text = [NSString stringWithFormat:@"%@ invited you to %@", invite[@"sender_first_name"], invite[@"board_title"]];
+	} else {
+		cell.titleLabel.text = [NSString stringWithFormat:@"You invited %@ to %@", invite[@"invitee_firstname"], invite[@"board_title"]];
+	}
 	
 	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 	formatter.dateFormat = @"MMMM dd, YYYY";
 	[formatter setTimeZone:[NSTimeZone localTimeZone]];
 	formatter.locale = [NSLocale currentLocale];
-	cell.dateLabel.text = [formatter stringFromDate:invite.created_date];
 	
-	if(invite.accepted.boolValue) {
-		cell.titleLabel.textColor = [UIColor grayColor];
-		cell.dateLabel.textColor = [UIColor grayColor];
-	}
+	NSDate * date = [self dateFromString:invite[@"created_date"]];
+	
+	cell.dateLabel.text = [formatter stringFromDate:date];
 	
 	return cell;
 }
 
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	SNFInvite * invite = [self.invites objectAtIndex:indexPath.row];
-	
-	if(invite.accepted.boolValue) {
-		
-		BOOL showError = TRUE;
-		
-		if(invite.board_uuid) {
-			
-			SNFBoard * board = [SNFBoard boardByUUID:invite.board_uuid];
-			
-			if(board) {
-				showError = FALSE;
-				SNFBoardDetail * detail = [[SNFBoardDetail alloc] init];
-				detail.board = board;
-				[[SNFViewController instance].viewControllerStack pushViewController:detail animated:TRUE];
-				
-			}
-		}
-		
-		if(showError) {
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Board Not Found" preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[self presentViewController:alert animated:TRUE completion:nil];
-		}
-		
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
+	if(indexPath.section == SNFInvitesSectionSent) {
 		return;
 	}
 	
+	NSDictionary * invite = [self.filteredReceivedInvites objectAtIndex:indexPath.row];
 	UIView * cell = [self.tableView cellForRowAtIndexPath:indexPath];
 	
 	SNFAcceptInvite * acceptor = [[SNFAcceptInvite alloc] initWithSourceView:cell sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
-	acceptor.invite = invite;
+	acceptor.inviteCode = invite[@"code"];
 	
 	[[AppDelegate rootViewController] presentViewController:acceptor animated:TRUE completion:nil];
 }

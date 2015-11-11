@@ -4,6 +4,11 @@
 #import "UIViewControllerStack.h"
 #import "SNFFormViewController.h"
 
+typedef NS_ENUM(NSInteger,SNFInvitesSection) {
+	SNFInvitesSectionReceived,
+	SNFInvitesSectionSent,
+};
+
 @interface SNFInvites : SNFFormViewController <UITableViewDataSource,UITableViewDelegate,UIViewControllerStackUpdating,UITextFieldDelegate>
 
 @property (weak) IBOutlet UITableView * tableView;

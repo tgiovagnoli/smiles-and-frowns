@@ -364,7 +364,7 @@
 		
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
-				completion(error, nil);
+				completion(error, nil, nil);
 				return;
 			}
 			
@@ -372,25 +372,21 @@
 			NSObject * responseObject = [self responseObjectFromData:data withError:&jsonError];
 			
 			if(jsonError) {
-				completion(jsonError, nil);
+				completion(jsonError, nil, nil);
 				return;
 			}
 			
-			if([responseObject isKindOfClass:[NSArray class]]) {
+			if([responseObject isKindOfClass:[NSDictionary class]]) {
 				
-				//load the invites into core data.
-				NSArray * invites = (NSArray *)responseObject;
-				for(NSDictionary * dict in invites) {
-					__unused SNFInvite * invite = (SNFInvite *)[SNFInvite editOrCreatefromInfoDictionary:dict withContext:[SNFModel sharedInstance].managedObjectContext];
-				}
+				NSDictionary * invites = (NSDictionary *)responseObject;
+				NSArray * received = invites[@"received_invites"];
+				NSArray * sent = invites[@"sent_invites"];
 				
-				[[SNFSyncService instance] saveContext];
-				
-				completion(nil, invites);
+				completion(nil,received,sent);
 				
 			} else {
 				
-				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Error parsing invites"], nil);
+				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Error parsing invites"], nil, nil);
 				
 			}
 		});
