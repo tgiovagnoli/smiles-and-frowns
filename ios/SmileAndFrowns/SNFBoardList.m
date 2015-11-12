@@ -25,6 +25,10 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	[self reloadBoards];
 }
 
+- (void)viewStack:(UIViewControllerStack *)viewStack willShowView:(UIViewControllerStackOperation)operation wasAnimated:(BOOL)wasAnimated{
+	[self reloadBoards];
+}
+
 - (void)onBoardRefresh:(UIRefreshControl *)refresh{
 	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
 		[refresh endRefreshing];
