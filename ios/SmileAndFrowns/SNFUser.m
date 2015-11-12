@@ -70,5 +70,17 @@
 	return [UIImage imageWithContentsOfFile:fullPath];
 }
 
++ (NSArray *)ageSelections{
+	NSMutableArray *ages = [[NSMutableArray alloc] init];
+	for(NSInteger i=SNFUserAgeMin; i<SNFUserAgeMax; i++){
+		[ages addObject:[NSString stringWithFormat:@"%lu", i]];
+	}
+	return [NSArray arrayWithArray:ages];
+}
+
++ (NSArray *)genderSelections{
+	return @[@"---------", @"Male", @"Female"];
+}
+
 
 @end
