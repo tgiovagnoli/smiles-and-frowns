@@ -242,7 +242,7 @@
 }
 
 - (void)childCellWantsToEdit:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFChildEdit *childEdit = [[SNFChildEdit alloc] init];
+	SNFChildEdit *childEdit = [[SNFChildEdit alloc] initWithSourceView:cell sourceRect:CGRectZero contentSize:CGSizeMake(400,380) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight];
 	childEdit.childUser = userRole.user;
 	childEdit.delegate = self;
 	[[AppDelegate rootViewController] presentViewController:childEdit animated:YES completion:nil];
