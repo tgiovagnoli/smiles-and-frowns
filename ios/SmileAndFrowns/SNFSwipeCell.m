@@ -28,6 +28,15 @@
 	[self setupGestureRecognizer];
 }
 
+- (void)prepareForReuse{
+	[super prepareForReuse];
+	[self resetSwipeState];
+}
+
+- (void)resetSwipeState{
+	self.overlayView.frame = CGRectMake(0.0, 0.0, self.overlayView.frame.size.width, self.overlayView.frame.size.height);
+}
+
 - (void)setupGestureRecognizer{
 	self.layoutMargins = UIEdgeInsetsZero;
 	self.contentView.layoutMargins = UIEdgeInsetsZero;

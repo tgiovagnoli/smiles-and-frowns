@@ -144,7 +144,6 @@
 				NSObject *lookedUpValue = [obj valueForKey:[[obj class] primaryLookup]];
 				value = @{[[obj class] primaryLookup]: lookedUpValue};
 			}
-			NSLog(@"%@ - %@", key, value);
 			[infoDict setObject:value forKey:insertKey];
 		}else{
 			[infoDict setObject:[NSNull null] forKey:insertKey];

@@ -13,6 +13,7 @@
 - (void)updateUIForDrag;
 - (void)finishUIForDrag;
 - (void)updateMask;
+- (void)resetSwipeState;
 
 
 @end
