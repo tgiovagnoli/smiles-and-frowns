@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "SNFUserRole.h"
 #import "SNFUser.h"
+#import "SNFSwipeCell.h"
 
 @class SNFBoardDetailChildCell;
 
@@ -9,9 +10,11 @@
 - (void)childCellWantsToAddFrown:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
 - (void)childCellWantsToSpend:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
 - (void)childCellWantsToOpenReport:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
+- (void)childCellWantsToDelete:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
+- (void)childCellWantsToEdit:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
 @end
 
-@interface SNFBoardDetailChildCell : UITableViewCell
+@interface SNFBoardDetailChildCell : SNFSwipeCell
 
 @property (nonatomic) SNFUserRole *userRole;
 
@@ -30,5 +33,7 @@
 - (IBAction)onFrown:(UIButton *)sender;
 - (IBAction)onSpend:(UIButton *)sender;
 - (void)onReport:(UITapGestureRecognizer *)sender;
+- (IBAction)onDelete:(UIButton *)sender;
+- (IBAction)onEdit:(UIButton *)sender;
 
 @end

@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
 };
 
 
-@interface SNFBoardDetail : UIViewController <UIViewControllerStackUpdating, UITableViewDelegate, UITableViewDataSource, SNFBoardDetailChildCellDelegate, SNFAddSmileOrFrownDelegate, SNFSpendRewardsDelegate> {
+@interface SNFBoardDetail : UIViewController <UIViewControllerStackUpdating, UITableViewDelegate, UITableViewDataSource, SNFBoardDetailChildCellDelegate, SNFAddSmileOrFrownDelegate, SNFSpendRewardsDelegate, SNFBoardDetailAdultCellDelegate> {
 	NSArray *_userRoles;
 	
 	NSArray *_children;

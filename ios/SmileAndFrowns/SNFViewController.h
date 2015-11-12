@@ -7,6 +7,7 @@
 #import "SNFTabMenu.h"
 #import "SNFUserProfile.h"
 #import "NSLog+Geom.h"
+#import "APDDjangoErrorViewer.h"
 
 @interface SNFViewController : UIViewController <APDDebugViewControllerDelegate,ADBannerViewDelegate>
 

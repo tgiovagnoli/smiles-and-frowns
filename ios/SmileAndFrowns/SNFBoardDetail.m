@@ -113,7 +113,7 @@
 	SNFUserRole *userRole;
 	switch ((SNFBoardDetailUserRole)indexPath.section) {
 		case SNFBoardDetailUserRoleOwner:
-			return [self adultCellForUser:self.board.owner];
+			return [self adultCellForUser:self.board.owner andRole:nil];
 			break;
 		case SNFBoardDetailUserRoleChildren:
 			userRole = [_children objectAtIndex:indexPath.row];
@@ -121,23 +121,25 @@
 			break;
 		case SNFBoardDetailUserRoleParents:
 			userRole = [_parents objectAtIndex:indexPath.row];
-			return [self adultCellForUser:userRole.user];
+			return [self adultCellForUser:userRole.user andRole:userRole];
 			break;
 		case SNFBoardDetailUserRoleGuardians:
 			userRole = [_guardians objectAtIndex:indexPath.row];
-			return [self adultCellForUser:userRole.user];
+			return [self adultCellForUser:userRole.user andRole:userRole];
 			break;
 	}
 	return nil;
 }
 
-- (SNFBoardDetailAdultCell *)adultCellForUser:(SNFUser *)user{
+- (SNFBoardDetailAdultCell *)adultCellForUser:(SNFUser *)user andRole:(SNFUserRole *)role{
 	SNFBoardDetailAdultCell *cell = [self.rolesTable dequeueReusableCellWithIdentifier:@"SNFBoardDetailAdultCell"];
 	if(!cell){
 		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardDetailAdultCell" owner:self options:nil];
 		cell = [topLevelObjects firstObject];
 	}
 	cell.user = user;
+	cell.userRole = role;
+	cell.delegate = self;
 	return cell;
 }
 
@@ -205,6 +207,32 @@
 	[[AppDelegate rootViewController] presentViewController:reporting animated:YES completion:^{}];
 }
 
+- (void)childCellWantsToDelete:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Person?" message:@"Are you sure you want to delete this person? All board data for this person will be lost and this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		userRole.deleted = [NSNumber numberWithBool:YES];
+		[self reloadUserRoles];
+		[[SNFSyncService instance] saveContext];
+	}]];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)adultCell:(SNFBoardDetailAdultCell *)cell wantsToRemoveUserRole:(SNFUserRole *)userRole{
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Person?" message:@"Are you sure you want to delete this person? All board data for this person will be lost and this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		userRole.deleted = [NSNumber numberWithBool:YES];
+		[self reloadUserRoles];
+		[[SNFSyncService instance] saveContext];
+	}]];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)childCellWantsToEdit:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
+	NSLog(@"edit child");
+}
+
 - (void)spendRewardsIsDone:(SNFSpendRewards *)spendRewards{
 	[self reloadUserRoles];
 }
@@ -229,7 +257,13 @@
 	NSSortDescriptor *userDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self.user.first_name" ascending:YES];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"role==%@", role];
 	NSSet *results = [_board.user_roles filteredSetUsingPredicate:predicate];
-	return [results sortedArrayUsingDescriptors:@[userDescriptor]];
+	NSMutableArray *finalResults = [[NSMutableArray alloc] init];
+	for(SNFUserRole *role in results){
+		if(![role.deleted boolValue]){
+			[finalResults addObject:role];
+		}
+	}
+	return [finalResults sortedArrayUsingDescriptors:@[userDescriptor]];
 }
 
 
