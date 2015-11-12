@@ -14,6 +14,7 @@ typedef void(^SNFCreateAccountCompletion)(NSError * error,SNFUser * user);
 typedef void(^SNFAcceptInviteCompletion)(NSError * error, NSDictionary * data);
 typedef void(^SNFDeleteInviteCompletion)(NSError * error);
 typedef void(^SNFInvitesCompletion)(NSError * error, NSArray * receivedInvites, NSArray * sentInvites);
+typedef void(^SNFProfileImageCompletion)(NSError * error, SNFUser * user);
 
 @interface SNFUserService : SNFService
 
@@ -26,6 +27,7 @@ typedef void(^SNFInvitesCompletion)(NSError * error, NSArray * receivedInvites, 
 - (void)logoutWithCompletion:(void(^)(NSError *error))completion;
 - (void)resetPasswordForEmail:(NSString *) email andCompletion:(void(^)(NSError *error))completion;
 - (void)updateUserWithData:(NSDictionary *) data withCompletion:(SNFUserServiceCallback)completion;
+- (void)updateUserProfileWithUsername:(NSString *) username image:(UIImage *) image withCompletion:(SNFProfileImageCompletion) completion;
 
 - (void)invitesWithCompletion:(SNFInvitesCompletion) completion;
 - (void)inviteWithData:(NSDictionary *)data andCompletion:(SNFInviteCallback)completion;

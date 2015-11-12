@@ -490,6 +490,41 @@
 			completion(nil,userData);
 		});
 	}];
+	
+	[task resume];
+}
+
+- (void) updateUserProfileWithUsername:(NSString *) username image:(UIImage *) image withCompletion:(SNFProfileImageCompletion) completion; {
+	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"user_update_profile_image"];
+	NSDictionary * variables = @{@"username":username};
+	NSData * imageData = UIImagePNGRepresentation(image);
+	NSURLRequest * request = [NSURLRequest fileUploadRequestWithURL:url data:imageData fileKey:@"image" fileName:[[NSUUID UUID] UUIDString] variables:variables];
+	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			
+			if(error) {
+				completion(error,nil);
+				return;
+			}
+			
+			NSError * jsonError = nil;
+			NSObject * responseObject = [self responseObjectFromData:data withError:&jsonError];
+			
+			if(jsonError) {
+				completion(jsonError,nil);
+				return;
+			}
+			
+			SNFUser * userData = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:(NSDictionary *)responseObject withContext:[SNFModel sharedInstance].managedObjectContext];
+			if(!userData) {
+				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Not logged in."], nil);
+				return;
+			}
+			
+			completion(nil,userData);
+		});
+	}];
+	
 	[task resume];
 }
 
