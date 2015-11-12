@@ -6,7 +6,7 @@
 		<key>Name</key>
 		<string>NewBoard</string>
 		<key>ProductId</key>
-		<string>com.apptitude.SmilesAndFrowns.NewBoard</string>
+		<string>com.smilesandfrowns.SmilesAndFrowns.NewBoard</string>
 		<key>Type</key>
 		<string>Consumable</string>
 	</dict>
@@ -14,7 +14,7 @@
 		<key>Name</key>
 		<string>RemoveAds</string>
 		<key>ProductId</key>
-		<string>com.apptitude.SmilesAndFrowns.RemoveAds</string>
+		<string>com.smilesandfrowns.SmilesAndFrowns.RemoveAds</string>
 		<key>Type</key>
 		<string>Non-Consumable</string>
 	</dict>

@@ -76,8 +76,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 #twitter
-SOCIAL_AUTH_TWITTER_KEY = ''
-SOCIAL_AUTH_TWITTER_SECRET = ''
+SOCIAL_AUTH_TWITTER_KEY = '7ghdn08ov5iF7DymXI1WVxYWn'
+SOCIAL_AUTH_TWITTER_SECRET = 'LuFNvUIq6c05jotBq8YWserlHcjWmlYcbfDnOhfxRp9XiVeov4'
 
 #FB
 SOCIAL_AUTH_FACEBOOK_KEY = '1641664296087724'
@@ -88,9 +88,6 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'fields': 'id, name, email'
 }
-
-SOCIAL_AUTH_TWITTER_KEY = '7ghdn08ov5iF7DymXI1WVxYWn'
-SOCIAL_AUTH_TWITTER_SECRET = 'LuFNvUIq6c05jotBq8YWserlHcjWmlYcbfDnOhfxRp9XiVeov4'
 
 SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'
 SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'
@@ -136,6 +133,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+#sesson cookie length - 1 year
+SESSION_COOKIE_AGE = 31556952
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
