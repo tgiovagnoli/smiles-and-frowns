@@ -242,7 +242,18 @@
 }
 
 - (void)childCellWantsToEdit:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	NSLog(@"edit child");
+	SNFChildEdit *childEdit = [[SNFChildEdit alloc] init];
+	childEdit.childUser = userRole.user;
+	childEdit.delegate = self;
+	[[AppDelegate rootViewController] presentViewController:childEdit animated:YES completion:nil];
+}
+
+- (void)childEditCancelled:(SNFChildEdit *)childEdit{
+	[self reloadUserRoles];
+}
+
+- (void)childEdit:(SNFChildEdit *)childEdit editedChild:(SNFUser *)child{
+	[self reloadUserRoles];
 }
 
 - (void)spendRewardsIsDone:(SNFSpendRewards *)spendRewards{

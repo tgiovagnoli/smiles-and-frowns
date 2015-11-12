@@ -12,6 +12,8 @@ extern NSString * const SNFAddUserRoleAddedChild;
 
 @interface SNFAddUserRole : SNFFormViewController <UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,CNContactPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
 	NSString *_imageName;
+	UIImage *_userSelectedImage;
+	NSString *_selectedGender;
 }
 
 @property SNFBoard * board;

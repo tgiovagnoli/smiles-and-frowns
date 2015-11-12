@@ -44,6 +44,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		self.email.placeholder = @"Email (Optional)";
 		self.email.hidden = YES; // do not use email to create users that are not part of the invite system.
 	}
+	[self updateProfileImage];
 }
 
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *) pickerView {
@@ -60,17 +61,11 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 
 - (void) pickerView:(UIPickerView *) pickerView didSelectRow:(NSInteger) row inComponent:(NSInteger) component {
 	if(row == 0) {
-		return;
+		self.gender.text = @"";
+	}else{
+		self.gender.text = [self.genders objectAtIndex:row];
 	}
-	self.gender.text = [self.genders objectAtIndex:row];
-	
-	if(row == 1 && !_imageName) {
-		self.image.image = [UIImage imageNamed:@"male"];
-	}
-	
-	if(row == 2 && !_imageName) {
-		self.image.image = [UIImage imageNamed:@"female"];
-	}
+	[self updateProfileImage];
 }
 
 - (void) addChildRole {
@@ -147,8 +142,8 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		user = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:userInfo withContext:context];
 	}
 	
-	if(_imageName && ![_imageName isEmpty]){
-		user.image = _imageName;
+	if(_userSelectedImage){
+		[user updateProfileImage:_userSelectedImage];
 	}
 	
 	NSDictionary * info = @{
@@ -337,9 +332,19 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	[self presentViewController:imagePicker animated:YES completion:^{}];
 }
 
+- (void)updateProfileImage{
+	if(_userSelectedImage && self.segment.selectedSegmentIndex == 0){
+		self.image.image = _userSelectedImage;
+	}else if([self.gender.text isEqualToString:@"Female"]){
+		self.image.image = [UIImage imageNamed:@"female"];
+	}else{
+		self.image.image = [UIImage imageNamed:@"male"];
+	}
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-	UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
-	[self saveImage:image];
+	_userSelectedImage = [info objectForKey:UIImagePickerControllerEditedImage];
+	[self updateProfileImage];
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 

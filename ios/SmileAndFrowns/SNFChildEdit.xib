@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFChildEdit">
+            <connections>
+                <outlet property="ageField" destination="nix-OE-054" id="E9Y-El-R6b"/>
+                <outlet property="firstNameField" destination="254-XA-FT4" id="3CI-5G-hK2"/>
+                <outlet property="formView" destination="eFM-2Q-Ihy" id="5on-Rl-oIa"/>
+                <outlet property="genderField" destination="DPF-SD-Sld" id="EMM-vA-SQx"/>
+                <outlet property="lastNameField" destination="crT-iP-R0e" id="t9Z-uY-crj"/>
+                <outlet property="pickerView" destination="pLh-5x-27j" id="gH6-ZV-V6B"/>
+                <outlet property="profileImageView" destination="dSs-vf-nVQ" id="Xec-SQ-PPI"/>
+                <outlet property="scrollView" destination="XEI-D9-885" id="RZ7-mF-f6O"/>
+                <outlet property="selectionContainer" destination="Igo-zR-sfB" id="8Ks-Lx-iIN"/>
+                <outlet property="selectionDoneButton" destination="yn0-hJ-KEa" id="k5v-gs-zJI"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEI-D9-885">
+                    <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                    <animations/>
+                </scrollView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="XEI-D9-885" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="5R4-cU-2y5"/>
+                <constraint firstItem="XEI-D9-885" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Ecn-96-vZr"/>
+                <constraint firstAttribute="bottom" secondItem="XEI-D9-885" secondAttribute="bottom" id="KrG-ex-CRr"/>
+                <constraint firstItem="XEI-D9-885" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="S17-bV-C6O"/>
+                <constraint firstAttribute="trailing" secondItem="XEI-D9-885" secondAttribute="trailing" id="SQK-uW-cgO"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="5R4-cU-2y5"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="367" y="368"/>
+        </view>
+        <view contentMode="scaleToFill" id="eFM-2Q-Ihy">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="309"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="254-XA-FT4">
+                    <rect key="frame" x="10" y="112" width="580" height="30"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="E1W-oc-nEx"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="crT-iP-R0e">
+                    <rect key="frame" x="10" y="152" width="580" height="30"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Yyd-ga-lgg"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DPF-SD-Sld">
+                    <rect key="frame" x="10" y="190" width="580" height="30"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Age" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nix-OE-054">
+                    <rect key="frame" x="10" y="228" width="580" height="30"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dSs-vf-nVQ">
+                    <rect key="frame" x="255" y="10" width="90" height="92"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="92" id="Qgd-cb-IJD"/>
+                        <constraint firstAttribute="width" constant="90" id="XFn-Sg-X4I"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1y-f1-f2b" userLabel="Gender Select Button">
+                    <rect key="frame" x="10" y="190" width="580" height="30"/>
+                    <animations/>
+                    <connections>
+                        <action selector="onEditGender:" destination="-1" eventType="touchUpInside" id="m3n-g1-9Ov"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFm-Js-3vP" userLabel="Age Select Button">
+                    <rect key="frame" x="10" y="228" width="580" height="30"/>
+                    <animations/>
+                    <connections>
+                        <action selector="onEditAge:" destination="-1" eventType="touchUpInside" id="p2n-a5-HB8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXj-2o-Iwf">
+                    <rect key="frame" x="10" y="268" width="285" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Update"/>
+                    <connections>
+                        <action selector="onSave:" destination="-1" eventType="touchUpInside" id="zA9-Ha-6q0"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDj-U0-aQY">
+                    <rect key="frame" x="305" y="268" width="285" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="onCancel:" destination="-1" eventType="touchUpInside" id="gii-Kl-Seh"/>
+                    </connections>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="s1y-f1-f2b" firstAttribute="centerX" secondItem="DPF-SD-Sld" secondAttribute="centerX" id="0dr-gO-RGx"/>
+                <constraint firstItem="DPF-SD-Sld" firstAttribute="top" secondItem="crT-iP-R0e" secondAttribute="bottom" constant="8" id="9Y3-4I-dzv"/>
+                <constraint firstItem="s1y-f1-f2b" firstAttribute="centerY" secondItem="DPF-SD-Sld" secondAttribute="centerY" id="ClH-ky-f6J"/>
+                <constraint firstItem="254-XA-FT4" firstAttribute="top" secondItem="dSs-vf-nVQ" secondAttribute="bottom" constant="10" id="FOv-nT-9gk"/>
+                <constraint firstItem="RXj-2o-Iwf" firstAttribute="leading" secondItem="SFm-Js-3vP" secondAttribute="leading" id="O8o-09-6DB"/>
+                <constraint firstItem="crT-iP-R0e" firstAttribute="width" secondItem="254-XA-FT4" secondAttribute="width" id="QKY-zM-jLG"/>
+                <constraint firstItem="uDj-U0-aQY" firstAttribute="trailing" secondItem="SFm-Js-3vP" secondAttribute="trailing" id="RIG-D7-1iv"/>
+                <constraint firstItem="DPF-SD-Sld" firstAttribute="width" secondItem="crT-iP-R0e" secondAttribute="width" id="Ssa-78-DIg"/>
+                <constraint firstItem="254-XA-FT4" firstAttribute="top" secondItem="eFM-2Q-Ihy" secondAttribute="top" constant="10" id="T17-fZ-vUp"/>
+                <constraint firstItem="s1y-f1-f2b" firstAttribute="height" secondItem="DPF-SD-Sld" secondAttribute="height" id="VlU-Qz-Oo2"/>
+                <constraint firstItem="nix-OE-054" firstAttribute="centerX" secondItem="DPF-SD-Sld" secondAttribute="centerX" id="VqF-G0-ruU"/>
+                <constraint firstItem="SFm-Js-3vP" firstAttribute="width" secondItem="nix-OE-054" secondAttribute="width" id="Xdu-Vi-utJ"/>
+                <constraint firstItem="DPF-SD-Sld" firstAttribute="centerX" secondItem="crT-iP-R0e" secondAttribute="centerX" id="YkS-xo-sCI"/>
+                <constraint firstItem="nix-OE-054" firstAttribute="top" secondItem="DPF-SD-Sld" secondAttribute="bottom" constant="8" id="Zdu-lp-HSh"/>
+                <constraint firstItem="crT-iP-R0e" firstAttribute="top" secondItem="254-XA-FT4" secondAttribute="bottom" constant="10" id="awR-Ph-cie"/>
+                <constraint firstAttribute="trailing" secondItem="254-XA-FT4" secondAttribute="trailing" constant="10" id="bGM-1B-hMB"/>
+                <constraint firstItem="SFm-Js-3vP" firstAttribute="centerX" secondItem="nix-OE-054" secondAttribute="centerX" id="cuE-kE-UR9"/>
+                <constraint firstItem="dSs-vf-nVQ" firstAttribute="top" secondItem="eFM-2Q-Ihy" secondAttribute="top" constant="10" id="duK-O5-CEX"/>
+                <constraint firstItem="s1y-f1-f2b" firstAttribute="width" secondItem="DPF-SD-Sld" secondAttribute="width" id="fC9-b2-lSK"/>
+                <constraint firstItem="SFm-Js-3vP" firstAttribute="centerY" secondItem="nix-OE-054" secondAttribute="centerY" id="fPZ-gg-H9o"/>
+                <constraint firstItem="254-XA-FT4" firstAttribute="leading" secondItem="eFM-2Q-Ihy" secondAttribute="leading" constant="10" id="i5I-JO-aOr"/>
+                <constraint firstItem="SFm-Js-3vP" firstAttribute="height" secondItem="nix-OE-054" secondAttribute="height" id="k1Y-NA-0yH"/>
+                <constraint firstItem="nix-OE-054" firstAttribute="width" secondItem="DPF-SD-Sld" secondAttribute="width" id="kBo-Td-cqr"/>
+                <constraint firstItem="uDj-U0-aQY" firstAttribute="width" secondItem="RXj-2o-Iwf" secondAttribute="width" id="l8a-Dk-XSD"/>
+                <constraint firstItem="uDj-U0-aQY" firstAttribute="top" secondItem="SFm-Js-3vP" secondAttribute="bottom" constant="10" id="r45-77-GuR"/>
+                <constraint firstItem="crT-iP-R0e" firstAttribute="centerX" secondItem="254-XA-FT4" secondAttribute="centerX" id="wS5-aS-z6m"/>
+                <constraint firstItem="RXj-2o-Iwf" firstAttribute="top" secondItem="SFm-Js-3vP" secondAttribute="bottom" constant="10" id="wW6-d0-ADz"/>
+                <constraint firstItem="dSs-vf-nVQ" firstAttribute="centerX" secondItem="eFM-2Q-Ihy" secondAttribute="centerX" id="xkq-nw-klB"/>
+                <constraint firstItem="uDj-U0-aQY" firstAttribute="leading" secondItem="RXj-2o-Iwf" secondAttribute="trailing" constant="10" id="zTb-ZY-6mN"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="T17-fZ-vUp"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="1022" y="228.5"/>
+        </view>
+        <view contentMode="scaleToFill" id="Igo-zR-sfB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yn0-hJ-KEa">
+                    <rect key="frame" x="274" y="186" width="52" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="52" id="SdC-BA-BjG"/>
+                        <constraint firstAttribute="height" constant="30" id="YvR-Q2-Uwl"/>
+                    </constraints>
+                    <state key="normal" title="Done"/>
+                    <connections>
+                        <action selector="selectionDone:" destination="-1" eventType="touchUpInside" id="vKf-WC-HcX"/>
+                    </connections>
+                </button>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLh-5x-27j">
+                    <rect key="frame" x="0.0" y="230" width="600" height="140"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="140" id="4NQ-m8-Hp0"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="7Jg-C7-boX"/>
+                        <outlet property="delegate" destination="-1" id="DQ6-9X-AQq"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80044401978417268" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="yn0-hJ-KEa" firstAttribute="centerX" secondItem="pLh-5x-27j" secondAttribute="centerX" id="5ao-er-aGa"/>
+                <constraint firstItem="pLh-5x-27j" firstAttribute="centerY" secondItem="Igo-zR-sfB" secondAttribute="centerY" id="N18-U8-eSd"/>
+                <constraint firstItem="pLh-5x-27j" firstAttribute="centerX" secondItem="Igo-zR-sfB" secondAttribute="centerX" id="P3D-iP-oeM"/>
+                <constraint firstItem="pLh-5x-27j" firstAttribute="width" secondItem="Igo-zR-sfB" secondAttribute="width" id="V5C-MX-tj0"/>
+                <constraint firstItem="pLh-5x-27j" firstAttribute="top" secondItem="yn0-hJ-KEa" secondAttribute="bottom" constant="14" id="cP1-01-KxK"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="1669" y="374"/>
+        </view>
+    </objects>
+</document>

@@ -692,12 +692,12 @@ def sync(request):
 			user, user_created = User.objects.get_or_create(username=userinfo.get('username'))
 			if user_created:
 				user.email = ""
-				user.first_name = userinfo.get('first_name','')
-				user.last_name = userinfo.get('last_name','')
-				user.save()
-				user.profile.age = userinfo.get('age','')
-				user.profile.gender = userinfo.get('gender','')
-				user.profile.save()
+			user.first_name = userinfo.get('first_name','')
+			user.last_name = userinfo.get('last_name','')
+			user.profile.age = userinfo.get('age','')
+			user.profile.gender = userinfo.get('gender','')
+			user.profile.save()
+			user.save()
 
 		#set role data
 		if role_created:
