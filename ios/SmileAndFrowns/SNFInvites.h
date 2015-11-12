@@ -16,5 +16,6 @@ typedef NS_ENUM(NSInteger,SNFInvitesSection) {
 @property (weak) IBOutlet UISegmentedControl * segment;
 @property (weak) IBOutlet UIButton * searchButton;
 @property IBOutlet NSLayoutConstraint * tableViewBottom;
+@property (weak) IBOutlet UIButton * inviteButton;
 
 @end
