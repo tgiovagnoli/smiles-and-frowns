@@ -710,7 +710,7 @@ def sync(request):
 		role.save()
 
 		#set created in uuid lookup. this is after role.save so the uuid is pouplated
-		if created:
+		if role_created:
 			created_object_uuids['user_roles'].append(role.uuid)
 
 	#go through behaviors
