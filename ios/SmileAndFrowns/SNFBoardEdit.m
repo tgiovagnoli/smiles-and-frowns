@@ -81,17 +81,16 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-	UILabel *label = [[UILabel alloc] init];
+	UITableViewHeaderFooterView * view = [[UITableViewHeaderFooterView alloc] init];
 	switch((SNFBoardEditBehaviorType)section) {
 		case SNFBoardEditBehaviorTypePositive:
-			label.text = @"Positive Behaviors";
+			view.textLabel.text = @"Positive Behaviors";
 			break;
 		case SNFBoardEditBehaviorTypeNegative:
-			label.text = @"Negative Behaviors";
+			view.textLabel.text = @"Negative Behaviors";
 			break;
 	}
-	label.backgroundColor = [UIColor lightGrayColor];
-	return label;
+	return view;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
