@@ -17,7 +17,7 @@
 	_agePicker.delegate = self;
 	NSMutableArray *ages = [[NSMutableArray alloc] init];
 	for(NSInteger i=SNFUserAgeMin; i<SNFUserAgeMax; i++){
-		[ages addObject:[NSString stringWithFormat:@"%d", i]];
+		[ages addObject:[NSString stringWithFormat:@"%ld", (long)i]];
 	}
 	_agePicker.values = ages;
 	
@@ -38,7 +38,7 @@
 	}
 	self.firstNameField.text = self.childUser.first_name;
 	self.lastNameField.text = self.childUser.last_name;
-	self.ageField.text = [NSString stringWithFormat:@"%d", self.childUser.age.integerValue];
+	self.ageField.text = [NSString stringWithFormat:@"%ld", self.childUser.age.integerValue];
 	if([self.childUser.gender isEqualToString:SNFUserGenderMale]){
 		self.genderField.text = @"Male";
 	}else if([self.childUser.gender isEqualToString:SNFUserGenderFemale]){
