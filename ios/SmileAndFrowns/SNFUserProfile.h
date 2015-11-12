@@ -6,13 +6,17 @@
 #import "SNFUserService.h"
 #import "SNFLogin.h"
 #import "SNFFormViewController.h"
+#import "SNFValuePicker.h"
 
-@interface SNFUserProfile : SNFFormViewController <UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate,UIViewControllerStackUpdating,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+
+
+@interface SNFUserProfile : SNFFormViewController <UITextFieldDelegate,UIViewControllerStackUpdating,UIImagePickerControllerDelegate,UINavigationControllerDelegate, SNFValuePickerDelegate>{
+	SNFValuePicker *_genderPicker;
+	SNFValuePicker *_agePicker;
+}
 
 @property (nonatomic) SNFUser * user;
 
-@property IBOutlet UIView * pickerviewContainer;
-@property IBOutlet UIPickerView * pickerView;
 
 @property (weak) IBOutlet UIImageView * profileImage;
 @property (weak) IBOutlet UITextField * firstNameField;
@@ -22,6 +26,7 @@
 @property (weak) IBOutlet UITextField * passwordConfirmField;
 @property (weak) IBOutlet UITextField * gender;
 @property (weak) IBOutlet UIButton * genderOverlay;
+@property (weak) IBOutlet UIButton * ageOverlay;
 @property (weak) IBOutlet UITextField * age;
 
 @end
