@@ -9,6 +9,7 @@
 #import "SNFSpendRewards.h"
 #import "SNFReporting.h"
 #import "UIViewControllerStack.h"
+#import "SNFChildEdit.h"
 
 
 typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
@@ -19,7 +20,7 @@ typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
 };
 
 
-@interface SNFBoardDetail : UIViewController <UIViewControllerStackUpdating, UITableViewDelegate, UITableViewDataSource, SNFBoardDetailChildCellDelegate, SNFAddSmileOrFrownDelegate, SNFSpendRewardsDelegate, SNFBoardDetailAdultCellDelegate> {
+@interface SNFBoardDetail : UIViewController <UIViewControllerStackUpdating, UITableViewDelegate, UITableViewDataSource, SNFBoardDetailChildCellDelegate, SNFAddSmileOrFrownDelegate, SNFSpendRewardsDelegate, SNFBoardDetailAdultCellDelegate, SNFChildEditDelegate> {
 	NSArray *_userRoles;
 	
 	NSArray *_children;
