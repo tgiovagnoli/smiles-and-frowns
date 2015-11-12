@@ -10,17 +10,13 @@
 	_genderPicker = [[SNFValuePicker alloc] init];
 	_genderPicker.tag = SNFChildEditSelectionTypeGender;
 	_genderPicker.delegate = self;
-	_genderPicker.values = @[@"---------", @"Male", @"Female"];
+	_genderPicker.values = [SNFUser genderSelections];
 	
 	_agePicker = [[SNFValuePicker alloc] init];
 	_agePicker.tag = SNFChildEditSelectionTypeAge;
 	_agePicker.delegate = self;
-	NSMutableArray *ages = [[NSMutableArray alloc] init];
-	for(NSInteger i=SNFUserAgeMin; i<SNFUserAgeMax; i++){
-		[ages addObject:[NSString stringWithFormat:@"%ld", (long)i]];
-	}
-	_agePicker.values = ages;
-	
+	_agePicker.values = [SNFUser ageSelections];
+
 	UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onUserProfile:)];
 	[self.profileImageView addGestureRecognizer:gr];
 	

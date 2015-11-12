@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateProfileImage:(UIImage *)image;
 - (UIImage *)localImage;
 
++ (NSArray *)ageSelections;
++ (NSArray *)genderSelections;
+
 @end
 
 NS_ASSUME_NONNULL_END

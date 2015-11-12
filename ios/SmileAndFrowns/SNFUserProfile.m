@@ -11,7 +11,6 @@
 
 @interface SNFUserProfile ()
 @property BOOL isUpdatingPassword;
-@property NSArray * genders;
 @property SNFUserService * service;
 @end
 
@@ -19,9 +18,14 @@
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	self.genders = @[@"--------",@"Male",@"Female"];
-	self.pickerView.delegate = self;
-	self.pickerView.dataSource = self;
+	
+	_genderPicker = [[SNFValuePicker alloc] init];
+	_genderPicker.delegate = self;
+	_genderPicker.values = [SNFUser genderSelections];
+	
+	_agePicker = [[SNFValuePicker alloc] init];
+	_agePicker.delegate = self;
+	_agePicker.values = [SNFUser ageSelections];
 	
 	self.firstNameField.delegate = self;
 	self.lastNameField.delegate = self;
@@ -31,6 +35,7 @@
 	self.age.delegate = self;
 	
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
+	[self.ageOverlay setTitle:@"" forState:UIControlStateNormal];
 	[self loadAuthedUser];
 }
 
@@ -43,25 +48,54 @@
 }
 
 - (void) viewStack:(UIViewControllerStack *) viewStack didResizeViewController:(UIViewController *) viewController {
-	self.pickerviewContainer.height = self.view.height;
-	self.pickerviewContainer.width = self.view.width;
 }
 
 - (IBAction) onGender:(id) sender {
 	[self.view endEditing:TRUE];
-	
-	self.pickerviewContainer.frame = self.view.bounds;
-	[self.pickerView reloadAllComponents];
-	
-	self.pickerviewContainer.alpha = 0;
-	[self.view addSubview:self.pickerviewContainer];
-	
+	[self.view addSubview:_genderPicker.view];
+	[_genderPicker.view matchFrameSizeOfView:self.view];
+	_genderPicker.view.alpha = 1.0;
+	_genderPicker.selectedValue = self.gender.text;
 	UIViewAnimationOptions options = UIViewAnimationOptionCurveEaseInOut;
 	[UIView animateWithDuration:.25 delay:0 options:options animations:^{
-		self.pickerviewContainer.alpha = 1;
-	} completion:^(BOOL finished) {
-		
-	}];
+		_genderPicker.view.alpha = 1;
+	} completion:nil];
+}
+
+- (IBAction) onAge:(id) sender{
+	[self.view endEditing:TRUE];
+	[self.view addSubview:_agePicker.view];
+	[_agePicker.view matchFrameSizeOfView:self.view];
+	_agePicker.view.alpha = 1.0;
+	_agePicker.selectedValue = self.age.text;
+	UIViewAnimationOptions options = UIViewAnimationOptionCurveEaseInOut;
+	[UIView animateWithDuration:.25 delay:0 options:options animations:^{
+		_agePicker.view.alpha = 1;
+	} completion:nil];
+}
+
+- (void) valuePickerFinished:(SNFValuePicker *) valuePicker {
+	[valuePicker.view removeFromSuperview];
+}
+
+- (void) valuePicker:(SNFValuePicker *) valuePicker changedValue:(NSString *) value {
+	if(valuePicker == _agePicker){
+		[self updateAgeWithValue:value];
+	}else{
+		[self updateGenderWithValue:value];
+	}
+}
+
+- (void) updateAgeWithValue:(NSString *) value{
+	self.age.text = value;
+}
+
+- (void) updateGenderWithValue:(NSString *) value{
+	if([value isEqualToString:[_genderPicker.values firstObject]]){
+		self.gender.text = @"";
+	}else{
+		self.gender.text = value;
+	}
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *) textField {
@@ -69,39 +103,6 @@
 	return YES;
 }
 
-- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *) pickerView {
-	return 1;
-}
-
-- (NSInteger) pickerView:(UIPickerView *) pickerView numberOfRowsInComponent:(NSInteger) component {
-	return self.genders.count;
-}
-
-- (NSString *) pickerView:(UIPickerView *) pickerView titleForRow:(NSInteger) row forComponent:(NSInteger) component {
-	return [self.genders objectAtIndex:row];
-}
-
-- (void) pickerView:(UIPickerView *) pickerView didSelectRow:(NSInteger) row inComponent:(NSInteger) component {
-	if(row == 0) {
-		return;
-	}
-	
-	self.gender.text = [self.genders objectAtIndex:row];
-	
-	//TODO: don't set generic image if self.user has an image.
-	if(row == 1) { //&& !self.user.image
-		self.profileImage.image = [UIImage imageNamed:@"Male"];
-	}
-	
-	//TODO: don't set generic image if self.user has an image.
-	if(row == 2) { //&& !self.user.image
-		self.profileImage.image = [UIImage imageNamed:@"Female"];
-	}
-}
-
-- (IBAction) closePicker:(id)sender {
-	[self.pickerviewContainer removeFromSuperview];
-}
 
 - (void) loadAuthedUser {
 	SNFUserService * userService = [[SNFUserService alloc] init];
@@ -152,6 +153,7 @@
 }
 
 - (IBAction) update:(id) sender {
+	self.isUpdatingPassword = NO;
 	NSMutableDictionary * data = [NSMutableDictionary dictionary];
 	data[@"first_name"] = self.firstNameField.text;
 	data[@"last_name"] = self.lastNameField.text;
