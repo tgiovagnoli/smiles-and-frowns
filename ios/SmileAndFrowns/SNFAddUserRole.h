@@ -7,13 +7,18 @@
 #import "SNFTaggedAlertAction.h"
 #import "SNFSyncService.h"
 #import "APDDjangoErrorViewer.h"
+#import "SNFValuePicker.h"
+#import "UIView+LayoutHelpers.h"
 
 extern NSString * const SNFAddUserRoleAddedChild;
 
-@interface SNFAddUserRole : SNFFormViewController <UITextFieldDelegate,UIPickerViewDataSource,UIPickerViewDelegate,CNContactPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
+@interface SNFAddUserRole : SNFFormViewController <UITextFieldDelegate,CNContactPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,SNFValuePickerDelegate>{
 	NSString *_imageName;
 	UIImage *_userSelectedImage;
 	NSString *_selectedGender;
+	
+	SNFValuePicker *_genderPicker;
+	SNFValuePicker *_agePicker;
 }
 
 @property SNFBoard * board;
@@ -23,11 +28,10 @@ extern NSString * const SNFAddUserRoleAddedChild;
 @property (weak) IBOutlet UITextField * lastname;
 @property (weak) IBOutlet UITextField * email;
 @property (weak) IBOutlet UIButton * genderOverlay;
+
 @property (weak) IBOutlet UITextField * gender;
 @property (weak) IBOutlet UITextField * age;
+@property (weak) IBOutlet UIButton * ageOverlay;
 @property (weak) IBOutlet UIImageView * image;
-
-@property (weak) IBOutlet UIPickerView * pickerview;
-@property IBOutlet UIView * pickerviewContainer;
 
 @end

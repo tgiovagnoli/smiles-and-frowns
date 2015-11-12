@@ -20,8 +20,16 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	[self startBannerAd];
-	self.genders = @[@"--------",@"Male",@"Female"];
-	self.pickerview.delegate = self;
+	
+	_genderPicker = [[SNFValuePicker alloc] init];
+	_genderPicker.delegate = self;
+	_genderPicker.values = [SNFUser genderSelections];
+	
+	_agePicker = [[SNFValuePicker alloc] init];
+	_agePicker.delegate = self;
+	_agePicker.values = [SNFUser ageSelections];
+	
+	[self.ageOverlay setTitle:@"" forState:UIControlStateNormal];
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
 	[self segmentChange:self.segment];
 	
@@ -34,36 +42,17 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	if(self.segment.selectedSegmentIndex > 0) {
 		self.age.hidden = TRUE;
 		self.genderOverlay.hidden = TRUE;
+		self.ageOverlay.hidden = TRUE;
 		self.gender.hidden = TRUE;
 		self.email.placeholder = @"Email";
 		self.email.hidden = NO;
 	} else {
 		self.age.hidden = FALSE;
 		self.genderOverlay.hidden = FALSE;
+		self.ageOverlay.hidden = FALSE;
 		self.gender.hidden = FALSE;
 		self.email.placeholder = @"Email (Optional)";
 		self.email.hidden = YES; // do not use email to create users that are not part of the invite system.
-	}
-	[self updateProfileImage];
-}
-
-- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *) pickerView {
-	return 1;
-}
-
-- (NSInteger) pickerView:(UIPickerView *) pickerView numberOfRowsInComponent:(NSInteger) component {
-	return self.genders.count;
-}
-
-- (NSString *) pickerView:(UIPickerView *) pickerView titleForRow:(NSInteger) row forComponent:(NSInteger) component {
-	return [self.genders objectAtIndex:row];
-}
-
-- (void) pickerView:(UIPickerView *) pickerView didSelectRow:(NSInteger) row inComponent:(NSInteger) component {
-	if(row == 0) {
-		self.gender.text = @"";
-	}else{
-		self.gender.text = [self.genders objectAtIndex:row];
 	}
 	[self updateProfileImage];
 }
@@ -250,13 +239,41 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	}];
 }
 
-- (IBAction) genderOverlay:(id) sender {
-	self.pickerviewContainer.frame = self.view.bounds;
-	[self.view addSubview:self.pickerviewContainer];
+- (IBAction) ageOverlay:(id) sender {
+	[_agePicker.view matchFrameSizeOfView:self.view];
+	[self.view addSubview:_agePicker.view];
+	_agePicker.selectedValue = self.age.text;
 }
 
-- (IBAction) closeGenderPicker:(id)sender {
-	[self.pickerviewContainer removeFromSuperview];
+- (IBAction) genderOverlay:(id) sender {
+	[_genderPicker.view matchFrameSizeOfView:self.view];
+	[self.view addSubview:_genderPicker.view];
+	_genderPicker.selectedValue = self.gender.text;
+}
+
+- (void)valuePicker:(SNFValuePicker *)valuePicker changedValue:(NSString *)value{
+	if(valuePicker == _agePicker){
+		[self updateAgeWithValue:value];
+	}else if(valuePicker == _genderPicker){
+		[self updateGenderWithValue:value];
+	}
+}
+
+- (void) updateAgeWithValue:(NSString *) value{
+	self.age.text = value;
+}
+
+- (void) updateGenderWithValue:(NSString *) value{
+	if([value isEqualToString:[_genderPicker.values firstObject]]){
+		self.gender.text = @"";
+	}else{
+		self.gender.text = value;
+	}
+	[self updateProfileImage];
+}
+
+- (void)valuePickerFinished:(SNFValuePicker *)valuePicker{
+	[valuePicker.view removeFromSuperview];
 }
 
 - (IBAction) addPerson:(id) sender {

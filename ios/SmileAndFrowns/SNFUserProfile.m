@@ -50,8 +50,6 @@
 - (void) viewStack:(UIViewControllerStack *) viewStack didResizeViewController:(UIViewController *) viewController {
 }
 
-
-
 - (IBAction) onGender:(id) sender {
 	[self.view endEditing:TRUE];
 	[self.view addSubview:_genderPicker.view];
@@ -104,8 +102,6 @@
 	[self.view endEditing:TRUE];
 	return YES;
 }
-
-
 
 
 - (void) loadAuthedUser {
