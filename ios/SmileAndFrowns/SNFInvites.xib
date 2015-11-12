@@ -84,7 +84,7 @@
                         <constraint firstAttribute="height" constant="30" id="gUE-qR-4es"/>
                         <constraint firstAttribute="width" constant="164" id="vri-BS-ZaO"/>
                     </constraints>
-                    <state key="normal" title="Enter Invite Code"/>
+                    <state key="normal" title="Enter Email Code"/>
                     <connections>
                         <action selector="enterInviteCode:" destination="-1" eventType="touchUpInside" id="eCT-HX-Ko1"/>
                     </connections>
