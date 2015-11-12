@@ -11,6 +11,7 @@
 #import "NSLog+Geom.h"
 #import "SNFADBannerView.h"
 #import "SNFSyncService.h"
+#import "AppDelegate.h"
 
 static __weak SNFViewController * _instance;
 
@@ -179,7 +180,13 @@ static __weak SNFViewController * _instance;
 - (void)onSyncError:(NSNotification *)notification{
 	NSError *error = [notification object];
 	if([error.domain isEqualToString:SNFErrorDomain]){
-		[self showErrorMessage:error.localizedDescription];
+		if(error.code == SNFErrorCodeDjangoDebugError){
+			APDDjangoErrorViewer *errorViewer = [[APDDjangoErrorViewer alloc] init];
+			[[AppDelegate rootViewController] presentViewController:errorViewer animated:YES completion:nil];
+			[errorViewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"sync"]];
+		}else{
+			[self showErrorMessage:error.localizedDescription];
+		}
 	}
 }
 

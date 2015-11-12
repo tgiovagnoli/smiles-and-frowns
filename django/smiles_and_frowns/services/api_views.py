@@ -680,16 +680,17 @@ def sync(request):
 			return json_response_error("Client sync error, userinfo not provided for role with uuid %s" (client_role.get('uuid')))
 
 		#find or create role
-		role, created = models.UserRole.objects.get_or_create(uuid=client_role.get('uuid'))
-		if not created:
+		role, role_created = models.UserRole.objects.get_or_create(uuid=client_role.get('uuid'))
+		if not role_created:
 			if role.device_date > client_role_date:
 				continue
 
 		#create account if it's a child, other users signup through the normal signup process
+		user = None
 		if role.role == "child":
 			#try and find existing user in DB
-			user,created = User.objects.get_or_create(username=userinfo.get('username'))
-			if created:
+			user, user_created = User.objects.get_or_create(username=userinfo.get('username'))
+			if user_created:
 				user.email = ""
 				user.first_name = userinfo.get('first_name','')
 				user.last_name = userinfo.get('last_name','')
@@ -699,9 +700,11 @@ def sync(request):
 				user.profile.save()
 
 		#set role data
+		if role_created:
+			role.board = board
+			role.user = user
+			
 		role.role = client_role.get('role')
-		role.board = board
-		role.user = user
 		role.device_date = client_role_date
 		role.deleted = client_role.get('deleted',False)
 		role.save()
