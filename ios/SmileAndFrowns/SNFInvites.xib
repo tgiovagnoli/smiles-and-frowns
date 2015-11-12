@@ -77,12 +77,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMX-gj-M04">
-                    <rect key="frame" x="218" y="570" width="164" height="30"/>
+                    <rect key="frame" x="210" y="570" width="180" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="gUE-qR-4es"/>
-                        <constraint firstAttribute="width" constant="164" id="vri-BS-ZaO"/>
+                        <constraint firstAttribute="width" constant="180" id="vri-BS-ZaO"/>
                     </constraints>
                     <state key="normal" title="Enter Email Code"/>
                     <connections>
