@@ -118,7 +118,7 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 }
 
 - (void)behaviorCell:(SNFBoardEditBehaviorCell *)cell wantsToDeleteBehavior:(SNFBehavior *)behavior{
-	behavior.deleted = @YES;
+	behavior.soft_deleted = @YES;
 	[self reloadBehaviors];
 }
 

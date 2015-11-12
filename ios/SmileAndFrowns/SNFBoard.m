@@ -14,7 +14,7 @@
 + (NSDictionary *)keyMappings{
 	return @{
 		@"title": @"title",
-		@"deleted": @"deleted",
+		@"soft_deleted": @"deleted",
 		@"uuid": @"uuid",
 		@"transaction_id": @"transaction_id",
 		@"remote_id": @"id",
@@ -76,19 +76,19 @@
 - (void)reset{
 	self.title = @"Untitled";
 	for(SNFFrown *frown in self.frowns){
-		frown.deleted = @YES;
+		frown.soft_deleted = @YES;
 	}
 	for(SNFSmile *smile in self.smiles){
-		smile.deleted = @YES;
+		smile.soft_deleted = @YES;
 	}
 	for(SNFSmile *behavior in self.behaviors){
-		behavior.deleted = @YES;
+		behavior.soft_deleted = @YES;
 	}
 	for(SNFReward *reward in self.rewards){
-		reward.deleted = @YES;
+		reward.soft_deleted = @YES;
 	}
 	for(SNFSmile *userRole in self.user_roles){
-		userRole.deleted = @YES;
+		userRole.soft_deleted = @YES;
 	}
 	
 	self.frowns = [NSSet set];
@@ -140,7 +140,7 @@
 	NSArray *behaviors = [self.behaviors allObjects];
 	NSMutableArray *activeBehaviors = [[NSMutableArray alloc] init];
 	for(SNFBehavior *behavior in behaviors){
-		if(!behavior.deleted.boolValue){
+		if(!behavior.soft_deleted.boolValue){
 			[activeBehaviors addObject:behavior];
 		}
 	}
@@ -151,7 +151,7 @@
 	NSArray *behaviors = [self.behaviors allObjects];
 	NSMutableArray *activeBehaviors = [[NSMutableArray alloc] init];
 	for(SNFBehavior *behavior in behaviors){
-		if(!behavior.deleted.boolValue && [behavior.positive boolValue]){
+		if(!behavior.soft_deleted.boolValue && behavior.positive.boolValue){
 			[activeBehaviors addObject:behavior];
 		}
 	}
@@ -162,7 +162,7 @@
 	NSArray *behaviors = [self.behaviors allObjects];
 	NSMutableArray *activeBehaviors = [[NSMutableArray alloc] init];
 	for(SNFBehavior *behavior in behaviors){
-		if(!behavior.deleted.boolValue && ![behavior.positive boolValue]){
+		if(!behavior.soft_deleted.boolValue && !behavior.positive.boolValue){
 			[activeBehaviors addObject:behavior];
 		}
 	}
@@ -173,7 +173,7 @@
 	NSArray *rewards = [self.rewards allObjects];
 	NSMutableArray *activeRewards = [[NSMutableArray alloc] init];
 	for(SNFBehavior *reward in rewards){
-		if(!reward.deleted.boolValue){
+		if(!reward.soft_deleted.boolValue){
 			[activeRewards addObject:reward];
 		}
 	}
@@ -183,7 +183,7 @@
 - (NSArray *)smilesForUser:(SNFUser *)user{
 	NSMutableArray *usersSmiles = [[NSMutableArray alloc] init];
 	for(SNFSmile *smile in self.smiles){
-		if([smile.user.username isEqualToString:user.username] && !smile.deleted.boolValue){
+		if([smile.user.username isEqualToString:user.username] && !smile.soft_deleted.boolValue){
 			[usersSmiles addObject:smile];
 		}
 	}
@@ -193,7 +193,7 @@
 - (NSArray *)frownsForUser:(SNFUser *)user{
 	NSMutableArray *usersFrowns = [[NSMutableArray alloc] init];
 	for(SNFSmile *frown in self.frowns){
-		if([frown.user.username isEqualToString:user.username] && !frown.deleted.boolValue){
+		if([frown.user.username isEqualToString:user.username] && !frown.soft_deleted.boolValue){
 			[usersFrowns addObject:frown];
 		}
 	}

@@ -210,23 +210,35 @@
 - (void)childCellWantsToDelete:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Person?" message:@"Are you sure you want to delete this person? All board data for this person will be lost and this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-		userRole.deleted = [NSNumber numberWithBool:YES];
-		[self reloadUserRoles];
+		userRole.soft_deleted = @(YES);
 		[[SNFSyncService instance] saveContext];
+		[self reloadUserRoles];
 	}]];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
 	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)adultCell:(SNFBoardDetailAdultCell *)cell wantsToRemoveUserRole:(SNFUserRole *)userRole{
-	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Person?" message:@"Are you sure you want to delete this person? All board data for this person will be lost and this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
-	[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-		userRole.deleted = [NSNumber numberWithBool:YES];
-		[self reloadUserRoles];
-		[[SNFSyncService instance] saveContext];
-	}]];
-	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
-	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+	// check if it's the logged in user
+	if([userRole.user.username isEqualToString:[SNFModel sharedInstance].loggedInUser.username]){
+		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Remove Yourself?" message:@"Are you sure you want to remove yourself from this board?  You will no longer be able to edit this board unless someone reinvites you." preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Remove" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+			userRole.soft_deleted = @(YES);
+			[[SNFSyncService instance] saveContext];
+			[self reloadUserRoles];
+		}]];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+		[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+	}else{
+		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Person?" message:@"Are you sure you want to delete this person? All board data for this person will be lost and this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+			userRole.soft_deleted = @(YES);
+			[[SNFSyncService instance] saveContext];
+			[self reloadUserRoles];
+		}]];
+		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+		[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+	}
 }
 
 - (void)childCellWantsToEdit:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
@@ -259,7 +271,7 @@
 	NSSet *results = [_board.user_roles filteredSetUsingPredicate:predicate];
 	NSMutableArray *finalResults = [[NSMutableArray alloc] init];
 	for(SNFUserRole *role in results){
-		if(![role.deleted boolValue]){
+		if(![role.soft_deleted boolValue]){
 			[finalResults addObject:role];
 		}
 	}

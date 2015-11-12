@@ -6,7 +6,7 @@
 + (NSDictionary *)keyMappings{
 	return @{
 		@"uuid": @"uuid",
-		@"deleted": @"deleted",
+		@"soft_deleted": @"deleted",
 		@"remote_id": @"id",
 		@"updated_date": @"updated_date",
 		@"device_date": @"device_date",

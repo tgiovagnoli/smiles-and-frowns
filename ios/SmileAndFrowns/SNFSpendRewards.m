@@ -29,13 +29,13 @@
 	_smilesAvailable = 0;
 	
 	for(SNFSmile *smile in [self.board smilesForUser:self.user]){
-		if(!smile.collected.boolValue && !smile.deleted.boolValue){
+		if(!smile.collected.boolValue && !smile.soft_deleted.boolValue){
 			_smilesAvailable ++;
 		}
 	}
 	
 	for(SNFFrown *frown in [self.board frownsForUser:self.user]){
-		if(!frown.deleted.boolValue){
+		if(!frown.soft_deleted.boolValue){
 			_smilesAvailable --;
 		}
 	}

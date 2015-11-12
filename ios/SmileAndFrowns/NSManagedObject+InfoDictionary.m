@@ -122,7 +122,6 @@
 			} else if([value respondsToSelector:@selector(infoDictionary)]) {
 				value = [value performSelector:@selector(infoDictionary)];
 			}
-			
 			[infoDict setObject:value forKey:insertKey];
 		}else{
 			[infoDict setObject:[NSNull null] forKey:insertKey];
@@ -140,11 +139,12 @@
 		if(value) {
 			if([value isKindOfClass:[NSDate class]]) {
 				value = [self stringFromDate:(NSDate *)value];
-			} else if([value respondsToSelector:@selector(infoDictionary)]) {
+			}else if([value respondsToSelector:@selector(infoDictionary)]) {
 				NSManagedObject *obj = (NSManagedObject *)value;
 				NSObject *lookedUpValue = [obj valueForKey:[[obj class] primaryLookup]];
 				value = @{[[obj class] primaryLookup]: lookedUpValue};
 			}
+			NSLog(@"%@ - %@", key, value);
 			[infoDict setObject:value forKey:insertKey];
 		}else{
 			[infoDict setObject:[NSNull null] forKey:insertKey];

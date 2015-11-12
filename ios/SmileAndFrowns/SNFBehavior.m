@@ -8,7 +8,7 @@
 		@"uuid": @"uuid",
 		@"title": @"title",
 		@"note": @"note",
-		@"deleted": @"deleted",
+		@"soft_deleted": @"deleted",
 		@"updated_date": @"updated_date",
 		@"device_date": @"device_date",
 		@"remote_id": @"id",
@@ -22,7 +22,7 @@
 	self.created_date = [NSDate date];
 	self.device_date = [NSDate date];
 	self.uuid = [[NSUUID UUID] UUIDString];
-	self.deleted = @NO;
+	self.soft_deleted = @NO;
 	if(!self.note){
 		self.note = @"";
 	}
