@@ -235,7 +235,8 @@
 }
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-	//TODO: grab image
+	UIImage * image = [info objectForKey:UIImagePickerControllerEditedImage];
+	//TODO: upload image.
 }
 
 - (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker {

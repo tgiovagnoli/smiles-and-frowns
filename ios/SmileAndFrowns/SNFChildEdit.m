@@ -1,6 +1,7 @@
 #import "SNFChildEdit.h"
 #import "SNFModel.h"
 #import "SNFSyncService.h"
+#import "AppDelegate.h"
 
 @implementation SNFChildEdit
 
@@ -9,9 +10,11 @@
 	
 	_genderValues = @[@"---------", @"Male", @"Female"];
 	NSMutableArray *ages = [[NSMutableArray alloc] init];
-	for(NSInteger i=0; i<100; i++){
-		[ages addObject:[NSString stringWithFormat:@"%lu", i]];
+	
+	for(NSInteger i=0; i<100; i++) {
+		[ages addObject:[NSString stringWithFormat:@"%d",i]];
 	}
+	
 	_ageValues = [NSArray arrayWithArray:ages];
 	
 	UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onUserProfile:)];
@@ -31,7 +34,7 @@
 	}
 	self.firstNameField.text = self.childUser.first_name;
 	self.lastNameField.text = self.childUser.last_name;
-	self.ageField.text = [NSString stringWithFormat:@"%lu", self.childUser.age.integerValue];
+	self.ageField.text = [NSString stringWithFormat:@"%d", self.childUser.age.integerValue];
 	if([self.childUser.gender isEqualToString:SNFUserGenderMale]){
 		self.genderField.text = @"Male";
 	}else if([self.childUser.gender isEqualToString:SNFUserGenderFemale]){
@@ -64,17 +67,17 @@
 	UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
 	imagePicker.delegate = self;
 	imagePicker.allowsEditing = YES;
-	[self presentViewController:imagePicker animated:YES completion:nil];
+	[[AppDelegate rootViewController] presentViewController:imagePicker animated:YES completion:nil];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
 	_userSelectedImage = [info objectForKey:UIImagePickerControllerEditedImage];
 	[self updateProfileImage];
-	[self dismissViewControllerAnimated:YES completion:^{}];
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-	[self dismissViewControllerAnimated:YES completion:^{}];
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{

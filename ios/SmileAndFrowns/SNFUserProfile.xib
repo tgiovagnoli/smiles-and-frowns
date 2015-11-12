@@ -177,6 +177,9 @@
                         <constraint firstAttribute="width" constant="75" id="3DK-YO-nPq"/>
                         <constraint firstAttribute="height" constant="75" id="7d1-47-pce"/>
                     </constraints>
+                    <connections>
+                        <action selector="onUserProfile:" destination="-1" eventType="touchUpInside" id="xCs-bt-iIo"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVP-yE-40I">
                     <rect key="frame" x="210" y="436" width="180" height="30"/>
