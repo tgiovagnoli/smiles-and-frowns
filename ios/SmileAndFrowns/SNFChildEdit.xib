@@ -82,7 +82,7 @@
                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dSs-vf-nVQ">
                     <rect key="frame" x="255" y="10" width="90" height="92"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="92" id="Qgd-cb-IJD"/>
                         <constraint firstAttribute="width" constant="90" id="XFn-Sg-X4I"/>

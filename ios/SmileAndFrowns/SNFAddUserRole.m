@@ -316,9 +316,10 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	if(contact.imageDataAvailable){
 		UIImage *contactImage = [UIImage imageWithData:contact.imageData];
 		if(contactImage){
-			[self saveImage:contactImage];
+			_userSelectedImage = contactImage;
 		}
 	}
+	[self updateProfileImage];
 }
 
 - (void) contactPickerDidCancel:(CNContactPickerViewController *)picker {
@@ -326,6 +327,9 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 }
 
 - (void)pickImage:(UIGestureRecognizer *)gr{
+	if(self.segment.selectedSegmentIndex != 0){
+		return;
+	}
 	UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
 	imagePicker.delegate = self;
 	imagePicker.allowsEditing = YES;
@@ -346,35 +350,6 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	_userSelectedImage = [info objectForKey:UIImagePickerControllerEditedImage];
 	[self updateProfileImage];
 	[self dismissViewControllerAnimated:YES completion:^{}];
-}
-
-- (void)saveImage:(UIImage *)image{
-	const CGSize baseSize = CGSizeMake(200.0, 200.0);
-	CIContext *context = [CIContext contextWithOptions:nil];
-	CGFloat scaleX = baseSize.width/image.size.width;
-	CGFloat scaleY = baseSize.height/image.size.height;
-	CGFloat scaleOffset = scaleY;
-	CGAffineTransform transform;
-	if(scaleX < scaleY){
-		scaleOffset = scaleX;
-	}
-	transform = CGAffineTransformMakeScale(scaleOffset, scaleOffset);
-	CIFilter *transformFilter = [CIFilter filterWithName:@"CIAffineTransform"];
-	[transformFilter setValue:[NSValue valueWithBytes:&transform objCType:@encode(CGAffineTransform)] forKey:@"inputTransform"];
-	CIImage *ciImage = [CIImage imageWithCGImage:image.CGImage];
-	[transformFilter setValue:ciImage forKey:@"inputImage"];
-	
-	CGImageRef outputRef = [context createCGImage:transformFilter.outputImage fromRect:CGRectMake(0.0, 0.0, image.size.width * scaleOffset, image.size.height * scaleOffset)];
-	UIImage *newImage = [UIImage imageWithCGImage:outputRef];
-	NSData *pngData = UIImagePNGRepresentation(newImage);
-	
-	NSString *fileName = [NSString stringWithFormat:@"%@.png", [[NSUUID UUID] UUIDString]];
-	
-	NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-	_imageName = fileName;
-	[pngData writeToFile:[docsPath stringByAppendingPathComponent:fileName] atomically:YES];
-	
-	self.image.image = newImage;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
