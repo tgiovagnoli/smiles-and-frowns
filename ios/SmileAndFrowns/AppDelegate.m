@@ -86,7 +86,7 @@ static AppDelegate * _instance;
 				if([[AppDelegate rootViewController] isKindOfClass:[SNFLauncher class]]) {
 					
 					SNFLauncher * launcher = (SNFLauncher *)[AppDelegate rootViewController];
-					SNFCreateAccount * signup = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
+					SNFCreateAccount * signup = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,480)];
 					signup.nextViewController = [[SNFAcceptInvite alloc] initWithSourceView:launcher.acceptInviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
 					[[AppDelegate rootViewController] presentViewController:signup animated:TRUE completion:nil];
 					

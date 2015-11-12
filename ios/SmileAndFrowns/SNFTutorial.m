@@ -92,7 +92,7 @@
 		
 		if([SNFModel sharedInstance].pendingInviteCode) {
 			
-			SNFCreateAccount * signup = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
+			SNFCreateAccount * signup = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,480)];
 			signup.nextViewController = [[SNFAcceptInvite alloc] initWithSourceView:launcher.acceptInviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
 			[[AppDelegate rootViewController] presentViewController:signup animated:TRUE completion:nil];
 			

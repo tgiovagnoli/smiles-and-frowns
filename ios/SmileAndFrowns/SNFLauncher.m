@@ -128,7 +128,7 @@
 }
 
 - (IBAction) createAccount:(id) sender {
-	SNFCreateAccount * account = [[SNFCreateAccount alloc] initWithSourceView:self.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
+	SNFCreateAccount * account = [[SNFCreateAccount alloc] initWithSourceView:self.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,480)];
 	[[AppDelegate rootViewController] presentViewController:account animated:TRUE completion:nil];
 }
 

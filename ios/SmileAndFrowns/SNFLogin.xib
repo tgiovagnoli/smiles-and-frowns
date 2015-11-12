@@ -50,19 +50,6 @@
                         </mask>
                     </variation>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKB-km-HcN">
-                    <rect key="frame" x="196" y="195" width="208" height="30"/>
-                    <animations/>
-                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="Wnh-Hk-63S"/>
-                        <constraint firstAttribute="width" constant="208" id="XHT-HO-vY2"/>
-                    </constraints>
-                    <state key="normal" title="Login"/>
-                    <connections>
-                        <action selector="login:" destination="-1" eventType="touchUpInside" id="zsH-IH-sfZ"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login with Facebook or Twitter" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZo-u4-fSo">
                     <rect key="frame" x="102" y="0.0" width="396" height="25"/>
                     <animations/>
@@ -151,6 +138,19 @@
                     <state key="normal" image="twitter.png"/>
                     <connections>
                         <action selector="twitterLogin:" destination="-1" eventType="touchUpInside" id="UDP-5U-rPf"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKB-km-HcN">
+                    <rect key="frame" x="210" y="195" width="180" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Wnh-Hk-63S"/>
+                        <constraint firstAttribute="width" constant="180" id="XHT-HO-vY2"/>
+                    </constraints>
+                    <state key="normal" title="Login"/>
+                    <connections>
+                        <action selector="login:" destination="-1" eventType="touchUpInside" id="zsH-IH-sfZ"/>
                     </connections>
                 </button>
             </subviews>

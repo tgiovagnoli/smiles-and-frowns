@@ -36,19 +36,6 @@
                         </mask>
                     </variation>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2l-8j-rX3">
-                    <rect key="frame" x="233" y="81" width="135" height="30"/>
-                    <animations/>
-                    <color key="backgroundColor" white="0.86394165919999999" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="135" id="NxG-RE-DFv"/>
-                        <constraint firstAttribute="height" constant="30" id="j3F-ED-x6x"/>
-                    </constraints>
-                    <state key="normal" title="Join Board"/>
-                    <connections>
-                        <action selector="joinBoard:" destination="-1" eventType="touchUpInside" id="oHX-xm-q1Z"/>
-                    </connections>
-                </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Invite Code" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CRU-xb-EzO">
                     <rect key="frame" x="20" y="31" width="560" height="30"/>
                     <animations/>
@@ -58,6 +45,19 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2l-8j-rX3">
+                    <rect key="frame" x="210" y="82" width="180" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.86394165919999999" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="180" id="NxG-RE-DFv"/>
+                        <constraint firstAttribute="height" constant="30" id="j3F-ED-x6x"/>
+                    </constraints>
+                    <state key="normal" title="Join Board"/>
+                    <connections>
+                        <action selector="joinBoard:" destination="-1" eventType="touchUpInside" id="oHX-xm-q1Z"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -69,7 +69,7 @@
                 <constraint firstItem="CRU-xb-EzO" firstAttribute="top" secondItem="CCR-qM-Ohg" secondAttribute="bottom" constant="8" id="TcA-mz-KWQ"/>
                 <constraint firstItem="CCR-qM-Ohg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZEm-w3-YZt"/>
                 <constraint firstItem="CCR-qM-Ohg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dlL-V4-ieI"/>
-                <constraint firstItem="d2l-8j-rX3" firstAttribute="top" secondItem="CRU-xb-EzO" secondAttribute="bottom" constant="20" id="gQ7-wd-wcf"/>
+                <constraint firstItem="d2l-8j-rX3" firstAttribute="top" secondItem="CRU-xb-EzO" secondAttribute="bottom" constant="21" id="gQ7-wd-wcf"/>
                 <constraint firstItem="d2l-8j-rX3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sNv-qr-NWx"/>
                 <constraint firstItem="CRU-xb-EzO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zXo-DO-L8R"/>
             </constraints>

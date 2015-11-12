@@ -26,14 +26,10 @@
 	[super viewDidLoad];
 	
 	self.service = [[SNFUserService alloc] init];
-	self.genders = @[@"--------",@"Male",@"Female"];
-	self.pickerView.delegate = self;
-	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
 	
 	self.firstname.delegate = self;
 	self.lastname.delegate = self;
 	self.email.delegate = self;
-	self.age.delegate = self;
 	self.password.delegate = self;
 	self.passwordConfirm.delegate = self;
 	
@@ -52,44 +48,6 @@
 	return YES;
 }
 
-- (IBAction) onGender:(id) sender {
-	self.pickerviewContainer.frame = self.view.bounds;
-	[self.pickerView reloadAllComponents];
-	
-	self.pickerviewContainer.alpha = 0;
-	[self.view addSubview:self.pickerviewContainer];
-	
-	UIViewAnimationOptions options = UIViewAnimationOptionCurveEaseInOut;
-	[UIView animateWithDuration:.25 delay:0 options:options animations:^{
-		self.pickerviewContainer.alpha = 1;
-	} completion:^(BOOL finished) {
-		
-	}];
-}
-
-- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *) pickerView {
-	return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-	return self.genders.count;
-}
-
-- (NSString *) pickerView:(UIPickerView *) pickerView titleForRow:(NSInteger)row forComponent:(NSInteger) component {
-	return [self.genders objectAtIndex:row];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-	if(row == 0) {
-		return;
-	}
-	self.gender.text = [self.genders objectAtIndex:row];
-}
-
-- (IBAction) closePicker:(id)sender {
-	[self.pickerviewContainer removeFromSuperview];
-}
-
 - (IBAction) signup:(id) sender {
 	SNFUserService * service = [[SNFUserService alloc] init];
 	
@@ -99,8 +57,6 @@
 		@"lastname":self.lastname.text,
 		@"password":self.password.text,
 		@"password_confirm":self.passwordConfirm.text,
-		@"gender":self.gender.text.lowercaseString,
-		@"age":self.age.text,
 	};
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];

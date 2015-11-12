@@ -155,7 +155,7 @@
 }
 
 - (IBAction)onAddUserRole:(id)sender{
-	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,400)];
+	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,380)];
 	addUserRole.board = self.board;
 	[[AppDelegate rootViewController] presentViewController:addUserRole animated:YES completion:nil];
 }
@@ -242,7 +242,18 @@
 }
 
 - (void)childCellWantsToEdit:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	NSLog(@"edit child");
+	SNFChildEdit *childEdit = [[SNFChildEdit alloc] initWithSourceView:cell sourceRect:CGRectZero contentSize:CGSizeMake(400,380) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight];
+	childEdit.childUser = userRole.user;
+	childEdit.delegate = self;
+	[[AppDelegate rootViewController] presentViewController:childEdit animated:YES completion:nil];
+}
+
+- (void)childEditCancelled:(SNFChildEdit *)childEdit{
+	[self reloadUserRoles];
+}
+
+- (void)childEdit:(SNFChildEdit *)childEdit editedChild:(SNFUser *)child{
+	[self reloadUserRoles];
 }
 
 - (void)spendRewardsIsDone:(SNFSpendRewards *)spendRewards{

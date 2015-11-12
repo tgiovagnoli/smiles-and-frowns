@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFValuePicker">
+            <connections>
+                <outlet property="doneButton" destination="qiw-tc-Jyb" id="K96-2A-VVi"/>
+                <outlet property="pickerView" destination="WDq-TI-TMG" id="Z9a-l5-voN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiw-tc-Jyb">
+                    <rect key="frame" x="550" y="170" width="50" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="KxV-do-GS2"/>
+                        <constraint firstAttribute="width" constant="50" id="XEu-jU-hNZ"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="z0b-Oh-fOi"/>
+                    </constraints>
+                    <state key="normal" title="Done"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="z0b-Oh-fOi"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="onDone:" destination="-1" eventType="touchUpInside" id="eus-HG-aFb"/>
+                    </connections>
+                </button>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDq-TI-TMG">
+                    <rect key="frame" x="0.0" y="210" width="600" height="180"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="180" id="RwY-ha-dKa"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="XeW-Lz-FAL"/>
+                        <outlet property="delegate" destination="-1" id="tKN-y4-rV1"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="0.0" alpha="0.7969874100719424" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="WDq-TI-TMG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5ak-QI-DZl"/>
+                <constraint firstItem="WDq-TI-TMG" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Dc6-WH-8kp"/>
+                <constraint firstItem="WDq-TI-TMG" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Nq4-IQ-AS8"/>
+                <constraint firstItem="qiw-tc-Jyb" firstAttribute="trailing" secondItem="WDq-TI-TMG" secondAttribute="trailing" id="SVq-NW-aTv"/>
+                <constraint firstItem="WDq-TI-TMG" firstAttribute="top" secondItem="qiw-tc-Jyb" secondAttribute="bottom" constant="10" id="nuL-6J-a1g"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>

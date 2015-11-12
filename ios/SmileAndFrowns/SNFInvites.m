@@ -321,4 +321,9 @@
 	[[AppDelegate rootViewController] presentViewController:acceptor animated:TRUE completion:nil];
 }
 
+- (IBAction) enterInviteCode:(id)sender {
+	SNFAcceptInvite * accept = [[SNFAcceptInvite alloc] initWithSourceView:self.inviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190) arrowDirections:UIPopoverArrowDirectionDown];
+	[[AppDelegate rootViewController] presentViewController:accept animated:TRUE completion:nil];
+}
+
 @end

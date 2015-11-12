@@ -234,7 +234,7 @@ NSString * const SNFLoginLoggedIn = @"SNFLoginLoggedIn";
 		SNFLauncher * launcher = (SNFLauncher *)[AppDelegate rootViewController];
 		
 		[launcher dismissViewControllerAnimated:TRUE completion:^{
-			SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,560)];
+			SNFCreateAccount * createAccount = [[SNFCreateAccount alloc] initWithSourceView:launcher.createAccountButton sourceRect:CGRectZero contentSize:CGSizeMake(500,480)];
 			
 			if(self.nextViewController) {
 				createAccount.nextViewController = self.nextViewController;
