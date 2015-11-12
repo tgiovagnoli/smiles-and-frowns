@@ -16,25 +16,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiw-tc-Jyb">
-                    <rect key="frame" x="550" y="170" width="50" height="30"/>
-                    <animations/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="KxV-do-GS2"/>
-                        <constraint firstAttribute="width" constant="50" id="XEu-jU-hNZ"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="z0b-Oh-fOi"/>
-                    </constraints>
-                    <state key="normal" title="Done"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="z0b-Oh-fOi"/>
-                        </mask>
-                    </variation>
-                    <connections>
-                        <action selector="onDone:" destination="-1" eventType="touchUpInside" id="eus-HG-aFb"/>
-                    </connections>
-                </button>
                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WDq-TI-TMG">
                     <rect key="frame" x="0.0" y="210" width="600" height="180"/>
                     <animations/>
@@ -47,18 +28,43 @@
                         <outlet property="delegate" destination="-1" id="tKN-y4-rV1"/>
                     </connections>
                 </pickerView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiw-tc-Jyb">
+                    <rect key="frame" x="260" y="172" width="80" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="KxV-do-GS2"/>
+                        <constraint firstAttribute="width" constant="80" id="XEu-jU-hNZ"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="z0b-Oh-fOi"/>
+                    </constraints>
+                    <state key="normal" title="Done"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="z0b-Oh-fOi"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="onDone:" destination="-1" eventType="touchUpInside" id="eus-HG-aFb"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="0.0" alpha="0.7969874100719424" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="WDq-TI-TMG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5ak-QI-DZl"/>
                 <constraint firstItem="WDq-TI-TMG" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Dc6-WH-8kp"/>
                 <constraint firstItem="WDq-TI-TMG" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Nq4-IQ-AS8"/>
+                <constraint firstItem="qiw-tc-Jyb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RTT-NW-Rdp"/>
                 <constraint firstItem="qiw-tc-Jyb" firstAttribute="trailing" secondItem="WDq-TI-TMG" secondAttribute="trailing" id="SVq-NW-aTv"/>
-                <constraint firstItem="WDq-TI-TMG" firstAttribute="top" secondItem="qiw-tc-Jyb" secondAttribute="bottom" constant="10" id="nuL-6J-a1g"/>
+                <constraint firstItem="WDq-TI-TMG" firstAttribute="top" secondItem="qiw-tc-Jyb" secondAttribute="bottom" constant="8" id="nuL-6J-a1g"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="SVq-NW-aTv"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>
