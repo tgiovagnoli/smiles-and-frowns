@@ -7,13 +7,14 @@
 #import "SNFLogin.h"
 #import "SNFFormViewController.h"
 
-@interface SNFUserProfile : SNFFormViewController <UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate,UIViewControllerStackUpdating>
+@interface SNFUserProfile : SNFFormViewController <UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate,UIViewControllerStackUpdating,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic) SNFUser * user;
 
 @property IBOutlet UIView * pickerviewContainer;
 @property IBOutlet UIPickerView * pickerView;
 
+@property (weak) IBOutlet UIImageView * profileImage;
 @property (weak) IBOutlet UITextField * firstNameField;
 @property (weak) IBOutlet UITextField * lastNameField;
 @property (weak) IBOutlet UITextField * emailField;

@@ -34,12 +34,6 @@
 	[self loadAuthedUser];
 }
 
-//- (CGFloat) scrollViewBottomConstraint:(NSNotification *) notification {
-//	CGFloat defaultValue = [super scrollViewBottomConstraint:notification];
-//	defaultValue -= 50;
-//	return defaultValue;
-//}
-
 - (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
 	return TRUE;
 }
@@ -91,7 +85,18 @@
 	if(row == 0) {
 		return;
 	}
+	
 	self.gender.text = [self.genders objectAtIndex:row];
+	
+	//TODO: don't set generic image if self.user has an image.
+	if(row == 1) { //&& !self.user.image
+		self.profileImage.image = [UIImage imageNamed:@"Male"];
+	}
+	
+	//TODO: don't set generic image if self.user has an image.
+	if(row == 2) { //&& !self.user.image
+		self.profileImage.image = [UIImage imageNamed:@"Female"];
+	}
 }
 
 - (IBAction) closePicker:(id)sender {
@@ -100,9 +105,13 @@
 
 - (void) loadAuthedUser {
 	SNFUserService * userService = [[SNFUserService alloc] init];
+	
 	[MBProgressHUD showHUDAddedTo:self.view animated:YES];
+	
 	[userService authedUserInfoWithCompletion:^(NSError *error, SNFUser *user) {
+		
 		[MBProgressHUD hideHUDForView:self.view animated:YES];
+		
 		if(error) {
 			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"You must be logged in to edit your profile." preferredStyle:UIAlertControllerStyleAlert];
 			[alert addAction:[UIAlertAction OKActionWithCompletion:^(UIAlertAction * action) {
@@ -112,6 +121,7 @@
 			[self presentViewController:alert animated:TRUE completion:nil];
 			return;
 		}
+		
 		self.user = user;
 	}];
 }
@@ -132,9 +142,13 @@
 	
 	if([self.user.gender isEqualToString:@"male"]) {
 		self.gender.text = @"Male";
+		self.profileImage.image = [UIImage imageNamed:@"Male"];
 	} else if([self.user.gender isEqualToString:@"female"]) {
 		self.gender.text = @"Female";
+		self.profileImage.image = [UIImage imageNamed:@"Female"];
 	}
+	
+	//TODO: update profile image from user
 }
 
 - (IBAction) update:(id) sender {
@@ -211,6 +225,21 @@
 		
 		[self displayOKAlertWithTitle:title message:msg completion:nil];
 	}];
+}
+
+- (IBAction) onUserProfile:(id)sender {
+	UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+	picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+	picker.delegate = self;
+	[[AppDelegate rootViewController] presentViewController:picker animated:TRUE completion:nil];
+}
+
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+	//TODO: grab image
+}
+
+- (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 @end
