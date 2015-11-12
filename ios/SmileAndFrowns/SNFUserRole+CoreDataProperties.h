@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) SNFBoard *board;
 @property (nullable, nonatomic, retain) NSSet<SNFInvite *> *invites;
 
-@property (nullable, nonatomic, retain) NSNumber *deleted;
+@property (nullable, nonatomic, retain) NSNumber *soft_deleted;
 @property (nullable, nonatomic, retain) NSString *uuid;
 @property (nullable, nonatomic, retain) NSDate *created_date;
 @property (nullable, nonatomic, retain) NSDate *updated_date;

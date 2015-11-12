@@ -10,6 +10,8 @@
 #import "UIAlertAction+Additions.h"
 #import "SNFADBannerView.h"
 #import "ATITwitterAuthHandler.h"
+#import "SNFViewController.h"
+#import "SNFSyncService.h"
 
 @implementation SNFMore
 
@@ -26,6 +28,7 @@
 					   [self tableItemWithName:@"View the Tutorial" andSelector:@selector(tutorial)],
 					   [self tableItemWithName:@"Launcher" andSelector:@selector(launcher)],
 					   [self tableItemWithName:@"Accept An Invite Code" andSelector:@selector(acceptInviteFromCode:)],
+					   [self tableItemWithName:@"Reset Local Data" andSelector:@selector(resetLocalSync)],
 					   [self tableItemWithName:@"Logout" andSelector:@selector(logout)],
 					   ];
 	[self.tableView reloadData];
@@ -177,5 +180,49 @@
 		
 	}];
 }
+
+- (void)resetLocalSync{
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"This will delete all of your local data and use only what is found on the server.  It should only be used if you are having issues with synchronizing boards.  Are you sure you want to do this?" preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		if([SNFSyncService instance].syncing){
+			[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSyncComplete:) name:SNFSyncServiceCompleted object:nil];
+			return;
+		}
+		[self purgeAndSync];
+	}]];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)purgeAndSync{
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	[SNFModel sharedInstance].userSettings.lastSyncDate = nil;
+	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
+		[MBProgressHUD hideHUDForView:self.view animated:NO];
+		if(error){
+			if(error.code == SNFErrorCodeDjangoDebugError){
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Something went wrong.  Please contact the smiles and frowns team for further assistance." preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
+				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+			}else{
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
+				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+			}
+		}else{
+			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Your boards have been reset to the last state set on the server." preferredStyle:UIAlertControllerStyleAlert];
+			[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
+			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+		}
+	}];
+}
+
+- (void)onSyncComplete:(NSNotification *)notification{
+	[MBProgressHUD hideHUDForView:self.view animated:NO];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[self purgeAndSync];
+}
+
 
 @end

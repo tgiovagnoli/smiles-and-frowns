@@ -162,15 +162,25 @@
 	
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	NSMutableArray *addedBehaviors = [[NSMutableArray alloc] init];
-	for(NSIndexPath *indexPath in [self.behaviorsTable indexPathsForSelectedRows]){
+	
+	
+	for(NSIndexPath *indexPath in [self.behaviorsTable indexPathsForSelectedRows]){	
 		SNFPredefinedBehaviorGroup *predefinedGroup = [_predefinedBehaviorGroups objectAtIndex:indexPath.section];
-		SNFPredefinedBehavior *predefinedBehavior = [[predefinedGroup.behaviors allObjects] objectAtIndex:indexPath.row];
+		NSArray *behaviors;
+		BOOL positiveSelected = !self.positiveNegativeSegment.selectedSegmentIndex;
+		if(positiveSelected){
+			behaviors = predefinedGroup.positiveBehaviors;
+		}else{
+			behaviors = predefinedGroup.negativeBehaviors;
+		}
+		SNFPredefinedBehavior *predefinedBehavior = [behaviors objectAtIndex:indexPath.row];
 		if(predefinedBehavior && self.board){
 			NSDictionary *behaviorInfo = @{
 										  @"title": predefinedBehavior.title,
 										  @"uuid": [[NSUUID UUID] UUIDString],
 										  @"positive": predefinedBehavior.positive,
 										  };
+			NSLog(@"adding behavior %@", predefinedBehavior.title);
 			SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 			behavior.board = self.board;
 			[addedBehaviors addObject:behavior];

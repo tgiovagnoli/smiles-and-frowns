@@ -9,7 +9,7 @@
 @dynamic updated_date;
 @dynamic created_date;
 @dynamic device_date;
-@dynamic deleted;
+@dynamic soft_deleted;
 @dynamic uuid;
 @dynamic collected;
 @dynamic remote_id;

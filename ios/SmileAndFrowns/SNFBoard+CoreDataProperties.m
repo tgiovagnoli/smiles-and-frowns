@@ -10,7 +10,7 @@
 @dynamic uuid;
 @dynamic owner;
 @dynamic updated_date;
-@dynamic deleted;
+@dynamic soft_deleted;
 @dynamic title;
 @dynamic transaction_id;
 @dynamic created_date;

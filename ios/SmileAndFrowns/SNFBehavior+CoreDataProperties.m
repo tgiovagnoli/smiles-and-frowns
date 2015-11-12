@@ -8,7 +8,7 @@
 @dynamic note;
 @dynamic uuid;
 @dynamic positive;
-@dynamic deleted;
+@dynamic soft_deleted;
 @dynamic created_date;
 @dynamic updated_date;
 @dynamic remote_id;

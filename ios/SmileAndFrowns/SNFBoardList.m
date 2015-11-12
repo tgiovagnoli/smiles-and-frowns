@@ -130,9 +130,9 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	NSError *error;
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SNFBoard"];
 	if([self.searchField.text isEmpty]){
-		request.predicate = [NSPredicate predicateWithFormat:@"(deleted == 0)", [SNFModel sharedInstance].loggedInUser.email];
+		request.predicate = [NSPredicate predicateWithFormat:@"(soft_deleted == 0)", [SNFModel sharedInstance].loggedInUser.email];
 	}else{
-		request.predicate = [NSPredicate predicateWithFormat:@"(deleted == 0) && (title CONTAINS[cd] %@)", self.searchField.text,[SNFModel sharedInstance].loggedInUser.email];
+		request.predicate = [NSPredicate predicateWithFormat:@"(soft_deleted == 0) && (title CONTAINS[cd] %@)", self.searchField.text,[SNFModel sharedInstance].loggedInUser.email];
 	}
 	
 	if(self.filter == SNFBoardListFilterDate){
@@ -175,7 +175,7 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 		return YES;
 	}
 	for(SNFUserRole *userRole in board.user_roles){
-		if([userRole.user.email isEqualToString:authedUser.email] && ![userRole.deleted boolValue]){
+		if([userRole.user.email isEqualToString:authedUser.email] && ![userRole.soft_deleted boolValue]){
 			return YES;
 		}
 	}

@@ -210,9 +210,9 @@
 - (void)childCellWantsToDelete:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Person?" message:@"Are you sure you want to delete this person? All board data for this person will be lost and this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-		userRole.deleted = [NSNumber numberWithBool:YES];
-		[self reloadUserRoles];
+		userRole.soft_deleted = @(YES);
 		[[SNFSyncService instance] saveContext];
+		[self reloadUserRoles];
 	}]];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
 	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
@@ -221,9 +221,9 @@
 - (void)adultCell:(SNFBoardDetailAdultCell *)cell wantsToRemoveUserRole:(SNFUserRole *)userRole{
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Person?" message:@"Are you sure you want to delete this person? All board data for this person will be lost and this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-		userRole.deleted = [NSNumber numberWithBool:YES];
-		[self reloadUserRoles];
+		userRole.soft_deleted = @(YES);
 		[[SNFSyncService instance] saveContext];
+		[self reloadUserRoles];
 	}]];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
 	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
@@ -259,7 +259,7 @@
 	NSSet *results = [_board.user_roles filteredSetUsingPredicate:predicate];
 	NSMutableArray *finalResults = [[NSMutableArray alloc] init];
 	for(SNFUserRole *role in results){
-		if(![role.deleted boolValue]){
+		if(![role.soft_deleted boolValue]){
 			[finalResults addObject:role];
 		}
 	}
