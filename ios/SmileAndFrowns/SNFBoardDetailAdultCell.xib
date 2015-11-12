@@ -80,7 +80,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UAq-z6-Ilj">
                     <rect key="frame" x="0.0" y="0.0" width="68" height="90"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Delete"/>
                     <connections>
                         <action selector="onDelete:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="F9Z-gf-ZBR"/>

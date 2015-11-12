@@ -100,11 +100,13 @@
 - (IBAction)onEditGender:(UIButton *)sender{
 	[self.view addSubview:_genderPicker.view];
 	[_genderPicker.view matchFrameSizeOfView:self.view];
+	_genderPicker.selectedValue = self.genderField.text;
 }
 
 - (IBAction)onEditAge:(UIButton *)sender{
 	[self.view addSubview:_agePicker.view];
 	[_agePicker.view matchFrameSizeOfView:self.view];
+	_agePicker.selectedValue = self.ageField.text;
 }
 
 - (void)valuePicker:(SNFValuePicker *)valuePicker changedValue:(NSString *)value{

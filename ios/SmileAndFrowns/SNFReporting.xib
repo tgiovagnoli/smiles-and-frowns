@@ -84,11 +84,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="bM7-74-bW4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="09Q-l0-sbr"/>
-                <constraint firstItem="W7B-zS-VQG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="0Dx-h3-Jrx"/>
                 <constraint firstItem="OGB-TS-eoU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="6wh-qB-L5a"/>
-                <constraint firstItem="Lca-i1-e2I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="7O1-a7-asT"/>
                 <constraint firstItem="bM7-74-bW4" firstAttribute="leading" secondItem="W7B-zS-VQG" secondAttribute="trailing" constant="11" id="AE8-bh-wpx"/>
+                <constraint firstItem="W7B-zS-VQG" firstAttribute="top" secondItem="bM7-74-bW4" secondAttribute="top" id="R11-87-iX8"/>
                 <constraint firstAttribute="trailing" secondItem="Qr6-YS-1m6" secondAttribute="trailing" id="SmQ-K5-gGB"/>
+                <constraint firstItem="Lca-i1-e2I" firstAttribute="top" secondItem="bM7-74-bW4" secondAttribute="top" id="Syc-V1-94l"/>
                 <constraint firstItem="Qr6-YS-1m6" firstAttribute="top" secondItem="OGB-TS-eoU" secondAttribute="bottom" constant="23" id="Xwe-JB-eSx"/>
                 <constraint firstItem="Lca-i1-e2I" firstAttribute="leading" secondItem="bM7-74-bW4" secondAttribute="trailing" constant="33" id="dij-LC-npy"/>
                 <constraint firstAttribute="trailing" secondItem="Lca-i1-e2I" secondAttribute="trailing" constant="13" id="eBw-M1-Yt8"/>
@@ -100,7 +100,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
-            <point key="canvasLocation" x="380" y="424"/>
+            <point key="canvasLocation" x="471" y="424"/>
         </view>
     </objects>
 </document>

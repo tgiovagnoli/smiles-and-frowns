@@ -28,22 +28,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="486"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jwC-3J-Id4">
-                    <rect key="frame" x="263" y="8" width="75" height="75"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="75" id="3jD-ua-0dx"/>
-                        <constraint firstAttribute="height" constant="75" id="RUl-uX-k3T"/>
-                    </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3c-EL-apB">
-                    <rect key="frame" x="263" y="8" width="75" height="75"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="75" id="3DK-YO-nPq"/>
-                        <constraint firstAttribute="height" constant="75" id="7d1-47-pce"/>
-                    </constraints>
-                </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CRZ-u1-ZCL">
                     <rect key="frame" x="20" y="129" width="560" height="30"/>
                     <animations/>
@@ -166,25 +150,41 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dct-xl-b1c">
-                    <rect key="frame" x="260" y="281" width="80" height="30"/>
+                    <rect key="frame" x="210" y="281" width="180" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="AHJ-dh-FVf"/>
-                        <constraint firstAttribute="width" constant="80" id="dgM-lk-Onw"/>
+                        <constraint firstAttribute="width" constant="180" id="dgM-lk-Onw"/>
                     </constraints>
                     <state key="normal" title="update"/>
                     <connections>
                         <action selector="update:" destination="-1" eventType="touchUpInside" id="lst-oY-o3c"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jwC-3J-Id4">
+                    <rect key="frame" x="263" y="8" width="75" height="75"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="3jD-ua-0dx"/>
+                        <constraint firstAttribute="height" constant="75" id="RUl-uX-k3T"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3c-EL-apB">
+                    <rect key="frame" x="263" y="8" width="75" height="75"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="3DK-YO-nPq"/>
+                        <constraint firstAttribute="height" constant="75" id="7d1-47-pce"/>
+                    </constraints>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVP-yE-40I">
-                    <rect key="frame" x="260" y="436" width="80" height="30"/>
+                    <rect key="frame" x="210" y="436" width="180" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="qYa-Al-9wI"/>
-                        <constraint firstAttribute="width" constant="80" id="skR-aL-GbT"/>
+                        <constraint firstAttribute="width" constant="180" id="skR-aL-GbT"/>
                     </constraints>
                     <state key="normal" title="update"/>
                     <connections>
