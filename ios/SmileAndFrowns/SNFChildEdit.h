@@ -2,6 +2,7 @@
 #import "SNFFormViewController.h"
 #import "SNFUser.h"
 #import "UIView+LayoutHelpers.h"
+#import "SNFValuePicker.h"
 
 typedef NS_ENUM(NSInteger, SNFChildEditSelectionType){
 	SNFChildEditSelectionTypeGender,
@@ -15,11 +16,11 @@ typedef NS_ENUM(NSInteger, SNFChildEditSelectionType){
 - (void)childEditCancelled:(SNFChildEdit *)childEdit;
 @end
 
-@interface SNFChildEdit : SNFFormViewController <UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
-	NSArray *_genderValues;
-	NSArray *_ageValues;
+@interface SNFChildEdit : SNFFormViewController <UITextFieldDelegate, SNFValuePickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>{
 	SNFChildEditSelectionType _selectionType;
 	UIImage *_userSelectedImage;
+	SNFValuePicker *_genderPicker;
+	SNFValuePicker *_agePicker;
 }
 
 @property (nonatomic) SNFUser *childUser;
@@ -29,9 +30,6 @@ typedef NS_ENUM(NSInteger, SNFChildEditSelectionType){
 @property (weak) IBOutlet UITextField *lastNameField;
 @property (weak) IBOutlet UITextField *genderField;
 @property (weak) IBOutlet UITextField *ageField;
-@property IBOutlet UIView *selectionContainer;
-@property (weak) IBOutlet UIPickerView *pickerView;
-@property (weak) IBOutlet UIButton *selectionDoneButton;
 @property (weak) NSObject <SNFChildEditDelegate> *delegate;
 
 @end
