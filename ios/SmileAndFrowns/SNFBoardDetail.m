@@ -155,7 +155,7 @@
 }
 
 - (IBAction)onAddUserRole:(id)sender{
-	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,400)];
+	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,380)];
 	addUserRole.board = self.board;
 	[[AppDelegate rootViewController] presentViewController:addUserRole animated:YES completion:nil];
 }
