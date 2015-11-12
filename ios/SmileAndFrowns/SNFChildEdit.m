@@ -1,5 +1,6 @@
 #import "SNFChildEdit.h"
 #import "SNFModel.h"
+#import "SNFSyncService.h"
 
 @implementation SNFChildEdit
 
@@ -165,6 +166,7 @@
 	if(_userSelectedImage){
 		[self.childUser updateProfileImage:_userSelectedImage];
 	}
+	[[SNFSyncService instance] saveContext];
 	if(self.delegate){
 		[self.delegate childEdit:self editedChild:self.childUser];
 	}
