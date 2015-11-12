@@ -10,6 +10,9 @@ NS_ASSUME_NONNULL_BEGIN
 #define SNFUserGenderMale @"male"
 #define SNFUserGenderFemale @"female"
 
+#define SNFUserAgeMin 0
+#define SNFUserAgeMax 100
+
 @interface SNFUser : NSManagedObject
 
 // use when the user info has been changed locally so that all user roles update

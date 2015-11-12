@@ -11,11 +11,8 @@
                 <outlet property="formView" destination="eFM-2Q-Ihy" id="5on-Rl-oIa"/>
                 <outlet property="genderField" destination="DPF-SD-Sld" id="EMM-vA-SQx"/>
                 <outlet property="lastNameField" destination="crT-iP-R0e" id="t9Z-uY-crj"/>
-                <outlet property="pickerView" destination="pLh-5x-27j" id="gH6-ZV-V6B"/>
                 <outlet property="profileImageView" destination="dSs-vf-nVQ" id="Xec-SQ-PPI"/>
                 <outlet property="scrollView" destination="XEI-D9-885" id="RZ7-mF-f6O"/>
-                <outlet property="selectionContainer" destination="Igo-zR-sfB" id="8Ks-Lx-iIN"/>
-                <outlet property="selectionDoneButton" destination="yn0-hJ-KEa" id="k5v-gs-zJI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -162,49 +159,6 @@
                 </mask>
             </variation>
             <point key="canvasLocation" x="1022" y="228.5"/>
-        </view>
-        <view contentMode="scaleToFill" id="Igo-zR-sfB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yn0-hJ-KEa">
-                    <rect key="frame" x="274" y="186" width="52" height="30"/>
-                    <animations/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="52" id="SdC-BA-BjG"/>
-                        <constraint firstAttribute="height" constant="30" id="YvR-Q2-Uwl"/>
-                    </constraints>
-                    <state key="normal" title="Done"/>
-                    <connections>
-                        <action selector="selectionDone:" destination="-1" eventType="touchUpInside" id="vKf-WC-HcX"/>
-                    </connections>
-                </button>
-                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLh-5x-27j">
-                    <rect key="frame" x="0.0" y="230" width="600" height="140"/>
-                    <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="140" id="4NQ-m8-Hp0"/>
-                    </constraints>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="7Jg-C7-boX"/>
-                        <outlet property="delegate" destination="-1" id="DQ6-9X-AQq"/>
-                    </connections>
-                </pickerView>
-            </subviews>
-            <animations/>
-            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80044401978417268" colorSpace="calibratedRGB"/>
-            <constraints>
-                <constraint firstItem="yn0-hJ-KEa" firstAttribute="centerX" secondItem="pLh-5x-27j" secondAttribute="centerX" id="5ao-er-aGa"/>
-                <constraint firstItem="pLh-5x-27j" firstAttribute="centerY" secondItem="Igo-zR-sfB" secondAttribute="centerY" id="N18-U8-eSd"/>
-                <constraint firstItem="pLh-5x-27j" firstAttribute="centerX" secondItem="Igo-zR-sfB" secondAttribute="centerX" id="P3D-iP-oeM"/>
-                <constraint firstItem="pLh-5x-27j" firstAttribute="width" secondItem="Igo-zR-sfB" secondAttribute="width" id="V5C-MX-tj0"/>
-                <constraint firstItem="pLh-5x-27j" firstAttribute="top" secondItem="yn0-hJ-KEa" secondAttribute="bottom" constant="14" id="cP1-01-KxK"/>
-            </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="1669" y="374"/>
         </view>
     </objects>
 </document>

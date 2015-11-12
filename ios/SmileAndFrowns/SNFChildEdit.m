@@ -7,12 +7,19 @@
 - (void)viewDidLoad{
 	[super viewDidLoad];
 	
-	_genderValues = @[@"---------", @"Male", @"Female"];
+	_genderPicker = [[SNFValuePicker alloc] init];
+	_genderPicker.tag = SNFChildEditSelectionTypeGender;
+	_genderPicker.delegate = self;
+	_genderPicker.values = @[@"---------", @"Male", @"Female"];
+	
+	_agePicker = [[SNFValuePicker alloc] init];
+	_agePicker.tag = SNFChildEditSelectionTypeAge;
+	_agePicker.delegate = self;
 	NSMutableArray *ages = [[NSMutableArray alloc] init];
-	for(NSInteger i=0; i<100; i++){
+	for(NSInteger i=SNFUserAgeMin; i<SNFUserAgeMax; i++){
 		[ages addObject:[NSString stringWithFormat:@"%lu", i]];
 	}
-	_ageValues = [NSArray arrayWithArray:ages];
+	_agePicker.values = ages;
 	
 	UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onUserProfile:)];
 	[self.profileImageView addGestureRecognizer:gr];
@@ -77,47 +84,8 @@
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-	switch (_selectionType) {
-		case SNFChildEditSelectionTypeAge:
-			return _ageValues.count;
-			break;
-		case SNFChildEditSelectionTypeGender:
-			return _genderValues.count;
-			break;
-	}
-	return 0;
-}
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-	return 1;
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-	switch (_selectionType) {
-		case SNFChildEditSelectionTypeAge:
-			return [_ageValues objectAtIndex:row];
-			break;
-		case SNFChildEditSelectionTypeGender:
-			return [_genderValues objectAtIndex:row];
-			break;
-	}
-	return @"";
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-	switch (_selectionType) {
-		case SNFChildEditSelectionTypeAge:
-			[self updateAgeWithValue:[_ageValues objectAtIndex:row]];
-			break;
-		case SNFChildEditSelectionTypeGender:
-			[self updateGenderWithValue:[_genderValues objectAtIndex:row]];
-			break;
-	}
-}
-
 - (void)updateGenderWithValue:(NSString *)value{
-	if([value isEqualToString:[_genderValues firstObject]]){
+	if([value isEqualToString:[_genderPicker.values firstObject]]){
 		self.genderField.text = @"";
 	}else{
 		self.genderField.text = value;
@@ -130,31 +98,28 @@
 }
 
 - (IBAction)onEditGender:(UIButton *)sender{
-	_selectionType = SNFChildEditSelectionTypeGender;
-	[self.pickerView reloadAllComponents];
-	for(NSInteger i=0; i<_genderValues.count; i++){
-		if([[_genderValues objectAtIndex:i] isEqualToString:self.genderField.text]){
-			[self.pickerView selectRow:i inComponent:0 animated:NO];
-		}
-	}
-	[self.selectionContainer matchFrameSizeOfView:self.view];
-	[self.view addSubview:self.selectionContainer];
+	[self.view addSubview:_genderPicker.view];
+	[_genderPicker.view matchFrameSizeOfView:self.view];
 }
 
 - (IBAction)onEditAge:(UIButton *)sender{
-	_selectionType = SNFChildEditSelectionTypeAge;
-	[self.pickerView reloadAllComponents];
-	for(NSInteger i=0; i<_ageValues.count; i++){
-		if([[_ageValues objectAtIndex:i] isEqualToString:self.ageField.text]){
-			[self.pickerView selectRow:i inComponent:0 animated:NO];
-		}
-	}
-	[self.selectionContainer matchFrameSizeOfView:self.view];
-	[self.view addSubview:self.selectionContainer];
+	[self.view addSubview:_agePicker.view];
+	[_agePicker.view matchFrameSizeOfView:self.view];
 }
 
-- (IBAction)selectionDone:(UIButton *)sender{
-	[self.selectionContainer removeFromSuperview];
+- (void)valuePicker:(SNFValuePicker *)valuePicker changedValue:(NSString *)value{
+	switch ((SNFChildEditSelectionType)valuePicker.tag) {
+		case SNFChildEditSelectionTypeAge:
+			[self updateAgeWithValue:value];
+			break;
+		case SNFChildEditSelectionTypeGender:
+			[self updateGenderWithValue:value];
+			break;
+	}
+}
+
+- (void)valuePickerFinished:(SNFValuePicker *)valuePicker{
+	[valuePicker.view removeFromSuperview];
 }
 
 - (IBAction)onSave:(UIButton *)sender{
