@@ -12,6 +12,16 @@
 	[self startBannerAd];
 	[self updateUI];
 	
+	_smileCountPicker = [[SNFValuePicker alloc] init];
+	NSMutableArray *vals = [[NSMutableArray alloc] init];
+	for(NSInteger i=1; i<101; i++){
+		[vals addObject:[NSString stringWithFormat:@"%lu", i]];
+	}
+	_smileCountPicker.values = vals;
+	_smileCountPicker.delegate = self;
+	
+	[self.amountFieldButton setTitle:@"" forState:UIControlStateNormal];
+	
 	self.noteField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
 	self.noteField.layer.borderWidth = 1;
 }
@@ -210,6 +220,22 @@
 - (void)behaviorCell:(SNFBoardEditBehaviorCell *)cell wantsToDeleteBehavior:(SNFBehavior *)behavior{
 	behavior.soft_deleted = @YES;
 	[self reloadBehaviors];
+}
+
+- (IBAction)onChangeAmount:(UIButton *)sender{
+	[self.view addSubview:_smileCountPicker.view];
+	[_smileCountPicker.view  matchFrameSizeOfView:self.view];
+	_smileCountPicker.selectedValue = [NSString stringWithFormat:@"%lu", (NSInteger)floor(self.amountStepper.value)];
+}
+
+- (void)valuePicker:(SNFValuePicker *)valuePicker changedValue:(NSString *)value{
+	NSInteger newVal = [value integerValue];
+	self.amountStepper.value = newVal;
+	[self updateUI];
+}
+
+- (void)valuePickerFinished:(SNFValuePicker *)valuePicker{
+	[_smileCountPicker.view removeFromSuperview];
 }
 
 @end

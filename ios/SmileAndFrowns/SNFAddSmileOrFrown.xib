@@ -9,6 +9,7 @@
                 <outlet property="addBehaviorButton" destination="25e-GV-9nU" id="dFD-k0-gFC"/>
                 <outlet property="addSNFButton" destination="hPo-Ac-XCS" id="CJa-wd-uBa"/>
                 <outlet property="amountField" destination="cC2-hC-ofl" id="Wbo-6C-cLM"/>
+                <outlet property="amountFieldButton" destination="TIV-Sx-qiq" id="ESX-KQ-uJs"/>
                 <outlet property="amountStepper" destination="fEB-lx-8yh" id="v4i-9y-kOb"/>
                 <outlet property="behaviorsTable" destination="wvZ-4L-J6x" id="0Lb-PB-mDl"/>
                 <outlet property="cancelButton" destination="IgO-eV-L5C" id="0D4-69-VL8"/>
@@ -99,6 +100,14 @@
                         <action selector="onAddSmileOrFrown:" destination="-1" eventType="touchUpInside" id="GsX-P6-T8p"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIV-Sx-qiq">
+                    <rect key="frame" x="275" y="37" width="50" height="30"/>
+                    <animations/>
+                    <state key="normal" title="count"/>
+                    <connections>
+                        <action selector="onChangeAmount:" destination="-1" eventType="touchUpInside" id="dnq-S3-j45"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -110,10 +119,12 @@
                 <constraint firstItem="cC2-hC-ofl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="37" id="Kgw-bU-gbi"/>
                 <constraint firstItem="Z87-Dx-yrh" firstAttribute="top" secondItem="25e-GV-9nU" secondAttribute="bottom" constant="8" id="Kof-xe-og8"/>
                 <constraint firstItem="6Xh-UE-Zzf" firstAttribute="centerY" secondItem="cC2-hC-ofl" secondAttribute="centerY" id="LCO-WM-DM1"/>
+                <constraint firstItem="TIV-Sx-qiq" firstAttribute="centerY" secondItem="cC2-hC-ofl" secondAttribute="centerY" id="NhQ-fv-pSl"/>
                 <constraint firstAttribute="trailing" secondItem="wvZ-4L-J6x" secondAttribute="trailing" id="OAG-ih-j7Z"/>
                 <constraint firstItem="cC2-hC-ofl" firstAttribute="leading" secondItem="6Xh-UE-Zzf" secondAttribute="trailing" constant="20" id="Usx-SC-ZZP"/>
                 <constraint firstItem="Prt-uR-olb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZiT-n5-JXI"/>
                 <constraint firstItem="wvZ-4L-J6x" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="b1l-u9-tJ8"/>
+                <constraint firstItem="TIV-Sx-qiq" firstAttribute="centerX" secondItem="cC2-hC-ofl" secondAttribute="centerX" id="dzE-1M-EAH"/>
                 <constraint firstItem="fEB-lx-8yh" firstAttribute="centerY" secondItem="cC2-hC-ofl" secondAttribute="centerY" id="fbk-OY-F8j"/>
                 <constraint firstItem="hPo-Ac-XCS" firstAttribute="top" secondItem="Z87-Dx-yrh" secondAttribute="bottom" constant="10" id="g2e-p3-xtR"/>
                 <constraint firstAttribute="trailing" secondItem="hPo-Ac-XCS" secondAttribute="trailing" constant="20" id="g4g-VA-kXp"/>
@@ -122,6 +133,8 @@
                 <constraint firstItem="fEB-lx-8yh" firstAttribute="leading" secondItem="cC2-hC-ofl" secondAttribute="trailing" constant="20" id="kxb-cd-t3a"/>
                 <constraint firstItem="cC2-hC-ofl" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kxn-e7-GLn"/>
                 <constraint firstAttribute="bottom" secondItem="hPo-Ac-XCS" secondAttribute="bottom" constant="20" id="mBG-2T-lqU"/>
+                <constraint firstItem="TIV-Sx-qiq" firstAttribute="width" secondItem="cC2-hC-ofl" secondAttribute="width" id="qnG-Qa-Hjs"/>
+                <constraint firstItem="TIV-Sx-qiq" firstAttribute="height" secondItem="cC2-hC-ofl" secondAttribute="height" id="ry2-CM-3nb"/>
                 <constraint firstAttribute="trailing" secondItem="25e-GV-9nU" secondAttribute="trailing" constant="20" id="tYP-Zr-E9L"/>
                 <constraint firstItem="hPo-Ac-XCS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="uJc-rm-M60"/>
                 <constraint firstAttribute="trailing" secondItem="Z87-Dx-yrh" secondAttribute="trailing" constant="20" id="vIE-zh-tvX"/>
