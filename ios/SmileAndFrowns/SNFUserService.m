@@ -246,11 +246,6 @@
 		return;
 	}
 	
-	if(![data[@"age"] isEmpty] && ([data[@"age"] integerValue] < 1 || [data[@"age"] integerValue] > 99)) {
-		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Invalid age. Age must be between 1 and 99."],nil);
-		return;
-	}
-	
 	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"signup"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
 	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
