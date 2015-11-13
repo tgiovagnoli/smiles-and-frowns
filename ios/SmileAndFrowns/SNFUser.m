@@ -38,6 +38,12 @@
 	if(!self.age){
 		self.age = [NSNumber numberWithInt:0];
 	}
+	if(!self.image){
+		self.image = @"";
+	}
+	if(!self.tmp_profile_image_uuid){
+		self.tmp_profile_image_uuid = @"";
+	}
 	[super awakeFromInsert];
 }
 

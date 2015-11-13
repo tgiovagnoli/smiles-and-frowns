@@ -224,7 +224,13 @@
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
-			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			if(error.code == SNFErrorCodeDjangoDebugError){
+				APDDjangoErrorViewer *errorViewer = [[APDDjangoErrorViewer alloc] init];
+				[errorViewer showErrorData:error.localizedDescription forURL:nil];
+				[self presentViewController:errorViewer animated:YES completion:nil];
+			}else{
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			}
 			return;
 		}
 		
@@ -267,7 +273,13 @@
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+				if(error.code == SNFErrorCodeDjangoDebugError){
+					APDDjangoErrorViewer *errorViewer = [[APDDjangoErrorViewer alloc] init];
+					[self presentViewController:errorViewer animated:YES completion:nil];
+					[errorViewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"user_update_profile_image"]];
+				}else{
+					[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+				}
 				return;
 			}
 			
