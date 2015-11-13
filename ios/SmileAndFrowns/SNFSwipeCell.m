@@ -38,6 +38,10 @@
 }
 
 - (void)setupGestureRecognizer{
+	if(!self.minimumThreshold){
+		self.minimumThreshold = 30.0;
+	}
+	
 	self.layoutMargins = UIEdgeInsetsZero;
 	self.contentView.layoutMargins = UIEdgeInsetsZero;
 	
@@ -83,6 +87,7 @@
 }
 
 - (void)startSwipe:(UISwipeGestureRecognizer *)gr{
+	_hasHitThreshold = NO;
 	self.controlsUnderlay.frame = CGRectMake(self.contentView.frame.size.width - self.controlsUnderlay.frame.size.width, 0.0f, self.controlsUnderlay.frame.size.width, self.frame.size.height);
 	_startPoint = [gr locationInView:self];
 	_startPoint.x -= self.overlayView.frame.origin.x;
@@ -94,6 +99,12 @@
 	CGPoint offset = CGPointMake(newPoint.x - _startPoint.x, 0.0f);
 	if(offset.x > 0.0f){
 		offset.x = 0.0f;
+	}
+	if(fabs(offset.x) > self.minimumThreshold && !_hasHitThreshold){
+		_hasHitThreshold = YES;
+	}
+	if(!_hasHitThreshold){
+		return;
 	}
 	self.overlayView.frame = CGRectMake(offset.x, offset.y, self.overlayView.frame.size.width, self.overlayView.frame.size.height);
 	[self updateMask];
