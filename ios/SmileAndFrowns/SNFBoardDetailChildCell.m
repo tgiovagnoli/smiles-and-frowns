@@ -45,7 +45,7 @@
 		
 		NSURL * url = [NSURL URLWithString:self.userRole.user.image];
 		[self.profileImage setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
-			[self.profileImage setImage:image asProfileWithBorderColor:[UIColor redColor] andBorderThickness:3.0];
+			[self.profileImage setImage:image asProfileWithBorderColor:[UIColor blackColor] andBorderThickness:2];
 			if(error) {
 				[self setImageFromGender];
 			}
