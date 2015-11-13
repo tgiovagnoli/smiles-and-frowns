@@ -2,6 +2,7 @@
 #import "SNFBoardDetailAdultCell.h"
 #import "UIImageView+NSURLCache.h"
 #import "NSString+Additions.h"
+#import "UIImageView+ProfileStyle.h"
 
 @implementation SNFBoardDetailAdultCell
 
@@ -20,6 +21,7 @@
 		
 		NSURL * url = [NSURL URLWithString:_user.image];
 		[self.profileImageView setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
+			[self.profileImageView setImage:image asProfileWithBorderColor:[UIColor blackColor] andBorderThickness:2];
 			if(error) {
 				[self setImageFromGender];
 			}
