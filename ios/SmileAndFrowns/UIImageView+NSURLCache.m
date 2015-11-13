@@ -16,14 +16,14 @@ static NSURLCache * _cacheURL;
 - (void) cacheResponse:(NSURLResponse *) response forRequest:(NSURLRequest *) request data:(NSData *) data error:(NSError **) error {
 	NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *)response;
 	if(httpResponse.statusCode != 200) {
-		*error = [NSError errorWithDomain:@"com.apptitude.UIImageView-LocalCache" code:UIImageViewNSURLCacheErrorResponseCode userInfo:@{NSLocalizedDescriptionKey:@"Response from server was not 200"}];
+		*error = [NSError errorWithDomain:@"com.apptitude.UIImageView-NSURLCache" code:UIImageViewNSURLCacheErrorResponseCode userInfo:@{NSLocalizedDescriptionKey:@"Response from server was not 200"}];
 		return;
 	}
 	
 	NSString * contentType = [[httpResponse allHeaderFields] objectForKey:@"Content-Type"];
 	NSArray * acceptedContentTypes = @[@"image/png",@"image/jpg",@"image/jpeg",@"image/bitmap"];
 	if(![acceptedContentTypes containsObject:contentType]) {
-		*error = [NSError errorWithDomain:@"com.apptitude.UIImageView-LocalCache" code:UIimageViewNSURLCacheErrorContentType userInfo:@{NSLocalizedDescriptionKey:@"Response was not an image"}];
+		*error = [NSError errorWithDomain:@"com.apptitude.UIImageView-NSURLCache" code:UIimageViewNSURLCacheErrorContentType userInfo:@{NSLocalizedDescriptionKey:@"Response was not an image"}];
 		return;
 	}
 	
@@ -41,6 +41,7 @@ static NSURLCache * _cacheURL;
 		NSCachedURLResponse * response = [_cacheURL cachedResponseForRequest:request];
 		dispatch_async(dispatch_get_main_queue(), ^{
 			self.image = [UIImage imageWithData:response.data];
+			completion(nil,self.image);
 		});
 		return;
 	}
@@ -63,8 +64,8 @@ static NSURLCache * _cacheURL;
 			}
 			
 			if(data) {
-				UIImage * image = [UIImage imageWithData:data];
-				self.image = image;
+				self.image = [UIImage imageWithData:data];
+				completion(nil,self.image);
 			}
 		});
 	}];
