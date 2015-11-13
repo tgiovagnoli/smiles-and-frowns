@@ -140,7 +140,11 @@
 	cell.user = user;
 	cell.userRole = role;
 	cell.delegate = self;
-	[self updateCellForEditingWithPermissions:cell];
+	if(!role){
+		cell.swipeEnabled = NO;
+	}else{
+		[self updateCellForEditingWithPermissions:cell];
+	}
 	return cell;
 }
 
@@ -153,11 +157,7 @@
 	}
 	cell.delegate = self;
 	cell.userRole = userRole;
-	if(!userRole){
-		cell.swipeEnabled = NO;
-	}else{
-		[self updateCellForEditingWithPermissions:cell];
-	}
+	[self updateCellForEditingWithPermissions:cell];
 	return cell;
 }
 
