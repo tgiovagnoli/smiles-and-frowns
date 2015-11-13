@@ -101,9 +101,7 @@ def user_update_profile_image(request):
 	#get params
 	username = request.POST.get('username')
 	image = request.FILES.get('image',None)
-
-	print image
-
+	
 	if not image:
 		return json_response_error("image required")
 
