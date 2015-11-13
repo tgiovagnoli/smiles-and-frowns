@@ -8,13 +8,6 @@ from django.core.exceptions import ValidationError
 from django.db.models.signals import pre_save, post_save
 from PIL import Image
 
-def resize_image(image_field,size):
-	filename = str(image_field.path)
-	img = Image.open(filename)
-	img.thumbnail(size,Image.ANTIALIAS)
-	img.save(filename)
-	return img.size
-
 # base model for all classes that need to synchronize between devices
 class SyncModel(models.Model):
 	uuid = models.CharField(max_length=64, unique=True)
@@ -64,34 +57,14 @@ class Profile(models.Model):
 	image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default=100)
 	image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default=100)
 	image = models.ImageField(upload_to="ProfileImage", width_field="image_width", height_field="image_height", default=None, blank=True, null=True)
-
 	def __unicode__(self):
 		return self.user.username
-
-	def update_image(self):
-		#try:
-		new_width,new_height = resize_image(self.image,(300,300))
-		self.image_width = new_width
-		self.image_height = new_height
-		#except Exception as e:
-		#	print e
-		#	print "could not resize image"
 
 def create_user_profile(sender,instance,created,**kwargs):
 	"""creates a new user profile when a django user model is saved."""
 	if created:
 		profile, created = Profile.objects.get_or_create(user=instance)
 post_save.connect(create_user_profile, sender=User)
-
-def update_profile_image(sender, instance, **kwargs):
-	""" update the user image to make sure it's the right size """
-	if instance.image:
-		#print instance.image_width
-		#print instance.image_height
-		#if instance.image_width > 300 or instance.image_height > 300:
-		instance.update_image()
-		instance.save()
-post_save.connect(update_profile_image, sender=Profile)
 
 class Board(SyncModel):
 	title = models.CharField(max_length=128)
@@ -191,27 +164,10 @@ class TempProfileImage(models.Model):
 	uuid = models.CharField(max_length=64,unique=True,null=True)
 	created_date = models.DateTimeField(auto_now_add=True,null=True)
 	updated_date = models.DateTimeField(auto_now=True,null=True)
-	image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default=100)
-	image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default=100)
-	image = models.ImageField(upload_to="ProfileImage", width_field="image_width", height_field="image_height", default=None, blank=True, null=True)
+	image = models.ImageField(upload_to="ProfileImage", default=None, blank=True, null=True)
 	def __unicode__(self):
 		return uuid
-	def update_image(self):
-		#try:
-		new_width,new_height = resize_image(self.image,(300,300))
-		self.image_width = new_width
-		self.image_height = new_height
-		#except Exception as e:
-		#	print e
-		#	print "could not resize image"
 	def save(self, *args, **kwargs):
 		if self.uuid == None or self.uuid == "" or len(self.uuid) == 0:
 			self.uuid = str(uuid.uuid4())
 		super(TempProfileImage,self).save(*args,**kwargs)
-
-def update_profile_image(sender, instance, **kwargs):
-	""" update the user image to make sure it's the right size """
-	if instance.image:
-		instance.update_image()
-		instance.save()
-post_save.connect(update_profile_image,sender=TempProfileImage)
