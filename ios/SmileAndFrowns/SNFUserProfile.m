@@ -157,7 +157,7 @@
 		self.profileImage.image = [UIImage imageNamed:@"Female"];
 	}
 	
-	if(self.user.image) {
+	if(![self.user.image isEmpty] && self.user.image) {
 		NSURL * url = [NSURL URLWithString:self.user.image];
 		[self.profileImage setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
 			if(error) {
