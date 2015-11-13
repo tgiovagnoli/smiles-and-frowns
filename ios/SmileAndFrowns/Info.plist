@@ -96,7 +96,7 @@
 		<key>apiPath</key>
 		<string>api</string>
 		<key>serverURL</key>
-		<string>http://45.33.54.108</string>
+		<string>http://services.smilesandfrowns.com</string>
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

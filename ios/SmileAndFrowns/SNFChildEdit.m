@@ -22,7 +22,12 @@
 	_agePicker.tag = SNFChildEditSelectionTypeAge;
 	_agePicker.delegate = self;
 	_agePicker.values = [SNFUser ageSelections];
-
+	
+	self.profileImageView.layer.cornerRadius = self.profileImageView.width/2;
+	self.profileImageView.layer.borderColor = [[UIColor blackColor] CGColor];
+	self.profileImageView.layer.borderWidth = 2;
+	self.profileImageView.layer.masksToBounds = TRUE;
+	
 	UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onUserProfile:)];
 	[self.profileImageView addGestureRecognizer:gr];
 	

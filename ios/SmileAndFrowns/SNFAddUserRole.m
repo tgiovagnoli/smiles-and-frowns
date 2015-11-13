@@ -35,6 +35,11 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
 	[self segmentChange:self.segment];
 	
+	self.image.layer.cornerRadius = self.image.width/2;
+	self.image.layer.borderColor = [[UIColor blackColor] CGColor];
+	self.image.layer.borderWidth = 2;
+	self.image.layer.masksToBounds = TRUE;
+	
 	UIGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickImage:)];
 	[self.image addGestureRecognizer:tapGestureRecognizer];
 	self.image.userInteractionEnabled = YES;
