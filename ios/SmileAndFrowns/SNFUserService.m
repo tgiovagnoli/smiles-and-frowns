@@ -529,4 +529,39 @@
 	[task resume];
 }
 
+- (void) uploadTempUserProfileImage:(UIImage *) image withCompletion:(SNFTempProfileImageCompletion) completion; {
+	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"upload_temp_profile_image"];
+	NSData * imageData = UIImagePNGRepresentation(image);
+	NSString * imageName = [[[NSUUID UUID] UUIDString] stringByAppendingString:@".png"];
+	NSURLRequest * request = [NSURLRequest fileUploadRequestWithURL:url data:imageData fileKey:@"image" fileName:imageName variables:nil];
+	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			
+			if(error) {
+				completion(error,nil,nil);
+				return;
+			}
+			
+			NSError * jsonError = nil;
+			NSObject * responseObject = [self responseObjectFromData:data withError:&jsonError];
+			
+			if(jsonError) {
+				completion(jsonError,nil,nil);
+				return;
+			}
+			
+			if(![responseObject isKindOfClass:[NSDictionary class]]) {
+				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Expected a dictionary"],nil,nil);
+				return;
+			}
+			
+			NSDictionary * dictionary = (NSDictionary *)responseObject;
+			completion(nil,dictionary[@"uuid"],dictionary[@"url"]);
+			
+		});
+	}];
+	
+	[task resume];
+}
+
 @end

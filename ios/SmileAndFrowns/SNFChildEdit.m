@@ -1,6 +1,12 @@
+
 #import "SNFChildEdit.h"
 #import "SNFModel.h"
 #import "SNFSyncService.h"
+#import "UIImage+Additions.h"
+#import "UIImageView+LocalCache.h"
+#import "SNFUserService.h"
+#import "AppDelegate.h"
+#import "UIViewController+Alerts.h"
 
 @implementation SNFChildEdit
 
@@ -42,18 +48,38 @@
 	}else{
 		self.genderField.text = @"";
 	}
+	
 	[self updateProfileImage];
 }
 
-- (void)updateProfileImage{
-	UIImage *childImage = [self.childUser localImage];
-	if(_userSelectedImage){
+- (void) updateProfileImage {
+	if(_userSelectedImage) {
+		
 		self.profileImageView.image = _userSelectedImage;
-	}else if(childImage){
-		self.profileImageView.image = childImage;
-	}else if([self.childUser.gender isEqualToString:SNFUserGenderFemale]){
+		
+	} else if(self.childUser.image) {
+		
+		NSURL * url = [NSURL URLWithString:self.childUser.image];
+		[self.profileImageView setImageForURL:url withCompletion:^(NSError *error, UIImage *image) {
+			if(error) {
+				[self setImageByGender];
+			}
+		}];
+		
+	} else {
+		
+		[self setImageByGender];
+		
+	}
+}
+
+- (void) setImageByGender {
+	if([self.childUser.gender isEqualToString:SNFUserGenderFemale]) {
+		
 		self.profileImageView.image = [UIImage imageNamed:@"female"];
-	}else{
+		
+	} else {
+		
 		self.profileImageView.image = [UIImage imageNamed:@"male"];
 	}
 }
@@ -64,16 +90,37 @@
 }
 
 - (void)onUserProfile:(UITapGestureRecognizer *)sender{
-	UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+	UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
 	imagePicker.delegate = self;
 	imagePicker.allowsEditing = YES;
 	[self presentViewController:imagePicker animated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-	_userSelectedImage = [info objectForKey:UIImagePickerControllerEditedImage];
-	[self updateProfileImage];
-	[self dismissViewControllerAnimated:YES completion:^{}];
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+	
+	UIImage * image = [info objectForKey:UIImagePickerControllerEditedImage];
+	_userSelectedImage = [image imageCroppedFromSize:CGSizeMake(300,300)];
+	
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	
+	[self dismissViewControllerAnimated:YES completion:^{
+		
+		SNFUserService * service = [[SNFUserService alloc] init];
+		[service updateUserProfileImageWithUsername:self.childUser.username image:_userSelectedImage withCompletion:^(NSError *error, SNFUser * user) {
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			if(error) {
+				[self displayOKAlertWithTitle:@"OK" message:error.localizedDescription completion:nil];
+				return;
+			}
+			
+			self.childUser = user;
+			[self updateProfileImage];
+			
+		}];
+		
+	}];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
@@ -126,11 +173,11 @@
 	self.childUser.gender = [self.genderField.text lowercaseString];
 	self.childUser.age = [NSNumber numberWithInteger:[self.ageField.text integerValue]];
 	[self.childUser updateUserRolesForSyncWithContext:[SNFModel sharedInstance].managedObjectContext];
-	if(_userSelectedImage){
-		[self.childUser updateProfileImage:_userSelectedImage];
-	}
+//	if(_userSelectedImage){
+//		[self.childUser updateProfileImage:_userSelectedImage];
+//	}
 	[[SNFSyncService instance] saveContext];
-	if(self.delegate){
+	if(self.delegate) {
 		[self.delegate childEdit:self editedChild:self.childUser];
 	}
 	[self dismissViewControllerAnimated:YES completion:^{}];

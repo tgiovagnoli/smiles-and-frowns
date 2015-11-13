@@ -14,6 +14,7 @@
 + (UIViewController *) rootViewController;
 - (void) saveContext;
 - (NSURL *) applicationDocumentsDirectory;
+- (NSURL *) applicationSupportDirectory;
 
 @end
 

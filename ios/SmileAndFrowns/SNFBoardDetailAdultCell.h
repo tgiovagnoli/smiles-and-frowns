@@ -2,6 +2,7 @@
 #import "SNFUserRole.h"
 #import "SNFUser.h"
 #import "SNFSwipeCell.h"
+#import "UIView+LayoutHelpers.h"
 
 @class SNFBoardDetailAdultCell;
 

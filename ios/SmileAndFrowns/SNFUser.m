@@ -17,6 +17,8 @@
 		@"age": @"age",
 		@"gender": @"gender",
 		@"remote_id": @"id",
+		@"image":@"image",
+		@"tmp_profile_image_uuid":@"tmp_profile_image_uuid",
 	};
 }
 
@@ -53,22 +55,22 @@
 }
 
 
-- (void)updateProfileImage:(UIImage *)image{
-	const CGSize size = CGSizeMake(300.0, 300.0);
-	UIImage *newImage = [image imageCroppedFromSize:size];
-	NSData *jpgData = UIImageJPEGRepresentation(newImage, 8);
-	NSString *fileName = [NSString stringWithFormat:@"%@.jpg", [[NSUUID UUID] UUIDString]];
-	NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-	NSString *fullPath = [docsPath stringByAppendingPathComponent:fileName];
-	[jpgData writeToFile:fullPath atomically:YES];
-	self.image = fileName;
-}
-
-- (UIImage *)localImage{
-	NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-	NSString *fullPath = [docsPath stringByAppendingPathComponent:self.image];
-	return [UIImage imageWithContentsOfFile:fullPath];
-}
+//- (void)updateProfileImage:(UIImage *)image{
+//	const CGSize size = CGSizeMake(300.0, 300.0);
+//	UIImage *newImage = [image imageCroppedFromSize:size];
+//	NSData *jpgData = UIImageJPEGRepresentation(newImage, 8);
+//	NSString *fileName = [NSString stringWithFormat:@"%@.jpg", [[NSUUID UUID] UUIDString]];
+//	NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+//	NSString *fullPath = [docsPath stringByAppendingPathComponent:fileName];
+//	[jpgData writeToFile:fullPath atomically:YES];
+//	self.image = fileName;
+//}
+//
+//- (UIImage *)localImage{
+//	NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+//	NSString *fullPath = [docsPath stringByAppendingPathComponent:self.image];
+//	return [UIImage imageWithContentsOfFile:fullPath];
+//}
 
 + (NSArray *)ageSelections{
 	NSMutableArray *ages = [[NSMutableArray alloc] init];

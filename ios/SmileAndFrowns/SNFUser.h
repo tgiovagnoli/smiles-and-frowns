@@ -1,3 +1,4 @@
+
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
@@ -17,8 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 // use when the user info has been changed locally so that all user roles update
 - (void)updateUserRolesForSyncWithContext:(NSManagedObjectContext *)context;
-- (void)updateProfileImage:(UIImage *)image;
-- (UIImage *)localImage;
+
+//- (void)updateProfileImage:(UIImage *)image;
+//- (UIImage *)localImage;
 
 + (NSArray *)ageSelections;
 + (NSArray *)genderSelections;

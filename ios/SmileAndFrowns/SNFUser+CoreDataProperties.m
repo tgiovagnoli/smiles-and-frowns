@@ -12,6 +12,7 @@
 @dynamic email;
 @dynamic age;
 @dynamic gender;
+@dynamic tmp_profile_image_uuid;
 @dynamic remote_id;
 @dynamic smiles;
 @dynamic frowns;

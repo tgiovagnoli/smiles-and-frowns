@@ -2,6 +2,7 @@
 #import "SNFModel.h"
 #import "UIViewController+ModalCreation.h"
 #import "SNFSyncService.h"
+#import "UIImageView+LocalCache.h"
 
 @implementation SNFSpendRewards
 
@@ -12,6 +13,12 @@
 	[self.rewardsCollection registerNib:[UINib nibWithNibName:@"SNFRewardCell" bundle:nil] forCellWithReuseIdentifier:@"SNFRewardCell"];
 	[self.rewardsCollection registerClass:[SNFAddCell class] forCellWithReuseIdentifier:@"SNFAddCell"];
 	[self.rewardsCollection registerNib:[UINib nibWithNibName:@"SNFAddCell" bundle:nil] forCellWithReuseIdentifier:@"SNFAddCell"];
+	
+	self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.width/2;
+	self.userProfileImageView.layer.borderWidth = 2;
+	self.userProfileImageView.layer.borderColor = [[UIColor blackColor] CGColor];
+	self.userProfileImageView.layer.masksToBounds = TRUE;
+	
 	[self startBannerAd];
 	[self updateUI];
 }
@@ -42,6 +49,19 @@
 	
 	self.totalSmilestoSpendLabel.text = [NSString stringWithFormat:@"%ld", (long)_smilesAvailable];
 	
+	[self setImageByGender];
+	
+	if(self.user.image) {
+		NSURL * url = [NSURL URLWithString:self.user.image];
+		[self.userProfileImageView setImageForURL:url withCompletion:^(NSError *error, UIImage *image) {
+			if(error) {
+				[self setImageByGender];
+			}
+		}];
+	}
+}
+
+- (void) setImageByGender {
 	if([self.user.gender.lowercaseString isEqualToString:@"male"]) {
 		self.userProfileImageView.image = [UIImage imageNamed:@"male"];
 	} else {

@@ -1,6 +1,9 @@
+
 #import "SNFBoardDetailChildCell.h"
 #import "SNFModel.h"
 #import "SNFBoard.h"
+#import "UIImageView+LocalCache.h"
+#import "UIView+LayoutHelpers.h"
 
 @implementation SNFBoardDetailChildCell
 
@@ -37,13 +40,22 @@
 	self.nameLabel.text = self.userRole.user.first_name;
 	self.spendLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.userRole.board smileCurrencyForUser:self.userRole.user]];
 	
-	if(self.userRole.user.image){
-		NSString *docsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-		UIImage *image = [UIImage imageWithContentsOfFile:[docsPath stringByAppendingPathComponent:self.userRole.user.image]];
-		if(image){
-			self.profileImage.image = image;
-		}
-	}else if([self.userRole.user.gender isEqualToString:SNFUserGenderFemale]){
+	if(self.userRole.user.image) {
+		
+		NSURL * url = [NSURL URLWithString:self.userRole.user.image];
+		[self.profileImage setImageForURL:url withCompletion:^(NSError *error, UIImage *image) {
+			if(error) {
+				[self setImageFromGender];
+			}
+		}];
+		
+	} else {
+		[self setImageFromGender];
+	}
+}
+
+- (void) setImageFromGender {
+	if([self.userRole.user.gender isEqualToString:SNFUserGenderFemale]){
 		self.profileImage.image = [UIImage imageNamed:@"female"];
 	}else{
 		self.profileImage.image = [UIImage imageNamed:@"male"];

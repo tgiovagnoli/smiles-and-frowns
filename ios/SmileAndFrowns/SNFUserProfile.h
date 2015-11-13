@@ -7,8 +7,7 @@
 #import "SNFLogin.h"
 #import "SNFFormViewController.h"
 #import "SNFValuePicker.h"
-
-
+#import "UIImage+Additions.h"
 
 @interface SNFUserProfile : SNFFormViewController <UITextFieldDelegate,UIViewControllerStackUpdating,UIImagePickerControllerDelegate,UINavigationControllerDelegate, SNFValuePickerDelegate>{
 	SNFValuePicker *_genderPicker;

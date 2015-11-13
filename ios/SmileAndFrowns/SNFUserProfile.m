@@ -8,6 +8,7 @@
 #import "NSTimer+Blocks.h"
 #import "SNFUserService.h"
 #import "UIViewController+Alerts.h"
+#import "UIImageView+LocalCache.h"
 
 @interface SNFUserProfile ()
 @property BOOL isUpdatingPassword;
@@ -33,6 +34,11 @@
 	self.passwordConfirmField.delegate = self;
 	self.passwordField.delegate = self;
 	self.age.delegate = self;
+	
+	self.profileImage.layer.cornerRadius = self.profileImage.width/2;
+	self.profileImage.layer.borderWidth = 2;
+	self.profileImage.layer.borderColor = [[UIColor blackColor] CGColor];
+	self.profileImage.layer.masksToBounds = TRUE;
 	
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
 	[self.ageOverlay setTitle:@"" forState:UIControlStateNormal];
@@ -149,7 +155,13 @@
 		self.profileImage.image = [UIImage imageNamed:@"Female"];
 	}
 	
-	//TODO: update profile image from user
+	if(self.user.image) {
+		NSURL * url = [NSURL URLWithString:self.user.image];
+		[self.profileImage setImageForURL:url withCompletion:^(NSError *error, UIImage *image) {
+			NSLog(@"set profile image");
+			NSLog(@"image: %@",image);
+		}];
+	}
 }
 
 - (IBAction) update:(id) sender {
@@ -240,21 +252,26 @@
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 	
 	UIImage * image = [info objectForKey:UIImagePickerControllerEditedImage];
+	UIImage * newImage = [image imageCroppedFromSize:CGSizeMake(300,300)];
+	
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
-		
-		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 		
 		SNFUserService * service = [[SNFUserService alloc] init];
 		[service updateUserProfileImageWithUsername:[SNFModel sharedInstance].loggedInUser.username image:image withCompletion:^(NSError *error, SNFUser *user) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
-			//TODO: sync, if synign waiting for notification and try again
+			if(error) {
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+				return;
+			}
+			
+			self.profileImage.image = newImage;
 		}];
 		
 	}];
-	
 }
 
 - (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker {

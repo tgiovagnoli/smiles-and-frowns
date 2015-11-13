@@ -13,6 +13,8 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 @interface SNFAddUserRole ()
 @property NSArray * genders;
 @property NSDictionary * inviteData;
+@property NSString * tmpImageUUID;
+@property NSString * tmpImageURL;
 @end
 
 @implementation SNFAddUserRole
@@ -111,7 +113,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 }
 
 - (void) addChildRoleWithUser:(SNFUser *) user {
-	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
+	NSManagedObjectContext * context = [SNFModel sharedInstance].managedObjectContext;
 	if(!user) {
 		NSString * gender = @"";
 		
@@ -131,9 +133,17 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		user = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:userInfo withContext:context];
 	}
 	
-	if(_userSelectedImage){
-		[user updateProfileImage:_userSelectedImage];
+	if(self.tmpImageUUID) {
+		user.tmp_profile_image_uuid = self.tmpImageUUID;
 	}
+	
+	if(self.tmpImageURL) {
+		user.image = self.tmpImageURL;
+	}
+	
+	//if(_userSelectedImage) {
+	//	[user updateProfileImage:_userSelectedImage];
+	//}
 	
 	NSDictionary * info = @{
 		@"role":@"child",
@@ -353,7 +363,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	[self presentViewController:imagePicker animated:YES completion:^{}];
 }
 
-- (void)updateProfileImage{
+- (void) updateProfileImage {
 	if(_userSelectedImage && self.segment.selectedSegmentIndex == 0){
 		self.image.image = _userSelectedImage;
 	}else if([self.gender.text isEqualToString:@"Female"]){
@@ -363,10 +373,32 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	}
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-	_userSelectedImage = [info objectForKey:UIImagePickerControllerEditedImage];
-	[self updateProfileImage];
-	[self dismissViewControllerAnimated:YES completion:^{}];
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+	UIImage * image = [info objectForKey:UIImagePickerControllerEditedImage];
+	_userSelectedImage = [image imageCroppedFromSize:CGSizeMake(300,300)];
+	
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	
+	[self dismissViewControllerAnimated:YES completion:^{
+		
+		SNFUserService * service = [SNFUserService new];
+		
+		[service uploadTempUserProfileImage:_userSelectedImage withCompletion:^(NSError *error, NSString *uuid, NSString *url) {
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			if(error) {
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+				return;
+			}
+			
+			[self updateProfileImage];
+			self.tmpImageURL = url;
+			self.tmpImageUUID = uuid;
+			
+		}];
+		
+	}];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
