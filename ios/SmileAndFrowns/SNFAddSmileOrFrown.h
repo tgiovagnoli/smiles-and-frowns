@@ -7,6 +7,7 @@
 #import "SNFBoardEditBehaviorCell.h"
 #import "SNFAddBehavior.h"
 #import "SNFFormViewController.h"
+#import "SNFValuePicker.h"
 
 
 typedef NS_ENUM(NSInteger, SNFAddSmileOrFrownType){
@@ -20,14 +21,16 @@ typedef NS_ENUM(NSInteger, SNFAddSmileOrFrownType){
 - (void)addSmileOrFrownFinished:(SNFAddSmileOrFrown *)addSoF;
 @end
 
-@interface SNFAddSmileOrFrown : SNFFormViewController <UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate> {
+@interface SNFAddSmileOrFrown : SNFFormViewController <UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate, SNFValuePickerDelegate> {
 	NSArray *_behaviors;
+	SNFValuePicker *_smileCountPicker;
 }
 
 @property (weak) IBOutlet UILabel * titleLabel;
 @property (weak) IBOutlet UITableView *behaviorsTable;
 @property (weak) IBOutlet UIStepper *amountStepper;
 @property (weak) IBOutlet UITextField *amountField;
+@property (weak) IBOutlet UIButton *amountFieldButton;
 @property (weak) IBOutlet UIImageView *snfTypeImageView;
 @property (weak) IBOutlet UIButton *addBehaviorButton;
 @property (weak) IBOutlet UIButton *addSNFButton;
@@ -45,5 +48,6 @@ typedef NS_ENUM(NSInteger, SNFAddSmileOrFrownType){
 - (IBAction)onAddSmileOrFrown:(UIButton *)sender;
 - (IBAction)onCancel:(UIButton *)sender;
 - (IBAction)onSmileAmountUpdate:(UIStepper *)sender;
+- (IBAction)onChangeAmount:(UIButton *)sender;
 
 @end
