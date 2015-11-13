@@ -31,7 +31,7 @@
 	self.titleLabel.text = self.board.title;
 	// check to see if we show the add user button
 	NSString *userRole = [self.board permissionForUser:[SNFModel sharedInstance].loggedInUser];
-	if(userRole == nil || [userRole isEqualToString:SNFUserRoleChild]){
+	if(userRole == nil || [userRole isEqualToString:SNFUserRoleChild] || [userRole isEqualToString:SNFUserRoleGuardian]){
 		self.addButtonHeightConstraint.constant = 0.0;
 		self.addButton.hidden = YES;
 	}else{
@@ -140,6 +140,7 @@
 	cell.user = user;
 	cell.userRole = role;
 	cell.delegate = self;
+	[self updateCellForEditingWithPermissions:cell];
 	return cell;
 }
 
@@ -151,7 +152,17 @@
 	}
 	cell.delegate = self;
 	cell.userRole = userRole;
+	[self updateCellForEditingWithPermissions:cell];
 	return cell;
+}
+
+- (void)updateCellForEditingWithPermissions:(SNFSwipeCell *)cell{
+	NSString *permission = [self.board permissionForUser:[SNFModel sharedInstance].loggedInUser];
+	if(permission == nil || [permission isEqualToString:SNFUserRoleChild] || [permission isEqualToString:SNFUserRoleGuardian]){
+		cell.swipeEnabled = NO;
+	}else{
+		cell.swipeEnabled = YES;
+	}
 }
 
 - (IBAction)onAddUserRole:(id)sender{
@@ -201,6 +212,11 @@
 }
 
 - (void)childCellWantsToOpenReport:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
+	NSString *permission = [self.board permissionForUser:[SNFModel sharedInstance].loggedInUser];
+	if(permission == nil || [permission isEqualToString:SNFUserRoleChild] || [permission isEqualToString:SNFUserRoleGuardian]){
+		return;
+	}
+	
 	SNFReporting *reporting = [[SNFReporting alloc] initWithSourceView:cell sourceRect:cell.profileImage.frame contentSize:CGSizeMake(600,700) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionDown];
 	reporting.board = userRole.board;
 	reporting.user = userRole.user;
@@ -277,6 +293,11 @@
 }
 
 - (NSArray *)resultsForRole:(NSString *)role{
+	NSLog(@"%@", _board.user_roles);
+	for(SNFUserRole *userRole in _board.user_roles){
+		NSLog(@"%@", userRole.user.first_name);
+	}
+	
 	NSSortDescriptor *userDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self.user.first_name" ascending:YES];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"role==%@", role];
 	NSSet *results = [_board.user_roles filteredSetUsingPredicate:predicate];
