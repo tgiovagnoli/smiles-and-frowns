@@ -145,6 +145,7 @@
 }
 
 - (SNFBoardDetailChildCell *)childCellForUserRole:(SNFUserRole *)userRole{
+	
 	SNFBoardDetailChildCell *cell = [self.rolesTable dequeueReusableCellWithIdentifier:@"SNFBoardDetailChildCell"];
 	if(!cell){
 		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardDetailChildCell" owner:self options:nil];
@@ -152,7 +153,11 @@
 	}
 	cell.delegate = self;
 	cell.userRole = userRole;
-	[self updateCellForEditingWithPermissions:cell];
+	if(!userRole){
+		cell.swipeEnabled = NO;
+	}else{
+		[self updateCellForEditingWithPermissions:cell];
+	}
 	return cell;
 }
 

@@ -19,21 +19,21 @@
                         <rect key="frame" x="8" y="8" width="304" height="67"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6nm-Z6-v4q">
-                                <rect key="frame" x="0.0" y="0.0" width="67" height="67"/>
+                                <rect key="frame" x="10" y="10" width="47" height="47"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6nm-Z6-v4q" secondAttribute="height" multiplier="1:1" id="tWk-VT-Tj6"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2H-jM-CPJ">
-                                <rect key="frame" x="77" y="0.0" width="227" height="21"/>
+                                <rect key="frame" x="67" y="10" width="237" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2u-hS-354">
-                                <rect key="frame" x="77" y="51" width="227" height="16"/>
+                                <rect key="frame" x="67" y="41" width="237" height="16"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,13 +43,13 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6nm-Z6-v4q" firstAttribute="leading" secondItem="EeX-Ww-phb" secondAttribute="leading" id="90Q-uI-O9b"/>
-                            <constraint firstAttribute="bottom" secondItem="6nm-Z6-v4q" secondAttribute="bottom" id="BvX-ze-H3l"/>
+                            <constraint firstItem="6nm-Z6-v4q" firstAttribute="leading" secondItem="EeX-Ww-phb" secondAttribute="leading" constant="10" id="90Q-uI-O9b"/>
+                            <constraint firstAttribute="bottom" secondItem="6nm-Z6-v4q" secondAttribute="bottom" constant="10" id="BvX-ze-H3l"/>
                             <constraint firstItem="t2u-hS-354" firstAttribute="leading" secondItem="6nm-Z6-v4q" secondAttribute="trailing" constant="10" id="Dz6-Mg-TUu"/>
                             <constraint firstItem="X2H-jM-CPJ" firstAttribute="top" secondItem="6nm-Z6-v4q" secondAttribute="top" id="JQN-i8-7Yp"/>
                             <constraint firstItem="X2H-jM-CPJ" firstAttribute="leading" secondItem="6nm-Z6-v4q" secondAttribute="trailing" constant="10" id="TFj-dg-H1O"/>
                             <constraint firstAttribute="trailing" secondItem="t2u-hS-354" secondAttribute="trailing" id="aiO-8K-RdW"/>
-                            <constraint firstItem="6nm-Z6-v4q" firstAttribute="top" secondItem="EeX-Ww-phb" secondAttribute="top" id="dfD-lp-KqV"/>
+                            <constraint firstItem="6nm-Z6-v4q" firstAttribute="top" secondItem="EeX-Ww-phb" secondAttribute="top" constant="10" id="dfD-lp-KqV"/>
                             <constraint firstAttribute="trailing" secondItem="X2H-jM-CPJ" secondAttribute="trailing" id="tfv-xG-WgM"/>
                             <constraint firstItem="t2u-hS-354" firstAttribute="bottom" secondItem="6nm-Z6-v4q" secondAttribute="bottom" id="utw-dd-muC"/>
                         </constraints>
