@@ -359,6 +359,10 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 }
 
 - (void)pickImage:(UIGestureRecognizer *)gr{
+	if(![[SNFModel sharedInstance].loggedInUser.username isEqualToString:self.board.owner.username]){
+		// not the owner do not allow images to be set.
+		return;
+	}
 	if(self.segment.selectedSegmentIndex != 0){
 		return;
 	}
