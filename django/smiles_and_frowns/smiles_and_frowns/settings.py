@@ -143,6 +143,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,"static")
 
 #media
+MEDIA_ABS_URL = "http://imac.local:8000"
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 MEDIA_URL = '/media/'
 

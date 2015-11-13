@@ -59,6 +59,32 @@ def register_by_access_token(request,backend):
 	return json_response_error("user not found")
 
 @csrf_exempt
+def upload_temp_profile_image(request):
+	'''
+	@param image
+	'''
+	#post only
+	if request.method != "POST":
+		return json_response_error("method not allowed")
+
+	#check auth
+	if not request.user.is_authenticated():
+		return login_required_response()
+
+	#get params
+	image = request.FILES.get('image',None)
+
+	if not image:
+		return json_response_error("image required")
+
+	tmp = models.TempProfileImage(image=image)
+	tmp.save()
+
+	url = settings.MEDIA_ABS_URL + tmp.image.url
+
+	return json_response( {'uuid':tmp.uuid, 'url':url} )
+
+@csrf_exempt
 def user_update_profile_image(request):
 	'''
 	@param user_uuid
@@ -96,7 +122,7 @@ def user_update_profile_image(request):
 		role.device_date = device_date
 		role.save()
 
-	return json_response( json_utils.user_info_dictionary(user, request) )
+	return json_response( json_utils.user_info_dictionary(user) )
 
 @csrf_exempt
 def user_password_reset(request):
@@ -730,14 +756,31 @@ def sync(request):
 		if role.role == "child":
 			#try and find existing user in DB
 			user, user_created = User.objects.get_or_create(username=userinfo.get('username'))
+			
+			profile_image = None
 			if user_created:
 				user.email = ""
+
+				#look for tmp profile image
+				tmp_uuid = userinfo.get('tmp_profile_image_uuid',None)
+				if tmp_uuid:
+					try:
+						profile_image = models.TempProfileImage.objects.get(uuid=tmp_uuid)
+					except:
+						pass
+
 			user.first_name = userinfo.get('first_name','')
 			user.last_name = userinfo.get('last_name','')
+			user.save()
+			
+			if profile_image:
+				user.profile.image = profile_image.image
+				profile_image.delete()
+
 			user.profile.age = userinfo.get('age','')
 			user.profile.gender = userinfo.get('gender','')
 			user.profile.save()
-			user.save()
+			
 
 		#set role data
 		if role_created:

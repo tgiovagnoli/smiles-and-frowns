@@ -2,13 +2,15 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from services import api_views, views
 from predefinedboards import api_views as predefined_api_views
+from django.conf.urls.static import static
+from smiles_and_frowns import settings
 
 urlpatterns = [
     # social login
     url('',include('social.apps.django_app.urls', namespace='social')),
     
     url(r'^admin/', include(admin.site.urls)),
-     
+    
     #user endpoints
     url(r'^api/token_auth/(?P<backend>[^/]+)/?$', api_views.register_by_access_token),
     url(r'^api/signup/?', api_views.user_signup),
@@ -19,6 +21,9 @@ urlpatterns = [
     url(r'^api/user_info/?', api_views.user_info),
     url(r'^api/reset_password/?', api_views.user_password_reset),
     
+    #tmp profile images
+    url(r'^api/upload_temp_profile_image/?', api_views.upload_temp_profile_image),
+
     #invite endpoints
     url(r'^api/invite_accept/?', api_views.invite_accept),
     url(r'^api/invite_delete/?', api_views.invite_delete),
@@ -29,3 +34,6 @@ urlpatterns = [
     url(r'^api/sync/?', api_views.sync),
     url(r'^api/predefined_boards/sync/?', predefined_api_views.sync_boards),
 ]
+
+#static content
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -3,7 +3,7 @@ from services import models
 
 class ProfileAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("user", "gender", "age")
+	fields = ("user", "gender", "age", "image")
 	list_display = ("user", "age")
 
 class UserRoleAdmin(admin.ModelAdmin):
