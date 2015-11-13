@@ -39,7 +39,7 @@
 
 - (void)setupGestureRecognizer{
 	if(!self.minimumThreshold){
-		self.minimumThreshold = 30.0;
+		self.minimumThreshold = 45.0;
 	}
 	
 	self.layoutMargins = UIEdgeInsetsZero;
