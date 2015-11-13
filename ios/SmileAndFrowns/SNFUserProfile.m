@@ -8,7 +8,7 @@
 #import "NSTimer+Blocks.h"
 #import "SNFUserService.h"
 #import "UIViewController+Alerts.h"
-#import "UIImageView+LocalCache.h"
+#import "UIImageView+NSURLCache.h"
 
 @interface SNFUserProfile ()
 @property BOOL isUpdatingPassword;

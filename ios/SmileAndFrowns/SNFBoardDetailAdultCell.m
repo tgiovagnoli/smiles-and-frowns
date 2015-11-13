@@ -1,6 +1,6 @@
 
 #import "SNFBoardDetailAdultCell.h"
-#import "UIImageView+LocalCache.h"
+#import "UIImageView+NSURLCache.h"
 
 @implementation SNFBoardDetailAdultCell
 

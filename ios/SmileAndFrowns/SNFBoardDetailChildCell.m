@@ -2,7 +2,7 @@
 #import "SNFBoardDetailChildCell.h"
 #import "SNFModel.h"
 #import "SNFBoard.h"
-#import "UIImageView+LocalCache.h"
+#import "UIImageView+NSURLCache.h"
 #import "UIView+LayoutHelpers.h"
 
 @implementation SNFBoardDetailChildCell

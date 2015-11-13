@@ -146,10 +146,6 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		user.image = self.tmpImageURL;
 	}
 	
-	//if(_userSelectedImage) {
-	//	[user updateProfileImage:_userSelectedImage];
-	//}
-	
 	NSDictionary * info = @{
 		@"role":@"child",
 		@"board":@{@"uuid": self.board.uuid},

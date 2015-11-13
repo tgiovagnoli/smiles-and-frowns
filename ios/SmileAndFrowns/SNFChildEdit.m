@@ -3,7 +3,7 @@
 #import "SNFModel.h"
 #import "SNFSyncService.h"
 #import "UIImage+Additions.h"
-#import "UIImageView+LocalCache.h"
+#import "UIImageView+NSURLCache.h"
 #import "SNFUserService.h"
 #import "AppDelegate.h"
 #import "UIViewController+Alerts.h"
