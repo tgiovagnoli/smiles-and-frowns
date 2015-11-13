@@ -16,7 +16,7 @@
 	self.nameLabel.text = title;
 	self.noteLabel.text = @"";
 	
-	if(![_user.image isEmpty]) {
+	if(![_user.image isEmpty] && _user.image) {
 		
 		NSURL * url = [NSURL URLWithString:_user.image];
 		[self.profileImageView setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
