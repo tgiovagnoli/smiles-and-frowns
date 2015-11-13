@@ -140,6 +140,7 @@
 		D65DF17B1BE3F884009CC6DF /* SNFBoardEdit.xib in Resources */ = {isa = PBXBuildFile; fileRef = D65DF1791BE3F884009CC6DF /* SNFBoardEdit.xib */; };
 		D694011B1BED25530073119E /* SNFPredefinedBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D69401191BED25530073119E /* SNFPredefinedBoardCell.m */; };
 		D694011C1BED25530073119E /* SNFPredefinedBoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D694011A1BED25530073119E /* SNFPredefinedBoardCell.xib */; };
+		D6D197571BF677060009E652 /* UIImageView+ProfileStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = D6D197561BF677060009E652 /* UIImageView+ProfileStyle.m */; };
 		D6DB2BD01BEAA03300F1CDFF /* SNFRewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BCE1BEAA03300F1CDFF /* SNFRewardCell.m */; };
 		D6DB2BD11BEAA03300F1CDFF /* SNFRewardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DB2BCF1BEAA03300F1CDFF /* SNFRewardCell.xib */; };
 		D6DB2BD51BEAA0BA00F1CDFF /* SNFAddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6DB2BD31BEAA0BA00F1CDFF /* SNFAddCell.m */; };
@@ -378,6 +379,8 @@
 		D69401181BED25530073119E /* SNFPredefinedBoardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBoardCell.h; sourceTree = "<group>"; };
 		D69401191BED25530073119E /* SNFPredefinedBoardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPredefinedBoardCell.m; sourceTree = "<group>"; };
 		D694011A1BED25530073119E /* SNFPredefinedBoardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFPredefinedBoardCell.xib; sourceTree = "<group>"; };
+		D6D197551BF677060009E652 /* UIImageView+ProfileStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ProfileStyle.h"; sourceTree = "<group>"; };
+		D6D197561BF677060009E652 /* UIImageView+ProfileStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ProfileStyle.m"; sourceTree = "<group>"; };
 		D6DB2BCD1BEAA03300F1CDFF /* SNFRewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFRewardCell.h; sourceTree = "<group>"; };
 		D6DB2BCE1BEAA03300F1CDFF /* SNFRewardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFRewardCell.m; sourceTree = "<group>"; };
 		D6DB2BCF1BEAA03300F1CDFF /* SNFRewardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFRewardCell.xib; sourceTree = "<group>"; };
@@ -898,6 +901,8 @@
 				D6E724D91BF523FF00398D09 /* SNFValuePicker.h */,
 				D6E724DA1BF523FF00398D09 /* SNFValuePicker.m */,
 				D6E724DB1BF523FF00398D09 /* SNFValuePicker.xib */,
+				D6D197551BF677060009E652 /* UIImageView+ProfileStyle.h */,
+				D6D197561BF677060009E652 /* UIImageView+ProfileStyle.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -1083,6 +1088,7 @@
 				D659DBEE1BDAEA000048D3F7 /* SNFBehavior+CoreDataProperties.m in Sources */,
 				D659DBF21BDAEA000048D3F7 /* SNFFrown+CoreDataProperties.m in Sources */,
 				D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */,
+				D6D197571BF677060009E652 /* UIImageView+ProfileStyle.m in Sources */,
 				D65DF15A1BE2F59F009CC6DF /* SNFAddUserRole.m in Sources */,
 				D65DF0E71BE2830C009CC6DF /* SNFDateManager.m in Sources */,
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,

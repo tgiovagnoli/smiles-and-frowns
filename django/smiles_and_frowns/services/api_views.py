@@ -112,7 +112,6 @@ def user_update_profile_image(request):
 		return json_response_error("User not found")
 
 	#check permission
-	
 	is_permitted = False
 	if user == request.user:
 		is_permitted = True
@@ -126,7 +125,6 @@ def user_update_profile_image(request):
 	if is_permitted == False:
 		return json_response_error("Not permitted")
 	
-
 
 	#set image
 	user.profile.image = image
