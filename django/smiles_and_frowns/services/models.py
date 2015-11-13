@@ -6,6 +6,14 @@ from django.contrib import admin
 from django.db.models import Q
 from django.core.exceptions import ValidationError
 from django.db.models.signals import pre_save, post_save
+from PIL import Image
+
+def resize_image(image_field,size=(256,256)):
+	filename = str(image_field.path)
+	img = Image.open(filename)
+	img.thumbnail(size,Image.ANTIALIAS)
+	img.save(filename)
+	return img.size
 
 # base model for all classes that need to synchronize between devices
 class SyncModel(models.Model):
@@ -53,8 +61,20 @@ class Profile(models.Model):
 	user = models.OneToOneField(User)
 	gender = models.CharField(max_length=64, choices=GENDER_CHOICES, blank=True, default="")
 	age = models.CharField(max_length=3, default="", blank=True)
+	image_width = models.PositiveIntegerField(null=True, blank=True, editable=False, default=100)
+	image_height = models.PositiveIntegerField(null=True, blank=True, editable=False, default=100)
+	image = models.ImageField(upload_to="ProfileImage", width_field="image_width", height_field="image_height", default=None, blank=True, null=True)
+
 	def __unicode__(self):
 		return self.user.username
+
+	def update_image(self):
+		try:
+			new_width,new_height = resize_image(self.image)
+			self.image_width = new_width
+			self.image_height = new_height
+		except:
+			print "could not resize image"
 
 def create_user_profile(sender,instance,created,**kwargs):
 	"""creates a new user profile when a django user model is saved."""
@@ -62,6 +82,13 @@ def create_user_profile(sender,instance,created,**kwargs):
 		profile, created = Profile.objects.get_or_create(user=instance)
 post_save.connect(create_user_profile, sender=User)
 
+def update_profile_image(sender, instance, **kwargs):
+	""" update the user image to make sure it's the right size """
+	if instance.image:
+		if instance.image_width > 256 or instance.image_height > 256:
+			instance.update_image()
+			instance.save()
+post_save.connect(update_profile_image, sender=Profile)
 
 class Board(SyncModel):
 	title = models.CharField(max_length=128)

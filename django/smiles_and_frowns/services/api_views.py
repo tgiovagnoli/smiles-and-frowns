@@ -59,6 +59,46 @@ def register_by_access_token(request,backend):
 	return json_response_error("user not found")
 
 @csrf_exempt
+def user_update_profile_image(request):
+	'''
+	@param user_uuid
+	@param image
+	'''
+	#post only
+	if request.method != "POST":
+		return json_response_error("method not allowed")
+
+	#check auth
+	if not request.user.is_authenticated():
+		return login_required_response()
+
+	#get params
+	username = request.POST.get('username')
+	image = request.FILES.get('image',None)
+
+	if not image:
+		return json_response_error("image required")
+
+	user = None
+	try:
+		user = models.User.objects.get(username=username)
+	except:
+		return json_response_error("User not found")
+
+	#set image
+	user.profile.image = image
+	user.profile.save()
+
+	#update the device_date for all the user roles. this triggers a sync for anyone else on next sync
+	roles = models.UserRole.objects.filter(user=user)
+	device_date = UTC.localize(datetime.utcnow())
+	for role in roles:
+		role.device_date = device_date
+		role.save()
+
+	return json_response( json_utils.user_info_dictionary(user, request) )
+
+@csrf_exempt
 def user_password_reset(request):
 	'''
 	@param email

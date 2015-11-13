@@ -49,7 +49,7 @@ def user_role_info_dictionary(user_role):
 	if user_role.user: user_role_data["user"] =  user_info_dictionary(user_role.user)
 	return user_role_data
 
-def user_info_dictionary(user):
+def user_info_dictionary(user,request):
 	user_data = {
 		"username": user.username,
 		"first_name":user.first_name,
@@ -59,6 +59,9 @@ def user_info_dictionary(user):
 	}
 	if user.profile.gender: user_data["gender"] = user.profile.gender
 	if user.profile.age: user_data['age'] = int(user.profile.age)
+	if user.profile.image:
+
+		user_data['image'] = request.build_absolute_uri(user.profile.image.url)
 	return user_data
 
 def behavior_info_dictionary_collection(behaviors):
