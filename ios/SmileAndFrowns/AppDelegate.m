@@ -12,6 +12,7 @@
 #import "NSTimer+Blocks.h"
 #import "SNFSyncService.h"
 #import <HockeySDK/HockeySDK.h>
+#import "UIImageView+NSURLCache.h"
 
 static AppDelegate * _instance;
 
@@ -34,6 +35,8 @@ static AppDelegate * _instance;
 	[application registerUserNotificationSettings:settings];
 	
 	_instance = self;
+	
+	[UIImageView setDefaultAuthBasicUsername:[SNFModel sharedInstance].config.profileImageAuthUsername password:[SNFModel sharedInstance].config.profileImageAuthPassword];
 	
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
 	[SNFDateManager unlock];

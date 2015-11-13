@@ -43,7 +43,7 @@
 	if(self.userRole.user.image) {
 		
 		NSURL * url = [NSURL URLWithString:self.userRole.user.image];
-		[self.profileImage setImageForURL:url withCompletion:^(NSError *error, UIImage *image) {
+		[self.profileImage setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
 			if(error) {
 				[self setImageFromGender];
 			}

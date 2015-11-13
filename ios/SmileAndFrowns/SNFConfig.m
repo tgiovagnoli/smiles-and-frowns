@@ -1,8 +1,9 @@
+
 #import "SNFConfig.h"
 
 @implementation SNFConfig
 
-- (id)init{
+- (id) init {
 	self = [super init];
 	
 	NSString *configName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SNFConfig"];
@@ -28,6 +29,14 @@
 	NSString *configName = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SNFConfig"];
 	NSDictionary *configData = [[NSBundle mainBundle] objectForInfoDictionaryKey:configName];
 	return configData[@"TwitterSecret"];
+}
+
+- (NSString *) profileImageAuthUsername; {
+	return @"smilesandfrowns";
+}
+
+- (NSString *) profileImageAuthPassword; {
+	return @"K99#;LE+d#!kdiD#!";
 }
 
 @end

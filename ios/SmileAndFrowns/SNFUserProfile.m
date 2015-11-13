@@ -9,6 +9,7 @@
 #import "SNFUserService.h"
 #import "UIViewController+Alerts.h"
 #import "UIImageView+NSURLCache.h"
+#import "NSMutableURLRequest+Additions.h"
 
 @interface SNFUserProfile ()
 @property BOOL isUpdatingPassword;
@@ -54,6 +55,7 @@
 }
 
 - (void) viewStack:(UIViewControllerStack *) viewStack didResizeViewController:(UIViewController *) viewController {
+	
 }
 
 - (IBAction) onGender:(id) sender {
@@ -157,9 +159,10 @@
 	
 	if(self.user.image) {
 		NSURL * url = [NSURL URLWithString:self.user.image];
-		[self.profileImage setImageForURL:url withCompletion:^(NSError *error, UIImage *image) {
-			NSLog(@"set profile image");
-			NSLog(@"image: %@",image);
+		[self.profileImage setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
+			if(error) {
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			}
 		}];
 	}
 }
