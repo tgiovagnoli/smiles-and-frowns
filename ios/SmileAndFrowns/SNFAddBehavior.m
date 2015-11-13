@@ -103,7 +103,7 @@
 - (IBAction)onNewBehavior:(UIButton *)sender{
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	SNFPredefinedBehaviorGroup *userGroup = [self userGroup];
-	NSNumber *positive = [NSNumber numberWithBool:self.positiveNegativeSegment.selectedSegmentIndex];
+	NSNumber *positive = [NSNumber numberWithBool:!self.positiveNegativeSegment.selectedSegmentIndex];
 	NSDictionary *behaviorInfo = @{
 									@"uuid": [[NSUUID UUID] UUIDString],
 									@"title": @"Untitled",

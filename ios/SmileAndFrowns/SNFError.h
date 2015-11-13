@@ -7,7 +7,8 @@ typedef NS_ENUM(NSUInteger, SNFErrorCode){
 	SNFErrorCodeParseError,
 	SNFErrorCodeDjangoDebugError,
 	SNFErrorCodeInvalidModel,
-	SNFErrorCodeFormInputError
+	SNFErrorCodeFormInputError,
+	SNFErrorCodeConcurrentSyncAttempt,
 };
 
 

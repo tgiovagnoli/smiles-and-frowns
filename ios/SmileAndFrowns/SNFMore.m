@@ -83,23 +83,36 @@
 }
 
 - (void)theFiveCs{
-	
+	[self showWebDetailWithURLString:@"http://smilesandfrowns.com/five_cs/" andTitle:@"The Five C's"];
 }
 
 - (void)tipsAndTricks{
-	
+	[self showWebDetailWithURLString:@"http://smilesandfrowns.com/tips_and_tricks/" andTitle:@"Tips and Tricks"];
 }
 
 - (void)sendFeedback{
-	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://smilesandfrowns.com/feedback/"]];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)termsAndPrivacy{
-	
+	[self showWebDetailWithURLString:@"http://smilesandfrowns.com/terms_and_privacy/" andTitle:@"Terms & Privacy"];
 }
 
 - (void)appSettings{
 	
+}
+
+- (void)showWebDetailWithURLString:(NSString *)urlString andTitle:(NSString *)title{
+	NSURL *url = [NSURL URLWithString:urlString];
+	SNFMoreWebDetail *webDetail = [[SNFMoreWebDetail alloc] init];
+	[[SNFViewController instance].viewControllerStack pushViewController:webDetail animated:YES];
+	[NSTimer scheduledTimerWithTimeInterval:0.5 block:^{
+		[webDetail setTitle:title andURL:url];
+	} repeats:NO];
 }
 
 - (void) restorePurchases {

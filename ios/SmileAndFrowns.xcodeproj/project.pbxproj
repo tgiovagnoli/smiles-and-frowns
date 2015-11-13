@@ -151,6 +151,8 @@
 		D6E724D81BF517E200398D09 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E724D71BF517E200398D09 /* UIImage+Additions.m */; };
 		D6E724DC1BF523FF00398D09 /* SNFValuePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E724DA1BF523FF00398D09 /* SNFValuePicker.m */; };
 		D6E724DD1BF523FF00398D09 /* SNFValuePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6E724DB1BF523FF00398D09 /* SNFValuePicker.xib */; };
+		D6E724E21BF542E500398D09 /* SNFMoreWebDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E724E01BF542E500398D09 /* SNFMoreWebDetail.m */; };
+		D6E724E31BF542E500398D09 /* SNFMoreWebDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6E724E11BF542E500398D09 /* SNFMoreWebDetail.xib */; };
 		D6F442191BEB90A4009C2866 /* SNFReporting.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F442171BEB90A4009C2866 /* SNFReporting.m */; };
 		D6F4421A1BEB90A4009C2866 /* SNFReporting.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6F442181BEB90A4009C2866 /* SNFReporting.xib */; };
 		D6F4421E1BEB95C5009C2866 /* SNFReportCellSmileFrown.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F4421C1BEB95C5009C2866 /* SNFReportCellSmileFrown.m */; };
@@ -390,6 +392,9 @@
 		D6E724D91BF523FF00398D09 /* SNFValuePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFValuePicker.h; sourceTree = "<group>"; };
 		D6E724DA1BF523FF00398D09 /* SNFValuePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFValuePicker.m; sourceTree = "<group>"; };
 		D6E724DB1BF523FF00398D09 /* SNFValuePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFValuePicker.xib; sourceTree = "<group>"; };
+		D6E724DF1BF542E500398D09 /* SNFMoreWebDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFMoreWebDetail.h; sourceTree = "<group>"; };
+		D6E724E01BF542E500398D09 /* SNFMoreWebDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFMoreWebDetail.m; sourceTree = "<group>"; };
+		D6E724E11BF542E500398D09 /* SNFMoreWebDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFMoreWebDetail.xib; sourceTree = "<group>"; };
 		D6F442161BEB90A4009C2866 /* SNFReporting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReporting.h; sourceTree = "<group>"; };
 		D6F442171BEB90A4009C2866 /* SNFReporting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReporting.m; sourceTree = "<group>"; };
 		D6F442181BEB90A4009C2866 /* SNFReporting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFReporting.xib; sourceTree = "<group>"; };
@@ -808,6 +813,9 @@
 				D65DF12C1BE2AE6D009CC6DF /* SNFMore.h */,
 				D65DF12D1BE2AE6D009CC6DF /* SNFMore.m */,
 				D65DF12E1BE2AE6D009CC6DF /* SNFMore.xib */,
+				D6E724DF1BF542E500398D09 /* SNFMoreWebDetail.h */,
+				D6E724E01BF542E500398D09 /* SNFMoreWebDetail.m */,
+				D6E724E11BF542E500398D09 /* SNFMoreWebDetail.xib */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -990,6 +998,7 @@
 				D6F4421F1BEB95C5009C2866 /* SNFReportCellSmileFrown.xib in Resources */,
 				D6E724D51BF4F25300398D09 /* SNFChildEdit.xib in Resources */,
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
+				D6E724E31BF542E500398D09 /* SNFMoreWebDetail.xib in Resources */,
 				0707D6DD1BE428BA002F1FC0 /* SNFInvites.xib in Resources */,
 				D6270ED71BE817E900F7C39A /* SNFAddBehavior.xib in Resources */,
 				D65DF15B1BE2F59F009CC6DF /* SNFAddUserRole.xib in Resources */,
@@ -1127,6 +1136,7 @@
 				D6272FC11BE002160024CBC2 /* NSTimer+Blocks.m in Sources */,
 				D6F442191BEB90A4009C2866 /* SNFReporting.m in Sources */,
 				07C0F3B81BED26420075A6B9 /* IAPHelper.m in Sources */,
+				D6E724E21BF542E500398D09 /* SNFMoreWebDetail.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
 				0707D6DC1BE428BA002F1FC0 /* SNFInvites.m in Sources */,
 				0707D6CB1BE2B2F8002F1FC0 /* SNFCreateAccount.m in Sources */,

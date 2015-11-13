@@ -44,6 +44,11 @@ static SNFSyncService * _instance;
 }
 
 - (void) syncWithCompletion:(SNFSyncServiceCallback) completion {
+	if(_syncing){
+		completion([SNFError errorWithCode:SNFErrorCodeConcurrentSyncAttempt andMessage:@"Tried to sync while already syncing."], nil);
+		return;
+	}
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	_syncing = YES;
 	NSError *saveError;
 	
@@ -185,6 +190,7 @@ static SNFSyncService * _instance;
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	
 	NSMutableArray *updates = [[NSMutableArray alloc] init];
+	BOOL updated = NO;
 	
 	// update the user's local sync date
 	NSString *syncString = [results objectForKey:@"sync_date"];
@@ -207,6 +213,7 @@ static SNFSyncService * _instance;
 		for(NSDictionary *boardUpdate in boardUpdates){
 			SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardUpdate withContext:context];
 			[boardChanges addObject:board];
+			updated = YES;
 		}
 		[changeLog setObject:boardChanges forKey:@"boards"];
 	}
@@ -218,6 +225,7 @@ static SNFSyncService * _instance;
 		for(NSDictionary *userRoleUpdate in userRoleUpdates){
 			SNFUserRole *userRole = (SNFUserRole *)[SNFUserRole editOrCreatefromInfoDictionary:userRoleUpdate withContext:context];
 			[userRoleChanges addObject:userRole];
+			updated = YES;
 		}
 		[changeLog setObject:userRoleChanges forKey:@"user_roles"];
 	}
@@ -229,6 +237,7 @@ static SNFSyncService * _instance;
 		for(NSDictionary *behaviorUpdate in behaviorUpdates){
 			SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorUpdate withContext:context];
 			[behaviorChanges addObject:behavior];
+			updated = YES;
 		}
 		[changeLog setObject:behaviorChanges forKey:@"behaviors"];
 	}
@@ -240,6 +249,7 @@ static SNFSyncService * _instance;
 		for(NSDictionary *rewardsUpdate in rewardsUpdates){
 			SNFReward *reward = (SNFReward *)[SNFReward editOrCreatefromInfoDictionary:rewardsUpdate withContext:context];
 			[rewardChanges addObject:reward];
+			updated = YES;
 		}
 		[changeLog setObject:rewardChanges forKey:@"rewards"];
 	}
@@ -251,6 +261,7 @@ static SNFSyncService * _instance;
 		for(NSDictionary *smilesUpdate in smilesUpdates){
 			SNFSmile *smile = (SNFSmile *)[SNFSmile editOrCreatefromInfoDictionary:smilesUpdate withContext:context];
 			[smilesChanges addObject:smile];
+			updated = YES;
 		}
 		[changeLog setObject:smilesChanges forKey:@"smiles"];
 	}
@@ -262,9 +273,12 @@ static SNFSyncService * _instance;
 		for(NSDictionary *frownsUpdate in frownsUpdates){
 			SNFFrown *frown = (SNFFrown *)[SNFFrown editOrCreatefromInfoDictionary:frownsUpdate withContext:context];
 			[frownsChanges addObject:frown];
+			updated = YES;
 		}
 		[changeLog setObject:frownsChanges forKey:@"frowns"];
 	}
+	
+	[changeLog setObject:[NSNumber numberWithBool:updated] forKey:@"has_updates"];
 	
 	[updates addObject:changeLog];
 	
@@ -277,6 +291,8 @@ static SNFSyncService * _instance;
 		return completion(saveError, nil);
 	}
 	[SNFDateManager unlock];
+	
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	
 	completion(saveError, updates);
 }

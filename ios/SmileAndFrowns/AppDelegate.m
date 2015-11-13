@@ -166,7 +166,24 @@ static AppDelegate * _instance;
 				completionHandler(UIBackgroundFetchResultFailed);
 			}else{
 				[[UIApplication sharedApplication] setApplicationIconBadgeNumber:received_invites.count];
-				completionHandler(UIBackgroundFetchResultNewData);
+				// now sync
+				[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
+					if(error){
+						completionHandler(UIBackgroundFetchResultFailed);
+					}else{
+						for(NSDictionary *item in (NSArray *)boardData){
+							if([item objectForKey:@"has_updates"]){
+								NSNumber *hasUpdates = [item objectForKey:@"has_updates"];
+								if([hasUpdates boolValue]){
+									completionHandler(UIBackgroundFetchResultNewData);
+								}else{
+									completionHandler(UIBackgroundFetchResultNoData);
+								}
+							}
+						}
+						completionHandler(UIBackgroundFetchResultNewData);
+					}
+				}];
 			}
 		}];
 	}
