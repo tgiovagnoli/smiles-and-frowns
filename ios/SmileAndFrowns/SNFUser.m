@@ -75,7 +75,7 @@
 + (NSArray *)ageSelections{
 	NSMutableArray *ages = [[NSMutableArray alloc] init];
 	for(NSInteger i=SNFUserAgeMin; i<SNFUserAgeMax; i++){
-		[ages addObject:[NSString stringWithFormat:@"%lu", i]];
+		[ages addObject:[NSString stringWithFormat:@"%lu", (long)i]];
 	}
 	return [NSArray arrayWithArray:ages];
 }

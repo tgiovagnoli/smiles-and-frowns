@@ -9,8 +9,10 @@ static NSURLCache * _cacheURL;
 @implementation UIImageView (NSURLCache)
 
 - (void) setupCache {
-	_cacheURL = [[NSURLCache alloc] initWithMemoryCapacity:10*1024*1024 diskCapacity:100*1024*1024 diskPath:nil]; //10MB memory, 100MB disk
-	[NSURLCache setSharedURLCache:_cacheURL];
+	if(!_cacheURL) {
+		_cacheURL = [[NSURLCache alloc] initWithMemoryCapacity:10*1024*1024 diskCapacity:100*1024*1024 diskPath:nil]; //10MB memory, 100MB disk
+		[NSURLCache setSharedURLCache:_cacheURL];
+	}
 }
 
 - (void) cacheResponse:(NSURLResponse *) response forRequest:(NSURLRequest *) request data:(NSData *) data error:(NSError **) error {
@@ -32,6 +34,8 @@ static NSURLCache * _cacheURL;
 }
 
 - (void) setImageForRequest:(NSURLRequest *) request withCompletion:(UIImageViewNSURLCache) completion {
+	[self setupCache];
+	
 	if(request.cachePolicy != NSURLRequestReturnCacheDataElseLoad) {
 		NSLog(@"[UIImageView+NSURLCache] WARNING: setImageForRequest: The request's cache policy is not set to NSURLRequestReturnCacheDataElseLoad");
 	}
@@ -75,9 +79,6 @@ static NSURLCache * _cacheURL;
 }
 
 - (void) setImageForURL:(NSURL *) url withCompletion:(UIImageViewNSURLCache) completion; {
-	if(!_cacheURL) {
-		[self setupCache];
-	}
 	NSURLRequest * request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:60];
 	[self setImageForRequest:request withCompletion:completion];
 }
