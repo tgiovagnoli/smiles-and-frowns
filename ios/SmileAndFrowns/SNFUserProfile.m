@@ -231,14 +231,30 @@
 
 - (IBAction) onUserProfile:(id)sender {
 	UIImagePickerController * picker = [[UIImagePickerController alloc] init];
-	picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+	picker.delegate = self;
+	picker.allowsEditing = YES;
 	picker.delegate = self;
 	[[AppDelegate rootViewController] presentViewController:picker animated:TRUE completion:nil];
 }
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+	
 	UIImage * image = [info objectForKey:UIImagePickerControllerEditedImage];
-	//TODO: upload image.
+	
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+		
+		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+		
+		SNFUserService * service = [[SNFUserService alloc] init];
+		[service updateUserProfileImageWithUsername:[SNFModel sharedInstance].loggedInUser.username image:image withCompletion:^(NSError *error, SNFUser *user) {
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			//TODO: sync, if synign waiting for notification and try again
+		}];
+		
+	}];
+	
 }
 
 - (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker {
