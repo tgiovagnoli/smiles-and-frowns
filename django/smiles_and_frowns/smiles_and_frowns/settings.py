@@ -11,9 +11,12 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os,sys
+import os,sys,socket
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(BASE_DIR,"python-social-auth"))
+
+HOSTNAME = socket.gethostname()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -144,6 +147,8 @@ STATIC_ROOT = os.path.join(BASE_DIR,"static")
 
 #media
 MEDIA_ABS_URL = "http://imac.local:8000"
+if HOSTNAME == "smiles-and-frowns":
+    MEDIA_ABS_URL = "http://services.smilesandfrowns.com"
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 MEDIA_URL = '/media/'
 
