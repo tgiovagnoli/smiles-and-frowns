@@ -45,7 +45,7 @@
 	}
 	self.firstNameField.text = self.childUser.first_name;
 	self.lastNameField.text = self.childUser.last_name;
-	self.ageField.text = [NSString stringWithFormat:@"%ld", self.childUser.age.integerValue];
+	self.ageField.text = [NSString stringWithFormat:@"%ld", (long) self.childUser.age.integerValue];
 	if([self.childUser.gender isEqualToString:SNFUserGenderMale]){
 		self.genderField.text = @"Male";
 	}else if([self.childUser.gender isEqualToString:SNFUserGenderFemale]){
