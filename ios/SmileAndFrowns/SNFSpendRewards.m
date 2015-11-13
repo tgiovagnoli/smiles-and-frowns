@@ -3,6 +3,7 @@
 #import "UIViewController+ModalCreation.h"
 #import "SNFSyncService.h"
 #import "UIImageView+NSURLCache.h"
+#import "NSString+Additions.h"
 
 @implementation SNFSpendRewards
 
@@ -51,7 +52,7 @@
 	
 	[self setImageByGender];
 	
-	if(self.user.image) {
+	if(![self.user.image isEmpty]) {
 		NSURL * url = [NSURL URLWithString:self.user.image];
 		[self.userProfileImageView setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
 			if(error) {

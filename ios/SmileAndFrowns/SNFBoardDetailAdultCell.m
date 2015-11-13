@@ -1,6 +1,7 @@
 
 #import "SNFBoardDetailAdultCell.h"
 #import "UIImageView+NSURLCache.h"
+#import "NSString+Additions.h"
 
 @implementation SNFBoardDetailAdultCell
 
@@ -15,7 +16,7 @@
 	self.nameLabel.text = title;
 	self.noteLabel.text = @"";
 	
-	if(_user.image) {
+	if(![_user.image isEmpty]) {
 		
 		NSURL * url = [NSURL URLWithString:_user.image];
 		[self.profileImageView setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
