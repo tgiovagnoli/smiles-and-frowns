@@ -262,7 +262,7 @@
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		
 		SNFUserService * service = [[SNFUserService alloc] init];
-		[service updateUserProfileImageWithUsername:[SNFModel sharedInstance].loggedInUser.username image:image withCompletion:^(NSError *error, SNFUser *user) {
+		[service updateUserProfileImageWithUsername:[SNFModel sharedInstance].loggedInUser.username image:newImage withCompletion:^(NSError *error, SNFUser *user) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
