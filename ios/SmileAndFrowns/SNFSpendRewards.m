@@ -2,7 +2,7 @@
 #import "SNFModel.h"
 #import "UIViewController+ModalCreation.h"
 #import "SNFSyncService.h"
-#import "UIImageView+NSURLCache.h"
+#import "UIImageView+DiskCache.h"
 #import "NSString+Additions.h"
 
 @implementation SNFSpendRewards

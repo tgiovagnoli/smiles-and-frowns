@@ -3,7 +3,7 @@
 #import "SNFModel.h"
 #import "SNFSyncService.h"
 #import "UIImage+Additions.h"
-#import "UIImageView+NSURLCache.h"
+#import "UIImageView+DiskCache.h"
 #import "SNFUserService.h"
 #import "AppDelegate.h"
 #import "UIViewController+Alerts.h"
@@ -40,12 +40,14 @@
 }
 
 - (void)updateUI{
-	if(!_childUser){
+	if(!_childUser) {
 		return;
 	}
+	
 	self.firstNameField.text = self.childUser.first_name;
 	self.lastNameField.text = self.childUser.last_name;
 	self.ageField.text = [NSString stringWithFormat:@"%ld", (long) self.childUser.age.integerValue];
+	
 	if([self.childUser.gender isEqualToString:SNFUserGenderMale]){
 		self.genderField.text = @"Male";
 	}else if([self.childUser.gender isEqualToString:SNFUserGenderFemale]){
@@ -58,33 +60,23 @@
 }
 
 - (void) updateProfileImage {
+	[self setImageByGender];
 	if(_userSelectedImage) {
-		
 		self.profileImageView.image = _userSelectedImage;
-		
 	} else if(self.childUser.image) {
-		
 		NSURL * url = [NSURL URLWithString:self.childUser.image];
 		[self.profileImageView setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
 			if(error) {
 				[self setImageByGender];
 			}
 		}];
-		
-	} else {
-		
-		[self setImageByGender];
-		
 	}
 }
 
 - (void) setImageByGender {
 	if([self.childUser.gender isEqualToString:SNFUserGenderFemale]) {
-		
 		self.profileImageView.image = [UIImage imageNamed:@"female"];
-		
 	} else {
-		
 		self.profileImageView.image = [UIImage imageNamed:@"male"];
 	}
 }

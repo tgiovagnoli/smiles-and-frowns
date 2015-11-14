@@ -1,6 +1,6 @@
 
 #import "SNFBoardDetailAdultCell.h"
-#import "UIImageView+NSURLCache.h"
+#import "UIImageView+DiskCache.h"
 #import "NSString+Additions.h"
 #import "UIImageView+ProfileStyle.h"
 
@@ -17,8 +17,9 @@
 	self.nameLabel.text = title;
 	self.noteLabel.text = @"";
 	
+	[self setImageFromGender];
+	
 	if(![_user.image isEmpty] && _user.image) {
-		
 		NSURL * url = [NSURL URLWithString:_user.image];
 		[self.profileImageView setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
 			[self.profileImageView setImage:image asProfileWithBorderColor:[UIColor blackColor] andBorderThickness:2];
@@ -26,9 +27,6 @@
 				[self setImageFromGender];
 			}
 		}];
-		
-	} else {
-		[self setImageFromGender];
 	}
 }
 

@@ -36,8 +36,8 @@
 		071AC0FE1BF2652B005D63F2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0FD1BF2652B005D63F2 /* SystemConfiguration.framework */; };
 		071AC1001BF26538005D63F2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0FF1BF26538005D63F2 /* libc++.tbd */; };
 		071AC1021BF2656E005D63F2 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 071AC1011BF2656E005D63F2 /* HockeySDKResources.bundle */; };
-		071AC1081BF65AA4005D63F2 /* UIImageView+NSURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 071AC1071BF65AA4005D63F2 /* UIImageView+NSURLCache.m */; };
 		071AC10E1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071AC10D1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m */; };
+		071AC1111BF78D46005D63F2 /* UIImageView+DiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */; };
 		078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */; };
 		078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */; };
 		078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */; };
@@ -208,10 +208,10 @@
 		071AC0FD1BF2652B005D63F2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		071AC0FF1BF26538005D63F2 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		071AC1011BF2656E005D63F2 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = HockeySDKResources.bundle; path = "libs/HockeySDK-iOS/HockeySDK.embeddedframework/Resources/HockeySDKResources.bundle"; sourceTree = "<group>"; };
-		071AC1061BF65AA4005D63F2 /* UIImageView+NSURLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+NSURLCache.h"; path = "submodules/apd-objc/UIImageView+NSURLCache.h"; sourceTree = "<group>"; };
-		071AC1071BF65AA4005D63F2 /* UIImageView+NSURLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+NSURLCache.m"; path = "submodules/apd-objc/UIImageView+NSURLCache.m"; sourceTree = "<group>"; };
 		071AC10C1BF65B11005D63F2 /* NSMutableURLRequest+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableURLRequest+Additions.h"; path = "submodules/apd-objc/NSMutableURLRequest+Additions.h"; sourceTree = "<group>"; };
 		071AC10D1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableURLRequest+Additions.m"; path = "submodules/apd-objc/NSMutableURLRequest+Additions.m"; sourceTree = "<group>"; };
+		071AC10F1BF78D46005D63F2 /* UIImageView+DiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+DiskCache.h"; path = "submodules/apd-objc/UIImageView+DiskCache.h"; sourceTree = "<group>"; };
+		071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+DiskCache.m"; path = "submodules/apd-objc/UIImageView+DiskCache.m"; sourceTree = "<group>"; };
 		078DF4B11BE8105300CBFAA4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = libs/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = libs/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -591,12 +591,12 @@
 				0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */,
 				D6E724D61BF517E200398D09 /* UIImage+Additions.h */,
 				D6E724D71BF517E200398D09 /* UIImage+Additions.m */,
-				071AC1061BF65AA4005D63F2 /* UIImageView+NSURLCache.h */,
-				071AC1071BF65AA4005D63F2 /* UIImageView+NSURLCache.m */,
 				0707D6A11BE294A6002F1FC0 /* UIView+LayoutHelpers.h */,
 				0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */,
 				D65DF1071BE299D3009CC6DF /* UIViewControllerStack.h */,
 				D65DF1081BE299D3009CC6DF /* UIViewControllerStack.m */,
+				071AC10F1BF78D46005D63F2 /* UIImageView+DiskCache.h */,
+				071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */,
 			);
 			name = "apd-objc";
 			sourceTree = "<group>";
@@ -1122,6 +1122,7 @@
 				07C0F3BD1BED70BC0075A6B9 /* SNFADBannerView.m in Sources */,
 				D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */,
 				D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */,
+				071AC1111BF78D46005D63F2 /* UIImageView+DiskCache.m in Sources */,
 				078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */,
 				0707D6C51BE2B2D8002F1FC0 /* SNFAcceptInvite.m in Sources */,
 				D6270ED61BE817E900F7C39A /* SNFAddBehavior.m in Sources */,
@@ -1137,7 +1138,6 @@
 				D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */,
 				D6270ED81BE817E900F7C39A /* SNFAddBehaviorCell.m in Sources */,
 				D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */,
-				071AC1081BF65AA4005D63F2 /* UIImageView+NSURLCache.m in Sources */,
 				D6270ECD1BE817D200F7C39A /* SNFPredefinedBoard.m in Sources */,
 				07C0F3B31BED047B0075A6B9 /* SNFInvitesCell.m in Sources */,
 				D659DBFB1BDAEA000048D3F7 /* SNFUserRole.m in Sources */,

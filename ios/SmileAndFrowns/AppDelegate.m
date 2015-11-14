@@ -12,7 +12,7 @@
 #import "NSTimer+Blocks.h"
 #import "SNFSyncService.h"
 #import <HockeySDK/HockeySDK.h>
-#import "UIImageView+NSURLCache.h"
+#import "UIImageView+DiskCache.h"
 
 static AppDelegate * _instance;
 
@@ -36,6 +36,7 @@ static AppDelegate * _instance;
 	
 	_instance = self;
 	
+	[UIImageView clearCachedFilesOlderThan1Week];
 	[UIImageView setDefaultAuthBasicUsername:[SNFModel sharedInstance].config.profileImageAuthUsername password:[SNFModel sharedInstance].config.profileImageAuthPassword];
 	
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;

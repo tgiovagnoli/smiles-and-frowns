@@ -8,8 +8,8 @@
 #import "NSTimer+Blocks.h"
 #import "SNFUserService.h"
 #import "UIViewController+Alerts.h"
-#import "UIImageView+NSURLCache.h"
 #import "NSMutableURLRequest+Additions.h"
+#import "UIImageView+DiskCache.h"
 
 @interface SNFUserProfile ()
 @property BOOL isUpdatingPassword;
@@ -36,6 +36,7 @@
 	self.passwordField.delegate = self;
 	self.age.delegate = self;
 	
+	self.profileImage.image = [UIImage imageNamed:@"male"];
 	self.profileImage.layer.cornerRadius = self.profileImage.width/2;
 	self.profileImage.layer.borderWidth = 2;
 	self.profileImage.layer.borderColor = [[UIColor blackColor] CGColor];
@@ -158,8 +159,10 @@
 	}
 	
 	if(![self.user.image isEmpty] && self.user.image) {
+		
 		//NSURL * url = [NSURL URLWithString:@"http://services.smilesandfrowns.com/media/ProfileImage/F5D90E60-8866-4D9F-B197-0246E21CC016-234234.png"];
 		NSURL * url = [NSURL URLWithString:self.user.image];
+		
 		[self.profileImage setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
 			if(error) {
 				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];

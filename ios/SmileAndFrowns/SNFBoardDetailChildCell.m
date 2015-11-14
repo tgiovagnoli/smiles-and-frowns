@@ -2,7 +2,7 @@
 #import "SNFBoardDetailChildCell.h"
 #import "SNFModel.h"
 #import "SNFBoard.h"
-#import "UIImageView+NSURLCache.h"
+#import "UIImageView+DiskCache.h"
 #import "UIView+LayoutHelpers.h"
 #import "NSString+Additions.h"
 
@@ -41,8 +41,9 @@
 	self.nameLabel.text = self.userRole.user.first_name;
 	self.spendLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.userRole.board smileCurrencyForUser:self.userRole.user]];
 	
+	[self setImageFromGender];
+	
 	if(![self.userRole.user.image isEmpty] && self.userRole.user.image) {
-		
 		NSURL * url = [NSURL URLWithString:self.userRole.user.image];
 		[self.profileImage setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
 			[self.profileImage setImage:image asProfileWithBorderColor:[UIColor blackColor] andBorderThickness:2];
@@ -50,9 +51,6 @@
 				[self setImageFromGender];
 			}
 		}];
-		
-	} else {
-		[self setImageFromGender];
 	}
 }
 
