@@ -221,16 +221,16 @@
 		if(error){
 			if(error.code == SNFErrorCodeDjangoDebugError){
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Something went wrong.  Please contact the smiles and frowns team for further assistance." preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
 			}else{
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
 			}
 		}else{
 			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"Your boards have been reset to the last state set on the server." preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil]];
+			[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
 			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
 		}
 	}];

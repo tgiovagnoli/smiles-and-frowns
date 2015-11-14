@@ -145,14 +145,14 @@
 - (IBAction)onAddBehaviors:(UIButton *)sender{
 	if(!self.board || [self.board.uuid isEmpty] || !self.board.uuid){
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:@"Something went wrong.  The board does not rexist or is invalid." preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
 		[self presentViewController:alert animated:YES completion:nil];
 		return;
 	}
 	
 	if([self.behaviorsTable indexPathsForSelectedRows].count == 0){
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"You have not selected any behaviors to add to the board.  Are you sure?" preferredStyle:UIAlertControllerStyleAlert];
-		[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 			[self dismissViewControllerAnimated:YES completion:^{}];
 		}]];
 		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];

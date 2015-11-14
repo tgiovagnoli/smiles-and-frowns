@@ -180,7 +180,7 @@
 
 - (void)errorAlertWithMessage:(NSString *)message{
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Erro" message:message preferredStyle:UIAlertControllerStyleAlert];
-	[alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
+	[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
 	[self presentViewController:alert animated:YES completion:^{}];
 }
 
