@@ -30,11 +30,11 @@ static AppDelegate * _instance;
 }
 
 - (BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
+	_instance = self;
+	
 	UIUserNotificationType userNotificationTypes = UIUserNotificationTypeBadge;
 	UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
 	[application registerUserNotificationSettings:settings];
-	
-	_instance = self;
 	
 	[UIImageView clearCachedFilesOlderThan1Week];
 	[UIImageView setDefaultAuthBasicUsername:[SNFModel sharedInstance].config.profileImageAuthUsername password:[SNFModel sharedInstance].config.profileImageAuthPassword];

@@ -265,7 +265,8 @@
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 	
 	UIImage * image = [info objectForKey:UIImagePickerControllerEditedImage];
-	UIImage * newImage = [image imageCroppedFromSize:CGSizeMake(300,300)];
+	UIImage * constrained = [image imageConstrainedWithinSize:CGSizeMake(150,150)];
+	UIImage * newImage = [constrained imageCroppedFromSize:CGSizeMake(150,150)];
 	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
