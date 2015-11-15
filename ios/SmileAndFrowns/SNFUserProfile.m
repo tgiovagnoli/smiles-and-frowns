@@ -264,7 +264,7 @@
 
 - (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 	
-	UIImage * image = [info objectForKey:UIImagePickerControllerEditedImage];
+	UIImage * image = [info objectForKey:UIImagePickerControllerOriginalImage];
 	UIImage * constrained = [image imageConstrainedWithinSize:CGSizeMake(150,150)];
 	UIImage * newImage = [constrained imageCroppedFromSize:CGSizeMake(150,150)];
 	
