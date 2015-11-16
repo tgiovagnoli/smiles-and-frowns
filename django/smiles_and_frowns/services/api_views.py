@@ -314,25 +314,15 @@ def user_update(request):
 	if lastname:
 		request.user.last_name = lastname
 
-	if password and password_confirm and password == password_confirm:
-		user = request.user
-		
-		#set password
-		request.user.set_password(password)
-
-		#try and authenticate user
-		try: 
-			user = authenticate(username=user.username,password=password)
-			login(request,user)
-		except Exception as e:
-			return json_response_error(str(e))
-
 	if age:
 		request.user.profile.age = age
 
 	if gender:
 		request.user.profile.gender = gender
 
+	request.user.save()
+	request.user.profile.save()
+	
 	#update the device_date for all the user roles. this triggers a sync for anyone else on next sync
 	roles = models.UserRole.objects.filter(user=request.user)
 	device_date = UTC.localize( datetime.utcnow() )
@@ -340,8 +330,19 @@ def user_update(request):
 		role.device_date = device_date
 		role.save()
 
-	request.user.save()
-	request.user.profile.save()
+	if password and password_confirm and password == password_confirm:
+		user = request.user
+		
+		#set password
+		request.user.set_password(password)
+		request.user.save()
+
+		#try and authenticate user
+		try: 
+			new_user = authenticate(username=user.username,password=password)
+			login(request,new_user)
+		except Exception as e:
+			return json_response_error(str(e))
 	
 	data = json_utils.user_info_dictionary(request.user)
 	return json_response(data)
