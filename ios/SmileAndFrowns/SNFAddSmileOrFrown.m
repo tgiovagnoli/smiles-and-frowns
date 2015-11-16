@@ -130,8 +130,14 @@
 	if(![self validateAndWarnForBehavior:behavior]){
 		return;
 	}
+	
+	NSString * note = self.noteField.text;
+	if([note isEqualToString:@"Add a note (Optional)"]) {
+		note = @"";
+	}
+	
 	NSDictionary *smileDictionary = @{
-									   @"note": self.noteField.text,
+									   @"note": note,
 									   @"board": @{@"uuid": self.board.uuid},
 									   @"behavior": @{@"uuid": behavior.uuid},
 									   @"user": [self.user infoDictionary],
@@ -145,9 +151,15 @@
 	if(![self validateAndWarnForBehavior:behavior]){
 		return;
 	}
+	
+	NSString * note = self.noteField.text;
+	if([note isEqualToString:@"Add a note (Optional)"]) {
+		note = @"";
+	}
+	
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	NSDictionary *frownDictionary = @{
-									  @"note": self.noteField.text,
+									  @"note": note,
 									  @"board": @{@"uuid": self.board.uuid},
 									  @"behavior": @{@"uuid": behavior.uuid},
 									  @"user": [self.user infoDictionary],
