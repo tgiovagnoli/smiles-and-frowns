@@ -55,6 +55,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		self.email.hidden = NO;
 		
 		self.profileWidthContraint.constant = 0.0;
+		self.image.hidden = TRUE;
 		self.firstNameLastNameLeftMargin.constant = 0;
 		
 		[self.addButton setTitle:@"Invite Person" forState:UIControlStateNormal];
@@ -68,6 +69,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		self.email.placeholder = @"Email (Optional)";
 		self.email.hidden = YES; // do not use email to create users that are not part of the invite system.
 		
+		self.image.hidden = FALSE;
 		self.profileWidthContraint.constant = 68.0;
 		self.firstNameLastNameLeftMargin.constant = 4;
 		
