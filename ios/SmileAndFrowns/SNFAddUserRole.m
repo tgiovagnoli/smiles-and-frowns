@@ -53,6 +53,10 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		self.gender.hidden = TRUE;
 		self.email.placeholder = @"Email";
 		self.email.hidden = NO;
+		self.profileWidthContraint.constant = 0.0;
+		self.emailHeightContraint.constant = 30.0;
+		self.genderHeightContraint.constant = 0.0;
+		[self.addButton setTitle:@"Invite to Board" forState:UIControlStateNormal];
 	} else {
 		self.age.hidden = FALSE;
 		self.genderOverlay.hidden = FALSE;
@@ -60,6 +64,10 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		self.gender.hidden = FALSE;
 		self.email.placeholder = @"Email (Optional)";
 		self.email.hidden = YES; // do not use email to create users that are not part of the invite system.
+		self.profileWidthContraint.constant = 68.0;
+		self.emailHeightContraint.constant = 0.0;
+		self.genderHeightContraint.constant = 30.0;
+		[self.addButton setTitle:@"Add to Board" forState:UIControlStateNormal];
 	}
 	[self updateProfileImage];
 }

@@ -33,5 +33,10 @@ extern NSString * const SNFAddUserRoleAddedChild;
 @property (weak) IBOutlet UITextField * age;
 @property (weak) IBOutlet UIButton * ageOverlay;
 @property (weak) IBOutlet UIImageView * image;
+@property (weak) IBOutlet UIButton *addButton;
+
+@property (weak) IBOutlet NSLayoutConstraint *profileWidthContraint;
+@property (weak) IBOutlet NSLayoutConstraint *emailHeightContraint;
+@property (weak) IBOutlet NSLayoutConstraint *genderHeightContraint;
 
 @end
