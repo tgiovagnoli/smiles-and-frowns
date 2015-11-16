@@ -9,12 +9,15 @@
                 <outlet property="age" destination="DBh-Zt-aTx" id="CHe-Md-acY"/>
                 <outlet property="ageOverlay" destination="tSQ-Zv-Bpq" id="mrc-aG-Urh"/>
                 <outlet property="email" destination="fRT-85-qgb" id="Hcm-vd-lWZ"/>
+                <outlet property="emailHeightContraint" destination="Pxq-gt-Hj7" id="uhM-se-SdF"/>
                 <outlet property="firstname" destination="zuB-7c-PTh" id="BtU-jk-xWK"/>
                 <outlet property="formView" destination="Kgn-KV-JRl" id="SHr-dk-bWM"/>
                 <outlet property="gender" destination="f2T-yA-zoS" id="T8t-JD-dnH"/>
+                <outlet property="genderHeightContraint" destination="cAd-qC-qVJ" id="Ebz-lC-isi"/>
                 <outlet property="genderOverlay" destination="ySG-lI-iu7" id="KY0-0g-K3u"/>
                 <outlet property="image" destination="GQx-pL-nCJ" id="VgS-I5-rbx"/>
                 <outlet property="lastname" destination="eVl-ju-Z9j" id="obK-9B-zjN"/>
+                <outlet property="profileWidthContraint" destination="SwD-Uj-HLp" id="Zwa-gb-4Tf"/>
                 <outlet property="scrollView" destination="Ha5-06-0QB" id="b9w-xl-p86"/>
                 <outlet property="scrollViewBottom" destination="msw-MW-TPg" id="7c3-UL-5dN"/>
                 <outlet property="segment" destination="OV1-y3-5ZJ" id="ORz-BR-B5e"/>
@@ -72,7 +75,7 @@
             <point key="canvasLocation" x="1096" y="136"/>
         </view>
         <view contentMode="scaleToFill" id="Kgn-KV-JRl">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="334"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="398"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zuB-7c-PTh">
@@ -104,14 +107,6 @@
                         <action selector="addFromContacts:" destination="-1" eventType="touchUpInside" id="bZY-9s-vpJ"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male.png" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-pL-nCJ">
-                    <rect key="frame" x="20" y="59" width="68" height="68"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="68" id="AEA-Fv-337"/>
-                        <constraint firstAttribute="width" constant="68" id="SwD-Uj-HLp"/>
-                    </constraints>
-                </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eVl-ju-Z9j">
                     <rect key="frame" x="96" y="97" width="484" height="30"/>
                     <animations/>
@@ -152,21 +147,17 @@
                     <rect key="frame" x="20" y="196" width="560" height="30"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="9PV-hv-QgE"/>
-                        <constraint firstAttribute="width" constant="549" id="sPU-9n-DYq"/>
+                        <constraint firstAttribute="height" constant="30" id="Pxq-gt-Hj7"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="9PV-hv-QgE"/>
-                            <exclude reference="sPU-9n-DYq"/>
-                        </mask>
-                    </variation>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gender (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f2T-yA-zoS">
                     <rect key="frame" x="20" y="234" width="276" height="30"/>
                     <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="cAd-qC-qVJ"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                 </textField>
@@ -208,6 +199,14 @@
                         <action selector="ageOverlay:" destination="-1" eventType="touchUpInside" id="CHn-W3-ka2"/>
                     </connections>
                 </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male.png" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-pL-nCJ">
+                    <rect key="frame" x="20" y="59" width="68" height="68"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="68" id="AEA-Fv-337"/>
+                        <constraint firstAttribute="width" constant="68" id="SwD-Uj-HLp"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -246,7 +245,7 @@
                 <constraint firstAttribute="trailing" secondItem="zuB-7c-PTh" secondAttribute="trailing" constant="20" id="yNV-Hj-vs0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="423" y="76"/>
+            <point key="canvasLocation" x="423" y="108"/>
         </view>
     </objects>
     <resources>
