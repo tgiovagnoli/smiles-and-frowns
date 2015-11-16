@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFAddUserRole">
             <connections>
+                <outlet property="addButton" destination="RYH-t5-3YD" id="JIJ-WV-c7Y"/>
                 <outlet property="age" destination="DBh-Zt-aTx" id="CHe-Md-acY"/>
                 <outlet property="ageOverlay" destination="tSQ-Zv-Bpq" id="mrc-aG-Urh"/>
                 <outlet property="email" destination="fRT-85-qgb" id="Hcm-vd-lWZ"/>
