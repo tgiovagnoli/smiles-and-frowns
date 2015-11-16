@@ -36,14 +36,6 @@
 				<string>snf</string>
 			</array>
 		</dict>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>Smiles &amp; Frowns</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fbauth2</string>
-			</array>
-		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
