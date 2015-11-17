@@ -156,6 +156,7 @@
 		D6E724DD1BF523FF00398D09 /* SNFValuePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6E724DB1BF523FF00398D09 /* SNFValuePicker.xib */; };
 		D6E724E21BF542E500398D09 /* SNFMoreWebDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E724E01BF542E500398D09 /* SNFMoreWebDetail.m */; };
 		D6E724E31BF542E500398D09 /* SNFMoreWebDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6E724E11BF542E500398D09 /* SNFMoreWebDetail.xib */; };
+		D6EAECEC1BFB973B009542C0 /* UIView+AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EAECEB1BFB973B009542C0 /* UIView+AutoLayout.m */; };
 		D6F442191BEB90A4009C2866 /* SNFReporting.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F442171BEB90A4009C2866 /* SNFReporting.m */; };
 		D6F4421A1BEB90A4009C2866 /* SNFReporting.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6F442181BEB90A4009C2866 /* SNFReporting.xib */; };
 		D6F4421E1BEB95C5009C2866 /* SNFReportCellSmileFrown.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F4421C1BEB95C5009C2866 /* SNFReportCellSmileFrown.m */; };
@@ -404,6 +405,8 @@
 		D6E724DF1BF542E500398D09 /* SNFMoreWebDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFMoreWebDetail.h; sourceTree = "<group>"; };
 		D6E724E01BF542E500398D09 /* SNFMoreWebDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFMoreWebDetail.m; sourceTree = "<group>"; };
 		D6E724E11BF542E500398D09 /* SNFMoreWebDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFMoreWebDetail.xib; sourceTree = "<group>"; };
+		D6EAECEA1BFB973B009542C0 /* UIView+AutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+AutoLayout.h"; path = "submodules/apd-objc/UIView+AutoLayout.h"; sourceTree = "<group>"; };
+		D6EAECEB1BFB973B009542C0 /* UIView+AutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+AutoLayout.m"; path = "submodules/apd-objc/UIView+AutoLayout.m"; sourceTree = "<group>"; };
 		D6F442161BEB90A4009C2866 /* SNFReporting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReporting.h; sourceTree = "<group>"; };
 		D6F442171BEB90A4009C2866 /* SNFReporting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReporting.m; sourceTree = "<group>"; };
 		D6F442181BEB90A4009C2866 /* SNFReporting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFReporting.xib; sourceTree = "<group>"; };
@@ -591,12 +594,14 @@
 				0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */,
 				D6E724D61BF517E200398D09 /* UIImage+Additions.h */,
 				D6E724D71BF517E200398D09 /* UIImage+Additions.m */,
+				071AC10F1BF78D46005D63F2 /* UIImageView+DiskCache.h */,
+				071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */,
+				D6EAECEA1BFB973B009542C0 /* UIView+AutoLayout.h */,
+				D6EAECEB1BFB973B009542C0 /* UIView+AutoLayout.m */,
 				0707D6A11BE294A6002F1FC0 /* UIView+LayoutHelpers.h */,
 				0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */,
 				D65DF1071BE299D3009CC6DF /* UIViewControllerStack.h */,
 				D65DF1081BE299D3009CC6DF /* UIViewControllerStack.m */,
-				071AC10F1BF78D46005D63F2 /* UIImageView+DiskCache.h */,
-				071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */,
 			);
 			name = "apd-objc";
 			sourceTree = "<group>";
@@ -1106,6 +1111,7 @@
 				0707D6A31BE294A6002F1FC0 /* UIView+LayoutHelpers.m in Sources */,
 				D659DBED1BDAEA000048D3F7 /* SNFSmile.m in Sources */,
 				D6F442231BEB95E9009C2866 /* SNFReportGeneration.m in Sources */,
+				D6EAECEC1BFB973B009542C0 /* UIView+AutoLayout.m in Sources */,
 				0707D69F1BE28EC6002F1FC0 /* SNFTutorial.m in Sources */,
 				D6F4421E1BEB95C5009C2866 /* SNFReportCellSmileFrown.m in Sources */,
 				D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */,

@@ -35,7 +35,22 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	_positiveBehaviors = [self.board sortedActivePositiveBehaviors];
 	_negativeBehaviors = [self.board sortedActiveNegativeBehaviors];
 	[self.behaviorsTable reloadData];
+	
+	if(_positiveBehaviors.count < 1 && _negativeBehaviors.count < 1){
+		[self showNoBehaviorsMessage];
+	}else{
+		[self.noBehaviorsMessage removeFromSuperview];
+	}
 }
+
+- (void)showNoBehaviorsMessage{
+	[self.formView addSubview:self.noBehaviorsMessage];
+	self.noBehaviorsMessage.frame = self.behaviorsTable.frame;
+	[NSTimer scheduledTimerWithTimeInterval:0.1 block:^{
+		self.noBehaviorsMessage.frame = self.behaviorsTable.frame;
+	} repeats:NO];
+}
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
 	if(textField == self.boardTitleField) {

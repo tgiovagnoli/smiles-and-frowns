@@ -192,7 +192,7 @@ static __weak SNFViewController * _instance;
 
 - (void)showErrorMessage:(NSString *)errorMessage{
 	self.errorMessageLabel.text = errorMessage;
-	self.errorMessageHeightConstraint.constant = 40.0;
+	self.errorMessageHeightConstraint.constant = 60.0;
 	[UIView animateWithDuration:0.2 animations:^{
 		[self.view layoutIfNeeded];
 	} completion:^(BOOL finished) {
