@@ -147,8 +147,6 @@
 		}
 		containerScrollView.height = height;
 		
-		NSLog(@"new container height: %f",height);
-		
 	//otherwise we're running modally.
 	} else {
 		
