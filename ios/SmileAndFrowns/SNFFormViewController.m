@@ -8,7 +8,7 @@
 @interface SNFFormViewController ()
 @property BOOL firstlayout;
 @property BOOL keyboardIsVisible;
-@property CGFloat superScrollViewHeight;
+@property CGFloat keyboardHeight;
 @end
 
 @implementation SNFFormViewController
@@ -36,7 +36,7 @@
 	}
 }
 
-- (CGFloat) keyboardBottom:(NSNotification *) notification {
+- (CGFloat) keyboardHeight:(NSNotification *) notification {
 	NSDictionary * userInfo = notification.userInfo;
 	CGRect keyboardFrameEnd = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	keyboardFrameEnd = [self.view convertRect:keyboardFrameEnd fromView:nil];
@@ -82,28 +82,30 @@
 }
 
 - (void) keyboardWillShow:(NSNotification *) notification {
+	self.keyboardHeight = [self keyboardHeight:notification];
+	[self keyboardShown];
+}
+
+- (void) keyboardWillHide:(NSNotification *) notification {
+	[self keyboardHidden];
+}
+
+- (void) keyboardShown {
 	self.keyboardIsVisible = TRUE;
 	
-	CGFloat bottom = [self keyboardBottom:notification];
+	CGFloat bottom = self.keyboardHeight;
 	CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
-	
-	//self.scrollView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:.4];
-	//self.formView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:.4];
 	
 	//if the superview is a UIViewControllerStack, adjust the outer scroll view (the view stack is a scroll view)
 	if([self.view.superview isKindOfClass:[UIViewControllerStack class]]) {
 		
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
-		self.superScrollViewHeight = containerScrollView.height;
-		
-		CGFloat csb = containerScrollView.bottom;
-		CGFloat heightDiff = screenHeight - csb;
-		CGFloat newBottom = bottom - heightDiff;
-		if(newBottom < 0) {
-			newBottom *= -1;
-		}
-		
-		containerScrollView.height -= newBottom;
+		CGFloat height = [UIScreen mainScreen].bounds.size.height;
+		height -= bottom;
+		height -= containerScrollView.top;
+		height -= [SNFViewController instance].tabMenu.view.height;
+		height += [SNFViewController instance].bannerView.height;
+		containerScrollView.height = height;
 		
 	//otherwise we're running modally.
 	} else {
@@ -113,8 +115,8 @@
 			return;
 		}
 		
-		CGFloat csb = self.scrollView.bottom;
-		CGFloat heightDiff = screenHeight - csb;
+		CGFloat scrollViewBottom = self.scrollView.bottom;
+		CGFloat heightDiff = screenHeight - scrollViewBottom;
 		CGFloat newBottom = bottom - heightDiff;
 		
 		if(self.bannerView.superview) {
@@ -127,25 +129,30 @@
 			self.formView.height = self.initialFormHeight;
 			self.scrollView.contentSize = CGSizeMake(self.formView.width, self.initialFormHeight);
 		} repeats:FALSE];
-		
 	}
 }
 
-- (void) keyboardWillHide:(NSNotification *) notification {
+- (void) keyboardHidden {
 	self.keyboardIsVisible = FALSE;
 	
 	//if the superview is a UIViewControllerStack adjust that view instead
 	if([self.view.superview isKindOfClass:[UIViewControllerStack class]]) {
 		
 		UIScrollView * containerScrollView = (UIScrollView *)self.view.superview;
-		if(self.superScrollViewHeight > 0) {
-			containerScrollView.height = self.superScrollViewHeight;
+		CGFloat height = [UIScreen mainScreen].bounds.size.height;
+		height -= containerScrollView.top;
+		height -= [SNFViewController instance].tabMenu.view.height;
+		if([SNFViewController instance].bannerView.superview) {
+			height -= [SNFViewController instance].bannerView.height;
 		}
+		containerScrollView.height = height;
+		
+		NSLog(@"new container height: %f",height);
 		
 	//otherwise we're running modally.
 	} else {
 		
-		//Modals on ipad don't need any adjustments..
+		//Modals on ipad don't need any adjustments.
 		if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 			return;
 		}
@@ -158,7 +165,7 @@
 	}
 }
 
-- (void) bannerViewDidLoadAd:(ADBannerView *)banner {
+- (void) bannerViewDidLoadAd:(ADBannerView *) banner {
 	[self.view addSubview:banner];
 	banner.y = self.view.height - banner.height;
 	if(self.scrollViewBottom.constant <= banner.height) {
@@ -166,13 +173,21 @@
 	}
 }
 
-- (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+- (void) bannerView:(ADBannerView *) banner didFailToReceiveAdWithError:(NSError *)error {
 	[self.bannerView removeFromSuperview];
 	if(self.keyboardIsVisible) {
 		return;
 	}
 	if(self.scrollViewBottom.constant > banner.height) {
 		self.scrollViewBottom.constant -= banner.height;
+	}
+}
+
+- (void) invalidateForScrolling {
+	if(self.keyboardIsVisible) {
+		[self keyboardShown];
+	} else {
+		[self keyboardHidden];
 	}
 }
 

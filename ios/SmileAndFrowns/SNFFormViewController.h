@@ -15,5 +15,6 @@
 @property IBOutlet NSLayoutConstraint * topMargin;
 
 - (void) startBannerAd;
+- (void) invalidateForScrolling;
 
 @end
