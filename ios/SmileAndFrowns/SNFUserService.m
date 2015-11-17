@@ -451,7 +451,7 @@
 	}
 	
 	if(![data[@"password"] isEmpty] && ![data[@"password_confirm"] isEmpty]) {
-		if(data[@"password"] != data[@"password_confirm"]) {
+		if(![data[@"password"] isEqualToString:data[@"password_confirm"]]) {
 			return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Passwords don't match"],nil);
 		}
 	}
