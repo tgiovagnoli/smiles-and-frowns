@@ -257,7 +257,7 @@
                     <exclude reference="ath-HW-sH4"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="368" y="249"/>
+            <point key="canvasLocation" x="368" y="230"/>
         </view>
     </objects>
     <resources>

@@ -140,9 +140,9 @@
 	cell.user = user;
 	cell.userRole = role;
 	cell.delegate = self;
-	if(!role){
+	if(!role) {
 		cell.swipeEnabled = NO;
-	}else{
+	} else {
 		[self updateCellForEditingWithPermissions:cell];
 	}
 	return cell;
@@ -171,7 +171,7 @@
 }
 
 - (IBAction)onAddUserRole:(id)sender{
-	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,380)];
+	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,340)];
 	addUserRole.board = self.board;
 	[[AppDelegate rootViewController] presentViewController:addUserRole animated:YES completion:nil];
 }

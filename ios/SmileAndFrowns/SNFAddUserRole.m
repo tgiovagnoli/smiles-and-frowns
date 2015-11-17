@@ -51,7 +51,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		self.genderOverlay.hidden = TRUE;
 		self.ageOverlay.hidden = TRUE;
 		self.gender.hidden = TRUE;
-		self.email.placeholder = @"Email";
+		self.email.placeholder = @"Email (Required)";
 		self.email.hidden = NO;
 		
 		self.profileWidthContraint.constant = 0.0;
