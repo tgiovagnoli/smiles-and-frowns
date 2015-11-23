@@ -245,6 +245,7 @@ def user_signup(request):
 	username = str(uuid.uuid4())
 
 	#create user
+	new_user = None
 	try:
 		new_user = User(email=email,username=username,first_name=firstname,last_name=lastname,password=make_password(password))
 		new_user.save()
@@ -255,11 +256,12 @@ def user_signup(request):
 		return json_response_error('error creating user %s' % str(e))
 
 	#try and authenticate user
-	user = None
+	new_user2 = None
 	try: 
-		user = authenticate(username=username,password=password)
-		login(request,user)
+		new_user2 = authenticate(username=username,password=password)
+		login(request,new_user2)
 	except Exception as e:
+		print "ERROR"
 		return json_response_error(str(e))
 
 	#return new user
