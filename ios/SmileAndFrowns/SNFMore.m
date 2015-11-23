@@ -13,6 +13,8 @@
 #import "SNFViewController.h"
 #import "SNFSyncService.h"
 
+#define SHARE_APP_NAME @"Share this App"
+
 @implementation SNFMore
 
 - (void)viewDidLoad {
@@ -29,6 +31,7 @@
 					   [self tableItemWithName:@"Launcher" andSelector:@selector(launcher)],
 					   [self tableItemWithName:@"Accept An Invite Code" andSelector:@selector(acceptInviteFromCode:)],
 					   [self tableItemWithName:@"Reset Local Data" andSelector:@selector(resetLocalSync)],
+					   [self tableItemWithName:SHARE_APP_NAME andSelector:@selector(shareApp)],
 					   [self tableItemWithName:@"Logout" andSelector:@selector(logout)],
 					   ];
 	[self.tableView reloadData];
@@ -241,5 +244,28 @@
 	[self purgeAndSync];
 }
 
+- (void)shareApp{
+	NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/app/id1058499314"];
+	NSArray *items = @[url];
+	UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		avc.modalPresentationStyle = UIModalPresentationPopover;
+		UIPopoverPresentationController *popoverController = [avc popoverPresentationController];
+		popoverController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+		popoverController.sourceView = self.tableView;
+		NSInteger row = 0;
+		for(APDDebugViewControllerItem *item in _tableContents){
+			if([item.name isEqualToString:SHARE_APP_NAME]){
+				break;
+			}
+			row++;
+		}
+		UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+		if(cell){
+			popoverController.sourceRect = cell.frame;
+		}
+	}
+	[[SNFViewController instance] presentViewController:avc animated:YES completion:^{}];
+}
 
 @end
