@@ -9,6 +9,8 @@
 #import "SNFAddCell.h"
 #import "SNFAddReward.h"
 #import "SNFFormViewController.h"
+#import "UIView+AutoLayout.h"
+#import "NSTimer+Blocks.h"
 
 extern NSString * const SNFBoardEditFinished;
 
@@ -36,8 +38,10 @@ typedef NS_ENUM(NSInteger, SNFBoardEditBehaviorType){
 @property (weak) IBOutlet UIButton *addBehaviorButton;
 @property (weak) IBOutlet UIButton *cancelButton;
 @property (weak) IBOutlet UIButton *useBoardButton;
+@property IBOutlet UIView *noBehaviorsMessage;
 
-@property (nonatomic) IBOutlet SNFBoard *board;
+@property (nonatomic) SNFBoard *board;
+
 @property (weak) NSObject <SNFBoardEditDelegate> *delegate;
 
 - (IBAction)onUpdateBoard:(UIButton *)sender;

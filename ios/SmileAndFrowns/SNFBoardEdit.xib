@@ -11,6 +11,7 @@
                 <outlet property="boardTitleField" destination="Hs5-M3-Y9s" id="Ii2-ct-gXQ"/>
                 <outlet property="cancelButton" destination="5bm-Bp-QfH" id="p9U-Yz-EQk"/>
                 <outlet property="formView" destination="i5M-Pr-FkT" id="Rz0-NI-WiV"/>
+                <outlet property="noBehaviorsMessage" destination="tXo-UH-1dX" id="BK1-xW-qxz"/>
                 <outlet property="rewardInfoLabel" destination="bdS-kO-6JB" id="tXP-1p-6Tk"/>
                 <outlet property="rewardsCollectionView" destination="IcH-QM-Bj3" id="XY9-Hu-dtZ"/>
                 <outlet property="scrollView" destination="rdq-sD-9wl" id="uLY-Ik-EAA"/>
@@ -131,7 +132,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="409" y="225.5"/>
+            <point key="canvasLocation" x="556" y="262.5"/>
         </view>
         <view contentMode="scaleToFill" id="5iE-x8-Lfy">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -187,6 +188,30 @@
                 </mask>
             </variation>
             <point key="canvasLocation" x="1082" y="260"/>
+        </view>
+        <view contentMode="scaleToFill" id="tXo-UH-1dX">
+            <rect key="frame" x="0.0" y="0.0" width="339" height="227"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your board does not have any behaviors.  Add some by tapping the Add New Behavior button below," lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yD5-F2-jQE">
+                    <rect key="frame" x="10" y="10" width="319" height="207"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" red="0.33725490200000002" green="0.60784313729999995" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="yD5-F2-jQE" secondAttribute="trailing" constant="10" id="Flm-Pq-4q7"/>
+                <constraint firstItem="yD5-F2-jQE" firstAttribute="top" secondItem="tXo-UH-1dX" secondAttribute="top" constant="10" id="Jmg-H1-dR2"/>
+                <constraint firstAttribute="bottom" secondItem="yD5-F2-jQE" secondAttribute="bottom" constant="10" id="da8-qH-yeF"/>
+                <constraint firstItem="yD5-F2-jQE" firstAttribute="leading" secondItem="tXo-UH-1dX" secondAttribute="leading" constant="10" id="fR7-h9-OzI"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="1117.5" y="110.5"/>
         </view>
     </objects>
 </document>

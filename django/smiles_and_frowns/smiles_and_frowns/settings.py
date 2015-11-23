@@ -115,6 +115,15 @@ SOCIAL_AUTH_PIPELINE = (
 
 WSGI_APPLICATION = 'smiles_and_frowns.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'smiles_and_frowns',
+#         'USER': 'smiles_frowns',
+#         'PASSWORD': '8LK490D)#f_XLiek!*#klD*!',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

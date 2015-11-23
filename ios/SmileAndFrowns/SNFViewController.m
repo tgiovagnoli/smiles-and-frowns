@@ -85,25 +85,33 @@ static __weak SNFViewController * _instance;
 }
 
 - (void) bannerViewDidLoadAd:(ADBannerView *) banner {
-	if(self.isKeyboardShown) {
-		return;
-	}
-	
 	CGRect f = banner.frame;
 	f.origin.y = self.view.height - banner.height;
 	self.bannerView.frame = f;
 	self.tabMenuContainerBottom.constant = banner.height;
 	[self.view addSubview:self.bannerView];
+	
+	[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
+		UIViewController * controller = self.viewControllerStack.currentViewController;
+		if([controller isKindOfClass:[SNFFormViewController class]]) {
+			SNFFormViewController * formController = (SNFFormViewController *)controller;
+			[formController invalidateForScrolling];
+		}
+	} repeats:FALSE];
+	
 }
 
 - (void) bannerView:(ADBannerView *) banner didFailToReceiveAdWithError:(NSError *) error {
 	[self.bannerView removeFromSuperview];
-	
-	if(self.isKeyboardShown) {
-		return;
-	}
-	
 	self.tabMenuContainerBottom.constant = 0;
+	
+	[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
+		UIViewController * controller = self.viewControllerStack.currentViewController;
+		if([controller isKindOfClass:[SNFFormViewController class]]) {
+			SNFFormViewController * formController = (SNFFormViewController *)controller;
+			[formController invalidateForScrolling];
+		}
+	} repeats:FALSE];
 }
 
 - (void) insertMenu {
@@ -192,7 +200,7 @@ static __weak SNFViewController * _instance;
 
 - (void)showErrorMessage:(NSString *)errorMessage{
 	self.errorMessageLabel.text = errorMessage;
-	self.errorMessageHeightConstraint.constant = 40.0;
+	self.errorMessageHeightConstraint.constant = 60.0;
 	[UIView animateWithDuration:0.2 animations:^{
 		[self.view layoutIfNeeded];
 	} completion:^(BOOL finished) {
