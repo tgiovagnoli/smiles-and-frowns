@@ -1,10 +1,8 @@
-You're invited to participate in a Smiles and Frowns board.
-
 Hi {{ invitee_firstname }},
 
 {% if inviter.first_name %}{{ inviter.first_name }}{% else %}Someone{% endif %} has invited you to participate in {{ board.title }}'s board in Smiles & Frowns. Your unique invite code is {{ code }}.
 
-Open the S&F app and select Accept an Invite. Enter your code above to accept the invite.
+If you have Smiles & Frowns installed copy this code, then tap <em>Enter Email Code</em> in the <em>Invites</em> section.
 
 Thanks!
 S&F Team.
