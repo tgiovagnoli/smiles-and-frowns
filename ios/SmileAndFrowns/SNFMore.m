@@ -29,7 +29,6 @@
 					   [self tableItemWithName:@"Launcher" andSelector:@selector(launcher)],
 					   [self tableItemWithName:@"Accept An Invite Code" andSelector:@selector(acceptInviteFromCode:)],
 					   [self tableItemWithName:@"Reset Local Data" andSelector:@selector(resetLocalSync)],
-					   [self tableItemWithName:@"Test Badge" andSelector:@selector(testBadge)],
 					   [self tableItemWithName:@"Logout" andSelector:@selector(logout)],
 					   ];
 	[self.tableView reloadData];
