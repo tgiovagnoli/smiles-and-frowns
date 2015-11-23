@@ -120,6 +120,8 @@ static SNFSyncService * _instance;
 	NSDate *fromDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
 	if(!fromDate){
 		fromDate = [NSDate dateWithTimeIntervalSince1970:0];
+	}else{
+		fromDate = [fromDate dateByAddingTimeInterval:-5*60];
 	}
 	
 	[postData setObject:[self collectionForEntityName:@"SNFBoard" sinceSyncDate:fromDate] forKey:@"boards"];
