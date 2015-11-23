@@ -263,6 +263,7 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 			}else{
 				// empty board
+				/*
 				NSString *messageString = @"This will create an empty board.  You will need to add behaviors to this board before using it.  Continue?";
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -274,6 +275,12 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 				}]];
 				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+				*/
+				if(needsPurchase){
+					[self purchaseNewBoard:pdb];
+				}else{
+					[self addNewBoard:pdb withTransactionID:nil];
+				}
 			}
 		}else{
 			if([error.localizedDescription isEqualToString:@"login required"]){
@@ -376,7 +383,11 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	
 	[self boardListCell:nil wantsToEditBoard:newBoard];
 	
+	
+	
 	[[SNFSyncService instance] saveContext];
+	
+	NSLog(@"\nboard updated:%@ \nlast synced:%@", newBoard.updated_date, [SNFModel sharedInstance].userSettings.lastSyncDate);
 }
 
 
