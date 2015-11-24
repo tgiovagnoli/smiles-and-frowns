@@ -96,6 +96,7 @@
 	self.rewards = [NSSet set];
 	self.behaviors = [NSSet set];
 	self.user_roles = [NSSet set];
+	[self addInitialRewards];
 	self.title = @"Untitled";
 }
 
