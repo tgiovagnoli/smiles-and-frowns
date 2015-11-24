@@ -80,11 +80,10 @@ static SNFSyncService * _instance;
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			_syncing = NO;
 			
-			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-			
 			[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceCompleted object:nil];
 			
 			if(error){
+				[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:error];
 				return completion(error, nil);
 			}
@@ -92,6 +91,7 @@ static SNFSyncService * _instance;
 			NSError *jsonError;
 			NSObject *infoDict = [self responseObjectFromData:data withError:&jsonError];
 			if(jsonError){
+				[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:jsonError];
 				return completion(jsonError, nil);
 			}
@@ -296,11 +296,13 @@ static SNFSyncService * _instance;
 		[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:saveError];
 		return completion(saveError, nil);
 	}
+	
 	[SNFDateManager unlock];
 	
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	
 	[self syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
+		
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+		
 		if(error){
 			return completion(error, nil);
 		}else{
