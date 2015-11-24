@@ -12,6 +12,7 @@
 #import "SNFADBannerView.h"
 #import "SNFSyncService.h"
 #import "AppDelegate.h"
+#import "SNFLauncher.h"
 
 static __weak SNFViewController * _instance;
 
@@ -197,7 +198,12 @@ static __weak SNFViewController * _instance;
 
 - (void)showErrorMessage:(NSString *)errorMessage{
 	NSLog(@"show error: %@",errorMessage);
-	[self displayOKAlertWithTitle:@"Sync Error" message:errorMessage completion:nil];
+	[self displayOKAlertWithTitle:@"Sync Error" message:errorMessage completion:^(UIAlertAction *action) {
+		if([errorMessage isEqualToString:@"login required"]) {
+			[SNFModel sharedInstance].loggedInUser = nil;
+			[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+		}
+	}];
 }
 
 @end

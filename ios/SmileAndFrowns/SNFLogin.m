@@ -169,6 +169,8 @@ NSString * const SNFLoginLoggedIn = @"SNFLoginLoggedIn";
 
 - (void) syncAfterLogin:(BOOL) hasUserChanged {
 	
+	NSLog(@"has user changed: %i",hasUserChanged);
+	
 	MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	hud.labelText = @"Syncing Board Data";
 	
