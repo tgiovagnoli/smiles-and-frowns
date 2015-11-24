@@ -100,6 +100,7 @@ static SNFSyncService * _instance;
 				[self updateLocalDataWithResults:(NSDictionary *)infoDict andCallCompletion:completion];
 			}else{
 				SNFError *error = [SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"];
+				[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:error];
 				return completion(error, nil);
 			}
