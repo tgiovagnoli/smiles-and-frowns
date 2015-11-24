@@ -66,6 +66,7 @@ static SNFSyncService * _instance;
 	NSError *jsonError;
 	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&jsonError];
 	if(jsonError){
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		completion(jsonError, nil);
 	}
 
@@ -78,6 +79,8 @@ static SNFSyncService * _instance;
 	NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		dispatch_sync(dispatch_get_main_queue(), ^{
 			_syncing = NO;
+			
+			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 			
 			[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceCompleted object:nil];
 			
@@ -289,6 +292,7 @@ static SNFSyncService * _instance;
 	NSError *saveError;
 	[context save:&saveError];
 	if(saveError){
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:saveError];
 		return completion(saveError, nil);
 	}

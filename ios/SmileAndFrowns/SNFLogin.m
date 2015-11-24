@@ -185,26 +185,7 @@ NSString * const SNFLoginLoggedIn = @"SNFLoginLoggedIn";
 			return;
 		}
 		
-		[self syncPredefinedBoards];
-	}];
-}
-
-- (void) syncPredefinedBoards {
-	
-	MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-	hud.labelText = @"Syncing Board Data";
-	
-	[[SNFSyncService instance] syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
-		
-		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-		
-		if(error) {
-			[self displayOKAlertWithTitle:@"Sync Error" message:error.localizedDescription completion:nil];
-			return;
-		}
-		
 		[self closeModal];
-		
 	}];
 }
 
