@@ -6,6 +6,7 @@
 #import "AppDelegate.h"
 #import "SNFSyncService.h"
 #import "NSTimer+Blocks.h"
+#import "SNFLauncher.h"
 
 const NSString *SNFBoardListCustomTitle = @"Custom Board";
 
@@ -234,7 +235,7 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	// make sure that the user is logged in
 	SNFUserService *userService = [[SNFUserService alloc] init];
 	[userService authedUserInfoWithCompletion:^(NSError *error, SNFUser *user) {
-		if(!error && user){
+		if(!error && user) {
 			NSArray *allBoards = [SNFBoard allObjectsWithContext:[SNFModel sharedInstance].managedObjectContext];
 			BOOL needsPurchase = NO;
 			NSString *loggedInUserName = [SNFModel sharedInstance].loggedInUser.username;
@@ -282,17 +283,21 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 					[self addNewBoard:pdb withTransactionID:nil];
 				}
 			}
-		}else{
+		} else {
 			if([error.localizedDescription isEqualToString:@"login required"]){
 				// not authed
-				NSString *messageString = @"You are currently not signed into smiles and frowns.  You need to login and be online to create a board.";
-				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
+				NSString * messageString = @"You are currently not signed into smiles and frowns. You need to login and be online to create a board.";
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+					[SNFModel sharedInstance].loggedInUser = nil;
+					[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+				}]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-			}else{
+				
+			} else {
 				// likely offline
-				NSString *messageString = @"It appears you are offline. Please make sure you are online and logged in to purchase a new board.";
-				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+				NSString * messageString = @"It appears you are offline. Please make sure you are online and logged in to purchase a new board.";
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:messageString preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {}]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 			}

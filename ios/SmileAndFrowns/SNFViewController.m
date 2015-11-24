@@ -25,8 +25,6 @@ static __weak SNFViewController * _instance;
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
-	self.errorMessageHeightConstraint.constant = 0.0;
-	
 	_instance = self;
 	self.firstlayout = true;
 	
@@ -154,7 +152,6 @@ static __weak SNFViewController * _instance;
 	}
 	SNFUserProfile *profile = [[SNFUserProfile alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:profile animated:YES];
-	//[profile loadAuthedUser];
 }
 
 - (void)showMore{
@@ -199,30 +196,8 @@ static __weak SNFViewController * _instance;
 }
 
 - (void)showErrorMessage:(NSString *)errorMessage{
-	self.errorMessageLabel.text = errorMessage;
-	self.errorMessageHeightConstraint.constant = 60.0;
-	[UIView animateWithDuration:0.2 animations:^{
-		[self.view layoutIfNeeded];
-	} completion:^(BOOL finished) {
-		[self updateSizeOnViewStack];
-	}];
+	NSLog(@"show error: %@",errorMessage);
+	[self displayOKAlertWithTitle:@"Sync Error" message:errorMessage completion:nil];
 }
-
-- (IBAction)onCloseErrorMessage:(id)sender{
-	self.errorMessageHeightConstraint.constant = 0.0;
-	[UIView animateWithDuration:0.2 animations:^{
-		[self.view layoutIfNeeded];
-	} completion:^(BOOL finished) {
-		self.errorMessageLabel.text = @"";
-		[self updateSizeOnViewStack];
-	}];
-}
-
-- (void)updateSizeOnViewStack{
-	for(UIViewController *vc in [self.viewControllerStack allViewControllers]){
-		vc.view.height = self.viewControllerStack.height;
-	}
-}
-
 
 @end

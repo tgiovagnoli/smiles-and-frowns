@@ -109,7 +109,14 @@
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				[self displayOKAlertWithTitle:@"OK" message:error.localizedDescription completion:nil];
+				
+				//if user not found it hasn't synced yet, upload tmp image for the user.
+				if([error.localizedDescription isEqualToString:@"User not found"]) {
+					[self uploadTmpImageForUser];
+				} else {
+					[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+				}
+				
 				return;
 			}
 			
@@ -118,6 +125,21 @@
 			
 		}];
 		
+	}];
+}
+
+- (void) uploadTmpImageForUser {
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	SNFUserService * service = [[SNFUserService alloc] init];
+	[service uploadTempUserProfileImage:_userSelectedImage withCompletion:^(NSError *error, NSString *uuid, NSString *url) {
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		if(error) {
+			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+		} else {
+			self.childUser.image = url;
+			self.childUser.tmp_profile_image_uuid = uuid;
+			[self updateProfileImage];
+		}
 	}];
 }
 
