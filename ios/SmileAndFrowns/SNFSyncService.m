@@ -296,8 +296,16 @@ static SNFSyncService * _instance;
 	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	
-	completion(saveError, updates);
+	[self syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
+		if(error){
+			return completion(error, nil);
+		}else{
+			completion(saveError, updates);
+		}
+	}];
 }
+
+
 
 - (void)syncPredefinedBoardsWithCompletion:(SNFSyncServiceCallback)completion{
 	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"predefined_boards/sync"];

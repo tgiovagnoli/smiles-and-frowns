@@ -130,7 +130,8 @@
 									   @"board": @{@"uuid": board.uuid},
 									   @"positive": pdBehavior.positive,
 									   };
-		[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
+		SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
+		NSLog(@"%@ - %@", behavior.title, behavior.positive);
 	}
 	[board addInitialRewards];
 	return board;
