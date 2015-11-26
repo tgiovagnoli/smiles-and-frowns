@@ -347,24 +347,24 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	
 	[[IAPHelper defaultHelper] loadItunesProducts:productIds withCompletion:^(NSError *error) {
 		
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
 		if(error) {
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 			return;
 		}
 		
 		NSString * product = [[IAPHelper defaultHelper] productIdByName:@"NewBoard"];
 		NSLog(@"NewBoard product id: %@", product);
 		
+		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+		
 		[[IAPHelper defaultHelper] purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction OKAction]];
-				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 				return;
 			}
 			

@@ -156,16 +156,23 @@
 	
 	[[IAPHelper defaultHelper] loadItunesProducts:products withCompletion:^(NSError *error) {
 		
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		
+		if(error) {
+			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			return;
+		}
+		
 		NSString * product = [[IAPHelper defaultHelper] productIdByName:@"RemoveAds"];
+		
+		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 		
 		[[IAPHelper defaultHelper] purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction OKAction]];
-				[self presentViewController:alert animated:TRUE completion:nil];
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 			} else {
 				[[NSNotificationCenter defaultCenter] postNotificationName:SNFADBannerViewPurchasedRemoveAds object:nil];
 			}
