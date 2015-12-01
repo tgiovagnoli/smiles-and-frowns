@@ -19,18 +19,18 @@ def append_sync_info(sync_model_instance,info_dict):
 	info_dict["uuid"] = sync_model_instance.uuid
 	info_dict["deleted"] = sync_model_instance.deleted
 
-def board_info_dictionary_collection(boards):
+def board_info_dictionary_collection(boards,request):
 	board_data = []
 	for board in boards:
-		board_data.append(board_info_dictionary(board))
+		board_data.append(board_info_dictionary(board,request))
 	return board_data
 
-def board_info_dictionary(board):
+def board_info_dictionary(board,request):
 	board_data = {
 		"title": board.title,
 		"id": board.id
 	}
-	if board.owner: board_data["owner"] = user_info_dictionary(board.owner)
+	if board.owner: board_data["owner"] = user_info_dictionary(board.owner,request)
 	append_sync_info(board, board_data)
 	return board_data
 
@@ -40,17 +40,17 @@ def user_role_info_dictionary_collection(user_roles):
 		user_roles_data.append(user_role_info_dictionary(user_role))
 	return user_roles_data
 
-def user_role_info_dictionary(user_role):
+def user_role_info_dictionary(user_role,request):
 	user_role_data = {
 		"role": user_role.role,
 		"id": user_role.id
 	}
 	append_sync_info(user_role, user_role_data)
 	if user_role.board: user_role_data['board'] = {'uuid':user_role.board.uuid}
-	if user_role.user: user_role_data["user"] =  user_info_dictionary(user_role.user)
+	if user_role.user: user_role_data["user"] =  user_info_dictionary(user_role.user,request)
 	return user_role_data
 
-def user_info_dictionary(user):
+def user_info_dictionary(user,request):
 	user_data = {
 		"username": user.username,
 		"first_name":user.first_name,
@@ -61,7 +61,7 @@ def user_info_dictionary(user):
 	if user.profile.gender: user_data["gender"] = user.profile.gender
 	if user.profile.age: user_data['age'] = int(user.profile.age)
 	if user.profile.image:
-		user_data['image'] = settings.MEDIA_ABS_URL + user.profile.image.url
+		user_data['image'] = request.build_absolute_uri(user.profile.image.url)
 	return user_data
 
 def behavior_info_dictionary_collection(behaviors):

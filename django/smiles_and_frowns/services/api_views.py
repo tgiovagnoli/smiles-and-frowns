@@ -53,7 +53,7 @@ def register_by_access_token(request,backend):
 	
 	if user:
 		login(request,user)
-		output = json_utils.user_info_dictionary(user)
+		output = json_utils.user_info_dictionary(user,request)
 		return json_response(output)
 	
 	return json_response_error("user not found")
@@ -80,7 +80,7 @@ def upload_temp_profile_image(request):
 	tmp = models.TempProfileImage(image=image)
 	tmp.save()
 
-	url = settings.MEDIA_ABS_URL + tmp.image.url
+	url = request.build_absolute_uri(tmp.image.url)
 
 	return json_response( {'uuid':tmp.uuid, 'url':url} )
 
@@ -137,7 +137,7 @@ def user_update_profile_image(request):
 		role.device_date = device_date
 		role.save()
 
-	return json_response( json_utils.user_info_dictionary(user) )
+	return json_response( json_utils.user_info_dictionary(user,request) )
 
 @csrf_exempt
 def user_password_reset(request):
@@ -265,7 +265,7 @@ def user_signup(request):
 		return json_response_error(str(e))
 
 	#return new user
-	output = json_utils.user_info_dictionary(new_user)
+	output = json_utils.user_info_dictionary(new_user,request)
 	return json_response(output)
 
 @csrf_exempt
@@ -346,7 +346,7 @@ def user_update(request):
 		except Exception as e:
 			return json_response_error(str(e))
 	
-	data = json_utils.user_info_dictionary(request.user)
+	data = json_utils.user_info_dictionary(request.user,request)
 	return json_response(data)
 
 @csrf_exempt
@@ -398,7 +398,7 @@ def user_login(request):
 		return HttpResponse(status=http.HTTP_BAD_REQUEST)
 	
 	#return authed user json data	
-	data = json_utils.user_info_dictionary(user)
+	data = json_utils.user_info_dictionary(user,request)
 	return json_response(data)
 
 
@@ -412,7 +412,7 @@ def user_info(request):
 	#check auth
 	if not request.user.is_authenticated(): 
 		return login_required_response()
-	data = json_utils.user_info_dictionary(request.user)
+	data = json_utils.user_info_dictionary(request.user,request)
 	return json_response(data)
 
 @csrf_exempt
@@ -446,7 +446,7 @@ def invite_accept(request):
 	user_role.save()
 
 	#get return data
-	output = sync_data_for_board(invite.board)
+	output = sync_data_for_board(invite.board,request)
 
 	#append invite to response output
 	output['invite'] = json_utils.invite_info_dictionary(invite)
@@ -600,7 +600,7 @@ def invites(request):
 	output['sent_invites'] = json_utils.invite_info_dictionary_collection(sent_invites)
 	return json_response(output)
 
-def sync_data_for_board(board):
+def sync_data_for_board(board,request):
 	'''
 	This doesn't take into account any sync dates. Returns ALL data for a board.
 	'''
@@ -613,7 +613,7 @@ def sync_data_for_board(board):
 
 	#create output
 	output = {}
-	output['boards'] = [json_utils.board_info_dictionary(board)]
+	output['boards'] = [json_utils.board_info_dictionary(board,request)]
 	output['behaviors'] = json_utils.behavior_info_dictionary_collection(behaviors)
 	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
 	output['frowns'] = json_utils.frown_info_dictionary_collection(frowns)
@@ -675,7 +675,7 @@ def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behavi
 
 	#create output
 	output = {'sync_date': json_utils.datestring(UTC.localize(datetime.utcnow())) }
-	output['boards'] = json_utils.board_info_dictionary_collection(boards)
+	output['boards'] = json_utils.board_info_dictionary_collection(boards,request)
 	output['behaviors'] = json_utils.behavior_info_dictionary_collection(behaviors)
 	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
 	output['frowns'] = json_utils.frown_info_dictionary_collection(frowns)
