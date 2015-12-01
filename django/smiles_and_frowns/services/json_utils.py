@@ -34,10 +34,10 @@ def board_info_dictionary(board,request):
 	append_sync_info(board, board_data)
 	return board_data
 
-def user_role_info_dictionary_collection(user_roles):
+def user_role_info_dictionary_collection(user_roles,request):
 	user_roles_data = []
 	for user_role in user_roles:
-		user_roles_data.append(user_role_info_dictionary(user_role))
+		user_roles_data.append(user_role_info_dictionary(user_role,request))
 	return user_roles_data
 
 def user_role_info_dictionary(user_role,request):

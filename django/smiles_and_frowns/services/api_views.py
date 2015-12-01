@@ -618,7 +618,7 @@ def sync_data_for_board(board,request):
 	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
 	output['frowns'] = json_utils.frown_info_dictionary_collection(frowns)
 	output['rewards'] = json_utils.reward_info_dictionary_collection(rewards)
-	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles)
+	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles,request)
 
 	return output
 
@@ -680,7 +680,7 @@ def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behavi
 	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
 	output['frowns'] = json_utils.frown_info_dictionary_collection(frowns)
 	output['rewards'] = json_utils.reward_info_dictionary_collection(rewards)
-	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles)
+	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles,request)
 
 	return json_response(output)
 
