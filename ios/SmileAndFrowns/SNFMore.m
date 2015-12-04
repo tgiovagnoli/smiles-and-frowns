@@ -35,6 +35,8 @@
 					   [self tableItemWithName:@"Logout" andSelector:@selector(logout)],
 					   ];
 	[self.tableView reloadData];
+	
+	[[GATracking instance] trackScreenWithTagManager:@"MoreView"];
 }
 
 - (void) testBadge {

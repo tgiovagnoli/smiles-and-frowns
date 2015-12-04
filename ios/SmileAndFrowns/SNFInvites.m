@@ -45,6 +45,8 @@
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteAccepted:) name:SNFInviteAccepted object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteDelete:) name:SNFInvitesCellDelete object:nil];
+	
+	[[GATracking instance] trackScreenWithTagManager:@"InvitesView"];
 }
 
 - (void) dealloc {

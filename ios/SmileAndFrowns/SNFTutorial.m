@@ -20,6 +20,8 @@
 	self.scrollView.pagingEnabled = TRUE;
 	self.pageControl.numberOfPages = self.views.count;
 	self.scrollView.delegate = self;
+	
+	[[GATracking instance] trackScreenWithTagManager:@"Tutorial1View"];
 }
 
 - (void) viewDidLayoutSubviews {
@@ -102,7 +104,9 @@
 }
 
 - (void) trackPage {
-	
+	NSInteger page = self.pageControl.currentPage+1;
+	NSLog(@"track page: %@",@(page));
+	[[GATracking instance] trackScreenWithTagManager:[NSString stringWithFormat:@"Tutorial%@View",@(page)]];
 }
 
 - (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {

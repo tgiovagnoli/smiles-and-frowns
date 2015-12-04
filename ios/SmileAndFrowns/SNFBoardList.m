@@ -23,6 +23,8 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	[self.boardsTable addSubview:refreshControl];
 	[self.boardsTable insertSubview:refreshControl atIndex:0];
 	
+	[[GATracking instance] trackScreenWithTagManager:@"BoardListView"];
+	
 	[self reloadBoards];
 }
 

@@ -80,6 +80,13 @@
 - (void)setType:(SNFAddSmileOrFrownType)type{
 	_type = type;
 	[self updateUI];
+	
+	if(type == SNFAddSmileOrFrownTypeFrown) {
+		[[GATracking instance] trackScreenWithTagManager:@"GiveFrownView"];
+	} else {
+		[[GATracking instance] trackScreenWithTagManager:@"GiveSmileView"];
+	}
+	
 }
 
 - (IBAction)onAddBehavior:(UIButton *)sender{

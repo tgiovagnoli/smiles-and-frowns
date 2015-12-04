@@ -6,6 +6,11 @@
 
 @implementation SNFAddBehavior
 
+- (void) viewDidLoad {
+	[super viewDidLoad];
+	[[GATracking instance] trackScreenWithTagManager:@"AddBehaviorView"];
+}
+
 - (void)setBoard:(SNFBoard *)board{
 	_board = board;
 	[self updateBehaviors];

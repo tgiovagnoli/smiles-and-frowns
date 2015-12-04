@@ -1,3 +1,4 @@
+
 #import <UIKit/UIKit.h>
 #import "UIAlertAction+Additions.h"
 #import "SNFBoard.h"
@@ -8,7 +9,7 @@
 #import "SNFAddBehavior.h"
 #import "SNFFormViewController.h"
 #import "SNFValuePicker.h"
-
+#import "GATracking.h"
 
 typedef NS_ENUM(NSInteger, SNFAddSmileOrFrownType){
 	SNFAddSmileOrFrownTypeSmile,

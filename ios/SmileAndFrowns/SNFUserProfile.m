@@ -44,6 +44,9 @@
 	
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];
 	[self.ageOverlay setTitle:@"" forState:UIControlStateNormal];
+	
+	[[GATracking instance] trackScreenWithTagManager:@"ProfileView"];
+	
 	[self loadAuthedUser];
 }
 

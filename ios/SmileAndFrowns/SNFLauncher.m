@@ -40,6 +40,8 @@
 //		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 //		self.bannerView.delegate = self;
 //	}
+	
+	[[GATracking instance] trackScreenWithTagManager:@"LauncherView"];
 }
 
 - (void) viewDidLayoutSubviews {
