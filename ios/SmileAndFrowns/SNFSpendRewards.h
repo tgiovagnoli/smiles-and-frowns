@@ -22,18 +22,25 @@
 	SNFReward *_selectedReward;
 }
 
-@property (weak) IBOutlet UILabel *userFirstLastLabel;
-@property (weak) IBOutlet UILabel *userGenderAgeLabel;
-@property (weak) IBOutlet UILabel *totalSmilestoSpendLabel;
-@property (weak) IBOutlet UIImageView *userProfileImageView;
-@property (weak) IBOutlet UICollectionView *rewardsCollection;
-@property (weak) IBOutlet UILabel *rewardsInfoLabel;
-@property (weak) IBOutlet UIStepper *incrementStepper;
-@property (weak) IBOutlet UIButton *maxButton;
-@property (weak) IBOutlet UILabel *spendSmilesLabel;
-@property (weak) IBOutlet UILabel *rewardCalculatedLabel;
-@property (weak) IBOutlet UIButton *spendSmileButton;
-@property (weak) IBOutlet UIButton *cancelButton;
+@property (weak) IBOutlet UIImageView * userProfileImageView;
+@property (weak) IBOutlet UILabel * userFirstLastLabel;
+@property (weak) IBOutlet UILabel * userGenderAgeLabel;
+@property (weak) IBOutlet UIView * spendCountView;
+@property (weak) IBOutlet UILabel * totalSmilestoSpendLabel;
+
+@property (weak) IBOutlet UICollectionView * rewardsCollection;
+
+@property (weak) IBOutlet UIImageView * smileImage;
+@property (weak) IBOutlet NSLayoutConstraint * smileImageCenterConstraint;
+@property (weak) IBOutlet UILabel * rewardsInfoLabel;
+
+@property (weak) IBOutlet UIStepper * incrementStepper;
+@property (weak) IBOutlet UIButton * maxButton;
+@property (weak) IBOutlet UILabel * spendSmilesLabel;
+@property (weak) IBOutlet UILabel * rewardCalculatedLabel;
+@property (weak) IBOutlet UIButton * spendSmileButton;
+@property (weak) IBOutlet UIButton * cancelButton;
+
 @property (weak) NSObject <SNFSpendRewardsDelegate> *delegate;
 
 @property (nonatomic) SNFBoard *board;

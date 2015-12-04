@@ -42,6 +42,22 @@
 		075EA4B81C11FDF30003A403 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */; };
 		075EA4C91C11FE170003A403 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4C81C11FE170003A403 /* libz.tbd */; };
 		075EA4CB1C11FE220003A403 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4CA1C11FE220003A403 /* libsqlite3.tbd */; };
+		075EA4D11C1213900003A403 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4CE1C1213900003A403 /* Roboto-Bold.ttf */; };
+		075EA4D21C1213900003A403 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4CF1C1213900003A403 /* Roboto-Light.ttf */; };
+		075EA4D31C1213900003A403 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4D01C1213900003A403 /* Roboto-Regular.ttf */; };
+		075EA4D81C1214F60003A403 /* frown.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4D41C1214F60003A403 /* frown.png */; };
+		075EA4D91C1214F60003A403 /* frown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4D51C1214F60003A403 /* frown@2x.png */; };
+		075EA4DA1C1214F60003A403 /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4D61C1214F60003A403 /* smile.png */; };
+		075EA4DB1C1214F60003A403 /* smile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4D71C1214F60003A403 /* smile@2x.png */; };
+		075EA4E41C121E240003A403 /* goal.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4DC1C121E240003A403 /* goal.png */; };
+		075EA4E51C121E240003A403 /* goal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4DD1C121E240003A403 /* goal@2x.png */; };
+		075EA4E61C121E240003A403 /* money.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4DE1C121E240003A403 /* money.png */; };
+		075EA4E71C121E240003A403 /* money@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4DF1C121E240003A403 /* money@2x.png */; };
+		075EA4E81C121E240003A403 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4E01C121E240003A403 /* time.png */; };
+		075EA4E91C121E240003A403 /* time@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4E11C121E240003A403 /* time@2x.png */; };
+		075EA4EA1C121E240003A403 /* treat.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4E21C121E240003A403 /* treat.png */; };
+		075EA4EB1C121E240003A403 /* treat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4E31C121E240003A403 /* treat@2x.png */; };
+		075EA4EE1C1225540003A403 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA4ED1C1225540003A403 /* Utils.m */; };
 		078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */; };
 		078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */; };
 		078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */; };
@@ -238,6 +254,23 @@
 		075EA4C81C11FE170003A403 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		075EA4CA1C11FE220003A403 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		075EA4CC1C11FE5E0003A403 /* GTM-T7XD6P */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GTM-T7XD6P"; path = "libs/GA/GTM-T7XD6P"; sourceTree = "<group>"; };
+		075EA4CE1C1213900003A403 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		075EA4CF1C1213900003A403 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		075EA4D01C1213900003A403 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		075EA4D41C1214F60003A403 /* frown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frown.png; sourceTree = "<group>"; };
+		075EA4D51C1214F60003A403 /* frown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frown@2x.png"; sourceTree = "<group>"; };
+		075EA4D61C1214F60003A403 /* smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smile.png; sourceTree = "<group>"; };
+		075EA4D71C1214F60003A403 /* smile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smile@2x.png"; sourceTree = "<group>"; };
+		075EA4DC1C121E240003A403 /* goal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goal.png; sourceTree = "<group>"; };
+		075EA4DD1C121E240003A403 /* goal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goal@2x.png"; sourceTree = "<group>"; };
+		075EA4DE1C121E240003A403 /* money.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money.png; sourceTree = "<group>"; };
+		075EA4DF1C121E240003A403 /* money@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "money@2x.png"; sourceTree = "<group>"; };
+		075EA4E01C121E240003A403 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		075EA4E11C121E240003A403 /* time@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time@2x.png"; sourceTree = "<group>"; };
+		075EA4E21C121E240003A403 /* treat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = treat.png; sourceTree = "<group>"; };
+		075EA4E31C121E240003A403 /* treat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "treat@2x.png"; sourceTree = "<group>"; };
+		075EA4EC1C1225540003A403 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		075EA4ED1C1225540003A403 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		078DF4B11BE8105300CBFAA4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = libs/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = libs/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -571,6 +604,17 @@
 			name = GA;
 			sourceTree = "<group>";
 		};
+		075EA4CD1C1213900003A403 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				075EA4CE1C1213900003A403 /* Roboto-Bold.ttf */,
+				075EA4CF1C1213900003A403 /* Roboto-Light.ttf */,
+				075EA4D01C1213900003A403 /* Roboto-Regular.ttf */,
+			);
+			name = fonts;
+			path = SmileAndFrowns/fonts;
+			sourceTree = "<group>";
+		};
 		078DF49E1BE7E9AB00CBFAA4 /* SocialAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -595,6 +639,18 @@
 		07C0F3C01BEE646E0075A6B9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				075EA4DC1C121E240003A403 /* goal.png */,
+				075EA4DD1C121E240003A403 /* goal@2x.png */,
+				075EA4DE1C121E240003A403 /* money.png */,
+				075EA4DF1C121E240003A403 /* money@2x.png */,
+				075EA4E01C121E240003A403 /* time.png */,
+				075EA4E11C121E240003A403 /* time@2x.png */,
+				075EA4E21C121E240003A403 /* treat.png */,
+				075EA4E31C121E240003A403 /* treat@2x.png */,
+				075EA4D41C1214F60003A403 /* frown.png */,
+				075EA4D51C1214F60003A403 /* frown@2x.png */,
+				075EA4D61C1214F60003A403 /* smile.png */,
+				075EA4D71C1214F60003A403 /* smile@2x.png */,
 				07C0F3C91BEE6FC80075A6B9 /* female.png */,
 				07C0F3CA1BEE6FC80075A6B9 /* female@2x.png */,
 				07C0F3CB1BEE6FC80075A6B9 /* male.png */,
@@ -789,6 +845,7 @@
 			isa = PBXGroup;
 			children = (
 				D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */,
+				075EA4CD1C1213900003A403 /* fonts */,
 				075EA4CC1C11FE5E0003A403 /* GTM-T7XD6P */,
 				07C0F3C01BEE646E0075A6B9 /* images */,
 				07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */,
@@ -898,9 +955,6 @@
 		D65DF13C1BE2B8F1009CC6DF /* Boards */ = {
 			isa = PBXGroup;
 			children = (
-				D6DB2BD21BEAA0BA00F1CDFF /* SNFAddCell.h */,
-				D6DB2BD31BEAA0BA00F1CDFF /* SNFAddCell.m */,
-				D6DB2BD41BEAA0BA00F1CDFF /* SNFAddCell.xib */,
 				D65DF13D1BE2BB88009CC6DF /* SNFBoardDetail.h */,
 				D65DF13E1BE2BB88009CC6DF /* SNFBoardDetail.m */,
 				D65DF13F1BE2BB88009CC6DF /* SNFBoardDetail.xib */,
@@ -965,6 +1019,8 @@
 				D6E724DB1BF523FF00398D09 /* SNFValuePicker.xib */,
 				D6D197551BF677060009E652 /* UIImageView+ProfileStyle.h */,
 				D6D197561BF677060009E652 /* UIImageView+ProfileStyle.m */,
+				075EA4EC1C1225540003A403 /* Utils.h */,
+				075EA4ED1C1225540003A403 /* Utils.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -972,6 +1028,9 @@
 		D6DB2BD71BEAAAAD00F1CDFF /* Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				D6DB2BD21BEAA0BA00F1CDFF /* SNFAddCell.h */,
+				D6DB2BD31BEAA0BA00F1CDFF /* SNFAddCell.m */,
+				D6DB2BD41BEAA0BA00F1CDFF /* SNFAddCell.xib */,
 				D6DB2BCD1BEAA03300F1CDFF /* SNFRewardCell.h */,
 				D6DB2BCE1BEAA03300F1CDFF /* SNFRewardCell.m */,
 				D6DB2BCF1BEAA03300F1CDFF /* SNFRewardCell.xib */,
@@ -1079,24 +1138,34 @@
 				0707D6DD1BE428BA002F1FC0 /* SNFInvites.xib in Resources */,
 				D6270ED71BE817E900F7C39A /* SNFAddBehavior.xib in Resources */,
 				D65DF15B1BE2F59F009CC6DF /* SNFAddUserRole.xib in Resources */,
+				075EA4E41C121E240003A403 /* goal.png in Resources */,
 				07C0F3C41BEE646E0075A6B9 /* fb@2x.png in Resources */,
 				0707D6D11BE2B301002F1FC0 /* SNFPasswordReset.xib in Resources */,
 				D6DB2BDC1BEAAB3500F1CDFF /* SNFAddReward.xib in Resources */,
 				07C0F3BA1BED37C70075A6B9 /* InAppPurchases.plist in Resources */,
 				D6270EDE1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.xib in Resources */,
+				075EA4E51C121E240003A403 /* goal@2x.png in Resources */,
 				07C0F3CF1BEE6FC80075A6B9 /* male.png in Resources */,
 				D6270ED91BE817E900F7C39A /* SNFAddBehaviorCell.xib in Resources */,
 				078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */,
+				075EA4E71C121E240003A403 /* money@2x.png in Resources */,
 				0707D6C61BE2B2D8002F1FC0 /* SNFAcceptInvite.xib in Resources */,
 				07C0F3B51BED049B0075A6B9 /* SNFInvitesCell.xib in Resources */,
 				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
 				07C0F3CE1BEE6FC80075A6B9 /* female@2x.png in Resources */,
 				D6F4421A1BEB90A4009C2866 /* SNFReporting.xib in Resources */,
 				D65DF1111BE29A42009CC6DF /* SNFTabMenu.xib in Resources */,
+				075EA4DA1C1214F60003A403 /* smile.png in Resources */,
+				075EA4E91C121E240003A403 /* time@2x.png in Resources */,
+				075EA4D21C1213900003A403 /* Roboto-Light.ttf in Resources */,
+				075EA4EA1C121E240003A403 /* treat.png in Resources */,
 				D6272FC41BE002330024CBC2 /* APDDjangoErrorViewer.xib in Resources */,
+				075EA4D11C1213900003A403 /* Roboto-Bold.ttf in Resources */,
 				0707D6A51BE29756002F1FC0 /* SNFViewController.xib in Resources */,
 				07C0F3CD1BEE6FC80075A6B9 /* female.png in Resources */,
+				075EA4D31C1213900003A403 /* Roboto-Regular.ttf in Resources */,
 				07C0F3C81BEE64CF0075A6B9 /* twitter@2x.png in Resources */,
+				075EA4DB1C1214F60003A403 /* smile@2x.png in Resources */,
 				D65DF1501BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib in Resources */,
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
 				D6F442311BEBF425009C2866 /* SNFReportingSectionHeader.xib in Resources */,
@@ -1116,10 +1185,15 @@
 				D65DF17B1BE3F884009CC6DF /* SNFBoardEdit.xib in Resources */,
 				D65DF13B1BE2B8EE009CC6DF /* SNFBoardListCell.xib in Resources */,
 				D694011C1BED25530073119E /* SNFPredefinedBoardCell.xib in Resources */,
+				075EA4EB1C121E240003A403 /* treat@2x.png in Resources */,
+				075EA4D91C1214F60003A403 /* frown@2x.png in Resources */,
 				D6DB2BE11BEAC3E300F1CDFF /* SNFSpendRewards.xib in Resources */,
 				D6E724DD1BF523FF00398D09 /* SNFValuePicker.xib in Resources */,
+				075EA4D81C1214F60003A403 /* frown.png in Resources */,
+				075EA4E61C121E240003A403 /* money.png in Resources */,
 				0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */,
 				07C0F3C71BEE64CF0075A6B9 /* twitter.png in Resources */,
+				075EA4E81C121E240003A403 /* time.png in Resources */,
 				D65DF1411BE2BB88009CC6DF /* SNFBoardDetail.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1199,6 +1273,7 @@
 				D6270EDD1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.m in Sources */,
 				078DF4C81BEA932200CBFAA4 /* ATITwitterAuthHandler.m in Sources */,
 				078DF4C21BE8810600CBFAA4 /* SNFFormViewController.m in Sources */,
+				075EA4EE1C1225540003A403 /* Utils.m in Sources */,
 				D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */,
 				D6270ED81BE817E900F7C39A /* SNFAddBehaviorCell.m in Sources */,
 				D62D37901BDE7FC600102D6A /* SNFDebug.m in Sources */,
