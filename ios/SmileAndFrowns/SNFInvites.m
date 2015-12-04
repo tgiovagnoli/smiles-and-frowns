@@ -186,7 +186,13 @@
 		if(self.segment.selectedSegmentIndex == 0) {
 			return [firstname1 compare:firstname2 options:NSCaseInsensitiveSearch];
 		} else {
-			return [createdDate1 compare:createdDate2];
+			NSComparisonResult result = [createdDate1 compare:createdDate2];
+			if(result == NSOrderedAscending) {
+				return NSOrderedDescending;
+			}
+			if(result == NSOrderedDescending) {
+				return NSOrderedAscending;
+			}
 		}
 		
 		return NSOrderedSame;
@@ -204,7 +210,13 @@
 		if(self.segment.selectedSegmentIndex == 0) {
 			return [firstname1 compare:firstname2 options:NSCaseInsensitiveSearch];
 		} else {
-			return [createdDate1 compare:createdDate2];
+			NSComparisonResult result = [createdDate1 compare:createdDate2];
+			if(result == NSOrderedAscending) {
+				return NSOrderedDescending;
+			}
+			if(result == NSOrderedDescending) {
+				return NSOrderedAscending;
+			}
 		}
 		
 		return NSOrderedSame;
