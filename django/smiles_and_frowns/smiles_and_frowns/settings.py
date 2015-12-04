@@ -147,9 +147,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,"static")
 
 #media
-MEDIA_ABS_URL = "http://imac.local:8000"
-if HOSTNAME == "smiles-and-frowns":
-    MEDIA_ABS_URL = "http://services.smilesandfrowns.com"
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 MEDIA_URL = '/media/'
 

@@ -90,6 +90,17 @@
 		<key>serverURL</key>
 		<string>http://services.smilesandfrowns.com</string>
 	</dict>
+	<key>SNFServicesIP</key>
+	<dict>
+		<key>TwitterKey</key>
+		<string>7ghdn08ov5iF7DymXI1WVxYWn</string>
+		<key>TwitterSecret</key>
+		<string>LuFNvUIq6c05jotBq8YWserlHcjWmlYcbfDnOhfxRp9XiVeov4</string>
+		<key>apiPath</key>
+		<string>api</string>
+		<key>serverURL</key>
+		<string>http://45.33.54.108</string>
+	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
