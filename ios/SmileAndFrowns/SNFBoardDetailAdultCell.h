@@ -1,3 +1,4 @@
+
 #import <UIKit/UIKit.h>
 #import "SNFUserRole.h"
 #import "SNFUser.h"
@@ -16,7 +17,6 @@
 @property (nonatomic) SNFUserRole *userRole;
 
 @property (weak) IBOutlet UILabel *nameLabel;
-@property (weak) IBOutlet UILabel *noteLabel;
 @property (weak) IBOutlet UIImageView *profileImageView;
 @property (weak) NSObject <SNFBoardDetailAdultCellDelegate> *delegate;
 

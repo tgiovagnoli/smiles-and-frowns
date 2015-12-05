@@ -58,6 +58,18 @@
 		075EA4EA1C121E240003A403 /* treat.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4E21C121E240003A403 /* treat.png */; };
 		075EA4EB1C121E240003A403 /* treat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4E31C121E240003A403 /* treat@2x.png */; };
 		075EA4EE1C1225540003A403 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA4ED1C1225540003A403 /* Utils.m */; };
+		075EA4F31C125C170003A403 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4EF1C125C170003A403 /* add.png */; };
+		075EA4F41C125C170003A403 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4F01C125C170003A403 /* add@2x.png */; };
+		075EA4F51C125C170003A403 /* subtract.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4F11C125C170003A403 /* subtract.png */; };
+		075EA4F61C125C170003A403 /* subtract@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4F21C125C170003A403 /* subtract@2x.png */; };
+		075EA4F91C1356F60003A403 /* add_board.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4F71C1356F60003A403 /* add_board.png */; };
+		075EA4FA1C1356F60003A403 /* add_board@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4F81C1356F60003A403 /* add_board@2x.png */; };
+		075EA4FD1C1357540003A403 /* back_boards.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4FB1C1357540003A403 /* back_boards.png */; };
+		075EA4FE1C1357540003A403 /* back_boards@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4FC1C1357540003A403 /* back_boards@2x.png */; };
+		075EA5011C135C000003A403 /* spend.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4FF1C135C000003A403 /* spend.png */; };
+		075EA5021C135C000003A403 /* spend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA5001C135C000003A403 /* spend@2x.png */; };
+		075EA5051C1362460003A403 /* PillLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA5041C1362460003A403 /* PillLabel.m */; };
+		075EA5081C1368560003A403 /* SNFBoardDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA5071C1368560003A403 /* SNFBoardDetailHeader.m */; };
 		078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */; };
 		078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */; };
 		078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */; };
@@ -271,6 +283,20 @@
 		075EA4E31C121E240003A403 /* treat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "treat@2x.png"; sourceTree = "<group>"; };
 		075EA4EC1C1225540003A403 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		075EA4ED1C1225540003A403 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		075EA4EF1C125C170003A403 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		075EA4F01C125C170003A403 /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
+		075EA4F11C125C170003A403 /* subtract.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subtract.png; sourceTree = "<group>"; };
+		075EA4F21C125C170003A403 /* subtract@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "subtract@2x.png"; sourceTree = "<group>"; };
+		075EA4F71C1356F60003A403 /* add_board.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_board.png; sourceTree = "<group>"; };
+		075EA4F81C1356F60003A403 /* add_board@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_board@2x.png"; sourceTree = "<group>"; };
+		075EA4FB1C1357540003A403 /* back_boards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_boards.png; sourceTree = "<group>"; };
+		075EA4FC1C1357540003A403 /* back_boards@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_boards@2x.png"; sourceTree = "<group>"; };
+		075EA4FF1C135C000003A403 /* spend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spend.png; sourceTree = "<group>"; };
+		075EA5001C135C000003A403 /* spend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "spend@2x.png"; sourceTree = "<group>"; };
+		075EA5031C1362460003A403 /* PillLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PillLabel.h; sourceTree = "<group>"; };
+		075EA5041C1362460003A403 /* PillLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PillLabel.m; sourceTree = "<group>"; };
+		075EA5061C1368560003A403 /* SNFBoardDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBoardDetailHeader.h; sourceTree = "<group>"; };
+		075EA5071C1368560003A403 /* SNFBoardDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoardDetailHeader.m; sourceTree = "<group>"; };
 		078DF4B11BE8105300CBFAA4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = libs/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = libs/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -639,6 +665,16 @@
 		07C0F3C01BEE646E0075A6B9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				075EA4FF1C135C000003A403 /* spend.png */,
+				075EA5001C135C000003A403 /* spend@2x.png */,
+				075EA4FB1C1357540003A403 /* back_boards.png */,
+				075EA4FC1C1357540003A403 /* back_boards@2x.png */,
+				075EA4EF1C125C170003A403 /* add.png */,
+				075EA4F01C125C170003A403 /* add@2x.png */,
+				075EA4F71C1356F60003A403 /* add_board.png */,
+				075EA4F81C1356F60003A403 /* add_board@2x.png */,
+				075EA4F11C125C170003A403 /* subtract.png */,
+				075EA4F21C125C170003A403 /* subtract@2x.png */,
 				075EA4DC1C121E240003A403 /* goal.png */,
 				075EA4DD1C121E240003A403 /* goal@2x.png */,
 				075EA4DE1C121E240003A403 /* money.png */,
@@ -964,6 +1000,8 @@
 				D65DF1471BE2BF94009CC6DF /* SNFBoardDetailChildCell.h */,
 				D65DF1481BE2BF94009CC6DF /* SNFBoardDetailChildCell.m */,
 				D65DF1491BE2BF94009CC6DF /* SNFBoardDetailChildCell.xib */,
+				075EA5061C1368560003A403 /* SNFBoardDetailHeader.h */,
+				075EA5071C1368560003A403 /* SNFBoardDetailHeader.m */,
 				D65DF1771BE3F884009CC6DF /* SNFBoardEdit.h */,
 				D65DF1781BE3F884009CC6DF /* SNFBoardEdit.m */,
 				D65DF1791BE3F884009CC6DF /* SNFBoardEdit.xib */,
@@ -1021,6 +1059,8 @@
 				D6D197561BF677060009E652 /* UIImageView+ProfileStyle.m */,
 				075EA4EC1C1225540003A403 /* Utils.h */,
 				075EA4ED1C1225540003A403 /* Utils.m */,
+				075EA5031C1362460003A403 /* PillLabel.h */,
+				075EA5041C1362460003A403 /* PillLabel.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -1138,14 +1178,19 @@
 				0707D6DD1BE428BA002F1FC0 /* SNFInvites.xib in Resources */,
 				D6270ED71BE817E900F7C39A /* SNFAddBehavior.xib in Resources */,
 				D65DF15B1BE2F59F009CC6DF /* SNFAddUserRole.xib in Resources */,
+				075EA4F91C1356F60003A403 /* add_board.png in Resources */,
 				075EA4E41C121E240003A403 /* goal.png in Resources */,
 				07C0F3C41BEE646E0075A6B9 /* fb@2x.png in Resources */,
 				0707D6D11BE2B301002F1FC0 /* SNFPasswordReset.xib in Resources */,
 				D6DB2BDC1BEAAB3500F1CDFF /* SNFAddReward.xib in Resources */,
+				075EA4FD1C1357540003A403 /* back_boards.png in Resources */,
 				07C0F3BA1BED37C70075A6B9 /* InAppPurchases.plist in Resources */,
+				075EA4F41C125C170003A403 /* add@2x.png in Resources */,
 				D6270EDE1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.xib in Resources */,
 				075EA4E51C121E240003A403 /* goal@2x.png in Resources */,
 				07C0F3CF1BEE6FC80075A6B9 /* male.png in Resources */,
+				075EA4F61C125C170003A403 /* subtract@2x.png in Resources */,
+				075EA5021C135C000003A403 /* spend@2x.png in Resources */,
 				D6270ED91BE817E900F7C39A /* SNFAddBehaviorCell.xib in Resources */,
 				078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */,
 				075EA4E71C121E240003A403 /* money@2x.png in Resources */,
@@ -1169,12 +1214,16 @@
 				D65DF1501BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib in Resources */,
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
 				D6F442311BEBF425009C2866 /* SNFReportingSectionHeader.xib in Resources */,
+				075EA4F31C125C170003A403 /* add.png in Resources */,
+				075EA4FE1C1357540003A403 /* back_boards@2x.png in Resources */,
 				D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */,
 				071AC1021BF2656E005D63F2 /* HockeySDKResources.bundle in Resources */,
 				D65DF14B1BE2BF94009CC6DF /* SNFBoardDetailChildCell.xib in Resources */,
 				D65DF12A1BE2AA50009CC6DF /* SNFBoardList.xib in Resources */,
 				D6DB2BD11BEAA03300F1CDFF /* SNFRewardCell.xib in Resources */,
 				07C0F3D01BEE6FC80075A6B9 /* male@2x.png in Resources */,
+				075EA4F51C125C170003A403 /* subtract.png in Resources */,
+				075EA5011C135C000003A403 /* spend.png in Resources */,
 				07C0F3C31BEE646E0075A6B9 /* fb.png in Resources */,
 				D62E1CE81BEA6BBD00EF8725 /* SNFAddSmileOrFrown.xib in Resources */,
 				D6DB2BD61BEAA0BA00F1CDFF /* SNFAddCell.xib in Resources */,
@@ -1184,6 +1233,7 @@
 				D65DF1301BE2AE6D009CC6DF /* SNFMore.xib in Resources */,
 				D65DF17B1BE3F884009CC6DF /* SNFBoardEdit.xib in Resources */,
 				D65DF13B1BE2B8EE009CC6DF /* SNFBoardListCell.xib in Resources */,
+				075EA4FA1C1356F60003A403 /* add_board@2x.png in Resources */,
 				D694011C1BED25530073119E /* SNFPredefinedBoardCell.xib in Resources */,
 				075EA4EB1C121E240003A403 /* treat@2x.png in Resources */,
 				075EA4D91C1214F60003A403 /* frown@2x.png in Resources */,
@@ -1260,10 +1310,12 @@
 				07C0F3BD1BED70BC0075A6B9 /* SNFADBannerView.m in Sources */,
 				D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */,
 				D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */,
+				075EA5051C1362460003A403 /* PillLabel.m in Sources */,
 				071AC1111BF78D46005D63F2 /* UIImageView+DiskCache.m in Sources */,
 				078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */,
 				0707D6C51BE2B2D8002F1FC0 /* SNFAcceptInvite.m in Sources */,
 				D6270ED61BE817E900F7C39A /* SNFAddBehavior.m in Sources */,
+				075EA5081C1368560003A403 /* SNFBoardDetailHeader.m in Sources */,
 				D6E724D81BF517E200398D09 /* UIImage+Additions.m in Sources */,
 				071AC10E1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m in Sources */,
 				0707D6AE1BE2A1C9002F1FC0 /* SNFLogin.m in Sources */,

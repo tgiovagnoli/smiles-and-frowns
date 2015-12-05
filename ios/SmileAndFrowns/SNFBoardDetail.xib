@@ -3,6 +3,11 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFBoardDetail">
             <connections>
@@ -19,65 +24,90 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XA7-Ce-4XU">
-                    <rect key="frame" x="80" y="20" width="440" height="21"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="md8-2Q-eLn">
+                    <rect key="frame" x="0.0" y="61" width="600" height="539"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-le-D3j">
-                    <rect key="frame" x="8" y="15" width="69" height="30"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="69" id="WKd-7S-IEN"/>
-                        <constraint firstAttribute="height" constant="30" id="YNb-ox-5Ts"/>
-                    </constraints>
-                    <state key="normal" title="&lt; Boards"/>
-                    <connections>
-                        <action selector="backToBoards:" destination="-1" eventType="touchUpInside" id="45E-kX-Aub"/>
-                    </connections>
-                </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="md8-2Q-eLn">
-                    <rect key="frame" x="0.0" y="96" width="600" height="504"/>
-                    <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="RRc-E8-CNN"/>
                         <outlet property="delegate" destination="-1" id="ReQ-cr-co7"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4t-rc-jO4">
-                    <rect key="frame" x="0.0" y="60" width="600" height="36"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XA7-Ce-4XU">
+                    <rect key="frame" x="58" y="26" width="485" height="27"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                    <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FKO-le-D3j">
+                    <rect key="frame" x="10" y="27" width="40" height="25"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="WKd-7S-IEN"/>
+                        <constraint firstAttribute="height" constant="25" id="YNb-ox-5Ts"/>
+                    </constraints>
+                    <state key="normal" image="back_boards.png"/>
+                    <connections>
+                        <action selector="backToBoards:" destination="-1" eventType="touchUpInside" id="45E-kX-Aub"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4t-rc-jO4">
+                    <rect key="frame" x="565" y="27" width="25" height="25"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.86394166946411133" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="2Tx-sb-kuq"/>
+                        <constraint firstAttribute="width" constant="25" id="deQ-vG-1dG"/>
+                        <constraint firstAttribute="height" constant="25" id="hDQ-FN-YzP"/>
+                        <constraint firstAttribute="width" constant="36" id="o0E-Ba-7rC"/>
                     </constraints>
-                    <state key="normal" title="+ Add Child, Parent, Or Guardian"/>
+                    <state key="normal" image="add_board.png"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="2Tx-sb-kuq"/>
+                            <exclude reference="o0E-Ba-7rC"/>
+                        </mask>
+                    </variation>
                     <connections>
                         <action selector="onAddUserRole:" destination="-1" eventType="touchUpInside" id="bNf-zH-rbk"/>
                     </connections>
                 </button>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="H4t-rc-jO4" secondAttribute="trailing" id="2i9-io-KOH"/>
-                <constraint firstAttribute="trailing" secondItem="XA7-Ce-4XU" secondAttribute="trailing" constant="80" id="BgS-3Y-y8R"/>
-                <constraint firstItem="md8-2Q-eLn" firstAttribute="top" secondItem="H4t-rc-jO4" secondAttribute="bottom" id="EoF-K0-Niw"/>
-                <constraint firstItem="H4t-rc-jO4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OIc-XM-M14"/>
+                <constraint firstAttribute="trailing" secondItem="H4t-rc-jO4" secondAttribute="trailing" constant="8" id="2i9-io-KOH"/>
+                <constraint firstAttribute="trailing" secondItem="XA7-Ce-4XU" secondAttribute="trailing" constant="57" id="BgS-3Y-y8R"/>
+                <constraint firstItem="H4t-rc-jO4" firstAttribute="leading" secondItem="XA7-Ce-4XU" secondAttribute="trailing" constant="36" id="ER7-fc-Sqv"/>
+                <constraint firstItem="md8-2Q-eLn" firstAttribute="top" secondItem="H4t-rc-jO4" secondAttribute="bottom" constant="46" id="EoF-K0-Niw"/>
                 <constraint firstAttribute="trailing" secondItem="md8-2Q-eLn" secondAttribute="trailing" id="P04-E7-82h"/>
-                <constraint firstItem="H4t-rc-jO4" firstAttribute="top" secondItem="XA7-Ce-4XU" secondAttribute="bottom" constant="19" id="Y1s-S7-3rH"/>
-                <constraint firstItem="XA7-Ce-4XU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="80" id="bMt-BF-qeD"/>
+                <constraint firstItem="H4t-rc-jO4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="PEo-z0-wJ1"/>
+                <constraint firstItem="H4t-rc-jO4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="QKr-u6-XoW"/>
+                <constraint firstItem="H4t-rc-jO4" firstAttribute="top" secondItem="XA7-Ce-4XU" secondAttribute="bottom" constant="-33" id="Y1s-S7-3rH"/>
+                <constraint firstItem="XA7-Ce-4XU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="58" id="bMt-BF-qeD"/>
                 <constraint firstItem="md8-2Q-eLn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bh2-a4-Xc5"/>
-                <constraint firstItem="FKO-le-D3j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="gmB-Y0-Uen"/>
-                <constraint firstItem="FKO-le-D3j" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="iUN-bU-l6q"/>
-                <constraint firstItem="XA7-Ce-4XU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="mgD-az-j6M"/>
+                <constraint firstItem="md8-2Q-eLn" firstAttribute="top" secondItem="XA7-Ce-4XU" secondAttribute="bottom" constant="8" id="dXc-sW-h5T"/>
+                <constraint firstItem="FKO-le-D3j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="gmB-Y0-Uen"/>
+                <constraint firstItem="FKO-le-D3j" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="27" id="iUN-bU-l6q"/>
+                <constraint firstItem="XA7-Ce-4XU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="26" id="mgD-az-j6M"/>
                 <constraint firstAttribute="bottom" secondItem="md8-2Q-eLn" secondAttribute="bottom" id="n2B-Sn-8eC"/>
+                <constraint firstAttribute="trailing" secondItem="H4t-rc-jO4" secondAttribute="trailing" constant="10" id="oki-hT-J7m"/>
             </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="587" y="367"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="EoF-K0-Niw"/>
+                    <exclude reference="2i9-io-KOH"/>
+                    <exclude reference="ER7-fc-Sqv"/>
+                    <exclude reference="PEo-z0-wJ1"/>
+                    <exclude reference="Y1s-S7-3rH"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="520" y="401"/>
         </view>
     </objects>
+    <resources>
+        <image name="add_board.png" width="74" height="74"/>
+        <image name="back_boards.png" width="79" height="49"/>
+    </resources>
 </document>

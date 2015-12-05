@@ -20,11 +20,11 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2hY-Cs-UWU">
                         <rect key="frame" x="0.0" y="0.0" width="60" height="70"/>
                         <animations/>
-                        <color key="backgroundColor" red="0.22352941334247589" green="0.22352941334247589" blue="0.22352941334247589" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="28"/>
                         <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
                         <state key="normal" title="+">
-                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <connections>
                             <action selector="onAdd:" destination="gTV-IL-0wX" eventType="touchUpInside" id="JuJ-dV-s2L"/>

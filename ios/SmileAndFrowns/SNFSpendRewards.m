@@ -8,10 +8,17 @@
 #import "UIViewController+Alerts.h"
 #import "Utils.h"
 
+@interface SNFSpendRewards ()
+@property float spendAmount;
+@end
+
 @implementation SNFSpendRewards
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	
+	self.spendAmount = 1;
+	
 	self.rewardsInfoLabel.text = @"";
 	[self.rewardsCollection registerClass:[SNFRewardCell class] forCellWithReuseIdentifier:@"SNFRewardCell"];
 	[self.rewardsCollection registerNib:[UINib nibWithNibName:@"SNFRewardCell" bundle:nil] forCellWithReuseIdentifier:@"SNFRewardCell"];
@@ -26,10 +33,39 @@
 	self.spendSmileButton.layer.cornerRadius = 10;
 	self.spendSmileButton.layer.masksToBounds = TRUE;
 	
-	self.spendCountView.layer.shadowOffset = CGSizeMake(0,2);
+	self.totalSmilesImage.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.totalSmilesImage.layer.shadowOffset = CGSizeMake(0,2);
+	self.totalSmilesImage.layer.shadowOpacity = .1;
+	self.totalSmilesImage.layer.shadowRadius = 1;
+	
+	self.spendCountView.layer.shadowOffset = CGSizeMake(0,1);
 	self.spendCountView.layer.shadowColor = [[UIColor blackColor] CGColor];
 	self.spendCountView.layer.shadowOpacity = .1;
-	self.spendCountView.layer.shadowRadius = .8;
+	self.spendCountView.layer.shadowRadius = 1;
+	
+	self.smileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.smileImage.layer.shadowOffset = CGSizeMake(0,2);
+	self.smileImage.layer.shadowOpacity = .1;
+	self.smileImage.layer.shadowRadius = 1;
+	
+	self.addButton.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.addButton.layer.shadowOffset = CGSizeMake(0,2);
+	self.addButton.layer.shadowOpacity = .1;
+	self.addButton.layer.shadowRadius = 1;
+	
+	self.subtractButton.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.subtractButton.layer.shadowOffset = CGSizeMake(0,2);
+	self.subtractButton.layer.shadowOpacity = .1;
+	self.subtractButton.layer.shadowRadius = 1;
+	
+	self.spendCountSmileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.spendCountSmileImage.layer.shadowOffset = CGSizeMake(0,2);
+	self.spendCountSmileImage.layer.shadowOpacity = .1;
+	self.spendCountSmileImage.layer.shadowRadius = 1;
+	
+	self.spendAmountView.backgroundColor = [UIColor clearColor];
+	self.spendAmountView.layer.borderColor = [[UIColor colorWithRed:0.959 green:0.933 blue:0.902 alpha:1] CGColor];
+	self.spendAmountView.layer.borderWidth = 2;
 	
 	[self startBannerAd];
 	[self updateUI];
@@ -42,7 +78,12 @@
 
 - (void) updateUserInfo {
 	self.userFirstLastLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.first_name, self.user.last_name];
-	self.userGenderAgeLabel.text = [NSString stringWithFormat:@"%@ %@", self.user.gender, self.user.age];
+	
+	if([self.user.gender isEqualToString:@"male"]) {
+		self.userGenderAgeLabel.text = [NSString stringWithFormat:@"Male %@", self.user.age];
+	} else {
+		self.userGenderAgeLabel.text = [NSString stringWithFormat:@"Female %@", self.user.age];
+	}
 	
 	// calculate the number of smiles available from the board
 	_smilesAvailable = 0;
@@ -91,12 +132,12 @@
 	}
 }
 
-- (void)setBoard:(SNFBoard *)board{
+- (void) setBoard:(SNFBoard *) board {
 	_board = board;
 	[self updateUI];
 }
 
-- (void)setUser:(SNFUser *)user{
+- (void) setUser:(SNFUser *) user {
 	_user = user;
 	[self updateUI];
 }
@@ -187,11 +228,9 @@
 		self.smileImageCenterConstraint.constant = - ((size.width/2) + (self.smileImage.width/2) + 4);
 		
 	}
-	
-	[self updateStepperForReward];
 }
 
-- (void)addCellWantsToAdd:(SNFAddCell *)addCell{
+- (void) addCellWantsToAdd:(SNFAddCell *) addCell {
 	SNFAddReward * addReward = [[SNFAddReward alloc] initWithSourceView:addCell sourceRect:CGRectZero contentSize:CGSizeMake(500,325)];
 	addReward.board = self.board;
 	addReward.delegate = self;
@@ -202,17 +241,23 @@
 	[self.rewardsCollection reloadData];
 }
 
-- (void)updateStepperForReward{
-	if(_smilesAvailable <= 0 || _smilesAvailable < _selectedReward.smile_amount.floatValue){
-		self.incrementStepper.maximumValue = 1.0;
-		self.incrementStepper.minimumValue = 1.0;
-		self.incrementStepper.value = 1.0;
+- (IBAction) onAdd:(id)sender {
+	self.spendAmount += 1;
+	
+	if(self.spendAmount > _smilesAvailable) {
+		self.spendAmount = _smilesAvailable;
 	}
-	self.incrementStepper.maximumValue = floor(_smilesAvailable/_selectedReward.smile_amount.floatValue);
-	self.incrementStepper.minimumValue = 1.0;
-	if(self.incrementStepper.value > self.incrementStepper.maximumValue){
-		self.incrementStepper.value = self.incrementStepper.maximumValue;
+	
+	[self updateSmileAndRewardsLabels];
+}
+
+- (IBAction) onSubtract:(id)sender {
+	self.spendAmount -= 1;
+	
+	if(self.spendAmount <= 0) {
+		self.spendAmount = 1;
 	}
+	
 	[self updateSmileAndRewardsLabels];
 }
 
@@ -221,13 +266,13 @@
 }
 
 - (IBAction)onMax:(UIButton *)sender{
-	self.incrementStepper.value = self.incrementStepper.maximumValue;
+	self.spendAmount = _smilesAvailable;
 	[self updateSmileAndRewardsLabels];
 }
 
 - (void)updateSmileAndRewardsLabels {
-	self.spendSmilesLabel.text = [NSString stringWithFormat:@"%.0f", self.incrementStepper.value * _selectedReward.smile_amount.floatValue];
-	self.rewardCalculatedLabel.text = [NSString stringWithFormat:@"= %.0f %@", self.incrementStepper.value * _selectedReward.currency_amount.floatValue, _selectedReward.title];
+	self.spendSmilesLabel.text = [NSString stringWithFormat:@"%.0f", self.spendAmount];
+	self.rewardCalculatedLabel.text = [NSString stringWithFormat:@"= %.0f %@", self.spendAmount * _selectedReward.currency_amount.floatValue, _selectedReward.title];
 }
 
 - (IBAction)onCancel:(UIButton *)sender{
@@ -238,8 +283,8 @@
 }
 
 - (IBAction) onRedeemReward:(UIButton *) sender {
-	CGFloat currency = _selectedReward.currency_amount.floatValue * self.incrementStepper.value;
-	CGFloat smiles = _selectedReward.smile_amount.floatValue * self.incrementStepper.value;
+	CGFloat currency = _selectedReward.currency_amount.floatValue * _spendAmount;
+	CGFloat smiles = _selectedReward.smile_amount.floatValue * _spendAmount;
 	
 	if(smiles > _smilesAvailable){
 		
@@ -248,7 +293,13 @@
 		
 	} else {
 		
-		NSString * alertMessage = [NSString stringWithFormat:@"Are you sure you want to spend %.0f smiles?", smiles];
+		NSString * alertMessage = nil;
+		if(smiles == 1) {
+			alertMessage = [NSString stringWithFormat:@"Are you sure you want to spend %.0f smile?", smiles];
+		} else {
+			alertMessage = [NSString stringWithFormat:@"Are you sure you want to spend %.0f smiles?", smiles];
+		}
+		
 		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
 		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
 		[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -259,7 +310,7 @@
 }
 
 - (void) redeemReward {
-	CGFloat smiles = _selectedReward.smile_amount.floatValue * self.incrementStepper.value;
+	CGFloat smiles = _selectedReward.smile_amount.floatValue * _spendAmount;
 	NSInteger smilesTaken = 0;
 	for(SNFSmile *smile in [self.board smilesForUser:self.user]){
 		if(smilesTaken < smiles){

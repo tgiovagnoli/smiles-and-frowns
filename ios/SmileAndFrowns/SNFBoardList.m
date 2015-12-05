@@ -390,11 +390,9 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	
 	[self boardListCell:nil wantsToEditBoard:newBoard];
 	
-	
-	
 	[[SNFSyncService instance] saveContext];
 	
-	NSLog(@"\nboard updated:%@ \nlast synced:%@", newBoard.updated_date, [SNFModel sharedInstance].userSettings.lastSyncDate);
+	//NSLog(@"\nboard updated:%@ \nlast synced:%@", newBoard.updated_date, [SNFModel sharedInstance].userSettings.lastSyncDate);
 }
 
 

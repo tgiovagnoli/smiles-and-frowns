@@ -5,6 +5,7 @@
 #import "UIViewController+ModalCreation.h"
 #import "SNFBoardEdit.h"
 #import "SNFModel.h"
+#import "SNFBoardDetailHeader.h"
 
 @implementation SNFBoardDetail
 
@@ -12,6 +13,12 @@
 	[super viewDidLoad];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserRoleAddedChild:) name:SNFAddUserRoleAddedChild object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onBoardEditFinished:) name:SNFBoardEditFinished object:nil];
+	
+	self.addButton.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.addButton.layer.shadowOffset = CGSizeMake(0, 2);
+	self.addButton.layer.shadowOpacity = .1;
+	self.addButton.layer.shadowRadius = 1;
+	
 	[self updateUI];
 }
 
@@ -47,7 +54,10 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-	UITableViewHeaderFooterView *headerCell = [[UITableViewHeaderFooterView alloc] init];
+	SNFBoardDetailHeader * headerCell = [[SNFBoardDetailHeader alloc] init];
+	headerCell.contentView.backgroundColor = [UIColor colorWithRed:0.959 green:0.933 blue:0.902 alpha:1];
+	headerCell.textLabel.textColor = [UIColor colorWithRed:0.362 green:0.362 blue:0.362 alpha:1];
+	
 	switch ((SNFBoardDetailUserRole)section) {
 		case SNFBoardDetailUserRoleOwner:
 			headerCell.textLabel.text = @"Owner";
@@ -62,6 +72,7 @@
 			headerCell.textLabel.text = @"Guardians";
 			break;
 	}
+	
 	return headerCell;
 }
 
@@ -87,7 +98,7 @@
 	return 0.0;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger) numberOfSectionsInTableView:(UITableView *) tableView{
 	return 4;
 }
 
@@ -300,10 +311,10 @@
 }
 
 - (NSArray *)resultsForRole:(NSString *)role{
-	NSLog(@"%@", _board.user_roles);
-	for(SNFUserRole *userRole in _board.user_roles){
-		NSLog(@"%@", userRole.user.first_name);
-	}
+	//NSLog(@"%@", _board.user_roles);
+	//for(SNFUserRole *userRole in _board.user_roles){
+	//	NSLog(@"%@", userRole.user.first_name);
+	//}
 	
 	NSSortDescriptor *userDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"self.user.first_name" ascending:YES];
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"role==%@", role];

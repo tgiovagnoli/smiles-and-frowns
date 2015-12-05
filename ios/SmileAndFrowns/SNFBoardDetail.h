@@ -28,12 +28,12 @@ typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
 	NSArray *_guardians;
 }
 
-@property (weak) IBOutlet UITableView *rolesTable;
-@property (weak) IBOutlet UIButton *addButton;
-@property (weak) IBOutlet UIButton *backButton;
-@property (weak) IBOutlet UILabel *titleLabel;
-@property (weak) IBOutlet NSLayoutConstraint *addButtonHeightConstraint;
-@property (nonatomic) SNFBoard *board;
+@property (weak) IBOutlet UITableView * rolesTable;
+@property (weak) IBOutlet UIButton * addButton;
+@property (weak) IBOutlet UIButton * backButton;
+@property (weak) IBOutlet UILabel * titleLabel;
+@property (weak) IBOutlet NSLayoutConstraint * addButtonHeightConstraint;
+@property (nonatomic) SNFBoard * board;
 
 - (IBAction)backToBoards:(UIButton *)sender;
 

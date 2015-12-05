@@ -15,14 +15,13 @@
 	}
 	
 	self.nameLabel.text = title;
-	self.noteLabel.text = @"";
 	
 	[self setImageFromGender];
 	
 	if(![_user.image isEmpty] && _user.image) {
 		NSURL * url = [NSURL URLWithString:_user.image];
 		[self.profileImageView setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
-			[self.profileImageView setImage:image asProfileWithBorderColor:[UIColor blackColor] andBorderThickness:2];
+			[self.profileImageView setImage:image asProfileWithBorderColor:[UIColor whiteColor] andBorderThickness:2];
 			if(error) {
 				[self setImageFromGender];
 			}

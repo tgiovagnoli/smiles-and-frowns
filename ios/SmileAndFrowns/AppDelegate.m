@@ -34,6 +34,7 @@ static AppDelegate * _instance;
 	_instance = self;
 	
 	[[GATracking instance] initTagManagerWithID:@"GTM-T7XD6P"];
+	[[GATracking instance] setLogLevel:kTAGLoggerLogLevelNone];
 	
 	UIUserNotificationType userNotificationTypes = UIUserNotificationTypeBadge;
 	UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
