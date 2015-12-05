@@ -15,8 +15,8 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onBoardEditFinished:) name:SNFBoardEditFinished object:nil];
 	
 	self.addButton.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.addButton.layer.shadowOffset = CGSizeMake(0, 2);
-	self.addButton.layer.shadowOpacity = .1;
+	self.addButton.layer.shadowOffset = CGSizeMake(0,0);
+	self.addButton.layer.shadowOpacity = .2;
 	self.addButton.layer.shadowRadius = 1;
 	
 	[self updateUI];
@@ -55,7 +55,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 	SNFBoardDetailHeader * headerCell = [[SNFBoardDetailHeader alloc] init];
-	headerCell.contentView.backgroundColor = [UIColor colorWithRed:0.959 green:0.933 blue:0.902 alpha:1];
+	headerCell.contentView.backgroundColor = self.view.backgroundColor;
 	headerCell.textLabel.textColor = [UIColor colorWithRed:0.362 green:0.362 blue:0.362 alpha:1];
 	
 	switch ((SNFBoardDetailUserRole)section) {

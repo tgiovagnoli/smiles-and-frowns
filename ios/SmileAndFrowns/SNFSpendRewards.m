@@ -225,7 +225,7 @@
 		UIFont * font = [UIFont fontWithName:@"Roboto-Regular" size:18];
 		NSDictionary * attributes = @{NSFontAttributeName:font,};
 		CGSize size = [self.rewardsInfoLabel.text sizeWithAttributes:attributes];
-		self.smileImageCenterConstraint.constant = - ((size.width/2) + (self.smileImage.width/2) + 4);
+		self.smileImageCenterConstraint.constant = - ((size.width/2) + (self.smileImage.width/4));
 		
 	}
 }

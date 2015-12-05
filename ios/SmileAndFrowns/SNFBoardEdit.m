@@ -203,8 +203,19 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	}
 	
 	SNFRewardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SNFRewardCell" forIndexPath:indexPath];
-	SNFReward *reward = [_sortedRewards objectAtIndex:indexPath.row - 1];
+	
+	SNFReward * reward = [_sortedRewards objectAtIndex:indexPath.row - 1];
+	
+	if(indexPath.row == 1) {
+		cell.selected = TRUE;
+		self.rewardInfoLabel.text = [NSString stringWithFormat:@"%.2f Smiles = %.2f %@", reward.smile_amount.floatValue, reward.currency_amount.floatValue, reward.title];
+	} else {
+		cell.selected = FALSE;
+	}
+	
+	
 	cell.reward = reward;
+	
 	return cell;
 }
 
@@ -230,10 +241,19 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	if(indexPath.row == 0){
 		return;
 	}
+	
+	for (int i = 0; i < _sortedRewards.count; i++) {
+		if(i == 0) {
+			continue;
+		}
+		NSIndexPath * path = [NSIndexPath indexPathForRow:i inSection:0];
+		UICollectionViewCell * cell = [collectionView cellForItemAtIndexPath:path];
+		cell.selected = FALSE;
+	}
+	
 	SNFReward *reward = [_sortedRewards objectAtIndex:indexPath.row - 1];
+	
 	self.rewardInfoLabel.text = [NSString stringWithFormat:@"%.2f Smiles = %.2f %@", reward.smile_amount.floatValue, reward.currency_amount.floatValue, reward.title];
 }
-
-
 
 @end

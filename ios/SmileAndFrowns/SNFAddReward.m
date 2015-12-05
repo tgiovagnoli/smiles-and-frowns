@@ -66,9 +66,6 @@
 }
 
 - (IBAction)onCancel:(UIButton *)sender{
-	if(self.delegate){
-		[self.delegate addRewardIsFinished:self];
-	}
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
