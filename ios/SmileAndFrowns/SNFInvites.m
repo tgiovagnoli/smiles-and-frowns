@@ -47,6 +47,14 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onInviteDelete:) name:SNFInvitesCellDelete object:nil];
 	
 	[[GATracking instance] trackScreenWithTagManager:@"InvitesView"];
+	
+	[self decorate];
+}
+
+- (void)decorate{
+	[SNFFormStyles roundEdgesOnButton:self.searchButton];
+	[SNFFormStyles roundEdgesOnButton:self.inviteButton];
+	[SNFFormStyles updateFontOnSegmentControl:self.segment];
 }
 
 - (void) dealloc {

@@ -7,6 +7,7 @@
 #import "UIViewControllerStack.h"
 #import "IAPHelper.h"
 #import "SNFFormViewController.h"
+#import "SNFFormStyles.h"
 
 typedef NS_ENUM(NSInteger, SNFBoardListFilter){
 	SNFBoardListFilterName,

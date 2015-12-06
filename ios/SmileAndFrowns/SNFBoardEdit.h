@@ -11,6 +11,8 @@
 #import "SNFFormViewController.h"
 #import "UIView+AutoLayout.h"
 #import "NSTimer+Blocks.h"
+#import "UIColor+Hex.h"
+#import "SNFFormStyles.h"
 
 extern NSString * const SNFBoardEditFinished;
 

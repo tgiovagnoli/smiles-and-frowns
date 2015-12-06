@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </mutableArray>
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFAddBehavior">
             <connections>
@@ -26,12 +35,15 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-LU-UHK">
                     <rect key="frame" x="164" y="359" width="273" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="273" id="Tw4-mX-dbe"/>
                         <constraint firstAttribute="height" constant="30" id="t4d-na-kwG"/>
                     </constraints>
-                    <state key="normal" title="Add Selected Behaviors"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                    <state key="normal" title="Add Selected Behaviors">
+                        <color key="titleColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="onAddBehaviors:" destination="-1" eventType="touchUpInside" id="dam-hu-mfb"/>
                     </connections>
@@ -39,12 +51,15 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbI-aD-e8X">
                     <rect key="frame" x="164" y="321" width="273" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="IJX-Cf-gcK"/>
                         <constraint firstAttribute="width" constant="273" id="kcZ-cG-tWd"/>
                     </constraints>
-                    <state key="normal" title="Define Cutom Behavior"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                    <state key="normal" title="Define Cutom Behavior">
+                        <color key="titleColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="onNewBehavior:" destination="-1" eventType="touchUpInside" id="fnZ-0y-Yct"/>
                     </connections>
@@ -56,6 +71,7 @@
                         <segment title="Positive"/>
                         <segment title="Negative"/>
                     </segments>
+                    <color key="tintColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="positiveNegativeSegmentChange:" destination="-1" eventType="valueChanged" id="tEd-hx-XAc"/>
                     </connections>
@@ -63,7 +79,7 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Ff-CQ-Zgg">
                     <rect key="frame" x="0.0" y="48" width="600" height="263"/>
                     <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="w11-iJ-Uy3"/>
                         <outlet property="delegate" destination="-1" id="9tJ-t7-5JK"/>
@@ -71,7 +87,7 @@
                 </tableView>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="1Ff-CQ-Zgg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0wF-H5-KUa"/>
                 <constraint firstItem="eoQ-LU-UHK" firstAttribute="top" secondItem="xbI-aD-e8X" secondAttribute="bottom" constant="8" id="2fU-db-1z2"/>
@@ -100,11 +116,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Awv-dk-Olb">
-                    <rect key="frame" x="0.0" y="49" width="600" height="551"/>
+                    <rect key="frame" x="0.0" y="59" width="600" height="541"/>
                     <animations/>
                 </scrollView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Behavior" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpq-GM-DFZ">
-                    <rect key="frame" x="236" y="20" width="129" height="21"/>
+                    <rect key="frame" x="236" y="30" width="129" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="129" id="Ngo-Er-dXl"/>
@@ -115,21 +131,24 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlr-0x-QdB">
-                    <rect key="frame" x="527" y="15" width="60" height="30"/>
+                    <rect key="frame" x="530" y="25" width="60" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.86394166946411133" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="lfH-4b-Ehq"/>
                         <constraint firstAttribute="width" constant="60" id="x51-Sv-vzj"/>
                     </constraints>
-                    <state key="normal" title="Cancel"/>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="onBack:" destination="-1" eventType="touchUpInside" id="R8u-lF-NG6"/>
                     </connections>
                 </button>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.94901960780000005" green="0.91764705879999997" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Awv-dk-Olb" secondAttribute="trailing" id="Cfg-nY-Khg"/>
                 <constraint firstAttribute="bottom" secondItem="Awv-dk-Olb" secondAttribute="bottom" id="FwU-ah-KIP"/>
@@ -137,8 +156,8 @@
                 <constraint firstItem="Awv-dk-Olb" firstAttribute="top" secondItem="dpq-GM-DFZ" secondAttribute="bottom" constant="8" id="dQx-ls-ynb"/>
                 <constraint firstItem="Dlr-0x-QdB" firstAttribute="top" secondItem="dpq-GM-DFZ" secondAttribute="top" constant="-5" id="dhY-TN-E18"/>
                 <constraint firstItem="dpq-GM-DFZ" firstAttribute="centerX" secondItem="04U-4t-QMg" secondAttribute="centerX" id="gJe-4I-ahI"/>
-                <constraint firstAttribute="trailing" secondItem="Dlr-0x-QdB" secondAttribute="trailing" constant="13" id="iu8-oX-xTU"/>
-                <constraint firstItem="dpq-GM-DFZ" firstAttribute="top" secondItem="04U-4t-QMg" secondAttribute="top" constant="20" id="wGx-OE-he7"/>
+                <constraint firstAttribute="trailing" secondItem="Dlr-0x-QdB" secondAttribute="trailing" constant="10" id="iu8-oX-xTU"/>
+                <constraint firstItem="dpq-GM-DFZ" firstAttribute="top" secondItem="04U-4t-QMg" secondAttribute="top" constant="30" id="wGx-OE-he7"/>
             </constraints>
             <point key="canvasLocation" x="1100" y="376"/>
         </view>

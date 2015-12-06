@@ -11,5 +11,6 @@ extern NSString * const SNFInviteAccepted;
 
 @property (weak) IBOutlet UILabel * joinLabel;
 @property (weak) IBOutlet UITextField * inviteCodeField;
+@property (weak) IBOutlet UIButton * joinButton;
 
 @end

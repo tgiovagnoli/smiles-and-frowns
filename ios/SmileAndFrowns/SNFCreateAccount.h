@@ -3,6 +3,7 @@
 #import "MBProgressHUD.h"
 #import "SNFFormViewController.h"
 #import "UIView+LayoutHelpers.h"
+#import "SNFFormStyles.h"
 
 @interface SNFCreateAccount : SNFFormViewController <UITextFieldDelegate>
 
@@ -13,5 +14,7 @@
 @property (weak) IBOutlet UITextField * lastname;
 @property (weak) IBOutlet UITextField * password;
 @property (weak) IBOutlet UITextField * passwordConfirm;
+@property (weak) IBOutlet UIButton * signupButton;
+@property (weak) IBOutlet UIButton * loginButton;
 
 @end

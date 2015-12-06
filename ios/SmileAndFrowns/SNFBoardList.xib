@@ -4,8 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -28,7 +30,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3G0-te-iwP">
-                    <rect key="frame" x="0.0" y="102" width="600" height="462"/>
+                    <rect key="frame" x="0.0" y="102" width="600" height="442"/>
                     <animations/>
                     <color key="backgroundColor" red="0.98431372549019602" green="0.96078431372549022" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="separatorColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
@@ -39,15 +41,15 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfm-E0-cfS">
-                    <rect key="frame" x="0.0" y="564" width="600" height="36"/>
+                    <rect key="frame" x="10" y="554" width="580" height="36"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.0" green="0.94901961089999998" blue="0.0027445651840000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.96078431372549022" green="0.49411764705882355" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="WdV-q4-PuJ"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                     <state key="normal" title="Purchase new board">
-                        <color key="titleColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="onPurchaseNewBoard:" destination="-1" eventType="touchUpInside" id="hdf-yv-udg"/>
@@ -63,14 +65,14 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-Rd-ePF">
                     <rect key="frame" x="504" y="51" width="76" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="76" id="04A-XZ-DIy"/>
                         <constraint firstAttribute="height" constant="30" id="rUh-LV-6NE"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                     <state key="normal" title="Search">
-                        <color key="titleColor" red="0.25882352941176467" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="showSeachField:" destination="-1" eventType="touchUpInside" id="aZh-t6-nKd"/>
@@ -102,8 +104,8 @@
             <animations/>
             <color key="backgroundColor" red="0.94901960784313721" green="0.91764705882352937" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="sfm-E0-cfS" firstAttribute="top" secondItem="3G0-te-iwP" secondAttribute="bottom" id="02E-Od-09u"/>
-                <constraint firstAttribute="bottom" secondItem="sfm-E0-cfS" secondAttribute="bottom" id="5a3-qI-Ka2"/>
+                <constraint firstItem="sfm-E0-cfS" firstAttribute="top" secondItem="3G0-te-iwP" secondAttribute="bottom" constant="10" id="02E-Od-09u"/>
+                <constraint firstAttribute="bottom" secondItem="sfm-E0-cfS" secondAttribute="bottom" constant="10" id="5a3-qI-Ka2"/>
                 <constraint firstItem="UiM-8D-clb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="86l-UY-YR4"/>
                 <constraint firstItem="RpQ-c6-pcS" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="9" id="9DI-rc-tgg"/>
                 <constraint firstItem="C0h-fF-oYr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="19" id="L35-mh-M1g"/>
@@ -111,10 +113,10 @@
                 <constraint firstItem="3G0-te-iwP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dIv-kf-plz"/>
                 <constraint firstAttribute="trailing" secondItem="UiM-8D-clb" secondAttribute="trailing" id="dKJ-Xx-xdA"/>
                 <constraint firstItem="3G0-te-iwP" firstAttribute="top" secondItem="RpQ-c6-pcS" secondAttribute="bottom" constant="22" id="dcy-p3-caA"/>
-                <constraint firstAttribute="trailing" secondItem="sfm-E0-cfS" secondAttribute="trailing" id="eE0-n5-Duc"/>
+                <constraint firstAttribute="trailing" secondItem="sfm-E0-cfS" secondAttribute="trailing" constant="10" id="eE0-n5-Duc"/>
                 <constraint firstItem="RpQ-c6-pcS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="19" id="ec2-Zi-jVf"/>
                 <constraint firstItem="OjW-Rd-ePF" firstAttribute="leading" secondItem="C0h-fF-oYr" secondAttribute="trailing" constant="8" id="evB-dg-2gb"/>
-                <constraint firstItem="sfm-E0-cfS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hT9-rw-Ip6"/>
+                <constraint firstItem="sfm-E0-cfS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="hT9-rw-Ip6"/>
                 <constraint firstAttribute="trailing" secondItem="OjW-Rd-ePF" secondAttribute="trailing" constant="20" id="l0W-hm-uYZ"/>
                 <constraint firstItem="C0h-fF-oYr" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="9" id="lrt-NS-5dQ"/>
                 <constraint firstItem="OjW-Rd-ePF" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="8" id="q5X-nu-csF"/>

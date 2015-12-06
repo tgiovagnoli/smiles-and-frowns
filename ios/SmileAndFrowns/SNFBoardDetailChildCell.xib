@@ -225,8 +225,8 @@
             <rect key="frame" x="0.0" y="0.0" width="136" height="92"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kea-SB-IRo">
-                    <rect key="frame" x="0.0" y="0.0" width="68" height="90"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kea-SB-IRo">
+                    <rect key="frame" x="0.0" y="0.0" width="68" height="92"/>
                     <animations/>
                     <color key="backgroundColor" red="0.0" green="0.94901961088180542" blue="0.0027445651835546307" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
@@ -237,8 +237,8 @@
                         <action selector="onEdit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mGb-bT-TlK"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKw-q6-RZi">
-                    <rect key="frame" x="68" y="0.0" width="68" height="90"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKw-q6-RZi">
+                    <rect key="frame" x="68" y="0.0" width="68" height="92"/>
                     <animations/>
                     <color key="backgroundColor" red="0.81568627449999997" green="0.24313725489999999" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>

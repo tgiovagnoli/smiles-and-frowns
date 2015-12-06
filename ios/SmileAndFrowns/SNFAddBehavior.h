@@ -7,6 +7,7 @@
 #import "SNFBehavior.h"
 #import "SNFFormViewController.h"
 #import "GATracking.h"
+#import "SNFFormStyles.h"
 
 @class SNFAddBehavior;
 
