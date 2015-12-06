@@ -125,6 +125,7 @@
 		D62D37A01BDEF0D400102D6A /* SNFConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D62D379F1BDEF0D400102D6A /* SNFConfig.m */; };
 		D62E1CE71BEA6BBD00EF8725 /* SNFAddSmileOrFrown.m in Sources */ = {isa = PBXBuildFile; fileRef = D62E1CE51BEA6BBD00EF8725 /* SNFAddSmileOrFrown.m */; };
 		D62E1CE81BEA6BBD00EF8725 /* SNFAddSmileOrFrown.xib in Resources */ = {isa = PBXBuildFile; fileRef = D62E1CE61BEA6BBD00EF8725 /* SNFAddSmileOrFrown.xib */; };
+		D64D2C241C14A040007D3E7F /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = D64D2C231C14A040007D3E7F /* UIColor+Hex.m */; };
 		D659DBB11BDAE07F0048D3F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB01BDAE07F0048D3F7 /* main.m */; };
 		D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */; };
 		D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */; };
@@ -383,6 +384,8 @@
 		D62E1CE41BEA6BBD00EF8725 /* SNFAddSmileOrFrown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFAddSmileOrFrown.h; sourceTree = "<group>"; };
 		D62E1CE51BEA6BBD00EF8725 /* SNFAddSmileOrFrown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFAddSmileOrFrown.m; sourceTree = "<group>"; };
 		D62E1CE61BEA6BBD00EF8725 /* SNFAddSmileOrFrown.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFAddSmileOrFrown.xib; sourceTree = "<group>"; };
+		D64D2C221C14A040007D3E7F /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+Hex.h"; path = "submodules/apd-objc/UIColor+Hex.h"; sourceTree = "<group>"; };
+		D64D2C231C14A040007D3E7F /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+Hex.m"; path = "submodules/apd-objc/UIColor+Hex.m"; sourceTree = "<group>"; };
 		D659DBAC1BDAE07F0048D3F7 /* SmileAndFrowns.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmileAndFrowns.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D659DBB01BDAE07F0048D3F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D659DBB21BDAE07F0048D3F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -737,6 +740,8 @@
 				D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */,
 				0707D6DE1BE42970002F1FC0 /* UIAlertAction+Additions.h */,
 				0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */,
+				D64D2C221C14A040007D3E7F /* UIColor+Hex.h */,
+				D64D2C231C14A040007D3E7F /* UIColor+Hex.m */,
 				D6E724D61BF517E200398D09 /* UIImage+Additions.h */,
 				D6E724D71BF517E200398D09 /* UIImage+Additions.m */,
 				071AC10F1BF78D46005D63F2 /* UIImageView+DiskCache.h */,
@@ -1266,6 +1271,7 @@
 				078DF4BF1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m in Sources */,
 				D65DF1761BE3ED9F009CC6DF /* SNFSwipeCell.m in Sources */,
 				D6F4422C1BEBD76F009C2866 /* SNFTaggedAlertAction.m in Sources */,
+				D64D2C241C14A040007D3E7F /* UIColor+Hex.m in Sources */,
 				078DF4C51BEA62F600CBFAA4 /* UIViewController+Alerts.m in Sources */,
 				D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */,
 				D65DF1121BE29A42009CC6DF /* SNFUserProfile.m in Sources */,

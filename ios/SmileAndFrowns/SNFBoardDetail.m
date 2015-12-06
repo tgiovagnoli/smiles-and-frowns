@@ -19,6 +19,13 @@
 	self.addButton.layer.shadowOpacity = .2;
 	self.addButton.layer.shadowRadius = 1;
 	
+	_colorPool = @[
+				   @"#43d1b8",
+				   @"#167ed0",
+				   @"#924086",
+				   @"#f57e2d",
+				   @"#7ace5c",
+				   ];
 	[self updateUI];
 }
 
@@ -76,6 +83,7 @@
 	return headerCell;
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 	BOOL showHeader = NO;
 	switch ((SNFBoardDetailUserRole)section) {
@@ -93,7 +101,7 @@
 			break;
 	}
 	if(showHeader){
-		return 20.0;
+		return 30.0;
 	}
 	return 0.0;
 }
@@ -122,25 +130,40 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	SNFUserRole *userRole;
+	UITableViewCell *cell = nil;
 	switch ((SNFBoardDetailUserRole)indexPath.section) {
 		case SNFBoardDetailUserRoleOwner:
-			return [self adultCellForUser:self.board.owner andRole:nil];
+			cell = [self adultCellForUser:self.board.owner andRole:nil];
 			break;
 		case SNFBoardDetailUserRoleChildren:
 			userRole = [_children objectAtIndex:indexPath.row];
-			return [self childCellForUserRole:userRole];
+			cell = [self childCellForUserRole:userRole];
 			break;
 		case SNFBoardDetailUserRoleParents:
 			userRole = [_parents objectAtIndex:indexPath.row];
-			return [self adultCellForUser:userRole.user andRole:userRole];
+			cell = [self adultCellForUser:userRole.user andRole:userRole];
 			break;
 		case SNFBoardDetailUserRoleGuardians:
 			userRole = [_guardians objectAtIndex:indexPath.row];
-			return [self adultCellForUser:userRole.user andRole:userRole];
+			cell = [self adultCellForUser:userRole.user andRole:userRole];
 			break;
 	}
-	return nil;
+	cell.backgroundColor = [self backgroundColorForIndexPath:indexPath];
+	// NSLog(@"%@", [cell.backgroundColor hexString]);
+	return cell;
 }
+
+- (UIColor *)backgroundColorForIndexPath:(NSIndexPath *)indexPath{
+	NSInteger fullRow = 0;
+	for(NSInteger i=0; i<indexPath.section; i++){
+		fullRow += [self tableView:self.rolesTable numberOfRowsInSection:i];
+	}
+	fullRow += indexPath.row;
+	NSInteger loopedIndex = fullRow % _colorPool.count;
+	NSString *val = [_colorPool objectAtIndex:loopedIndex];
+	return [UIColor colorWithHexString:val];
+}
+
 
 - (SNFBoardDetailAdultCell *)adultCellForUser:(SNFUser *)user andRole:(SNFUserRole *)role{
 	SNFBoardDetailAdultCell *cell = [self.rolesTable dequeueReusableCellWithIdentifier:@"SNFBoardDetailAdultCell"];
@@ -188,7 +211,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return 90;
+	return 92;
 }
 
 - (void)childCellWantsToAddSmile:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{

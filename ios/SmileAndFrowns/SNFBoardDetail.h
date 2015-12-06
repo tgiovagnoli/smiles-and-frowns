@@ -10,6 +10,7 @@
 #import "SNFReporting.h"
 #import "UIViewControllerStack.h"
 #import "SNFChildEdit.h"
+#import "UIColor+Hex.h"
 
 
 typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
@@ -26,6 +27,9 @@ typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
 	NSArray *_children;
 	NSArray *_parents;
 	NSArray *_guardians;
+	
+	NSArray <NSString *> *_colorPool;
+	
 }
 
 @property (weak) IBOutlet UITableView * rolesTable;
