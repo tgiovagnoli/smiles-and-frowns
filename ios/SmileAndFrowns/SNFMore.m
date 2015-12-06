@@ -31,7 +31,7 @@
 					   [self tableItemWithName:@"Launcher" andSelector:@selector(launcher)],
 					   [self tableItemWithName:@"Accept An Invite Code" andSelector:@selector(acceptInviteFromCode:)],
 					   [self tableItemWithName:@"Reset Local Data" andSelector:@selector(resetLocalSync)],
-					   [self tableItemWithName:SHARE_APP_NAME andSelector:@selector(shareApp)],
+					   [self tableItemWithName:SHARE_APP_NAME andSelector:@selector(shareAppMail)],
 					   [self tableItemWithName:@"Logout" andSelector:@selector(logout)],
 					   ];
 	[self.tableView reloadData];
@@ -251,6 +251,14 @@
 	[MBProgressHUD hideHUDForView:self.view animated:NO];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[self purgeAndSync];
+}
+
+- (void)shareAppMail{
+	MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
+	[mailComposer setSubject:@"Check out smiles and frowns"];
+	[mailComposer setMessageBody:@"https://itunes.apple.com/app/id1058499314" isHTML:NO];
+	mailComposer.mailComposeDelegate = self;
+	[[SNFViewController instance] presentViewController:mailComposer animated:YES completion:^{}];
 }
 
 - (void)shareApp{
