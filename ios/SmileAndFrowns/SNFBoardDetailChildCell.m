@@ -10,40 +10,41 @@
 @implementation SNFBoardDetailChildCell
 
 - (void) awakeFromNib {
-	self.containerView.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.containerView.layer.shadowOffset = CGSizeMake(0, 0);
-	self.containerView.layer.shadowOpacity = .2;
-	self.containerView.layer.shadowRadius = 1;
+//	self.containerView.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.containerView.layer.shadowOffset = CGSizeMake(0, 0);
+//	self.containerView.layer.shadowOpacity = .2;
+//	self.containerView.layer.shadowRadius = 1;
+	
 	self.containerView.layer.borderWidth = 2;
 	self.containerView.layer.borderColor = [[UIColor whiteColor] CGColor];
 	
-	self.smileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.smileImage.layer.shadowOffset = CGSizeMake(0,2);
-	self.smileImage.layer.shadowOpacity = .2;
-	self.smileImage.layer.shadowRadius = 1;
+//	self.smileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.smileImage.layer.shadowOffset = CGSizeMake(0,2);
+//	self.smileImage.layer.shadowOpacity = .2;
+//	self.smileImage.layer.shadowRadius = 1;
 	
-	self.frownImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.frownImage.layer.shadowOffset = CGSizeMake(0,2);
-	self.frownImage.layer.shadowOpacity = .2;
-	self.frownImage.layer.shadowRadius = 1;
+//	self.frownImage.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.frownImage.layer.shadowOffset = CGSizeMake(0,2);
+//	self.frownImage.layer.shadowOpacity = .2;
+//	self.frownImage.layer.shadowRadius = 1;
 	
-	self.spendImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.spendImage.layer.shadowOffset = CGSizeMake(0,0);
-	self.spendImage.layer.shadowOpacity = .2;
-	self.spendImage.layer.shadowRadius = 3;
+//	self.spendImage.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.spendImage.layer.shadowOffset = CGSizeMake(0,0);
+//	self.spendImage.layer.shadowOpacity = .2;
+//	self.spendImage.layer.shadowRadius = 3;
 	
 	UITapGestureRecognizer * report = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onReport:)];
 	[self.profileImage addGestureRecognizer:report];
 	
-	self.smileContainer.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.smileContainer.layer.shadowOffset = CGSizeMake(0,1);
-	self.smileContainer.layer.shadowOpacity = .2;
-	self.smileContainer.layer.shadowRadius = 1;
+//	self.smileContainer.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.smileContainer.layer.shadowOffset = CGSizeMake(0,1);
+//	self.smileContainer.layer.shadowOpacity = .2;
+//	self.smileContainer.layer.shadowRadius = 1;
 	
-	self.frownContainer.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.frownContainer.layer.shadowOffset = CGSizeMake(0,1);
-	self.frownContainer.layer.shadowOpacity = .2;
-	self.frownContainer.layer.shadowRadius = 1;
+//	self.frownContainer.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.frownContainer.layer.shadowOffset = CGSizeMake(0,1);
+//	self.frownContainer.layer.shadowOpacity = .2;
+//	self.frownContainer.layer.shadowRadius = 1;
 }
 
 - (void) layoutSubviews {
@@ -102,6 +103,7 @@
 }
 
 - (void) updateSmileAndFrownContainers {
+	NSLog(@"update smiles and frowns containers");
 	CGFloat width = self.spendContainer.left - self.profileContainer.right;
 	CGFloat itemWidth = self.smileContainer.width * 2;
 	CGFloat spacing = (width - itemWidth) / 4;
