@@ -47,7 +47,14 @@
 	
 	[[GATracking instance] trackScreenWithTagManager:@"ProfileView"];
 	
+	[self decorate];
+	
 	[self loadAuthedUser];
+}
+
+- (void)decorate{
+	[SNFFormStyles roundEdgesOnButton:self.updatePasswordButton];
+	[SNFFormStyles roundEdgesOnButton:self.updateUserButton];
 }
 
 - (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {

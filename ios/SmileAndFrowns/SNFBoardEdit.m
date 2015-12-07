@@ -17,6 +17,13 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	[self.rewardsCollectionView registerClass:[SNFAddCell class] forCellWithReuseIdentifier:@"SNFAddCell"];
 	[self.rewardsCollectionView registerNib:[UINib nibWithNibName:@"SNFAddCell" bundle:nil] forCellWithReuseIdentifier:@"SNFAddCell"];
 	[self startBannerAd];
+	[self decorate];
+}
+
+- (void)decorate{
+	[SNFFormStyles roundEdgesOnButton:self.addBehaviorButton];
+	[SNFFormStyles roundEdgesOnButton:self.useBoardButton];
+	[SNFFormStyles roundEdgesOnButton:self.cancelButton];
 }
 
 - (void)setBoard:(SNFBoard *)board{

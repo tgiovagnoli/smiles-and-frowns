@@ -29,5 +29,6 @@
 @property (weak) IBOutlet UIButton * genderOverlay;
 @property (weak) IBOutlet UIButton * ageOverlay;
 @property (weak) IBOutlet UITextField * age;
-
+@property (weak) IBOutlet UIButton * updateUserButton;
+@property (weak) IBOutlet UIButton * updatePasswordButton;
 @end

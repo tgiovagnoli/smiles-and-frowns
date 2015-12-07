@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFInvites">
             <connections>
@@ -31,19 +38,22 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bRf-Tm-bMP">
-                    <rect key="frame" x="0.0" y="100" width="600" height="439"/>
+                    <rect key="frame" x="0.0" y="100" width="600" height="429"/>
                     <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZj-o7-fej">
                     <rect key="frame" x="505" y="50" width="76" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="76" id="iIo-vO-fKy"/>
                         <constraint firstAttribute="height" constant="30" id="k9Y-rr-IJm"/>
                     </constraints>
-                    <state key="normal" title="Search"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                    <state key="normal" title="Search">
+                        <color key="titleColor" red="0.94901960780000005" green="0.91764705879999997" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="search:" destination="-1" eventType="touchUpInside" id="WvN-4s-Vyk"/>
                     </connections>
@@ -55,6 +65,7 @@
                         <segment title="Name"/>
                         <segment title="Date"/>
                     </segments>
+                    <color key="tintColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="segmentChanged:" destination="-1" eventType="valueChanged" id="vyX-pK-M0d"/>
                     </connections>
@@ -62,11 +73,12 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="vjl-ND-B7d">
                     <rect key="frame" x="20" y="50" width="477" height="30"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't see your invite?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAW-Wo-mla">
-                    <rect key="frame" x="218" y="547" width="164" height="21"/>
+                    <rect key="frame" x="218" y="537" width="164" height="21"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="164" id="2nP-n0-f6l"/>
@@ -77,21 +89,24 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMX-gj-M04">
-                    <rect key="frame" x="210" y="570" width="180" height="30"/>
+                    <rect key="frame" x="210" y="560" width="180" height="30"/>
                     <animations/>
-                    <color key="backgroundColor" white="0.86394166946411133" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="gUE-qR-4es"/>
                         <constraint firstAttribute="width" constant="180" id="vri-BS-ZaO"/>
                     </constraints>
-                    <state key="normal" title="Enter Email Code"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                    <state key="normal" title="Enter Email Code">
+                        <color key="titleColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="enterInviteCode:" destination="-1" eventType="touchUpInside" id="eCT-HX-Ko1"/>
                     </connections>
                 </button>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.94901960780000005" green="0.91764705879999997" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="dMX-gj-M04" firstAttribute="top" secondItem="CAW-Wo-mla" secondAttribute="bottom" constant="2" id="1fi-0h-OR8"/>
                 <constraint firstAttribute="trailing" secondItem="WZj-o7-fej" secondAttribute="trailing" constant="19" id="4cj-5b-8t7"/>
@@ -99,7 +114,7 @@
                 <constraint firstAttribute="trailing" secondItem="bRf-Tm-bMP" secondAttribute="trailing" id="FrO-qJ-vkj"/>
                 <constraint firstItem="WZj-o7-fej" firstAttribute="leading" secondItem="vjl-ND-B7d" secondAttribute="trailing" constant="8" id="GLa-vW-C5h"/>
                 <constraint firstItem="CAW-Wo-mla" firstAttribute="top" secondItem="bRf-Tm-bMP" secondAttribute="bottom" constant="8" id="NOw-ot-m6Z"/>
-                <constraint firstAttribute="bottom" secondItem="dMX-gj-M04" secondAttribute="bottom" id="Ph6-hC-FER"/>
+                <constraint firstAttribute="bottom" secondItem="dMX-gj-M04" secondAttribute="bottom" constant="10" id="Ph6-hC-FER"/>
                 <constraint firstItem="WZj-o7-fej" firstAttribute="leading" secondItem="ywm-aD-4se" secondAttribute="trailing" constant="8" id="Sgl-oo-Sss"/>
                 <constraint firstItem="vjl-ND-B7d" firstAttribute="height" secondItem="ywm-aD-4se" secondAttribute="height" constant="2" id="XIP-5I-jtY"/>
                 <constraint firstItem="i5S-pm-EG9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="YPx-Sg-8nH"/>
@@ -114,7 +129,7 @@
                 <constraint firstItem="CAW-Wo-mla" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xPH-Aa-V6d"/>
                 <constraint firstItem="WZj-o7-fej" firstAttribute="top" secondItem="ywm-aD-4se" secondAttribute="top" id="ywP-Ni-lkN"/>
             </constraints>
-            <point key="canvasLocation" x="330" y="551"/>
+            <point key="canvasLocation" x="590" y="474"/>
         </view>
     </objects>
 </document>

@@ -5,6 +5,12 @@
 - (void)viewDidLoad{
 	[super viewDidLoad];
 	[self.pickerView reloadAllComponents];
+	[self decorate];
+}
+
+- (void)decorate{
+	[SNFFormStyles roundEdgesOnButton:self.doneButton];
+	
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
@@ -33,6 +39,18 @@
 		}
 		i++;
 	}
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
+	UILabel *pickerLabel = (UILabel *)view;
+	if(!pickerLabel){
+		pickerLabel = [[UILabel alloc] init];
+		[pickerLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:17]];
+		pickerLabel.numberOfLines = 3;
+		pickerLabel.textAlignment = NSTextAlignmentCenter;
+	}
+	pickerLabel.text = [_values objectAtIndex:row];
+	return pickerLabel;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{

@@ -9,6 +9,13 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	[[GATracking instance] trackScreenWithTagManager:@"AddBehaviorView"];
+	[self decorate];
+}
+
+- (void)decorate{
+	[SNFFormStyles roundEdgesOnButton:self.addBehaviorsButton];
+	[SNFFormStyles roundEdgesOnButton:self.addNewBehaviorButton];
+	[SNFFormStyles updateFontOnSegmentControl:self.positiveNegativeSegment];
 }
 
 - (void)setBoard:(SNFBoard *)board{

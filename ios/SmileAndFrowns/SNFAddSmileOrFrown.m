@@ -3,6 +3,7 @@
 #import "SNFModel.h"
 #import "UIViewController+ModalCreation.h"
 #import "SNFSyncService.h"
+#import "SNFFormStyles.h"
 
 @implementation SNFAddSmileOrFrown
 
@@ -24,6 +25,13 @@
 	
 	self.noteField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
 	self.noteField.layer.borderWidth = 1;
+	
+	[self decorate];
+}
+
+- (void)decorate{
+	[SNFFormStyles roundEdgesOnButton:self.addSNFButton];
+	[SNFFormStyles roundEdgesOnButton:self.addBehaviorButton];
 }
 
 - (void) textViewDidBeginEditing:(UITextView *)textView {
@@ -47,15 +55,16 @@
 - (void)updateUI{
 	self.amountField.text = [NSString stringWithFormat:@"%.0f", self.amountStepper.value];
 	[self reloadBehaviors];
-	
 	switch(self.type){
 		case SNFAddSmileOrFrownTypeFrown:
 			self.titleLabel.text = @"Give Frowns";
 			[self.addSNFButton setTitle:@"Add Frown" forState:UIControlStateNormal];
+			self.snfTypeImageView.image = [UIImage imageNamed:@"frown"];
 			break;
 		case SNFAddSmileOrFrownTypeSmile:
 			self.titleLabel.text = @"Give Smiles";
 			[self.addSNFButton setTitle:@"Add Smile" forState:UIControlStateNormal];
+			self.snfTypeImageView.image = [UIImage imageNamed:@"smile"];
 			break;
 	}
 }

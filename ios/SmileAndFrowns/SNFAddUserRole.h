@@ -9,6 +9,7 @@
 #import "APDDjangoErrorViewer.h"
 #import "SNFValuePicker.h"
 #import "UIView+LayoutHelpers.h"
+#import "SNFFormStyles.h"
 
 extern NSString * const SNFAddUserRoleAddedChild;
 
@@ -34,6 +35,7 @@ extern NSString * const SNFAddUserRoleAddedChild;
 @property (weak) IBOutlet UIButton * ageOverlay;
 @property (weak) IBOutlet UIImageView * image;
 @property (weak) IBOutlet UIButton *addButton;
+@property (weak) IBOutlet UIButton *addFromContactsButton;
 
 @property (weak) IBOutlet NSLayoutConstraint *profileWidthContraint;
 @property (weak) IBOutlet NSLayoutConstraint *firstNameLastNameLeftMargin;

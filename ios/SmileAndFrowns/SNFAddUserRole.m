@@ -43,6 +43,14 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	UIGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickImage:)];
 	[self.image addGestureRecognizer:tapGestureRecognizer];
 	self.image.userInteractionEnabled = YES;
+	
+	[self decorate];
+}
+
+- (void)decorate{
+	[SNFFormStyles updateFontOnSegmentControl:self.segment];
+	[SNFFormStyles roundEdgesOnButton:self.addButton];
+	[SNFFormStyles roundEdgesOnButton:self.addFromContactsButton];
 }
 
 - (IBAction) segmentChange:(id)sender {

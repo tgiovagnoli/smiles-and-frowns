@@ -5,6 +5,7 @@
 #import "UIView+LayoutHelpers.h"
 #import "SNFValuePicker.h"
 #import "MBProgressHUD.h"
+#import "SNFFormStyles.h"
 
 typedef NS_ENUM(NSInteger, SNFChildEditSelectionType){
 	SNFChildEditSelectionTypeGender,
@@ -33,5 +34,6 @@ typedef NS_ENUM(NSInteger, SNFChildEditSelectionType){
 @property (weak) IBOutlet UITextField *genderField;
 @property (weak) IBOutlet UITextField *ageField;
 @property (weak) NSObject <SNFChildEditDelegate> *delegate;
+@property (weak) IBOutlet UIButton *updateButton;
 
 @end

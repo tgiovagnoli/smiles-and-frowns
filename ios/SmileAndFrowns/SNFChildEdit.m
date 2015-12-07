@@ -31,7 +31,13 @@
 	UITapGestureRecognizer *gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onUserProfile:)];
 	[self.profileImageView addGestureRecognizer:gr];
 	
+	[self decorate];
+	
 	[self updateUI];
+}
+
+- (void)decorate{
+	[SNFFormStyles roundEdgesOnButton:self.updateButton];
 }
 
 - (void)setChildUser:(SNFUser *)childUser{

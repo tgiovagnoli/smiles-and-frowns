@@ -5,6 +5,7 @@
 #import "SNFFormViewController.h"
 #import "UIView+LayoutHelpers.h"
 #import "UIViewController+ModalCreation.h"
+#import "SNFFormStyles.h"
 
 extern NSString * const SNFLoginLoggedIn;
 
@@ -12,8 +13,9 @@ extern NSString * const SNFLoginLoggedIn;
 
 @interface SNFLogin : SNFFormViewController <UITextFieldDelegate>
 
-@property IBOutlet UITextField * email;
-@property IBOutlet UITextField * password;
+@property (weak) IBOutlet UITextField * email;
+@property (weak) IBOutlet UITextField * password;
+@property (weak) IBOutlet UIButton * loginButton;
 @property UIViewController * nextViewController;
 
 @end

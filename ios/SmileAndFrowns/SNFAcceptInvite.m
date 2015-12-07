@@ -31,6 +31,10 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 	[self startBannerAd];
 }
 
+- (void)decorate{
+	[SNFFormStyles roundEdgesOnButton:self.joinButton];
+}
+
 - (IBAction) joinBoard:(id) sender {
 	self.service = [[SNFUserService alloc] init];
 	

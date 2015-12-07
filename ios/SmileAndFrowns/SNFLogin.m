@@ -34,7 +34,14 @@ NSString * const SNFLoginLoggedIn = @"SNFLoginLoggedIn";
 	[self startBannerAd];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onFacebookLogin:) name:ATIFacebookAuthHandlerSessionChange object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTwitterLogin:) name:ATITwitterAuthHandlerSessionChange object:nil];
+	
+	[self decorate];
 }
+
+- (void)decorate{
+	[SNFFormStyles roundEdgesOnButton:self.loginButton];
+}
+
 
 - (void) dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];

@@ -40,8 +40,15 @@
 //		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
 //		self.bannerView.delegate = self;
 //	}
+	[self decorate];
 	
 	[[GATracking instance] trackScreenWithTagManager:@"LauncherView"];
+}
+
+- (void)decorate{
+	for(UIButton *button in self.buttons){
+		[SNFFormStyles roundEdgesOnButton:button];
+	}
 }
 
 - (void) viewDidLayoutSubviews {

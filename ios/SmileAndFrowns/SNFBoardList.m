@@ -25,7 +25,15 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	
 	[[GATracking instance] trackScreenWithTagManager:@"BoardListView"];
 	
+	[self decorate];
+	
 	[self reloadBoards];
+}
+
+- (void)decorate{
+	[SNFFormStyles roundEdgesOnButton:self.searchButton];
+	[SNFFormStyles roundEdgesOnButton:self.purchaseButton];
+	[SNFFormStyles updateFontOnSegmentControl:self.filterControl];
 }
 
 - (void)viewStack:(UIViewControllerStack *)viewStack willShowView:(UIViewControllerStackOperation)operation wasAnimated:(BOOL)wasAnimated{
