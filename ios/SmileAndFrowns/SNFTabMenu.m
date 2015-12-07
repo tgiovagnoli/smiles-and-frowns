@@ -6,6 +6,8 @@
 
 - (void) viewDidLoad {
 	[self setActive:self.boardsButton];
+	
+	NSLog(@"%@", ((UIButton *)[self.buttons objectAtIndex:1]).backgroundColor);
 }
 
 - (void) removeShadows {
@@ -18,8 +20,9 @@
 
 - (void) setActive:(id) sender {
 	[self removeShadows];
+	
 	for(UIButton * button in self.buttons) {
-		button.backgroundColor = [UIColor colorWithRed:0.362 green:0.362 blue:0.362 alpha:1];
+		button.backgroundColor = [UIColor colorWithRed:0.290196 green:0.290196 blue:0.290196 alpha:1];
 		if(button == sender) {
 			button.backgroundColor = [UIColor colorWithRed:1 green:0.832 blue:0.235 alpha:1];
 			button.layer.shadowOffset = CGSizeMake(0,1);
