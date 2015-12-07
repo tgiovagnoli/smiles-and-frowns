@@ -53,7 +53,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	UITableViewCell *cell = [[UITableViewCell alloc] init];
-	APDDebugViewControllerItem *item = [_tableContents objectAtIndex:indexPath.row];
+	APDDebugViewControllerItem * item = [_tableContents objectAtIndex:indexPath.row];
 	cell.textLabel.text = item.name;
 	cell.textLabel.textColor = [SNFFormStyles darkGray];
 	cell.contentView.backgroundColor = [SNFFormStyles lightSandColor];
