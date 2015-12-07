@@ -7,6 +7,10 @@
 #import "SNFModel.h"
 #import "SNFBoardDetailHeader.h"
 
+@interface SNFBoardDetail ()
+@property NSMutableArray * rowColors;
+@end
+
 @implementation SNFBoardDetail
 
 - (void) viewDidLoad {
@@ -20,6 +24,16 @@
 	self.addButton.layer.shadowRadius = 1;
 	
 	[self updateUI];
+}
+
+- (void) resetColors {
+	self.rowColors = [NSMutableArray arrayWithArray:@[
+		[UIColor colorWithRed:0.341 green:0.841 blue:0.771 alpha:1],
+		[UIColor colorWithRed:0.141 green:0.58 blue:0.841 alpha:1],
+		[UIColor colorWithRed:0.641 green:0.353 blue:0.592 alpha:1],
+		[UIColor colorWithRed:0.969 green:0.571 blue:0.284 alpha:1],
+		[UIColor colorWithRed:0.553 green:0.824 blue:0.458 alpha:1]
+	]];
 }
 
 - (void) dealloc {
@@ -92,9 +106,11 @@
 			showHeader = _guardians.count > 0;
 			break;
 	}
-	if(showHeader){
+	
+	if(showHeader) {
 		return 20.0;
 	}
+	
 	return 0.0;
 }
 
@@ -108,6 +124,7 @@
 			return 1;
 			break;
 		case SNFBoardDetailUserRoleChildren:
+			[self resetColors];
 			return _children.count;
 			break;
 		case SNFBoardDetailUserRoleParents:
@@ -128,7 +145,7 @@
 			break;
 		case SNFBoardDetailUserRoleChildren:
 			userRole = [_children objectAtIndex:indexPath.row];
-			return [self childCellForUserRole:userRole];
+			return [self childCellForUserRole:userRole atIndexPath:indexPath];
 			break;
 		case SNFBoardDetailUserRoleParents:
 			userRole = [_parents objectAtIndex:indexPath.row];
@@ -159,15 +176,22 @@
 	return cell;
 }
 
-- (SNFBoardDetailChildCell *)childCellForUserRole:(SNFUserRole *)userRole{
-	
+- (SNFBoardDetailChildCell *) childCellForUserRole:(SNFUserRole *) userRole atIndexPath:(NSIndexPath *) indexPath {
 	SNFBoardDetailChildCell *cell = [self.rolesTable dequeueReusableCellWithIdentifier:@"SNFBoardDetailChildCell"];
-	if(!cell){
+	if(!cell) {
 		NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardDetailChildCell" owner:self options:nil];
 		cell = [topLevelObjects firstObject];
 	}
+	
 	cell.delegate = self;
 	cell.userRole = userRole;
+	
+	float mod = indexPath.row % 5;
+	NSLog(@"mod: %f",mod);
+	UIColor * color = [self.rowColors objectAtIndex:(int)mod];
+	
+	cell.containerView.backgroundColor = color;
+	
 	[self updateCellForEditingWithPermissions:cell];
 	return cell;
 }

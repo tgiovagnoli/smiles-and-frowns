@@ -34,6 +34,16 @@
 	
 	UITapGestureRecognizer * report = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onReport:)];
 	[self.profileImage addGestureRecognizer:report];
+	
+	self.smileContainer.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.smileContainer.layer.shadowOffset = CGSizeMake(0,1);
+	self.smileContainer.layer.shadowOpacity = .2;
+	self.smileContainer.layer.shadowRadius = 1;
+	
+	self.frownContainer.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.frownContainer.layer.shadowOffset = CGSizeMake(0,1);
+	self.frownContainer.layer.shadowOpacity = .2;
+	self.frownContainer.layer.shadowRadius = 1;
 }
 
 - (void) layoutSubviews {
