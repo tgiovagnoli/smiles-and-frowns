@@ -48,6 +48,7 @@
 		[pickerLabel setFont:[UIFont fontWithName:@"Roboto-Regular" size:17]];
 		pickerLabel.numberOfLines = 3;
 		pickerLabel.textAlignment = NSTextAlignmentCenter;
+		pickerLabel.textColor = [SNFFormStyles darkGray];
 	}
 	pickerLabel.text = [_values objectAtIndex:row];
 	return pickerLabel;

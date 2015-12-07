@@ -230,7 +230,7 @@
                         <action selector="ageOverlay:" destination="-1" eventType="touchUpInside" id="CHn-W3-ka2"/>
                     </connections>
                 </button>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male.png" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-pL-nCJ">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male.png" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-pL-nCJ">
                     <rect key="frame" x="20" y="59" width="68" height="68"/>
                     <animations/>
                     <constraints>
@@ -292,6 +292,6 @@
         </view>
     </objects>
     <resources>
-        <image name="male.png" width="64" height="64"/>
+        <image name="male.png" width="45" height="49"/>
     </resources>
 </document>
