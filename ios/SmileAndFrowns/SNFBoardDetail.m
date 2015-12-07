@@ -187,7 +187,6 @@
 	cell.userRole = userRole;
 	
 	float mod = indexPath.row % 5;
-	NSLog(@"mod: %f",mod);
 	UIColor * color = [self.rowColors objectAtIndex:(int)mod];
 	
 	cell.containerView.backgroundColor = color;
