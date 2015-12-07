@@ -7,6 +7,7 @@
 #import "SNFUserService.h"
 #import "AppDelegate.h"
 #import "UIViewController+Alerts.h"
+#import "SNFFormStyles.h"
 
 @implementation SNFChildEdit
 
@@ -24,7 +25,7 @@
 	_agePicker.values = [SNFUser ageSelections];
 	
 	self.profileImageView.layer.cornerRadius = self.profileImageView.width/2;
-	self.profileImageView.layer.borderColor = [[UIColor blackColor] CGColor];
+	self.profileImageView.layer.borderColor = [[SNFFormStyles darkGray] CGColor];
 	self.profileImageView.layer.borderWidth = 2;
 	self.profileImageView.layer.masksToBounds = TRUE;
 	

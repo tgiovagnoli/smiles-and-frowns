@@ -39,7 +39,7 @@
 	self.profileImage.image = [UIImage imageNamed:@"male"];
 	self.profileImage.layer.cornerRadius = self.profileImage.width/2;
 	self.profileImage.layer.borderWidth = 2;
-	self.profileImage.layer.borderColor = [[UIColor blackColor] CGColor];
+	self.profileImage.layer.borderColor = [[SNFFormStyles darkGray] CGColor];
 	self.profileImage.layer.masksToBounds = TRUE;
 	
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];

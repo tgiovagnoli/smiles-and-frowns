@@ -1,9 +1,7 @@
+
 #import "SNFFormStyles.h"
 
 @implementation SNFFormStyles
-
-
-
 
 + (void)roundEdgesOnButton:(UIButton *)button{
 	[button.layer setMasksToBounds:YES];
@@ -16,6 +14,8 @@
 	[segmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
-
++ (UIColor *) darkGray; {
+	return [UIColor colorWithRed:0.290196 green:0.290196 blue:0.290196 alpha:1];
+}
 
 @end

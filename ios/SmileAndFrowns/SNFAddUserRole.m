@@ -7,6 +7,7 @@
 #import "UIViewController+Alerts.h"
 #import "SNFUserService.h"
 #import "SNFUser.h"
+#import "SNFFormStyles.h"
 
 NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 
@@ -36,7 +37,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	[self segmentChange:self.segment];
 	
 	self.image.layer.cornerRadius = self.image.width/2;
-	self.image.layer.borderColor = [[UIColor blackColor] CGColor];
+	self.image.layer.borderColor = [[SNFFormStyles darkGray] CGColor];
 	self.image.layer.borderWidth = 2;
 	self.image.layer.masksToBounds = TRUE;
 	

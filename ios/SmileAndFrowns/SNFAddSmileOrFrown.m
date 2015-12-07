@@ -38,7 +38,7 @@
 	if(textView == self.noteField) {
 		if([self.noteField.text isEqualToString:@"Add a note (Optional)"]) {
 			textView.text = @"";
-			textView.textColor = [UIColor blackColor];
+			textView.textColor = [SNFFormStyles darkGray];
 		}
 	}
 }
