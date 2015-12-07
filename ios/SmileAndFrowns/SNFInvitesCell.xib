@@ -81,9 +81,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZbG-DI-HjP">
                     <rect key="frame" x="0.0" y="0.0" width="78" height="60"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Delete">
-                        <color key="titleColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="onDelete:" destination="XMb-z3-Kce" eventType="touchUpInside" id="wWT-LC-XfW"/>

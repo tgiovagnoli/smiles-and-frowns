@@ -7,5 +7,7 @@
 + (void)roundEdgesOnButton:(UIButton *)button;
 + (void)updateFontOnSegmentControl:(UISegmentedControl *)segmentControl;
 + (UIColor *) darkGray;
++ (UIColor *) lightSandColor;
++ (UIColor *) darkSandColor;
 
 @end

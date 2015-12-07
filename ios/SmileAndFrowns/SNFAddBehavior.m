@@ -3,6 +3,7 @@
 #import "SNFModel.h"
 #import "UIView+LayoutHelpers.h"
 #import "SNFSyncService.h"
+#import "SNFBoardDetailHeader.h"
 
 @implementation SNFAddBehavior
 
@@ -10,6 +11,9 @@
 	[super viewDidLoad];
 	[[GATracking instance] trackScreenWithTagManager:@"AddBehaviorView"];
 	[self decorate];
+	
+	NSLog(@"dark sand: %@",self.view.backgroundColor);
+	NSLog(@"light sand: %@",self.formView.backgroundColor);
 }
 
 - (void)decorate{
@@ -95,17 +99,12 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-	SNFPredefinedBehaviorGroup *group = [_predefinedBehaviorGroups objectAtIndex:section];
-	
-	UITableViewHeaderFooterView *headerCell = [[UITableViewHeaderFooterView alloc] init];
+	SNFPredefinedBehaviorGroup * group = [_predefinedBehaviorGroups objectAtIndex:section];
+	SNFBoardDetailHeader * headerCell = [[SNFBoardDetailHeader alloc] init];
 	headerCell.textLabel.text = group.title;
+	headerCell.textLabel.textColor = [SNFFormStyles darkGray];
+	headerCell.contentView.backgroundColor = [SNFFormStyles darkSandColor];
 	return headerCell;
-	
-	//UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.behaviorsTable.width,40)];
-	//label.backgroundColor = [UIColor colorWithRed:0.89 green:0.89 blue:0.89 alpha:1];
-	//label.x = 20;
-	//label.text = group.title;
-	//return label;
 }
 
 - (IBAction)onBack:(UIButton *)sender{

@@ -18,4 +18,12 @@
 	return [UIColor colorWithRed:0.290196 green:0.290196 blue:0.290196 alpha:1];
 }
 
++ (UIColor *) lightSandColor; {
+	return [UIColor colorWithRed:0.984314 green:0.960784 blue:0.92549 alpha:1];
+}
+
++ (UIColor *) darkSandColor; {
+	return [UIColor colorWithRed:0.94902 green:0.917647 blue:0.87451 alpha:1];
+}
+
 @end
