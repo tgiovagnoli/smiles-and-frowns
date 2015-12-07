@@ -97,8 +97,8 @@
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
-                                    <exclude reference="hVi-XU-dJO"/>
                                     <exclude reference="dRr-jb-o0s"/>
+                                    <exclude reference="hVi-XU-dJO"/>
                                     <exclude reference="zXh-Pd-wHT"/>
                                 </mask>
                             </variation>
@@ -206,16 +206,6 @@
                         </mask>
                     </variation>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 smile = 4 treats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwP-RJ-90Q">
-                    <rect key="frame" x="0.0" y="233" width="600" height="21"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="x30-Ye-Gfc"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egt-Te-lcT">
                     <rect key="frame" x="20" y="294" width="560" height="168"/>
                     <animations/>
@@ -358,11 +348,6 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="subviews">
-                    <exclude reference="JwP-RJ-90Q"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="366" y="536.5"/>
         </view>
         <view contentMode="scaleToFill" id="1W3-ff-SKE">

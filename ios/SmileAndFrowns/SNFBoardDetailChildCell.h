@@ -17,16 +17,32 @@
 
 @interface SNFBoardDetailChildCell : SNFSwipeCell
 
-@property (nonatomic) SNFUserRole *userRole;
+@property (nonatomic) SNFUserRole * userRole;
 
-@property (weak) IBOutlet UILabel *nameLabel;
-@property (weak) IBOutlet UILabel *smilesCountLabel;
-@property (weak) IBOutlet UILabel *frownsCountLabel;
-@property (weak) IBOutlet UILabel *spendLabel;
-@property (weak) IBOutlet UIButton *smileButton;
-@property (weak) IBOutlet UIButton *frownButton;
-@property (weak) IBOutlet UIButton *spendButton;
-@property (weak) IBOutlet UIImageView *profileImage;
+@property (weak) IBOutlet UIButton * editButton;
+
+@property (weak) IBOutlet UIView * containerView;
+
+@property (weak) IBOutlet UIView * profileContainer;
+@property (weak) IBOutlet UIImageView * profileImage;
+@property (weak) IBOutlet UILabel * nameLabel;
+
+@property (weak) IBOutlet UIView * frownContainer;
+@property IBOutlet NSLayoutConstraint * frownLeft;
+@property (weak) IBOutlet UIImageView * frownImage;
+@property (weak) IBOutlet UIButton * frownButton;
+@property (weak) IBOutlet UILabel * frownsCountLabel;
+
+@property (weak) IBOutlet UIView * smileContainer;
+@property IBOutlet NSLayoutConstraint * smileLeft;
+@property (weak) IBOutlet UIImageView * smileImage;
+@property (weak) IBOutlet UILabel * spendLabel;
+@property (weak) IBOutlet UIButton * spendButton;
+@property (weak) IBOutlet UIButton * smileButton;
+@property (weak) IBOutlet UILabel * smilesCountLabel;
+
+@property (weak) IBOutlet UIView * spendContainer;
+@property (weak) IBOutlet UIImageView * spendImage;
 
 @property (weak) NSObject <SNFBoardDetailChildCellDelegate> *delegate;
 

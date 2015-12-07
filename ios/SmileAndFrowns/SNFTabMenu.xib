@@ -16,6 +16,8 @@
             <connections>
                 <outlet property="boardsButton" destination="zqG-yX-QL9" id="a2G-PJ-vun"/>
                 <outlet property="invitesButton" destination="uUS-b6-z5Z" id="cMF-FQ-upd"/>
+                <outlet property="moreButton" destination="rke-rT-aXy" id="9CQ-dc-eeH"/>
+                <outlet property="profileButton" destination="Lng-w1-mWo" id="Ml8-3e-way"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="buttons" destination="zqG-yX-QL9" id="a3K-vj-fuA"/>
                 <outletCollection property="buttons" destination="uUS-b6-z5Z" id="jrT-tQ-zAr"/>

@@ -20,5 +20,9 @@ typedef NS_ENUM(NSInteger, SNFTab) {
 @property IBOutletCollection(UIButton) NSArray * buttons;
 @property (weak) IBOutlet UIButton * boardsButton;
 @property (weak) IBOutlet UIButton * invitesButton;
+@property (weak) IBOutlet UIButton * moreButton;
+@property (weak) IBOutlet UIButton * profileButton;
+
+- (void) setActiveSection:(SNFTab) section;
 
 @end

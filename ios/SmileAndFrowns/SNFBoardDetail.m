@@ -203,9 +203,9 @@
 	SNFAddSmileOrFrown *addModal = nil;
 	
 	if(type == SNFAddSmileOrFrownTypeSmile) {
-		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.smileButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell.smileButton.superview sourceRect:cell.smileButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
 	} else {
-		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell sourceRect:cell.frownButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell.frownButton.superview sourceRect:cell.frownButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
 	}
 	
 	addModal.type = type;
@@ -220,7 +220,7 @@
 }
 
 - (void)childCellWantsToSpend:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFSpendRewards * rewards = [[SNFSpendRewards alloc] initWithSourceView:cell sourceRect:cell.spendButton.frame contentSize:CGSizeMake(500,490) arrowDirections:UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
+	SNFSpendRewards * rewards = [[SNFSpendRewards alloc] initWithSourceView:cell.spendButton.superview sourceRect:cell.spendButton.frame contentSize:CGSizeMake(500,490) arrowDirections:UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
 	rewards.board = self.board;
 	rewards.user = userRole.user;
 	rewards.delegate = self;
@@ -233,7 +233,7 @@
 		return;
 	}
 	
-	SNFReporting *reporting = [[SNFReporting alloc] initWithSourceView:cell sourceRect:cell.profileImage.frame contentSize:CGSizeMake(600,700) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionDown];
+	SNFReporting *reporting = [[SNFReporting alloc] initWithSourceView:cell.profileImage.superview sourceRect:cell.profileImage.frame contentSize:CGSizeMake(600,700) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionDown];
 	reporting.board = userRole.board;
 	reporting.user = userRole.user;
 	[[AppDelegate rootViewController] presentViewController:reporting animated:YES completion:^{}];
@@ -274,14 +274,14 @@
 }
 
 - (void)childCellWantsToEdit:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
-	SNFChildEdit *childEdit = [[SNFChildEdit alloc] initWithSourceView:cell sourceRect:CGRectZero contentSize:CGSizeMake(400,380) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight];
+	SNFChildEdit *childEdit = [[SNFChildEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(400,380) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight];
 	childEdit.childUser = userRole.user;
 	childEdit.delegate = self;
 	[[AppDelegate rootViewController] presentViewController:childEdit animated:YES completion:nil];
 }
 
 - (void)childEditCancelled:(SNFChildEdit *)childEdit{
-	[self reloadUserRoles];
+	//[self reloadUserRoles];
 }
 
 - (void)childEdit:(SNFChildEdit *)childEdit editedChild:(SNFUser *)child{

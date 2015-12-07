@@ -192,7 +192,6 @@
 	UICollectionViewCell * cell = [collectionView cellForItemAtIndexPath:indexPath];
 	cell.selected = TRUE;
 	
-	
 	NSMutableString * label = [[NSMutableString alloc] init];
 	
 	if([Utils CGFloatHasDecimals:_selectedReward.smile_amount.floatValue]) {
@@ -218,6 +217,8 @@
 	[label appendString:_selectedReward.title];
 	
 	self.rewardsInfoLabel.text = label;
+	
+	[self updateSmileAndRewardsLabels];
 	
 	if(self.rewardsInfoLabel.text) {
 		

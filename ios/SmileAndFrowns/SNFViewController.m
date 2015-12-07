@@ -145,6 +145,8 @@ static __weak SNFViewController * _instance;
 	}
 	SNFBoardList * boardsList = [[SNFBoardList alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:boardsList animated:animated];
+	
+	[self.tabMenu setActiveSection:SNFTabBoards];
 }
 
 - (void)showProfile{
@@ -153,6 +155,8 @@ static __weak SNFViewController * _instance;
 	}
 	SNFUserProfile *profile = [[SNFUserProfile alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:profile animated:YES];
+	
+	[self.tabMenu setActiveSection:SNFTabProfile];
 }
 
 - (void)showMore{
@@ -161,6 +165,8 @@ static __weak SNFViewController * _instance;
 	}
 	SNFMore *more = [[SNFMore alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:more animated:YES];
+	
+	[self.tabMenu setActiveSection:SNFTabMore];
 }
 
 - (void)debugViewControllerIsDone:(APDDebugViewController *)debugViewController{
@@ -173,6 +179,8 @@ static __weak SNFViewController * _instance;
 	}
 	SNFInvites * invites = [[SNFInvites alloc] init];
 	[self.viewControllerStack eraseStackAndPushViewController:invites animated:animated];
+	
+	[self.tabMenu setActiveSection:SNFTabInvites];
 }
 
 - (void)didReceiveMemoryWarning {

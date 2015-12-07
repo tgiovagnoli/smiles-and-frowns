@@ -30,6 +30,24 @@
 	}
 }
 
+- (void) setActiveSection:(SNFTab) section; {
+	if(section == SNFTabBoards) {
+		[self onBoards:self.boardsButton];
+	}
+	
+	if(section == SNFTabInvites) {
+		[self onInvites:self.invitesButton];
+	}
+	
+	if(section == SNFTabMore) {
+		[self onMore:self.moreButton];
+	}
+	
+	if(section == SNFTabProfile) {
+		[self onProfile:self.profileButton];
+	}
+}
+
 - (IBAction)onDebug:(UIButton *)sender{
 	[[SNFViewController instance] showDebug];
 	[self setActive:sender];
