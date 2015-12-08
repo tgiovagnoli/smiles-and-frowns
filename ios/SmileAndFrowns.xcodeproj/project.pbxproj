@@ -97,6 +97,7 @@
 		07C0F3CE1BEE6FC80075A6B9 /* female@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3CA1BEE6FC80075A6B9 /* female@2x.png */; };
 		07C0F3CF1BEE6FC80075A6B9 /* male.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3CB1BEE6FC80075A6B9 /* male.png */; };
 		07C0F3D01BEE6FC80075A6B9 /* male@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3CC1BEE6FC80075A6B9 /* male@2x.png */; };
+		07CA06D31C175C9200C75A6B /* NSURLRequest+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CA06D21C175C9200C75A6B /* NSURLRequest+Additions.m */; };
 		07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E7055A1BEBD1520013FB75 /* iAd.framework */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
@@ -335,6 +336,8 @@
 		07C0F3CA1BEE6FC80075A6B9 /* female@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "female@2x.png"; sourceTree = "<group>"; };
 		07C0F3CB1BEE6FC80075A6B9 /* male.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = male.png; sourceTree = "<group>"; };
 		07C0F3CC1BEE6FC80075A6B9 /* male@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "male@2x.png"; sourceTree = "<group>"; };
+		07CA06D11C175C9200C75A6B /* NSURLRequest+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURLRequest+Additions.h"; path = "submodules/apd-objc/NSURLRequest+Additions.h"; sourceTree = "<group>"; };
+		07CA06D21C175C9200C75A6B /* NSURLRequest+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+Additions.m"; path = "submodules/apd-objc/NSURLRequest+Additions.m"; sourceTree = "<group>"; };
 		07E7055A1BEBD1520013FB75 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSLog+Geom.h"; path = "submodules/apd-objc/NSLog+Geom.h"; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
@@ -371,7 +374,6 @@
 		D6272FB91BE002160024CBC2 /* APDDjangoErrorViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APDDjangoErrorViewer.m; path = "submodules/apd-objc/APDDjangoErrorViewer.m"; sourceTree = "<group>"; };
 		D6272FBA1BE002160024CBC2 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTimer+Blocks.h"; path = "submodules/apd-objc/NSTimer+Blocks.h"; sourceTree = "<group>"; };
 		D6272FBB1BE002160024CBC2 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTimer+Blocks.m"; path = "submodules/apd-objc/NSTimer+Blocks.m"; sourceTree = "<group>"; };
-		D6272FBC1BE002160024CBC2 /* NSURLRequest+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURLRequest+Additions.h"; path = "submodules/apd-objc/NSURLRequest+Additions.h"; sourceTree = "<group>"; };
 		D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+Additions.m"; path = "submodules/apd-objc/NSURLRequest+Additions.m"; sourceTree = "<group>"; };
 		D6272FC31BE002330024CBC2 /* APDDjangoErrorViewer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = APDDjangoErrorViewer.xib; path = "submodules/apd-objc/APDDjangoErrorViewer.xib"; sourceTree = "<group>"; };
 		D6272FC51BE04E010024CBC2 /* SNFUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFUserSettings.h; sourceTree = "<group>"; };
@@ -740,7 +742,7 @@
 				0707D6D41BE2D16D002F1FC0 /* NSString+Additions.m */,
 				D6272FBA1BE002160024CBC2 /* NSTimer+Blocks.h */,
 				D6272FBB1BE002160024CBC2 /* NSTimer+Blocks.m */,
-				D6272FBC1BE002160024CBC2 /* NSURLRequest+Additions.h */,
+				07CA06D11C175C9200C75A6B /* NSURLRequest+Additions.h */,
 				D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */,
 				0707D6DE1BE42970002F1FC0 /* UIAlertAction+Additions.h */,
 				0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */,
@@ -756,6 +758,7 @@
 				0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */,
 				D65DF1071BE299D3009CC6DF /* UIViewControllerStack.h */,
 				D65DF1081BE299D3009CC6DF /* UIViewControllerStack.m */,
+				D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */,
 			);
 			name = "apd-objc";
 			sourceTree = "<group>";
@@ -1349,6 +1352,7 @@
 				D6272FC01BE002160024CBC2 /* APDDjangoErrorViewer.m in Sources */,
 				D6272FC21BE002160024CBC2 /* NSURLRequest+Additions.m in Sources */,
 				D659DBEF1BDAEA000048D3F7 /* SNFBehavior.m in Sources */,
+				07CA06D31C175C9200C75A6B /* NSURLRequest+Additions.m in Sources */,
 				0707D6E01BE42970002F1FC0 /* UIAlertAction+Additions.m in Sources */,
 				0707D6D01BE2B301002F1FC0 /* SNFPasswordReset.m in Sources */,
 				D6DB2BD01BEAA03300F1CDFF /* SNFRewardCell.m in Sources */,
@@ -1481,6 +1485,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/GA/GoogleAnalyticsServicesiOS_3.15",
 				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.smilesandfrowns.SmilesAndFrowns;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1504,6 +1512,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/GA/GoogleAnalyticsServicesiOS_3.15",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.smilesandfrowns.SmilesAndFrowns;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -3,6 +3,7 @@
 #import <CoreData/CoreData.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "GATracking.h"
+#import "NSURLRequest+Additions.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

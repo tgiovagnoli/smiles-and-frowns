@@ -319,30 +319,38 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 }
 
 - (NSString *)behaviorsStringFromBoard:(SNFPredefinedBoard *)pdb{
-	NSInteger i=0;
+	NSInteger i = 0;
 	NSMutableString *behaviors = [[NSMutableString alloc] init];
 	NSInteger max = pdb.behaviors.count;
-	if(max > 3){
+	
+	if(max > 3) {
 		max = 3;
 	}
-	if(max == 0){
+	
+	if(max == 0) {
 		return @"includes no behaviors";
 	}
-	if(max == 1){
-		return [NSString stringWithFormat:@"includes the behavior %@", [[[pdb.behaviors allObjects] firstObject] title]];
+	
+	if(max == 1) {
+		return [NSString stringWithFormat:@"includes the behavior %@.", [[[pdb.behaviors allObjects] firstObject] title]];
 	}
+	
 	[behaviors appendString:@"includes behaviors like "];
-	for(SNFBehavior *pdBehavior in pdb.behaviors){
-		if(i < max - 1){
+	
+	for(SNFBehavior * pdBehavior in pdb.behaviors) {
+		if(i < max - 1) {
 			[behaviors appendFormat:@"%@, ", pdBehavior.title];
-		}else{
+		} else {
 			[behaviors appendFormat:@"and %@", pdBehavior.title];
 		}
+		
 		i++;
-		if(i > max){
+		
+		if(i >= max) {
 			break;
 		}
 	}
+	
 	return behaviors;
 }
 

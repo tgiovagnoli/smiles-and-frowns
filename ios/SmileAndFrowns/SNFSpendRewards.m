@@ -70,6 +70,14 @@
 	
 	[self startBannerAd];
 	[self updateUI];
+	
+	[self updateRewardsInfoLabel];
+}
+
+- (void) viewDidLayoutSubviews {
+	[super viewDidLayoutSubviews];
+	
+	[self updateRewardsInfoLabel];
 }
 
 - (void) updateUI {
@@ -223,13 +231,17 @@
 	
 	if(self.rewardsInfoLabel.text) {
 		
-		//update placement of smile image.
-		NSDictionary * attributes = @{NSFontAttributeName:self.rewardsInfoLabel.font,};
-		CGRect boundingRect = [self.rewardsInfoLabel.text boundingRectWithSize:self.rewardsInfoLabel.frame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-		CGFloat left = ((boundingRect.size.width/2) + (self.smileImage.width/2) + 6) * - 1;
-		self.smileImageCenterConstraint.constant = left;
+		[self updateRewardsInfoLabel];
 		
 	}
+}
+
+- (void) updateRewardsInfoLabel {
+	//update placement of smile image.
+	NSDictionary * attributes = @{NSFontAttributeName:self.rewardsInfoLabel.font,};
+	CGRect boundingRect = [self.rewardsInfoLabel.text boundingRectWithSize:self.rewardsInfoLabel.frame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+	CGFloat left = ((boundingRect.size.width/2) + (self.smileImage.width/2) + 6) * - 1;
+	self.smileImageCenterConstraint.constant = left;
 }
 
 - (void) addCellWantsToAdd:(SNFAddCell *) addCell {

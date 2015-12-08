@@ -21,6 +21,8 @@
 	SNFPredefinedBehavior *_selectedBehavior;
 }
 
+@property BOOL selectNegativeOnLoad;
+
 @property (weak) NSObject <SNFAddBehaviorDelegate> *delegate;
 @property (weak) IBOutlet UITableView *behaviorsTable;
 @property (weak) IBOutlet UIButton *closeButton;
@@ -28,7 +30,6 @@
 @property (weak) IBOutlet UIButton *addBehaviorsButton;
 @property (weak) IBOutlet UISegmentedControl *positiveNegativeSegment;
 @property (nonatomic) SNFBoard *board;
-
 
 - (IBAction)onBack:(UIButton *)sender;
 - (IBAction)onNewBehavior:(UIButton *)sender;
