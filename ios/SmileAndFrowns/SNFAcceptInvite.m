@@ -28,6 +28,8 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 		self.inviteCodeField.text = self.inviteCode;
 	}
 	
+	[SNFFormStyles roundEdgesOnButton:self.joinButton];
+	
 	[self startBannerAd];
 }
 
