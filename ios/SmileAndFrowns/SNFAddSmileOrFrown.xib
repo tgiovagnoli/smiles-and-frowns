@@ -167,7 +167,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="388" y="229"/>
+            <point key="canvasLocation" x="412" y="277"/>
         </view>
         <view contentMode="scaleToFill" id="Zog-gx-xv3">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
