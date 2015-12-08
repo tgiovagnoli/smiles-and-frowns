@@ -29,7 +29,6 @@ typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
 	NSArray *_guardians;
 	
 	NSArray <NSString *> *_colorPool;
-	
 }
 
 @property (weak) IBOutlet UITableView * rolesTable;

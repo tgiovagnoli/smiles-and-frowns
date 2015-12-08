@@ -45,6 +45,12 @@
 //	self.frownContainer.layer.shadowOffset = CGSizeMake(0,1);
 //	self.frownContainer.layer.shadowOpacity = .2;
 //	self.frownContainer.layer.shadowRadius = 1;
+	
+	[self updateSmileAndFrownContainers];
+}
+
+- (void) prepareForReuse {
+	[self updateSmileAndFrownContainers];
 }
 
 - (void) layoutSubviews {
@@ -103,12 +109,11 @@
 }
 
 - (void) updateSmileAndFrownContainers {
-	NSLog(@"update smiles and frowns containers");
 	CGFloat width = self.spendContainer.left - self.profileContainer.right;
 	CGFloat itemWidth = self.smileContainer.width * 2;
 	CGFloat spacing = (width - itemWidth) / 4;
 	self.smileLeft.constant = self.profileContainer.right + spacing;
-	self.frownLeft.constant = self.profileContainer.right + self.smileContainer.width + spacing*2.5;
+	self.frownLeft.constant = self.profileContainer.right + self.smileContainer.width + spacing * 2.5;
 }
 
 - (void) setImageFromGender {

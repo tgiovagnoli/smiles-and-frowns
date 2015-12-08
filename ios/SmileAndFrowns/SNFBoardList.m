@@ -84,11 +84,14 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	if(indexPath.section == SNFBoardListSectionBoards){
 		SNFBoardListCell *cell = [self.boardsTable dequeueReusableCellWithIdentifier:@"SNFBoardListCell"];
-		if(!cell){
+		
+		if(!cell) {
 			cell = [[[NSBundle mainBundle] loadNibNamed:@"SNFBoardListCell" owner:nil options:nil] firstObject];
 		}
+		
 		cell.board = [_boards objectAtIndex:indexPath.row];
 		cell.delegate = self;
+		
 		return cell;
 	}else if(indexPath.section == SNFBoardListSectionPredefinedBoards){
 		SNFPredefinedBoardCell *cell = [self.boardsTable dequeueReusableCellWithIdentifier:@"SNFPredefinedBoardCell"];
