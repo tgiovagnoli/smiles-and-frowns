@@ -2,6 +2,9 @@
 
 @implementation SNFPredefinedBoardCell
 
+- (void) awakeFromNib {
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
 
 - (void)setPredefinedBoard:(SNFPredefinedBoard *)predefinedBoard{
 	_predefinedBoard = predefinedBoard;

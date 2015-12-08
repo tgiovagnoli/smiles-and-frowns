@@ -126,8 +126,13 @@
 		self.scrollViewBottom.constant = newBottom;
 		
 		[NSTimer scheduledTimerWithTimeInterval:.02 block:^{
-			self.formView.height = self.initialFormHeight;
-			self.scrollView.contentSize = CGSizeMake(self.formView.width, self.initialFormHeight);
+			if(self.initialFormHeight < self.scrollView.height) {
+				self.formView.height = self.scrollView.height;
+				self.scrollView.contentSize = CGSizeMake(self.formView.width, self.initialFormHeight);
+			} else {
+				self.formView.height = self.initialFormHeight;
+				self.scrollView.contentSize = CGSizeMake(self.formView.width, self.initialFormHeight);
+			}
 		} repeats:FALSE];
 	}
 }

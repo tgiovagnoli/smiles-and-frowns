@@ -39,7 +39,7 @@
                         </constraints>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
                         <state key="normal" title="Edit">
-                            <color key="titleColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <connections>
                             <action selector="onEdit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8OU-Qr-m2j"/>

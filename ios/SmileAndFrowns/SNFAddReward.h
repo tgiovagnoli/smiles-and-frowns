@@ -25,6 +25,7 @@ typedef NS_ENUM(NSInteger,SNFAddRewardCurrency) {
 @property (weak) IBOutlet UIStepper *smilesStepper;
 @property (weak) IBOutlet UIStepper *currencyStepper;
 @property (weak) IBOutlet UITextField *titleField;
+@property (weak) IBOutlet UIButton * addReward;
 
 @property SNFBoard *board;
 @property SNFReward *reward;

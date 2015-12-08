@@ -29,6 +29,16 @@
 	[super viewDidLoad];
 	self.showOnStartup.on = [SNFLauncher showAtLaunch];
 	
+	self.showOnStartup.onTintColor = [SNFFormStyles darkGray];
+	self.showOnStartup.tintColor = [UIColor whiteColor];
+	
+	if(self.showOnStartup.on) {
+		self.showOnStartup.thumbTintColor = [SNFFormStyles darkSandColor];
+	} else {
+		self.showOnStartup.thumbTintColor = [UIColor whiteColor];
+	}
+	
+	
 	if([SNFModel sharedInstance].loggedInUser) {
 		[self.loginButton setTitle:@"Logout" forState:UIControlStateNormal];
 		[self.createAccountButton setVisible:FALSE];
@@ -36,10 +46,11 @@
 	
 	[[SNFModel sharedInstance] addObserver:self forKeyPath:@"loggedInUser" options:NSKeyValueObservingOptionNew context:nil];
 	
-//	if(![[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
-//		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
-//		self.bannerView.delegate = self;
-//	}
+	if(![[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
+		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
+		self.bannerView.delegate = self;
+	}
+	
 	[self decorate];
 	
 	[[GATracking instance] trackScreenWithTagManager:@"LauncherView"];
@@ -86,6 +97,11 @@
 }
 
 - (IBAction) showAtStartup:(id) sender {
+	if(self.showOnStartup.on) {
+		self.showOnStartup.thumbTintColor = [SNFFormStyles darkSandColor];
+	} else {
+		self.showOnStartup.thumbTintColor = [UIColor whiteColor];
+	}
 	[[NSUserDefaults standardUserDefaults] setBool:self.showOnStartup.on forKey:@"ShowAtStartup"];
 }
 

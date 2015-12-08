@@ -5,6 +5,7 @@
 #import "UIView+LayoutHelpers.h"
 #import "NSTimer+Blocks.h"
 #import "UIViewController+Alerts.h"
+#import "SNFFormStyles.h"
 
 @interface SNFPasswordReset ()
 @end
@@ -14,6 +15,8 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	[self startBannerAd];
+	
+	[SNFFormStyles roundEdgesOnButton:self.resetButton];
 }
 
 - (IBAction) resetPassword:(id) sender {

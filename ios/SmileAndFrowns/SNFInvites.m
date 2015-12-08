@@ -13,6 +13,7 @@
 #import "SNFInvitesCell.h"
 #import "SNFModel.h"
 #import "NSTimer+Blocks.h"
+#import "SNFBoardDetailHeader.h"
 
 @interface SNFInvites ()
 @property SNFUserService * service;
@@ -266,7 +267,7 @@
 }
 
 - (UIView *) tableView:(UITableView *) tableView viewForHeaderInSection:(NSInteger) section {
-	UITableViewHeaderFooterView * headerCell = [[UITableViewHeaderFooterView alloc] init];
+	SNFBoardDetailHeader * headerCell = [[SNFBoardDetailHeader alloc] init];
 	
 	if(section == SNFInvitesSectionReceived) {
 		headerCell.textLabel.text = @"Received Invites";
@@ -275,6 +276,9 @@
 	if(section == SNFInvitesSectionSent) {
 		headerCell.textLabel.text = @"Sent Invites";
 	}
+	
+	headerCell.contentView.backgroundColor = [SNFFormStyles darkSandColor];
+	headerCell.textLabel.textColor = [SNFFormStyles darkGray];
 	
 	return headerCell;
 }
@@ -315,6 +319,8 @@
 	} else {
 		cell.titleLabel.text = [NSString stringWithFormat:@"You invited %@ to %@", invite[@"invitee_firstname"], invite[@"board_title"]];
 	}
+	
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
 	NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 	formatter.dateFormat = @"MMMM dd, YYYY";

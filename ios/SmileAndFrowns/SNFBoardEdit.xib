@@ -170,16 +170,17 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdq-sD-9wl">
-                    <rect key="frame" x="0.0" y="76" width="600" height="524"/>
+                    <rect key="frame" x="0.0" y="78" width="600" height="522"/>
                     <animations/>
+                    <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                 </scrollView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Board Title" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hs5-M3-Y9s">
-                    <rect key="frame" x="8" y="30" width="526" height="30"/>
+                    <rect key="frame" x="8" y="30" width="511" height="30"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="BZT-yb-Vxh"/>
                     </constraints>
-                    <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
                     <connections>
@@ -187,11 +188,11 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bm-Bp-QfH">
-                    <rect key="frame" x="542" y="29" width="45" height="30"/>
+                    <rect key="frame" x="527" y="29" width="60" height="30"/>
                     <animations/>
                     <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="45" id="8N8-Q9-qjc"/>
+                        <constraint firstAttribute="width" constant="60" id="8N8-Q9-qjc"/>
                         <constraint firstAttribute="height" constant="30" id="kHP-Zh-UTc"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
@@ -206,7 +207,7 @@
             <animations/>
             <color key="backgroundColor" red="0.94901960780000005" green="0.91764705879999997" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="rdq-sD-9wl" firstAttribute="top" secondItem="Hs5-M3-Y9s" secondAttribute="bottom" constant="16" id="0em-J8-VXV"/>
+                <constraint firstItem="rdq-sD-9wl" firstAttribute="top" secondItem="Hs5-M3-Y9s" secondAttribute="bottom" constant="18" id="0em-J8-VXV"/>
                 <constraint firstAttribute="trailing" secondItem="rdq-sD-9wl" secondAttribute="trailing" id="CCv-dl-Ouh"/>
                 <constraint firstItem="5bm-Bp-QfH" firstAttribute="top" secondItem="Hs5-M3-Y9s" secondAttribute="top" constant="-1" id="HNJ-Rz-gO4"/>
                 <constraint firstItem="rdq-sD-9wl" firstAttribute="leading" secondItem="5iE-x8-Lfy" secondAttribute="leading" id="KIh-5S-PhB"/>

@@ -7,6 +7,7 @@
 #import "NSString+Additions.h"
 #import "UIViewController+Alerts.h"
 #import "Utils.h"
+#import "SNFFormStyles.h"
 
 @interface SNFSpendRewards ()
 @property float spendAmount;
@@ -25,13 +26,13 @@
 	[self.rewardsCollection registerClass:[SNFAddCell class] forCellWithReuseIdentifier:@"SNFAddCell"];
 	[self.rewardsCollection registerNib:[UINib nibWithNibName:@"SNFAddCell" bundle:nil] forCellWithReuseIdentifier:@"SNFAddCell"];
 	
+	
 	self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.width/2;
 	self.userProfileImageView.layer.borderWidth = 2;
 	self.userProfileImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
 	self.userProfileImageView.layer.masksToBounds = TRUE;
 	
-	self.spendSmileButton.layer.cornerRadius = 10;
-	self.spendSmileButton.layer.masksToBounds = TRUE;
+	[SNFFormStyles roundEdgesOnButton:self.spendSmileButton];
 	
 	self.totalSmilesImage.layer.shadowColor = [[UIColor blackColor] CGColor];
 	self.totalSmilesImage.layer.shadowOffset = CGSizeMake(0,2);

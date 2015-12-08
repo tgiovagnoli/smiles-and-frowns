@@ -1,5 +1,7 @@
+
 #import "SNFAddReward.h"
 #import "SNFModel.h"
+#import "SNFFormStyles.h"
 
 @implementation SNFAddReward
 
@@ -7,11 +9,13 @@
 	[super viewDidLoad];
 	[self updateUI];
 	[self startBannerAd];
+	[SNFFormStyles roundEdgesOnButton:self.addReward];
+	[SNFFormStyles updateFontOnSegmentControl:self.typeControl];
 }
 
-- (void)updateUI{
-	self.smilesAmountLabel.text = [NSString stringWithFormat:@"%f", self.smilesStepper.value];
-	self.currencyAmountLabel.text = [NSString stringWithFormat:@"%f", self.currencyStepper.value];
+- (void) updateUI {
+	self.smilesAmountLabel.text = [NSString stringWithFormat:@"%.02f", self.smilesStepper.value];
+	self.currencyAmountLabel.text = [NSString stringWithFormat:@"%.02f", self.currencyStepper.value];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -20,12 +24,11 @@
 }
 
 - (IBAction)onSmileAmountUpdate:(UIStepper *)sender{
-	self.smilesAmountLabel.text = [NSString stringWithFormat:@"%f", sender.value];
+	self.smilesAmountLabel.text = [NSString stringWithFormat:@"%.02f", sender.value];
 }
 
-
 - (IBAction)onCurrencyAmountUpdate:(UIStepper *)sender{
-	self.currencyAmountLabel.text = [NSString stringWithFormat:@"%f", sender.value];
+	self.currencyAmountLabel.text = [NSString stringWithFormat:@"%.02f", sender.value];
 }
 
 - (IBAction)onTypeUpdate:(UISegmentedControl *)sender{

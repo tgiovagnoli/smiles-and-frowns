@@ -6,5 +6,6 @@
 @interface SNFPasswordReset : SNFFormViewController
 
 @property (weak) IBOutlet UITextField * email;
+@property (weak) IBOutlet UIButton * resetButton;
 
 @end

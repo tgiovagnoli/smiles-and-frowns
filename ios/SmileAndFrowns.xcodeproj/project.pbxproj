@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0703A8981C165BA200DC011E /* GTM-T7XD6P in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4CC1C11FE5E0003A403 /* GTM-T7XD6P */; };
 		0707D69F1BE28EC6002F1FC0 /* SNFTutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */; };
 		0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */; };
 		0707D6A31BE294A6002F1FC0 /* UIView+LayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */; };
@@ -1255,6 +1256,7 @@
 				07C0F3C71BEE64CF0075A6B9 /* twitter.png in Resources */,
 				075EA4E81C121E240003A403 /* time.png in Resources */,
 				D65DF1411BE2BB88009CC6DF /* SNFBoardDetail.xib in Resources */,
+				0703A8981C165BA200DC011E /* GTM-T7XD6P in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

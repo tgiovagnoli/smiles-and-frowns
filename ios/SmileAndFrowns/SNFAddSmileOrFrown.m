@@ -23,7 +23,7 @@
 	
 	[self.amountFieldButton setTitle:@"" forState:UIControlStateNormal];
 	
-	self.noteField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+	self.noteField.layer.borderColor = [[SNFFormStyles darkSandColor] CGColor];
 	self.noteField.layer.borderWidth = 1;
 	
 	[self decorate];

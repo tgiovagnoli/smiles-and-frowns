@@ -20,18 +20,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ylj-Av-0uA">
-                        <rect key="frame" x="18" y="8" width="294" height="27"/>
+                        <rect key="frame" x="15" y="8" width="297" height="27"/>
                         <animations/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" red="0.59364610910415649" green="0.59375101327896118" blue="0.59363943338394165" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <animations/>
-                <color key="backgroundColor" red="0.94901960780000005" green="0.91764705879999997" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="Ylj-Av-0uA" secondAttribute="trailing" id="2iM-jB-Jok"/>
-                    <constraint firstItem="Ylj-Av-0uA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="3DS-1K-hbs"/>
+                    <constraint firstItem="Ylj-Av-0uA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="3DS-1K-hbs"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Ylj-Av-0uA" secondAttribute="bottom" id="Xnm-lq-0hz"/>
                     <constraint firstItem="Ylj-Av-0uA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="f0x-gb-IPy"/>
                 </constraints>

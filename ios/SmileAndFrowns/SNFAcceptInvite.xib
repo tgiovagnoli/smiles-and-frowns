@@ -29,11 +29,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="131"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="147"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Invite Code" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CRU-xb-EzO">
-                    <rect key="frame" x="20" y="31" width="560" height="30"/>
+                    <rect key="frame" x="20" y="46" width="560" height="30"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="jMU-AI-SLz"/>
@@ -43,7 +43,7 @@
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2l-8j-rX3">
-                    <rect key="frame" x="210" y="82" width="180" height="30"/>
+                    <rect key="frame" x="210" y="97" width="180" height="30"/>
                     <animations/>
                     <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -59,7 +59,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Your Unique Invite Code" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCR-qM-Ohg">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="23"/>
+                    <rect key="frame" x="0.0" y="15" width="600" height="23"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="600" id="j6s-PS-HAJ"/>
@@ -83,7 +83,7 @@
                 <constraint firstItem="CRU-xb-EzO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="B88-Vl-THh"/>
                 <constraint firstAttribute="trailing" secondItem="CCR-qM-Ohg" secondAttribute="trailing" id="SxF-Yg-1x7"/>
                 <constraint firstItem="CRU-xb-EzO" firstAttribute="top" secondItem="CCR-qM-Ohg" secondAttribute="bottom" constant="8" id="TcA-mz-KWQ"/>
-                <constraint firstItem="CCR-qM-Ohg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZEm-w3-YZt"/>
+                <constraint firstItem="CCR-qM-Ohg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="ZEm-w3-YZt"/>
                 <constraint firstItem="CCR-qM-Ohg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dlL-V4-ieI"/>
                 <constraint firstItem="d2l-8j-rX3" firstAttribute="top" secondItem="CRU-xb-EzO" secondAttribute="bottom" constant="21" id="gQ7-wd-wcf"/>
                 <constraint firstItem="d2l-8j-rX3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="sNv-qr-NWx"/>
@@ -96,15 +96,16 @@
                     <exclude reference="zXo-DO-L8R"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="497" y="426.5"/>
+            <point key="canvasLocation" x="497" y="434.5"/>
         </view>
         <view contentMode="scaleToFill" id="NTD-rQ-TaB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbE-JG-PJa">
-                    <rect key="frame" x="0.0" y="59" width="600" height="541"/>
+                    <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                     <animations/>
+                    <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uuo-e6-GTn">
                     <rect key="frame" x="527" y="26" width="60" height="30"/>
@@ -143,7 +144,7 @@
                 <constraint firstItem="Ea5-iW-nOF" firstAttribute="top" secondItem="NTD-rQ-TaB" secondAttribute="top" constant="30" id="Tig-a6-ohV"/>
                 <constraint firstAttribute="bottom" secondItem="XbE-JG-PJa" secondAttribute="bottom" id="XSE-Mj-8Lu"/>
                 <constraint firstItem="Ea5-iW-nOF" firstAttribute="centerX" secondItem="NTD-rQ-TaB" secondAttribute="centerX" id="aHN-By-gMb"/>
-                <constraint firstItem="XbE-JG-PJa" firstAttribute="top" secondItem="Ea5-iW-nOF" secondAttribute="bottom" constant="8" id="ga5-JR-OMK"/>
+                <constraint firstItem="XbE-JG-PJa" firstAttribute="top" secondItem="Ea5-iW-nOF" secondAttribute="bottom" constant="13" id="ga5-JR-OMK"/>
                 <constraint firstItem="XbE-JG-PJa" firstAttribute="leading" secondItem="NTD-rQ-TaB" secondAttribute="leading" id="rZA-yb-ykJ"/>
             </constraints>
             <point key="canvasLocation" x="1150" y="661"/>
