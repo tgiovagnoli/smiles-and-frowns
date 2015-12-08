@@ -8,6 +8,7 @@
 #import "UIViewController+Alerts.h"
 #import "Utils.h"
 #import "SNFFormStyles.h"
+#import "NSTimer+Blocks.h"
 
 @interface SNFSpendRewards ()
 @property float spendAmount;
@@ -223,10 +224,10 @@
 	if(self.rewardsInfoLabel.text) {
 		
 		//update placement of smile image.
-		UIFont * font = [UIFont fontWithName:@"Roboto-Regular" size:18];
-		NSDictionary * attributes = @{NSFontAttributeName:font,};
-		CGSize size = [self.rewardsInfoLabel.text sizeWithAttributes:attributes];
-		self.smileImageCenterConstraint.constant = - ((size.width/2) + (self.smileImage.width/4));
+		NSDictionary * attributes = @{NSFontAttributeName:self.rewardsInfoLabel.font,};
+		CGRect boundingRect = [self.rewardsInfoLabel.text boundingRectWithSize:self.rewardsInfoLabel.frame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+		CGFloat left = ((boundingRect.size.width/2) + (self.smileImage.width/2) + 6) * - 1;
+		self.smileImageCenterConstraint.constant = left;
 		
 	}
 }

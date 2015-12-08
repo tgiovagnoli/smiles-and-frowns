@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wu6-8J-o0l">
-                                <rect key="frame" x="11" y="12" width="297" height="21"/>
+                                <rect key="frame" x="15" y="12" width="293" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="qpK-eK-hgU"/>
@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3Y-IC-8iC">
-                                <rect key="frame" x="11" y="33" width="297" height="17"/>
+                                <rect key="frame" x="15" y="33" width="293" height="17"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="Vmi-DF-NO3"/>
@@ -49,9 +49,9 @@
                             <constraint firstItem="V3Y-IC-8iC" firstAttribute="top" secondItem="wu6-8J-o0l" secondAttribute="bottom" id="BoQ-Tj-pB1"/>
                             <constraint firstItem="wu6-8J-o0l" firstAttribute="top" secondItem="j6R-8s-qlp" secondAttribute="top" constant="12" id="Cdn-Hd-PLx"/>
                             <constraint firstAttribute="trailing" secondItem="V3Y-IC-8iC" secondAttribute="trailing" constant="12" id="Q4L-y0-KFX"/>
-                            <constraint firstItem="V3Y-IC-8iC" firstAttribute="leading" secondItem="j6R-8s-qlp" secondAttribute="leading" constant="11" id="QoE-g3-A8N"/>
+                            <constraint firstItem="V3Y-IC-8iC" firstAttribute="leading" secondItem="j6R-8s-qlp" secondAttribute="leading" constant="15" id="QoE-g3-A8N"/>
                             <constraint firstAttribute="trailing" secondItem="wu6-8J-o0l" secondAttribute="trailing" constant="12" id="Tq4-xM-6aE"/>
-                            <constraint firstItem="wu6-8J-o0l" firstAttribute="leading" secondItem="j6R-8s-qlp" secondAttribute="leading" constant="11" id="zPv-4f-db8"/>
+                            <constraint firstItem="wu6-8J-o0l" firstAttribute="leading" secondItem="j6R-8s-qlp" secondAttribute="leading" constant="15" id="zPv-4f-db8"/>
                         </constraints>
                     </view>
                 </subviews>
