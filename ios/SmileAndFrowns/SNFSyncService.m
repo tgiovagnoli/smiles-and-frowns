@@ -48,6 +48,7 @@ static SNFSyncService * _instance;
 		completion([SNFError errorWithCode:SNFErrorCodeConcurrentSyncAttempt andMessage:@"Tried to sync while already syncing."], nil);
 		return;
 	}
+	
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 	_syncing = YES;
 	NSError *saveError;
@@ -58,19 +59,19 @@ static SNFSyncService * _instance;
 	}
 	
 	[[SNFModel sharedInstance].managedObjectContext save:&saveError]; // save the context in its current state before syncing so that any newer dates are committed.
-
 	
 	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"sync"];
 	
 	NSDictionary *postData = [self createPostInfoDictionary];
 	NSError *jsonError;
 	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:postData options:0 error:&jsonError];
-	if(jsonError){
+	
+	if(jsonError) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		completion(jsonError, nil);
 	}
-
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:serviceURL];
+	
+	NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:serviceURL];
 	[request setHTTPMethod:@"POST"];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	[request setHTTPBody:jsonData];
@@ -109,22 +110,25 @@ static SNFSyncService * _instance;
 	[task resume];
 }
 
-- (NSDictionary *)createPostInfoDictionary{
-	NSMutableDictionary *postData = [[NSMutableDictionary alloc] init];
+- (NSDictionary *) createPostInfoDictionary {
+	NSMutableDictionary * postData = [[NSMutableDictionary alloc] init];
 	
-	NSDate *lastSyncDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
-	if(lastSyncDate){
-		NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	NSDate * lastSyncDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
+	
+	if(lastSyncDate) {
+		lastSyncDate = [lastSyncDate dateByAddingTimeInterval:-5*60];
+		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 		[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
 		[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
 		NSString *dateString = [formatter stringFromDate:lastSyncDate];
 		[postData setObject:dateString forKey:@"sync_date"];
 	}
 	
-	NSDate *fromDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
-	if(!fromDate){
+	NSDate * fromDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
+	
+	if(!fromDate) {
 		fromDate = [NSDate dateWithTimeIntervalSince1970:0];
-	}else{
+	} else {
 		fromDate = [fromDate dateByAddingTimeInterval:-5*60];
 	}
 	
@@ -134,6 +138,7 @@ static SNFSyncService * _instance;
 	[postData setObject:[self collectionForEntityName:@"SNFReward" sinceSyncDate:fromDate] forKey:@"rewards"];
 	[postData setObject:[self collectionForEntityName:@"SNFSmile" sinceSyncDate:fromDate] forKey:@"smiles"];
 	[postData setObject:[self collectionForEntityName:@"SNFFrown" sinceSyncDate:fromDate] forKey:@"frowns"];
+	
 	return postData;
 }
 
