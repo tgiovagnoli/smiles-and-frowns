@@ -116,7 +116,7 @@ static SNFSyncService * _instance;
 	NSDate * lastSyncDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
 	
 	if(lastSyncDate) {
-		lastSyncDate = [lastSyncDate dateByAddingTimeInterval:-5*60];
+		lastSyncDate = [lastSyncDate dateByAddingTimeInterval:-15*60];
 		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 		[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
 		[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
@@ -129,7 +129,7 @@ static SNFSyncService * _instance;
 	if(!fromDate) {
 		fromDate = [NSDate dateWithTimeIntervalSince1970:0];
 	} else {
-		fromDate = [fromDate dateByAddingTimeInterval:-5*60];
+		fromDate = [fromDate dateByAddingTimeInterval:-15*60];
 	}
 	
 	[postData setObject:[self collectionForEntityName:@"SNFBoard" sinceSyncDate:fromDate] forKey:@"boards"];
