@@ -21,6 +21,7 @@
                 <outlet property="behaviorsTable" destination="1Ff-CQ-Zgg" id="Olb-81-Qlj"/>
                 <outlet property="closeButton" destination="Dlr-0x-QdB" id="PJb-ph-9XG"/>
                 <outlet property="formView" destination="i5M-Pr-FkT" id="hNy-Lw-VH4"/>
+                <outlet property="positiveNegativeSegment" destination="Vg6-qT-KCP" id="1YX-TS-alc"/>
                 <outlet property="scrollView" destination="Awv-dk-Olb" id="74c-hY-EjD"/>
                 <outlet property="scrollViewBottom" destination="FwU-ah-KIP" id="yVX-Rw-t7E"/>
                 <outlet property="topMargin" destination="wGx-OE-he7" id="12P-ws-u8E"/>
@@ -67,7 +68,8 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Ff-CQ-Zgg">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="311"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="separatorColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="w11-iJ-Uy3"/>
                         <outlet property="delegate" destination="-1" id="9tJ-t7-5JK"/>

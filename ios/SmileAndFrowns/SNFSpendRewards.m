@@ -26,7 +26,6 @@
 	[self.rewardsCollection registerClass:[SNFAddCell class] forCellWithReuseIdentifier:@"SNFAddCell"];
 	[self.rewardsCollection registerNib:[UINib nibWithNibName:@"SNFAddCell" bundle:nil] forCellWithReuseIdentifier:@"SNFAddCell"];
 	
-	
 	self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.width/2;
 	self.userProfileImageView.layer.borderWidth = 2;
 	self.userProfileImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
@@ -34,35 +33,35 @@
 	
 	[SNFFormStyles roundEdgesOnButton:self.spendSmileButton];
 	
-	self.totalSmilesImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.totalSmilesImage.layer.shadowOffset = CGSizeMake(0,2);
-	self.totalSmilesImage.layer.shadowOpacity = .1;
-	self.totalSmilesImage.layer.shadowRadius = 1;
+//	self.totalSmilesImage.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.totalSmilesImage.layer.shadowOffset = CGSizeMake(0,2);
+//	self.totalSmilesImage.layer.shadowOpacity = .1;
+//	self.totalSmilesImage.layer.shadowRadius = 1;
 	
-	self.spendCountView.layer.shadowOffset = CGSizeMake(0,1);
-	self.spendCountView.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.spendCountView.layer.shadowOpacity = .1;
-	self.spendCountView.layer.shadowRadius = 1;
+//	self.spendCountView.layer.shadowOffset = CGSizeMake(0,1);
+//	self.spendCountView.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.spendCountView.layer.shadowOpacity = .1;
+//	self.spendCountView.layer.shadowRadius = 1;
 	
-	self.smileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.smileImage.layer.shadowOffset = CGSizeMake(0,2);
-	self.smileImage.layer.shadowOpacity = .1;
-	self.smileImage.layer.shadowRadius = 1;
+//	self.smileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.smileImage.layer.shadowOffset = CGSizeMake(0,2);
+//	self.smileImage.layer.shadowOpacity = .1;
+//	self.smileImage.layer.shadowRadius = 1;
 	
-	self.addButton.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.addButton.layer.shadowOffset = CGSizeMake(0,2);
-	self.addButton.layer.shadowOpacity = .1;
-	self.addButton.layer.shadowRadius = 1;
+//	self.addButton.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.addButton.layer.shadowOffset = CGSizeMake(0,2);
+//	self.addButton.layer.shadowOpacity = .1;
+//	self.addButton.layer.shadowRadius = 1;
 	
-	self.subtractButton.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.subtractButton.layer.shadowOffset = CGSizeMake(0,2);
-	self.subtractButton.layer.shadowOpacity = .1;
-	self.subtractButton.layer.shadowRadius = 1;
+//	self.subtractButton.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.subtractButton.layer.shadowOffset = CGSizeMake(0,2);
+//	self.subtractButton.layer.shadowOpacity = .1;
+//	self.subtractButton.layer.shadowRadius = 1;
 	
-	self.spendCountSmileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.spendCountSmileImage.layer.shadowOffset = CGSizeMake(0,2);
-	self.spendCountSmileImage.layer.shadowOpacity = .1;
-	self.spendCountSmileImage.layer.shadowRadius = 1;
+//	self.spendCountSmileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
+//	self.spendCountSmileImage.layer.shadowOffset = CGSizeMake(0,2);
+//	self.spendCountSmileImage.layer.shadowOpacity = .1;
+//	self.spendCountSmileImage.layer.shadowRadius = 1;
 	
 	self.spendAmountView.backgroundColor = [UIColor clearColor];
 	self.spendAmountView.layer.borderColor = [[UIColor colorWithRed:0.959 green:0.933 blue:0.902 alpha:1] CGColor];

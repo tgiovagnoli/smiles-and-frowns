@@ -45,6 +45,8 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	[self.image addGestureRecognizer:tapGestureRecognizer];
 	self.image.userInteractionEnabled = YES;
 	
+	[[GATracking instance] trackScreenWithTagManager:@"AddPersonView"];
+	
 	[self decorate];
 }
 

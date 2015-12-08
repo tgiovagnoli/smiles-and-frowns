@@ -2,6 +2,7 @@
 #import "SNFAddBehaviorCell.h"
 #import "SNFModel.h"
 #import "SNFSyncService.h"
+#import "SNFFormStyles.h"
 
 @interface SNFAddBehaviorCell ()
 @property BOOL previousSelectedValue;
@@ -12,11 +13,13 @@
 - (void) setSelected:(BOOL)selected animated:(BOOL)animated {
 	[super setSelected:selected animated:animated];
 	if(selected) {
-		self.editButton.layer.backgroundColor = [[UIColor colorWithRed:0.678 green:0.678 blue:0.678 alpha:1] CGColor];
-		[self.editButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+		self.behaviorTitleField.textColor = [SNFFormStyles lightSandColor];
+		self.editButton.layer.backgroundColor = [[SNFFormStyles lightSandColor] CGColor];
+		[self.editButton setTitleColor:[SNFFormStyles darkGray] forState:UIControlStateNormal];
 	} else {
-		self.editButton.layer.backgroundColor = [[UIColor colorWithRed:0.801 green:0.801 blue:0.801 alpha:1] CGColor];
-		[self.editButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+		self.behaviorTitleField.textColor = [SNFFormStyles darkGray];
+		self.editButton.layer.backgroundColor = [[SNFFormStyles darkGray] CGColor];
+		[self.editButton setTitleColor:[SNFFormStyles lightSandColor] forState:UIControlStateNormal];
 	}
 	[self.editButton setNeedsDisplay];
 }

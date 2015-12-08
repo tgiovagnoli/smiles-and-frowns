@@ -4,6 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+            <string>Roboto-Bold</string>
+        </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -33,20 +37,20 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="564"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="553"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vzw-KH-7l0">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vzw-KH-7l0">
                     <rect key="frame" x="0.0" y="37" width="600" height="248"/>
                     <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="jsH-SZ-nFq"/>
                         <outlet property="delegate" destination="-1" id="Sdx-EL-K5s"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ur-w3-S89">
-                    <rect key="frame" x="15" y="293" width="571" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ur-w3-S89">
+                    <rect key="frame" x="15" y="291" width="571" height="30"/>
                     <animations/>
                     <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -67,7 +71,7 @@
                         <constraint firstAttribute="width" constant="560" id="4tG-eX-855"/>
                         <constraint firstAttribute="height" constant="21" id="FSO-gb-Tpt"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
@@ -76,7 +80,7 @@
                         </mask>
                     </variation>
                 </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IcH-QM-Bj3">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IcH-QM-Bj3">
                     <rect key="frame" x="0.0" y="382" width="600" height="70"/>
                     <animations/>
                     <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -94,14 +98,14 @@
                         <outlet property="delegate" destination="-1" id="Biy-BV-Xvh"/>
                     </connections>
                 </collectionView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rewards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Md1-ZG-DHg">
-                    <rect key="frame" x="15" y="351" width="565" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rewards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Md1-ZG-DHg">
+                    <rect key="frame" x="15" y="348" width="565" height="24"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="18"/>
                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1N9-w8-PPp">
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1N9-w8-PPp">
                     <rect key="frame" x="0.0" y="451" width="600" height="53"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdS-kO-6JB">
@@ -121,7 +125,7 @@
                         <constraint firstAttribute="trailing" secondItem="bdS-kO-6JB" secondAttribute="trailing" constant="20" id="xip-6T-wrC"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3h8-f4-WaF">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3h8-f4-WaF">
                     <rect key="frame" x="15" y="512" width="571" height="32"/>
                     <animations/>
                     <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
@@ -154,16 +158,16 @@
                 <constraint firstAttribute="trailing" secondItem="Md1-ZG-DHg" secondAttribute="trailing" constant="20" id="dlg-w5-75B"/>
                 <constraint firstItem="Vzw-KH-7l0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="37" id="fF3-cc-Fj4"/>
                 <constraint firstItem="Md1-ZG-DHg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="h9X-4F-FF9"/>
-                <constraint firstItem="2Ur-w3-S89" firstAttribute="top" secondItem="Vzw-KH-7l0" secondAttribute="bottom" constant="8" id="jVg-TC-vwo"/>
+                <constraint firstItem="2Ur-w3-S89" firstAttribute="top" secondItem="Vzw-KH-7l0" secondAttribute="bottom" constant="6" id="jVg-TC-vwo"/>
                 <constraint firstAttribute="bottom" secondItem="3h8-f4-WaF" secondAttribute="bottom" constant="20" id="qEO-2h-wGb"/>
                 <constraint firstItem="3h8-f4-WaF" firstAttribute="top" secondItem="IcH-QM-Bj3" secondAttribute="bottom" constant="60" id="riQ-Mr-yw4"/>
-                <constraint firstItem="Md1-ZG-DHg" firstAttribute="top" secondItem="2Ur-w3-S89" secondAttribute="bottom" constant="28" id="vaS-3M-fsx"/>
+                <constraint firstItem="Md1-ZG-DHg" firstAttribute="top" secondItem="2Ur-w3-S89" secondAttribute="bottom" constant="27" id="vaS-3M-fsx"/>
                 <constraint firstAttribute="trailing" secondItem="2Ur-w3-S89" secondAttribute="trailing" constant="14" id="vq3-Eq-XYi"/>
                 <constraint firstItem="IcH-QM-Bj3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yYt-V6-Pyu"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="424" y="181"/>
+            <point key="canvasLocation" x="424" y="175.5"/>
         </view>
         <view contentMode="scaleToFill" id="5iE-x8-Lfy">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>

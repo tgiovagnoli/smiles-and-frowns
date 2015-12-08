@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SNFAddBehaviorCell" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Behavior Title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nFw-eP-7lN">
-                        <rect key="frame" x="8" y="8" width="304" height="27"/>
+                        <rect key="frame" x="15" y="8" width="297" height="27"/>
                         <animations/>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,14 +55,24 @@
                     <constraint firstItem="nFw-eP-7lN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="JJH-ea-2eL"/>
                     <constraint firstAttribute="trailingMargin" secondItem="nFw-eP-7lN" secondAttribute="trailing" id="OB1-8X-CcH"/>
                     <constraint firstAttribute="trailing" secondItem="CGM-lZ-ab0" secondAttribute="trailing" constant="13" id="jsv-XG-xDe"/>
-                    <constraint firstItem="nFw-eP-7lN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="vzK-zI-R0E"/>
+                    <constraint firstItem="nFw-eP-7lN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="vzK-zI-R0E"/>
                 </constraints>
             </tableViewCellContentView>
             <animations/>
             <connections>
                 <outlet property="behaviorTitleField" destination="nFw-eP-7lN" id="afW-J8-wN3"/>
                 <outlet property="editButton" destination="CGM-lZ-ab0" id="uzj-aV-c9a"/>
+                <outlet property="selectedBackgroundView" destination="ru5-uI-5U4" id="shK-bB-SgX"/>
             </connections>
+            <point key="canvasLocation" x="570" y="334"/>
         </tableViewCell>
+        <view contentMode="scaleToFill" id="ru5-uI-5U4">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <animations/>
+            <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="570" y="421"/>
+        </view>
     </objects>
 </document>

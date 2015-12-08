@@ -26,7 +26,7 @@
                                 <rect key="frame" x="15" y="0.0" width="289" height="27"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                 <color key="textColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -53,7 +53,9 @@
             <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="controlsUnderlay" destination="eeU-ob-6DV" id="ifG-hv-yFh"/>
+                <outlet property="deleteButton" destination="svS-eK-NJC" id="xgw-OE-hFu"/>
                 <outlet property="overlayView" destination="JSi-6d-GNj" id="SmU-aX-D9X"/>
+                <outlet property="selectedBackgroundView" destination="Kxr-eM-B5P" id="O7B-Wh-dfw"/>
                 <outlet property="titleLabel" destination="Hg3-m1-IJK" id="yE6-5H-vCv"/>
             </connections>
             <point key="canvasLocation" x="376" y="414"/>
@@ -85,6 +87,15 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="623" y="414"/>
+        </view>
+        <view contentMode="scaleToFill" id="Kxr-eM-B5P">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <animations/>
+            <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="376" y="503"/>
         </view>
     </objects>
 </document>

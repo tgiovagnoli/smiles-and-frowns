@@ -4,6 +4,7 @@
 #import "UIAlertAction+Additions.h"
 #import "UIViewController+ModalCreation.h"
 #import "SNFSyncService.h"
+#import "SNFBoardDetailHeader.h"
 
 NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 
@@ -103,7 +104,11 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-	UITableViewHeaderFooterView * view = [[UITableViewHeaderFooterView alloc] init];
+	SNFBoardDetailHeader * view = [[SNFBoardDetailHeader alloc] init];
+	view.contentView.backgroundColor = [SNFFormStyles darkSandColor];
+	view.textLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:17];
+	view.textLabel.textColor = [SNFFormStyles darkGray];
+	
 	switch((SNFBoardEditBehaviorType)section) {
 		case SNFBoardEditBehaviorTypePositive:
 			view.textLabel.text = @"Positive Behaviors";

@@ -13,6 +13,7 @@
 @property (weak) IBOutlet UILabel *titleLabel;
 @property (nonatomic) SNFBehavior *behavior;
 @property (weak) NSObject <SNFBoardEditBehaviorCellDelegate> *delegate;
+@property (weak) IBOutlet UIButton * deleteButton;
 
 - (IBAction)onDelete:(UIButton *)sender;
 
