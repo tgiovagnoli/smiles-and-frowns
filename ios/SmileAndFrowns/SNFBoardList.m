@@ -89,10 +89,6 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 			cell = [[[NSBundle mainBundle] loadNibNamed:@"SNFBoardListCell" owner:nil options:nil] firstObject];
 		}
 		
-		SNFBoard * board = [_boards objectAtIndex:indexPath.row];
-		
-		NSLog(@"is deleted: %@",board.soft_deleted);
-		
 		cell.board = [_boards objectAtIndex:indexPath.row];
 		cell.delegate = self;
 		
@@ -127,12 +123,7 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 - (void)boardListCell:(SNFBoardListCell *)cell wantsToResetBoard:(SNFBoard *)board{
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Reset board?" message:@"Are you sure you want to reset this board? All board data will be lost and this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-		NSString * oldTitle = board.title;
 		[board reset];
-		board.title = [NSString stringWithFormat:@"%@ (Deleted)",oldTitle];
-		board.soft_deleted = @(TRUE);
-		[[SNFSyncService instance] saveContext];
-		[self addNewBoard:nil withTransactionID:nil title:oldTitle editBoard:FALSE];
 		[self reloadBoards];
 	}]];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
@@ -280,7 +271,7 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 				NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Are you sure you want to use \"%@\" as your free board?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-					[self addNewBoard:pdb withTransactionID:nil title:nil editBoard:TRUE];
+					[self addNewBoard:pdb withTransactionID:nil];
 				}]];
 				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
@@ -299,10 +290,10 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 				*/
-				if(needsPurchase) {
+				if(needsPurchase){
 					[self purchaseNewBoard:pdb];
 				}else{
-					[self addNewBoard:pdb withTransactionID:nil title:nil editBoard:TRUE];
+					[self addNewBoard:pdb withTransactionID:nil];
 				}
 			}
 		} else {
@@ -367,7 +358,7 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 - (void) purchaseNewBoard:(SNFPredefinedBoard *) pdb {
 	
 	#if TARGET_IPHONE_SIMULATOR
-	[self addNewBoard:pdb withTransactionID:[[NSUUID UUID] UUIDString] title:nil editBoard:TRUE];
+	[self addNewBoard:pdb withTransactionID:[[NSUUID UUID] UUIDString]];
 	return;
 	#endif
 	
@@ -399,31 +390,24 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 			}
 			
 			[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
-				[self addNewBoard:pdb withTransactionID:transaction.transactionIdentifier title:nil editBoard:TRUE];
+				[self addNewBoard:pdb withTransactionID:transaction.transactionIdentifier];
 			} repeats:FALSE];
 		}];
 	}];
 }
 
-- (void) addNewBoard:(SNFPredefinedBoard *) pdb withTransactionID:(NSString *) transactionId title:(NSString *) title editBoard:(BOOL) editBoard {
+- (void) addNewBoard:(SNFPredefinedBoard *) pdb withTransactionID:(NSString *) transactionId {
 	SNFBoard * newBoard = [SNFBoard boardFromPredefinedBoard:pdb andContext:[SNFModel sharedInstance].managedObjectContext];
-	
 	if(transactionId) {
 		newBoard.transaction_id = transactionId;
 	}
-	
-	if(title) {
-		newBoard.title = title;
-	}
-	
 	[self reloadBoards];
 	
-	if(editBoard) {
-		SNFBoardDetail * boardDetail = [[SNFBoardDetail alloc] init];
-		[[SNFViewController instance].viewControllerStack pushViewController:boardDetail animated:YES];
-		boardDetail.board = newBoard;
-		[self boardListCell:nil wantsToEditBoard:newBoard];
-	}
+	SNFBoardDetail * boardDetail = [[SNFBoardDetail alloc] init];
+	[[SNFViewController instance].viewControllerStack pushViewController:boardDetail animated:YES];
+	boardDetail.board = newBoard;
+	
+	[self boardListCell:nil wantsToEditBoard:newBoard];
 	
 	[[SNFSyncService instance] saveContext];
 	
