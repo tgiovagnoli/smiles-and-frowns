@@ -838,6 +838,7 @@ def sync(request):
 		behavior.note = client_behavior.get('note')
 		behavior.device_date = client_behavior_date
 		behavior.deleted = client_behavior.get('deleted',False)
+		behavior.positive = client_behavior.get('positive',True)
 		behavior.save()
 
 		#set created for lookup
