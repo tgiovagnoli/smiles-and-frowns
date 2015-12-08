@@ -724,7 +724,7 @@ def sync(request):
 		board_client_date = json_utils.date_fromstring(client_board.get('updated_date'))
 		
 		#set deleted
-		if board.deleted != client_board.get('deleted',False)
+		if board.deleted != client_board.get('deleted',False):
 			board.deleted = client_board.get('deleted',False)
 			board.save()
 
