@@ -17,7 +17,6 @@ typedef NS_ENUM(NSInteger, SNFReportingFilter){
 	BOOL _ascending;
 }
 
-
 @property (weak) IBOutlet UILabel *titleLabel;
 @property (weak) IBOutlet UIButton *backButton;
 @property (weak) IBOutlet UIButton *exportButton;
