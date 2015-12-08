@@ -89,6 +89,10 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 			cell = [[[NSBundle mainBundle] loadNibNamed:@"SNFBoardListCell" owner:nil options:nil] firstObject];
 		}
 		
+		SNFBoard * board = [_boards objectAtIndex:indexPath.row];
+		
+		NSLog(@"is deleted: %@",board.soft_deleted);
+		
 		cell.board = [_boards objectAtIndex:indexPath.row];
 		cell.delegate = self;
 		
@@ -123,9 +127,12 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 - (void)boardListCell:(SNFBoardListCell *)cell wantsToResetBoard:(SNFBoard *)board{
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Reset board?" message:@"Are you sure you want to reset this board? All board data will be lost and this cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		NSString * oldTitle = board.title;
 		[board reset];
+		board.title = [NSString stringWithFormat:@"%@ (Deleted)",oldTitle];
 		board.soft_deleted = @(TRUE);
-		[self addNewBoard:nil withTransactionID:nil title:board.title editBoard:FALSE];
+		[[SNFSyncService instance] saveContext];
+		[self addNewBoard:nil withTransactionID:nil title:oldTitle editBoard:FALSE];
 		[self reloadBoards];
 	}]];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];

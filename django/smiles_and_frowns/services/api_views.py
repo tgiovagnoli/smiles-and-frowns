@@ -723,6 +723,11 @@ def sync(request):
 		board,created = models.Board.objects.get_or_create(uuid=client_board.get("uuid"))
 		board_client_date = json_utils.date_fromstring(client_board.get('updated_date'))
 		
+		#set deleted
+		if board.deleted != client_board.get('deleted',False)
+			board.deleted = client_board.get('deleted',False)
+			board.save()
+
 		#board wasn't created, check date and predefinied.
 		if not created:
 
@@ -735,7 +740,7 @@ def sync(request):
 			board.owner = request.user
 
 		#set board data
-		board.deleted = client_board.get('deleted',False)
+		
 		board.title = client_board.get('title', '')
 		board.device_date = board_client_date
 		board.transaction_id = client_board.get('transaction_id')

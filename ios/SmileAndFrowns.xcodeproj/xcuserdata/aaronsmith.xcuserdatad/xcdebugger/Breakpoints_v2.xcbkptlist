@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SmileAndFrowns/SNFSyncService.m"
-            timestampString = "471301018.345207"
+            filePath = "SmileAndFrowns/SNFBoardList.m"
+            timestampString = "471302414.925854"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "-createPostInfoDictionary"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "-boardListCell:wantsToResetBoard:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
