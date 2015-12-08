@@ -73,7 +73,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smiles &amp; Frowns" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEn-pn-T6I">
-                    <rect key="frame" x="196" y="20" width="209" height="23"/>
+                    <rect key="frame" x="196" y="30" width="209" height="23"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="6Cl-ID-hOJ"/>
@@ -181,7 +181,7 @@
                 <constraint firstItem="uGA-iT-z3T" firstAttribute="centerX" secondItem="eR4-QF-gvg" secondAttribute="centerX" id="UmS-hh-c5i"/>
                 <constraint firstAttribute="trailing" secondItem="eR4-QF-gvg" secondAttribute="trailing" id="YTT-oD-1d7"/>
                 <constraint firstItem="A4E-m0-Q5T" firstAttribute="width" secondItem="uGA-iT-z3T" secondAttribute="width" id="YhB-4F-uDf"/>
-                <constraint firstItem="xEn-pn-T6I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="ZW3-Pk-3Rq"/>
+                <constraint firstItem="xEn-pn-T6I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="ZW3-Pk-3Rq"/>
                 <constraint firstAttribute="trailing" secondItem="kwu-gI-Bcg" secondAttribute="trailing" id="aCc-7m-Ykb"/>
                 <constraint firstItem="eXF-OV-gDJ" firstAttribute="bottom" secondItem="l98-O4-0q6" secondAttribute="bottom" constant="5" id="bka-CX-7uz"/>
                 <constraint firstItem="3kq-mh-ITC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="cU6-NQ-DmD"/>
