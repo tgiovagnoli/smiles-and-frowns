@@ -102,6 +102,9 @@
 	SNFAddBehavior *addBehavior = [[SNFAddBehavior alloc] initWithSourceView:sender sourceRect:CGRectZero contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight];
 	addBehavior.board = self.board;
 	addBehavior.delegate = self;
+	if(self.type == SNFAddSmileOrFrownTypeFrown) {
+		addBehavior.selectNegativeOnLoad = TRUE;
+	}
 	[self presentViewController:addBehavior animated:YES completion:^{}];
 }
 

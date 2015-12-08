@@ -12,8 +12,9 @@
 	[[GATracking instance] trackScreenWithTagManager:@"AddBehaviorView"];
 	[self decorate];
 	
-	NSLog(@"dark sand: %@",self.view.backgroundColor);
-	NSLog(@"light sand: %@",self.formView.backgroundColor);
+	if(self.selectNegativeOnLoad) {
+		self.positiveNegativeSegment.selectedSegmentIndex = 1;
+	}
 }
 
 - (void)decorate{
@@ -126,6 +127,10 @@
 	_selectedBehavior = behavior;
 	
 	[self updateBehaviors];
+	
+	CGPoint offset = CGPointMake(0, self.behaviorsTable.contentSize.height - self.behaviorsTable.frame.size.height);
+	[self.behaviorsTable setContentOffset:offset animated:NO];
+	
 }
 
 - (SNFPredefinedBehaviorGroup *)userGroup{

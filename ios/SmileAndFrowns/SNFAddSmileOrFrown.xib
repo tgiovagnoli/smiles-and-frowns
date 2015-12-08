@@ -6,10 +6,10 @@
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Bold.ttf">
             <string>Roboto-Bold</string>
+            <string>Roboto-Bold</string>
+            <string>Roboto-Bold</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
-            <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
@@ -68,10 +68,10 @@
                         <action selector="onSmileAmountUpdate:" destination="-1" eventType="valueChanged" id="1eZ-he-3Jy"/>
                     </connections>
                 </stepper>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prt-uR-olb">
-                    <rect key="frame" x="0.0" y="100" width="600" height="23"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For Behavior" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prt-uR-olb">
+                    <rect key="frame" x="15" y="100" width="577" height="23"/>
                     <animations/>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
                     <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -126,7 +126,7 @@
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIV-Sx-qiq">
                     <rect key="frame" x="275" y="37" width="50" height="32"/>
                     <animations/>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                     <state key="normal" title="count">
                         <color key="titleColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -140,7 +140,7 @@
             <constraints>
                 <constraint firstItem="25e-GV-9nU" firstAttribute="top" secondItem="wvZ-4L-J6x" secondAttribute="bottom" constant="8" id="4nG-9F-7B3"/>
                 <constraint firstItem="25e-GV-9nU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="8ng-aM-d4m"/>
-                <constraint firstAttribute="trailing" secondItem="Prt-uR-olb" secondAttribute="trailing" id="BjU-Ps-5ZN"/>
+                <constraint firstAttribute="trailing" secondItem="Prt-uR-olb" secondAttribute="trailing" constant="8" id="BjU-Ps-5ZN"/>
                 <constraint firstItem="Z87-Dx-yrh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="HrP-UO-IpE"/>
                 <constraint firstItem="cC2-hC-ofl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="37" id="Kgw-bU-gbi"/>
                 <constraint firstItem="Z87-Dx-yrh" firstAttribute="top" secondItem="25e-GV-9nU" secondAttribute="bottom" constant="8" id="Kof-xe-og8"/>
@@ -148,7 +148,7 @@
                 <constraint firstItem="TIV-Sx-qiq" firstAttribute="centerY" secondItem="cC2-hC-ofl" secondAttribute="centerY" id="NhQ-fv-pSl"/>
                 <constraint firstAttribute="trailing" secondItem="wvZ-4L-J6x" secondAttribute="trailing" id="OAG-ih-j7Z"/>
                 <constraint firstItem="cC2-hC-ofl" firstAttribute="leading" secondItem="6Xh-UE-Zzf" secondAttribute="trailing" constant="20" id="Usx-SC-ZZP"/>
-                <constraint firstItem="Prt-uR-olb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZiT-n5-JXI"/>
+                <constraint firstItem="Prt-uR-olb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="ZiT-n5-JXI"/>
                 <constraint firstItem="wvZ-4L-J6x" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="b1l-u9-tJ8"/>
                 <constraint firstItem="TIV-Sx-qiq" firstAttribute="centerX" secondItem="cC2-hC-ofl" secondAttribute="centerX" id="dzE-1M-EAH"/>
                 <constraint firstItem="fEB-lx-8yh" firstAttribute="centerY" secondItem="cC2-hC-ofl" secondAttribute="centerY" id="fbk-OY-F8j"/>
