@@ -726,7 +726,6 @@ def sync(request):
 		#board wasn't created, check date and predefinied.
 		if not created:
 
-
 			#board is newer in database than what the client sent. ignore it.
 			if board.device_date > board_client_date:
 				continue
@@ -752,9 +751,11 @@ def sync(request):
 		client_role_date = json_utils.date_fromstring(client_role.get('updated_date'))
 		
 		#find board
+		board = None
 		try:
 			board_dict = client_role.get('board')
-			board = models.Board.objects.get(uuid=board_dict.get('uuid'))
+			if board_dict:
+				board = models.Board.objects.get(uuid=board_dict.get('uuid'))
 		except:
 			return json_response_error("Client sync error, board with uuid(%s) not found on server." % (board_dict.get('uuid')))
 
@@ -820,9 +821,11 @@ def sync(request):
 		client_behavior_date = json_utils.date_fromstring(client_behavior.get('updated_date'))
 
 		#get board for behavior.board
+		board = None
 		try:
 			board_dict = client_behavior.get('board')
-			board = models.Board.objects.get(uuid=board_dict.get("uuid"))
+			if board_dict:
+				board = models.Board.objects.get(uuid=board_dict.get("uuid"))
 		except:
 			return json_response_error("Client sync error, Board with uuid (%s) for behavior not found on server." % (client_behavior.get('uuid')))
 
@@ -864,9 +867,11 @@ def sync(request):
 			return json_response_error("Client sync error, Creator with username(%s) for smile not found on server." % (creator_dict.get('user')))
 		
 		#get board for smile.board
+		board = None
 		try:
 			board_dict = client_smile.get('board')
-			board = models.Board.objects.get(uuid=board_dict.get('uuid'))
+			if board_dict:
+				board = models.Board.objects.get(uuid=board_dict.get('uuid'))
 		except:
 			return json_response_error("Client sync error, Board with uuid(%s) for smile not found on server." % (board_dict.get('uuid')))
 		
@@ -917,9 +922,11 @@ def sync(request):
 			return json_response_error("Client sync error, Creator with username(%s) for frown not found on server." % (creator_dict.get('user')))
 		
 		#get board for frown.board
+		board = None
 		try:
 			board_dict = client_frown.get('board')
-			board = models.Board.objects.get(uuid=board_dict.get('uuid'))
+			if board_dict:
+				board = models.Board.objects.get(uuid=board_dict.get('uuid'))
 		except:
 			return json_response_error("Client sync error, Board with uuid(%s) for frown not found on server." % (board_dict.get('uuid')))
 		
@@ -956,9 +963,11 @@ def sync(request):
 		client_reward_date = json_utils.date_fromstring(client_reward.get('updated_date'))
 
 		#get board for reward.board
+		board = None
 		try:
 			board_dict = client_reward.get('board')
-			board = models.Board.objects.get(uuid=board_dict.get('uuid'))
+			if board_dict:
+				board = models.Board.objects.get(uuid=board_dict.get('uuid'))
 		except:
 			return json_response_error("Client sync error, board with uuid(%s) for reward not found on server." % (board_dict.get('uuid')))
 
