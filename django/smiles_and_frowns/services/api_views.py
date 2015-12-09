@@ -766,10 +766,7 @@ def sync(request):
 		
 		#get provided user info about role
 		userinfo = client_role.get('user', None)
-		if not userinfo:
-			continue
-			#return json_response_error("Client sync error, userinfo not provided for role with uuid %s" (client_role.get('uuid')))
-
+		
 		#find or create role
 		role, role_created = models.UserRole.objects.get_or_create(uuid=client_role.get('uuid'))
 		if not role_created:
@@ -783,6 +780,10 @@ def sync(request):
 			#check if dates are newer on db
 			if role.device_date > client_role_date or role.deleted:
 				continue
+
+		#if not user info, just ignore and continue.
+		if not userinfo:
+			continue
 
 		#create account if it's a child, other users signup through the normal signup process
 		user = None
@@ -876,37 +877,35 @@ def sync(request):
 		smile_date = json_utils.date_fromstring(client_smile.get('updated_date'))
 		
 		#get user for smile.user
+		user = None
 		try:
 			user_dict = client_smile.get('user')
-			if not user_dict:
-				continue
 			user = User.objects.get(username=user_dict.get('username'))
 		except:
-			return json_response_error("Client sync error, User with username(%s) for smile not found on server." % (user_dict.get('user')))
+			pass
 
+		creator = None
 		try:
 			creator_dict = client_smile.get('creator')
-			if not creator_dict:
-				continue
 			creator = User.objects.get(username=creator_dict.get('username'))
 		except:
-			return json_response_error("Client sync error, Creator with username(%s) for smile not found on server." % (creator_dict.get('user')))
+			pass
 		
 		#get board for smile.board
 		board = None
-		board_dict = client_smile.get('board')
-		if board_dict:
-			try:
-				board = models.Board.objects.get(uuid=board_dict.get('uuid'))
-			except:
-				pass
+		try:
+			board_dict = client_smile.get('board')
+			board = models.Board.objects.get(uuid=board_dict.get('uuid'))
+		except:
+			pass
 		
 		#get behavior for smile.behavior
+		behavior = None
 		try:
 			behavior_dict = client_smile.get('behavior')
 			behavior = models.Behavior.objects.get(uuid=behavior_dict.get('uuid'))
 		except:
-			return json_response_error("Client sync error, Behavior with uuid(%s) for smile not found on server." % (behavior_dict.get('uuid')))
+			pass
 
 		#get or create smile
 		smile,created = models.Smile.objects.get_or_create(uuid=client_smile.get('uuid'))
@@ -943,37 +942,36 @@ def sync(request):
 		client_frown_date = json_utils.date_fromstring(client_frown.get('updated_date'))
 		
 		#get user for frown.user
+		user = None
 		try:
 			user_dict = client_frown.get('user')
-			if not user_dict:
-				continue
 			user = User.objects.get(username=user_dict.get('username'))
 		except:
-			return json_response_error("Client sync error, User with username(%s) for frown not found on server." % (user_dict.get('username')))
+			pass
 
+		#get creator
+		creator = None
 		try:
 			creator_dict = client_frown.get('creator')
-			if not creator_dict:
-				continue
 			creator = User.objects.get(username=creator_dict.get('username'))
 		except:
-			return json_response_error("Client sync error, Creator with username(%s) for frown not found on server." % (creator_dict.get('user')))
+			pass
 		
 		#get board for frown.board
 		board = None
-		board_dict = client_frown.get('board')
-		if board_dict:
-			try:
-				board = models.Board.objects.get(uuid=board_dict.get('uuid'))
-			except:
-				pass
+		try:
+			board_dict = client_frown.get('board')
+			board = models.Board.objects.get(uuid=board_dict.get('uuid'))
+		except:
+			pass
 		
 		#get behavior for frown.behavior
+		behavior = None
 		try:
 			behavior_dict = client_frown.get('behavior')
 			behavior = models.Behavior.objects.get(uuid=behavior_dict.get('uuid'))
 		except:
-			return json_response_error("Client sync error, Behavior with uuid(%s) for frown not found on server." % (behavior_dict.get('uuid')))
+			pass
 
 		#get or create frown
 		frown,created = models.Frown.objects.get_or_create(uuid=client_frown.get('uuid'))
@@ -1010,12 +1008,11 @@ def sync(request):
 
 		#get board for reward.board
 		board = None
-		board_dict = client_reward.get('board')
-		if board_dict:
-			try:
-				board = models.Board.objects.get(uuid=board_dict.get('uuid'))
-			except:
-				pass
+		try:
+			board_dict = client_reward.get('board')
+			board = models.Board.objects.get(uuid=board_dict.get('uuid'))
+		except:
+			pass
 
 		#get or create reward
 		reward,created = models.Reward.objects.get_or_create(uuid=client_reward.get('uuid'))
