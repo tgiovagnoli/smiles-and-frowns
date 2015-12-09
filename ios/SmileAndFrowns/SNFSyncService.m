@@ -215,11 +215,13 @@ static SNFSyncService * _instance;
 		}
 	}
 	
-	NSMutableDictionary *changeLog = [[NSMutableDictionary alloc] init];
+	NSMutableDictionary * changeLog = [[NSMutableDictionary alloc] init];
+	
+	[SNFDateManager lock]; // lock the date manager before saving the context so that all updates that are made keep the server date
 	
 	// update boards
-	NSArray *boardUpdates = [results valueForKey:@"boards"];
-	if(boardUpdates){
+	NSArray * boardUpdates = [results valueForKey:@"boards"];
+	if(boardUpdates) {
 		NSMutableArray *boardChanges = [[NSMutableArray alloc] init];
 		for(NSDictionary *boardUpdate in boardUpdates){
 			SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardUpdate withContext:context];
@@ -294,26 +296,27 @@ static SNFSyncService * _instance;
 	[updates addObject:changeLog];
 	
 	// save the context so that if the user quits the app all records will work with sync date
-	[SNFDateManager lock]; // lock the date manager before saving the context so that all updates that are made keep the server date
-	NSError *saveError;
+	
+	NSError * saveError;
 	[context save:&saveError];
-	if(saveError){
+	[SNFDateManager unlock];
+	
+	if(saveError) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:saveError];
 		return completion(saveError, nil);
 	}
 	
-	[SNFDateManager unlock];
-	
 	[self syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
 		
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		
-		if(error){
+		if(error) {
 			return completion(error, nil);
-		}else{
+		} else {
 			completion(saveError, updates);
 		}
+		
 	}];
 }
 

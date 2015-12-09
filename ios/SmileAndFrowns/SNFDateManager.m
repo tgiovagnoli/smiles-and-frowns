@@ -22,6 +22,10 @@ static BOOL _locked;
 	}
 }
 
++ (BOOL) isLocked {
+	return _locked;
+}
+
 + (void)lock{
 	_locked = YES;
 }

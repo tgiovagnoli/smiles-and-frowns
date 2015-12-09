@@ -3,6 +3,7 @@
 
 @interface SNFDateManager : NSObject
 
++ (BOOL)isLocked;
 + (void)lock;
 + (void)unlock;
 

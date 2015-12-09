@@ -1,6 +1,7 @@
 
 #import "NSManagedObject+InfoDictionary.h"
 #import "SNFModel.h"
+#import "SNFDateManager.h"
 
 @implementation NSManagedObject (InfoDictionary)
 
@@ -92,6 +93,13 @@
 				value = [self dateFromString:value];
 			} else if([class isSubclassOfClass:[NSManagedObject class]]) {
 				value = [class editOrCreatefromInfoDictionary:value withContext:context];
+			}
+		}
+		
+		if([key isEqualToString:@"updated_date"]) {
+			if([SNFDateManager isLocked]) {
+				NSLog(@"not allowing updated_date to be set, date manager locked.");
+				continue;
 			}
 		}
 		

@@ -42,8 +42,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="542"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cC2-hC-ofl">
-                    <rect key="frame" x="275" y="37" width="50" height="32"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cC2-hC-ofl">
+                    <rect key="frame" x="275" y="37" width="50" height="31"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="UNP-HC-qgW"/>
@@ -123,8 +123,8 @@
                         <action selector="onAddSmileOrFrown:" destination="-1" eventType="touchUpInside" id="GsX-P6-T8p"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIV-Sx-qiq">
-                    <rect key="frame" x="275" y="37" width="50" height="32"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIV-Sx-qiq">
+                    <rect key="frame" x="275" y="37" width="50" height="31"/>
                     <animations/>
                     <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="14"/>
                     <state key="normal" title="count">
