@@ -60,12 +60,12 @@
 	switch(self.type){
 		case SNFAddSmileOrFrownTypeFrown:
 			self.titleLabel.text = @"Give Frowns";
-			[self.addSNFButton setTitle:@"Add Frown" forState:UIControlStateNormal];
+			[self.addSNFButton setTitle:@"Give Frown" forState:UIControlStateNormal];
 			self.snfTypeImageView.image = [UIImage imageNamed:@"frown"];
 			break;
 		case SNFAddSmileOrFrownTypeSmile:
 			self.titleLabel.text = @"Give Smiles";
-			[self.addSNFButton setTitle:@"Add Smile" forState:UIControlStateNormal];
+			[self.addSNFButton setTitle:@"Give Smile" forState:UIControlStateNormal];
 			self.snfTypeImageView.image = [UIImage imageNamed:@"smile"];
 			break;
 	}
