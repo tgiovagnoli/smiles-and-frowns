@@ -21,6 +21,12 @@
 	[SNFFormStyles roundEdgesOnButton:self.addBehaviorsButton];
 	[SNFFormStyles roundEdgesOnButton:self.addNewBehaviorButton];
 	[SNFFormStyles updateFontOnSegmentControl:self.positiveNegativeSegment];
+	
+	self.addBehaviorsButton.titleLabel.adjustsFontSizeToFitWidth = TRUE;
+	self.addBehaviorsButton.titleLabel.minimumScaleFactor = .5;
+	
+	self.addNewBehaviorButton.titleLabel.adjustsFontSizeToFitWidth = TRUE;
+	self.addNewBehaviorButton.titleLabel.minimumScaleFactor = .5;
 }
 
 - (void)setBoard:(SNFBoard *)board{

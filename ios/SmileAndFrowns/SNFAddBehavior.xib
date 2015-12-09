@@ -16,8 +16,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFAddBehavior">
             <connections>
-                <outlet property="addBehaviorsButton" destination="eoQ-LU-UHK" id="8uE-Pi-wTU"/>
-                <outlet property="addNewBehaviorButton" destination="xbI-aD-e8X" id="Tec-5y-KZZ"/>
+                <outlet property="addBehaviorsButton" destination="xbI-aD-e8X" id="Drf-S8-5jq"/>
+                <outlet property="addNewBehaviorButton" destination="eoQ-LU-UHK" id="NU6-TE-bRS"/>
                 <outlet property="behaviorsTable" destination="1Ff-CQ-Zgg" id="Olb-81-Qlj"/>
                 <outlet property="closeButton" destination="Dlr-0x-QdB" id="PJb-ph-9XG"/>
                 <outlet property="formView" destination="i5M-Pr-FkT" id="hNy-Lw-VH4"/>
@@ -30,39 +30,30 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="409"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="361"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-LU-UHK">
-                    <rect key="frame" x="164" y="359" width="273" height="30"/>
-                    <animations/>
-                    <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="273" id="Tw4-mX-dbe"/>
-                        <constraint firstAttribute="height" constant="30" id="t4d-na-kwG"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                    <state key="normal" title="Add Selected Behaviors">
-                        <color key="titleColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="onAddBehaviors:" destination="-1" eventType="touchUpInside" id="dam-hu-mfb"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbI-aD-e8X">
-                    <rect key="frame" x="164" y="321" width="273" height="30"/>
+                    <rect key="frame" x="8" y="321" width="272" height="30"/>
                     <animations/>
                     <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="30" id="DQa-tA-Zrm"/>
                         <constraint firstAttribute="height" constant="30" id="IJX-Cf-gcK"/>
                         <constraint firstAttribute="width" constant="273" id="kcZ-cG-tWd"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                    <state key="normal" title="Define Cutom Behavior">
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                    <state key="normal" title="Add Selected Behaviors">
                         <color key="titleColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="IJX-Cf-gcK"/>
+                            <exclude reference="kcZ-cG-tWd"/>
+                        </mask>
+                    </variation>
                     <connections>
-                        <action selector="onNewBehavior:" destination="-1" eventType="touchUpInside" id="fnZ-0y-Yct"/>
+                        <action selector="onAddBehaviors:" destination="-1" eventType="touchUpInside" id="d0a-me-kYL"/>
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Ff-CQ-Zgg">
@@ -75,22 +66,100 @@
                         <outlet property="delegate" destination="-1" id="9tJ-t7-5JK"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uy0-te-jIP">
+                    <rect key="frame" x="288" y="325" width="24" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Drk-WY-acP"/>
+                        <constraint firstAttribute="height" constant="21" id="Lyi-r9-gqW"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="R1k-9a-h0o"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="a6G-ol-UH6"/>
+                        <constraint firstAttribute="width" constant="24" id="evl-Vm-lYq"/>
+                        <constraint firstAttribute="width" constant="24" id="nRR-Kv-tKa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Lyi-r9-gqW"/>
+                            <exclude reference="R1k-9a-h0o"/>
+                            <exclude reference="a6G-ol-UH6"/>
+                            <exclude reference="evl-Vm-lYq"/>
+                        </mask>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoQ-LU-UHK">
+                    <rect key="frame" x="320" y="321" width="272" height="30"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="273" id="Tw4-mX-dbe"/>
+                        <constraint firstAttribute="height" constant="30" id="t4d-na-kwG"/>
+                        <constraint firstAttribute="height" constant="30" id="w9j-zu-I8B"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
+                    <state key="normal" title="Define Custom Behavior">
+                        <color key="titleColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Tw4-mX-dbe"/>
+                            <exclude reference="t4d-na-kwG"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="onNewBehavior:" destination="-1" eventType="touchUpInside" id="O4G-oM-bTJ"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="1Ff-CQ-Zgg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0wF-H5-KUa"/>
                 <constraint firstItem="eoQ-LU-UHK" firstAttribute="top" secondItem="xbI-aD-e8X" secondAttribute="bottom" constant="8" id="2fU-db-1z2"/>
+                <constraint firstItem="eoQ-LU-UHK" firstAttribute="leading" secondItem="uy0-te-jIP" secondAttribute="trailing" constant="8" id="6zb-It-mLl"/>
                 <constraint firstAttribute="trailing" secondItem="1Ff-CQ-Zgg" secondAttribute="trailing" id="9aH-ge-mMF"/>
+                <constraint firstItem="uy0-te-jIP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ezo-0S-3qB"/>
                 <constraint firstItem="xbI-aD-e8X" firstAttribute="top" secondItem="1Ff-CQ-Zgg" secondAttribute="bottom" constant="10" id="IDI-yY-Zko"/>
                 <constraint firstAttribute="bottom" secondItem="eoQ-LU-UHK" secondAttribute="bottom" constant="20" id="M7N-pc-Z9v"/>
+                <constraint firstItem="eoQ-LU-UHK" firstAttribute="top" secondItem="1Ff-CQ-Zgg" secondAttribute="bottom" constant="10" id="MyC-LH-J0t"/>
+                <constraint firstItem="uy0-te-jIP" firstAttribute="leading" secondItem="xbI-aD-e8X" secondAttribute="trailing" constant="8" id="S8r-CL-upL"/>
+                <constraint firstItem="eoQ-LU-UHK" firstAttribute="leading" secondItem="uy0-te-jIP" secondAttribute="trailing" constant="8" id="Z9l-Ap-dzi"/>
+                <constraint firstItem="xbI-aD-e8X" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ZqK-T1-IGj"/>
+                <constraint firstItem="uy0-te-jIP" firstAttribute="leading" secondItem="xbI-aD-e8X" secondAttribute="trailing" constant="8" id="aMu-VJ-N9C"/>
+                <constraint firstItem="uy0-te-jIP" firstAttribute="top" secondItem="1Ff-CQ-Zgg" secondAttribute="bottom" constant="14" id="bOP-LT-pKL"/>
+                <constraint firstItem="xbI-aD-e8X" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="hUA-qf-I3t"/>
                 <constraint firstItem="xbI-aD-e8X" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hoE-YA-dBd"/>
+                <constraint firstItem="eoQ-LU-UHK" firstAttribute="top" secondItem="1Ff-CQ-Zgg" secondAttribute="bottom" constant="10" id="ig6-4o-G4g"/>
                 <constraint firstItem="eoQ-LU-UHK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jyj-u9-uBf"/>
                 <constraint firstItem="1Ff-CQ-Zgg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lbu-ZO-0Ui"/>
+                <constraint firstAttribute="trailing" secondItem="eoQ-LU-UHK" secondAttribute="trailing" constant="8" id="qYL-z7-QK9"/>
+                <constraint firstItem="uy0-te-jIP" firstAttribute="leading" secondItem="xbI-aD-e8X" secondAttribute="trailing" constant="8" id="utt-yR-ha2"/>
+                <constraint firstAttribute="trailing" secondItem="eoQ-LU-UHK" secondAttribute="trailing" constant="8" id="w2Q-Ao-CXB"/>
+                <constraint firstAttribute="bottom" secondItem="xbI-aD-e8X" secondAttribute="bottom" constant="10" id="yOn-fs-5Se"/>
+                <constraint firstItem="uy0-te-jIP" firstAttribute="top" secondItem="1Ff-CQ-Zgg" secondAttribute="bottom" constant="14" id="z20-vb-9X7"/>
+                <constraint firstItem="xbI-aD-e8X" firstAttribute="top" secondItem="1Ff-CQ-Zgg" secondAttribute="bottom" constant="10" id="zoH-tn-HIM"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="434" y="280.5"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="IDI-yY-Zko"/>
+                    <exclude reference="hUA-qf-I3t"/>
+                    <exclude reference="hoE-YA-dBd"/>
+                    <exclude reference="S8r-CL-upL"/>
+                    <exclude reference="aMu-VJ-N9C"/>
+                    <exclude reference="z20-vb-9X7"/>
+                    <exclude reference="2fU-db-1z2"/>
+                    <exclude reference="M7N-pc-Z9v"/>
+                    <exclude reference="MyC-LH-J0t"/>
+                    <exclude reference="Z9l-Ap-dzi"/>
+                    <exclude reference="jyj-u9-uBf"/>
+                    <exclude reference="w2Q-Ao-CXB"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="434" y="256.5"/>
         </view>
         <view contentMode="scaleToFill" id="04U-4t-QMg">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
