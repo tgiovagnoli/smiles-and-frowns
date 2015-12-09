@@ -73,21 +73,25 @@
 	[SNFReward editOrCreatefromInfoDictionary:goalReward withContext:self.managedObjectContext];
 }
 
-- (void)reset{
-	self.title = @"Untitled";
-	for(SNFFrown *frown in self.frowns){
+- (void) reset {
+	
+	for(SNFFrown *frown in self.frowns) {
 		frown.soft_deleted = @YES;
 	}
-	for(SNFSmile *smile in self.smiles){
+	
+	for(SNFSmile *smile in self.smiles) {
 		smile.soft_deleted = @YES;
 	}
-	for(SNFSmile *behavior in self.behaviors){
+	
+	for(SNFSmile *behavior in self.behaviors) {
 		behavior.soft_deleted = @YES;
 	}
-	for(SNFReward *reward in self.rewards){
+	
+	for(SNFReward *reward in self.rewards) {
 		reward.soft_deleted = @YES;
 	}
-	for(SNFSmile *userRole in self.user_roles){
+	
+	for(SNFSmile *userRole in self.user_roles) {
 		userRole.soft_deleted = @YES;
 	}
 	
@@ -96,8 +100,8 @@
 	self.rewards = [NSSet set];
 	self.behaviors = [NSSet set];
 	self.user_roles = [NSSet set];
+	
 	[self addInitialRewards];
-	self.title = @"Untitled";
 }
 
 + (SNFBoard *) boardByUUID:(NSString *) uuid; {
