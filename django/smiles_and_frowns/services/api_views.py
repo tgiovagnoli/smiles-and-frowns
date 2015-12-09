@@ -725,9 +725,9 @@ def sync(request):
 		
 		#check if deleted
 		if client_board.get('deleted',False):
-				board.deleted = True
-				board.save()
-
+			board.deleted = True
+			board.save()
+		
 		#board wasn't created, check date and predefinied.
 		if not created:
 
