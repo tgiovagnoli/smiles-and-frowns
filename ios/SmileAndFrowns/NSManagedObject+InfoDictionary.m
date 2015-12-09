@@ -96,9 +96,11 @@
 			}
 		}
 		
+		//if updated_date and dateManager is locked it means we're updating records in the response
+		//from syncing. Don't allow this value to be set otherwise updated_dates get set to server dates.
 		if([key isEqualToString:@"updated_date"]) {
 			if([SNFDateManager isLocked]) {
-				NSLog(@"not allowing updated_date to be set, date manager locked.");
+				//NSLog(@"not allowing updated_date to be set, date manager locked.");
 				continue;
 			}
 		}
