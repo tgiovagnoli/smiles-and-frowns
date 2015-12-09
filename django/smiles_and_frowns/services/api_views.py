@@ -727,7 +727,7 @@ def sync(request):
 		if client_board.get('deleted',False):
 			board.deleted = True
 			board.save()
-		
+
 		#board wasn't created, check date and predefinied.
 		if not created:
 
@@ -754,7 +754,7 @@ def sync(request):
 	client_roles = data.get("user_roles", [])
 	for client_role in client_roles:
 		client_role_date = json_utils.date_fromstring(client_role.get('updated_date'))
-		
+
 		#find board
 		board = None
 		board_dict = client_role.get('board')
@@ -772,6 +772,14 @@ def sync(request):
 		#find or create role
 		role, role_created = models.UserRole.objects.get_or_create(uuid=client_role.get('uuid'))
 		if not role_created:
+
+			#check if deleted.
+			if client_role.get('deleted',False):
+				if not role.deleted:
+					role.deleted = True
+					role.save()
+
+			#check if dates are newer on db
 			if role.device_date > client_role_date or role.deleted:
 				continue
 
@@ -837,6 +845,14 @@ def sync(request):
 		#get or create behavior
 		behavior,created = models.Behavior.objects.get_or_create(uuid=client_behavior.get('uuid'))
 		if not created:
+			
+			#check if deleted
+			if client_behavior.get('deleted',False):
+				if not behavior.deleted:
+					behavior.deleted = True
+					behavior.save()
+
+			#check if date is newer in db.
 			if behavior.device_date > client_behavior_date or behavior.deleted:
 				continue
 
@@ -890,6 +906,14 @@ def sync(request):
 		#get or create smile
 		smile,created = models.Smile.objects.get_or_create(uuid=client_smile.get('uuid'))
 		if not created:
+
+			#check if deleted
+			if client_smile.get('deleted',False):
+				if not smile.deleted:
+					smile.deleted = True
+					smile.save()
+
+			#check if date is newer in db.
 			if smile.device_date > smile_date or smile.deleted:
 				continue
 
@@ -945,6 +969,14 @@ def sync(request):
 		#get or create frown
 		frown,created = models.Frown.objects.get_or_create(uuid=client_frown.get('uuid'))
 		if not created:
+
+			#check if deleted
+			if client_frown.get('deleted',False):
+				if not frown.deleted:
+					frown.deleted = True
+					frown.save()
+
+			#check if date is newer in db.
 			if frown.device_date > client_frown_date or frown.deleted:
 				continue
 
@@ -979,6 +1011,14 @@ def sync(request):
 		#get or create reward
 		reward,created = models.Reward.objects.get_or_create(uuid=client_reward.get('uuid'))
 		if not created:
+
+			#check deleted
+			if client_reward.get('deleted',False):
+				if not reward.deleted:
+					reward.deleted = True
+					reward.save()
+
+			#check if date is newer in db.
 			if reward.device_date > client_reward_date or reward.deleted:
 				continue
 
