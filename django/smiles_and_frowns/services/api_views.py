@@ -767,7 +767,8 @@ def sync(request):
 		#get provided user info about role
 		userinfo = client_role.get('user', None)
 		if not userinfo:
-			return json_response_error("Client sync error, userinfo not provided for role with uuid %s" (client_role.get('uuid')))
+			continue
+			#return json_response_error("Client sync error, userinfo not provided for role with uuid %s" (client_role.get('uuid')))
 
 		#find or create role
 		role, role_created = models.UserRole.objects.get_or_create(uuid=client_role.get('uuid'))

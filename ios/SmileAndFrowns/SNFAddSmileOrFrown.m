@@ -11,11 +11,11 @@
 - (void)viewDidLoad{
 	[super viewDidLoad];
 	[self startBannerAd];
-	[self updateUI];
+	[self updateUI:TRUE];
 	
 	_smileCountPicker = [[SNFValuePicker alloc] init];
 	NSMutableArray *vals = [[NSMutableArray alloc] init];
-	for(NSInteger i=1; i<101; i++){
+	for(NSInteger i=1; i<101; i++) {
 		[vals addObject:[NSString stringWithFormat:@"%lu", (long)i]];
 	}
 	_smileCountPicker.values = vals;
@@ -52,9 +52,11 @@
 	}
 }
 
-- (void)updateUI{
+- (void)updateUI:(BOOL) reloadBehaviors {
 	self.amountField.text = [NSString stringWithFormat:@"%.0f", self.amountStepper.value];
-	[self reloadBehaviors];
+	if(reloadBehaviors) {
+		[self reloadBehaviors];
+	}
 	switch(self.type){
 		case SNFAddSmileOrFrownTypeFrown:
 			self.titleLabel.text = @"Give Frowns";
@@ -83,12 +85,12 @@
 
 - (void)setBoard:(SNFBoard *)board{
 	_board = board;
-	[self updateUI];
+	[self updateUI:TRUE];
 }
 
 - (void)setType:(SNFAddSmileOrFrownType)type{
 	_type = type;
-	[self updateUI];
+	[self updateUI:TRUE];
 	
 	if(type == SNFAddSmileOrFrownTypeFrown) {
 		[[GATracking instance] trackScreenWithTagManager:@"GiveFrownView"];
@@ -262,7 +264,7 @@
 - (void)valuePicker:(SNFValuePicker *)valuePicker changedValue:(NSString *)value{
 	NSInteger newVal = [value integerValue];
 	self.amountStepper.value = newVal;
-	[self updateUI];
+	[self updateUI:FALSE];
 }
 
 - (void)valuePickerFinished:(SNFValuePicker *)valuePicker{

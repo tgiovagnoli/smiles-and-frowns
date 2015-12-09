@@ -150,8 +150,11 @@ static SNFSyncService * _instance;
 	NSArray *results = [context executeFetchRequest:request error:&error];
 	NSMutableArray *infoCollection = [[NSMutableArray alloc] init];
 	for(SNFUserRole *obj in results){
-		NSDictionary *info = [obj infoDictionaryWithChildrenAsUIDs];
-		NSDictionary *userInfo = @{@"user": [obj.user infoDictionary]};
+		NSDictionary * info = [obj infoDictionaryWithChildrenAsUIDs];
+		NSDictionary * userInfo = @{};
+		if(obj.user) {
+			userInfo = @{@"user": [obj.user infoDictionary]};
+		}
 		NSMutableDictionary *final = [[NSMutableDictionary alloc] init];
 		[final addEntriesFromDictionary:info];
 		[final addEntriesFromDictionary:userInfo];
