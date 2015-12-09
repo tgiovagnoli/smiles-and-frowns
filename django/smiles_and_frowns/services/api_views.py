@@ -878,12 +878,16 @@ def sync(request):
 		#get user for smile.user
 		try:
 			user_dict = client_smile.get('user')
+			if not user_dict:
+				continue
 			user = User.objects.get(username=user_dict.get('username'))
 		except:
 			return json_response_error("Client sync error, User with username(%s) for smile not found on server." % (user_dict.get('user')))
 
 		try:
 			creator_dict = client_smile.get('creator')
+			if not creator_dict:
+				continue
 			creator = User.objects.get(username=creator_dict.get('username'))
 		except:
 			return json_response_error("Client sync error, Creator with username(%s) for smile not found on server." % (creator_dict.get('user')))
@@ -941,12 +945,16 @@ def sync(request):
 		#get user for frown.user
 		try:
 			user_dict = client_frown.get('user')
+			if not user_dict:
+				continue
 			user = User.objects.get(username=user_dict.get('username'))
 		except:
 			return json_response_error("Client sync error, User with username(%s) for frown not found on server." % (user_dict.get('username')))
 
 		try:
 			creator_dict = client_frown.get('creator')
+			if not creator_dict:
+				continue
 			creator = User.objects.get(username=creator_dict.get('username'))
 		except:
 			return json_response_error("Client sync error, Creator with username(%s) for frown not found on server." % (creator_dict.get('user')))
