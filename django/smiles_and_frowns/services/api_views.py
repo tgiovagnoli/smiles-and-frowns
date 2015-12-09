@@ -757,12 +757,11 @@ def sync(request):
 
 		#find board
 		board = None
-		board_dict = client_role.get('board')
-		if board_dict:
-			try:
-				board = models.Board.objects.get(uuid=board_dict.get('uuid'))
-			except:
-				pass
+		try:
+			board_dict = client_role.get('board')
+			board = models.Board.objects.get(uuid=board_dict.get('uuid'))
+		except:
+			pass
 		
 		#get provided user info about role
 		userinfo = client_role.get('user', None)
@@ -784,7 +783,7 @@ def sync(request):
 		#if not user info, just ignore and continue.
 		if not userinfo:
 			continue
-
+		
 		#create account if it's a child, other users signup through the normal signup process
 		user = None
 		if role.role == "child":
@@ -834,7 +833,7 @@ def sync(request):
 	client_behaviors = data.get('behaviors',[])
 	for client_behavior in client_behaviors:
 		client_behavior_date = json_utils.date_fromstring(client_behavior.get('updated_date'))
-
+		
 		#get board for behavior.board
 		board = None
 		board_dict = client_behavior.get('board')
