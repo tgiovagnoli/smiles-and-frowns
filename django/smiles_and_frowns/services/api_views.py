@@ -723,9 +723,14 @@ def sync(request):
 		board,created = models.Board.objects.get_or_create(uuid=client_board.get("uuid"))
 		board_client_date = json_utils.date_fromstring(client_board.get('updated_date'))
 		
+		#check if deleted
+		if client_board.get('deleted',False):
+				board.deleted = True
+				board.save()
+
 		#board wasn't created, check date and predefinied.
 		if not created:
-			
+
 			#board is newerin database than what the client sent or deleted. ignore it.
 			if board.device_date > board_client_date or board.deleted:
 				continue
