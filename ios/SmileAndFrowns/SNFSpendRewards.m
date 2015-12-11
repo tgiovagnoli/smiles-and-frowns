@@ -265,6 +265,10 @@
 		self.spendAmount = _smilesAvailable;
 	}
 	
+	if(_smilesAvailable < 1) {
+		self.spendAmount = 0;
+	}
+	
 	[self updateSmileAndRewardsLabels];
 	[self updateButtons];
 }
@@ -276,6 +280,10 @@
 	}
 	
 	if(_smilesAvailable == 0) {
+		self.spendAmount = 0;
+	}
+	
+	if(_smilesAvailable < 0) {
 		self.spendAmount = 0;
 	}
 	
@@ -295,10 +303,28 @@
 		self.addButton.alpha = .5;
 	}
 	
+	if(_smilesAvailable < 0) {
+		self.maxButton.alpha = .5;
+		self.maxButton.enabled = FALSE;
+	} else {
+		self.maxButton.alpha = 1;
+		self.maxButton.enabled = TRUE;
+	}
+	
 	if(self.spendAmount == 0) {
+		
+		if(_smilesAvailable < 1) {
+			self.maxButton.alpha = .5;
+			self.maxButton.enabled = false;
+		}
+		
 		self.spendSmileButton.alpha = .75;
 		self.spendSmileButton.enabled = false;
 	} else {
+		
+		self.maxButton.alpha = 1;
+		self.maxButton.enabled = true;
+		
 		self.spendSmileButton.alpha = 1;
 		self.spendSmileButton.enabled = true;
 	}
