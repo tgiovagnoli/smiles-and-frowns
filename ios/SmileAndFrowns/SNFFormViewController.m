@@ -104,7 +104,7 @@
 		height -= bottom;
 		height -= containerScrollView.top;
 		height -= [SNFViewController instance].tabMenu.view.height;
-		height += [SNFViewController instance].bannerView.height;
+		height += 50; //banner height
 		containerScrollView.height = height;
 		
 	//otherwise we're running modally.

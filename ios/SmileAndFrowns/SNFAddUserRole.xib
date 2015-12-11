@@ -60,6 +60,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ha5-06-0QB">
                     <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                     <animations/>
+                    <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rK7-yY-OwN">
                     <rect key="frame" x="527" y="26" width="60" height="30"/>
@@ -231,7 +232,7 @@
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male.png" translatesAutoresizingMaskIntoConstraints="NO" id="GQx-pL-nCJ">
-                    <rect key="frame" x="20" y="59" width="68" height="68"/>
+                    <rect key="frame" x="20" y="66" width="68" height="68"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="68" id="AEA-Fv-337"/>
@@ -273,7 +274,7 @@
                 <constraint firstItem="tSQ-Zv-Bpq" firstAttribute="centerY" secondItem="DBh-Zt-aTx" secondAttribute="centerY" id="s08-E4-vu7"/>
                 <constraint firstItem="ySG-lI-iu7" firstAttribute="height" secondItem="f2T-yA-zoS" secondAttribute="height" id="un4-00-Q5c"/>
                 <constraint firstAttribute="trailing" secondItem="DBh-Zt-aTx" secondAttribute="trailing" constant="20" id="unZ-5Q-UuB"/>
-                <constraint firstItem="GQx-pL-nCJ" firstAttribute="top" secondItem="Kgn-KV-JRl" secondAttribute="top" constant="59" id="v8K-cR-7yH"/>
+                <constraint firstItem="GQx-pL-nCJ" firstAttribute="top" secondItem="Kgn-KV-JRl" secondAttribute="top" constant="66" id="v8K-cR-7yH"/>
                 <constraint firstItem="tSQ-Zv-Bpq" firstAttribute="width" secondItem="DBh-Zt-aTx" secondAttribute="width" id="wnB-TX-mNc"/>
                 <constraint firstItem="RYH-t5-3YD" firstAttribute="top" secondItem="f2T-yA-zoS" secondAttribute="bottom" constant="20" id="xS2-0H-NMG"/>
                 <constraint firstAttribute="trailing" secondItem="eVl-ju-Z9j" secondAttribute="trailing" constant="20" id="xi2-71-vOZ"/>

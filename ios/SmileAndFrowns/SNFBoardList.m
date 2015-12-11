@@ -111,9 +111,9 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 - (void)boardListCell:(SNFBoardListCell *)cell wantsToEditBoard:(SNFBoard *)board{
 	SNFBoardEdit * boardEdit = nil;
 	if(cell) {
-		boardEdit = [[SNFBoardEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionRight];
+		boardEdit = [[SNFBoardEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(500,644) arrowDirections:UIPopoverArrowDirectionRight];
 	} else {
-		boardEdit = [[SNFBoardEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionUp];
+		boardEdit = [[SNFBoardEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(500,644) arrowDirections:UIPopoverArrowDirectionUp];
 	}
 	boardEdit.delegate = self;
 	[[AppDelegate rootViewController] presentViewController:boardEdit animated:YES completion:^{}];

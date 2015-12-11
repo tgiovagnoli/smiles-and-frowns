@@ -70,7 +70,7 @@
 }
 
 - (IBAction) onGender:(id) sender {
-	[self.view endEditing:TRUE];
+	//[self.view endEditing:TRUE];
 	[self.view addSubview:_genderPicker.view];
 	[_genderPicker.view matchFrameSizeOfView:self.view];
 	_genderPicker.view.alpha = 1.0;
@@ -82,7 +82,7 @@
 }
 
 - (IBAction) onAge:(id) sender{
-	[self.view endEditing:TRUE];
+	//[self.view endEditing:TRUE];
 	[self.view addSubview:_agePicker.view];
 	[_agePicker.view matchFrameSizeOfView:self.view];
 	_agePicker.view.alpha = 1.0;

@@ -218,9 +218,9 @@
 }
 
 - (IBAction)onCancel:(UIButton *)sender{
-	if(self.delegate){
-		[self.delegate addSmileOrFrownFinished:self];
-	}
+	//if(self.delegate){
+	//	[self.delegate addSmileOrFrownFinished:self];
+	//}
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 

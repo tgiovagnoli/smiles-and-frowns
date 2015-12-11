@@ -1,6 +1,7 @@
 
 #import "UIViewController+ModalCreation.h"
 #import "AppDelegate.h"
+#import "SNFFormStyles.h"
 
 @implementation UIViewController (ModalCreation)
 
@@ -21,6 +22,7 @@
 	
 	self.modalPresentationStyle = UIModalPresentationPopover;
 	self.popoverPresentationController.sourceView = sourceView;
+	self.popoverPresentationController.backgroundColor = [SNFFormStyles darkSandColor];
 	self.popoverPresentationController.permittedArrowDirections = arrowDirections;
 	
 	if(CGRectEqualToRect(sourceRectUpdated, CGRectZero)) {

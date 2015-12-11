@@ -290,9 +290,9 @@
 }
 
 - (IBAction)onCancel:(UIButton *)sender{
-	if(self.delegate){
-		[self.delegate spendRewardsIsDone:self];
-	}
+	//if(self.delegate){
+	//	[self.delegate spendRewardsIsDone:self];
+	//}
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
