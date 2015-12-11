@@ -19,7 +19,7 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
-	self.spendAmount = 1;
+	self.spendAmount = 0;
 	
 	self.rewardsInfoLabel.text = @"";
 	[self.rewardsCollection registerClass:[SNFRewardCell class] forCellWithReuseIdentifier:@"SNFRewardCell"];
@@ -70,13 +70,12 @@
 	
 	[self startBannerAd];
 	[self updateUI];
-	
 	[self updateRewardsInfoLabel];
+	
 }
 
 - (void) viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
-	
 	[self updateRewardsInfoLabel];
 }
 
@@ -111,6 +110,8 @@
 	
 	self.totalSmilestoSpendLabel.text = [NSString stringWithFormat:@"%ld", (long)_smilesAvailable];
 	
+	[self updateButtons];
+	[self updateSmileAndRewardsLabels];
 	[self setImageByGender];
 	
 	if(![self.user.image isEmpty] && self.user.image) {
@@ -252,7 +253,9 @@
 }
 
 - (void) addRewardIsFinished:(SNFAddReward *) addReward {
-	[self.rewardsCollection reloadData];
+	[self reloadRewards];
+	[self updateSmileAndRewardsLabels];
+	[self updateRewardsInfoLabel];
 }
 
 - (IBAction) onAdd:(id)sender {
@@ -263,16 +266,42 @@
 	}
 	
 	[self updateSmileAndRewardsLabels];
+	[self updateButtons];
 }
 
-- (IBAction) onSubtract:(id)sender {
-	self.spendAmount -= 1;
+- (IBAction) onSubtract:(id) sender {
 	
-	if(self.spendAmount <= 0) {
-		self.spendAmount = 1;
+	if(self.spendAmount > 0) {
+		self.spendAmount -= 1;
+	}
+	
+	if(_smilesAvailable == 0) {
+		self.spendAmount = 0;
 	}
 	
 	[self updateSmileAndRewardsLabels];
+	[self updateButtons];
+}
+
+- (void) updateButtons {
+	self.subtractButton.alpha = 1;
+	self.addButton.alpha = 1;
+	
+	if(self.spendAmount <= 0) {
+		self.subtractButton.alpha = .5;
+	}
+	
+	if(self.spendAmount >= _smilesAvailable) {
+		self.addButton.alpha = .5;
+	}
+	
+	if(self.spendAmount == 0) {
+		self.spendSmileButton.alpha = .75;
+		self.spendSmileButton.enabled = false;
+	} else {
+		self.spendSmileButton.alpha = 1;
+		self.spendSmileButton.enabled = true;
+	}
 }
 
 - (IBAction)onRewardModifierChange:(UIStepper *)sender{
@@ -282,11 +311,32 @@
 - (IBAction)onMax:(UIButton *)sender{
 	self.spendAmount = _smilesAvailable;
 	[self updateSmileAndRewardsLabels];
+	[self updateButtons];
 }
 
-- (void)updateSmileAndRewardsLabels {
+- (void) updateSmileAndRewardsLabels {
 	self.spendSmilesLabel.text = [NSString stringWithFormat:@"%.0f", self.spendAmount];
-	self.rewardCalculatedLabel.text = [NSString stringWithFormat:@"= %.0f %@", self.spendAmount * _selectedReward.currency_amount.floatValue, _selectedReward.title];
+	
+	float amount = self.spendAmount;
+	float currency = _selectedReward.currency_amount.floatValue;
+	float total = (float) amount * currency;
+	
+	NSMutableString * calc = [[NSMutableString alloc]init];
+	
+	[calc appendString:@"= "];
+	
+	if([_selectedReward.currency_type isEqualToString:SNFRewardCurrencyTypeMoney]) {
+		[calc appendString:@"$"];
+	}
+	
+	if([Utils CGFloatHasDecimals:total]) {
+		[calc appendFormat:@"%.2f %@", total, _selectedReward.title];
+	} else {
+		[calc appendFormat:@"%.0f %@", total, _selectedReward.title];
+	}
+	
+	self.rewardCalculatedLabel.text = calc;
+	
 }
 
 - (IBAction)onCancel:(UIButton *)sender{

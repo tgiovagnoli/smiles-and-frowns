@@ -109,11 +109,11 @@
 }
 
 - (void) updateSmileAndFrownContainers {
-	CGFloat width = self.spendContainer.left - self.profileContainer.right;
-	CGFloat itemWidth = self.smileContainer.width * 2;
-	CGFloat spacing = (width - itemWidth) / 4;
-	self.smileLeft.constant = self.profileContainer.right + spacing;
-	self.frownLeft.constant = self.profileContainer.right + self.smileContainer.width + spacing * 2.5;
+//	CGFloat width = self.spendContainer.left - self.profileContainer.right;
+//	CGFloat itemWidth = self.smileContainer.width * 2;
+//	CGFloat spacing = (width - itemWidth) / 4;
+//	self.smileLeft.constant = self.profileContainer.right + spacing;
+//	self.frownLeft.constant = self.profileContainer.right + self.smileContainer.width + spacing * 2.5;
 }
 
 - (void) setImageFromGender {

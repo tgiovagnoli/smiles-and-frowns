@@ -2,6 +2,7 @@
 #import "SNFAddReward.h"
 #import "SNFModel.h"
 #import "SNFFormStyles.h"
+#import "SNFSyncService.h"
 
 @implementation SNFAddReward
 
@@ -35,17 +36,21 @@
 	
 }
 
-- (IBAction)onAddReward:(UIButton *)sender{
-	if(!self.reward){
-		NSDictionary *rewardData = @{
-									 @"uuid": [[NSUUID UUID] UUIDString],
-									 @"board": @{@"uuid": self.board.uuid},
-									 };
+- (IBAction) onAddReward:(UIButton *) sender {
+	if(!self.reward) {
+		NSDictionary * rewardData = @{
+			@"uuid": [[NSUUID UUID] UUIDString],
+			@"board": @{@"uuid": self.board.uuid},
+		};
 		_reward = (SNFReward *)[SNFReward editOrCreatefromInfoDictionary:rewardData withContext:[SNFModel sharedInstance].managedObjectContext];
 	}
+	
 	[self updateReward];
+	
+	[[SNFSyncService instance] saveContext];
+	
 	NSLog(@"%@", self.reward);
-	if(self.delegate){
+	if(self.delegate) {
 		[self.delegate addRewardIsFinished:self];
 	}
 	[self dismissViewControllerAnimated:YES completion:^{}];

@@ -3,9 +3,9 @@
 
 @implementation SNFFormStyles
 
-+ (void)roundEdgesOnButton:(UIButton *)button{
++ (void) roundEdgesOnButton:(UIButton *) button {
 	[button.layer setMasksToBounds:YES];
-	[button.layer setCornerRadius:5.0f];
+	[button.layer setCornerRadius:8];
 }
 
 + (void)updateFontOnSegmentControl:(UISegmentedControl *)segmentControl{

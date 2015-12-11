@@ -220,9 +220,11 @@
                                     <constraint firstItem="Pfq-CW-vJg" firstAttribute="top" secondItem="ii1-HE-5K0" secondAttribute="top" constant="8" id="6Hd-Yl-5IY"/>
                                     <constraint firstItem="2ac-cs-lQM" firstAttribute="top" secondItem="ii1-HE-5K0" secondAttribute="top" constant="8" id="74N-ql-62i"/>
                                     <constraint firstItem="ndR-xf-naw" firstAttribute="leading" secondItem="ii1-HE-5K0" secondAttribute="leading" constant="241" id="CkW-Wh-bWg"/>
+                                    <constraint firstItem="2ac-cs-lQM" firstAttribute="leading" secondItem="Pfq-CW-vJg" secondAttribute="trailing" constant="8" id="ELj-z3-qXm"/>
                                     <constraint firstAttribute="trailing" secondItem="ndR-xf-naw" secondAttribute="trailing" constant="8" id="Gzv-nh-nTC"/>
                                     <constraint firstItem="nRs-1Y-d6q" firstAttribute="leading" secondItem="ii1-HE-5K0" secondAttribute="leading" constant="8" id="Hl6-Ox-k35"/>
                                     <constraint firstAttribute="bottom" secondItem="ndR-xf-naw" secondAttribute="bottom" constant="8" id="KKl-kH-reX"/>
+                                    <constraint firstItem="Pfq-CW-vJg" firstAttribute="centerX" secondItem="ii1-HE-5K0" secondAttribute="centerX" constant="-27.5" id="X48-Sx-R5X"/>
                                     <constraint firstItem="nRs-1Y-d6q" firstAttribute="top" secondItem="ii1-HE-5K0" secondAttribute="top" constant="8" id="X4v-LF-Ybk"/>
                                     <constraint firstItem="2ac-cs-lQM" firstAttribute="leading" secondItem="ii1-HE-5K0" secondAttribute="leading" constant="169" id="ZEE-8o-v2p"/>
                                     <constraint firstAttribute="bottom" secondItem="nRs-1Y-d6q" secondAttribute="bottom" constant="8" id="ca4-ed-avy"/>
@@ -233,6 +235,8 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="m5b-Ov-0Z6"/>
+                                        <exclude reference="ZEE-8o-v2p"/>
                                         <exclude reference="CkW-Wh-bWg"/>
                                     </mask>
                                 </variation>
