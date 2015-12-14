@@ -15,6 +15,17 @@
 	if(self.selectNegativeOnLoad) {
 		self.positiveNegativeSegment.selectedSegmentIndex = 1;
 	}
+	
+	if(self.disableOppositeFilter) {
+		
+		if(self.positiveNegativeSegment.selectedSegmentIndex == 0) {
+			[self.positiveNegativeSegment setEnabled:FALSE forSegmentAtIndex:1];
+		}
+		
+		if(self.positiveNegativeSegment.selectedSegmentIndex == 1) {
+			[self.positiveNegativeSegment setEnabled:FALSE forSegmentAtIndex:0];
+		}
+	}
 }
 
 - (void)decorate{

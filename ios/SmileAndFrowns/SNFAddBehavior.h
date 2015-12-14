@@ -22,6 +22,7 @@
 }
 
 @property BOOL selectNegativeOnLoad;
+@property BOOL disableOppositeFilter;
 
 @property (weak) NSObject <SNFAddBehaviorDelegate> *delegate;
 @property (weak) IBOutlet UITableView *behaviorsTable;

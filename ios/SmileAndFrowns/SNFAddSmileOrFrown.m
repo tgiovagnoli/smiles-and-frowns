@@ -107,6 +107,7 @@
 	if(self.type == SNFAddSmileOrFrownTypeFrown) {
 		addBehavior.selectNegativeOnLoad = TRUE;
 	}
+	addBehavior.disableOppositeFilter = TRUE;
 	[self presentViewController:addBehavior animated:YES completion:^{}];
 }
 
