@@ -267,6 +267,11 @@
 }
 
 - (void)childCellWantsToSpend:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
+	if([cell.spendLabel.text floatValue] < 0) {
+		[self displayOKAlertWithTitle:@"Sorry" message:@"Your smile count is negative. You must have a positive smile count in order to spend smiles." completion:nil];
+		return;
+	}
+	
 	SNFSpendRewards * rewards = [[SNFSpendRewards alloc] initWithSourceView:cell.spendButton.superview sourceRect:cell.spendButton.frame contentSize:CGSizeMake(500,490) arrowDirections:UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
 	rewards.board = self.board;
 	rewards.user = userRole.user;
