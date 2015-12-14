@@ -5,7 +5,7 @@
 
 + (void) roundEdgesOnButton:(UIButton *) button {
 	[button.layer setMasksToBounds:YES];
-	[button.layer setCornerRadius:8];
+	[button.layer setCornerRadius:10];
 }
 
 + (void)updateFontOnSegmentControl:(UISegmentedControl *)segmentControl{
