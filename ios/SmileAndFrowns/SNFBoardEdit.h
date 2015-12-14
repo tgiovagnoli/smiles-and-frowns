@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger, SNFBoardEditBehaviorType){
 @property (weak) IBOutlet UIButton *addBehaviorButton;
 @property (weak) IBOutlet UIButton *cancelButton;
 @property (weak) IBOutlet UIButton *useBoardButton;
+@property (weak) IBOutlet UIButton * addRewardButton;
 @property IBOutlet UIView *noBehaviorsMessage;
 
 @property (nonatomic) SNFBoard *board;

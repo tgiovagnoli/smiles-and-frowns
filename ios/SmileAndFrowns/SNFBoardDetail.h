@@ -11,7 +11,7 @@
 #import "UIViewControllerStack.h"
 #import "SNFChildEdit.h"
 #import "UIColor+Hex.h"
-
+#import "TriangleView.h"
 
 typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
 	SNFBoardDetailUserRoleOwner,
@@ -31,6 +31,9 @@ typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
 	NSArray <NSString *> *_colorPool;
 }
 
+
+@property IBOutlet TriangleView * triangleView;
+@property IBOutlet UIView * messageView;
 @property (weak) IBOutlet UITableView * rolesTable;
 @property (weak) IBOutlet UIButton * addButton;
 @property (weak) IBOutlet UIButton * backButton;

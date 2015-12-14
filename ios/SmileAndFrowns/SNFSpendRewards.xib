@@ -12,6 +12,7 @@
             <string>Roboto-Bold</string>
             <string>Roboto-Bold</string>
             <string>Roboto-Bold</string>
+            <string>Roboto-Bold</string>
         </mutableArray>
         <mutableArray key="Roboto-Light.ttf">
             <string>Roboto-Light</string>
@@ -27,6 +28,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFSpendRewards">
             <connections>
                 <outlet property="addButton" destination="WIL-8y-Iwj" id="Xyd-2S-l9W"/>
+                <outlet property="addRewardButton" destination="t0G-pb-a37" id="rRO-5v-mNo"/>
                 <outlet property="cancelButton" destination="kqH-NK-KiA" id="Ksk-b6-qqk"/>
                 <outlet property="formView" destination="i5M-Pr-FkT" id="Tzi-pC-LOW"/>
                 <outlet property="maxButton" destination="Fdh-2O-Ufx" id="Yh7-5q-dbK"/>
@@ -148,7 +150,7 @@
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IpN-d1-Wbr">
-                    <rect key="frame" x="20" y="165" width="560" height="70"/>
+                    <rect key="frame" x="80" y="165" width="500" height="70"/>
                     <animations/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -331,6 +333,22 @@
                         <action selector="onRedeemReward:" destination="-1" eventType="touchUpInside" id="8dK-BX-qiB"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0G-pb-a37">
+                    <rect key="frame" x="20" y="165" width="60" height="70"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="ASt-7C-qia"/>
+                        <constraint firstAttribute="height" constant="70" id="llC-zS-Hvw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="26"/>
+                    <state key="normal" title="+">
+                        <color key="titleColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="addReward:" destination="-1" eventType="touchUpInside" id="dFj-k3-vec"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
@@ -344,8 +362,10 @@
                 <constraint firstItem="UbZ-Pf-8TE" firstAttribute="top" secondItem="JiC-LA-N8G" secondAttribute="bottom" constant="79" id="Bcq-FM-LNq"/>
                 <constraint firstAttribute="trailing" secondItem="IpN-d1-Wbr" secondAttribute="trailing" constant="20" id="CZQ-ar-RVq"/>
                 <constraint firstItem="fpu-rT-0bq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="KbR-0d-wjd"/>
+                <constraint firstItem="IpN-d1-Wbr" firstAttribute="leading" secondItem="t0G-pb-a37" secondAttribute="trailing" id="LD6-my-fNW"/>
                 <constraint firstItem="oNa-YD-NKz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Mm2-NG-Rhz"/>
                 <constraint firstItem="nZ0-Pc-oNS" firstAttribute="top" secondItem="Fdh-2O-Ufx" secondAttribute="bottom" id="NLE-mM-AYa"/>
+                <constraint firstItem="t0G-pb-a37" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="PQc-pZ-HMS"/>
                 <constraint firstItem="oNa-YD-NKz" firstAttribute="top" secondItem="JiC-LA-N8G" secondAttribute="bottom" constant="25" id="RnL-gM-0hc"/>
                 <constraint firstItem="dRA-o1-3pS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="TsW-ud-0bj"/>
                 <constraint firstAttribute="trailing" secondItem="nZ0-Pc-oNS" secondAttribute="trailing" constant="35" id="UbR-go-Hrf"/>
@@ -359,10 +379,10 @@
                 <constraint firstItem="WIL-8y-Iwj" firstAttribute="leading" secondItem="QKj-F4-6Md" secondAttribute="trailing" constant="8" id="dsi-FW-ncJ"/>
                 <constraint firstItem="3RY-9E-0gp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fk0-o7-9gu"/>
                 <constraint firstItem="ukV-Rd-cmR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gK8-mA-QIk"/>
-                <constraint firstItem="IpN-d1-Wbr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="hpz-6x-vNU"/>
                 <constraint firstItem="ukV-Rd-cmR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="304" id="ht3-x0-sfr"/>
                 <constraint firstAttribute="trailing" secondItem="oSe-rU-0Qs" secondAttribute="trailing" constant="13" id="iFw-oO-OA1"/>
                 <constraint firstAttribute="trailing" secondItem="3RY-9E-0gp" secondAttribute="trailing" id="ilt-IS-Vaf"/>
+                <constraint firstItem="t0G-pb-a37" firstAttribute="top" secondItem="dRA-o1-3pS" secondAttribute="bottom" constant="8" id="j5J-cC-n30"/>
                 <constraint firstItem="Fdh-2O-Ufx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jfZ-Re-uzH"/>
                 <constraint firstItem="c1Q-XE-4Kb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="kZD-H4-8V4"/>
                 <constraint firstAttribute="trailing" secondItem="c1Q-XE-4Kb" secondAttribute="trailing" constant="20" id="n9i-tg-Am8"/>

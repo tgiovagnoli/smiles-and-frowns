@@ -3,6 +3,10 @@
 
 @implementation SNFRewardCell
 
+- (void) prepareForReuse {
+	self.selected = FALSE;
+}
+
 - (void) setReward:(SNFReward *) reward {
 	_reward = reward;
 	

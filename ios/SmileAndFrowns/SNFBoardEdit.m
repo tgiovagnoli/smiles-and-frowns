@@ -8,6 +8,10 @@
 
 NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 
+@interface SNFBoardEdit ()
+@property NSInteger selectedIndexPathRow;
+@end
+
 @implementation SNFBoardEdit
 
 - (void) viewDidLoad {
@@ -25,6 +29,11 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	[SNFFormStyles roundEdgesOnButton:self.addBehaviorButton];
 	[SNFFormStyles roundEdgesOnButton:self.useBoardButton];
 	[SNFFormStyles roundEdgesOnButton:self.cancelButton];
+	
+	self.noBehaviorsMessage.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.noBehaviorsMessage.layer.shadowOffset = CGSizeMake(0,1);
+	self.noBehaviorsMessage.layer.shadowOpacity = .2;
+	self.noBehaviorsMessage.layer.shadowRadius = 1;
 }
 
 - (void)setBoard:(SNFBoard *)board{
@@ -46,17 +55,13 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	
 	if(_positiveBehaviors.count < 1 && _negativeBehaviors.count < 1){
 		[self showNoBehaviorsMessage];
-	}else{
+	} else {
 		[self.noBehaviorsMessage removeFromSuperview];
 	}
 }
 
-- (void)showNoBehaviorsMessage{
+- (void) showNoBehaviorsMessage {
 	[self.formView addSubview:self.noBehaviorsMessage];
-	self.noBehaviorsMessage.frame = self.behaviorsTable.frame;
-	[NSTimer scheduledTimerWithTimeInterval:0.1 block:^{
-		self.noBehaviorsMessage.frame = self.behaviorsTable.frame;
-	} repeats:NO];
 }
 
 
@@ -81,6 +86,7 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 
 // behaviors
 - (IBAction)onAddBehavior:(UIButton *)sender{
+	[self.noBehaviorsMessage removeFromSuperview];
 	SNFAddBehavior * addBehavior = [[SNFAddBehavior alloc] initWithSourceView:self.addBehaviorButton sourceRect:CGRectZero contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight];
 	[self presentViewController:addBehavior animated:YES completion:^{}];
 	addBehavior.board = self.board;
@@ -204,28 +210,24 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-	return _sortedRewards.count + 1;
+	return _sortedRewards.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-	if(indexPath.row == 0){
-		SNFAddCell *addCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SNFAddCell" forIndexPath:indexPath];
-		addCell.delegate = self;
-		return addCell;
-	}
+	SNFRewardCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SNFRewardCell" forIndexPath:indexPath];
+	SNFReward * reward = [_sortedRewards objectAtIndex:indexPath.row];
 	
-	SNFRewardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SNFRewardCell" forIndexPath:indexPath];
+	cell.selected = false;
 	
-	SNFReward * reward = [_sortedRewards objectAtIndex:indexPath.row - 1];
-	
-	if(indexPath.row == 1) {
+	if(indexPath.row == 0 && self.selectedIndexPathRow == -1) {
 		cell.selected = TRUE;
-		self.rewardInfoLabel.text = [NSString stringWithFormat:@"%.2f Smiles = %.2f %@", reward.smile_amount.floatValue, reward.currency_amount.floatValue, reward.title];
-	} else {
-		cell.selected = FALSE;
 	}
 	
+	if(indexPath.row == self.selectedIndexPathRow) {
+		cell.selected = TRUE;
+	}
 	
+	self.rewardInfoLabel.text = [NSString stringWithFormat:@"%.2f Smiles = %.2f %@", reward.smile_amount.floatValue, reward.currency_amount.floatValue, reward.title];
 	cell.reward = reward;
 	
 	return cell;
@@ -238,33 +240,32 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	[self presentViewController:addReward animated:YES completion:^{}];
 }
 
+- (IBAction) addReward:(id)sender {
+	SNFAddReward *addReward = [[SNFAddReward alloc] initWithSourceView:self.addRewardButton sourceRect:CGRectZero contentSize:CGSizeMake(500,325)];
+	addReward.board = self.board;
+	addReward.delegate = self;
+	[self presentViewController:addReward animated:YES completion:^{}];
+}
+
 - (void)addRewardIsFinished:(SNFAddReward *)addReward{
 	[self reloadRewards];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-	if(indexPath.row == 0){
-		return NO;
-	}
 	return YES;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-	if(indexPath.row == 0){
-		return;
-	}
+	
+	self.selectedIndexPathRow = indexPath.row;
 	
 	for (int i = 0; i < _sortedRewards.count; i++) {
-		if(i == 0) {
-			continue;
-		}
 		NSIndexPath * path = [NSIndexPath indexPathForRow:i inSection:0];
 		UICollectionViewCell * cell = [collectionView cellForItemAtIndexPath:path];
 		cell.selected = FALSE;
 	}
 	
-	SNFReward *reward = [_sortedRewards objectAtIndex:indexPath.row - 1];
-	
+	SNFReward *reward = [_sortedRewards objectAtIndex:indexPath.row];
 	self.rewardInfoLabel.text = [NSString stringWithFormat:@"%.2f Smiles = %.2f %@", reward.smile_amount.floatValue, reward.currency_amount.floatValue, reward.title];
 }
 

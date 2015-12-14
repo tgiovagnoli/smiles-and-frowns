@@ -17,6 +17,8 @@
 
 @interface SNFBoardDetailChildCell : SNFSwipeCell
 
+@property (nonatomic) BOOL isLastCell;
+
 @property (nonatomic) SNFUserRole * userRole;
 
 @property (weak) IBOutlet UIButton * editButton;
@@ -45,6 +47,9 @@
 @property (weak) IBOutlet UIImageView * spendImage;
 
 @property (weak) NSObject <SNFBoardDetailChildCellDelegate> *delegate;
+
+@property IBOutlet NSLayoutConstraint * spendCenterY;
+@property IBOutlet NSLayoutConstraint * bottomSpacing;
 
 - (IBAction)onSmile:(UIButton *)sender;
 - (IBAction)onFrown:(UIButton *)sender;

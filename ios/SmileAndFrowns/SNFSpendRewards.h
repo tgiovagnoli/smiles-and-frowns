@@ -29,6 +29,7 @@
 @property (weak) IBOutlet UILabel * totalSmilestoSpendLabel;
 @property (weak) IBOutlet UIImageView * totalSmilesImage;
 
+@property (weak) IBOutlet UIButton * addRewardButton;
 @property (weak) IBOutlet UICollectionView * rewardsCollection;
 
 @property (weak) IBOutlet UIImageView * smileImage;

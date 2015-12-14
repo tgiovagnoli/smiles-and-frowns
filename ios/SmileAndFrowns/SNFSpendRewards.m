@@ -12,6 +12,7 @@
 
 @interface SNFSpendRewards ()
 @property float spendAmount;
+@property NSInteger selectedIndexPathRow;
 @end
 
 @implementation SNFSpendRewards
@@ -20,12 +21,11 @@
 	[super viewDidLoad];
 	
 	self.spendAmount = 0;
+	self.selectedIndexPathRow = -1;
 	
 	self.rewardsInfoLabel.text = @"";
 	[self.rewardsCollection registerClass:[SNFRewardCell class] forCellWithReuseIdentifier:@"SNFRewardCell"];
 	[self.rewardsCollection registerNib:[UINib nibWithNibName:@"SNFRewardCell" bundle:nil] forCellWithReuseIdentifier:@"SNFRewardCell"];
-	[self.rewardsCollection registerClass:[SNFAddCell class] forCellWithReuseIdentifier:@"SNFAddCell"];
-	[self.rewardsCollection registerNib:[UINib nibWithNibName:@"SNFAddCell" bundle:nil] forCellWithReuseIdentifier:@"SNFAddCell"];
 	
 	self.userProfileImageView.layer.cornerRadius = self.userProfileImageView.width/2;
 	self.userProfileImageView.layer.borderWidth = 2;
@@ -82,6 +82,7 @@
 - (void) updateUI {
 	[self reloadRewards];
 	[self updateUserInfo];
+	[self updateSmileAndRewardsLabels];
 }
 
 - (void) updateUserInfo {
@@ -134,11 +135,12 @@
 
 - (void) reloadRewards {
 	_sortedRewards = [self.board sortedActiveRewards];
+	_selectedReward = [_sortedRewards objectAtIndex:0];
 	[self.rewardsCollection reloadData];
 	if([self.rewardsCollection indexPathsForSelectedItems].count == 0 && _sortedRewards.count > 0){
 		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
 		[self.rewardsCollection selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionLeft];
-		[self collectionView:self.rewardsCollection didSelectItemAtIndexPath:indexPath];
+		//[self collectionView:self.rewardsCollection didSelectItemAtIndexPath:indexPath];
 	}
 }
 
@@ -153,47 +155,40 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-	return _sortedRewards.count + 1;
+	return _sortedRewards.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-	if(indexPath.row == 0){
-		SNFAddCell *addCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SNFAddCell" forIndexPath:indexPath];
-		addCell.delegate = self;
-		return addCell;
-	}
 	
 	SNFRewardCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SNFRewardCell" forIndexPath:indexPath];
 	
-	if(indexPath.row == 1) {
+	cell.selected = FALSE;
+	
+	if(indexPath.row == 0 && self.selectedIndexPathRow == -1) {
 		cell.selected = TRUE;
-	} else {
-		cell.selected = FALSE;
 	}
 	
-	SNFReward * reward = [_sortedRewards objectAtIndex:indexPath.row - 1];
+	if(self.selectedIndexPathRow > -1) {
+		if(indexPath.row == self.selectedIndexPathRow) {
+			cell.selected = TRUE;
+		}
+	}
+	
+	SNFReward * reward = [_sortedRewards objectAtIndex:indexPath.row];
 	cell.reward = reward;
 	return cell;
 }
 
 - (BOOL) collectionView:(UICollectionView *) collectionView shouldSelectItemAtIndexPath:(NSIndexPath *) indexPath {
-	if(indexPath.row == 0){
-		return NO;
-	}
 	return YES;
 }
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *) indexPath {
-	if(indexPath.row == 0){
-		return;
-	}
+	_selectedReward = [_sortedRewards objectAtIndex:indexPath.row];
 	
-	_selectedReward = [_sortedRewards objectAtIndex:indexPath.row - 1];
+	self.selectedIndexPathRow = indexPath.row;
 	
 	for (int i = 0; i < _sortedRewards.count; i++) {
-		if(i == 0) {
-			continue;
-		}
 		NSIndexPath * path = [NSIndexPath indexPathForRow:i inSection:0];
 		UICollectionViewCell * cell = [collectionView cellForItemAtIndexPath:path];
 		cell.selected = FALSE;
@@ -202,6 +197,18 @@
 	UICollectionViewCell * cell = [collectionView cellForItemAtIndexPath:indexPath];
 	cell.selected = TRUE;
 	
+	[self updateRewardsInfoLabel];
+	
+	[self updateSmileAndRewardsLabels];
+	
+	if(self.rewardsInfoLabel.text) {
+		
+		[self updateRewardsInfoLabel];
+		
+	}
+}
+
+- (void) updateRewardsInfoLabel {
 	NSMutableString * label = [[NSMutableString alloc] init];
 	
 	if([Utils CGFloatHasDecimals:_selectedReward.smile_amount.floatValue]) {
@@ -228,25 +235,25 @@
 	
 	self.rewardsInfoLabel.text = label;
 	
-	[self updateSmileAndRewardsLabels];
-	
-	if(self.rewardsInfoLabel.text) {
-		
-		[self updateRewardsInfoLabel];
-		
-	}
-}
-
-- (void) updateRewardsInfoLabel {
 	//update placement of smile image.
 	NSDictionary * attributes = @{NSFontAttributeName:self.rewardsInfoLabel.font,};
 	CGRect boundingRect = [self.rewardsInfoLabel.text boundingRectWithSize:self.rewardsInfoLabel.frame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
 	CGFloat left = ((boundingRect.size.width/2) + (self.smileImage.width/2) + 6) * - 1;
+	if(left < -126) {
+		left -= 8;
+	}
 	self.smileImageCenterConstraint.constant = left;
 }
 
 - (void) addCellWantsToAdd:(SNFAddCell *) addCell {
 	SNFAddReward * addReward = [[SNFAddReward alloc] initWithSourceView:addCell sourceRect:CGRectZero contentSize:CGSizeMake(500,325)];
+	addReward.board = self.board;
+	addReward.delegate = self;
+	[self presentViewController:addReward animated:YES completion:^{}];
+}
+
+- (IBAction) addReward:(id)sender {
+	SNFAddReward * addReward = [[SNFAddReward alloc] initWithSourceView:self.addRewardButton sourceRect:CGRectZero contentSize:CGSizeMake(500,325)];
 	addReward.board = self.board;
 	addReward.delegate = self;
 	[self presentViewController:addReward animated:YES completion:^{}];

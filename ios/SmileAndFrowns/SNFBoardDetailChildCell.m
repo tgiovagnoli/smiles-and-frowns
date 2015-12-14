@@ -46,6 +46,11 @@
 //	self.frownContainer.layer.shadowOpacity = .2;
 //	self.frownContainer.layer.shadowRadius = 1;
 	
+	self.profileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.profileImage.layer.shadowOffset = CGSizeMake(0,2);
+	self.profileImage.layer.shadowOpacity = .2;
+	self.profileImage.layer.shadowRadius = 1;
+	
 	[self updateSmileAndFrownContainers];
 }
 
@@ -157,6 +162,17 @@
 - (IBAction)onEdit:(UIButton *)sender{
 	if(self.delegate){
 		[self.delegate childCellWantsToEdit:self forUserRole:self.userRole];
+	}
+}
+
+- (void) setIsLastCell:(BOOL) isLastCell {
+	_isLastCell = isLastCell;
+	if(isLastCell) {
+		self.bottomSpacing.constant = 4;
+		self.spendCenterY.constant = 0;
+	} else {
+		self.bottomSpacing.constant = 0;
+		self.spendCenterY.constant = -1;
 	}
 }
 

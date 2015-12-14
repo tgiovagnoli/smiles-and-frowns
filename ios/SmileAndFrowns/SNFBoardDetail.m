@@ -6,6 +6,7 @@
 #import "SNFBoardEdit.h"
 #import "SNFModel.h"
 #import "SNFBoardDetailHeader.h"
+#import "TriangleView.h"
 
 @interface SNFBoardDetail ()
 @property NSMutableArray * rowColors;
@@ -18,10 +19,17 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserRoleAddedChild:) name:SNFAddUserRoleAddedChild object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onBoardEditFinished:) name:SNFBoardEditFinished object:nil];
 	
-	self.addButton.layer.shadowColor = [[UIColor blackColor] CGColor];
-	self.addButton.layer.shadowOffset = CGSizeMake(0,0);
-	self.addButton.layer.shadowOpacity = .2;
+	self.addButton.layer.shadowColor = [[UIColor colorWithRed:0.743 green:0.678 blue:0.61 alpha:1] CGColor];
+	self.addButton.layer.shadowOffset = CGSizeMake(0,1);
+	self.addButton.layer.shadowOpacity = .1;
 	self.addButton.layer.shadowRadius = 1;
+	
+	self.triangleView.arrowDirection = TriangleViewArrowDirectionUp;
+	
+	self.messageView.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.messageView.layer.shadowOffset = CGSizeMake(0,1);
+	self.messageView.layer.shadowOpacity = .2;
+	self.messageView.layer.shadowRadius = 1;
 	
 	[self updateUI];
 }
@@ -188,6 +196,11 @@
 	
 	cell.delegate = self;
 	cell.userRole = userRole;
+	cell.isLastCell = FALSE;
+	
+	if(indexPath.row == _children.count - 1) {
+		cell.isLastCell = TRUE;
+	}
 	
 	float mod = indexPath.row % 5;
 	UIColor * color = [self.rowColors objectAtIndex:(int)mod];
@@ -213,13 +226,16 @@
 }
 
 - (IBAction)onAddUserRole:(id)sender{
+	
+	[self.messageView removeFromSuperview];
+	
 	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,340)];
 	addUserRole.board = self.board;
 	[[AppDelegate rootViewController] presentViewController:addUserRole animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return 90;
+	return 86;
 }
 
 - (void)childCellWantsToAddSmile:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole{
@@ -338,6 +354,11 @@
 	_children = [self resultsForRole:SNFUserRoleChild];
 	_parents = [self resultsForRole:SNFUserRoleParent];
 	_guardians = [self resultsForRole:SNFUserRoleGuardian];
+	
+	if(_children.count > 0) {
+		[self.messageView removeFromSuperview];
+	}
+	
 	[self.rolesTable reloadData];
 }
 

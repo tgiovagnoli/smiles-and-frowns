@@ -6,6 +6,13 @@
 
 @implementation SNFBoardDetailAdultCell
 
+- (void) awakeFromNib {
+	self.profileImageView.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.profileImageView.layer.shadowOffset = CGSizeMake(0,2);
+	self.profileImageView.layer.shadowOpacity = .2;
+	self.profileImageView.layer.shadowRadius = 1;
+}
+
 - (void) setUser:(SNFUser *)user{
 	_user = user;
 	

@@ -39,6 +39,7 @@
 		071AC1021BF2656E005D63F2 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 071AC1011BF2656E005D63F2 /* HockeySDKResources.bundle */; };
 		071AC10E1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071AC10D1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m */; };
 		071AC1111BF78D46005D63F2 /* UIImageView+DiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */; };
+		07200DCD1C1C92060031B260 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07200DCC1C1C92060031B260 /* TriangleView.m */; };
 		075EA4B51C11FBA20003A403 /* GATracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA4B41C11FBA20003A403 /* GATracking.m */; };
 		075EA4B81C11FDF30003A403 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */; };
 		075EA4C91C11FE170003A403 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4C81C11FE170003A403 /* libz.tbd */; };
@@ -249,6 +250,8 @@
 		071AC10D1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableURLRequest+Additions.m"; path = "submodules/apd-objc/NSMutableURLRequest+Additions.m"; sourceTree = "<group>"; };
 		071AC10F1BF78D46005D63F2 /* UIImageView+DiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+DiskCache.h"; path = "submodules/apd-objc/UIImageView+DiskCache.h"; sourceTree = "<group>"; };
 		071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+DiskCache.m"; path = "submodules/apd-objc/UIImageView+DiskCache.m"; sourceTree = "<group>"; };
+		07200DCB1C1C92060031B260 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
+		07200DCC1C1C92060031B260 /* TriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleView.m; sourceTree = "<group>"; };
 		075EA4B31C11FBA20003A403 /* GATracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GATracking.h; path = "submodules/apd-objc/GATracking.h"; sourceTree = "<group>"; };
 		075EA4B41C11FBA20003A403 /* GATracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GATracking.m; path = "submodules/apd-objc/GATracking.m"; sourceTree = "<group>"; };
 		075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = libs/GA/GoogleAnalyticsServicesiOS_3.15/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -743,7 +746,6 @@
 				D6272FBA1BE002160024CBC2 /* NSTimer+Blocks.h */,
 				D6272FBB1BE002160024CBC2 /* NSTimer+Blocks.m */,
 				07CA06D11C175C9200C75A6B /* NSURLRequest+Additions.h */,
-				D6272FBD1BE002160024CBC2 /* NSURLRequest+Additions.m */,
 				0707D6DE1BE42970002F1FC0 /* UIAlertAction+Additions.h */,
 				0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */,
 				D64D2C221C14A040007D3E7F /* UIColor+Hex.h */,
@@ -1075,6 +1077,8 @@
 				07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */,
 				075EA4EC1C1225540003A403 /* Utils.h */,
 				075EA4ED1C1225540003A403 /* Utils.m */,
+				07200DCB1C1C92060031B260 /* TriangleView.h */,
+				07200DCC1C1C92060031B260 /* TriangleView.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -1315,6 +1319,7 @@
 				D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */,
 				D659DBF11BDAEA000048D3F7 /* SNFBoard.m in Sources */,
 				D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */,
+				07200DCD1C1C92060031B260 /* TriangleView.m in Sources */,
 				D65DF1091BE299D3009CC6DF /* UIViewControllerStack.m in Sources */,
 				D6270ECC1BE817D200F7C39A /* SNFPredefinedBehaviorGroup+CoreDataProperties.m in Sources */,
 				D6270ECE1BE817D200F7C39A /* SNFPredefinedBoard+CoreDataProperties.m in Sources */,

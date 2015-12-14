@@ -7,6 +7,7 @@
         <mutableArray key="Roboto-Bold.ttf">
             <string>Roboto-Bold</string>
             <string>Roboto-Bold</string>
+            <string>Roboto-Bold</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -21,11 +22,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFBoardEdit">
             <connections>
                 <outlet property="addBehaviorButton" destination="2Ur-w3-S89" id="hV9-2s-2SZ"/>
+                <outlet property="addRewardButton" destination="ely-HM-UuA" id="J0s-tB-j6Q"/>
                 <outlet property="behaviorsTable" destination="Vzw-KH-7l0" id="7EG-kB-xMA"/>
                 <outlet property="boardTitleField" destination="Hs5-M3-Y9s" id="Ii2-ct-gXQ"/>
                 <outlet property="cancelButton" destination="5bm-Bp-QfH" id="p9U-Yz-EQk"/>
                 <outlet property="formView" destination="i5M-Pr-FkT" id="Rz0-NI-WiV"/>
-                <outlet property="noBehaviorsMessage" destination="tXo-UH-1dX" id="BK1-xW-qxz"/>
+                <outlet property="noBehaviorsMessage" destination="tXo-UH-1dX" id="WXn-yV-1Vr"/>
                 <outlet property="rewardInfoLabel" destination="bdS-kO-6JB" id="tXP-1p-6Tk"/>
                 <outlet property="rewardsCollectionView" destination="IcH-QM-Bj3" id="XY9-Hu-dtZ"/>
                 <outlet property="scrollView" destination="rdq-sD-9wl" id="uLY-Ik-EAA"/>
@@ -82,7 +84,7 @@
                     </variation>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="IcH-QM-Bj3">
-                    <rect key="frame" x="0.0" y="382" width="600" height="70"/>
+                    <rect key="frame" x="61" y="382" width="539" height="70"/>
                     <animations/>
                     <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="0.0" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -138,6 +140,64 @@
                         <action selector="onUpdateBoard:" destination="-1" eventType="touchUpInside" id="8Q4-JG-tla"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ely-HM-UuA">
+                    <rect key="frame" x="0.0" y="382" width="60" height="70"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="QWN-tT-JPs"/>
+                        <constraint firstAttribute="height" constant="70" id="z0u-bs-u3x"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="26"/>
+                    <state key="normal" title="+">
+                        <color key="titleColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="addReward:" destination="-1" eventType="touchUpInside" id="ysw-NB-oyA"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXo-UH-1dX">
+                    <rect key="frame" x="165" y="180" width="270" height="115"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Yt-Fz-zr6">
+                            <rect key="frame" x="0.0" y="0.0" width="270" height="90"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your board does not have any behaviors. Add some by tapping the Add Behavior button." lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiy-0V-Fwg">
+                                    <rect key="frame" x="25" y="8" width="221" height="73"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <animations/>
+                            <color key="backgroundColor" red="0.7432059645652771" green="0.67897683382034302" blue="0.61088413000106812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="90" id="kMz-3l-JYg"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5G-Yi-8UI" customClass="TriangleView">
+                            <rect key="frame" x="115" y="90" width="40" height="25"/>
+                            <animations/>
+                            <color key="backgroundColor" red="0.7432059645652771" green="0.67897683382034302" blue="0.61088413000106812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="25" id="IU1-LT-1Kj"/>
+                                <constraint firstAttribute="width" constant="40" id="Yhv-FH-BVj"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" red="1" green="0.4838603944951021" blue="0.13228775317619323" alpha="0.0" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="115" id="Ijh-BX-Q96"/>
+                        <constraint firstItem="y5G-Yi-8UI" firstAttribute="centerX" secondItem="tXo-UH-1dX" secondAttribute="centerX" id="KgI-DF-r1x"/>
+                        <constraint firstAttribute="trailing" secondItem="5Yt-Fz-zr6" secondAttribute="trailing" id="R25-Qn-ZPv"/>
+                        <constraint firstItem="5Yt-Fz-zr6" firstAttribute="leading" secondItem="tXo-UH-1dX" secondAttribute="leading" id="SW6-3H-12f"/>
+                        <constraint firstItem="5Yt-Fz-zr6" firstAttribute="top" secondItem="tXo-UH-1dX" secondAttribute="top" id="dpd-bJ-yJk"/>
+                        <constraint firstAttribute="width" constant="270" id="syg-ox-vV5"/>
+                        <constraint firstItem="y5G-Yi-8UI" firstAttribute="top" secondItem="5Yt-Fz-zr6" secondAttribute="bottom" id="vui-0Y-XCK"/>
+                    </constraints>
+                </view>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
@@ -149,26 +209,30 @@
                 <constraint firstItem="3h8-f4-WaF" firstAttribute="top" secondItem="1N9-w8-PPp" secondAttribute="bottom" constant="8" id="9PG-GX-aMh"/>
                 <constraint firstAttribute="trailing" secondItem="Vzw-KH-7l0" secondAttribute="trailing" id="Akq-GS-Xor"/>
                 <constraint firstItem="2Ur-w3-S89" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="G1E-Yo-wm9"/>
+                <constraint firstItem="2Ur-w3-S89" firstAttribute="top" secondItem="tXo-UH-1dX" secondAttribute="bottom" constant="-4" id="I1l-QI-INi"/>
                 <constraint firstAttribute="trailing" secondItem="3h8-f4-WaF" secondAttribute="trailing" constant="14" id="Oxk-Od-Nuu"/>
                 <constraint firstItem="Vzw-KH-7l0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PqA-Po-kLW"/>
                 <constraint firstAttribute="trailing" secondItem="5fI-uI-eDR" secondAttribute="trailing" constant="20" id="Sxg-0f-Vhm"/>
                 <constraint firstItem="1N9-w8-PPp" firstAttribute="top" secondItem="IcH-QM-Bj3" secondAttribute="bottom" constant="-1" id="VTt-XB-5i9"/>
+                <constraint firstItem="IcH-QM-Bj3" firstAttribute="leading" secondItem="ely-HM-UuA" secondAttribute="trailing" constant="1" id="Y0t-wU-ujI"/>
                 <constraint firstAttribute="trailing" secondItem="1N9-w8-PPp" secondAttribute="trailing" id="YGy-Ku-VHy"/>
                 <constraint firstItem="5fI-uI-eDR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="azh-p4-tQe"/>
                 <constraint firstItem="3h8-f4-WaF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="bfL-ho-WWS"/>
                 <constraint firstAttribute="trailing" secondItem="Md1-ZG-DHg" secondAttribute="trailing" constant="20" id="dlg-w5-75B"/>
                 <constraint firstItem="Vzw-KH-7l0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="37" id="fF3-cc-Fj4"/>
+                <constraint firstItem="tXo-UH-1dX" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="h4B-cF-XWr"/>
                 <constraint firstItem="Md1-ZG-DHg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="h9X-4F-FF9"/>
+                <constraint firstItem="ely-HM-UuA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iiv-8d-BXx"/>
                 <constraint firstItem="2Ur-w3-S89" firstAttribute="top" secondItem="Vzw-KH-7l0" secondAttribute="bottom" constant="6" id="jVg-TC-vwo"/>
+                <constraint firstItem="ely-HM-UuA" firstAttribute="top" secondItem="Md1-ZG-DHg" secondAttribute="bottom" constant="10" id="l3C-PL-djF"/>
                 <constraint firstAttribute="bottom" secondItem="3h8-f4-WaF" secondAttribute="bottom" constant="20" id="qEO-2h-wGb"/>
                 <constraint firstItem="3h8-f4-WaF" firstAttribute="top" secondItem="IcH-QM-Bj3" secondAttribute="bottom" constant="60" id="riQ-Mr-yw4"/>
                 <constraint firstItem="Md1-ZG-DHg" firstAttribute="top" secondItem="2Ur-w3-S89" secondAttribute="bottom" constant="27" id="vaS-3M-fsx"/>
                 <constraint firstAttribute="trailing" secondItem="2Ur-w3-S89" secondAttribute="trailing" constant="14" id="vq3-Eq-XYi"/>
-                <constraint firstItem="IcH-QM-Bj3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yYt-V6-Pyu"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="424" y="181"/>
+            <point key="canvasLocation" x="259" y="262"/>
         </view>
         <view contentMode="scaleToFill" id="5iE-x8-Lfy">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -229,30 +293,6 @@
                 </mask>
             </variation>
             <point key="canvasLocation" x="1082" y="260"/>
-        </view>
-        <view contentMode="scaleToFill" id="tXo-UH-1dX">
-            <rect key="frame" x="0.0" y="0.0" width="339" height="227"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your board does not have any behaviors.  Add some by tapping the Add New Behavior button below," lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yD5-F2-jQE">
-                    <rect key="frame" x="10" y="10" width="319" height="207"/>
-                    <animations/>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-            </subviews>
-            <animations/>
-            <color key="backgroundColor" red="0.33725490200000002" green="0.60784313729999995" blue="0.65490196079999996" alpha="1" colorSpace="calibratedRGB"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="yD5-F2-jQE" secondAttribute="trailing" constant="10" id="Flm-Pq-4q7"/>
-                <constraint firstItem="yD5-F2-jQE" firstAttribute="top" secondItem="tXo-UH-1dX" secondAttribute="top" constant="10" id="Jmg-H1-dR2"/>
-                <constraint firstAttribute="bottom" secondItem="yD5-F2-jQE" secondAttribute="bottom" constant="10" id="da8-qH-yeF"/>
-                <constraint firstItem="yD5-F2-jQE" firstAttribute="leading" secondItem="tXo-UH-1dX" secondAttribute="leading" constant="10" id="fR7-h9-OzI"/>
-            </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="1117.5" y="110.5"/>
         </view>
     </objects>
 </document>

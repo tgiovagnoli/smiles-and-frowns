@@ -6,6 +6,7 @@
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -14,8 +15,10 @@
                 <outlet property="addButton" destination="H4t-rc-jO4" id="49b-8a-2pb"/>
                 <outlet property="addButtonHeightConstraint" destination="2Tx-sb-kuq" id="mWB-Fj-xFx"/>
                 <outlet property="backButton" destination="FKO-le-D3j" id="boT-xc-YUj"/>
+                <outlet property="messageView" destination="M6o-Fl-4ar" id="ZbR-lZ-GRx"/>
                 <outlet property="rolesTable" destination="md8-2Q-eLn" id="l5d-NO-6Os"/>
                 <outlet property="titleLabel" destination="XA7-Ce-4XU" id="pZr-Ac-81l"/>
+                <outlet property="triangleView" destination="fY9-tR-o3Y" id="piw-Mj-ltV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -73,6 +76,36 @@
                         <action selector="onAddUserRole:" destination="-1" eventType="touchUpInside" id="bNf-zH-rbk"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6o-Fl-4ar">
+                    <rect key="frame" x="420" y="54" width="175" height="98"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fY9-tR-o3Y" customClass="TriangleView">
+                            <rect key="frame" x="135" y="0.0" width="40" height="25"/>
+                            <animations/>
+                            <color key="backgroundColor" red="0.7432059645652771" green="0.67897683382034302" blue="0.61088413000106812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zqt-4F-rND">
+                            <rect key="frame" x="0.0" y="25" width="175" height="73"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add more users." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rR-oX-Ip3">
+                                    <rect key="frame" x="24" y="26" width="126" height="21"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                    <color key="textColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <animations/>
+                            <color key="backgroundColor" red="0.7432059645652771" green="0.67897683382034302" blue="0.61088413000106812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" red="0.68780374526977539" green="0.32321482143222591" blue="0.16686178941703403" alpha="0.0" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="98" id="fcU-JC-FTz"/>
+                        <constraint firstAttribute="width" constant="175" id="veZ-el-Qbd"/>
+                    </constraints>
+                </view>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
@@ -81,6 +114,7 @@
                 <constraint firstAttribute="trailing" secondItem="XA7-Ce-4XU" secondAttribute="trailing" constant="57" id="BgS-3Y-y8R"/>
                 <constraint firstItem="H4t-rc-jO4" firstAttribute="leading" secondItem="XA7-Ce-4XU" secondAttribute="trailing" constant="36" id="ER7-fc-Sqv"/>
                 <constraint firstItem="md8-2Q-eLn" firstAttribute="top" secondItem="H4t-rc-jO4" secondAttribute="bottom" constant="46" id="EoF-K0-Niw"/>
+                <constraint firstAttribute="trailing" secondItem="M6o-Fl-4ar" secondAttribute="trailing" constant="5" id="LVb-uy-aqU"/>
                 <constraint firstAttribute="trailing" secondItem="md8-2Q-eLn" secondAttribute="trailing" id="P04-E7-82h"/>
                 <constraint firstItem="H4t-rc-jO4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="PEo-z0-wJ1"/>
                 <constraint firstItem="H4t-rc-jO4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="QKr-u6-XoW"/>
@@ -88,6 +122,7 @@
                 <constraint firstItem="XA7-Ce-4XU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="58" id="bMt-BF-qeD"/>
                 <constraint firstItem="md8-2Q-eLn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bh2-a4-Xc5"/>
                 <constraint firstItem="md8-2Q-eLn" firstAttribute="top" secondItem="XA7-Ce-4XU" secondAttribute="bottom" constant="14" id="dXc-sW-h5T"/>
+                <constraint firstItem="M6o-Fl-4ar" firstAttribute="top" secondItem="H4t-rc-jO4" secondAttribute="bottom" constant="-5" id="gBC-96-UQf"/>
                 <constraint firstItem="FKO-le-D3j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="gmB-Y0-Uen"/>
                 <constraint firstItem="FKO-le-D3j" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="29" id="iUN-bU-l6q"/>
                 <constraint firstItem="XA7-Ce-4XU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="mgD-az-j6M"/>
@@ -103,11 +138,11 @@
                     <exclude reference="Y1s-S7-3rH"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="520" y="401"/>
+            <point key="canvasLocation" x="434" y="398"/>
         </view>
     </objects>
     <resources>
-        <image name="add_board.png" width="74" height="74"/>
+        <image name="add_board.png" width="83" height="83"/>
         <image name="back_boards.png" width="79" height="49"/>
     </resources>
 </document>
