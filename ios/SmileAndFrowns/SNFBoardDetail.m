@@ -250,9 +250,9 @@
 	SNFAddSmileOrFrown *addModal = nil;
 	
 	if(type == SNFAddSmileOrFrownTypeSmile) {
-		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell.smileButton.superview sourceRect:cell.smileButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell.smileButton.superview sourceRect:cell.smileButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight];
 	} else {
-		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell.frownButton.superview sourceRect:cell.frownButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
+		addModal = [[SNFAddSmileOrFrown alloc] initWithSourceView:cell.frownButton.superview sourceRect:cell.frownButton.frame contentSize:CGSizeMake(500,600) arrowDirections:UIPopoverArrowDirectionLeft|UIPopoverArrowDirectionRight];
 	}
 	
 	addModal.type = type;
