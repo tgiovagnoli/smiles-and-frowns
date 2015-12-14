@@ -360,7 +360,7 @@
 	_parents = [self resultsForRole:SNFUserRoleParent];
 	_guardians = [self resultsForRole:SNFUserRoleGuardian];
 	
-	if(_children.count > 0) {
+	if(_children.count > 0 || _guardians.count > 0 || _parents.count > 0) {
 		[self.messageView removeFromSuperview];
 	}
 	
