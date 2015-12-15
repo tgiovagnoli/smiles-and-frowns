@@ -13,6 +13,13 @@
 @interface SNFSpendRewards ()
 @property float spendAmount;
 @property NSInteger selectedIndexPathRow;
+@property UIPanGestureRecognizer * swipeGesture;
+@property CGFloat swipex;
+
+@property CGRect originalRewardsViewFrame;
+@property CGRect rewardsViewFrame;
+@property CGFloat rewardsConstant;
+
 @end
 
 @implementation SNFSpendRewards
@@ -34,39 +41,18 @@
 	
 	[SNFFormStyles roundEdgesOnButton:self.spendSmileButton];
 	
-//	self.totalSmilesImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.totalSmilesImage.layer.shadowOffset = CGSizeMake(0,2);
-//	self.totalSmilesImage.layer.shadowOpacity = .1;
-//	self.totalSmilesImage.layer.shadowRadius = 1;
-	
-//	self.spendCountView.layer.shadowOffset = CGSizeMake(0,1);
-//	self.spendCountView.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.spendCountView.layer.shadowOpacity = .1;
-//	self.spendCountView.layer.shadowRadius = 1;
-	
-//	self.smileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.smileImage.layer.shadowOffset = CGSizeMake(0,2);
-//	self.smileImage.layer.shadowOpacity = .1;
-//	self.smileImage.layer.shadowRadius = 1;
-	
-//	self.addButton.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.addButton.layer.shadowOffset = CGSizeMake(0,2);
-//	self.addButton.layer.shadowOpacity = .1;
-//	self.addButton.layer.shadowRadius = 1;
-	
-//	self.subtractButton.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.subtractButton.layer.shadowOffset = CGSizeMake(0,2);
-//	self.subtractButton.layer.shadowOpacity = .1;
-//	self.subtractButton.layer.shadowRadius = 1;
-	
-//	self.spendCountSmileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.spendCountSmileImage.layer.shadowOffset = CGSizeMake(0,2);
-//	self.spendCountSmileImage.layer.shadowOpacity = .1;
-//	self.spendCountSmileImage.layer.shadowRadius = 1;
-	
 	self.spendAmountView.backgroundColor = [UIColor clearColor];
 	self.spendAmountView.layer.borderColor = [[UIColor colorWithRed:0.959 green:0.933 blue:0.902 alpha:1] CGColor];
 	self.spendAmountView.layer.borderWidth = 2;
+	
+	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
+		self.rewardsWidthConstraint.constant = self.rewardsViewContainer.width;
+	} repeats:FALSE];
+	
+//	self.swipeGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeGestureChange:)];
+//	self.swipeGesture.minimumNumberOfTouches = 1;
+//	self.swipeGesture.maximumNumberOfTouches = 1;
+//	[self.rewardsView addGestureRecognizer:self.swipeGesture];
 	
 	[self startBannerAd];
 	[self updateUI];
@@ -77,6 +63,56 @@
 - (void) viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
 	[self updateRewardsInfoLabel];
+}
+
+static int threshold = 20;
+- (void) onSwipeGestureChange:(UISwipeGestureRecognizer *) swipe {
+	
+	if(self.rewardsConstant == 0) {
+		self.rewardsConstant = self.rewardsLeftConstraint.constant;
+	}
+	
+	CGPoint loc = [swipe locationInView:self.rewardsView];
+	
+	if(swipe.state == UIGestureRecognizerStateBegan) {
+		self.swipex = loc.x;
+	
+	} else if(swipe.state == UIGestureRecognizerStateChanged) {
+		CGFloat diff = loc.x - self.swipex;
+		
+		NSLog(@"diff %f",diff);
+		
+		self.rewardsConstant += diff;
+		
+		if(diff < 0 && self.rewardsConstant >= -75 + threshold) {
+			self.rewardsConstant = -75 + threshold;
+		} else if(diff > 0 && self.rewardsConstant <= 0) {
+			self.rewardsConstant = 0;
+		}
+		
+		if(diff < 0 && self.rewardsConstant > threshold) {
+			self.rewardsLeftConstraint.constant = self.rewardsConstant - threshold;
+		} else if(diff > 0) {
+			self.rewardsLeftConstraint.constant = self.rewardsConstant;
+		}
+		
+		self.swipex = loc.x;
+		
+	} else if(swipe.state == UIGestureRecognizerStateEnded) {
+		
+		if(self.rewardsConstant <= 75+threshold && self.rewardsConstant > 35) {
+			
+			self.rewardsConstant = 75;
+			self.rewardsLeftConstraint.constant = self.rewardsConstant;
+			
+		} else {
+			
+			self.rewardsConstant = 0;
+			self.rewardsLeftConstraint.constant = self.rewardsConstant;
+			
+		}
+		
+	}
 }
 
 - (void) updateUI {

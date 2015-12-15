@@ -271,7 +271,7 @@
                 <outlet property="spendImage" destination="IBg-LD-qWF" id="bmQ-04-gKp"/>
                 <outlet property="spendLabel" destination="pyY-Ba-gSN" id="ZXL-mC-3tZ"/>
             </connections>
-            <point key="canvasLocation" x="266" y="401.5"/>
+            <point key="canvasLocation" x="-27" y="310.5"/>
         </tableViewCell>
         <view contentMode="scaleToFill" id="5ez-gm-lIL">
             <rect key="frame" x="0.0" y="0.0" width="136" height="90"/>

@@ -32,6 +32,10 @@
 @property (weak) IBOutlet UIButton * addRewardButton;
 @property (weak) IBOutlet UICollectionView * rewardsCollection;
 
+@property (weak) IBOutlet UIView * rewardsViewContainer;
+@property (weak) IBOutlet UIView * rewardsView;
+@property (weak) IBOutlet NSLayoutConstraint * rewardsLeftConstraint;
+@property (weak) IBOutlet NSLayoutConstraint * rewardsWidthConstraint;
 @property (weak) IBOutlet UIImageView * smileImage;
 @property (weak) IBOutlet NSLayoutConstraint * smileImageCenterConstraint;
 @property (weak) IBOutlet UILabel * rewardsInfoLabel;
