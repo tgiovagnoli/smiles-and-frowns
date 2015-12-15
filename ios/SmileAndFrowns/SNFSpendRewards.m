@@ -266,7 +266,23 @@
 }
 
 - (IBAction) onAdd:(id)sender {
-	self.spendAmount += 1;
+	
+	if(self.spendAmount < _smilesAvailable) {
+		
+		float tmp = self.spendAmount;
+		float nxtMultiple = tmp;
+		float added = tmp + _selectedReward.smile_amount.floatValue;
+		
+		if([Utils CGFloatHasDecimals:added/_selectedReward.smile_amount.floatValue]) {
+			while(nxtMultiple < _smilesAvailable && [Utils CGFloatHasDecimals:(float)nxtMultiple/_selectedReward.smile_amount.floatValue] ) {
+				nxtMultiple ++;
+			}
+			self.spendAmount = nxtMultiple;
+		} else {
+			self.spendAmount += _selectedReward.smile_amount.floatValue;
+		}
+		
+	}
 	
 	if(self.spendAmount > _smilesAvailable) {
 		self.spendAmount = _smilesAvailable;
@@ -283,7 +299,19 @@
 - (IBAction) onSubtract:(id) sender {
 	
 	if(self.spendAmount > 0) {
-		self.spendAmount -= 1;
+		
+		float tmp = self.spendAmount;
+		float nxtMultiple = tmp;
+		float subtracted = tmp - _selectedReward.smile_amount.floatValue;
+		
+		if([Utils CGFloatHasDecimals:subtracted/_selectedReward.smile_amount.floatValue]) {
+			while(nxtMultiple > 0 && [Utils CGFloatHasDecimals:(float)nxtMultiple/_selectedReward.smile_amount.floatValue] ) {
+				nxtMultiple --;
+			}
+			self.spendAmount = nxtMultiple;
+		} else {
+			self.spendAmount -= _selectedReward.smile_amount.floatValue;
+		}
 	}
 	
 	if(_smilesAvailable == 0) {
@@ -351,8 +379,9 @@
 	self.spendSmilesLabel.text = [NSString stringWithFormat:@"%.0f", self.spendAmount];
 	
 	float amount = self.spendAmount;
+	float rate = _selectedReward.smile_amount.floatValue;
 	float currency = _selectedReward.currency_amount.floatValue;
-	float total = (float) amount * currency;
+	float total = (float) (amount/rate) * currency;
 	
 	NSMutableString * calc = [[NSMutableString alloc]init];
 	
