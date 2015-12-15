@@ -14,10 +14,10 @@
 #import "TriangleView.h"
 
 typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
-	SNFBoardDetailUserRoleOwner,
 	SNFBoardDetailUserRoleChildren,
 	SNFBoardDetailUserRoleParents,
 	SNFBoardDetailUserRoleGuardians,
+	SNFBoardDetailUserRoleOwner,
 };
 
 

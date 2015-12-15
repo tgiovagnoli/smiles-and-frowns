@@ -82,7 +82,7 @@
 	
 	switch ((SNFBoardDetailUserRole)section) {
 		case SNFBoardDetailUserRoleOwner:
-			headerCell.textLabel.text = @"Owner";
+			headerCell.textLabel.text = @"Board Creator";
 			break;
 		case SNFBoardDetailUserRoleChildren:
 			headerCell.textLabel.text = @"Children";
