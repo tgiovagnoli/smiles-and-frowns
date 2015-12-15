@@ -169,10 +169,10 @@
 	_isLastCell = isLastCell;
 	if(isLastCell) {
 		self.bottomSpacing.constant = 4;
-		self.spendCenterY.constant = 0;
+		//self.spendCenterY.constant = 0;
 	} else {
 		self.bottomSpacing.constant = 0;
-		self.spendCenterY.constant = -1;
+		//self.spendCenterY.constant = -9.5;
 	}
 }
 
