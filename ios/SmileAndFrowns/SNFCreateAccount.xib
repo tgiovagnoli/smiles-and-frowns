@@ -6,7 +6,9 @@
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Bold.ttf">
             <string>Roboto-Bold</string>
-            <string>Roboto-Bold</string>
+        </mutableArray>
+        <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -191,7 +193,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsr-kL-1xC">
                             <rect key="frame" x="65" y="11" width="50" height="1"/>
                             <animations/>
-                            <color key="backgroundColor" red="0.7432059645652771" green="0.67897683382034302" blue="0.61088413000106812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.83921569585800171" green="0.7137255072593689" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="WHr-FJ-8iZ"/>
                                 <constraint firstAttribute="height" constant="1" id="oV2-Iv-bgd"/>
@@ -200,7 +202,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0e-Ne-GE3">
                             <rect key="frame" x="150" y="11" width="50" height="1"/>
                             <animations/>
-                            <color key="backgroundColor" red="0.7432059645652771" green="0.67897683382034302" blue="0.61088413000106812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.83921569585800171" green="0.7137255072593689" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="GPH-ap-hnw"/>
                                 <constraint firstAttribute="width" constant="50" id="ZDa-hM-WzH"/>
@@ -307,7 +309,7 @@
                         <constraint firstAttribute="height" constant="21" id="8hq-gQ-zMX"/>
                         <constraint firstAttribute="width" constant="125" id="Q6o-nM-l35"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -318,7 +320,7 @@
                         <constraint firstAttribute="height" constant="30" id="9rj-vr-WHP"/>
                         <constraint firstAttribute="width" constant="60" id="P6T-uu-60I"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                     <state key="normal" title="Cancel">
                         <color key="titleColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     </state>

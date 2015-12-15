@@ -4,9 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Roboto-Bold.ttf">
-            <string>Roboto-Bold</string>
-            <string>Roboto-Bold</string>
+        <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -33,7 +33,7 @@
                     <rect key="frame" x="0.0" y="104" width="600" height="496"/>
                     <animations/>
                     <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="separatorColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="separatorColor" red="0.83921569585800171" green="0.7137255072593689" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="6q5-ED-TOF"/>
                         <outlet property="delegate" destination="-1" id="EiK-6a-1IF"/>
@@ -48,7 +48,7 @@
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="TUY-7X-CBn"/>
                         <constraint firstAttribute="width" constant="51" id="kTe-IP-KAY"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                     <state key="normal" title="Close">
                         <color key="titleColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -69,7 +69,7 @@
                         <constraint firstAttribute="height" constant="30" id="1fA-8j-zCV"/>
                         <constraint firstAttribute="width" constant="78" id="eBx-xw-XqM"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                     <state key="normal" title="Export">
                         <color key="titleColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -80,7 +80,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="eVZ-gW-mSz"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

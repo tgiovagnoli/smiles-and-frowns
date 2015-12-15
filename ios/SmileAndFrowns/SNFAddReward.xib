@@ -8,7 +8,9 @@
             <string>Roboto-Bold</string>
             <string>Roboto-Bold</string>
             <string>Roboto-Bold</string>
-            <string>Roboto-Bold</string>
+        </mutableArray>
+        <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -166,7 +168,7 @@
                         <constraint firstAttribute="width" constant="134" id="3O6-Q9-2aK"/>
                         <constraint firstAttribute="height" constant="21" id="nh8-J3-y55"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                     <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -177,7 +179,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="1v3-TM-11n"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                     <state key="normal" title="Cancel">
                         <color key="titleColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     </state>

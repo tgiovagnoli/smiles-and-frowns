@@ -24,7 +24,7 @@
                     <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                     <animations/>
                     <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="separatorColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="separatorColor" red="0.83921569585800171" green="0.7137255072593689" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="daM-bn-eUF"/>
                         <outlet property="delegate" destination="-1" id="bhQ-zU-eNz"/>
@@ -37,7 +37,7 @@
                         <constraint firstAttribute="height" constant="21" id="o5D-DV-WTb"/>
                         <constraint firstAttribute="width" constant="104" id="sbD-97-Ehm"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                     <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

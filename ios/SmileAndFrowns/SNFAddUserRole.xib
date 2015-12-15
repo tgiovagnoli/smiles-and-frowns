@@ -4,8 +4,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Roboto-Bold.ttf">
-            <string>Roboto-Bold</string>
+        <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -53,7 +53,7 @@
                         <constraint firstAttribute="width" constant="131" id="0Ac-rm-3Vh"/>
                         <constraint firstAttribute="height" constant="21" id="mBw-bz-aGk"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                     <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -70,7 +70,7 @@
                         <constraint firstAttribute="height" constant="30" id="9ca-hX-4w5"/>
                         <constraint firstAttribute="width" constant="60" id="GW9-dY-knw"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                     <state key="normal" title="Cancel">
                         <color key="titleColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -92,7 +92,7 @@
                 <constraint firstAttribute="trailing" secondItem="Ha5-06-0QB" secondAttribute="trailing" id="yDo-zU-OJO"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="1004" y="131"/>
+            <point key="canvasLocation" x="922" y="132"/>
         </view>
         <view contentMode="scaleToFill" id="Kgn-KV-JRl">
             <rect key="frame" x="0.0" y="0.0" width="600" height="303"/>

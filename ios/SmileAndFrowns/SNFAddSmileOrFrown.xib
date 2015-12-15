@@ -7,7 +7,9 @@
         <mutableArray key="Roboto-Bold.ttf">
             <string>Roboto-Bold</string>
             <string>Roboto-Bold</string>
-            <string>Roboto-Bold</string>
+        </mutableArray>
+        <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -80,7 +82,7 @@
                     <rect key="frame" x="0.0" y="123" width="600" height="244"/>
                     <animations/>
                     <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="separatorColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="separatorColor" red="0.83921569585800171" green="0.7137255072593689" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="3cv-3e-lSJ"/>
                         <outlet property="delegate" destination="-1" id="4bp-sH-nP1"/>
@@ -222,7 +224,7 @@
                         <constraint firstAttribute="height" constant="30" id="DJb-wr-7VB"/>
                         <constraint firstAttribute="width" constant="60" id="gdv-JQ-LhY"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                     <state key="normal" title="Cancel">
                         <color key="titleColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -237,7 +239,7 @@
                         <constraint firstAttribute="height" constant="21" id="ez8-bu-R7z"/>
                         <constraint firstAttribute="width" constant="128" id="gWu-Wd-mHK"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

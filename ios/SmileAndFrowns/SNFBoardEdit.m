@@ -111,9 +111,6 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 	SNFBoardDetailHeader * view = [[SNFBoardDetailHeader alloc] init];
-	view.contentView.backgroundColor = [SNFFormStyles darkSandColor];
-	view.textLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:17];
-	view.textLabel.textColor = [SNFFormStyles darkGray];
 	
 	switch((SNFBoardEditBehaviorType)section) {
 		case SNFBoardEditBehaviorTypePositive:

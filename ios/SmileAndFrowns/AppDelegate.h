@@ -4,6 +4,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "GATracking.h"
 #import "NSURLRequest+Additions.h"
+#import "UIColor+Hex.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

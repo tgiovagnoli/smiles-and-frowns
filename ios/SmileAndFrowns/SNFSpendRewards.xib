@@ -12,9 +12,9 @@
             <string>Roboto-Bold</string>
             <string>Roboto-Bold</string>
             <string>Roboto-Bold</string>
-            <string>Roboto-Bold</string>
         </mutableArray>
         <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
             <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
@@ -406,7 +406,7 @@
                         <constraint firstAttribute="width" constant="60" id="GQ1-pl-6rP"/>
                         <constraint firstAttribute="height" constant="30" id="ccW-yi-zak"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                     <state key="normal" title="Cancel">
                         <color key="titleColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -426,7 +426,7 @@
                         <constraint firstAttribute="width" constant="247" id="aTm-Du-Nvp"/>
                         <constraint firstAttribute="height" constant="25" id="ce5-RY-LfK"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                     <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -449,7 +449,7 @@
     <resources>
         <image name="add.png" width="74" height="74"/>
         <image name="male.png" width="45" height="49"/>
-        <image name="smile.png" width="94" height="96"/>
+        <image name="smile.png" width="101" height="103"/>
         <image name="subtract.png" width="74" height="74"/>
     </resources>
 </document>

@@ -4,8 +4,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Roboto-Bold.ttf">
-            <string>Roboto-Bold</string>
+        <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -209,7 +209,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lH1-CG-NrK">
-                    <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                    <rect key="frame" x="0.0" y="69" width="600" height="531"/>
                     <animations/>
                     <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                 </scrollView>
@@ -221,7 +221,7 @@
                         <constraint firstAttribute="height" constant="30" id="DVo-x8-sVT"/>
                         <constraint firstAttribute="width" constant="60" id="h55-qj-UGf"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                     <state key="normal" title="Cancel">
                         <color key="titleColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -230,13 +230,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSn-IZ-78r">
-                    <rect key="frame" x="267" y="30" width="66" height="21"/>
+                    <rect key="frame" x="267" y="30" width="66" height="26"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="66" id="5Vv-Yf-u9R"/>
-                        <constraint firstAttribute="height" constant="21" id="a1Q-OU-KYK"/>
+                        <constraint firstAttribute="height" constant="26" id="a1Q-OU-KYK"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>

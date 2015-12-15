@@ -77,8 +77,6 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 	SNFBoardDetailHeader * headerCell = [[SNFBoardDetailHeader alloc] init];
-	headerCell.contentView.backgroundColor = self.view.backgroundColor;
-	headerCell.textLabel.textColor = [UIColor colorWithRed:0.362 green:0.362 blue:0.362 alpha:1];
 	
 	switch ((SNFBoardDetailUserRole)section) {
 		case SNFBoardDetailUserRoleOwner:
@@ -272,7 +270,7 @@
 		return;
 	}
 	
-	SNFSpendRewards * rewards = [[SNFSpendRewards alloc] initWithSourceView:cell.spendButton.superview sourceRect:cell.spendButton.frame contentSize:CGSizeMake(500,490) arrowDirections:UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
+	SNFSpendRewards * rewards = [[SNFSpendRewards alloc] initWithSourceView:cell.spendButton.superview sourceRect:cell.spendButton.frame contentSize:CGSizeMake(500,630) arrowDirections:UIPopoverArrowDirectionRight|UIPopoverArrowDirectionDown];
 	rewards.board = self.board;
 	rewards.user = userRole.user;
 	rewards.delegate = self;

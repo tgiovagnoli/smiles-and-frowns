@@ -103,10 +103,6 @@
 	dateFormatter.dateFormat = @"MM/d/yy";
 	
 	SNFBoardDetailHeader * header = [[SNFBoardDetailHeader alloc] init];
-	header.contentView.backgroundColor = [SNFFormStyles darkSandColor];
-	header.textLabel.textColor = [SNFFormStyles darkGray];
-	header.textLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:14];
-	
 	header.textLabel.text = [dateFormatter stringFromDate:dateGroup.date];
 	
 	return header;

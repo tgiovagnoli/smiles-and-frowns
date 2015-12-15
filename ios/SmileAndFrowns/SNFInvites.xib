@@ -34,7 +34,7 @@
                         <constraint firstAttribute="height" constant="21" id="BS1-8r-UKm"/>
                         <constraint firstAttribute="width" constant="81" id="Q5c-Oe-62e"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -42,7 +42,7 @@
                     <rect key="frame" x="0.0" y="97" width="600" height="439"/>
                     <animations/>
                     <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
-                    <color key="separatorColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="separatorColor" red="0.83921569585800171" green="0.7137255072593689" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't see your invite?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAW-Wo-mla">
                     <rect key="frame" x="218" y="539" width="164" height="21"/>

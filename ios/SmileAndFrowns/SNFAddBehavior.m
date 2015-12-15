@@ -120,8 +120,6 @@
 	SNFPredefinedBehaviorGroup * group = [_predefinedBehaviorGroups objectAtIndex:section];
 	SNFBoardDetailHeader * headerCell = [[SNFBoardDetailHeader alloc] init];
 	headerCell.textLabel.text = group.title;
-	headerCell.textLabel.textColor = [SNFFormStyles darkGray];
-	headerCell.contentView.backgroundColor = [SNFFormStyles darkSandColor];
 	return headerCell;
 }
 

@@ -27,10 +27,10 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XA7-Ce-4XU">
-                    <rect key="frame" x="58" y="30" width="485" height="23"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XA7-Ce-4XU">
+                    <rect key="frame" x="58" y="30" width="485" height="27"/>
                     <animations/>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -46,7 +46,7 @@
                         <action selector="backToBoards:" destination="-1" eventType="touchUpInside" id="45E-kX-Aub"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="md8-2Q-eLn">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="md8-2Q-eLn">
                     <rect key="frame" x="0.0" y="67" width="600" height="533"/>
                     <animations/>
                     <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
@@ -121,7 +121,7 @@
                 <constraint firstItem="H4t-rc-jO4" firstAttribute="top" secondItem="XA7-Ce-4XU" secondAttribute="bottom" constant="-33" id="Y1s-S7-3rH"/>
                 <constraint firstItem="XA7-Ce-4XU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="58" id="bMt-BF-qeD"/>
                 <constraint firstItem="md8-2Q-eLn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bh2-a4-Xc5"/>
-                <constraint firstItem="md8-2Q-eLn" firstAttribute="top" secondItem="XA7-Ce-4XU" secondAttribute="bottom" constant="14" id="dXc-sW-h5T"/>
+                <constraint firstItem="md8-2Q-eLn" firstAttribute="top" secondItem="XA7-Ce-4XU" secondAttribute="bottom" constant="10" id="dXc-sW-h5T"/>
                 <constraint firstItem="M6o-Fl-4ar" firstAttribute="top" secondItem="H4t-rc-jO4" secondAttribute="bottom" constant="-5" id="gBC-96-UQf"/>
                 <constraint firstItem="FKO-le-D3j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="gmB-Y0-Uen"/>
                 <constraint firstItem="FKO-le-D3j" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="29" id="iUN-bU-l6q"/>

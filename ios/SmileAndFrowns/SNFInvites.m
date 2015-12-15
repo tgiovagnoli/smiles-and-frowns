@@ -277,9 +277,6 @@
 		headerCell.textLabel.text = @"Sent Invites";
 	}
 	
-	headerCell.contentView.backgroundColor = [SNFFormStyles darkSandColor];
-	headerCell.textLabel.textColor = [SNFFormStyles darkGray];
-	
 	return headerCell;
 }
 

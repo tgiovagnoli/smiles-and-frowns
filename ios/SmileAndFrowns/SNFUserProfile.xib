@@ -339,7 +339,7 @@
                         <constraint firstAttribute="height" constant="21" id="dA6-lk-QfE"/>
                         <constraint firstAttribute="width" constant="83" id="s5I-6h-sKG"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
