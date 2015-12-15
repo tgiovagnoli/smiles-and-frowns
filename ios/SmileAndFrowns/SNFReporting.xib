@@ -40,7 +40,7 @@
                     </connections>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lca-i1-e2I">
-                    <rect key="frame" x="536" y="26" width="51" height="30"/>
+                    <rect key="frame" x="536" y="32" width="51" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -62,12 +62,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7B-zS-VQG">
-                    <rect key="frame" x="8" y="30" width="78" height="30"/>
+                    <rect key="frame" x="8" y="32" width="65" height="30"/>
                     <animations/>
                     <color key="backgroundColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="0.0" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="1fA-8j-zCV"/>
-                        <constraint firstAttribute="width" constant="78" id="eBx-xw-XqM"/>
+                        <constraint firstAttribute="width" constant="65" id="eBx-xw-XqM"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                     <state key="normal" title="Export">
@@ -102,10 +102,10 @@
             <constraints>
                 <constraint firstItem="bM7-74-bW4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="09Q-l0-sbr"/>
                 <constraint firstItem="OGB-TS-eoU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="6wh-qB-L5a"/>
-                <constraint firstItem="bM7-74-bW4" firstAttribute="leading" secondItem="W7B-zS-VQG" secondAttribute="trailing" constant="11" id="AE8-bh-wpx"/>
-                <constraint firstItem="W7B-zS-VQG" firstAttribute="top" secondItem="bM7-74-bW4" secondAttribute="top" id="R11-87-iX8"/>
+                <constraint firstItem="bM7-74-bW4" firstAttribute="leading" secondItem="W7B-zS-VQG" secondAttribute="trailing" constant="24" id="AE8-bh-wpx"/>
+                <constraint firstItem="W7B-zS-VQG" firstAttribute="top" secondItem="bM7-74-bW4" secondAttribute="top" constant="2" id="R11-87-iX8"/>
                 <constraint firstAttribute="trailing" secondItem="Qr6-YS-1m6" secondAttribute="trailing" id="SmQ-K5-gGB"/>
-                <constraint firstItem="Lca-i1-e2I" firstAttribute="top" secondItem="bM7-74-bW4" secondAttribute="top" constant="-4" id="Syc-V1-94l"/>
+                <constraint firstItem="Lca-i1-e2I" firstAttribute="top" secondItem="bM7-74-bW4" secondAttribute="top" constant="2" id="Syc-V1-94l"/>
                 <constraint firstItem="Qr6-YS-1m6" firstAttribute="top" secondItem="OGB-TS-eoU" secondAttribute="bottom" constant="8" id="Xwe-JB-eSx"/>
                 <constraint firstItem="Lca-i1-e2I" firstAttribute="leading" secondItem="bM7-74-bW4" secondAttribute="trailing" constant="33" id="dij-LC-npy"/>
                 <constraint firstAttribute="trailing" secondItem="Lca-i1-e2I" secondAttribute="trailing" constant="13" id="eBw-M1-Yt8"/>

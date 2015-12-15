@@ -98,7 +98,7 @@
 		
 		[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 			
-			SNFLogin * login = [[SNFLogin alloc] initWithSourceView:launcher.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,360)];
+			SNFLogin * login = [[SNFLogin alloc] initWithSourceView:launcher.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,420)];
 			
 			if(self.nextViewController) {
 				login.nextViewController = self.nextViewController;

@@ -108,7 +108,7 @@
 - (IBAction) acceptInvite:(id) sender {
 	if(![SNFModel sharedInstance].loggedInUser) {
 		
-		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,360)];
+		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,420)];
 		login.nextViewController = [[SNFAcceptInvite alloc] initWithSourceView:self.acceptInviteButton sourceRect:CGRectZero contentSize:CGSizeMake(360,190)];
 		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 		
@@ -123,7 +123,7 @@
 
 - (IBAction) createBoard:(id)sender {
 	if(![SNFModel sharedInstance].loggedInUser) {
-		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,360)];
+		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,420)];
 		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 	} else {
 		[AppDelegate instance].window.rootViewController = [[SNFViewController alloc] init];
@@ -147,7 +147,7 @@
 			}
 		}];
 	} else {
-		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,360)];
+		SNFLogin * login = [[SNFLogin alloc] initWithSourceView:self.loginButton sourceRect:CGRectZero contentSize:CGSizeMake(500,420)];
 		[[AppDelegate rootViewController] presentViewController:login animated:TRUE completion:nil];
 	}
 }
