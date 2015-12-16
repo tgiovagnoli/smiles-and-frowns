@@ -40,6 +40,12 @@
 		071AC10E1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071AC10D1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m */; };
 		071AC1111BF78D46005D63F2 /* UIImageView+DiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */; };
 		07200DCD1C1C92060031B260 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07200DCC1C1C92060031B260 /* TriangleView.m */; };
+		074D8D091C21EC06007B5516 /* SNFReportPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D071C21EC06007B5516 /* SNFReportPDF.m */; };
+		074D8D0A1C21EC06007B5516 /* SNFReportPDF.xib in Resources */ = {isa = PBXBuildFile; fileRef = 074D8D081C21EC06007B5516 /* SNFReportPDF.xib */; };
+		074D8D0E1C21EC78007B5516 /* SNFReportPDFUserHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D0C1C21EC78007B5516 /* SNFReportPDFUserHeader.m */; };
+		074D8D0F1C21EC78007B5516 /* SNFReportPDFUserHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 074D8D0D1C21EC78007B5516 /* SNFReportPDFUserHeader.xib */; };
+		074D8D131C21F77D007B5516 /* SNFReportPDFDetailRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D111C21F77D007B5516 /* SNFReportPDFDetailRow.m */; };
+		074D8D141C21F77D007B5516 /* SNFReportPDFDetailRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 074D8D121C21F77D007B5516 /* SNFReportPDFDetailRow.xib */; };
 		075EA4B51C11FBA20003A403 /* GATracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA4B41C11FBA20003A403 /* GATracking.m */; };
 		075EA4B81C11FDF30003A403 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */; };
 		075EA4C91C11FE170003A403 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4C81C11FE170003A403 /* libz.tbd */; };
@@ -252,6 +258,15 @@
 		071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+DiskCache.m"; path = "submodules/apd-objc/UIImageView+DiskCache.m"; sourceTree = "<group>"; };
 		07200DCB1C1C92060031B260 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
 		07200DCC1C1C92060031B260 /* TriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleView.m; sourceTree = "<group>"; };
+		074D8D061C21EC06007B5516 /* SNFReportPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportPDF.h; sourceTree = "<group>"; };
+		074D8D071C21EC06007B5516 /* SNFReportPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportPDF.m; sourceTree = "<group>"; };
+		074D8D081C21EC06007B5516 /* SNFReportPDF.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFReportPDF.xib; sourceTree = "<group>"; };
+		074D8D0B1C21EC78007B5516 /* SNFReportPDFUserHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportPDFUserHeader.h; sourceTree = "<group>"; };
+		074D8D0C1C21EC78007B5516 /* SNFReportPDFUserHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportPDFUserHeader.m; sourceTree = "<group>"; };
+		074D8D0D1C21EC78007B5516 /* SNFReportPDFUserHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFReportPDFUserHeader.xib; sourceTree = "<group>"; };
+		074D8D101C21F77D007B5516 /* SNFReportPDFDetailRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportPDFDetailRow.h; sourceTree = "<group>"; };
+		074D8D111C21F77D007B5516 /* SNFReportPDFDetailRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportPDFDetailRow.m; sourceTree = "<group>"; };
+		074D8D121C21F77D007B5516 /* SNFReportPDFDetailRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFReportPDFDetailRow.xib; sourceTree = "<group>"; };
 		075EA4B31C11FBA20003A403 /* GATracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GATracking.h; path = "submodules/apd-objc/GATracking.h"; sourceTree = "<group>"; };
 		075EA4B41C11FBA20003A403 /* GATracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GATracking.m; path = "submodules/apd-objc/GATracking.m"; sourceTree = "<group>"; };
 		075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = libs/GA/GoogleAnalyticsServicesiOS_3.15/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -619,6 +634,22 @@
 			name = Invites;
 			sourceTree = "<group>";
 		};
+		074D8D051C21EBEC007B5516 /* ReportPDF */ = {
+			isa = PBXGroup;
+			children = (
+				074D8D061C21EC06007B5516 /* SNFReportPDF.h */,
+				074D8D071C21EC06007B5516 /* SNFReportPDF.m */,
+				074D8D081C21EC06007B5516 /* SNFReportPDF.xib */,
+				074D8D0B1C21EC78007B5516 /* SNFReportPDFUserHeader.h */,
+				074D8D0C1C21EC78007B5516 /* SNFReportPDFUserHeader.m */,
+				074D8D0D1C21EC78007B5516 /* SNFReportPDFUserHeader.xib */,
+				074D8D101C21F77D007B5516 /* SNFReportPDFDetailRow.h */,
+				074D8D111C21F77D007B5516 /* SNFReportPDFDetailRow.m */,
+				074D8D121C21F77D007B5516 /* SNFReportPDFDetailRow.xib */,
+			);
+			name = ReportPDF;
+			sourceTree = "<group>";
+		};
 		075EA4B61C11FDEC0003A403 /* GA */ = {
 			isa = PBXGroup;
 			children = (
@@ -806,6 +837,7 @@
 				D65DF12B1BE2AE5A009CC6DF /* More */,
 				0707D6D71BE2E3BC002F1FC0 /* PasswordReset */,
 				D6F442151BEB9080009C2866 /* Reporting */,
+				074D8D051C21EBEC007B5516 /* ReportPDF */,
 				D6DB2BD71BEAAAAD00F1CDFF /* Rewards */,
 				D62E1CE31BEA6B9100EF8725 /* Smiles And Frowns */,
 				D62D378D1BDE7FC600102D6A /* SNFDebug.h */,
@@ -908,7 +940,6 @@
 		D659DBFC1BDAEA110048D3F7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D6F442201BEB95CC009C2866 /* Reporting */,
 				D659DC021BDB06010048D3F7 /* SNFModel.h */,
 				D659DC031BDB06010048D3F7 /* SNFModel.m */,
 				D659DBFD1BDAEAE80048D3F7 /* Entities */,
@@ -1105,6 +1136,12 @@
 		D6F442151BEB9080009C2866 /* Reporting */ = {
 			isa = PBXGroup;
 			children = (
+				D6F442211BEB95E9009C2866 /* SNFReportGeneration.h */,
+				D6F442221BEB95E9009C2866 /* SNFReportGeneration.m */,
+				D6F442241BEBA877009C2866 /* SNFReportDateGroup.h */,
+				D6F442251BEBA877009C2866 /* SNFReportDateGroup.m */,
+				D6F442271BEBA8CD009C2866 /* SNFReportBehaviorGroup.h */,
+				D6F442281BEBA8CD009C2866 /* SNFReportBehaviorGroup.m */,
 				D6F442161BEB90A4009C2866 /* SNFReporting.h */,
 				D6F442171BEB90A4009C2866 /* SNFReporting.m */,
 				D6F442181BEB90A4009C2866 /* SNFReporting.xib */,
@@ -1114,19 +1151,6 @@
 				D6F4422D1BEBF411009C2866 /* SNFReportingSectionHeader.h */,
 				D6F4422E1BEBF411009C2866 /* SNFReportingSectionHeader.m */,
 				D6F442301BEBF425009C2866 /* SNFReportingSectionHeader.xib */,
-			);
-			name = Reporting;
-			sourceTree = "<group>";
-		};
-		D6F442201BEB95CC009C2866 /* Reporting */ = {
-			isa = PBXGroup;
-			children = (
-				D6F442211BEB95E9009C2866 /* SNFReportGeneration.h */,
-				D6F442221BEB95E9009C2866 /* SNFReportGeneration.m */,
-				D6F442241BEBA877009C2866 /* SNFReportDateGroup.h */,
-				D6F442251BEBA877009C2866 /* SNFReportDateGroup.m */,
-				D6F442271BEBA8CD009C2866 /* SNFReportBehaviorGroup.h */,
-				D6F442281BEBA8CD009C2866 /* SNFReportBehaviorGroup.m */,
 			);
 			name = Reporting;
 			sourceTree = "<group>";
@@ -1248,6 +1272,7 @@
 				0707D6CC1BE2B2F8002F1FC0 /* SNFCreateAccount.xib in Resources */,
 				D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */,
 				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
+				074D8D0A1C21EC06007B5516 /* SNFReportPDF.xib in Resources */,
 				D65DF1301BE2AE6D009CC6DF /* SNFMore.xib in Resources */,
 				D65DF17B1BE3F884009CC6DF /* SNFBoardEdit.xib in Resources */,
 				D65DF13B1BE2B8EE009CC6DF /* SNFBoardListCell.xib in Resources */,
@@ -1255,6 +1280,8 @@
 				D694011C1BED25530073119E /* SNFPredefinedBoardCell.xib in Resources */,
 				075EA4EB1C121E240003A403 /* treat@2x.png in Resources */,
 				075EA4D91C1214F60003A403 /* frown@2x.png in Resources */,
+				074D8D0F1C21EC78007B5516 /* SNFReportPDFUserHeader.xib in Resources */,
+				074D8D141C21F77D007B5516 /* SNFReportPDFDetailRow.xib in Resources */,
 				D6DB2BE11BEAC3E300F1CDFF /* SNFSpendRewards.xib in Resources */,
 				D6E724DD1BF523FF00398D09 /* SNFValuePicker.xib in Resources */,
 				075EA4D81C1214F60003A403 /* frown.png in Resources */,
@@ -1299,6 +1326,7 @@
 				D6D197571BF677060009E652 /* UIImageView+ProfileStyle.m in Sources */,
 				D65DF15A1BE2F59F009CC6DF /* SNFAddUserRole.m in Sources */,
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
+				074D8D0E1C21EC78007B5516 /* SNFReportPDFUserHeader.m in Sources */,
 				07C0F3B01BEC4C460075A6B9 /* UIViewController+ModalCreation.m in Sources */,
 				D6DB2BE01BEAC3E300F1CDFF /* SNFSpendRewards.m in Sources */,
 				D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */,
@@ -1320,6 +1348,7 @@
 				D659DBF11BDAEA000048D3F7 /* SNFBoard.m in Sources */,
 				D659DBF31BDAEA000048D3F7 /* SNFFrown.m in Sources */,
 				07200DCD1C1C92060031B260 /* TriangleView.m in Sources */,
+				074D8D091C21EC06007B5516 /* SNFReportPDF.m in Sources */,
 				D65DF1091BE299D3009CC6DF /* UIViewControllerStack.m in Sources */,
 				D6270ECC1BE817D200F7C39A /* SNFPredefinedBehaviorGroup+CoreDataProperties.m in Sources */,
 				D6270ECE1BE817D200F7C39A /* SNFPredefinedBoard+CoreDataProperties.m in Sources */,
@@ -1330,6 +1359,7 @@
 				D6F442291BEBA8CD009C2866 /* SNFReportBehaviorGroup.m in Sources */,
 				07C0F3BD1BED70BC0075A6B9 /* SNFADBannerView.m in Sources */,
 				D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */,
+				074D8D131C21F77D007B5516 /* SNFReportPDFDetailRow.m in Sources */,
 				D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */,
 				075EA5051C1362460003A403 /* PillLabel.m in Sources */,
 				071AC1111BF78D46005D63F2 /* UIImageView+DiskCache.m in Sources */,

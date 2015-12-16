@@ -2,6 +2,15 @@
 #import "SNFReporting.h"
 #import "SNFFormStyles.h"
 #import "SNFBoardDetailHeader.h"
+#import "SNFReportPDF.h"
+#import "UIViewController+Alerts.h"
+#import "SNFReportPDFUserHeader.h"
+#import "SNFViewController.h"
+#import "AppDelegate.h"
+
+@interface SNFReporting ()
+@property SNFReportPDF * pdf;
+@end
 
 @implementation SNFReporting
 
@@ -37,6 +46,10 @@
 	[SNFFormStyles updateFontOnSegmentControl:self.filterType];
 	
 	[self updateUI];
+}
+
+- (void) dealloc {
+	self.pdf = nil;
 }
 
 - (void)updateUI{
@@ -98,11 +111,6 @@
 }
 
 - (UIView *) tableView:(UITableView *) tableView viewForHeaderInSection:(NSInteger) section {
-//	NSArray * topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFReportingSectionHeader" owner:nil options:nil];
-//	SNFReportingSectionHeader * sectionHeader = [topLevelObjects objectAtIndex:0];
-//	sectionHeader.dateGroup =
-//	sectionHeader.contentView.backgroundColor = [SNFFormStyles darkSandColor];
-	
 	SNFReportDateGroup * dateGroup = [_reportData objectAtIndex:section];
 	
 	NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
@@ -122,6 +130,29 @@
 - (IBAction)onChangeAscending:(UIButton *)sender{
 	_ascending = !_ascending;
 	[self reloadReport];
+}
+
+- (IBAction) onExport:(id) sender {
+	if(_reportData.count < 1) {
+		
+		[self displayOKAlertWithTitle:@"Sorry" message:@"Nothing to export." completion:nil];
+		return;
+	}
+	
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPDFFinished:) name:SNFReportPDFFinished object:nil];
+	
+	self.pdf = [[SNFReportPDF alloc] init];
+	self.pdf.reportData = _reportData;
+	self.pdf.user = self.user;
+	self.pdf.board = self.board;
+	
+	[[AppDelegate instance].window.rootViewController.view insertSubview:self.pdf.view atIndex:0];
+	[self.pdf savePDF];
+}
+
+- (void) onPDFFinished:(id) sender {
+	[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 }
 
 @end
