@@ -79,8 +79,6 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 		
 		//add date section
 		
-		NSLog(@"%@",[UIFont familyNames]);
-		
 		HDView * dateHeaderView = [[HDView alloc] initWithFrame:CGRectMake(20,pageY,self.view.width-40,dateRowHeight)];
 		HDLabel * dateHeader = [[HDLabel alloc] initWithFrame:CGRectMake(10,0,dateHeaderView.width-20,dateRowHeight)];
 		dateHeader.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
