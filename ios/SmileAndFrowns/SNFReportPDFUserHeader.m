@@ -26,7 +26,11 @@ NSString * const SNFReportPDFUserHeaderImageFinished = @"SNFReportPDFUserHeaderI
 	
 	self.userName.text = userNameLabel;
 	
-	self.boardName.text = self.board.title;
+	if(self.board) {
+		self.boardName.text = self.board.title;
+	} else {
+		self.boardName.text = @"";
+	}
 	
 	self.profileImage.layer.borderColor = [[UIColor blackColor] CGColor];
 	self.profileImage.layer.borderWidth = 2;

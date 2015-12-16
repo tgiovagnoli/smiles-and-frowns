@@ -12,12 +12,14 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 
 @interface SNFReportPDF ()
 @property SNFReportPDFUserHeader * userHeader;
+@property CGRect creditsFrame;
 @end
 
 @implementation SNFReportPDF
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	self.creditsFrame = self.credits.frame;
 }
 
 - (void) savePDF {
@@ -51,7 +53,7 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 	
 	CGFloat pageY = 0;
 	NSInteger pad = 20;
-	NSInteger dateRowHeight = 20;
+	NSInteger dateRowHeight = 40;
 	NSInteger detailRowHeight = 100;
 	
 	//add space for existing user header.
@@ -76,8 +78,12 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 		}
 		
 		//add date section
+		
+		NSLog(@"%@",[UIFont familyNames]);
+		
 		HDView * dateHeaderView = [[HDView alloc] initWithFrame:CGRectMake(20,pageY,self.view.width-40,dateRowHeight)];
 		HDLabel * dateHeader = [[HDLabel alloc] initWithFrame:CGRectMake(10,0,dateHeaderView.width-20,dateRowHeight)];
+		dateHeader.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
 		dateHeaderView.layer.cornerRadius = 4;
 		dateHeaderView.layer.masksToBounds = TRUE;
 		dateHeader.textColor = [UIColor darkGrayColor];
@@ -157,6 +163,9 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 	//remove everything.
 	if(removeAllViews) {
 		for(UIView * view in self.view.subviews) {
+			if(view == self.credits) {
+				continue;
+			}
 			[view removeFromSuperview];
 		}
 	}

@@ -145,7 +145,10 @@
 	self.pdf = [[SNFReportPDF alloc] init];
 	self.pdf.reportData = _reportData;
 	self.pdf.user = self.user;
-	self.pdf.board = self.board;
+	
+	if(self.filterType.selectedSegmentIndex != SNFReportingFilterAllBoards) {
+		self.pdf.board = self.board;
+	}
 	
 	[[AppDelegate instance].window.rootViewController.view insertSubview:self.pdf.view atIndex:0];
 	[self.pdf savePDF];
