@@ -77,7 +77,7 @@
 	[self.rewardsViewContainer addSubview:self.rewardsView];
 	//self.rewardsView.backgroundColor = [UIColor redColor];
 	
-	self.rewardsInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(f.size.width/2-150,0,300,54)];
+	self.rewardsInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(45,0,self.rewardsViewContainer.width-90,54)];
 	self.rewardsInfoLabel.textAlignment = NSTextAlignmentCenter;
 	//self.rewardsInfoLabel.backgroundColor = [UIColor yellowColor];
 	self.rewardsInfoLabel.adjustsFontSizeToFitWidth = TRUE;
@@ -85,7 +85,7 @@
 	self.rewardsInfoLabel.text = @"reward info";
 	[self.rewardsView addSubview:self.rewardsInfoLabel];
 	
-	self.smileImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,8,37,37)];
+	self.smileImage = [[UIImageView alloc] initWithFrame:CGRectMake(5,8,37,37)];
 	self.smileImage.image = [UIImage imageNamed:@"smile"];
 	[self.rewardsView addSubview:self.smileImage];
 	
@@ -318,12 +318,17 @@
 	//update placement of smile image.
 	NSDictionary * attributes = @{NSFontAttributeName:self.rewardsInfoLabel.font,};
 	CGRect boundingRect = [self.rewardsInfoLabel.text boundingRectWithSize:self.rewardsInfoLabel.frame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-	CGFloat left = (self.rewardsView.width/2) - (self.smileImage.width+6) - (boundingRect.size.width/2);
+	CGFloat left = (self.rewardsView.width/2) - (boundingRect.size.width/2) - (self.smileImage.width+6);
 	
-	CGRect smileRect = CGRectMake(left, 8, self.smileImage.width, self.smileImage.height);
-	self.smileImage.frame = smileRect;
-	
-	//self.smileImageCenterConstraint.constant = left;
+	if(self.rewardsInfoLabel.width > 320) {
+		CGRect smileRect = CGRectMake(left, 8, self.smileImage.width, self.smileImage.height);
+		self.smileImage.frame = smileRect;
+	} else if(self.rewardsInfoLabel.text.length <= 23) {
+		CGRect smileRect = CGRectMake(left, 8, self.smileImage.width, self.smileImage.height);
+		self.smileImage.frame = smileRect;
+	} else {
+		self.smileImage.x = self.rewardsInfoLabel.x-(self.smileImage.width);
+	}
 }
 
 - (void) addCellWantsToAdd:(SNFAddCell *) addCell {

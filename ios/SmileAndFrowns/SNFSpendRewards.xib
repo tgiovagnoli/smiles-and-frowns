@@ -384,7 +384,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqH-NK-KiA">
-                    <rect key="frame" x="527" y="26" width="60" height="30"/>
+                    <rect key="frame" x="527" y="29" width="60" height="30"/>
                     <animations/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -419,7 +419,7 @@
             <animations/>
             <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="kqH-NK-KiA" firstAttribute="top" secondItem="epy-Ix-oHa" secondAttribute="top" constant="-4" id="34Q-Yf-8dk"/>
+                <constraint firstItem="kqH-NK-KiA" firstAttribute="top" secondItem="epy-Ix-oHa" secondAttribute="top" constant="-1" id="34Q-Yf-8dk"/>
                 <constraint firstItem="epy-Ix-oHa" firstAttribute="top" secondItem="1W3-ff-SKE" secondAttribute="top" constant="30" id="FgP-CE-4ky"/>
                 <constraint firstItem="pqT-LU-Qmd" firstAttribute="top" secondItem="epy-Ix-oHa" secondAttribute="bottom" constant="9" id="Lbi-vl-9pE"/>
                 <constraint firstItem="pqT-LU-Qmd" firstAttribute="leading" secondItem="1W3-ff-SKE" secondAttribute="leading" id="Y68-vI-XBN"/>
@@ -428,7 +428,7 @@
                 <constraint firstAttribute="bottom" secondItem="pqT-LU-Qmd" secondAttribute="bottom" id="o8d-PN-bdR"/>
                 <constraint firstAttribute="trailing" secondItem="pqT-LU-Qmd" secondAttribute="trailing" id="ut2-mk-Nqr"/>
             </constraints>
-            <point key="canvasLocation" x="975" y="549"/>
+            <point key="canvasLocation" x="819" y="541"/>
         </view>
         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9l-lg-ddb">
             <rect key="frame" x="0.0" y="0.0" width="560" height="54"/>

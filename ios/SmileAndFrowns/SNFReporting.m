@@ -16,8 +16,19 @@
 	[self.reportTable registerClass:[SNFReportCellSmileFrown class] forCellReuseIdentifier:@"SNFReportCellSmileFrown"];
 	[self.reportTable registerNib:[UINib nibWithNibName:@"SNFReportCellSmileFrown" bundle:nil] forCellReuseIdentifier:@"SNFReportCellSmileFrown"];
 	
-	if(self.board.title) {
-		self.titleLabel.text = self.board.title;
+	NSMutableString * title = [[NSMutableString alloc] init];
+	
+	if(self.user.first_name) {
+		[title appendString:self.user.first_name];
+	}
+	
+	if(self.user.last_name) {
+		[title appendString:@" "];
+		[title appendString:self.user.last_name];
+	}
+	
+	if(title.length > 0) {
+		self.titleLabel.text = title;
 	} else {
 		self.titleLabel.text = @"Reporting";
 	}
