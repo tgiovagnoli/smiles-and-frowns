@@ -222,6 +222,8 @@ static int threshold = 20;
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *) indexPath {
 	_selectedReward = [_sortedRewards objectAtIndex:indexPath.row];
 	
+	self.spendAmount = 0;
+	
 	self.selectedIndexPathRow = indexPath.row;
 	
 	for (int i = 0; i < _sortedRewards.count; i++) {
@@ -236,6 +238,8 @@ static int threshold = 20;
 	[self updateRewardsInfoLabel];
 	
 	[self updateSmileAndRewardsLabels];
+	
+	[self updateButtons];
 	
 	if(self.rewardsInfoLabel.text) {
 		
@@ -301,6 +305,21 @@ static int threshold = 20;
 	[self updateRewardsInfoLabel];
 }
 
+- (CGFloat) maxSpendAmount {
+	float max = _smilesAvailable;
+	float rate = _selectedReward.smile_amount.floatValue;
+	
+	if(![Utils CGFloatHasDecimals:max/rate]) {
+		return max;
+	}
+	
+	while(max > 0 && [Utils CGFloatHasDecimals:max/rate]) {
+		max--;
+	}
+	
+	return max;
+}
+
 - (IBAction) onAdd:(id)sender {
 	
 	if(self.spendAmount < _smilesAvailable) {
@@ -308,6 +327,13 @@ static int threshold = 20;
 		float tmp = self.spendAmount;
 		float nxtMultiple = tmp;
 		float added = tmp + _selectedReward.smile_amount.floatValue;
+		BOOL shouldSubtract = FALSE;
+		
+		if(added > _smilesAvailable) {
+			
+			shouldSubtract = TRUE;
+			
+		}
 		
 		if([Utils CGFloatHasDecimals:added/_selectedReward.smile_amount.floatValue]) {
 			while(nxtMultiple < _smilesAvailable && [Utils CGFloatHasDecimals:(float)nxtMultiple/_selectedReward.smile_amount.floatValue] ) {
@@ -318,6 +344,9 @@ static int threshold = 20;
 			self.spendAmount += _selectedReward.smile_amount.floatValue;
 		}
 		
+		if(shouldSubtract) {
+			[self onSubtract:nil];
+		}
 	}
 	
 	if(self.spendAmount > _smilesAvailable) {
@@ -366,11 +395,13 @@ static int threshold = 20;
 	self.subtractButton.alpha = 1;
 	self.addButton.alpha = 1;
 	
+	float max = [self maxSpendAmount];
+	
 	if(self.spendAmount <= 0) {
 		self.subtractButton.alpha = .5;
 	}
 	
-	if(self.spendAmount >= _smilesAvailable) {
+	if(self.spendAmount >= max) {
 		self.addButton.alpha = .5;
 	}
 	
@@ -391,6 +422,7 @@ static int threshold = 20;
 		
 		self.spendSmileButton.alpha = .75;
 		self.spendSmileButton.enabled = false;
+		
 	} else {
 		
 		self.maxButton.alpha = 1;
@@ -401,12 +433,12 @@ static int threshold = 20;
 	}
 }
 
-- (IBAction)onRewardModifierChange:(UIStepper *)sender{
+- (IBAction) onRewardModifierChange:(UIStepper *)sender{
 	[self updateSmileAndRewardsLabels];
 }
 
-- (IBAction)onMax:(UIButton *)sender{
-	self.spendAmount = _smilesAvailable;
+- (IBAction) onMax:(UIButton *)sender{
+	self.spendAmount = [self maxSpendAmount];
 	[self updateSmileAndRewardsLabels];
 	[self updateButtons];
 }
