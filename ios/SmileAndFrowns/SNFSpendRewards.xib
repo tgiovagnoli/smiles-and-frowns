@@ -29,6 +29,7 @@
                 <outlet property="addButton" destination="WIL-8y-Iwj" id="Xyd-2S-l9W"/>
                 <outlet property="addRewardButton" destination="t0G-pb-a37" id="rRO-5v-mNo"/>
                 <outlet property="cancelButton" destination="kqH-NK-KiA" id="Ksk-b6-qqk"/>
+                <outlet property="deleteButton" destination="xq9-Fn-El3" id="Lfv-hr-KqA"/>
                 <outlet property="formView" destination="i5M-Pr-FkT" id="Tzi-pC-LOW"/>
                 <outlet property="maxButton" destination="Fdh-2O-Ufx" id="Yh7-5q-dbK"/>
                 <outlet property="rewardCalculatedLabel" destination="nZ0-Pc-oNS" id="mUK-h7-RNx"/>

@@ -49,6 +49,8 @@
 	self.swipeGesture.maximumNumberOfTouches = 1;
 	[self.rewardsViewContainer addGestureRecognizer:self.swipeGesture];
 	
+	self.deleteButton.alpha = 0;
+	
 	[self startBannerAd];
 	[self updateUI];
 	[self updateRewardsInfoLabel];
@@ -58,7 +60,7 @@
 	[super viewDidLayoutSubviews];
 	NSLog(@"view did layout subviews");
 	if(self.firstlayoutself) {
-		[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
+		[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
 			[self setupRewardsInfo];
 		} repeats:FALSE];
 		self.firstlayoutself = false;
@@ -67,6 +69,8 @@
 }
 
 - (void) setupRewardsInfo {
+	
+	self.deleteButton.alpha = 1;
 	
 	CGRect f = CGRectMake(0,0,self.rewardsViewContainer.frame.size.width,self.rewardsViewContainer.frame.size.height);
 	self.rewardsView.frame = f;

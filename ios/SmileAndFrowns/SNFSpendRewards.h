@@ -39,6 +39,7 @@
 @property IBOutlet UIImageView * smileImage;
 @property (weak) IBOutlet NSLayoutConstraint * smileImageCenterConstraint;
 @property IBOutlet UILabel * rewardsInfoLabel;
+@property (weak) IBOutlet UIButton * deleteButton;
 
 @property (weak) IBOutlet UIView * spendAmountView;
 @property (weak) IBOutlet UIButton * addButton;
