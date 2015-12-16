@@ -83,6 +83,8 @@
 	self.rewardsInfoLabel.adjustsFontSizeToFitWidth = TRUE;
 	self.rewardsInfoLabel.minimumScaleFactor = .5;
 	self.rewardsInfoLabel.text = @"reward info";
+	self.rewardsInfoLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:17];
+	self.rewardsInfoLabel.textColor = [SNFFormStyles darkGray];
 	[self.rewardsView addSubview:self.rewardsInfoLabel];
 	
 	self.smileImage = [[UIImageView alloc] initWithFrame:CGRectMake(5,8,37,37)];
