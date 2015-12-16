@@ -46,6 +46,8 @@
 		074D8D0F1C21EC78007B5516 /* SNFReportPDFUserHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 074D8D0D1C21EC78007B5516 /* SNFReportPDFUserHeader.xib */; };
 		074D8D131C21F77D007B5516 /* SNFReportPDFDetailRow.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D111C21F77D007B5516 /* SNFReportPDFDetailRow.m */; };
 		074D8D141C21F77D007B5516 /* SNFReportPDFDetailRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 074D8D121C21F77D007B5516 /* SNFReportPDFDetailRow.xib */; };
+		074D8D171C220D80007B5516 /* HDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D161C220D80007B5516 /* HDView.m */; };
+		074D8D1A1C220DC1007B5516 /* HDLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D191C220DC1007B5516 /* HDLabel.m */; };
 		075EA4B51C11FBA20003A403 /* GATracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA4B41C11FBA20003A403 /* GATracking.m */; };
 		075EA4B81C11FDF30003A403 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */; };
 		075EA4C91C11FE170003A403 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4C81C11FE170003A403 /* libz.tbd */; };
@@ -267,6 +269,10 @@
 		074D8D101C21F77D007B5516 /* SNFReportPDFDetailRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportPDFDetailRow.h; sourceTree = "<group>"; };
 		074D8D111C21F77D007B5516 /* SNFReportPDFDetailRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportPDFDetailRow.m; sourceTree = "<group>"; };
 		074D8D121C21F77D007B5516 /* SNFReportPDFDetailRow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFReportPDFDetailRow.xib; sourceTree = "<group>"; };
+		074D8D151C220D80007B5516 /* HDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDView.h; sourceTree = "<group>"; };
+		074D8D161C220D80007B5516 /* HDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDView.m; sourceTree = "<group>"; };
+		074D8D181C220DC1007B5516 /* HDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLabel.h; sourceTree = "<group>"; };
+		074D8D191C220DC1007B5516 /* HDLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLabel.m; sourceTree = "<group>"; };
 		075EA4B31C11FBA20003A403 /* GATracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GATracking.h; path = "submodules/apd-objc/GATracking.h"; sourceTree = "<group>"; };
 		075EA4B41C11FBA20003A403 /* GATracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GATracking.m; path = "submodules/apd-objc/GATracking.m"; sourceTree = "<group>"; };
 		075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = libs/GA/GoogleAnalyticsServicesiOS_3.15/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -646,6 +652,10 @@
 				074D8D101C21F77D007B5516 /* SNFReportPDFDetailRow.h */,
 				074D8D111C21F77D007B5516 /* SNFReportPDFDetailRow.m */,
 				074D8D121C21F77D007B5516 /* SNFReportPDFDetailRow.xib */,
+				074D8D151C220D80007B5516 /* HDView.h */,
+				074D8D161C220D80007B5516 /* HDView.m */,
+				074D8D181C220DC1007B5516 /* HDLabel.h */,
+				074D8D191C220DC1007B5516 /* HDLabel.m */,
 			);
 			name = ReportPDF;
 			sourceTree = "<group>";
@@ -1359,6 +1369,7 @@
 				D6F442291BEBA8CD009C2866 /* SNFReportBehaviorGroup.m in Sources */,
 				07C0F3BD1BED70BC0075A6B9 /* SNFADBannerView.m in Sources */,
 				D6272FBE1BE002160024CBC2 /* APDDebugViewController.m in Sources */,
+				074D8D1A1C220DC1007B5516 /* HDLabel.m in Sources */,
 				074D8D131C21F77D007B5516 /* SNFReportPDFDetailRow.m in Sources */,
 				D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */,
 				075EA5051C1362460003A403 /* PillLabel.m in Sources */,
@@ -1375,6 +1386,7 @@
 				D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */,
 				D6270EDD1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.m in Sources */,
 				078DF4C81BEA932200CBFAA4 /* ATITwitterAuthHandler.m in Sources */,
+				074D8D171C220D80007B5516 /* HDView.m in Sources */,
 				078DF4C21BE8810600CBFAA4 /* SNFFormViewController.m in Sources */,
 				075EA4EE1C1225540003A403 /* Utils.m in Sources */,
 				D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */,

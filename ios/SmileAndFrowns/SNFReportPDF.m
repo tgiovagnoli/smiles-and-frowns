@@ -5,6 +5,8 @@
 #import "SNFReportPDFDetailRow.h"
 #import "UIColor+Hex.h"
 #import "AppDelegate.h"
+#import "HDLabel.h"
+#import "HDView.h"
 
 NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 
@@ -74,8 +76,8 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 		}
 		
 		//add date section
-		UIView * dateHeaderView = [[UIView alloc] initWithFrame:CGRectMake(20,pageY,self.view.width-40,dateRowHeight)];
-		UILabel * dateHeader = [[UILabel alloc] initWithFrame:CGRectMake(10,0,dateHeaderView.width-20,dateRowHeight)];
+		HDView * dateHeaderView = [[HDView alloc] initWithFrame:CGRectMake(20,pageY,self.view.width-40,dateRowHeight)];
+		HDLabel * dateHeader = [[HDLabel alloc] initWithFrame:CGRectMake(10,0,dateHeaderView.width-20,dateRowHeight)];
 		dateHeaderView.layer.cornerRadius = 4;
 		dateHeaderView.layer.masksToBounds = TRUE;
 		dateHeader.textColor = [UIColor darkGrayColor];
