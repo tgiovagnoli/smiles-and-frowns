@@ -9,17 +9,15 @@
 #import "Utils.h"
 #import "SNFFormStyles.h"
 #import "NSTimer+Blocks.h"
+#import "NSLog+Geom.h"
 
 @interface SNFSpendRewards ()
 @property float spendAmount;
 @property NSInteger selectedIndexPathRow;
 @property UIPanGestureRecognizer * swipeGesture;
 @property CGFloat swipex;
-
-@property CGRect originalRewardsViewFrame;
-@property CGRect rewardsViewFrame;
 @property CGFloat rewardsConstant;
-
+@property bool firstlayout;
 @end
 
 @implementation SNFSpendRewards
@@ -27,6 +25,7 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
+	self.firstlayout = true;
 	self.spendAmount = 0;
 	self.selectedIndexPathRow = -1;
 	
@@ -45,74 +44,102 @@
 	self.spendAmountView.layer.borderColor = [[UIColor colorWithRed:0.959 green:0.933 blue:0.902 alpha:1] CGColor];
 	self.spendAmountView.layer.borderWidth = 2;
 	
-	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
-		self.rewardsWidthConstraint.constant = self.rewardsViewContainer.width;
-	} repeats:FALSE];
+	self.swipeGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeGestureChange:)];
+	self.swipeGesture.minimumNumberOfTouches = 1;
+	self.swipeGesture.maximumNumberOfTouches = 1;
+	[self.rewardsViewContainer addGestureRecognizer:self.swipeGesture];
 	
-//	self.swipeGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onSwipeGestureChange:)];
-//	self.swipeGesture.minimumNumberOfTouches = 1;
-//	self.swipeGesture.maximumNumberOfTouches = 1;
-//	[self.rewardsView addGestureRecognizer:self.swipeGesture];
+	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
+		[self setupRewardsInfo];
+	} repeats:FALSE];
 	
 	[self startBannerAd];
 	[self updateUI];
 	[self updateRewardsInfoLabel];
-	
 }
 
 - (void) viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
+	NSLog(@"view did layout subviews");
+	if(self.firstlayout) {
+		[self setupRewardsInfo];
+		self.firstlayout = false;
+	}
 	[self updateRewardsInfoLabel];
 }
 
-static int threshold = 20;
+- (void) setupRewardsInfo {
+	
+	CGRect f = CGRectMake(0,0,self.rewardsViewContainer.frame.size.width,self.rewardsViewContainer.frame.size.height);
+	self.rewardsView.frame = f;
+	[self.rewardsViewContainer addSubview:self.rewardsView];
+	//self.rewardsView.backgroundColor = [UIColor redColor];
+	
+	self.rewardsInfoLabel = [[UILabel alloc] initWithFrame:CGRectMake(f.size.width/2-150,0,300,54)];
+	self.rewardsInfoLabel.textAlignment = NSTextAlignmentCenter;
+	//self.rewardsInfoLabel.backgroundColor = [UIColor yellowColor];
+	self.rewardsInfoLabel.adjustsFontSizeToFitWidth = TRUE;
+	self.rewardsInfoLabel.minimumScaleFactor = .5;
+	self.rewardsInfoLabel.text = @"reward info";
+	[self.rewardsView addSubview:self.rewardsInfoLabel];
+	
+	self.smileImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,8,37,37)];
+	self.smileImage.image = [UIImage imageNamed:@"smile"];
+	[self.rewardsView addSubview:self.smileImage];
+	
+	[self updateRewardsInfoLabel];
+}
+
 - (void) onSwipeGestureChange:(UISwipeGestureRecognizer *) swipe {
 	
 	if(self.rewardsConstant == 0) {
 		self.rewardsConstant = self.rewardsLeftConstraint.constant;
 	}
 	
-	CGPoint loc = [swipe locationInView:self.rewardsView];
+	CGPoint loc = [swipe locationInView:self.rewardsViewContainer];
 	
 	if(swipe.state == UIGestureRecognizerStateBegan) {
+		
 		self.swipex = loc.x;
-	
+		
 	} else if(swipe.state == UIGestureRecognizerStateChanged) {
+		
 		CGFloat diff = loc.x - self.swipex;
 		
-		NSLog(@"diff %f",diff);
-		
-		self.rewardsConstant += diff;
-		
-		if(diff < 0 && self.rewardsConstant >= -75 + threshold) {
-			self.rewardsConstant = -75 + threshold;
-		} else if(diff > 0 && self.rewardsConstant <= 0) {
-			self.rewardsConstant = 0;
+		if(self.rewardsView.x > -1 && diff > 0) {
+			self.rewardsView.x = 0;
+			return;
 		}
 		
-		if(diff < 0 && self.rewardsConstant > threshold) {
-			self.rewardsLeftConstraint.constant = self.rewardsConstant - threshold;
-		} else if(diff > 0) {
-			self.rewardsLeftConstraint.constant = self.rewardsConstant;
-		}
+		CGRect f = self.rewardsView.frame;
+		f.origin.x += diff;
+		self.rewardsView.frame = f;
 		
 		self.swipex = loc.x;
 		
 	} else if(swipe.state == UIGestureRecognizerStateEnded) {
 		
-		if(self.rewardsConstant <= 75+threshold && self.rewardsConstant > 35) {
-			
-			self.rewardsConstant = 75;
-			self.rewardsLeftConstraint.constant = self.rewardsConstant;
-			
-		} else {
-			
-			self.rewardsConstant = 0;
-			self.rewardsLeftConstraint.constant = self.rewardsConstant;
-			
+		if(self.rewardsView.x < -75 || self.rewardsView.x < -35) {
+			self.rewardsView.x = -75;
+		} else if(self.rewardsView.x > -35) {
+			self.rewardsView.x = 0;
 		}
-		
 	}
+}
+
+- (IBAction) deleteReward:(id) sender {
+	
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Reward?" message:@"Are you sure you want to delete this reward?" preferredStyle:UIAlertControllerStyleAlert];
+	
+	[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		_selectedReward.soft_deleted = @(1);
+		[[SNFSyncService instance] saveContext];
+		[self updateUI];
+	}]];
+	
+	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
+	
+	[self presentViewController:alert animated:YES completion:^{}];
 }
 
 - (void) updateUI {
@@ -170,6 +197,10 @@ static int threshold = 20;
 }
 
 - (void) reloadRewards {
+	
+	self.rewardsView.x = 0;
+	_selectedIndexPathRow = 0;
+	
 	_sortedRewards = [self.board sortedActiveRewards];
 	_selectedReward = [_sortedRewards objectAtIndex:0];
 	[self.rewardsCollection reloadData];
@@ -246,9 +277,16 @@ static int threshold = 20;
 		[self updateRewardsInfoLabel];
 		
 	}
+	
+	self.rewardsView.x = 0;
 }
 
 - (void) updateRewardsInfoLabel {
+	
+	if(!self.rewardsInfoLabel) {
+		return;
+	}
+	
 	NSMutableString * label = [[NSMutableString alloc] init];
 	
 	if([Utils CGFloatHasDecimals:_selectedReward.smile_amount.floatValue]) {
@@ -278,11 +316,12 @@ static int threshold = 20;
 	//update placement of smile image.
 	NSDictionary * attributes = @{NSFontAttributeName:self.rewardsInfoLabel.font,};
 	CGRect boundingRect = [self.rewardsInfoLabel.text boundingRectWithSize:self.rewardsInfoLabel.frame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
-	CGFloat left = ((boundingRect.size.width/2) + (self.smileImage.width/2) + 6) * - 1;
-	if(left < -126) {
-		left -= 8;
-	}
-	self.smileImageCenterConstraint.constant = left;
+	CGFloat left = (self.rewardsView.width/2) - (self.smileImage.width+6) - (boundingRect.size.width/2);
+	
+	CGRect smileRect = CGRectMake(left, 8, self.smileImage.width, self.smileImage.height);
+	self.smileImage.frame = smileRect;
+	
+	//self.smileImageCenterConstraint.constant = left;
 }
 
 - (void) addCellWantsToAdd:(SNFAddCell *) addCell {
