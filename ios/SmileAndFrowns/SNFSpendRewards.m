@@ -17,7 +17,7 @@
 @property UIPanGestureRecognizer * swipeGesture;
 @property CGFloat swipex;
 @property CGFloat rewardsConstant;
-@property bool firstlayout;
+@property bool firstlayoutself;
 @end
 
 @implementation SNFSpendRewards
@@ -25,7 +25,7 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
-	self.firstlayout = true;
+	self.firstlayoutself = true;
 	self.spendAmount = 0;
 	self.selectedIndexPathRow = -1;
 	
@@ -49,10 +49,6 @@
 	self.swipeGesture.maximumNumberOfTouches = 1;
 	[self.rewardsViewContainer addGestureRecognizer:self.swipeGesture];
 	
-	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
-		[self setupRewardsInfo];
-	} repeats:FALSE];
-	
 	[self startBannerAd];
 	[self updateUI];
 	[self updateRewardsInfoLabel];
@@ -61,9 +57,11 @@
 - (void) viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
 	NSLog(@"view did layout subviews");
-	if(self.firstlayout) {
-		[self setupRewardsInfo];
-		self.firstlayout = false;
+	if(self.firstlayoutself) {
+		[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
+			[self setupRewardsInfo];
+		} repeats:FALSE];
+		self.firstlayoutself = false;
 	}
 	[self updateRewardsInfoLabel];
 }
