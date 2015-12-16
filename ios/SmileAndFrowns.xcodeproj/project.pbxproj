@@ -72,7 +72,6 @@
 		075EA5021C135C000003A403 /* spend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA5001C135C000003A403 /* spend@2x.png */; };
 		075EA5051C1362460003A403 /* PillLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA5041C1362460003A403 /* PillLabel.m */; };
 		075EA5081C1368560003A403 /* SNFBoardDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA5071C1368560003A403 /* SNFBoardDetailHeader.m */; };
-		0782119E1C2088F400C61B93 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0782119D1C2088F400C61B93 /* SwipeView.m */; };
 		078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */; };
 		078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */; };
 		078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */; };
@@ -1312,7 +1311,6 @@
 				0707D6D51BE2D16D002F1FC0 /* NSString+Additions.m in Sources */,
 				D659DBEC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m in Sources */,
 				D6272FC71BE04E010024CBC2 /* SNFUserSettings.m in Sources */,
-				0782119E1C2088F400C61B93 /* SwipeView.m in Sources */,
 				D6E724D41BF4F25300398D09 /* SNFChildEdit.m in Sources */,
 				D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */,
 				D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */,
