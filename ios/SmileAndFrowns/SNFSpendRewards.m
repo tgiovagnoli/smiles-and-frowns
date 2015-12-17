@@ -525,12 +525,11 @@
 }
 
 - (IBAction) onRedeemReward:(UIButton *) sender {
-	CGFloat currency = _selectedReward.currency_amount.floatValue * _spendAmount;
-	CGFloat smiles = _selectedReward.smile_amount.floatValue * _spendAmount;
+	CGFloat smiles = self.spendAmount;
 	
-	if(smiles > _smilesAvailable){
+	if(smiles > _smilesAvailable) {
 		
-		NSString *alertMessage = [NSString stringWithFormat:@"%@ does not have enough smiles to purchase %.2f %@",self.user.first_name, currency, _selectedReward.title];
+		NSString *alertMessage = [NSString stringWithFormat:@"%@ does not have enough smiles to purchase %.2f %@",self.user.first_name, smiles, _selectedReward.title];
 		[self displayOKAlertWithTitle:@"Sorry" message:alertMessage completion:nil];
 		
 	} else {
@@ -552,18 +551,28 @@
 }
 
 - (void) redeemReward {
-	CGFloat smiles = _selectedReward.smile_amount.floatValue * _spendAmount;
+	CGFloat smiles = self.spendAmount;
+	
 	NSInteger smilesTaken = 0;
-	for(SNFSmile *smile in [self.board smilesForUser:self.user]){
-		if(smilesTaken < smiles){
+	
+	for(SNFSmile * smile in [self.board smilesForUser:self.user]) {
+		if(smile.collected.boolValue) {
+			continue;
+		}
+		
+		if(smilesTaken < smiles) {
 			smile.collected = @YES;
 		}
+		
 		smilesTaken ++;
 	}
+	
 	[[SNFSyncService instance] saveContext];
+	
 	if(self.delegate) {
 		[self.delegate spendRewardsIsDone:self];
 	}
+	
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
