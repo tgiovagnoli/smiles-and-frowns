@@ -69,11 +69,12 @@
 }
 
 - (void) updateUI {
-	NSPredicate * snfPredacate = [NSPredicate predicateWithFormat:@"(board=%@) AND (user=%@)", _userRole.board, _userRole.user];
+	NSPredicate * smilePredacate = [NSPredicate predicateWithFormat:@"(board=%@) AND (user=%@) AND (soft_deleted=0) AND (collected=0)", _userRole.board, _userRole.user];
+	NSPredicate * frownPredacate = [NSPredicate predicateWithFormat:@"(board=%@) AND (user=%@) AND (soft_deleted=0)", _userRole.board, _userRole.user];
 	
 	NSFetchRequest * smileFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFSmile"];
 	smileFetchRequest.resultType = NSCountResultType;
-	smileFetchRequest.predicate = snfPredacate;
+	smileFetchRequest.predicate = smilePredacate;
 	NSError * smileFetchError = nil;
 	NSUInteger smilesCount = [[SNFModel sharedInstance].managedObjectContext countForFetchRequest:smileFetchRequest error:&smileFetchError];
 	
@@ -85,7 +86,7 @@
 	
 	NSFetchRequest * frownFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFFrown"];
 	frownFetchRequest.resultType = NSCountResultType;
-	frownFetchRequest.predicate = snfPredacate;
+	frownFetchRequest.predicate = frownPredacate;
 	NSError * frownFetchError = nil;
 	if(frownFetchError) {
 		NSLog(@"%@", frownFetchError);
