@@ -218,7 +218,9 @@
 	NSArray *frowns = [self frownsForUser:user];
 	SNFFrown *frown;
 	for(frown in frowns){
-		smileCurrency -= 1;
+		if(!frown.soft_deleted.boolValue) {
+			smileCurrency -= 1;
+		}
 	}
 	return smileCurrency;
 }

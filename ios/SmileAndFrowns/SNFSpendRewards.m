@@ -162,20 +162,8 @@
 	}
 	
 	// calculate the number of smiles available from the board
-	_smilesAvailable = 0;
-	
-	for(SNFSmile *smile in [self.board smilesForUser:self.user]){
-		if(!smile.collected.boolValue && !smile.soft_deleted.boolValue){
-			_smilesAvailable ++;
-		}
-	}
-	
-	for(SNFFrown *frown in [self.board frownsForUser:self.user]){
-		if(!frown.soft_deleted.boolValue){
-			_smilesAvailable --;
-		}
-	}
-	
+	//_smilesAvailable = 0;
+	_smilesAvailable = [self.board smileCurrencyForUser:self.user];
 	self.totalSmilestoSpendLabel.text = [NSString stringWithFormat:@"%ld", (long)_smilesAvailable];
 	
 	[self updateButtons];
