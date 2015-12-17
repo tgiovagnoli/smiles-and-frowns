@@ -310,7 +310,7 @@
                         <color key="titleColor" red="0.98431372640000003" green="0.96078431610000004" blue="0.92549020049999997" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="onEdit:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uyS-Cc-0x4"/>
+                        <action selector="onReset:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ebf-lk-ViD"/>
                     </connections>
                 </button>
             </subviews>
