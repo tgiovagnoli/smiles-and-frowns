@@ -42,7 +42,7 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 	
 	NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
 	NSString * docs = [paths objectAtIndex:0];
-	NSURL * pdfURL = [[NSURL fileURLWithPath:docs] URLByAppendingPathComponent:@"export.pdf"];
+	NSURL * pdfURL = [[NSURL fileURLWithPath:docs] URLByAppendingPathComponent:@"smiles-and-frowns-report.pdf"];
 	UIGraphicsBeginPDFContextToFile(pdfURL.path, CGRectZero, nil);
 	
 	NSLog(@"pdf url: %@",pdfURL);

@@ -7,9 +7,11 @@
 #import "SNFReportPDFUserHeader.h"
 #import "SNFViewController.h"
 #import "AppDelegate.h"
+#import "NSTimer+Blocks.h"
 
 @interface SNFReporting ()
 @property SNFReportPDF * pdf;
+@property UIActivityViewController * activityViewController;
 @end
 
 @implementation SNFReporting
@@ -152,10 +154,55 @@
 	
 	[[AppDelegate instance].window.rootViewController.view insertSubview:self.pdf.view atIndex:0];
 	[self.pdf savePDF];
+	
 }
 
 - (void) onPDFFinished:(id) sender {
+	[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
+		[self.pdf.view removeFromSuperview];
+	} repeats:FALSE];
+	
 	[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+	
+	NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, TRUE);
+	NSString * docs = [paths objectAtIndex:0];
+	NSURL * pdf = [[NSURL fileURLWithPath:docs] URLByAppendingPathComponent:@"smiles-and-frowns-report.pdf"];
+	
+	if(![[NSFileManager defaultManager] fileExistsAtPath:pdf.path]) {
+		[NSTimer scheduledTimerWithTimeInterval:.2 block:^{
+			[self onPDFFinished:nil];
+		} repeats:FALSE];
+	}
+	
+	__weak SNFReporting * weakself = self;
+	
+	self.activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[pdf] applicationActivities:nil];
+	
+	if([self.activityViewController respondsToSelector:@selector(completionHandler)]) {
+		//NSLog(@"completionHandler");
+		self.activityViewController.completionHandler = ^(NSString *activityType, BOOL completed){
+			weakself.activityViewController = nil;
+		};
+	}
+	
+	else if([self.activityViewController respondsToSelector:@selector(completionWithItemsHandler)]) {
+		//NSLog(@"completionWithItemsHandler");
+		self.activityViewController.completionWithItemsHandler = ^(NSString *activityType, BOOL completed, NSArray *returnedItems, NSError *activityError){
+			weakself.activityViewController = nil;
+		};
+	}
+	
+	self.activityViewController.modalPresentationStyle = UIModalPresentationPopover;
+	self.activityViewController.popoverPresentationController.sourceView = self.exportButton;
+	self.activityViewController.popoverPresentationController.backgroundColor = [SNFFormStyles darkSandColor];
+	self.activityViewController.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionAny;
+	self.activityViewController.popoverPresentationController.sourceRect = CGRectMake(self.exportButton.width/2,self.exportButton.width/2,5,5);
+	
+	[self presentViewController:self.activityViewController animated:TRUE completion:nil];
+}
+
+- (void) popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
+	
 }
 
 @end
