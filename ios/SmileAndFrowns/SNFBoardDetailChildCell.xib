@@ -27,11 +27,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8l2-bO-5qW">
                         <rect key="frame" x="8" y="8" width="324" height="98"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ii1-HE-5K0">
-                                <rect key="frame" x="3" y="3" width="319" height="95"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ii1-HE-5K0">
+                                <rect key="frame" x="3" y="0.0" width="319" height="98"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRs-1Y-d6q">
-                                        <rect key="frame" x="8" y="6" width="83" height="83"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nRs-1Y-d6q">
+                                        <rect key="frame" x="8" y="9" width="83" height="83"/>
                                         <subviews>
                                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m5K-8z-sYb">
                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="68"/>
@@ -58,8 +58,8 @@
                                             <constraint firstAttribute="trailing" secondItem="m5K-8z-sYb" secondAttribute="trailing" id="yzG-aA-oDJ"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pfq-CW-vJg">
-                                        <rect key="frame" x="97" y="6" width="64" height="83"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pfq-CW-vJg">
+                                        <rect key="frame" x="93" y="9" width="64" height="83"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eBB-vE-9NP">
                                                 <rect key="frame" x="0.0" y="65" width="64" height="18"/>
@@ -98,8 +98,8 @@
                                             <constraint firstAttribute="bottom" secondItem="KlC-hd-18w" secondAttribute="bottom" constant="6" id="wSS-uP-cRd"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ndR-xf-naw">
-                                        <rect key="frame" x="246" y="8" width="64" height="81"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ndR-xf-naw">
+                                        <rect key="frame" x="246" y="11" width="64" height="81"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spend.png" translatesAutoresizingMaskIntoConstraints="NO" id="IBg-LD-qWF">
                                                 <rect key="frame" x="-12" y="-14" width="87" height="87"/>
@@ -153,8 +153,8 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ac-cs-lQM">
-                                        <rect key="frame" x="169" y="6" width="64" height="83"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ac-cs-lQM">
+                                        <rect key="frame" x="165" y="9" width="64" height="83"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ujA-sR-zh4">
                                                 <rect key="frame" x="0.0" y="65" width="64" height="18"/>
@@ -202,7 +202,7 @@
                                     <constraint firstAttribute="trailing" secondItem="ndR-xf-naw" secondAttribute="trailing" constant="9" id="Gzv-nh-nTC"/>
                                     <constraint firstItem="nRs-1Y-d6q" firstAttribute="leading" secondItem="ii1-HE-5K0" secondAttribute="leading" constant="8" id="Hl6-Ox-k35"/>
                                     <constraint firstAttribute="bottom" secondItem="ndR-xf-naw" secondAttribute="bottom" constant="6" id="KKl-kH-reX"/>
-                                    <constraint firstItem="Pfq-CW-vJg" firstAttribute="centerX" secondItem="ii1-HE-5K0" secondAttribute="centerX" constant="-30.5" id="X48-Sx-R5X"/>
+                                    <constraint firstItem="Pfq-CW-vJg" firstAttribute="centerX" secondItem="ii1-HE-5K0" secondAttribute="centerX" constant="-34.5" id="X48-Sx-R5X"/>
                                     <constraint firstItem="nRs-1Y-d6q" firstAttribute="top" secondItem="ii1-HE-5K0" secondAttribute="top" constant="6" id="X4v-LF-Ybk"/>
                                     <constraint firstAttribute="bottom" secondItem="nRs-1Y-d6q" secondAttribute="bottom" constant="6" id="ca4-ed-avy"/>
                                     <constraint firstAttribute="bottom" secondItem="Pfq-CW-vJg" secondAttribute="bottom" constant="6" id="egE-EA-A1z"/>
