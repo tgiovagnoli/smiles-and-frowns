@@ -303,6 +303,10 @@
 		}
 	}
 	
+	if([[_selectedReward currency_type] isEqualToString:SNFRewardCurrencyTypeMoney]) {
+		[label appendString:@"$"];
+	}
+	
 	if([Utils CGFloatHasDecimals:_selectedReward.currency_amount.floatValue]) {
 		[label appendFormat:@"%.2f ",_selectedReward.currency_amount.floatValue];
 	} else {
@@ -322,10 +326,12 @@
 	CGRect boundingRect = [self.rewardsInfoLabel.text boundingRectWithSize:self.rewardsInfoLabel.frame.size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
 	CGFloat left = (self.rewardsView.width/2) - (boundingRect.size.width/2) - (self.smileImage.width+6);
 	
+	NSLog(@"length: %lu",self.rewardsInfoLabel.text.length);
+	
 	if(self.rewardsInfoLabel.width > 320) {
 		CGRect smileRect = CGRectMake(left, 8, self.smileImage.width, self.smileImage.height);
 		self.smileImage.frame = smileRect;
-	} else if(self.rewardsInfoLabel.text.length <= 23) {
+	} else if(self.rewardsInfoLabel.text.length <= 24) {
 		CGRect smileRect = CGRectMake(left, 8, self.smileImage.width, self.smileImage.height);
 		self.smileImage.frame = smileRect;
 	} else {
@@ -499,7 +505,7 @@
 	float currency = _selectedReward.currency_amount.floatValue;
 	float total = (float) (amount/rate) * currency;
 	
-	NSMutableString * calc = [[NSMutableString alloc]init];
+	NSMutableString * calc = [[NSMutableString alloc] initWithString:@""];
 	
 	[calc appendString:@"= "];
 	
