@@ -16,6 +16,10 @@ NSString * const SNFSyncServiceError = @"SNFSyncServiceError";
 
 static SNFSyncService * _instance;
 
+@interface SNFSyncService ()
+@property NSURLSession * session;
+@end
+
 @implementation SNFSyncService
 
 + (SNFSyncService *) instance {
@@ -25,11 +29,17 @@ static SNFSyncService * _instance;
 	return _instance;
 }
 
-- (id)init{
+- (id) init {
 	self = [super init];
 	_syncTimer = [NSTimer scheduledTimerWithTimeInterval:(60.0 * 10.0) target:self selector:@selector(attemptSync:) userInfo:nil repeats:YES];
+	NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
+	self.session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
 	[self attemptSync:nil];
 	return self;
+}
+
+- (void) URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
+	completionHandler(NSURLSessionAuthChallengeUseCredential,[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]);
 }
 
 - (void)attemptSync:(NSTimer *)syncTimer{
@@ -44,7 +54,7 @@ static SNFSyncService * _instance;
 }
 
 - (void) syncWithCompletion:(SNFSyncServiceCallback) completion {
-	if(_syncing){
+	if(_syncing) {
 		completion([SNFError errorWithCode:SNFErrorCodeConcurrentSyncAttempt andMessage:@"Tried to sync while already syncing."], nil);
 		return;
 	}
@@ -75,10 +85,10 @@ static SNFSyncService * _instance;
 	[request setHTTPMethod:@"POST"];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 	[request setHTTPBody:jsonData];
-	NSURLSession *session = [NSURLSession sharedSession];
+	NSURLSession * session = self.session;
 	
 	NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			_syncing = NO;
 			
 			[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceCompleted object:nil];
@@ -105,7 +115,7 @@ static SNFSyncService * _instance;
 				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:error];
 				return completion(error, nil);
 			}
-		});
+		//});
 	}];
 	[task resume];
 }
@@ -327,9 +337,9 @@ static SNFSyncService * _instance;
 
 - (void)syncPredefinedBoardsWithCompletion:(SNFSyncServiceCallback)completion{
 	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"predefined_boards/sync"];
-	NSURLSession *session = [NSURLSession sharedSession];
+	NSURLSession *session = self.session;
 	NSURLSessionTask *task = [session dataTaskWithURL:serviceURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error){
 				completion(error, nil);
 				return;
@@ -347,7 +357,7 @@ static SNFSyncService * _instance;
 			}else{
 				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"], nil);
 			}
-		});
+		//});
 	}];
 	[task resume];
 }

@@ -8,7 +8,7 @@ extern NSString * const SNFSyncServiceError;
 
 typedef void(^SNFSyncServiceCallback)(NSError *error, NSObject *boardData);
 
-@interface SNFSyncService : SNFService{
+@interface SNFSyncService : SNFService <NSURLSessionDelegate> {
 	NSTimer *_syncTimer;
 }
 

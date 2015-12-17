@@ -48,6 +48,7 @@
 		074D8D141C21F77D007B5516 /* SNFReportPDFDetailRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 074D8D121C21F77D007B5516 /* SNFReportPDFDetailRow.xib */; };
 		074D8D171C220D80007B5516 /* HDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D161C220D80007B5516 /* HDView.m */; };
 		074D8D1A1C220DC1007B5516 /* HDLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D191C220DC1007B5516 /* HDLabel.m */; };
+		074D8D1C1C2278C4007B5516 /* NSURLRequest+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D1B1C2278C4007B5516 /* NSURLRequest+Additions.m */; };
 		075EA4B51C11FBA20003A403 /* GATracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA4B41C11FBA20003A403 /* GATracking.m */; };
 		075EA4B81C11FDF30003A403 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */; };
 		075EA4C91C11FE170003A403 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4C81C11FE170003A403 /* libz.tbd */; };
@@ -273,6 +274,7 @@
 		074D8D161C220D80007B5516 /* HDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDView.m; sourceTree = "<group>"; };
 		074D8D181C220DC1007B5516 /* HDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLabel.h; sourceTree = "<group>"; };
 		074D8D191C220DC1007B5516 /* HDLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLabel.m; sourceTree = "<group>"; };
+		074D8D1B1C2278C4007B5516 /* NSURLRequest+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+Additions.m"; path = "submodules/apd-objc/NSURLRequest+Additions.m"; sourceTree = "<group>"; };
 		075EA4B31C11FBA20003A403 /* GATracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GATracking.h; path = "submodules/apd-objc/GATracking.h"; sourceTree = "<group>"; };
 		075EA4B41C11FBA20003A403 /* GATracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GATracking.m; path = "submodules/apd-objc/GATracking.m"; sourceTree = "<group>"; };
 		075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = libs/GA/GoogleAnalyticsServicesiOS_3.15/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -787,6 +789,7 @@
 				D6272FBA1BE002160024CBC2 /* NSTimer+Blocks.h */,
 				D6272FBB1BE002160024CBC2 /* NSTimer+Blocks.m */,
 				07CA06D11C175C9200C75A6B /* NSURLRequest+Additions.h */,
+				074D8D1B1C2278C4007B5516 /* NSURLRequest+Additions.m */,
 				0707D6DE1BE42970002F1FC0 /* UIAlertAction+Additions.h */,
 				0707D6DF1BE42970002F1FC0 /* UIAlertAction+Additions.m */,
 				D64D2C221C14A040007D3E7F /* UIColor+Hex.h */,
@@ -1395,6 +1398,7 @@
 				07CA06D61C18CC7800C75A6B /* SNFDateManager.m in Sources */,
 				D6270ECD1BE817D200F7C39A /* SNFPredefinedBoard.m in Sources */,
 				07C0F3B31BED047B0075A6B9 /* SNFInvitesCell.m in Sources */,
+				074D8D1C1C2278C4007B5516 /* NSURLRequest+Additions.m in Sources */,
 				D659DBFB1BDAEA000048D3F7 /* SNFUserRole.m in Sources */,
 				D6272FC01BE002160024CBC2 /* APDDjangoErrorViewer.m in Sources */,
 				D6272FC21BE002160024CBC2 /* NSURLRequest+Additions.m in Sources */,

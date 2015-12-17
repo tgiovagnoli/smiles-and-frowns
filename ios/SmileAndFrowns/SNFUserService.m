@@ -8,14 +8,31 @@
 #import "ATIFacebookAuthHandler.h"
 #import "SNFSyncService.h"
 
+static NSURLSession * session = nil;
+
+@interface SNFUserService ()
+@property NSURLSession * session;
+@end
+
 @implementation SNFUserService
+
+- (id) init {
+	self = [super init];
+	NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
+	self.session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
+	return self;
+}
+
+- (void) URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler {
+	completionHandler(NSURLSessionAuthChallengeUseCredential,[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]);
+}
 
 - (void) loginWithEmail:(NSString *) email andPassword:(NSString *) password withCompletion:(SNFUserServiceCallback) completion {
 	NSURL * serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"login"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:serviceURL variables:@{@"email": email, @"password": password}];
-	NSURLSession * session = [NSURLSession sharedSession];
+	NSURLSession * session = self.session;
 	NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error, nil);
 				return;
@@ -36,7 +53,7 @@
 			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:NO];
 			completion(nil, userData);
 			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:YES];
-		});
+		//});
 	}];
 	[task resume];
 }
@@ -44,8 +61,8 @@
 - (void) loginWithFacebookAuthToken:(NSString *) token withCompletion:(SNFUserServiceCallback)completion; {
 	NSURL * serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"token_auth/facebook"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:serviceURL variables:@{@"access_token":token}];
-	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+	NSURLSessionDataTask * task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error, nil);
 				return;
@@ -67,7 +84,7 @@
 			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:NO];
 			completion(nil, userData);
 			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:YES];
-		});
+		//});
 	}];
 	[task resume];
 }
@@ -75,8 +92,8 @@
 - (void)loginWithTwitterAuthToken:(NSString *) token authSecret:(NSString *) secret withCompletion:(SNFUserServiceCallback)completion; {
 	NSURL * serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"token_auth/twitter"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:serviceURL variables:@{@"access_token":token,@"access_token_secret":secret}];
-	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+	NSURLSessionDataTask * task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error, nil);
 				return;
@@ -98,7 +115,7 @@
 			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:NO];
 			completion(nil, userData);
 			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:YES];
-		});
+		//});
 	}];
 	[task resume];
 }
@@ -108,9 +125,9 @@
 	[[ATITwitterAuthHandler instance] logout];
 	
 	NSURL * serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"logout"];
-	NSURLSession * session = [NSURLSession sharedSession];
+	NSURLSession * session = self.session;
 	NSURLSessionDataTask * task = [session dataTaskWithURL:serviceURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error);
 				return;
@@ -126,16 +143,16 @@
 			[[SNFModel sharedInstance] setLoggedInUser:nil updateLastLoggedIn:NO];
 			completion(nil);
 			[[SNFModel sharedInstance] setLoggedInUser:nil updateLastLoggedIn:YES];
-		});
+		//});
 	}];
 	[task resume];
 }
 
 - (void)authedUserInfoWithCompletion:(SNFUserServiceCallback)completion{
 	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"user_info"];
-	NSURLSession *session = [NSURLSession sharedSession];
+	NSURLSession *session = self.session;
 	NSURLSessionDataTask *task = [session dataTaskWithURL:serviceURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error, nil);
 				return;
@@ -149,7 +166,7 @@
 			}
 			
 			SNFUser *userData = (SNFUser *)[SNFUser editOrCreatefromInfoDictionary:(NSDictionary *)dataObject withContext:[SNFModel sharedInstance].managedObjectContext];
-			if(!userData){
+			if(!userData) {
 				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Not logged in."], nil);
 				return;
 			}
@@ -157,7 +174,7 @@
 			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:NO];
 			completion(nil, userData);
 			[[SNFModel sharedInstance] setLoggedInUser:userData updateLastLoggedIn:YES];
-		});
+		//});
 	}];
 	[task resume];
 }
@@ -196,9 +213,9 @@
 	
 	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"invite"];
 	NSURLRequest *request = [NSURLRequest formURLEncodedPostRequestWithURL:serviceURL variables:data];
-	NSURLSession *session = [NSURLSession sharedSession];
+	NSURLSession *session = self.session;
 	NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error){
 				completion(error);
 				return;
@@ -210,7 +227,7 @@
 				return;
 			}
 			completion(nil);
-		});
+		//});
 	}];
 	[task resume];
 }
@@ -248,8 +265,8 @@
 	
 	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"signup"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
-	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+	NSURLSessionDataTask * task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error,nil);
 				return;
@@ -270,7 +287,7 @@
 			}
 			
 			completion(nil,userData);
-		});
+		//});
 	}];
 	[task resume];
 }
@@ -285,9 +302,9 @@
 	
 	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"invite_delete"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
-	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+	NSURLSessionDataTask * task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
-		dispatch_sync(dispatch_get_main_queue(), ^{
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error);
 				return;
@@ -306,7 +323,7 @@
 			}
 			
 			completion(nil);
-		});
+		//});
 		
 	}];
 	
@@ -323,9 +340,9 @@
 	
 	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"invite_accept"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
-	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+	NSURLSessionDataTask * task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
-		dispatch_sync(dispatch_get_main_queue(), ^{
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error,nil);
 				return;
@@ -344,7 +361,7 @@
 			}
 			
 			completion(nil,(NSDictionary *)responseData);
-		});
+		//});
 		
 	}];
 	
@@ -366,8 +383,8 @@
 	NSDictionary * data = @{@"email":email};
 	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"reset_password"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
-	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+	NSURLSessionDataTask * task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error);
 				return;
@@ -382,7 +399,7 @@
 			}
 			
 			completion(nil);
-		});
+		//});
 	}];
 	
 	[task resume];
@@ -392,9 +409,9 @@
 	
 	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"invites"];
 	NSURLRequest * request = [NSURLRequest requestWithURL:url];
-	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+	NSURLSessionDataTask * task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		
-		dispatch_sync(dispatch_get_main_queue(), ^{
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error) {
 				completion(error, nil, nil);
 				return;
@@ -421,7 +438,7 @@
 				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"Error parsing invites"], nil, nil);
 				
 			}
-		});
+		//});
 		
 	}];
 	
@@ -458,8 +475,8 @@
 	
 	NSURL * url = [[SNFModel sharedInstance].config apiURLForPath:@"update"];
 	NSURLRequest * request = [NSURLRequest formURLEncodedPostRequestWithURL:url variables:data];
-	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+	NSURLSessionDataTask * task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			
 			if(error) {
 				completion(error,nil);
@@ -483,7 +500,7 @@
 			[SNFModel sharedInstance].loggedInUser = userData;
 			
 			completion(nil,userData);
-		});
+		//});
 	}];
 	
 	[task resume];
@@ -495,8 +512,8 @@
 	NSData * imageData = UIImageJPEGRepresentation(image,75);
 	NSString * imageName = [[[NSUUID UUID] UUIDString] stringByAppendingString:@".jpg"];
 	NSURLRequest * request = [NSURLRequest fileUploadRequestWithURL:url data:imageData fileKey:@"image" fileName:imageName variables:variables];
-	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+	NSURLSessionDataTask * task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			
 			if(error) {
 				completion(error,nil);
@@ -518,7 +535,7 @@
 			}
 			
 			completion(nil,userData);
-		});
+		//});
 	}];
 	
 	[task resume];
@@ -529,8 +546,8 @@
 	NSData * imageData = UIImageJPEGRepresentation(image,75);
 	NSString * imageName = [[[NSUUID UUID] UUIDString] stringByAppendingString:@".jpg"];
 	NSURLRequest * request = [NSURLRequest fileUploadRequestWithURL:url data:imageData fileKey:@"image" fileName:imageName variables:nil];
-	NSURLSessionDataTask * task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		dispatch_sync(dispatch_get_main_queue(), ^{
+	NSURLSessionDataTask * task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+		//dispatch_sync(dispatch_get_main_queue(), ^{
 			
 			if(error) {
 				completion(error,nil,nil);
@@ -553,7 +570,7 @@
 			NSDictionary * dictionary = (NSDictionary *)responseObject;
 			completion(nil,dictionary[@"uuid"],dictionary[@"url"]);
 			
-		});
+		//});
 	}];
 	
 	[task resume];

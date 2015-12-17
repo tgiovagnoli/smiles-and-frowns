@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "submodules/apd-objc/NSURLRequest+Additions.m"
-            timestampString = "471293893.153278"
+            filePath = "SmileAndFrowns/AppDelegate.m"
+            timestampString = "472021197.448377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "7"
-            endingLineNumber = "7"
-            landmarkName = "+allowsAnyHTTPSCertificateForHost:"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "-application:performFetchWithCompletionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SmileAndFrowns/AppDelegate.m"
-            timestampString = "471391786.69939"
+            filePath = "submodules/apd-objc/UIImageView+DiskCache.m"
+            timestampString = "472067514.492472"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "-application:performFetchWithCompletionHandler:"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
+            landmarkName = "-setImageForRequestWithCacheControl:withCompletion:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

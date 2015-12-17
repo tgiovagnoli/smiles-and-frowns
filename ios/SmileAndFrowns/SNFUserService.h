@@ -17,7 +17,7 @@ typedef void(^SNFInvitesCompletion)(NSError * error, NSArray * receivedInvites, 
 typedef void(^SNFProfileImageCompletion)(NSError * error, SNFUser * user);
 typedef void(^SNFTempProfileImageCompletion)(NSError * error, NSString * uuid, NSString * url);
 
-@interface SNFUserService : SNFService
+@interface SNFUserService : SNFService <NSURLSessionDelegate>
 
 - (void)createAccountWithData:(NSDictionary *) data andCompletion:(SNFCreateAccountCompletion)completion;
 
