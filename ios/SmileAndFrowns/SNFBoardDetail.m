@@ -114,7 +114,7 @@
 	}
 	
 	if(showHeader) {
-		return 20.0;
+		return 28.0;
 	}
 	
 	return 0.0;

@@ -263,7 +263,7 @@
 		return 0;
 	}
 	
-	return 22;
+	return 28;
 }
 
 - (UIView *) tableView:(UITableView *) tableView viewForHeaderInSection:(NSInteger) section {
