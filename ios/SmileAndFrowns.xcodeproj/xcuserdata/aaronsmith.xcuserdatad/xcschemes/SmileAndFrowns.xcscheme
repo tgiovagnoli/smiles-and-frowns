@@ -61,13 +61,6 @@
             ReferencedContainer = "container:SmileAndFrowns.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "CFNETWORK_DIAGNOSTICS"
-            value = "1"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
          <AdditionalOption
             key = "NSZombieEnabled"
