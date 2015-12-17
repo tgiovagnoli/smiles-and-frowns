@@ -167,6 +167,12 @@
 	}
 }
 
+- (IBAction) onReset:(id)sender {
+	if(self.delegate){
+		[self.delegate childCellWantsToReset:self forUserRole:self.userRole];
+	}
+}
+
 - (void) setIsLastCell:(BOOL) isLastCell {
 	_isLastCell = isLastCell;
 	if(isLastCell) {

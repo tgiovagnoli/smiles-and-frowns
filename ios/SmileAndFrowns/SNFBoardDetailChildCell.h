@@ -13,6 +13,7 @@
 - (void)childCellWantsToOpenReport:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
 - (void)childCellWantsToDelete:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
 - (void)childCellWantsToEdit:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
+- (void)childCellWantsToReset:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole;
 @end
 
 @interface SNFBoardDetailChildCell : SNFSwipeCell
