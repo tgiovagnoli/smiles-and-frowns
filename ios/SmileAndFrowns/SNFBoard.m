@@ -175,7 +175,7 @@
 	return [activeBehaviors sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.title" ascending:YES]]];
 }
 
-- (NSArray *)sortedActiveRewards{
+- (NSArray *) sortedActiveRewards {
 	NSArray *rewards = [self.rewards allObjects];
 	NSMutableArray *activeRewards = [[NSMutableArray alloc] init];
 	for(SNFBehavior *reward in rewards){
@@ -186,42 +186,56 @@
 	return [activeRewards sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.created_date" ascending:NO]]];
 }
 
-- (NSArray *)smilesForUser:(SNFUser *)user{
-	NSMutableArray *usersSmiles = [[NSMutableArray alloc] init];
-	for(SNFSmile *smile in self.smiles){
-		if([smile.user.username isEqualToString:user.username] && !smile.soft_deleted.boolValue){
+- (NSArray *) smilesForUser:(SNFUser *) user includeDeletedSmiles:(BOOL) includeDeletedSmiles includeCollectedSmiles:(BOOL) includeCollectedSmiles; {
+	NSMutableArray * usersSmiles = [[NSMutableArray alloc] init];
+	for(SNFSmile *smile in self.smiles) {
+		if(smile.soft_deleted.boolValue && !includeDeletedSmiles) {
+			continue;
+		}
+		if(smile.collected.boolValue && !includeCollectedSmiles) {
+			continue;
+		}
+		if([smile.user.username isEqualToString:user.username]) {
 			[usersSmiles addObject:smile];
 		}
 	}
 	return usersSmiles;
 }
 
-- (NSArray *)frownsForUser:(SNFUser *)user{
+- (NSArray *) frownsForUser:(SNFUser *)user includeDeletedFrowns:(BOOL)includeDeletedFrowns {
 	NSMutableArray *usersFrowns = [[NSMutableArray alloc] init];
+	
 	for(SNFSmile *frown in self.frowns){
-		if([frown.user.username isEqualToString:user.username] && !frown.soft_deleted.boolValue){
+		
+		if(frown.soft_deleted.boolValue && !includeDeletedFrowns) {
+			continue;
+		}
+		
+		if([frown.user.username isEqualToString:user.username]) {
 			[usersFrowns addObject:frown];
 		}
 	}
 	return usersFrowns;
 }
 
-- (NSInteger)smileCurrencyForUser:(SNFUser *)user{
+- (NSInteger) smileCurrencyForUser:(SNFUser *) user {
 	NSInteger smileCurrency = 0;
-	NSArray *smiles = [self smilesForUser:user];
-	SNFSmile *smile;
-	for(smile in smiles){
-		if(!smile.collected.boolValue){
+	NSArray * smiles = [self smilesForUser:user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE];
+	SNFSmile * smile = nil;
+	for(smile in smiles) {
+		if(!smile.collected.boolValue) {
 			smileCurrency += 1;
 		}
 	}
-	NSArray *frowns = [self frownsForUser:user];
-	SNFFrown *frown;
-	for(frown in frowns){
+	
+	NSArray * frowns = [self frownsForUser:user includeDeletedFrowns:FALSE];
+	SNFFrown * frown;
+	for(frown in frowns) {
 		if(!frown.soft_deleted.boolValue) {
 			smileCurrency -= 1;
 		}
 	}
+	
 	return smileCurrency;
 }
 

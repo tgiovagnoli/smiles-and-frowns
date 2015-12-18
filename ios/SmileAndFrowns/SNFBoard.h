@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray *)sortedActivePositiveBehaviors;
 - (NSArray *)sortedActiveNegativeBehaviors;
 - (NSArray *)sortedActiveRewards;
-- (NSArray *)smilesForUser:(SNFUser *)user;
-- (NSArray *)frownsForUser:(SNFUser *)user;
+- (NSArray *)smilesForUser:(SNFUser *)user includeDeletedSmiles:(BOOL) includeDeletedSmiles includeCollectedSmiles:(BOOL) includeCollectedSmiles;
+- (NSArray *)frownsForUser:(SNFUser *)user includeDeletedFrowns:(BOOL) includeDeletedFrowns;
 - (NSInteger)smileCurrencyForUser:(SNFUser *)user;
 - (NSString *)permissionForUser:(SNFUser *)user;
 

@@ -549,15 +549,10 @@
 	
 	NSInteger smilesTaken = 0;
 	
-	for(SNFSmile * smile in [self.board smilesForUser:self.user]) {
-		if(smile.collected.boolValue) {
-			continue;
-		}
-		
+	for(SNFSmile * smile in [self.board smilesForUser:self.user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE]) {
 		if(smilesTaken < smiles) {
 			smile.collected = @YES;
 		}
-		
 		smilesTaken ++;
 	}
 	

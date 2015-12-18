@@ -330,6 +330,31 @@
 	[[AppDelegate rootViewController] presentViewController:childEdit animated:YES completion:nil];
 }
 
+- (void) childCellWantsToReset:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole {
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete Smiles and Frowns?" message:@"Are you sure you want to delete your smiles and frowns count? This will not delete your net smiles." preferredStyle:UIAlertControllerStyleAlert];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		[self resetSmilesAndFrownsForUser:userRole.user];
+		[self reloadUserRoles];
+	}]];
+	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+}
+
+- (void) resetSmilesAndFrownsForUser:(SNFUser *) user {
+	NSArray * smiles = [self.board smilesForUser:user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE];
+	for(SNFSmile * smile in smiles) {
+		smile.soft_deleted = @(1);
+	}
+	
+	
+	NSArray * frowns = [self.board frownsForUser:user includeDeletedFrowns:FALSE];
+	for(SNFFrown * frown in frowns) {
+		frown.soft_deleted = @(true);
+	}
+	
+	[[SNFSyncService instance] saveContext];
+}
+
 - (void)childEditCancelled:(SNFChildEdit *)childEdit{
 	//[self reloadUserRoles];
 }
