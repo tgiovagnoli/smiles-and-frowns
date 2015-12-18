@@ -38,7 +38,7 @@
 
 - (void) addSmile:(SNFSmile *) smile {
 	
-	NSLog(@"adding smile (%@)  days since now %g", smile.uuid ,(double) ([[NSDate date] timeIntervalSince1970] - [smile.created_date timeIntervalSince1970]) / 86400);
+	//NSLog(@"adding smile (%@)  days since now %g", smile.uuid ,(double) ([[NSDate date] timeIntervalSince1970] - [smile.created_date timeIntervalSince1970]) / 86400);
 	
 	NSTimeInterval createdTI = [smile.created_date timeIntervalSince1970];
 	float days = (self.now - createdTI) / 86400;
@@ -46,7 +46,7 @@
 	float sectionIndex = ceilf(days / 14) - 1;
 	
 	if(weeks > self.maxWeeks) {
-		NSLog(@"smile too old, weeks: %f, maxweeks: %li",weeks,self.maxWeeks);
+		//NSLog(@"smile too old, weeks: %f, maxweeks: %li",weeks,self.maxWeeks);
 		return;
 	}
 	
@@ -74,7 +74,7 @@
 	float sectionIndex = ceilf(days / 14) - 1;
 	
 	if(weeks > self.maxWeeks) {
-		NSLog(@"frown too old, weeks: %f, maxweeks: %li",weeks,self.maxWeeks);
+		//NSLog(@"frown too old, weeks: %f, maxweeks: %li",weeks,self.maxWeeks);
 		return;
 	}
 	
