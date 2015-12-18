@@ -91,7 +91,7 @@
 }
 
 - (void)theFiveCs{
-	[self showWebDetailWithURLString:@"http://smilesandfrowns.com/five_cs/" andTitle:@"The Five C's"];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://smilesandfrowns.com/?page_id=39"]];
 }
 
 - (void)tipsAndTricks{
