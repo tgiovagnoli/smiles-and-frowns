@@ -9,14 +9,6 @@
 	return self;
 }
 
-- (BOOL) wasCreatedInWindow:(NSDate *) createdDate; {
-	NSTimeInterval createdTI = [createdDate timeIntervalSince1970];
-	if(createdTI >= self.start && createdTI <= self.end) {
-		return TRUE;
-	}
-	return FALSE;
-}
-
 - (void) addSmile:(SNFSmile *) smile; {
 	BOOL found = FALSE;
 	for(SNFReportBehaviorGroup2 * group in self.behaviorGroups) {

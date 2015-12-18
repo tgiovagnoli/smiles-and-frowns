@@ -7,12 +7,10 @@
 
 @interface SNFReportSection : NSObject
 
-@property NSInteger weeks;
-@property NSTimeInterval start;
-@property NSTimeInterval end;
+@property NSInteger sectionIndex;
+@property NSString * sectionHeaderTitle;
 @property NSMutableArray * behaviorGroups;
 
-- (BOOL) wasCreatedInWindow:(NSDate *) createdDate;
 - (void) addSmile:(SNFSmile *) smile;
 - (void) addFrown:(SNFFrown *) frown;
 

@@ -34,52 +34,21 @@
 		NSLog(@"%@", frownFetchError);
 	}
 	
-	//setup date windows for smiles
-	NSDate * now = [NSDate date];
-	NSTimeInterval windowStart = [[now dateByAddingTimeInterval:-(604800*2)] timeIntervalSince1970];
-	NSTimeInterval windowEnd = [[now dateByAddingTimeInterval:0] timeIntervalSince1970];
-	NSTimeInterval createdTI = 0;
-	
 	//setup data provider
-	SNFReportDataProvider * dataProvider = [[SNFReportDataProvider alloc] initWithWindowStart:windowStart windowEnd:windowEnd weeks:2 maxWeeks:48];
+	SNFReportDataProvider * dataProvider = [[SNFReportDataProvider alloc] initWithMaxWeeks:24];
 	
 	//go through smiles.
 	for(SNFSmile * smile in allSmiles) {
-		
-		createdTI = [smile.created_date timeIntervalSince1970];
-		
-		while([dataProvider shouldMoveWindow:createdTI] && [dataProvider shouldContinue]) {
-			[dataProvider moveWindow];
-		}
-		
-		if(![dataProvider shouldContinue]) {
-			break;
-		}
-		
 		[dataProvider addSmile:smile];
 	}
 	
-	//reset data provider date/time window
-	[dataProvider resetWindowStart:windowStart windowEnd:windowEnd weeks:2 maxWeeks:48];
-	
 	//go through frowns.
 	for(SNFFrown * frown in allFrowns) {
-		
-		createdTI = [frown.created_date timeIntervalSince1970];
-		
-		while([dataProvider shouldMoveWindow:createdTI] && [dataProvider shouldContinue]) {
-			[dataProvider moveWindow];
-		}
-		
-		if(![dataProvider shouldContinue]) {
-			break;
-		}
-		
 		[dataProvider addFrown:frown];
 	}
 	
 	//sort sections by section.week
-	[dataProvider sortSectionsByWeek];
+	[dataProvider sortSectionsBySectionIndex];
 	
 	return dataProvider;
 }

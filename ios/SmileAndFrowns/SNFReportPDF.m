@@ -96,7 +96,7 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 		dateFormatter.locale = [NSLocale currentLocale];
 		dateFormatter.dateFormat = @"MM/d/yy";
 		
-		headerLabel.text = [NSString stringWithFormat:@"Last %li weeks",section.weeks];
+		headerLabel.text = section.sectionHeaderTitle;
 		
 		pageY += headerLabel.height;
 		pageY += pad;

@@ -117,7 +117,7 @@
 	dateFormatter.dateFormat = @"MM/d/yy";
 	
 	SNFBoardDetailHeader * header = [[SNFBoardDetailHeader alloc] init];
-	header.textLabel.text = [NSString stringWithFormat:@"Last %lu weeks",reportSection.weeks];
+	header.textLabel.text = reportSection.sectionHeaderTitle;
 	
 	return header;
 }
