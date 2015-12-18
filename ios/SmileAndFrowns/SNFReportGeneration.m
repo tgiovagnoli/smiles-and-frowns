@@ -1,8 +1,88 @@
+
 #import "SNFReportGeneration.h"
 #import "SNFModel.h"
-
+#import "SNFReportBehaviorGroup2.h"
+#import "SNFReportSection.h"
 
 @implementation SNFReportGeneration
+
+- (SNFReportDataProvider *) smilesFrownsReportByWeeksForUser:(SNFUser *)user board:(SNFBoard *) board {
+	NSManagedObjectContext * context = [SNFModel sharedInstance].managedObjectContext;
+	NSPredicate * predicate = [NSPredicate predicateWithFormat:@"(board==%@) AND (user==%@)", board, user];
+	if(!board) {
+		predicate = [NSPredicate predicateWithFormat:@"user==%@", user];
+	}
+	NSSortDescriptor * dateSort = [[NSSortDescriptor alloc] initWithKey:@"created_date" ascending:false];
+	
+	//get smiles
+	NSFetchRequest *smileFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFSmile"];
+	smileFetchRequest.predicate = predicate;
+	smileFetchRequest.sortDescriptors = @[dateSort];
+	NSError * smilesFetchError = nil;
+	NSArray * allSmiles = [context executeFetchRequest:smileFetchRequest error:&smilesFetchError];
+	if(smilesFetchError) {
+		NSLog(@"%@", smilesFetchError);
+	}
+	
+	//get frowns
+	NSFetchRequest * frownFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFFrown"];
+	frownFetchRequest.predicate = predicate;
+	frownFetchRequest.sortDescriptors = @[dateSort];
+	NSError * frownFetchError = nil;
+	NSArray * allFrowns = [context executeFetchRequest:frownFetchRequest error:&frownFetchError];
+	if(frownFetchError) {
+		NSLog(@"%@", frownFetchError);
+	}
+	
+	//setup date windows for smiles
+	NSDate * now = [NSDate date];
+	NSTimeInterval windowStart = [[now dateByAddingTimeInterval:-(604800*2)] timeIntervalSince1970];
+	NSTimeInterval windowEnd = [[now dateByAddingTimeInterval:0] timeIntervalSince1970];
+	NSTimeInterval createdTI = 0;
+	
+	//setup data provider
+	SNFReportDataProvider * dataProvider = [[SNFReportDataProvider alloc] initWithWindowStart:windowStart windowEnd:windowEnd weeks:2 maxWeeks:48];
+	
+	//go through smiles.
+	for(SNFSmile * smile in allSmiles) {
+		
+		createdTI = [smile.created_date timeIntervalSince1970];
+		
+		while([dataProvider shouldMoveWindow:createdTI] && [dataProvider shouldContinue]) {
+			[dataProvider moveWindow];
+		}
+		
+		if(![dataProvider shouldContinue]) {
+			break;
+		}
+		
+		[dataProvider addSmile:smile];
+	}
+	
+	//reset data provider date/time window
+	[dataProvider resetWindowStart:windowStart windowEnd:windowEnd weeks:2 maxWeeks:48];
+	
+	//go through frowns.
+	for(SNFFrown * frown in allFrowns) {
+		
+		createdTI = [frown.created_date timeIntervalSince1970];
+		
+		while([dataProvider shouldMoveWindow:createdTI] && [dataProvider shouldContinue]) {
+			[dataProvider moveWindow];
+		}
+		
+		if(![dataProvider shouldContinue]) {
+			break;
+		}
+		
+		[dataProvider addFrown:frown];
+	}
+	
+	//sort sections by section.week
+	[dataProvider sortSectionsByWeek];
+	
+	return dataProvider;
+}
 
 - (NSArray <SNFReportBehaviorGroup *> *)smilesFrownsReportForUser:(SNFUser *)user board:(SNFBoard *)board ascending:(BOOL)ascending{
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
@@ -65,9 +145,9 @@
 		[selectedBehaviorGroup.smiles addObject:smile];
 	}
 	
-	for(SNFFrown *frown in allFrowns){
+	for(SNFFrown *frown in allFrowns) {
 		NSInteger daysSinceEpoch = [self dayForObjectCreatedSinceEpoch:frown];
-		SNFReportDateGroup *selectedDateGroup;
+		SNFReportDateGroup * selectedDateGroup;
 		for(SNFReportDateGroup *dateGroup in daysGrouped){
 			if(dateGroup.daysSinceEpoch == daysSinceEpoch){
 				selectedDateGroup = dateGroup;

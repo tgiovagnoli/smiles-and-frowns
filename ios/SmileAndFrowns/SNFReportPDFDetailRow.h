@@ -1,10 +1,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SNFReportBehaviorGroup.h"
+#import "SNFReportBehaviorGroup2.h"
 
 @interface SNFReportPDFDetailRow : UIViewController
 
-@property SNFReportBehaviorGroup * behaviorGroup;
+@property SNFReportBehaviorGroup2 * behaviorGroup;
 
 @property IBOutlet UIImageView * imageView;
 @property IBOutlet UILabel * smileFrownCount;

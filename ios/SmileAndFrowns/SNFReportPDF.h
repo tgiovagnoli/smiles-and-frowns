@@ -5,6 +5,9 @@
 #import "SNFReportBehaviorGroup.h"
 #import "SNFReportDateGroup.h"
 #import "HDLabel.h"
+#import "SNFReportDataProvider.h"
+#import "SNFReportSection.h"
+#import "SNFReportBehaviorGroup2.h"
 
 extern NSString * const SNFReportPDFFinished;
 
@@ -12,7 +15,7 @@ extern NSString * const SNFReportPDFFinished;
 
 @property SNFUser * user;
 @property SNFBoard * board;
-@property NSArray <SNFReportDateGroup *> * reportData;
+@property SNFReportDataProvider * dataProvider;
 
 @property IBOutlet HDLabel * credits;
 

@@ -178,8 +178,8 @@
 - (NSArray *) sortedActiveRewards {
 	NSArray *rewards = [self.rewards allObjects];
 	NSMutableArray *activeRewards = [[NSMutableArray alloc] init];
-	for(SNFBehavior *reward in rewards){
-		if(!reward.soft_deleted.boolValue){
+	for(SNFBehavior * reward in rewards) {
+		if(!reward.soft_deleted.boolValue) {
 			[activeRewards addObject:reward];
 		}
 	}
@@ -219,24 +219,9 @@
 }
 
 - (NSInteger) smileCurrencyForUser:(SNFUser *) user {
-	NSInteger smileCurrency = 0;
 	NSArray * smiles = [self smilesForUser:user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE];
-	SNFSmile * smile = nil;
-	for(smile in smiles) {
-		if(!smile.collected.boolValue) {
-			smileCurrency += 1;
-		}
-	}
-	
 	NSArray * frowns = [self frownsForUser:user includeDeletedFrowns:FALSE];
-	SNFFrown * frown;
-	for(frown in frowns) {
-		if(!frown.soft_deleted.boolValue) {
-			smileCurrency -= 1;
-		}
-	}
-	
-	return smileCurrency;
+	return smiles.count - frowns.count;
 }
 
 - (NSString *)permissionForUser:(SNFUser *)user{

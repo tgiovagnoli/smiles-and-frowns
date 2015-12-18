@@ -61,7 +61,7 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 	pageY += pad;
 	
 	//go through each date group for sections.
-	for(SNFReportDateGroup * dateGroup in self.reportData) {
+	for(SNFReportSection * section in self.dataProvider.sections) {
 		
 		//check if header would be beyond page height.
 		if(pageY + (dateRowHeight+pad) > self.view.height) {
@@ -79,13 +79,13 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 		
 		//add date section
 		
-		HDView * dateHeaderView = [[HDView alloc] initWithFrame:CGRectMake(20,pageY,self.view.width-40,dateRowHeight)];
-		HDLabel * dateHeader = [[HDLabel alloc] initWithFrame:CGRectMake(10,0,dateHeaderView.width-20,dateRowHeight)];
-		dateHeader.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
-		dateHeaderView.layer.cornerRadius = 4;
-		dateHeaderView.layer.masksToBounds = TRUE;
-		dateHeader.textColor = [UIColor darkGrayColor];
-		dateHeaderView.backgroundColor = [UIColor colorWithHexString:@"#cccccc"];
+		HDView * headerView = [[HDView alloc] initWithFrame:CGRectMake(20,pageY,self.view.width-40,dateRowHeight)];
+		HDLabel * headerLabel = [[HDLabel alloc] initWithFrame:CGRectMake(10,0,headerView.width-20,dateRowHeight)];
+		headerLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:17];
+		headerLabel.textColor = [UIColor darkGrayColor];
+		headerView.layer.cornerRadius = 4;
+		headerView.layer.masksToBounds = TRUE;
+		headerView.backgroundColor = [UIColor colorWithHexString:@"#cccccc"];
 		
 		//get date label
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -96,21 +96,21 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 		dateFormatter.locale = [NSLocale currentLocale];
 		dateFormatter.dateFormat = @"MM/d/yy";
 		
-		dateHeader.text = [dateFormatter stringFromDate:dateGroup.date];
+		headerLabel.text = [NSString stringWithFormat:@"Last %li weeks",section.weeks];
 		
-		pageY += dateHeader.height;
+		pageY += headerLabel.height;
 		pageY += pad;
-		[dateHeaderView addSubview:dateHeader];
-		[self.view addSubview:dateHeaderView];
+		[headerView addSubview:headerLabel];
+		[self.view addSubview:headerView];
 		
 		
 		//go through behavior groups.
 		
-		NSUInteger rowCount = dateGroup.behaviorGroups.count;
+		NSUInteger rowCount = section.behaviorGroups.count;
 		NSInteger i = 0;
 		SNFReportPDFDetailRow * row = nil;
 		
-		for(SNFReportBehaviorGroup * behaviorGroup in dateGroup.behaviorGroups) {
+		for(SNFReportBehaviorGroup2 * behaviorGroup in section.behaviorGroups) {
 			i++;
 			
 			//check if row would be beyond page height.
@@ -123,9 +123,9 @@ NSString * const SNFReportPDFFinished = @"SNFReportPDFFinished";
 				pageY = pad;
 				
 				//insert a date header on top of page.
-				[self.view addSubview:dateHeaderView];
-				dateHeaderView.y = pageY;
-				pageY += dateHeaderView.height;
+				[self.view addSubview:headerView];
+				headerView.y = pageY;
+				pageY += headerView.height;
 				pageY += pad;
 				
 			}

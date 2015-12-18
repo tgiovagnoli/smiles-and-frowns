@@ -49,6 +49,9 @@
 		074D8D171C220D80007B5516 /* HDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D161C220D80007B5516 /* HDView.m */; };
 		074D8D1A1C220DC1007B5516 /* HDLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D191C220DC1007B5516 /* HDLabel.m */; };
 		074D8D1C1C2278C4007B5516 /* NSURLRequest+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D1B1C2278C4007B5516 /* NSURLRequest+Additions.m */; };
+		074D8D1F1C247BAD007B5516 /* SNFReportSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D1E1C247BAD007B5516 /* SNFReportSection.m */; };
+		074D8D251C247CEE007B5516 /* SNFReportBehaviorGroup2.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D241C247CEE007B5516 /* SNFReportBehaviorGroup2.m */; };
+		074D8D291C248F45007B5516 /* SNFReportDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D281C248F45007B5516 /* SNFReportDataProvider.m */; };
 		075EA4B51C11FBA20003A403 /* GATracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA4B41C11FBA20003A403 /* GATracking.m */; };
 		075EA4B81C11FDF30003A403 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */; };
 		075EA4C91C11FE170003A403 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4C81C11FE170003A403 /* libz.tbd */; };
@@ -275,6 +278,12 @@
 		074D8D181C220DC1007B5516 /* HDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDLabel.h; sourceTree = "<group>"; };
 		074D8D191C220DC1007B5516 /* HDLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDLabel.m; sourceTree = "<group>"; };
 		074D8D1B1C2278C4007B5516 /* NSURLRequest+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+Additions.m"; path = "submodules/apd-objc/NSURLRequest+Additions.m"; sourceTree = "<group>"; };
+		074D8D1D1C247BAD007B5516 /* SNFReportSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportSection.h; sourceTree = "<group>"; };
+		074D8D1E1C247BAD007B5516 /* SNFReportSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportSection.m; sourceTree = "<group>"; };
+		074D8D231C247CEE007B5516 /* SNFReportBehaviorGroup2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportBehaviorGroup2.h; sourceTree = "<group>"; };
+		074D8D241C247CEE007B5516 /* SNFReportBehaviorGroup2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportBehaviorGroup2.m; sourceTree = "<group>"; };
+		074D8D271C248F45007B5516 /* SNFReportDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportDataProvider.h; sourceTree = "<group>"; };
+		074D8D281C248F45007B5516 /* SNFReportDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportDataProvider.m; sourceTree = "<group>"; };
 		075EA4B31C11FBA20003A403 /* GATracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GATracking.h; path = "submodules/apd-objc/GATracking.h"; sourceTree = "<group>"; };
 		075EA4B41C11FBA20003A403 /* GATracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GATracking.m; path = "submodules/apd-objc/GATracking.m"; sourceTree = "<group>"; };
 		075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = libs/GA/GoogleAnalyticsServicesiOS_3.15/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -660,6 +669,19 @@
 				074D8D191C220DC1007B5516 /* HDLabel.m */,
 			);
 			name = ReportPDF;
+			sourceTree = "<group>";
+		};
+		074D8D261C247D3F007B5516 /* Reporting By Weeks */ = {
+			isa = PBXGroup;
+			children = (
+				074D8D231C247CEE007B5516 /* SNFReportBehaviorGroup2.h */,
+				074D8D241C247CEE007B5516 /* SNFReportBehaviorGroup2.m */,
+				074D8D271C248F45007B5516 /* SNFReportDataProvider.h */,
+				074D8D281C248F45007B5516 /* SNFReportDataProvider.m */,
+				074D8D1D1C247BAD007B5516 /* SNFReportSection.h */,
+				074D8D1E1C247BAD007B5516 /* SNFReportSection.m */,
+			);
+			name = "Reporting By Weeks";
 			sourceTree = "<group>";
 		};
 		075EA4B61C11FDEC0003A403 /* GA */ = {
@@ -1149,18 +1171,19 @@
 		D6F442151BEB9080009C2866 /* Reporting */ = {
 			isa = PBXGroup;
 			children = (
-				D6F442211BEB95E9009C2866 /* SNFReportGeneration.h */,
-				D6F442221BEB95E9009C2866 /* SNFReportGeneration.m */,
-				D6F442241BEBA877009C2866 /* SNFReportDateGroup.h */,
-				D6F442251BEBA877009C2866 /* SNFReportDateGroup.m */,
+				074D8D261C247D3F007B5516 /* Reporting By Weeks */,
 				D6F442271BEBA8CD009C2866 /* SNFReportBehaviorGroup.h */,
 				D6F442281BEBA8CD009C2866 /* SNFReportBehaviorGroup.m */,
-				D6F442161BEB90A4009C2866 /* SNFReporting.h */,
-				D6F442171BEB90A4009C2866 /* SNFReporting.m */,
-				D6F442181BEB90A4009C2866 /* SNFReporting.xib */,
 				D6F4421B1BEB95C5009C2866 /* SNFReportCellSmileFrown.h */,
 				D6F4421C1BEB95C5009C2866 /* SNFReportCellSmileFrown.m */,
 				D6F4421D1BEB95C5009C2866 /* SNFReportCellSmileFrown.xib */,
+				D6F442241BEBA877009C2866 /* SNFReportDateGroup.h */,
+				D6F442251BEBA877009C2866 /* SNFReportDateGroup.m */,
+				D6F442211BEB95E9009C2866 /* SNFReportGeneration.h */,
+				D6F442221BEB95E9009C2866 /* SNFReportGeneration.m */,
+				D6F442161BEB90A4009C2866 /* SNFReporting.h */,
+				D6F442171BEB90A4009C2866 /* SNFReporting.m */,
+				D6F442181BEB90A4009C2866 /* SNFReporting.xib */,
 				D6F4422D1BEBF411009C2866 /* SNFReportingSectionHeader.h */,
 				D6F4422E1BEBF411009C2866 /* SNFReportingSectionHeader.m */,
 				D6F442301BEBF425009C2866 /* SNFReportingSectionHeader.xib */,
@@ -1316,6 +1339,7 @@
 			files = (
 				D694011B1BED25530073119E /* SNFPredefinedBoardCell.m in Sources */,
 				D65DF1291BE2AA50009CC6DF /* SNFBoardList.m in Sources */,
+				074D8D291C248F45007B5516 /* SNFReportDataProvider.m in Sources */,
 				D65DF14F1BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.m in Sources */,
 				D62D379C1BDEEFC400102D6A /* SNFSyncService.m in Sources */,
 				D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */,
@@ -1383,6 +1407,7 @@
 				075EA5081C1368560003A403 /* SNFBoardDetailHeader.m in Sources */,
 				D6E724D81BF517E200398D09 /* UIImage+Additions.m in Sources */,
 				071AC10E1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m in Sources */,
+				074D8D1F1C247BAD007B5516 /* SNFReportSection.m in Sources */,
 				0707D6AE1BE2A1C9002F1FC0 /* SNFLogin.m in Sources */,
 				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,
 				D6F442261BEBA877009C2866 /* SNFReportDateGroup.m in Sources */,
@@ -1404,6 +1429,7 @@
 				D6272FC21BE002160024CBC2 /* NSURLRequest+Additions.m in Sources */,
 				D659DBEF1BDAEA000048D3F7 /* SNFBehavior.m in Sources */,
 				07CA06D31C175C9200C75A6B /* NSURLRequest+Additions.m in Sources */,
+				074D8D251C247CEE007B5516 /* SNFReportBehaviorGroup2.m in Sources */,
 				0707D6E01BE42970002F1FC0 /* UIAlertAction+Additions.m in Sources */,
 				0707D6D01BE2B301002F1FC0 /* SNFPasswordReset.m in Sources */,
 				D6DB2BD01BEAA03300F1CDFF /* SNFRewardCell.m in Sources */,
