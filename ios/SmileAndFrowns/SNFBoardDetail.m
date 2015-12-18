@@ -354,7 +354,7 @@
 	} else {
 		
 		NSInteger smilesToDelete = frowns.count;
-		NSLog(@"smiles to delete: %li",smilesToDelete);
+		//NSLog(@"smiles to delete: %li",smilesToDelete);
 		
 		for(SNFSmile * smile in smiles) {
 			smile.soft_deleted = @(1);
