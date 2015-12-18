@@ -95,7 +95,7 @@
 }
 
 - (void)tipsAndTricks{
-	[self showWebDetailWithURLString:@"http://smilesandfrowns.com/tips_and_tricks/" andTitle:@"Tips and Tricks"];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://smilesandfrowns.com/?page_id=43"]];
 }
 
 - (void)sendFeedback{
