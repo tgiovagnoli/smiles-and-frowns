@@ -22,7 +22,7 @@
     _tableContents = @[
 					   [self tableItemWithName:@"The Five Cs" andSelector:@selector(theFiveCs)],
 					   [self tableItemWithName:@"Tips & Tricks" andSelector:@selector(tipsAndTricks)],
-					   [self tableItemWithName:@"Send Feedback" andSelector:@selector(sendFeedback)],
+					   //[self tableItemWithName:@"Send Feedback" andSelector:@selector(sendFeedback)],
 					   [self tableItemWithName:@"Restore Purchases" andSelector:@selector(restorePurchases)],
 					   [self tableItemWithName:@"Remove Ads" andSelector:@selector(removeAds)],
 					   [self tableItemWithName:@"Terms and Privacy" andSelector:@selector(termsAndPrivacy)],
