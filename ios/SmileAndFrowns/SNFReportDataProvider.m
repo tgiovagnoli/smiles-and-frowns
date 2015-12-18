@@ -30,9 +30,9 @@
 	NSInteger week = 2;
 	for(SNFReportSection * section in self.sections) {
 		if(week > 2) {
-			section.sectionHeaderTitle = [NSString stringWithFormat:@"Last %li-%li weeks",week-2,week];
+			section.sectionHeaderTitle = [NSString stringWithFormat:@"Last %li-%li Weeks",week-2,week];
 		} else {
-			section.sectionHeaderTitle = [NSString stringWithFormat:@"Last 2 weeks"];
+			section.sectionHeaderTitle = [NSString stringWithFormat:@"Last 2 Weeks"];
 		}
 		week += 2;
 	}
