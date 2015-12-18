@@ -14,6 +14,5 @@
 - (void) addSmile:(SNFSmile *) smile;
 - (void) addFrown:(SNFFrown *) frown;
 - (void) sortSectionsBySectionIndex;
-- (void) reset;
 
 @end

@@ -3,14 +3,12 @@
 
 @interface SNFReportDataProvider ()
 @property NSTimeInterval now;
-@property NSTimeInterval lastCreatedDate;
 @end
 
 @implementation SNFReportDataProvider
 
 - (id) initWithMaxWeeks:(NSInteger) maxWeeks; {
 	self = [super init];
-	self.lastCreatedDate = 0;
 	self.now = [[NSDate date] timeIntervalSince1970];
 	self.sections = [NSMutableArray array];
 	self.maxWeeks = maxWeeks;
@@ -38,10 +36,6 @@
 	}
 }
 
-- (void) reset {
-	self.lastCreatedDate = 0;
-}
-
 - (void) addSmile:(SNFSmile *) smile {
 	
 	NSLog(@"adding smile (%@)  days since now %g", smile.uuid ,(double) ([[NSDate date] timeIntervalSince1970] - [smile.created_date timeIntervalSince1970]) / 86400);
@@ -50,7 +44,6 @@
 	float days = (self.now - createdTI) / 86400;
 	float weeks = days / 7;
 	float sectionIndex = ceilf(days / 14) - 1;
-	self.lastCreatedDate = createdTI;
 	
 	if(weeks > self.maxWeeks) {
 		NSLog(@"smile too old, weeks: %f, maxweeks: %li",weeks,self.maxWeeks);
@@ -79,7 +72,6 @@
 	float days = (self.now - createdTI) / 86400;
 	float weeks = days / 7;
 	float sectionIndex = ceilf(days / 14) - 1;
-	self.lastCreatedDate = createdTI;
 	
 	if(weeks > self.maxWeeks) {
 		NSLog(@"frown too old, weeks: %f, maxweeks: %li",weeks,self.maxWeeks);
