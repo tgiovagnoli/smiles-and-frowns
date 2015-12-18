@@ -353,7 +353,7 @@
 		
 	} else {
 		
-		NSInteger smilesToDelete = smiles.count - frowns.count;
+		NSInteger smilesToDelete = frowns.count;
 		NSLog(@"smiles to delete: %li",smilesToDelete);
 		
 		for(SNFSmile * smile in smiles) {
