@@ -356,11 +356,13 @@
 		NSInteger smilesToDelete = frowns.count;
 		//NSLog(@"smiles to delete: %li",smilesToDelete);
 		
-		for(SNFSmile * smile in smiles) {
-			smile.soft_deleted = @(1);
-			smilesToDelete--;
-			if(smilesToDelete < 1) {
-				break;
+		if(smilesToDelete > 0) {
+			for(SNFSmile * smile in smiles) {
+				smile.soft_deleted = @(1);
+				smilesToDelete--;
+				if(smilesToDelete < 1) {
+					break;
+				}
 			}
 		}
 		
