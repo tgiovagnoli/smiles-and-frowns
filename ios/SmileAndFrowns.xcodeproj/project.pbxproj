@@ -38,7 +38,6 @@
 		071AC1001BF26538005D63F2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 071AC0FF1BF26538005D63F2 /* libc++.tbd */; };
 		071AC1021BF2656E005D63F2 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 071AC1011BF2656E005D63F2 /* HockeySDKResources.bundle */; };
 		071AC10E1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071AC10D1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m */; };
-		071AC1111BF78D46005D63F2 /* UIImageView+DiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */; };
 		07200DCD1C1C92060031B260 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07200DCC1C1C92060031B260 /* TriangleView.m */; };
 		074D8D091C21EC06007B5516 /* SNFReportPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D071C21EC06007B5516 /* SNFReportPDF.m */; };
 		074D8D0A1C21EC06007B5516 /* SNFReportPDF.xib in Resources */ = {isa = PBXBuildFile; fileRef = 074D8D081C21EC06007B5516 /* SNFReportPDF.xib */; };
@@ -52,6 +51,7 @@
 		074D8D1F1C247BAD007B5516 /* SNFReportSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D1E1C247BAD007B5516 /* SNFReportSection.m */; };
 		074D8D251C247CEE007B5516 /* SNFReportBehaviorGroup2.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D241C247CEE007B5516 /* SNFReportBehaviorGroup2.m */; };
 		074D8D291C248F45007B5516 /* SNFReportDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D281C248F45007B5516 /* SNFReportDataProvider.m */; };
+		074D8D2F1C25FA54007B5516 /* UIImageDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D2E1C25FA54007B5516 /* UIImageDiskCache.m */; };
 		075EA4B51C11FBA20003A403 /* GATracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA4B41C11FBA20003A403 /* GATracking.m */; };
 		075EA4B81C11FDF30003A403 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */; };
 		075EA4C91C11FE170003A403 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 075EA4C81C11FE170003A403 /* libz.tbd */; };
@@ -260,8 +260,6 @@
 		071AC1011BF2656E005D63F2 /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = HockeySDKResources.bundle; path = "libs/HockeySDK-iOS/HockeySDK.embeddedframework/Resources/HockeySDKResources.bundle"; sourceTree = "<group>"; };
 		071AC10C1BF65B11005D63F2 /* NSMutableURLRequest+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableURLRequest+Additions.h"; path = "submodules/apd-objc/NSMutableURLRequest+Additions.h"; sourceTree = "<group>"; };
 		071AC10D1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableURLRequest+Additions.m"; path = "submodules/apd-objc/NSMutableURLRequest+Additions.m"; sourceTree = "<group>"; };
-		071AC10F1BF78D46005D63F2 /* UIImageView+DiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+DiskCache.h"; path = "submodules/apd-objc/UIImageView+DiskCache.h"; sourceTree = "<group>"; };
-		071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+DiskCache.m"; path = "submodules/apd-objc/UIImageView+DiskCache.m"; sourceTree = "<group>"; };
 		07200DCB1C1C92060031B260 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
 		07200DCC1C1C92060031B260 /* TriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleView.m; sourceTree = "<group>"; };
 		074D8D061C21EC06007B5516 /* SNFReportPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportPDF.h; sourceTree = "<group>"; };
@@ -284,6 +282,8 @@
 		074D8D241C247CEE007B5516 /* SNFReportBehaviorGroup2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportBehaviorGroup2.m; sourceTree = "<group>"; };
 		074D8D271C248F45007B5516 /* SNFReportDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportDataProvider.h; sourceTree = "<group>"; };
 		074D8D281C248F45007B5516 /* SNFReportDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportDataProvider.m; sourceTree = "<group>"; };
+		074D8D2D1C25FA54007B5516 /* UIImageDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageDiskCache.h; path = submodules/UIImageDiskCache/UIImageDiskCache.h; sourceTree = "<group>"; };
+		074D8D2E1C25FA54007B5516 /* UIImageDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageDiskCache.m; path = submodules/UIImageDiskCache/UIImageDiskCache.m; sourceTree = "<group>"; };
 		075EA4B31C11FBA20003A403 /* GATracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GATracking.h; path = "submodules/apd-objc/GATracking.h"; sourceTree = "<group>"; };
 		075EA4B41C11FBA20003A403 /* GATracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GATracking.m; path = "submodules/apd-objc/GATracking.m"; sourceTree = "<group>"; };
 		075EA4B71C11FDF30003A403 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = libs/GA/GoogleAnalyticsServicesiOS_3.15/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
@@ -695,6 +695,15 @@
 			name = old;
 			sourceTree = "<group>";
 		};
+		074D8D2C1C25FA4C007B5516 /* UIImageDiskCache */ = {
+			isa = PBXGroup;
+			children = (
+				074D8D2D1C25FA54007B5516 /* UIImageDiskCache.h */,
+				074D8D2E1C25FA54007B5516 /* UIImageDiskCache.m */,
+			);
+			name = UIImageDiskCache;
+			sourceTree = "<group>";
+		};
 		075EA4B61C11FDEC0003A403 /* GA */ = {
 			isa = PBXGroup;
 			children = (
@@ -829,8 +838,6 @@
 				D64D2C231C14A040007D3E7F /* UIColor+Hex.m */,
 				D6E724D61BF517E200398D09 /* UIImage+Additions.h */,
 				D6E724D71BF517E200398D09 /* UIImage+Additions.m */,
-				071AC10F1BF78D46005D63F2 /* UIImageView+DiskCache.h */,
-				071AC1101BF78D46005D63F2 /* UIImageView+DiskCache.m */,
 				D6EAECEA1BFB973B009542C0 /* UIView+AutoLayout.h */,
 				D6EAECEB1BFB973B009542C0 /* UIView+AutoLayout.m */,
 				0707D6A11BE294A6002F1FC0 /* UIView+LayoutHelpers.h */,
@@ -867,6 +874,7 @@
 				078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */,
 				078DF4CB1BEA939D00CBFAA4 /* TwitterKit.framework */,
 				078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */,
+				074D8D2C1C25FA4C007B5516 /* UIImageDiskCache */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1345,6 +1353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074D8D2F1C25FA54007B5516 /* UIImageDiskCache.m in Sources */,
 				D694011B1BED25530073119E /* SNFPredefinedBoardCell.m in Sources */,
 				D65DF1291BE2AA50009CC6DF /* SNFBoardList.m in Sources */,
 				074D8D291C248F45007B5516 /* SNFReportDataProvider.m in Sources */,
@@ -1408,7 +1417,6 @@
 				074D8D131C21F77D007B5516 /* SNFReportPDFDetailRow.m in Sources */,
 				D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */,
 				075EA5051C1362460003A403 /* PillLabel.m in Sources */,
-				071AC1111BF78D46005D63F2 /* UIImageView+DiskCache.m in Sources */,
 				078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */,
 				0707D6C51BE2B2D8002F1FC0 /* SNFAcceptInvite.m in Sources */,
 				D6270ED61BE817E900F7C39A /* SNFAddBehavior.m in Sources */,

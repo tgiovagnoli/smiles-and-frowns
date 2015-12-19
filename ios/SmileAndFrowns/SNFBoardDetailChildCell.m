@@ -2,7 +2,7 @@
 #import "SNFBoardDetailChildCell.h"
 #import "SNFModel.h"
 #import "SNFBoard.h"
-#import "UIImageView+DiskCache.h"
+#import "UIImageDiskCache.h"
 #import "UIView+LayoutHelpers.h"
 #import "NSString+Additions.h"
 #import "NSTimer+Blocks.h"
@@ -102,7 +102,7 @@
 	
 	if(![self.userRole.user.image isEmpty] && self.userRole.user.image) {
 		NSURL * url = [NSURL URLWithString:self.userRole.user.image];
-		[self.profileImage setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
+		[self.profileImage setImageWithURL:url completion:^(NSError *error, UIImage *image, NSURL *url, UIImageLoadSource loadedFromSource) {
 			[self.profileImage setImage:image asProfileWithBorderColor:[UIColor whiteColor] andBorderThickness:2];
 			if(error) {
 				[self setImageFromGender];

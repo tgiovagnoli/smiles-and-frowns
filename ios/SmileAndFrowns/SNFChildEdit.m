@@ -3,7 +3,7 @@
 #import "SNFModel.h"
 #import "SNFSyncService.h"
 #import "UIImage+Additions.h"
-#import "UIImageView+DiskCache.h"
+#import "UIImageDiskCache.h"
 #import "SNFUserService.h"
 #import "AppDelegate.h"
 #import "UIViewController+Alerts.h"
@@ -72,7 +72,7 @@
 		self.profileImageView.image = _userSelectedImage;
 	} else if(self.childUser.image && ![self.childUser.image isEmpty]) {
 		NSURL * url = [NSURL URLWithString:self.childUser.image];
-		[self.profileImageView setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
+		[self.profileImageView setImageWithURL:url completion:^(NSError *error, UIImage *image, NSURL *url, UIImageLoadSource loadedFromSource) {
 			if(error) {
 				[self setImageByGender];
 			}

@@ -3,7 +3,7 @@
 #import "SNFModel.h"
 #import "UIViewController+ModalCreation.h"
 #import "SNFSyncService.h"
-#import "UIImageView+DiskCache.h"
+#import "UIImageDiskCache.h"
 #import "NSString+Additions.h"
 #import "UIViewController+Alerts.h"
 #import "Utils.h"
@@ -172,7 +172,7 @@
 	
 	if(![self.user.image isEmpty] && self.user.image) {
 		NSURL * url = [NSURL URLWithString:self.user.image];
-		[self.userProfileImageView setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
+		[self.userProfileImageView setImageWithURL:url completion:^(NSError *error, UIImage *image, NSURL *url, UIImageLoadSource loadedFromSource) {
 			if(error) {
 				[self setImageByGender];
 			}

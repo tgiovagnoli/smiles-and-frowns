@@ -9,7 +9,7 @@
 #import "SNFUserService.h"
 #import "UIViewController+Alerts.h"
 #import "NSMutableURLRequest+Additions.h"
-#import "UIImageView+DiskCache.h"
+#import "UIImageDiskCache.h"
 
 @interface SNFUserProfile ()
 @property BOOL isUpdatingPassword;
@@ -180,7 +180,7 @@
 //			}
 //		}];
 		
-		[self.profileImage setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
+		[self.profileImage setImageWithURL:url completion:^(NSError *error, UIImage *image, NSURL *url, UIImageLoadSource loadedFromSource) {
 			if(error) {
 				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 			}

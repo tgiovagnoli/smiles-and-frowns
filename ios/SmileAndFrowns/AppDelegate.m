@@ -12,7 +12,7 @@
 #import "NSTimer+Blocks.h"
 #import "SNFSyncService.h"
 #import <HockeySDK/HockeySDK.h>
-#import "UIImageView+DiskCache.h"
+#import "UIImageDiskCache.h"
 #import "GATracking.h"
 
 static AppDelegate * _instance;
@@ -40,9 +40,12 @@ static AppDelegate * _instance;
 	UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
 	[application registerUserNotificationSettings:settings];
 	
-	[UIImageView setAcceptsAnySSLCertificate:TRUE];
-	[UIImageView clearCachedFilesOlderThan1Week];
-	[UIImageView setDefaultAuthBasicUsername:[SNFModel sharedInstance].config.profileImageAuthUsername password:[SNFModel sharedInstance].config.profileImageAuthPassword];
+	UIImageDiskCache * defaultImageCache = [UIImageDiskCache defaultDiskCache];
+	NSLog(@"disk cache: %@",defaultImageCache.cacheDirectory);
+	defaultImageCache.useServerCachePolicy = FALSE;
+	defaultImageCache.trustAnySSLCertificate = TRUE;
+	[defaultImageCache clearCachedFilesOlderThan1Week];
+	[defaultImageCache setAuthUsername:[SNFModel sharedInstance].config.profileImageAuthUsername password:[SNFModel sharedInstance].config.profileImageAuthPassword];
 	
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
 	[SNFDateManager unlock];

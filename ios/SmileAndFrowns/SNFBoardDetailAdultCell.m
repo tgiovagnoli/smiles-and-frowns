@@ -1,6 +1,6 @@
 
 #import "SNFBoardDetailAdultCell.h"
-#import "UIImageView+DiskCache.h"
+#import "UIImageDiskCache.h"
 #import "NSString+Additions.h"
 #import "UIImageView+ProfileStyle.h"
 
@@ -27,7 +27,7 @@
 	
 	if(![_user.image isEmpty] && _user.image) {
 		NSURL * url = [NSURL URLWithString:_user.image];
-		[self.profileImageView setImageWithDefaultAuthBasicForURL:url withCompletion:^(NSError *error, UIImage *image) {
+		[self.profileImageView setImageWithURL:url completion:^(NSError *error, UIImage *image, NSURL *url, UIImageLoadSource loadedFromSource) {
 			[self.profileImageView setImage:image asProfileWithBorderColor:[UIColor whiteColor] andBorderThickness:2];
 			if(error) {
 				[self setImageFromGender];
