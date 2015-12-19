@@ -16,10 +16,10 @@ from smiles_and_frowns import settings
 from social.apps.django_app.utils import psa
 
 def json_response(response_data):
-	return HttpResponse(json.dumps(response_data, indent=4), content_type="application/json")
+	return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 def json_response_error(error_message):
-	return HttpResponse(json.dumps({'error':error_message}, indent=4), content_type="application/json")
+	return HttpResponse(json.dumps({'error':error_message}), content_type="application/json")
 
 def login_required_response():
 	return json_response({"error": "login required"})
