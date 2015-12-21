@@ -332,7 +332,7 @@
 
 - (void) childCellWantsToReset:(SNFBoardDetailChildCell *)cell forUserRole:(SNFUserRole *)userRole {
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Reset Frowns?" message:@"Are you sure you want to reset your frown count to 0? This will not delete your net smiles." preferredStyle:UIAlertControllerStyleAlert];
-	[alert addAction:[UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+	[alert addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 		[self resetSmilesAndFrownsForUser:userRole.user];
 		[self reloadUserRoles];
 	}]];
