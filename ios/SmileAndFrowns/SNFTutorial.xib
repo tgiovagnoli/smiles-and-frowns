@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15C40a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Roboto-Light.ttf">
+            <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
+            <string>Roboto-Light</string>
+        </mutableArray>
+        <mutableArray key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+            <string>Roboto-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFTutorial">
             <connections>
@@ -32,6 +49,7 @@
                         <constraint firstAttribute="height" constant="37" id="7by-4U-dnV"/>
                         <constraint firstAttribute="width" constant="100" id="JTK-6F-Kac"/>
                     </constraints>
+                    <color key="pageIndicatorTintColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="pageControlChange:" destination="-1" eventType="valueChanged" id="yyT-uv-bO9"/>
                     </connections>
@@ -43,14 +61,17 @@
                         <constraint firstAttribute="height" constant="30" id="PMr-JQ-Gdc"/>
                         <constraint firstAttribute="width" constant="103" id="pzc-YQ-lmn"/>
                     </constraints>
-                    <state key="normal" title="Get Started"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                    <state key="normal" title="Get Started">
+                        <color key="titleColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="getStarted:" destination="-1" eventType="touchUpInside" id="eP2-2j-llD"/>
                     </connections>
                 </button>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="IGe-yc-AIn" secondAttribute="bottom" id="3B5-Qc-7Uo"/>
                 <constraint firstItem="cQW-WQ-KlO" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Hqu-PA-9nE"/>
@@ -67,28 +88,17 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Smiles &amp; Frowns" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCw-qD-QqO">
-                    <rect key="frame" x="228" y="37" width="145" height="70"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="145" id="5i4-YI-xma"/>
-                        <constraint firstAttribute="height" constant="70" id="Poc-5N-CkR"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tj-a4-bZQ">
-                    <rect key="frame" x="0.0" y="121" width="600" height="192"/>
+                    <rect key="frame" x="20" y="118" width="560" height="120"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="192" id="P9Z-jM-G8C"/>
+                        <constraint firstAttribute="height" constant="120" id="P9Z-jM-G8C"/>
                         <constraint firstAttribute="width" constant="600" id="foU-D5-YLK"/>
                         <constraint firstAttribute="height" constant="192" id="wRS-vD-d7E"/>
                     </constraints>
-                    <string key="text">Swipe through the tutorial to learn how to use Smiles &amp; Frowns or tap Get Started. You can get back to this tutorial at any time from the More menu.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <string key="text">Now it’s easy to make great behavior plans with our 5Cs of success: Clarity, Consistency, Collaboration, Consequence and Challenge. Swipe to see how, or just tap Get Started.</string>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
+                    <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                     <variation key="default">
                         <mask key="constraints">
@@ -97,15 +107,26 @@
                         </mask>
                     </variation>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Smiles &amp; Frowns" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCw-qD-QqO">
+                    <rect key="frame" x="199" y="40" width="203" height="70"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="203" id="5i4-YI-xma"/>
+                        <constraint firstAttribute="height" constant="70" id="Poc-5N-CkR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                    <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="0tj-a4-bZQ" secondAttribute="trailing" id="0yk-u7-3ch"/>
-                <constraint firstItem="0tj-a4-bZQ" firstAttribute="top" secondItem="SCw-qD-QqO" secondAttribute="bottom" constant="14" id="K9A-b6-pwy"/>
+                <constraint firstAttribute="trailing" secondItem="0tj-a4-bZQ" secondAttribute="trailing" constant="20" id="0yk-u7-3ch"/>
+                <constraint firstItem="0tj-a4-bZQ" firstAttribute="top" secondItem="SCw-qD-QqO" secondAttribute="bottom" constant="8" id="K9A-b6-pwy"/>
                 <constraint firstItem="SCw-qD-QqO" firstAttribute="centerX" secondItem="wQZ-7j-1tv" secondAttribute="centerX" id="iBJ-4t-FgA"/>
-                <constraint firstItem="SCw-qD-QqO" firstAttribute="top" secondItem="wQZ-7j-1tv" secondAttribute="top" constant="37" id="jpP-CM-lnc"/>
-                <constraint firstItem="0tj-a4-bZQ" firstAttribute="leading" secondItem="wQZ-7j-1tv" secondAttribute="leading" id="ozx-pw-tW0"/>
+                <constraint firstItem="SCw-qD-QqO" firstAttribute="top" secondItem="wQZ-7j-1tv" secondAttribute="top" constant="40" id="jpP-CM-lnc"/>
+                <constraint firstItem="0tj-a4-bZQ" firstAttribute="leading" secondItem="wQZ-7j-1tv" secondAttribute="leading" constant="20" id="ozx-pw-tW0"/>
             </constraints>
             <point key="canvasLocation" x="1040" y="438"/>
         </view>
@@ -113,23 +134,45 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The 5Cs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWA-TI-5jN">
-                    <rect key="frame" x="256" y="51" width="89" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rp-3S-ZpM">
+                    <rect key="frame" x="20" y="118" width="560" height="120"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="DfM-lb-6qR"/>
-                        <constraint firstAttribute="width" constant="89" id="Kya-JZ-aTT"/>
+                        <constraint firstAttribute="width" constant="600" id="SoD-Ie-4f2"/>
+                        <constraint firstAttribute="height" constant="120" id="gEh-Iq-RoO"/>
+                        <constraint firstAttribute="height" constant="192" id="sFd-ct-P88"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <string key="text">Our boards are a simple way to set expectations clearly, reward behavior consistently, and review results easily. Start fast with a preset board, or quickly make your own.</string>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
+                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="SoD-Ie-4f2"/>
+                            <exclude reference="sFd-ct-P88"/>
+                        </mask>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start with a Board" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSC-QE-yKg">
+                    <rect key="frame" x="208" y="40" width="185" height="70"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="185" id="eoO-Rh-beM"/>
+                        <constraint firstAttribute="height" constant="70" id="zMZ-Zb-6Vy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="OWA-TI-5jN" firstAttribute="top" secondItem="60K-b7-0S4" secondAttribute="top" constant="51" id="gMO-qh-40F"/>
-                <constraint firstItem="OWA-TI-5jN" firstAttribute="centerX" secondItem="60K-b7-0S4" secondAttribute="centerX" id="t2J-WK-0SQ"/>
+                <constraint firstItem="aSC-QE-yKg" firstAttribute="centerX" secondItem="60K-b7-0S4" secondAttribute="centerX" id="HKU-8D-5ye"/>
+                <constraint firstAttribute="trailing" secondItem="2rp-3S-ZpM" secondAttribute="trailing" constant="20" id="TmG-lE-wXr"/>
+                <constraint firstItem="2rp-3S-ZpM" firstAttribute="leading" secondItem="60K-b7-0S4" secondAttribute="leading" constant="20" id="ZfP-xG-Fgo"/>
+                <constraint firstItem="aSC-QE-yKg" firstAttribute="top" secondItem="60K-b7-0S4" secondAttribute="top" constant="40" id="qdI-tg-nak"/>
+                <constraint firstItem="2rp-3S-ZpM" firstAttribute="top" secondItem="aSC-QE-yKg" secondAttribute="bottom" constant="8" id="vXG-bD-zjq"/>
             </constraints>
             <point key="canvasLocation" x="397" y="1079"/>
         </view>
@@ -137,23 +180,45 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start With a Board" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfr-Ny-jYX">
-                    <rect key="frame" x="230" y="47" width="141" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhD-wR-f9Q">
+                    <rect key="frame" x="20" y="118" width="560" height="120"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="141" id="6fb-6e-WAW"/>
-                        <constraint firstAttribute="height" constant="21" id="ZHF-8D-TTh"/>
+                        <constraint firstAttribute="height" constant="192" id="9kJ-t8-ULD"/>
+                        <constraint firstAttribute="width" constant="600" id="QFJ-f3-xKL"/>
+                        <constraint firstAttribute="height" constant="120" id="vqX-5n-Qzw"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <string key="text">Adding a child to a board is a snap, and collaborating is easy. Invite a spouse, nanny or babysitter to join so everyone is onboard and in sync, so kids have just one set of rules.</string>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
+                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="QFJ-f3-xKL"/>
+                            <exclude reference="9kJ-t8-ULD"/>
+                        </mask>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Your People" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ug9-EW-EdO">
+                    <rect key="frame" x="202" y="40" width="197" height="70"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="M4e-PJ-KxR"/>
+                        <constraint firstAttribute="width" constant="197" id="W8K-14-OdI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="sfr-Ny-jYX" firstAttribute="centerX" secondItem="EDU-7J-5MM" secondAttribute="centerX" id="Ze4-Uz-zMc"/>
-                <constraint firstItem="sfr-Ny-jYX" firstAttribute="top" secondItem="EDU-7J-5MM" secondAttribute="top" constant="47" id="h30-lK-DCV"/>
+                <constraint firstItem="dhD-wR-f9Q" firstAttribute="leading" secondItem="EDU-7J-5MM" secondAttribute="leading" constant="20" id="axM-6n-b6r"/>
+                <constraint firstAttribute="trailing" secondItem="dhD-wR-f9Q" secondAttribute="trailing" constant="20" id="jdr-MA-4Ju"/>
+                <constraint firstItem="ug9-EW-EdO" firstAttribute="top" secondItem="EDU-7J-5MM" secondAttribute="top" constant="40" id="osQ-Wn-ifV"/>
+                <constraint firstItem="dhD-wR-f9Q" firstAttribute="top" secondItem="ug9-EW-EdO" secondAttribute="bottom" constant="8" id="paA-dY-0b1"/>
+                <constraint firstItem="ug9-EW-EdO" firstAttribute="centerX" secondItem="EDU-7J-5MM" secondAttribute="centerX" id="qQ1-GZ-wxb"/>
             </constraints>
             <point key="canvasLocation" x="1040" y="1079"/>
         </view>
@@ -161,23 +226,45 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add People" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a03-G3-3NE">
-                    <rect key="frame" x="256" y="37" width="88" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2i-cf-HgO">
+                    <rect key="frame" x="20" y="118" width="560" height="120"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="2pj-uX-1Ds"/>
-                        <constraint firstAttribute="width" constant="88" id="Vwq-wx-qZz"/>
+                        <constraint firstAttribute="height" constant="192" id="jsU-aI-nbq"/>
+                        <constraint firstAttribute="height" constant="120" id="sgU-Ab-odg"/>
+                        <constraint firstAttribute="width" constant="600" id="wh7-3K-WoH"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <string key="text">When Smiles have real value, kids are challenged to earn them. Ours can be worth Money, Time, Treats or Goals. Start fast with our presets, or set your own in seconds.</string>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
+                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="wh7-3K-WoH"/>
+                            <exclude reference="jsU-aI-nbq"/>
+                        </mask>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Your Rewards" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-F5-3oS">
+                    <rect key="frame" x="213" y="40" width="174" height="70"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="174" id="8et-KI-355"/>
+                        <constraint firstAttribute="height" constant="70" id="Xqu-EU-Rj1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="a03-G3-3NE" firstAttribute="centerX" secondItem="hjt-y4-rrK" secondAttribute="centerX" id="OFK-oa-d5B"/>
-                <constraint firstItem="a03-G3-3NE" firstAttribute="top" secondItem="hjt-y4-rrK" secondAttribute="top" constant="37" id="tFO-mk-rAb"/>
+                <constraint firstItem="dAz-F5-3oS" firstAttribute="centerX" secondItem="hjt-y4-rrK" secondAttribute="centerX" id="1OL-gg-Rql"/>
+                <constraint firstItem="dAz-F5-3oS" firstAttribute="top" secondItem="hjt-y4-rrK" secondAttribute="top" constant="40" id="eb6-3R-vUO"/>
+                <constraint firstItem="H2i-cf-HgO" firstAttribute="top" secondItem="dAz-F5-3oS" secondAttribute="bottom" constant="8" id="h2I-DC-Cjy"/>
+                <constraint firstItem="H2i-cf-HgO" firstAttribute="leading" secondItem="hjt-y4-rrK" secondAttribute="leading" constant="20" id="p4u-pF-kBw"/>
+                <constraint firstAttribute="trailing" secondItem="H2i-cf-HgO" secondAttribute="trailing" constant="20" id="pdl-Hk-5P7"/>
             </constraints>
             <point key="canvasLocation" x="397" y="1723"/>
         </view>
@@ -185,23 +272,45 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give Smiles and Rewards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Xj-Q4-gkZ">
-                    <rect key="frame" x="204" y="26" width="192" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRw-Ci-aWc">
+                    <rect key="frame" x="20" y="118" width="560" height="120"/>
                     <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="192" id="4Bl-D6-nvS"/>
-                        <constraint firstAttribute="height" constant="21" id="Jfb-eq-j6V"/>
+                        <constraint firstAttribute="height" constant="192" id="BWn-ZD-ucx"/>
+                        <constraint firstAttribute="width" constant="600" id="mIV-aJ-Lfd"/>
+                        <constraint firstAttribute="height" constant="120" id="wJM-fv-M5d"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <string key="text">When Smiles have real value, kids are challenged to earn them. Ours can be worth Money, Time, Treats or Goals. Start fast with our presets, or set your own in seconds.</string>
+                    <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
+                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="mIV-aJ-Lfd"/>
+                            <exclude reference="BWn-ZD-ucx"/>
+                        </mask>
+                    </variation>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let Kids do the Math" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7C-uP-IpV">
+                    <rect key="frame" x="204" y="40" width="193" height="70"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="193" id="U2v-Dr-FdG"/>
+                        <constraint firstAttribute="height" constant="70" id="kt5-Tq-Ivb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <animations/>
-            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="0Xj-Q4-gkZ" firstAttribute="top" secondItem="DBe-Vx-ncF" secondAttribute="top" constant="26" id="SsP-Tb-tkO"/>
-                <constraint firstItem="0Xj-Q4-gkZ" firstAttribute="centerX" secondItem="DBe-Vx-ncF" secondAttribute="centerX" id="TtW-j8-edv"/>
+                <constraint firstItem="i7C-uP-IpV" firstAttribute="top" secondItem="DBe-Vx-ncF" secondAttribute="top" constant="40" id="2kk-17-q7F"/>
+                <constraint firstItem="tRw-Ci-aWc" firstAttribute="top" secondItem="i7C-uP-IpV" secondAttribute="bottom" constant="8" id="4nN-Yj-qDw"/>
+                <constraint firstItem="i7C-uP-IpV" firstAttribute="centerX" secondItem="DBe-Vx-ncF" secondAttribute="centerX" id="cjS-3S-9ir"/>
+                <constraint firstItem="tRw-Ci-aWc" firstAttribute="leading" secondItem="DBe-Vx-ncF" secondAttribute="leading" constant="20" id="oPd-OV-UI4"/>
+                <constraint firstAttribute="trailing" secondItem="tRw-Ci-aWc" secondAttribute="trailing" constant="20" id="qzn-8J-BxA"/>
             </constraints>
             <point key="canvasLocation" x="1040" y="1723"/>
         </view>
