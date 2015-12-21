@@ -44,8 +44,18 @@ NSString * const SNFReportPDFUserHeaderImageFinished = @"SNFReportPDFUserHeaderI
 	}
 	
 	if(self.user.image) {
-		[self.profileImage setImageWithURL:[NSURL URLWithString:self.user.image] completion:^(NSError *error, UIImage *image, NSURL *url, UIImageLoadSource loadedFromSource) {
+		NSURL * url = [NSURL URLWithString:self.user.image];
+		
+		[[UIImageDiskCache defaultDiskCache] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
+			self.profileImage.image = image;
 			[[NSNotificationCenter defaultCenter] postNotificationName:SNFReportPDFUserHeaderImageFinished object:nil];
+		} sendRequest:^(BOOL didHaveCachedImage) {
+			
+		} requestCompleted:^(NSError *error, UIImage *image, UIImageLoadSource loadedFromSource) {
+			if(loadedFromSource == UIImageLoadSourceNetworkToDisk) {
+				self.profileImage.image = image;
+				[[NSNotificationCenter defaultCenter] postNotificationName:SNFReportPDFUserHeaderImageFinished object:nil];
+			}
 		}];
 	}
 }

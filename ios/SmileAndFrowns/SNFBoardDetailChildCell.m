@@ -102,10 +102,14 @@
 	
 	if(![self.userRole.user.image isEmpty] && self.userRole.user.image) {
 		NSURL * url = [NSURL URLWithString:self.userRole.user.image];
-		[self.profileImage setImageWithURL:url completion:^(NSError *error, UIImage *image, NSURL *url, UIImageLoadSource loadedFromSource) {
+		
+		[[UIImageDiskCache defaultDiskCache] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
 			[self.profileImage setImage:image asProfileWithBorderColor:[UIColor whiteColor] andBorderThickness:2];
-			if(error) {
-				[self setImageFromGender];
+		} sendRequest:^(BOOL didHaveCachedImage) {
+			
+		} requestCompleted:^(NSError *error, UIImage *image, UIImageLoadSource loadedFromSource) {
+			if(loadedFromSource == UIImageLoadSourceNetworkToDisk) {
+				[self.profileImage setImage:image asProfileWithBorderColor:[UIColor whiteColor] andBorderThickness:2];
 			}
 		}];
 	}

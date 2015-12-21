@@ -44,6 +44,8 @@ static AppDelegate * _instance;
 	NSLog(@"disk cache: %@",defaultImageCache.cacheDirectory);
 	defaultImageCache.useServerCachePolicy = FALSE;
 	defaultImageCache.trustAnySSLCertificate = TRUE;
+	defaultImageCache.cacheImagesInMemory = TRUE;
+	defaultImageCache.memoryCache.maxBytes = 52428800; //50MB
 	[defaultImageCache clearCachedFilesOlderThan1Week];
 	[defaultImageCache setAuthUsername:[SNFModel sharedInstance].config.profileImageAuthUsername password:[SNFModel sharedInstance].config.profileImageAuthPassword];
 	

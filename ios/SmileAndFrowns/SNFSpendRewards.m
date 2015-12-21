@@ -172,9 +172,13 @@
 	
 	if(![self.user.image isEmpty] && self.user.image) {
 		NSURL * url = [NSURL URLWithString:self.user.image];
-		[self.userProfileImageView setImageWithURL:url completion:^(NSError *error, UIImage *image, NSURL *url, UIImageLoadSource loadedFromSource) {
-			if(error) {
-				[self setImageByGender];
+		[[UIImageDiskCache defaultDiskCache] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
+			self.userProfileImageView.image = image;
+		} sendRequest:^(BOOL didHaveCachedImage) {
+			
+		} requestCompleted:^(NSError *error, UIImage *image, UIImageLoadSource loadedFromSource) {
+			if(loadedFromSource == UIImageLoadSourceNetworkToDisk) {
+				self.userProfileImageView.image = image;
 			}
 		}];
 	}

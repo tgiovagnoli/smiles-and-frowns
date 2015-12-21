@@ -72,9 +72,13 @@
 		self.profileImageView.image = _userSelectedImage;
 	} else if(self.childUser.image && ![self.childUser.image isEmpty]) {
 		NSURL * url = [NSURL URLWithString:self.childUser.image];
-		[self.profileImageView setImageWithURL:url completion:^(NSError *error, UIImage *image, NSURL *url, UIImageLoadSource loadedFromSource) {
-			if(error) {
-				[self setImageByGender];
+		[[UIImageDiskCache defaultDiskCache] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
+			self.profileImageView.image = image;
+		} sendRequest:^(BOOL didHaveCachedImage) {
+			
+		} requestCompleted:^(NSError *error, UIImage *image, UIImageLoadSource loadedFromSource) {
+			if(loadedFromSource == UIImageLoadSourceNetworkToDisk) {
+				self.profileImageView.image = image;
 			}
 		}];
 	}

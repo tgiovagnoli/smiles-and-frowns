@@ -170,19 +170,17 @@
 	
 	if(![self.user.image isEmpty] && self.user.image) {
 		
-//		NSURL * url = [NSURL URLWithString:@"http://services.smilesandfrowns.com/media/ProfileImage/F5D90E60-8866-4D9F-B197-0246E21CC016-234234.png"];
+		//NSURL * url = [NSURL URLWithString:@"http://services.smilesandfrowns.com/media/ProfileImage/F5D90E60-8866-4D9F-B197-0246E21CC016-234234.png"];
 		
 		NSURL * url = [NSURL URLWithString:self.user.image];
 		
-//		[self.profileImage setImageForURLWithCacheControlAndDefaultAuthBasic:url withCompletion:^(NSError *error, UIImage *image) {
-//			if(error) {
-//				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
-//			}
-//		}];
-		
-		[self.profileImage setImageWithURL:url completion:^(NSError *error, UIImage *image, NSURL *url, UIImageLoadSource loadedFromSource) {
-			if(error) {
-				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+		[[UIImageDiskCache defaultDiskCache] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
+			self.profileImage.image = image;
+		} sendRequest:^(BOOL didHaveCachedImage) {
+			
+		} requestCompleted:^(NSError *error, UIImage *image, UIImageLoadSource loadedFromSource) {
+			if(loadedFromSource == UIImageLoadSourceNetworkToDisk) {
+				self.profileImage.image = image;
 			}
 		}];
 	}
