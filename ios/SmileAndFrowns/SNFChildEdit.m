@@ -3,7 +3,7 @@
 #import "SNFModel.h"
 #import "SNFSyncService.h"
 #import "UIImage+Additions.h"
-#import "UIImageDiskCache.h"
+#import "UIImageLoader.h"
 #import "SNFUserService.h"
 #import "AppDelegate.h"
 #import "UIViewController+Alerts.h"
@@ -72,7 +72,7 @@
 		self.profileImageView.image = _userSelectedImage;
 	} else if(self.childUser.image && ![self.childUser.image isEmpty]) {
 		NSURL * url = [NSURL URLWithString:self.childUser.image];
-		[[UIImageDiskCache defaultDiskCache] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
+		[[UIImageLoader defaultLoader] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
 			self.profileImageView.image = image;
 		} sendRequest:^(BOOL didHaveCachedImage) {
 			

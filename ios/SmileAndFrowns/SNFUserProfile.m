@@ -9,7 +9,7 @@
 #import "SNFUserService.h"
 #import "UIViewController+Alerts.h"
 #import "NSMutableURLRequest+Additions.h"
-#import "UIImageDiskCache.h"
+#import "UIImageLoader.h"
 
 @interface SNFUserProfile ()
 @property BOOL isUpdatingPassword;
@@ -174,7 +174,7 @@
 		
 		NSURL * url = [NSURL URLWithString:self.user.image];
 		
-		[[UIImageDiskCache defaultDiskCache] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
+		[[UIImageLoader defaultLoader] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
 			self.profileImage.image = image;
 		} sendRequest:^(BOOL didHaveCachedImage) {
 			

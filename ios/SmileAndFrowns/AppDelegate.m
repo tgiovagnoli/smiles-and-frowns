@@ -12,7 +12,7 @@
 #import "NSTimer+Blocks.h"
 #import "SNFSyncService.h"
 #import <HockeySDK/HockeySDK.h>
-#import "UIImageDiskCache.h"
+#import "UIImageLoader.h"
 #import "GATracking.h"
 
 static AppDelegate * _instance;
@@ -40,14 +40,14 @@ static AppDelegate * _instance;
 	UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
 	[application registerUserNotificationSettings:settings];
 	
-	UIImageDiskCache * defaultImageCache = [UIImageDiskCache defaultDiskCache];
-	NSLog(@"disk cache: %@",defaultImageCache.cacheDirectory);
-	defaultImageCache.useServerCachePolicy = FALSE;
-	defaultImageCache.trustAnySSLCertificate = TRUE;
-	defaultImageCache.cacheImagesInMemory = TRUE;
-	defaultImageCache.memoryCache.maxBytes = 52428800; //50MB
-	[defaultImageCache clearCachedFilesOlderThan1Week];
-	[defaultImageCache setAuthUsername:[SNFModel sharedInstance].config.profileImageAuthUsername password:[SNFModel sharedInstance].config.profileImageAuthPassword];
+	UIImageLoader * loader = [UIImageLoader defaultLoader];
+	NSLog(@"disk cache: %@",loader.cacheDirectory);
+	loader.useServerCachePolicy = FALSE;
+	loader.trustAnySSLCertificate = TRUE;
+	loader.cacheImagesInMemory = TRUE;
+	loader.memoryCache.maxBytes = 52428800; //50MB
+	[loader clearCachedFilesOlderThan1Week];
+	[loader setAuthUsername:[SNFModel sharedInstance].config.profileImageAuthUsername password:[SNFModel sharedInstance].config.profileImageAuthPassword];
 	
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
 	[SNFDateManager unlock];

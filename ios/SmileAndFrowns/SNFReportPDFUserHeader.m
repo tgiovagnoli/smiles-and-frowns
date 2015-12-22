@@ -1,6 +1,6 @@
 
 #import "SNFReportPDFUserHeader.h"
-#import "UIImageDiskCache.h"
+#import "UIImageLoader.h"
 #import "UIImageView+ProfileStyle.h"
 #import "UIView+LayoutHelpers.h"
 
@@ -46,7 +46,7 @@ NSString * const SNFReportPDFUserHeaderImageFinished = @"SNFReportPDFUserHeaderI
 	if(self.user.image) {
 		NSURL * url = [NSURL URLWithString:self.user.image];
 		
-		[[UIImageDiskCache defaultDiskCache] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
+		[[UIImageLoader defaultLoader] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
 			self.profileImage.image = image;
 			[[NSNotificationCenter defaultCenter] postNotificationName:SNFReportPDFUserHeaderImageFinished object:nil];
 		} sendRequest:^(BOOL didHaveCachedImage) {

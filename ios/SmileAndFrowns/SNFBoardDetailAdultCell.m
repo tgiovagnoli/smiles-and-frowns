@@ -1,6 +1,6 @@
 
 #import "SNFBoardDetailAdultCell.h"
-#import "UIImageDiskCache.h"
+#import "UIImageLoader.h"
 #import "NSString+Additions.h"
 #import "UIImageView+ProfileStyle.h"
 
@@ -27,7 +27,7 @@
 	
 	if(![_user.image isEmpty] && _user.image) {
 		NSURL * url = [NSURL URLWithString:_user.image];
-		[[UIImageDiskCache defaultDiskCache] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
+		[[UIImageLoader defaultLoader] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
 			[self.profileImageView setImage:image asProfileWithBorderColor:[UIColor whiteColor] andBorderThickness:2];
 		} sendRequest:^(BOOL didHaveCachedImage) {
 			
