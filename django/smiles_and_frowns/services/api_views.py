@@ -230,8 +230,8 @@ def user_signup(request):
 		return json_response_error("firstname required")
 
 	#check lastname
-	if not lastname or len(lastname) < 1:
-		return json_response_error("lastname required")
+	#if not lastname or len(lastname) < 1:
+	#	return json_response_error("lastname required")
 
 	#check for password
 	if not password or len(password) < 1:

@@ -101,11 +101,6 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 		return;
 	}
 	
-	if([self.lastname.text isEmpty]) {
-		[self displayOKAlertWithTitle:@"Form Error" message:@"Last Name required" completion:nil];
-		return;
-	}
-	
 	// check to see if a child exists
 	NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"SNFUser"];
 	request.predicate = [NSPredicate predicateWithFormat:@"(first_name CONTAINS[cd] %@) && (last_name CONTAINS[cd] %@)", self.firstname.text, self.lastname.text];
@@ -198,11 +193,6 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	
 	if([self.firstname.text isEmpty]) {
 		[self displayOKAlertWithTitle:@"Form Error" message:@"First Name required" completion:nil];
-		return;
-	}
-	
-	if([self.lastname.text isEmpty]) {
-		[self displayOKAlertWithTitle:@"Form Error" message:@"Last Name required" completion:nil];
 		return;
 	}
 	

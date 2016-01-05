@@ -77,7 +77,7 @@
 		<key>apiPath</key>
 		<string>api</string>
 		<key>serverURL</key>
-		<string>http://imac.local:8000</string>
+		<string>http://127.0.0.1:8000</string>
 	</dict>
 	<key>SNFServices</key>
 	<dict>

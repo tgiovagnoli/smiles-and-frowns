@@ -248,10 +248,10 @@ static NSURLSession * session = nil;
 		return;
 	}
 	
-	if([data[@"lastname"] isEmpty]) {
-		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Last Name required"],nil);
-		return;
-	}
+	//if([data[@"lastname"] isEmpty]) {
+	//	completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Last Name required"],nil);
+	//	return;
+	//}
 	
 	if([data[@"password"] isEmpty]) {
 		completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"Password Required"],nil);
