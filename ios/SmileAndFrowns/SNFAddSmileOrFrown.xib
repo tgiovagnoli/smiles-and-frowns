@@ -23,8 +23,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFAddSmileOrFrown">
             <connections>
-                <outlet property="addBehaviorButton" destination="25e-GV-9nU" id="dFD-k0-gFC"/>
-                <outlet property="addSNFButton" destination="hPo-Ac-XCS" id="CJa-wd-uBa"/>
+                <outlet property="addBehaviorButton" destination="hPo-Ac-XCS" id="FB3-NU-ulr"/>
+                <outlet property="addSNFButton" destination="25e-GV-9nU" id="TD2-yg-Yyo"/>
                 <outlet property="amountField" destination="cC2-hC-ofl" id="Wbo-6C-cLM"/>
                 <outlet property="amountFieldButton" destination="TIV-Sx-qiq" id="ESX-KQ-uJs"/>
                 <outlet property="amountStepper" destination="fEB-lx-8yh" id="v4i-9y-kOb"/>
@@ -105,25 +105,25 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25e-GV-9nU">
                     <rect key="frame" x="320" y="375" width="272" height="32"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.4941176471" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                    <state key="normal" title="+New Behavior">
-                        <color key="titleColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Give Smile">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="onAddBehavior:" destination="-1" eventType="touchUpInside" id="Eae-SI-mHE"/>
+                        <action selector="onAddSmileOrFrown:" destination="-1" eventType="touchUpInside" id="EAK-vJ-h2O"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPo-Ac-XCS">
                     <rect key="frame" x="8" y="375" width="273" height="32"/>
                     <animations/>
-                    <color key="backgroundColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                    <state key="normal" title="Give Smile">
-                        <color key="titleColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="+ New Behavior">
+                        <color key="titleColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="onAddSmileOrFrown:" destination="-1" eventType="touchUpInside" id="GsX-P6-T8p"/>
+                        <action selector="onAddBehavior:" destination="-1" eventType="touchUpInside" id="eBX-N0-gXQ"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIV-Sx-qiq">
