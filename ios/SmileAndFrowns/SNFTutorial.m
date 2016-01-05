@@ -7,6 +7,7 @@
 #import "SNFViewController.h"
 #import "SNFCreateAccount.h"
 #import "SNFAcceptInvite.h"
+#import "SNFFormStyles.h"
 
 @interface SNFTutorial ()
 @property BOOL firstlayout;
@@ -21,6 +22,7 @@
 	self.pageControl.numberOfPages = self.views.count;
 	self.scrollView.delegate = self;
 	
+	[SNFFormStyles roundEdgesOnButton:self.getStarted];
 	[[GATracking instance] trackScreenWithTagManager:@"Tutorial1View"];
 }
 

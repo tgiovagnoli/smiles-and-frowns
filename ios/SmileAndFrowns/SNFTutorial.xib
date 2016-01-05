@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15C40a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Light.ttf">
@@ -23,6 +23,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFTutorial">
             <connections>
+                <outlet property="getStarted" destination="nLv-ln-g7E" id="Z30-WG-3tg"/>
                 <outlet property="pageControl" destination="cQW-WQ-KlO" id="qfp-mr-w2c"/>
                 <outlet property="scrollView" destination="IGe-yc-AIn" id="edo-II-dcS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -40,9 +41,11 @@
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGe-yc-AIn">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <animations/>
                 </scrollView>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="cQW-WQ-KlO">
                     <rect key="frame" x="250" y="282" width="100" height="37"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="7by-4U-dnV"/>
                         <constraint firstAttribute="width" constant="100" id="JTK-6F-Kac"/>
@@ -53,20 +56,23 @@
                     </connections>
                 </pageControl>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLv-ln-g7E">
-                    <rect key="frame" x="248" y="315" width="103" height="30"/>
+                    <rect key="frame" x="220" y="315" width="159" height="36"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.4941176471" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="PMr-JQ-Gdc"/>
-                        <constraint firstAttribute="width" constant="103" id="pzc-YQ-lmn"/>
+                        <constraint firstAttribute="height" constant="36" id="PMr-JQ-Gdc"/>
+                        <constraint firstAttribute="width" constant="159" id="pzc-YQ-lmn"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                     <state key="normal" title="Get Started">
-                        <color key="titleColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="getStarted:" destination="-1" eventType="touchUpInside" id="eP2-2j-llD"/>
                     </connections>
                 </button>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="IGe-yc-AIn" secondAttribute="bottom" id="3B5-Qc-7Uo"/>
@@ -86,6 +92,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tj-a4-bZQ">
                     <rect key="frame" x="20" y="118" width="560" height="120"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="120" id="P9Z-jM-G8C"/>
                         <constraint firstAttribute="width" constant="600" id="foU-D5-YLK"/>
@@ -104,6 +111,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Smiles &amp; Frowns" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCw-qD-QqO">
                     <rect key="frame" x="199" y="40" width="203" height="70"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="203" id="5i4-YI-xma"/>
                         <constraint firstAttribute="height" constant="70" id="Poc-5N-CkR"/>
@@ -113,6 +121,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="0tj-a4-bZQ" secondAttribute="trailing" constant="20" id="0yk-u7-3ch"/>
@@ -129,6 +138,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rp-3S-ZpM">
                     <rect key="frame" x="20" y="118" width="560" height="120"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="600" id="SoD-Ie-4f2"/>
                         <constraint firstAttribute="height" constant="120" id="gEh-Iq-RoO"/>
@@ -147,6 +157,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start with a Board" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSC-QE-yKg">
                     <rect key="frame" x="208" y="40" width="185" height="70"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="185" id="eoO-Rh-beM"/>
                         <constraint firstAttribute="height" constant="70" id="zMZ-Zb-6Vy"/>
@@ -156,6 +167,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="aSC-QE-yKg" firstAttribute="centerX" secondItem="60K-b7-0S4" secondAttribute="centerX" id="HKU-8D-5ye"/>
@@ -172,6 +184,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhD-wR-f9Q">
                     <rect key="frame" x="20" y="118" width="560" height="120"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="192" id="9kJ-t8-ULD"/>
                         <constraint firstAttribute="width" constant="600" id="QFJ-f3-xKL"/>
@@ -190,6 +203,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Your People" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ug9-EW-EdO">
                     <rect key="frame" x="202" y="40" width="197" height="70"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="M4e-PJ-KxR"/>
                         <constraint firstAttribute="width" constant="197" id="W8K-14-OdI"/>
@@ -199,6 +213,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="dhD-wR-f9Q" firstAttribute="leading" secondItem="EDU-7J-5MM" secondAttribute="leading" constant="20" id="axM-6n-b6r"/>
@@ -215,6 +230,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Your Rewards" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-F5-3oS">
                     <rect key="frame" x="213" y="40" width="174" height="70"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="174" id="8et-KI-355"/>
                         <constraint firstAttribute="height" constant="70" id="Xqu-EU-Rj1"/>
@@ -225,6 +241,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2i-cf-HgO">
                     <rect key="frame" x="14" y="113" width="572" height="133"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="192" id="jsU-aI-nbq"/>
                         <constraint firstAttribute="height" constant="133" id="sgU-Ab-odg"/>
@@ -242,6 +259,7 @@
                     </variation>
                 </label>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="dAz-F5-3oS" firstAttribute="centerX" secondItem="hjt-y4-rrK" secondAttribute="centerX" id="1OL-gg-Rql"/>
@@ -258,6 +276,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRw-Ci-aWc">
                     <rect key="frame" x="20" y="118" width="560" height="120"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="192" id="BWn-ZD-ucx"/>
                         <constraint firstAttribute="width" constant="600" id="mIV-aJ-Lfd"/>
@@ -276,6 +295,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let Kids do the Math" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7C-uP-IpV">
                     <rect key="frame" x="204" y="40" width="193" height="70"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="193" id="U2v-Dr-FdG"/>
                         <constraint firstAttribute="height" constant="70" id="kt5-Tq-Ivb"/>
@@ -285,6 +305,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="0.0" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="i7C-uP-IpV" firstAttribute="top" secondItem="DBe-Vx-ncF" secondAttribute="top" constant="40" id="2kk-17-q7F"/>
