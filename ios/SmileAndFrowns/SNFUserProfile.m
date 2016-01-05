@@ -27,7 +27,7 @@
 	
 	_agePicker = [[SNFValuePicker alloc] init];
 	_agePicker.delegate = self;
-	_agePicker.values = [SNFUser ageSelections];
+	_agePicker.values = [SNFUser ageSelectionsMin:1 max:100];
 	
 	self.firstNameField.delegate = self;
 	self.lastNameField.delegate = self;

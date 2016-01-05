@@ -30,7 +30,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	
 	_agePicker = [[SNFValuePicker alloc] init];
 	_agePicker.delegate = self;
-	_agePicker.values = [SNFUser ageSelections];
+	_agePicker.values = [SNFUser ageSelectionsMin:1 max:18];
 	
 	[self.ageOverlay setTitle:@"" forState:UIControlStateNormal];
 	[self.genderOverlay setTitle:@"" forState:UIControlStateNormal];

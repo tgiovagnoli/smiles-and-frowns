@@ -22,7 +22,7 @@
 	_agePicker = [[SNFValuePicker alloc] init];
 	_agePicker.tag = SNFChildEditSelectionTypeAge;
 	_agePicker.delegate = self;
-	_agePicker.values = [SNFUser ageSelections];
+	_agePicker.values = [SNFUser ageSelectionsMin:1 max:18];
 	
 	self.profileImageView.layer.cornerRadius = self.profileImageView.width/2;
 	self.profileImageView.layer.borderColor = [[SNFFormStyles darkGray] CGColor];

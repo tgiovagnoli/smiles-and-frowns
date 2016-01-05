@@ -78,9 +78,9 @@
 //	return [UIImage imageWithContentsOfFile:fullPath];
 //}
 
-+ (NSArray *)ageSelections{
++ (NSArray *) ageSelectionsMin:(NSInteger) min max:(NSInteger) max {
 	NSMutableArray *ages = [[NSMutableArray alloc] init];
-	for(NSInteger i=SNFUserAgeMin; i<SNFUserAgeMax; i++){
+	for(NSInteger i=min; i<=max; i++){
 		[ages addObject:[NSString stringWithFormat:@"%lu", (long)i]];
 	}
 	return [NSArray arrayWithArray:ages];
