@@ -172,11 +172,11 @@
 	
 	if(![self.user.image isEmpty] && self.user.image) {
 		NSURL * url = [NSURL URLWithString:self.user.image];
-		[[UIImageLoader defaultLoader] loadImageWithURL:url hasCache:^(UIImage *image, UIImageLoadSource loadedFromSource) {
+		[[UIImageLoader defaultLoader] loadImageWithURL:url hasCache:^(UIImageLoaderImage *image, UIImageLoadSource loadedFromSource) {
 			self.userProfileImageView.image = image;
-		} sendRequest:^(BOOL didHaveCachedImage) {
+		} sendingRequest:^(BOOL didHaveCachedImage) {
 			
-		} requestCompleted:^(NSError *error, UIImage *image, UIImageLoadSource loadedFromSource) {
+		} requestCompleted:^(NSError *error, UIImageLoaderImage *image, UIImageLoadSource loadedFromSource) {
 			if(loadedFromSource == UIImageLoadSourceNetworkToDisk) {
 				self.userProfileImageView.image = image;
 			}

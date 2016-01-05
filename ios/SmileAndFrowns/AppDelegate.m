@@ -46,7 +46,7 @@ static AppDelegate * _instance;
 	loader.trustAnySSLCertificate = TRUE;
 	loader.cacheImagesInMemory = TRUE;
 	loader.memoryCache.maxBytes = 52428800; //50MB
-	[loader clearCachedFilesOlderThan1Week];
+	[loader clearCachedFilesModifiedOlderThan1Week];
 	[loader setAuthUsername:[SNFModel sharedInstance].config.profileImageAuthUsername password:[SNFModel sharedInstance].config.profileImageAuthPassword];
 	
 	[SNFModel sharedInstance].managedObjectContext = self.managedObjectContext;
