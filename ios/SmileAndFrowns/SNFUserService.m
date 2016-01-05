@@ -185,28 +185,35 @@ static NSURLSession * session = nil;
 	NSString *boardUUID = [data objectForKey:@"board_uuid"];
 	NSString *email = [data objectForKey:@"invitee_email"];
 	NSString *firstName = [data objectForKey:@"invitee_firstname"];
-	NSString *lastName = [data objectForKey:@"invitee_lastname"];
+	//NSString *lastName = [data objectForKey:@"invitee_lastname"];
 	
 	if(!email || ![email isValidEmail] || [email isEmpty]){
 		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"email must be valid"]);
 	}
+	
 	if(!boardUUID || [boardUUID isEmpty]){
 		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"must include a board"]);
 	}
+	
 	// TODO: make sure board is valid and exists
 	if(!firstName || [firstName isEmpty]){
 		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"must include a first name"]);
 	}
-	if(!lastName || [lastName isEmpty]){
-		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"must include a last name"]);
-	}
+	
+	//if(!lastName || [lastName isEmpty]){
+	//	return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"must include a last name"]);
+	//}
+	
 	if(!role || [role isEmpty]){
 		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"must include a role"]);
 	}
+	
 	BOOL passRole = NO;
+	
 	if([role isEqualToString:SNFUserRoleParent] || [role isEqualToString:SNFUserRoleGuardian] || [role isEqualToString:SNFUserRoleChild]){
 		passRole = YES;
 	}
+	
 	if(!passRole){
 		return completion([SNFError errorWithCode:SNFErrorCodeFormInputError andMessage:@"not a valid role"]);
 	}

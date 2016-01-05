@@ -161,7 +161,7 @@ static AppDelegate * _instance;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-	if(![SNFSyncService instance].syncing){
+	if(![SNFSyncService instance].syncing) {
 		[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {}];
 	}
 }

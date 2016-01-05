@@ -34,7 +34,7 @@ static SNFSyncService * _instance;
 	_syncTimer = [NSTimer scheduledTimerWithTimeInterval:(60.0 * 10.0) target:self selector:@selector(attemptSync:) userInfo:nil repeats:YES];
 	NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
 	self.session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-	[self attemptSync:nil];
+	//[self attemptSync:nil];
 	return self;
 }
 

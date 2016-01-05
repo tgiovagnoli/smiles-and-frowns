@@ -517,9 +517,9 @@ def invite(request):
 
 	#get invitee last name
 	invitee_lastname = request.POST.get('invitee_lastname',None)
-	if not invitee_lastname or len(invitee_lastname) < 1:
-		return json_response_error("invitee_lastname required")
-
+	#if not invitee_lastname or len(invitee_lastname) < 1:
+	#	return json_response_error("invitee_lastname required")
+	
 	#try and find a user with the provided invitee_email.
 	invitee_user = None
 	try:
@@ -553,7 +553,7 @@ def invite(request):
 		code = invite.code
 	
 	invite.save()
-
+	
 	#setup template data for email
 	data = {
 		'code':code,

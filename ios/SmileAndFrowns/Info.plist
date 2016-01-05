@@ -77,6 +77,17 @@
 		<key>apiPath</key>
 		<string>api</string>
 		<key>serverURL</key>
+		<string>http://imac.local:8000</string>
+	</dict>
+	<key>SNFDebugLocal</key>
+	<dict>
+		<key>TwitterKey</key>
+		<string>7ghdn08ov5iF7DymXI1WVxYWn</string>
+		<key>TwitterSecret</key>
+		<string>LuFNvUIq6c05jotBq8YWserlHcjWmlYcbfDnOhfxRp9XiVeov4</string>
+		<key>apiPath</key>
+		<string>api</string>
+		<key>serverURL</key>
 		<string>http://127.0.0.1:8000</string>
 	</dict>
 	<key>SNFServices</key>
