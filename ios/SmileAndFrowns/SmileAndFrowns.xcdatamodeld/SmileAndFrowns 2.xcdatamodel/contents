@@ -5,6 +5,7 @@
         <attribute name="device_date" attributeType="Date" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" maxValueString="256" syncable="YES"/>
         <attribute name="positive" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="predefined_behavior_uuid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="soft_deleted" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="title" attributeType="String" maxValueString="128" defaultValueString="Untitled" syncable="YES"/>
@@ -17,6 +18,7 @@
     <entity name="SNFBoard" representedClassName="SNFBoard" syncable="YES">
         <attribute name="created_date" attributeType="Date" syncable="YES"/>
         <attribute name="device_date" attributeType="Date" syncable="YES"/>
+        <attribute name="predefined_board_uuid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="remote_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="soft_deleted" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="title" attributeType="String" maxValueString="128" defaultValueString="Untitled" syncable="YES"/>
@@ -116,8 +118,8 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SNFUser" inverseName="user_roles" inverseEntity="SNFUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SNFBehavior" positionX="-882" positionY="-225" width="128" height="225"/>
-        <element name="SNFBoard" positionX="-1107" positionY="-111" width="128" height="255"/>
+        <element name="SNFBehavior" positionX="-882" positionY="-225" width="128" height="240"/>
+        <element name="SNFBoard" positionX="-1107" positionY="-111" width="128" height="270"/>
         <element name="SNFFrown" positionX="-389" positionY="27" width="128" height="210"/>
         <element name="SNFPredefinedBehavior" positionX="-639" positionY="-369" width="128" height="120"/>
         <element name="SNFPredefinedBehaviorGroup" positionX="-477" positionY="-369" width="128" height="90"/>

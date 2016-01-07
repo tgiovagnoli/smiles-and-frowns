@@ -14,15 +14,15 @@ class UserRoleAdmin(admin.ModelAdmin):
 
 class BoardAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("title", "owner", "transaction_id", "device_date", "deleted", "uuid")
-	list_display = ("title","created_date","updated_date","device_date",)
-	readonly_fields = ('uuid', "owner")
+	fields = ("title", "owner", "device_date", "transaction_id", "deleted", "uuid", "predefined_board_uuid")
+	list_display = ("title", "created_date","updated_date","device_date",)
+	readonly_fields = ('uuid', "owner",'predefined_board_uuid')
 
 class BehaviorAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("board", "title", "note", "device_date", "deleted", "positive", "uuid")
+	fields = ("board", "title", "note", "device_date", "deleted", "positive", "uuid", "predefined_behavior_uuid")
 	list_display = ("title", "board", "positive", "deleted", "updated_date")
-	readonly_fields = ('uuid',)
+	readonly_fields = ('uuid','predefined_behavior_uuid',)
 
 class RewardAdmin(admin.ModelAdmin):
 	save_on_top = True

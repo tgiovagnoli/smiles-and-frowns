@@ -2,6 +2,8 @@
 #import "NSManagedObject+InfoDictionary.h"
 #import "SNFModel.h"
 #import "SNFDateManager.h"
+#import "SNFPredefinedBehavior.h"
+#import "SNFPredefinedBoard.h"
 
 @implementation NSManagedObject (InfoDictionary)
 
@@ -91,9 +93,12 @@
 			
 			if(class == [NSDate class]) {
 				value = [self dateFromString:value];
+			} else if(class == [NSString class] && [value isEqual:[NSNull null]]) {
+				value = @"";
 			} else if([class isSubclassOfClass:[NSManagedObject class]]) {
 				value = [class editOrCreatefromInfoDictionary:value withContext:context];
 			}
+			
 		}
 		
 		//if updated_date and dateManager is locked it means we're updating records in the response

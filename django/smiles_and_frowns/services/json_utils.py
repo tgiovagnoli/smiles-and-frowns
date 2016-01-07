@@ -28,7 +28,8 @@ def board_info_dictionary_collection(boards,request):
 def board_info_dictionary(board,request):
 	board_data = {
 		"title": board.title,
-		"id": board.id
+		"id": board.id,
+		"predefined_board_uuid":board.predefined_board_uuid,
 	}
 	if board.owner: board_data["owner"] = user_info_dictionary(board.owner,request)
 	append_sync_info(board, board_data)
@@ -76,6 +77,7 @@ def behavior_info_dictionary(behavior):
 		"note": behavior.note,
 		"id": behavior.id,
 		"positive": behavior.positive,
+		"predefined_behavior_uuid":behavior.predefined_behavior_uuid,
 	}
 	append_sync_info(behavior, behavior_data)
 	if behavior.board: behavior_data['board'] = {'uuid':behavior.board.uuid}

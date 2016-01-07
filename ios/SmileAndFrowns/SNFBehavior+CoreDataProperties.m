@@ -7,6 +7,7 @@
 @dynamic title;
 @dynamic note;
 @dynamic uuid;
+@dynamic predefined_behavior_uuid;
 @dynamic positive;
 @dynamic soft_deleted;
 @dynamic created_date;

@@ -6,6 +6,7 @@
 + (NSDictionary *)keyMappings{
 	return @{
 		@"uuid": @"uuid",
+		@"predefined_behavior_uuid":@"predefined_behavior_uuid",
 		@"title": @"title",
 		@"note": @"note",
 		@"soft_deleted": @"deleted",
@@ -22,6 +23,9 @@
 	self.created_date = [NSDate date];
 	self.device_date = [NSDate date];
 	self.uuid = [[NSUUID UUID] UUIDString];
+	if(!self.predefined_behavior_uuid) {
+		self.predefined_behavior_uuid = @"";
+	}
 	self.soft_deleted = @NO;
 	if(!self.note){
 		self.note = @"";

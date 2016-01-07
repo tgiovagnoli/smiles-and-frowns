@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)permissionForUser:(SNFUser *)user;
 
 
+//this looks up a SNFPredefinedBoard based on the predefined_board_uuid, then returns all of it's associated behaviors.
+- (NSArray *) predefinedBoardBehaviors;
+
 @end
 
 NS_ASSUME_NONNULL_END

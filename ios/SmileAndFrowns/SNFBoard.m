@@ -16,11 +16,12 @@
 		@"title": @"title",
 		@"soft_deleted": @"deleted",
 		@"uuid": @"uuid",
+		@"predefined_board_uuid":@"predefined_board_uuid",
 		@"transaction_id": @"transaction_id",
 		@"remote_id": @"id",
 		@"updated_date": @"updated_date",
 		@"device_date": @"device_date",
-		@"owner": @"owner"
+		@"owner": @"owner",
 	};
 }
 
@@ -29,6 +30,9 @@
 	self.created_date = [NSDate date];
 	self.device_date = [NSDate date];
 	self.uuid = [[NSUUID UUID] UUIDString];
+	if(!self.predefined_board_uuid) {
+		self.predefined_board_uuid = @"";
+	}
 	if(!self.title){
 		self.title = @"Untitled";
 	}
@@ -104,6 +108,26 @@
 	[self addInitialRewards];
 }
 
+- (NSArray *) predefinedBoardBehaviors {
+	if(self.predefined_board_uuid && ![self.predefined_board_uuid isEqual:[NSNull null]] && self.predefined_board_uuid.length > 0) {
+		SNFPredefinedBoard * predefinedBoard = [SNFPredefinedBoard boardByUUID:self.predefined_board_uuid];
+		if(predefinedBoard) {
+			return [predefinedBoard.behaviors allObjects];
+		}
+	}
+	return nil;
+}
+
+- (NSArray *) predefinedBehaviors {
+	NSMutableArray * predefinedBehaviors = [NSMutableArray array];
+	for(SNFBehavior * behavior in self.behaviors) {
+		if(behavior.predefined_behavior_uuid && ![self.predefined_board_uuid isEqual:[NSNull null]] && self.predefined_board_uuid.length > 0) {
+			[predefinedBehaviors addObject:behavior];
+		}
+	}
+	return predefinedBehaviors;
+}
+
 + (SNFBoard *) boardByUUID:(NSString *) uuid; {
 	NSError * error = nil;
 	NSFetchRequest * findRequest = [[NSFetchRequest alloc] init];
@@ -129,6 +153,7 @@
 		boardInfo = @{@"title": pdb.title, @"owner": [[SNFModel sharedInstance].loggedInUser infoDictionary]};
 	}
 	SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
+	board.predefined_board_uuid = pdb.uuid;
 	for(SNFPredefinedBehavior *pdBehavior in pdb.behaviors){
 		NSDictionary *behaviorInfo = @{
 									   @"title": pdBehavior.title,
@@ -136,6 +161,7 @@
 									   @"positive": pdBehavior.positive,
 									   };
 		SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
+		behavior.predefined_behavior_uuid = pdBehavior.uuid;
 		NSLog(@"%@ - %@", behavior.title, behavior.positive);
 	}
 	[board addInitialRewards];

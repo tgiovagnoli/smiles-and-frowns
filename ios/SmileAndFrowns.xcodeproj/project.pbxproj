@@ -353,6 +353,7 @@
 		078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = libs/TwitterCore.framework; sourceTree = "<group>"; };
 		078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = libs/Fabric.framework; sourceTree = "<group>"; };
 		078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = libs/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		07BBA5141C3F322F00BBA49D /* SmileAndFrowns 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SmileAndFrowns 2.xcdatamodel"; sourceTree = "<group>"; };
 		07C0F3AE1BEC4C460075A6B9 /* UIViewController+ModalCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ModalCreation.h"; sourceTree = "<group>"; };
 		07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ModalCreation.m"; sourceTree = "<group>"; };
 		07C0F3B11BED047B0075A6B9 /* SNFInvitesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFInvitesCell.h; sourceTree = "<group>"; };
@@ -1564,6 +1565,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Thomas Giovagnoli (VUX6DTA5PC)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1584,6 +1586,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.smilesandfrowns.SmilesAndFrowns;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c3301ee6-4af6-4002-a5e0-2679001fb51f";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1592,6 +1595,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Laws of Attraction LLC (PU2E8NSJY2)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1612,6 +1616,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.smilesandfrowns.SmilesAndFrowns;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "32ed5626-94a8-4efa-8f8e-fdd6bc09d0f3";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1643,6 +1648,7 @@
 		D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				07BBA5141C3F322F00BBA49D /* SmileAndFrowns 2.xcdatamodel */,
 				D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */,
 			);
 			currentVersion = D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */;

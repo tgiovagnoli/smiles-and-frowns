@@ -744,6 +744,7 @@ def sync(request):
 		board.title = client_board.get('title', '')
 		board.device_date = board_client_date
 		board.transaction_id = client_board.get('transaction_id')
+		board.predefined_board_uuid = client_board.get('predefined_board_uuid',"")
 		board.save()
 
 		#set created id in lookup. this is after save so the uuid is populated
@@ -864,6 +865,7 @@ def sync(request):
 		behavior.device_date = client_behavior_date
 		behavior.deleted = client_behavior.get('deleted',False)
 		behavior.positive = client_behavior.get('positive',True)
+		behavior.predefined_behavior_uuid = client_behavior.get('predefined_behavior_uuid',"")
 		behavior.save()
 
 		#set created for lookup

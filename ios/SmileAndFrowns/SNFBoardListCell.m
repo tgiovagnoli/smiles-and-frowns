@@ -6,6 +6,8 @@
 - (void) awakeFromNib {
 	[super awakeFromNib];
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
+	[self setSeparatorInset:UIEdgeInsetsZero];
+	self.preservesSuperviewLayoutMargins = FALSE;
 }
 
 - (void)setBoard:(SNFBoard *)board{

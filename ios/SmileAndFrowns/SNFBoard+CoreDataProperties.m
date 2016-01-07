@@ -8,6 +8,7 @@
 @implementation SNFBoard (CoreDataProperties)
 
 @dynamic uuid;
+@dynamic predefined_board_uuid;
 @dynamic owner;
 @dynamic updated_date;
 @dynamic soft_deleted;

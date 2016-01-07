@@ -8,73 +8,74 @@
 #import "NSTimer+Blocks.h"
 #import "SNFLauncher.h"
 
-const NSString *SNFBoardListCustomTitle = @"Custom Board";
+const NSString * SNFBoardListCustomTitle = @"Custom Board";
 
 @implementation SNFBoardList
 
-- (void)viewDidLoad{
+- (void) viewDidLoad {
 	[super viewDidLoad];
-	
 	self.searchField.hidden = YES;
 	[self.searchField addTarget:self action:@selector(searchFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-	
 	UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
 	[refreshControl addTarget:self action:@selector(onBoardRefresh:) forControlEvents:UIControlEventValueChanged];
 	[self.boardsTable addSubview:refreshControl];
 	[self.boardsTable insertSubview:refreshControl atIndex:0];
+	[self decorate];
+	[self reloadBoards];
 	
 	[[GATracking instance] trackScreenWithTagManager:@"BoardListView"];
-	
-	[self decorate];
-	
-	[self reloadBoards];
 }
 
-- (void)decorate{
+- (void) decorate {
 	[SNFFormStyles roundEdgesOnButton:self.searchButton];
 	[SNFFormStyles roundEdgesOnButton:self.purchaseButton];
 	[SNFFormStyles updateFontOnSegmentControl:self.filterControl];
 }
 
-- (void)viewStack:(UIViewControllerStack *)viewStack willShowView:(UIViewControllerStackOperation)operation wasAnimated:(BOOL)wasAnimated{
+- (void) viewStack:(UIViewControllerStack *) viewStack willShowView:(UIViewControllerStackOperation) operation wasAnimated:(BOOL) wasAnimated {
 	[self reloadBoards];
 }
 
-- (void)onBoardRefresh:(UIRefreshControl *)refresh{
+- (void) onBoardRefresh:(UIRefreshControl *) refresh {
 	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
 		[refresh endRefreshing];
-		if(error){
-			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+		if(error) {
+			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
 			[alert addAction:[UIAlertAction OKAction]];
 			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
-		}else{
+		} else {
 			[self reloadBoards];
 		}
 	}];
 }
 
-- (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *)viewStack {
+- (BOOL) shouldResizeFrameForStackPush:(UIViewControllerStack *) viewStack {
 	return TRUE;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger) numberOfSectionsInTableView:(UITableView *) tableView {
 	return 2;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-	if(section == SNFBoardListSectionBoards){
+- (NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
+	if(section == SNFBoardListSectionBoards) {
 		return _boards.count;
-	}else if(section == SNFBoardListSectionPredefinedBoards){
-		if([self showCustom]){
+	}
+	
+	else if(section == SNFBoardListSectionPredefinedBoards) {
+		
+		if([self showCustom]) {
 			return _predefinedBoards.count + 1;
-		}else{
+		} else {
 			return _predefinedBoards.count;
 		}
+		
 	}
+	
 	return 0;
 }
 
-- (BOOL)showCustom{
+- (BOOL) showCustom {
 	if([[SNFBoardListCustomTitle lowercaseString] containsString:[self.searchField.text lowercaseString]] || [self.searchField.text isEmpty]){
 		return YES;
 	}
@@ -123,9 +124,11 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 - (void)boardListCell:(SNFBoardListCell *)cell wantsToResetBoard:(SNFBoard *)board{
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Reset board?" message:@"Are you sure you want to reset this board? All data will be lost and participating users will be removed from this board. This cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		NSArray * predefinedBehaviors = [board predefinedBoardBehaviors];
+		NSString * predefinedBoardUUID = board.predefined_board_uuid;
 		[board reset];
 		board.soft_deleted = @(TRUE);
-		[self addNewBoard:nil withTransactionID:nil editBoard:FALSE title:board.title];
+		[self addNewBoard:nil withTransactionID:nil editBoard:FALSE title:board.title copyBehaviors:predefinedBehaviors predefinedBoardUUID:predefinedBoardUUID];
 		[[SNFSyncService instance] saveContext];
 		[self reloadBoards];
 	}]];
@@ -249,18 +252,21 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 
 - (void)buyOrCreateBoard:(SNFPredefinedBoard *)pdb{
 	// make sure that the user is logged in
-	SNFUserService *userService = [[SNFUserService alloc] init];
+	SNFUserService * userService = [[SNFUserService alloc] init];
 	[userService authedUserInfoWithCompletion:^(NSError *error, SNFUser *user) {
 		if(!error && user) {
-			NSArray *allBoards = [SNFBoard allObjectsWithContext:[SNFModel sharedInstance].managedObjectContext];
+			NSArray * allBoards = [SNFBoard allObjectsWithContext:[SNFModel sharedInstance].managedObjectContext];
 			BOOL needsPurchase = NO;
-			NSString *loggedInUserName = [SNFModel sharedInstance].loggedInUser.username;
-			for(SNFBoard *board in allBoards){
-				if([board.owner.username isEqualToString:loggedInUserName]){
+			
+			NSString * loggedInUserName = [SNFModel sharedInstance].loggedInUser.username;
+			for(SNFBoard * board in allBoards) {
+				if([board.owner.username isEqualToString:loggedInUserName]) {
 					needsPurchase = YES;
+					break;
 				}
 			}
-			if(needsPurchase && pdb){
+			
+			if(needsPurchase && pdb) {
 				// buy board confirm
 				NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Would you like to purchase \"%@\"?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
@@ -269,38 +275,33 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 				}]];
 				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-			}else if(!needsPurchase && pdb){
+			}
+			
+			else if(!needsPurchase && pdb) {
 				// free board confirm
 				NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Are you sure you want to use \"%@\" as your free board?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-					[self addNewBoard:pdb withTransactionID:nil editBoard:TRUE title:nil];
+					[self addNewBoard:pdb withTransactionID:nil editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
 				}]];
 				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-			}else{
+			}
+			
+			else {
 				// empty board
-				/*
-				NSString *messageString = @"This will create an empty board.  You will need to add behaviors to this board before using it.  Continue?";
-				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-					if(needsPurchase){
-						[self purchaseNewBoard:pdb];
-					}else{
-						[self addNewBoard:pdb withTransactionID:nil];
-					}
-				}]];
-				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
-				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
-				*/
-				if(needsPurchase){
+				if(needsPurchase) {
 					[self purchaseNewBoard:pdb];
-				}else{
-					[self addNewBoard:pdb withTransactionID:nil editBoard:TRUE title:nil];
+				} else {
+					[self addNewBoard:pdb withTransactionID:nil editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
 				}
 			}
-		} else {
-			if([error.localizedDescription isEqualToString:@"login required"]){
+			
+		}
+		
+		else {
+			if([error.localizedDescription isEqualToString:@"login required"]) {
+				
 				// not authed
 				NSString * messageString = @"You are currently not signed into smiles and frowns. You need to login and be online to create a board.";
 				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:messageString preferredStyle:UIAlertControllerStyleAlert];
@@ -310,7 +311,9 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 				}]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 				
-			} else {
+			}
+			
+			else {
 				// likely offline
 				NSString * messageString = @"It appears you are offline. Please make sure you are online and logged in to purchase a new board.";
 				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:messageString preferredStyle:UIAlertControllerStyleAlert];
@@ -321,7 +324,7 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	}];
 }
 
-- (NSString *)behaviorsStringFromBoard:(SNFPredefinedBoard *)pdb{
+- (NSString *) behaviorsStringFromBoard:(SNFPredefinedBoard *) pdb {
 	NSInteger i = 0;
 	NSMutableString *behaviors = [[NSMutableString alloc] init];
 	NSInteger max = pdb.behaviors.count;
@@ -361,7 +364,7 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 - (void) purchaseNewBoard:(SNFPredefinedBoard *) pdb {
 	
 	#if TARGET_IPHONE_SIMULATOR
-	[self addNewBoard:pdb withTransactionID:[[NSUUID UUID] UUIDString] editBoard:TRUE title:nil];
+	[self addNewBoard:pdb withTransactionID:[[NSUUID UUID] UUIDString] editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
 	return;
 	#endif
 	
@@ -393,14 +396,20 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 			}
 			
 			[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
-				[self addNewBoard:pdb withTransactionID:transaction.transactionIdentifier editBoard:TRUE title:nil];
+				[self addNewBoard:pdb withTransactionID:transaction.transactionIdentifier editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
 			} repeats:FALSE];
 		}];
 	}];
 }
 
-- (void) addNewBoard:(SNFPredefinedBoard *) pdb withTransactionID:(NSString *) transactionId editBoard:(BOOL) editBoard title:(NSString *) title {
+- (void) addNewBoard:(SNFPredefinedBoard *) pdb withTransactionID:(NSString *) transactionId editBoard:(BOOL) editBoard title:(NSString *) title copyBehaviors:(NSArray *) copyBehaviors predefinedBoardUUID:(NSString *) predefinedBoardUUID {
 	SNFBoard * newBoard = [SNFBoard boardFromPredefinedBoard:pdb andContext:[SNFModel sharedInstance].managedObjectContext];
+	
+	if(pdb) {
+		newBoard.predefined_board_uuid = pdb.uuid;
+	} else if(predefinedBoardUUID) {
+		newBoard.predefined_board_uuid = predefinedBoardUUID;
+	}
 	
 	if(transactionId) {
 		newBoard.transaction_id = transactionId;
@@ -408,6 +417,17 @@ const NSString *SNFBoardListCustomTitle = @"Custom Board";
 	
 	if(title) {
 		newBoard.title = title;
+	}
+	
+	if(copyBehaviors) {
+		for(SNFPredefinedBehavior * behavior in copyBehaviors) {
+			NSDictionary * behaviorInfo = @{
+				@"title": behavior.title,
+				@"board": @{@"uuid":newBoard.uuid},
+				@"positive": behavior.positive,
+			};
+			[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:[SNFModel sharedInstance].managedObjectContext];
+		}
 	}
 	
 	[self reloadBoards];

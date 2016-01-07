@@ -131,7 +131,7 @@
                         <action selector="addFromContacts:" destination="-1" eventType="touchUpInside" id="bZY-9s-vpJ"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eVl-ju-Z9j">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eVl-ju-Z9j">
                     <rect key="frame" x="96" y="104" width="484" height="30"/>
                     <animations/>
                     <constraints>
@@ -289,7 +289,7 @@
                     <exclude reference="ath-HW-sH4"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="286" y="73.5"/>
+            <point key="canvasLocation" x="278" y="-16.5"/>
         </view>
     </objects>
     <resources>

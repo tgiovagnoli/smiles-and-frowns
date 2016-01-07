@@ -68,8 +68,9 @@ post_save.connect(create_user_profile, sender=User)
 
 class Board(SyncModel):
 	title = models.CharField(max_length=128)
-	owner = models.ForeignKey(User, unique=False, null=True, on_delete=models.SET_NULL)
-	transaction_id = models.CharField(max_length=128, blank=True, default="", null=True)
+	owner = models.ForeignKey(User,unique=False,null=True,on_delete=models.SET_NULL)
+	transaction_id = models.CharField(max_length=128, blank=True, default="",null=True)
+	predefined_board_uuid = models.CharField(max_length=64,default="",null=True) #this is only set if the board was created from a predefined board.
 
 	@property
 	def users(self):
@@ -110,6 +111,7 @@ class Behavior(SyncModel):
 	note = models.CharField(max_length=256, blank=True, null=True, default="")
 	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	positive = models.BooleanField(default=True)
+	predefined_behavior_uuid = models.CharField(max_length=64,default="",null=True) #this is only set if the behavior was created from a predefined behavior.
 	def __unicode__(self):
 		return self.title
 
