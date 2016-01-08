@@ -128,7 +128,7 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 		NSString * predefinedBoardUUID = board.predefined_board_uuid;
 		[board reset];
 		board.soft_deleted = @(TRUE);
-		[self addNewBoard:nil withTransactionID:nil editBoard:FALSE title:board.title copyBehaviors:predefinedBehaviors predefinedBoardUUID:predefinedBoardUUID];
+		[self addNewBoard:nil withTransactionID:board.transaction_id editBoard:FALSE title:board.title copyBehaviors:predefinedBehaviors predefinedBoardUUID:predefinedBoardUUID];
 		[[SNFSyncService instance] saveContext];
 		[self reloadBoards];
 	}]];
