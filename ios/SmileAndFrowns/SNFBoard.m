@@ -40,6 +40,33 @@
 }
 
 - (void)addInitialRewards{
+	NSDictionary *goalReward = @{
+								 @"title": @"fun day trip",
+								 @"board": @{@"uuid": self.uuid},
+								 @"currency_amount": @1,
+								 @"smile_amount": @20,
+								 @"currency_type": SNFRewardCurrencyTypeGoal,
+								 };
+	[SNFReward editOrCreatefromInfoDictionary:goalReward withContext:self.managedObjectContext];
+	
+	NSDictionary *treatReward = @{
+								  @"title": @"small treat",
+								  @"board": @{@"uuid": self.uuid},
+								  @"currency_amount": @1,
+								  @"smile_amount": @10,
+								  @"currency_type": SNFRewardCurrencyTypeTreat,
+								  };
+	[SNFReward editOrCreatefromInfoDictionary:treatReward withContext:self.managedObjectContext];
+	
+	NSDictionary *timeReward = @{
+								 @"title": @"minutes screen time",
+								 @"board": @{@"uuid": self.uuid},
+								 @"currency_amount": @20,
+								 @"smile_amount": @10,
+								 @"currency_type": SNFRewardCurrencyTypeTime,
+								 };
+	[SNFReward editOrCreatefromInfoDictionary:timeReward withContext:self.managedObjectContext];
+	
 	NSDictionary *moneyReward = @{
 									@"title": @"dollars",
 									@"board": @{@"uuid": self.uuid},
@@ -49,32 +76,6 @@
 									};
 	[SNFReward editOrCreatefromInfoDictionary:moneyReward withContext:self.managedObjectContext];
 	
-	NSDictionary *iPadReward = @{
-								   @"title": @"minutes screen time",
-								   @"board": @{@"uuid": self.uuid},
-								   @"currency_amount": @20,
-								   @"smile_amount": @10,
-								   @"currency_type": SNFRewardCurrencyTypeTime,
-								   };
-	[SNFReward editOrCreatefromInfoDictionary:iPadReward withContext:self.managedObjectContext];
-	
-	NSDictionary *treatReward = @{
-								 @"title": @"small treat",
-								 @"board": @{@"uuid": self.uuid},
-								 @"currency_amount": @1,
-								 @"smile_amount": @10,
-								 @"currency_type": SNFRewardCurrencyTypeTreat,
-								 };
-	[SNFReward editOrCreatefromInfoDictionary:treatReward withContext:self.managedObjectContext];
-	
-	NSDictionary *goalReward = @{
-								  @"title": @"fun day trip",
-								  @"board": @{@"uuid": self.uuid},
-								  @"currency_amount": @1,
-								  @"smile_amount": @20,
-								  @"currency_type": SNFRewardCurrencyTypeGoal,
-								  };
-	[SNFReward editOrCreatefromInfoDictionary:goalReward withContext:self.managedObjectContext];
 }
 
 - (void) reset {
