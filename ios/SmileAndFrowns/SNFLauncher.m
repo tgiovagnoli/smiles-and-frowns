@@ -21,28 +21,13 @@
 @implementation SNFLauncher
 
 + (BOOL) showAtLaunch {
-	[[NSUserDefaults standardUserDefaults] registerDefaults:@{@"ShowAtStartup":@(true)}];
-	return [[NSUserDefaults standardUserDefaults] boolForKey:@"ShowAtStartup"];
+	return FALSE;
+//	[[NSUserDefaults standardUserDefaults] registerDefaults:@{@"ShowAtStartup":@(true)}];
+//	return [[NSUserDefaults standardUserDefaults] boolForKey:@"ShowAtStartup"];
 }
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
-	self.showOnStartup.on = [SNFLauncher showAtLaunch];
-	
-	self.showOnStartup.onTintColor = [SNFFormStyles darkGray];
-	self.showOnStartup.tintColor = [UIColor whiteColor];
-	
-	if(self.showOnStartup.on) {
-		self.showOnStartup.thumbTintColor = [SNFFormStyles darkSandColor];
-	} else {
-		self.showOnStartup.thumbTintColor = [UIColor whiteColor];
-	}
-	
-	
-	if([SNFModel sharedInstance].loggedInUser) {
-		[self.loginButton setTitle:@"Logout" forState:UIControlStateNormal];
-		[self.createAccountButton setVisible:FALSE];
-	}
 	
 	[[SNFModel sharedInstance] addObserver:self forKeyPath:@"loggedInUser" options:NSKeyValueObservingOptionNew context:nil];
 	
@@ -74,35 +59,24 @@
 }
 
 - (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-	self.showOnStartupLabelBottom.constant = 20;
+	self.bottom.constant = 20;
 	[self.bannerView removeFromSuperview];
 }
 
 - (void) bannerViewDidLoadAd:(ADBannerView *)banner {
 	banner.y = self.view.height - banner.height;
-	self.showOnStartupLabelBottom.constant = banner.height + 20;
+	self.bottom.constant = banner.height + 20;
 	[self.view addSubview:banner];
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
 	if([keyPath isEqualToString:@"loggedInUser"]) {
-		if([SNFModel sharedInstance].loggedInUser) {
-			[self.loginButton setTitle:@"Logout" forState:UIControlStateNormal];
-			[self.createAccountButton setVisible:FALSE];
-		} else {
-			[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
-			[self.createAccountButton setVisible:TRUE];
-		}
+		[NSTimer scheduledTimerWithTimeInterval:.5 block:^{
+			[self.bannerView removeFromSuperview];
+			SNFViewController * vc = [[SNFViewController alloc] init];
+			[AppDelegate instance].window.rootViewController = vc;
+		} repeats:FALSE];
 	}
-}
-
-- (IBAction) showAtStartup:(id) sender {
-	if(self.showOnStartup.on) {
-		self.showOnStartup.thumbTintColor = [SNFFormStyles darkSandColor];
-	} else {
-		self.showOnStartup.thumbTintColor = [UIColor whiteColor];
-	}
-	[[NSUserDefaults standardUserDefaults] setBool:self.showOnStartup.on forKey:@"ShowAtStartup"];
 }
 
 - (IBAction) acceptInvite:(id) sender {

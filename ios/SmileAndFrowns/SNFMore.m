@@ -27,7 +27,6 @@
 					   [self tableItemWithName:@"Remove Ads" andSelector:@selector(removeAds)],
 					   [self tableItemWithName:@"Terms and Privacy" andSelector:@selector(termsAndPrivacy)],
 					   [self tableItemWithName:@"View the Tutorial" andSelector:@selector(tutorial)],
-					   [self tableItemWithName:@"Launcher" andSelector:@selector(launcher)],
 					   [self tableItemWithName:@"Reset Local Data" andSelector:@selector(resetLocalSync)],
 					   [self tableItemWithName:SHARE_APP_NAME andSelector:@selector(shareAppMail)],
 					   [self tableItemWithName:@"Logout" andSelector:@selector(logout)],

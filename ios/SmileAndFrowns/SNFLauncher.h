@@ -10,9 +10,8 @@
 @property (weak) IBOutlet UISwitch * showOnStartup;
 @property (weak) IBOutlet UIButton * loginButton;
 @property (weak) IBOutlet UIButton * acceptInviteButton;
-@property (weak) IBOutlet UILabel * showOnStartupLabel;
-@property IBOutlet NSLayoutConstraint * showOnStartupLabelBottom;
 @property (weak) IBOutlet UIButton * createAccountButton;
+@property (weak) IBOutlet NSLayoutConstraint * bottom;
 @property IBOutletCollection(UIButton) NSArray *buttons;
 
 + (BOOL) showAtLaunch;
