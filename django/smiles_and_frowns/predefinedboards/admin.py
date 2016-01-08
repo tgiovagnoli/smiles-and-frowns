@@ -1,19 +1,18 @@
 from django.contrib import admin
 from predefinedboards import models
 
-
 class PredefinedBoardAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("title", "behaviors", "uuid")
+	fields = ("title", "behaviors", "uuid", "list_sort",)
 	readonly_fields = ("uuid",)
-	list_display = ("title",)
+	list_display = ("title","list_sort",)
 	filter_horizontal = ("behaviors",)
 
 class PredefinedBehaviorAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("title", "uuid", "positive")
+	fields = ("title", "uuid", "positive",)
 	readonly_fields = ("uuid",)
-	list_display = ("title", "positive")
+	list_display = ("title", "positive",)
 
 class PredefinedBehaviorGroupAdmin(admin.ModelAdmin):
 	save_on_top = True

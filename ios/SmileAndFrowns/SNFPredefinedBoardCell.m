@@ -9,11 +9,11 @@
 	self.preservesSuperviewLayoutMargins = FALSE;
 }
 
-- (void)setPredefinedBoard:(SNFPredefinedBoard *)predefinedBoard{
+- (void) setPredefinedBoard:(SNFPredefinedBoard *) predefinedBoard {
 	_predefinedBoard = predefinedBoard;
-	if(predefinedBoard){
+	if(predefinedBoard) {
 		self.titleLabel.text = predefinedBoard.title;
-	}else{
+	} else {
 		self.titleLabel.text = @"Custom board";
 	}
 }

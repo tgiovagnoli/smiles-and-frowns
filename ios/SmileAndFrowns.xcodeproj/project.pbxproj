@@ -39,6 +39,7 @@
 		071AC1021BF2656E005D63F2 /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 071AC1011BF2656E005D63F2 /* HockeySDKResources.bundle */; };
 		071AC10E1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 071AC10D1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m */; };
 		07200DCD1C1C92060031B260 /* TriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07200DCC1C1C92060031B260 /* TriangleView.m */; };
+		072BBF741C40638000A7AADA /* SmileAndFrowns.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 072BBF701C40638000A7AADA /* SmileAndFrowns.xcdatamodeld */; };
 		074D8D091C21EC06007B5516 /* SNFReportPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D071C21EC06007B5516 /* SNFReportPDF.m */; };
 		074D8D0A1C21EC06007B5516 /* SNFReportPDF.xib in Resources */ = {isa = PBXBuildFile; fileRef = 074D8D081C21EC06007B5516 /* SNFReportPDF.xib */; };
 		074D8D0E1C21EC78007B5516 /* SNFReportPDFUserHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 074D8D0C1C21EC78007B5516 /* SNFReportPDFUserHeader.m */; };
@@ -96,7 +97,6 @@
 		078DF4D31BEA9AF600CBFAA4 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */; };
 		078DF4D51BEA9B1100CBFAA4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */; };
 		078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */; };
-		07BBA51B1C3F36B900BBA49D /* SmileAndFrowns.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07BBA5191C3F36B900BBA49D /* SmileAndFrowns.xcdatamodeld */; };
 		07C0F3B01BEC4C460075A6B9 /* UIViewController+ModalCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */; };
 		07C0F3B31BED047B0075A6B9 /* SNFInvitesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3B21BED047B0075A6B9 /* SNFInvitesCell.m */; };
 		07C0F3B51BED049B0075A6B9 /* SNFInvitesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3B41BED049B0075A6B9 /* SNFInvitesCell.xib */; };
@@ -262,6 +262,9 @@
 		071AC10D1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableURLRequest+Additions.m"; path = "submodules/apd-objc/NSMutableURLRequest+Additions.m"; sourceTree = "<group>"; };
 		07200DCB1C1C92060031B260 /* TriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriangleView.h; sourceTree = "<group>"; };
 		07200DCC1C1C92060031B260 /* TriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriangleView.m; sourceTree = "<group>"; };
+		072BBF711C40638000A7AADA /* SmileAndFrowns 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SmileAndFrowns 2.xcdatamodel"; sourceTree = "<group>"; };
+		072BBF721C40638000A7AADA /* SmileAndFrowns 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SmileAndFrowns 3.xcdatamodel"; sourceTree = "<group>"; };
+		072BBF731C40638000A7AADA /* SmileAndFrowns.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmileAndFrowns.xcdatamodel; sourceTree = "<group>"; };
 		074D8D061C21EC06007B5516 /* SNFReportPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFReportPDF.h; sourceTree = "<group>"; };
 		074D8D071C21EC06007B5516 /* SNFReportPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFReportPDF.m; sourceTree = "<group>"; };
 		074D8D081C21EC06007B5516 /* SNFReportPDF.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFReportPDF.xib; sourceTree = "<group>"; };
@@ -353,8 +356,6 @@
 		078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = libs/TwitterCore.framework; sourceTree = "<group>"; };
 		078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = libs/Fabric.framework; sourceTree = "<group>"; };
 		078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = libs/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
-		07BBA51A1C3F36B900BBA49D /* SmileAndFrowns.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmileAndFrowns.xcdatamodel; sourceTree = "<group>"; };
-		07BBA51C1C3F36E600BBA49D /* SmileAndFrowns 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SmileAndFrowns 2.xcdatamodel"; sourceTree = "<group>"; };
 		07C0F3AE1BEC4C460075A6B9 /* UIViewController+ModalCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ModalCreation.h"; sourceTree = "<group>"; };
 		07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ModalCreation.m"; sourceTree = "<group>"; };
 		07C0F3B11BED047B0075A6B9 /* SNFInvitesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFInvitesCell.h; sourceTree = "<group>"; };
@@ -981,13 +982,13 @@
 		D659DBCA1BDAE0B30048D3F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				072BBF701C40638000A7AADA /* SmileAndFrowns.xcdatamodeld */,
 				D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */,
 				075EA4CD1C1213900003A403 /* fonts */,
 				075EA4CC1C11FE5E0003A403 /* GTM-T7XD6P */,
 				07C0F3C01BEE646E0075A6B9 /* images */,
 				07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */,
 				D659DBC31BDAE07F0048D3F7 /* Info.plist */,
-				07BBA5191C3F36B900BBA49D /* SmileAndFrowns.xcdatamodeld */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1365,7 +1366,7 @@
 				D65DF17A1BE3F884009CC6DF /* SNFBoardEdit.m in Sources */,
 				078DF4BF1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m in Sources */,
 				D65DF1761BE3ED9F009CC6DF /* SNFSwipeCell.m in Sources */,
-				07BBA51B1C3F36B900BBA49D /* SmileAndFrowns.xcdatamodeld in Sources */,
+				072BBF741C40638000A7AADA /* SmileAndFrowns.xcdatamodeld in Sources */,
 				D6F4422C1BEBD76F009C2866 /* SNFTaggedAlertAction.m in Sources */,
 				D64D2C241C14A040007D3E7F /* UIColor+Hex.m in Sources */,
 				078DF4C51BEA62F600CBFAA4 /* UIViewController+Alerts.m in Sources */,
@@ -1645,13 +1646,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		07BBA5191C3F36B900BBA49D /* SmileAndFrowns.xcdatamodeld */ = {
+		072BBF701C40638000A7AADA /* SmileAndFrowns.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				07BBA51C1C3F36E600BBA49D /* SmileAndFrowns 2.xcdatamodel */,
-				07BBA51A1C3F36B900BBA49D /* SmileAndFrowns.xcdatamodel */,
+				072BBF711C40638000A7AADA /* SmileAndFrowns 2.xcdatamodel */,
+				072BBF721C40638000A7AADA /* SmileAndFrowns 3.xcdatamodel */,
+				072BBF731C40638000A7AADA /* SmileAndFrowns.xcdatamodel */,
 			);
-			currentVersion = 07BBA51C1C3F36E600BBA49D /* SmileAndFrowns 2.xcdatamodel */;
+			currentVersion = 072BBF721C40638000A7AADA /* SmileAndFrowns 3.xcdatamodel */;
 			name = SmileAndFrowns.xcdatamodeld;
 			path = SmileAndFrowns/SmileAndFrowns.xcdatamodeld;
 			sourceTree = "<group>";

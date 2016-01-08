@@ -9,6 +9,7 @@
 	return @{
 		@"uuid": @"uuid",
 		@"title": @"title",
+		@"list_sort":@"list_sort",
 	};
 }
 

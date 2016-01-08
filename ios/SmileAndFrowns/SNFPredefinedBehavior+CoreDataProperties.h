@@ -10,6 +10,7 @@
 //
 
 #import "SNFPredefinedBehavior.h"
+#import "SNFPredefinedBehaviorGroup.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,8 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *uuid;
 @property (nullable, nonatomic, retain) NSString *title;
 @property (nullable, nonatomic, retain) NSNumber *positive;
-@property (nullable, nonatomic, retain) NSSet<SNFPredefinedBoard *> *predefined_boards;
-@property (nullable, nonatomic, retain) NSSet<SNFPredefinedBehaviorGroup *> *predefined_behaviors;
+@property (nullable, nonatomic, retain) NSSet<SNFPredefinedBoard *> * predefined_boards;
+@property (nullable, nonatomic, retain) NSSet<SNFPredefinedBehaviorGroup *> * predefined_behaviors;
 
 @end
 

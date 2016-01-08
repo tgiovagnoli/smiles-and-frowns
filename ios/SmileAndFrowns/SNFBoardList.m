@@ -76,14 +76,16 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 }
 
 - (BOOL) showCustom {
-	if([[SNFBoardListCustomTitle lowercaseString] containsString:[self.searchField.text lowercaseString]] || [self.searchField.text isEmpty]){
-		return YES;
-	}
 	return NO;
+	//if([[SNFBoardListCustomTitle lowercaseString] containsString:[self.searchField.text lowercaseString]] || [self.searchField.text isEmpty]){
+	//	return YES;
+	//}
+	//return NO;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-	if(indexPath.section == SNFBoardListSectionBoards){
+- (UITableViewCell *) tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
+	if(indexPath.section == SNFBoardListSectionBoards) {
+		
 		SNFBoardListCell *cell = [self.boardsTable dequeueReusableCellWithIdentifier:@"SNFBoardListCell"];
 		
 		if(!cell) {
@@ -94,16 +96,19 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 		cell.delegate = self;
 		
 		return cell;
-	}else if(indexPath.section == SNFBoardListSectionPredefinedBoards){
+		
+	} else if(indexPath.section == SNFBoardListSectionPredefinedBoards) {
 		SNFPredefinedBoardCell *cell = [self.boardsTable dequeueReusableCellWithIdentifier:@"SNFPredefinedBoardCell"];
-		if(!cell){
+		if(!cell) {
 			cell = [[[NSBundle mainBundle] loadNibNamed:@"SNFPredefinedBoardCell" owner:nil options:nil] firstObject];
 		}
-		SNFPredefinedBoard *pdb;
-		if(indexPath.row < _predefinedBoards.count){
+		
+		SNFPredefinedBoard * pdb = nil;
+		if(indexPath.row < _predefinedBoards.count) {
 			pdb = [_predefinedBoards objectAtIndex:indexPath.row];
 		}
 		cell.predefinedBoard = pdb;
+		
 		return cell;
 	}
 	return nil;
@@ -151,9 +156,9 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 }
 
 - (void)reloadBoards{
-	NSError *error;
-	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"SNFBoard"];
-	if([self.searchField.text isEmpty]){
+	NSError * error;
+	NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"SNFBoard"];
+	if([self.searchField.text isEmpty]) {
 		request.predicate = [NSPredicate predicateWithFormat:@"(soft_deleted == 0)", [SNFModel sharedInstance].loggedInUser.email];
 	}else{
 		request.predicate = [NSPredicate predicateWithFormat:@"(soft_deleted == 0) && (title CONTAINS[cd] %@)", self.searchField.text,[SNFModel sharedInstance].loggedInUser.email];
@@ -165,28 +170,34 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
 	}
 	
-	NSArray *results = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:request error:&error];
-	if(error){
+	NSArray * results = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:request error:&error];
+	if(error) {
 		NSLog(@"error loading boards");
-	}else{
-		NSMutableArray *permittedResults = [[NSMutableArray alloc] init];
-		for(SNFBoard *board in results){
-			if([self hasPermissionForBoard:board]){
+	} else {
+		NSMutableArray * permittedResults = [[NSMutableArray alloc] init];
+		for(SNFBoard * board in results) {
+			if([self hasPermissionForBoard:board]) {
 				[permittedResults addObject:board];
 			}
 		}
 		_boards = permittedResults;
 	}
 	
-	// load up all the predefined boards
-	NSFetchRequest *predefRequest = [NSFetchRequest fetchRequestWithEntityName:@"SNFPredefinedBoard"];
-	if(![self.searchField.text isEmpty]){
+	//load up all the predefined boards
+	NSFetchRequest * predefRequest = [NSFetchRequest fetchRequestWithEntityName:@"SNFPredefinedBoard"];
+	NSSortDescriptor * list_sort = [[NSSortDescriptor alloc] initWithKey:@"list_sort" ascending:TRUE];
+	predefRequest.sortDescriptors = @[list_sort];
+	
+	if(![self.searchField.text isEmpty]) {
 		predefRequest.predicate = [NSPredicate predicateWithFormat:@"(title CONTAINS[cd] %@)", self.searchField.text];
 	}
+	
 	_predefinedBoards = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:predefRequest error:&error];
+	
 	if(error){
 		NSLog(@"error loading predefined boards");
 	}
+	
 	[self.boardsTable reloadData];
 }
 
@@ -426,7 +437,8 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 				@"board": @{@"uuid":newBoard.uuid},
 				@"positive": behavior.positive,
 			};
-			[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:[SNFModel sharedInstance].managedObjectContext];
+			SNFBehavior * behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:[SNFModel sharedInstance].managedObjectContext];
+			behavior.predefined_behavior_uuid = behavior.uuid;
 		}
 	}
 	

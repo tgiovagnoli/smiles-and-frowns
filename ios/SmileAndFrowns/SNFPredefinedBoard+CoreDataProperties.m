@@ -16,5 +16,6 @@
 @dynamic uuid;
 @dynamic title;
 @dynamic behaviors;
+@dynamic list_sort;
 
 @end

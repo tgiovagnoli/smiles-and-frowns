@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *uuid;
 @property (nullable, nonatomic, retain) NSString *title;
 @property (nullable, nonatomic, retain) NSSet<SNFPredefinedBehavior *> *behaviors;
+@property (nullable, nonatomic, retain) NSNumber * list_sort;
 
 @end
 

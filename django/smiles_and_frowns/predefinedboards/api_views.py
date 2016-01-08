@@ -6,7 +6,6 @@ from predefinedboards import models
 def json_response(response_data):
 	return HttpResponse(json.dumps(response_data, indent=4), content_type="application/json")
 
-
 def serialize_boards(boards):
 	boards_info = []
 	for board in boards:
@@ -14,6 +13,7 @@ def serialize_boards(boards):
 			"title": board.title,
 			"uuid": board.uuid,
 			"id": board.id,
+			"list_sort": board.list_sort,
 			"behaviors": serialize_behaviors(board.behaviors.all(), uuid_only=True)
 		})
 	return boards_info;

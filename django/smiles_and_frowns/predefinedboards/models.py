@@ -16,6 +16,7 @@ class PredefinedBoard(models.Model):
 	title = models.CharField(max_length=128)
 	uuid = models.CharField(max_length=64)
 	behaviors = models.ManyToManyField(PredefinedBehavior)
+	list_sort = models.PositiveSmallIntegerField(default=0)
 	def __unicode__(self):
 		return self.title
 	def save(self, *args, **kwargs):
