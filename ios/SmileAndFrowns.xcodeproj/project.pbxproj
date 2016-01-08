@@ -96,6 +96,7 @@
 		078DF4D31BEA9AF600CBFAA4 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */; };
 		078DF4D51BEA9B1100CBFAA4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */; };
 		078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */; };
+		07BBA51B1C3F36B900BBA49D /* SmileAndFrowns.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07BBA5191C3F36B900BBA49D /* SmileAndFrowns.xcdatamodeld */; };
 		07C0F3B01BEC4C460075A6B9 /* UIViewController+ModalCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */; };
 		07C0F3B31BED047B0075A6B9 /* SNFInvitesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3B21BED047B0075A6B9 /* SNFInvitesCell.m */; };
 		07C0F3B51BED049B0075A6B9 /* SNFInvitesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3B41BED049B0075A6B9 /* SNFInvitesCell.xib */; };
@@ -146,7 +147,6 @@
 		D659DBB11BDAE07F0048D3F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB01BDAE07F0048D3F7 /* main.m */; };
 		D659DBB41BDAE07F0048D3F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */; };
 		D659DBB71BDAE07F0048D3F7 /* SNFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */; };
-		D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */; };
 		D659DBBF1BDAE07F0048D3F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */; };
 		D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D659DBC01BDAE07F0048D3F7 /* LaunchScreen.storyboard */; };
 		D659DBEC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */; };
@@ -353,7 +353,8 @@
 		078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = libs/TwitterCore.framework; sourceTree = "<group>"; };
 		078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = libs/Fabric.framework; sourceTree = "<group>"; };
 		078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = libs/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
-		07BBA5141C3F322F00BBA49D /* SmileAndFrowns 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SmileAndFrowns 2.xcdatamodel"; sourceTree = "<group>"; };
+		07BBA51A1C3F36B900BBA49D /* SmileAndFrowns.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmileAndFrowns.xcdatamodel; sourceTree = "<group>"; };
+		07BBA51C1C3F36E600BBA49D /* SmileAndFrowns 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SmileAndFrowns 2.xcdatamodel"; sourceTree = "<group>"; };
 		07C0F3AE1BEC4C460075A6B9 /* UIViewController+ModalCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ModalCreation.h"; sourceTree = "<group>"; };
 		07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ModalCreation.m"; sourceTree = "<group>"; };
 		07C0F3B11BED047B0075A6B9 /* SNFInvitesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFInvitesCell.h; sourceTree = "<group>"; };
@@ -436,7 +437,6 @@
 		D659DBB31BDAE07F0048D3F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D659DBB51BDAE07F0048D3F7 /* SNFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNFViewController.h; sourceTree = "<group>"; };
 		D659DBB61BDAE07F0048D3F7 /* SNFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNFViewController.m; sourceTree = "<group>"; };
-		D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmileAndFrowns.xcdatamodel; sourceTree = "<group>"; };
 		D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = SmileAndFrowns/Assets.xcassets; sourceTree = "<group>"; };
 		D659DBC11BDAE07F0048D3F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D659DBC31BDAE07F0048D3F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = SmileAndFrowns/Info.plist; sourceTree = "<group>"; };
@@ -981,13 +981,13 @@
 		D659DBCA1BDAE0B30048D3F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				07BBA5191C3F36B900BBA49D /* SmileAndFrowns.xcdatamodeld */,
 				D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */,
 				075EA4CD1C1213900003A403 /* fonts */,
 				075EA4CC1C11FE5E0003A403 /* GTM-T7XD6P */,
 				07C0F3C01BEE646E0075A6B9 /* images */,
 				07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */,
 				D659DBC31BDAE07F0048D3F7 /* Info.plist */,
-				D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1365,6 +1365,7 @@
 				D65DF17A1BE3F884009CC6DF /* SNFBoardEdit.m in Sources */,
 				078DF4BF1BE81E7800CBFAA4 /* ATIFacebookAuthHandler.m in Sources */,
 				D65DF1761BE3ED9F009CC6DF /* SNFSwipeCell.m in Sources */,
+				07BBA51B1C3F36B900BBA49D /* SmileAndFrowns.xcdatamodeld in Sources */,
 				D6F4422C1BEBD76F009C2866 /* SNFTaggedAlertAction.m in Sources */,
 				D64D2C241C14A040007D3E7F /* UIColor+Hex.m in Sources */,
 				078DF4C51BEA62F600CBFAA4 /* UIViewController+Alerts.m in Sources */,
@@ -1426,7 +1427,6 @@
 				071AC10E1BF65B11005D63F2 /* NSMutableURLRequest+Additions.m in Sources */,
 				074D8D1F1C247BAD007B5516 /* SNFReportSection.m in Sources */,
 				0707D6AE1BE2A1C9002F1FC0 /* SNFLogin.m in Sources */,
-				D659DBBD1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld in Sources */,
 				D6F442261BEBA877009C2866 /* SNFReportDateGroup.m in Sources */,
 				D6272FB01BDFD88F0024CBC2 /* SNFService.m in Sources */,
 				D6270EDD1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.m in Sources */,
@@ -1645,13 +1645,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D659DBBB1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodeld */ = {
+		07BBA5191C3F36B900BBA49D /* SmileAndFrowns.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				07BBA5141C3F322F00BBA49D /* SmileAndFrowns 2.xcdatamodel */,
-				D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */,
+				07BBA51C1C3F36E600BBA49D /* SmileAndFrowns 2.xcdatamodel */,
+				07BBA51A1C3F36B900BBA49D /* SmileAndFrowns.xcdatamodel */,
 			);
-			currentVersion = D659DBBC1BDAE07F0048D3F7 /* SmileAndFrowns.xcdatamodel */;
+			currentVersion = 07BBA51C1C3F36E600BBA49D /* SmileAndFrowns 2.xcdatamodel */;
 			name = SmileAndFrowns.xcdatamodeld;
 			path = SmileAndFrowns/SmileAndFrowns.xcdatamodeld;
 			sourceTree = "<group>";
