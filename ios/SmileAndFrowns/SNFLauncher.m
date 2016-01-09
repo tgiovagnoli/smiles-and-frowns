@@ -29,7 +29,9 @@
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	
-	[[SNFModel sharedInstance] addObserver:self forKeyPath:@"loggedInUser" options:NSKeyValueObservingOptionNew context:nil];
+	//[[SNFModel sharedInstance] addObserver:self forKeyPath:@"loggedInUser" options:NSKeyValueObservingOptionNew context:nil];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLoginSyncComplete:) name:SNFLoginLogingSyncCompleted object:nil];
 	
 	if(![[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
 		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
@@ -54,7 +56,7 @@
 }
 
 - (void) dealloc {
-	[[SNFModel sharedInstance] removeObserver:self forKeyPath:@"loggedInUser"];
+	//[[SNFModel sharedInstance] removeObserver:self forKeyPath:@"loggedInUser"];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -67,6 +69,14 @@
 	banner.y = self.view.height - banner.height;
 	self.bottom.constant = banner.height + 20;
 	[self.view addSubview:banner];
+}
+
+- (void) onLoginSyncComplete:(id) sender {
+	[NSTimer scheduledTimerWithTimeInterval:.5 block:^{
+		[self.bannerView removeFromSuperview];
+		SNFViewController * vc = [[SNFViewController alloc] init];
+		[AppDelegate instance].window.rootViewController = vc;
+	} repeats:FALSE];
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {

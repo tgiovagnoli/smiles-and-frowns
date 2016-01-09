@@ -8,6 +8,7 @@
 #import "SNFFormStyles.h"
 
 extern NSString * const SNFLoginLoggedIn;
+extern NSString * const SNFLoginLogingSyncCompleted;
 
 @class SNFLogin;
 

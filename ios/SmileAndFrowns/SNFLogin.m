@@ -19,6 +19,7 @@
 #import "SNFLauncher.h"
 
 NSString * const SNFLoginLoggedIn = @"SNFLoginLoggedIn";
+NSString * const SNFLoginLogingSyncCompleted = @"SNFLoginSyncCompleted";
 
 @interface SNFLogin ()
 @property SNFUserService * service;
@@ -193,6 +194,8 @@ NSString * const SNFLoginLoggedIn = @"SNFLoginLoggedIn";
 			[self displayOKAlertWithTitle:@"Sync Error" message:error.localizedDescription completion:nil];
 			return;
 		}
+		
+		[[NSNotificationCenter defaultCenter] postNotificationName:SNFLoginLogingSyncCompleted object:self];
 		
 		[self closeModal];
 	}];

@@ -17,7 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SNFLauncher">
             <connections>
                 <outlet property="acceptInviteButton" destination="3kq-mh-ITC" id="2tC-0H-Hxz"/>
-                <outlet property="bottom" destination="SWK-tE-a2F" id="M9Q-kV-AGN"/>
+                <outlet property="bottom" destination="Qc8-oK-dmu" id="cr5-2L-FRP"/>
                 <outlet property="createAccountButton" destination="A4E-m0-Q5T" id="Uw9-8i-2Tf"/>
                 <outlet property="loginButton" destination="uGA-iT-z3T" id="p3F-wx-vd5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -53,7 +53,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kq-mh-ITC">
-                    <rect key="frame" x="10" y="435" width="580" height="36"/>
+                    <rect key="frame" x="10" y="476" width="580" height="36"/>
                     <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="bum-et-8p3"/>
@@ -67,7 +67,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR4-QF-gvg">
-                    <rect key="frame" x="10" y="476" width="580" height="36"/>
+                    <rect key="frame" x="10" y="435" width="580" height="36"/>
                     <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="36" id="YGD-46-aJl"/>
@@ -115,10 +115,9 @@
                 <constraint firstAttribute="trailing" secondItem="3kq-mh-ITC" secondAttribute="trailing" constant="10" id="95C-ca-zzh"/>
                 <constraint firstAttribute="trailing" secondItem="eR4-QF-gvg" secondAttribute="trailing" constant="10" id="Eck-te-CFK"/>
                 <constraint firstItem="A4E-m0-Q5T" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Efl-ah-1FB"/>
-                <constraint firstItem="eR4-QF-gvg" firstAttribute="top" secondItem="3kq-mh-ITC" secondAttribute="bottom" constant="5" id="IX8-6f-nsd"/>
+                <constraint firstItem="3kq-mh-ITC" firstAttribute="top" secondItem="eR4-QF-gvg" secondAttribute="bottom" constant="5" id="G0R-dz-l8x"/>
                 <constraint firstItem="uGA-iT-z3T" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="PoP-JU-f4U"/>
-                <constraint firstAttribute="bottom" secondItem="eR4-QF-gvg" secondAttribute="bottom" constant="20" id="SWK-tE-a2F"/>
-                <constraint firstItem="3kq-mh-ITC" firstAttribute="top" secondItem="A4E-m0-Q5T" secondAttribute="bottom" constant="5" id="VtK-eR-nPL"/>
+                <constraint firstAttribute="bottom" secondItem="3kq-mh-ITC" secondAttribute="bottom" constant="20" id="Qc8-oK-dmu"/>
                 <constraint firstItem="A4E-m0-Q5T" firstAttribute="top" secondItem="uGA-iT-z3T" secondAttribute="bottom" constant="5" id="d4P-On-0J5"/>
                 <constraint firstItem="xEn-pn-T6I" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gkt-pT-Jrk"/>
                 <constraint firstAttribute="trailing" secondItem="uGA-iT-z3T" secondAttribute="trailing" constant="10" id="hNj-ZT-0mF"/>
@@ -127,6 +126,7 @@
                 <constraint firstAttribute="trailing" secondItem="A4E-m0-Q5T" secondAttribute="trailing" constant="10" id="nQR-UV-vKG"/>
                 <constraint firstItem="xEn-pn-T6I" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="oC2-wB-yxI"/>
                 <constraint firstItem="eR4-QF-gvg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="s6k-83-M3Z"/>
+                <constraint firstItem="eR4-QF-gvg" firstAttribute="top" secondItem="A4E-m0-Q5T" secondAttribute="bottom" constant="5" id="y4h-fT-lny"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="596" y="434"/>
