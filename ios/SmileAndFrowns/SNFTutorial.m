@@ -24,6 +24,13 @@
 	
 	[SNFFormStyles roundEdgesOnButton:self.getStarted];
 	[[GATracking instance] trackScreenWithTagManager:@"Tutorial1View"];
+	
+	for(UILabel * label in self.labelsWithShadow) {
+		label.layer.shadowColor = [[UIColor blackColor] CGColor];
+		label.layer.shadowOffset = CGSizeMake(0,0);
+		label.layer.shadowOpacity = 1;
+		label.layer.shadowRadius = 5;
+	}
 }
 
 - (void) viewDidLayoutSubviews {

@@ -10,6 +10,8 @@
 @property (weak) IBOutlet UIScrollView * scrollView;
 @property (weak) IBOutlet UIPageControl * pageControl;
 
+@property IBOutletCollection(UILabel) NSArray * labelsWithShadow;
+
 @property BOOL userInitiatedTutorial;
 
 + (BOOL) hasSeenTutorial;
