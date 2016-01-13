@@ -50,9 +50,6 @@
                         <constraint firstAttribute="width" constant="100" id="JTK-6F-Kac"/>
                     </constraints>
                     <color key="pageIndicatorTintColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
-                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="150" y="712" width="100" height="37"/>
-                    </variation>
                     <connections>
                         <action selector="pageControlChange:" destination="-1" eventType="valueChanged" id="yyT-uv-bO9"/>
                     </connections>
@@ -68,9 +65,6 @@
                     <state key="normal" title="Get Started">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
-                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                        <rect key="frame" x="120" y="745" width="159" height="36"/>
-                    </variation>
                     <connections>
                         <action selector="getStarted:" destination="-1" eventType="touchUpInside" id="eP2-2j-llD"/>
                     </connections>
@@ -84,7 +78,9 @@
                 <constraint firstItem="IGe-yc-AIn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="T3V-XN-eCQ"/>
                 <constraint firstItem="IGe-yc-AIn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cGr-ql-Qsi"/>
                 <constraint firstAttribute="trailing" secondItem="IGe-yc-AIn" secondAttribute="trailing" id="kLT-y3-Low"/>
-                <constraint firstAttribute="bottom" secondItem="nLv-ln-g7E" secondAttribute="bottom" constant="24" id="kU8-VO-zPO"/>
+                <constraint firstAttribute="bottom" secondItem="nLv-ln-g7E" secondAttribute="bottom" constant="24" id="kU8-VO-zPO">
+                    <variation key="heightClass=regular-widthClass=compact" constant="19"/>
+                </constraint>
                 <constraint firstItem="nLv-ln-g7E" firstAttribute="top" secondItem="cQW-WQ-KlO" secondAttribute="bottom" constant="-4" id="s1h-oM-yXG"/>
             </constraints>
             <variation key="default">
