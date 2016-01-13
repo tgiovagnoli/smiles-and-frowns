@@ -784,46 +784,46 @@
 		07C0F3C01BEE646E0075A6B9 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				07E579AD1C46BE9E00465246 /* tutorial5.png */,
-				07E579AE1C46BE9E00465246 /* tutorial5@2x.png */,
-				07E579A91C46BD5500465246 /* tutorial4.png */,
-				07E579AA1C46BD5500465246 /* tutorial4@2x.png */,
-				07E579A51C46BBC200465246 /* tutorial3.png */,
-				07E579A61C46BBC200465246 /* tutorial3@2x.png */,
-				07E579A11C46BAB800465246 /* tutorial2.png */,
-				07E579A21C46BAB800465246 /* tutorial2@2x.png */,
-				07E5799D1C46B4E200465246 /* tutorial1.png */,
-				07E5799E1C46B4E200465246 /* tutorial1@2x.png */,
-				075EA4FF1C135C000003A403 /* spend.png */,
-				075EA5001C135C000003A403 /* spend@2x.png */,
-				075EA4FB1C1357540003A403 /* back_boards.png */,
-				075EA4FC1C1357540003A403 /* back_boards@2x.png */,
-				075EA4EF1C125C170003A403 /* add.png */,
-				075EA4F01C125C170003A403 /* add@2x.png */,
 				075EA4F71C1356F60003A403 /* add_board.png */,
 				075EA4F81C1356F60003A403 /* add_board@2x.png */,
-				075EA4F11C125C170003A403 /* subtract.png */,
-				075EA4F21C125C170003A403 /* subtract@2x.png */,
+				075EA4EF1C125C170003A403 /* add.png */,
+				075EA4F01C125C170003A403 /* add@2x.png */,
+				075EA4FB1C1357540003A403 /* back_boards.png */,
+				075EA4FC1C1357540003A403 /* back_boards@2x.png */,
+				07C0F3C11BEE646E0075A6B9 /* fb.png */,
+				07C0F3C21BEE646E0075A6B9 /* fb@2x.png */,
+				07C0F3C91BEE6FC80075A6B9 /* female.png */,
+				07C0F3CA1BEE6FC80075A6B9 /* female@2x.png */,
+				075EA4D41C1214F60003A403 /* frown.png */,
+				075EA4D51C1214F60003A403 /* frown@2x.png */,
 				075EA4DC1C121E240003A403 /* goal.png */,
 				075EA4DD1C121E240003A403 /* goal@2x.png */,
+				07C0F3CB1BEE6FC80075A6B9 /* male.png */,
+				07C0F3CC1BEE6FC80075A6B9 /* male@2x.png */,
 				075EA4DE1C121E240003A403 /* money.png */,
 				075EA4DF1C121E240003A403 /* money@2x.png */,
+				075EA4D61C1214F60003A403 /* smile.png */,
+				075EA4D71C1214F60003A403 /* smile@2x.png */,
+				075EA4FF1C135C000003A403 /* spend.png */,
+				075EA5001C135C000003A403 /* spend@2x.png */,
+				075EA4F11C125C170003A403 /* subtract.png */,
+				075EA4F21C125C170003A403 /* subtract@2x.png */,
 				075EA4E01C121E240003A403 /* time.png */,
 				075EA4E11C121E240003A403 /* time@2x.png */,
 				075EA4E21C121E240003A403 /* treat.png */,
 				075EA4E31C121E240003A403 /* treat@2x.png */,
-				075EA4D41C1214F60003A403 /* frown.png */,
-				075EA4D51C1214F60003A403 /* frown@2x.png */,
-				075EA4D61C1214F60003A403 /* smile.png */,
-				075EA4D71C1214F60003A403 /* smile@2x.png */,
-				07C0F3C91BEE6FC80075A6B9 /* female.png */,
-				07C0F3CA1BEE6FC80075A6B9 /* female@2x.png */,
-				07C0F3CB1BEE6FC80075A6B9 /* male.png */,
-				07C0F3CC1BEE6FC80075A6B9 /* male@2x.png */,
+				07E5799D1C46B4E200465246 /* tutorial1.png */,
+				07E5799E1C46B4E200465246 /* tutorial1@2x.png */,
+				07E579A11C46BAB800465246 /* tutorial2.png */,
+				07E579A21C46BAB800465246 /* tutorial2@2x.png */,
+				07E579A51C46BBC200465246 /* tutorial3.png */,
+				07E579A61C46BBC200465246 /* tutorial3@2x.png */,
+				07E579A91C46BD5500465246 /* tutorial4.png */,
+				07E579AA1C46BD5500465246 /* tutorial4@2x.png */,
+				07E579AD1C46BE9E00465246 /* tutorial5.png */,
+				07E579AE1C46BE9E00465246 /* tutorial5@2x.png */,
 				07C0F3C51BEE64CF0075A6B9 /* twitter.png */,
 				07C0F3C61BEE64CF0075A6B9 /* twitter@2x.png */,
-				07C0F3C11BEE646E0075A6B9 /* fb.png */,
-				07C0F3C21BEE646E0075A6B9 /* fb@2x.png */,
 			);
 			name = images;
 			path = SmileAndFrowns/images;
@@ -1606,7 +1606,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Thomas Giovagnoli (VUX6DTA5PC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1627,7 +1627,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.smilesandfrowns.SmilesAndFrowns;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c3301ee6-4af6-4002-a5e0-2679001fb51f";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1636,7 +1636,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Laws of Attraction LLC (PU2E8NSJY2)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1657,7 +1657,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.smilesandfrowns.SmilesAndFrowns;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "32ed5626-94a8-4efa-8f8e-fdd6bc09d0f3";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

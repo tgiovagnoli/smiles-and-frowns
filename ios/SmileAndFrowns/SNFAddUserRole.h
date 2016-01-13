@@ -29,6 +29,7 @@ extern NSString * const SNFAddUserRoleAddedChild;
 @property (weak) IBOutlet UITextField * lastname;
 @property (weak) IBOutlet UITextField * email;
 @property (weak) IBOutlet UIButton * genderOverlay;
+@property (weak) IBOutlet UILabel * roleLabel;
 
 @property (weak) IBOutlet UITextField * gender;
 @property (weak) IBOutlet UITextField * age;

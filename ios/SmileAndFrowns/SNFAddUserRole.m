@@ -57,6 +57,15 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 }
 
 - (IBAction) segmentChange:(id)sender {
+	
+	if(self.segment.selectedSegmentIndex == 0) {
+		self.roleLabel.text = @"Children earn Smiles, Frowns and great Rewards.";
+	} else if(self.segment.selectedSegmentIndex == 1) {
+		self.roleLabel.text = @"A Parent will be fully free to use and edit this board with you.";
+	} else if(self.segment.selectedSegmentIndex == 2) {
+		self.roleLabel.text = @"Guardians help by giving Smiles & Frowns and Rewards.";
+	}
+	
 	if(self.segment.selectedSegmentIndex > 0) {
 		self.age.hidden = TRUE;
 		self.genderOverlay.hidden = TRUE;
