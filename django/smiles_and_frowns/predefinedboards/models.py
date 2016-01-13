@@ -14,6 +14,7 @@ class PredefinedBehavior(models.Model):
 
 class PredefinedBoard(models.Model):
 	title = models.CharField(max_length=128)
+	description = models.CharField(max_length=2048,default="",blank=True,null=True)
 	uuid = models.CharField(max_length=64)
 	behaviors = models.ManyToManyField(PredefinedBehavior)
 	list_sort = models.PositiveSmallIntegerField(default=0)

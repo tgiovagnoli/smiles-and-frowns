@@ -67,7 +67,7 @@
 		<true/>
 	</dict>
 	<key>SNFConfig</key>
-	<string>SNFServicesSSL</string>
+	<string>SNFDebugLocal</string>
 	<key>SNFDebugImac</key>
 	<dict>
 		<key>TwitterKey</key>

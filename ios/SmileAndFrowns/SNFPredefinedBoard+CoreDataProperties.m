@@ -17,5 +17,6 @@
 @dynamic title;
 @dynamic behaviors;
 @dynamic list_sort;
+@dynamic board_description;
 
 @end

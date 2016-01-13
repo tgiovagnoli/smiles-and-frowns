@@ -11,6 +11,7 @@ def serialize_boards(boards):
 	for board in boards:
 		boards_info.append({
 			"title": board.title,
+			"description": board.description,
 			"uuid": board.uuid,
 			"id": board.id,
 			"list_sort": board.list_sort,

@@ -10,6 +10,7 @@
 		@"uuid": @"uuid",
 		@"title": @"title",
 		@"list_sort":@"list_sort",
+		@"board_description":@"description",
 	};
 }
 

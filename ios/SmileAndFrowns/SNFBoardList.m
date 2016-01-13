@@ -279,8 +279,9 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 			
 			if(needsPurchase && pdb) {
 				// buy board confirm
-				NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Would you like to purchase \"%@\"?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
-				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+				NSString *messageString = [self behaviorsStringFromBoard:pdb];
+				messageString = [messageString stringByAppendingString:@" Would you like to buy this board?"];
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:pdb.title message:messageString preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 					[self purchaseNewBoard:pdb];
 				}]];
@@ -290,8 +291,9 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 			
 			else if(!needsPurchase && pdb) {
 				// free board confirm
-				NSString *messageString = [NSString stringWithFormat:@"\"%@\" %@. Are you sure you want to use \"%@\" as your free board?", pdb.title, [self behaviorsStringFromBoard:pdb], pdb.title];
-				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:messageString preferredStyle:UIAlertControllerStyleAlert];
+				NSString * messageString = [self behaviorsStringFromBoard:pdb];
+				messageString = [messageString stringByAppendingString:@" Would you like to use this board?"];
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:pdb.title message:messageString preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 					[self addNewBoard:pdb withTransactionID:nil editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
 				}]];
@@ -336,6 +338,11 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 }
 
 - (NSString *) behaviorsStringFromBoard:(SNFPredefinedBoard *) pdb {
+	
+	if(pdb.board_description && ![pdb.board_description isEqual:[NSNull null]]) {
+		return pdb.board_description;
+	}
+	
 	NSInteger i = 0;
 	NSMutableString *behaviors = [[NSMutableString alloc] init];
 	NSInteger max = pdb.behaviors.count;

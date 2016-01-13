@@ -3,7 +3,7 @@ from predefinedboards import models
 
 class PredefinedBoardAdmin(admin.ModelAdmin):
 	save_on_top = True
-	fields = ("title", "behaviors", "uuid", "list_sort",)
+	fields = ("title", "description", "behaviors", "uuid", "list_sort",)
 	readonly_fields = ("uuid",)
 	list_display = ("title","list_sort",)
 	filter_horizontal = ("behaviors",)
