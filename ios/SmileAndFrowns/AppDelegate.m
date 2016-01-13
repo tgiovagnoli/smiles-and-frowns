@@ -174,11 +174,11 @@ static AppDelegate * _instance;
 
 - (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler{
 	if([SNFModel sharedInstance].loggedInUser){
-		SNFUserService *userService = [[SNFUserService alloc] init];
+		SNFUserService * userService = [[SNFUserService alloc] init];
 		[userService invitesWithCompletion:^(NSError *error, NSArray * received_invites, NSArray * sent_invites) {
-			if(error){
+			if(error) {
 				completionHandler(UIBackgroundFetchResultFailed);
-			}else{
+			} else {
 				[[UIApplication sharedApplication] setApplicationIconBadgeNumber:received_invites.count];
 				// now sync
 				[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {

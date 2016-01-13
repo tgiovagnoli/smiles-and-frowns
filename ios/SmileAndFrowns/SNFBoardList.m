@@ -40,9 +40,14 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
 		[refresh endRefreshing];
 		if(error) {
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKAction]];
-			[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+			if(error.code == -1009) {
+				[self displayOKAlertWithTitle:@"Error" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+			} else {
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Sorry" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction OKAction]];
+				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
+			}
+			
 		} else {
 			[self reloadBoards];
 		}

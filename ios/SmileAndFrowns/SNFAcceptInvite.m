@@ -47,7 +47,13 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
-			[self displayOKAlertWithTitle:@"Invitation Error" message:error.localizedDescription completion:nil];
+			
+			if(error.code == -1009) {
+				[self displayOKAlertWithTitle:@"Error" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+			} else {
+				[self displayOKAlertWithTitle:@"Invitation Error" message:error.localizedDescription completion:nil];
+			}
+			
 			return;
 		}
 		

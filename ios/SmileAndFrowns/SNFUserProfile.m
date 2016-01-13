@@ -49,6 +49,10 @@
 	
 	[self decorate];
 	
+	if([SNFModel sharedInstance].loggedInUser) {
+		self.user = [SNFModel sharedInstance].loggedInUser;
+	}
+	
 	[self loadAuthedUser];
 }
 
@@ -133,12 +137,18 @@
 		[MBProgressHUD hideHUDForView:self.view animated:YES];
 		
 		if(error) {
-			UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"You must be logged in to edit your profile." preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction OKActionWithCompletion:^(UIAlertAction * action) {
-				[SNFModel sharedInstance].loggedInUser = nil;
-				[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
-			}]];
-			[self presentViewController:alert animated:TRUE completion:nil];
+			if(error.code == -1009) {
+				[self displayOKAlertWithTitle:@"Error" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:^(UIAlertAction *action) {
+					
+				}];
+			} else {
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"You must be logged in to edit your profile." preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction OKActionWithCompletion:^(UIAlertAction * action) {
+					[SNFModel sharedInstance].loggedInUser = nil;
+					[AppDelegate instance].window.rootViewController = [[SNFLauncher alloc] init];
+				}]];
+				[self presentViewController:alert animated:TRUE completion:nil];
+			}
 			return;
 		}
 		
@@ -243,11 +253,14 @@
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
-			if(error.code == SNFErrorCodeDjangoDebugError){
+			if(error.code == -1009) {
+				[self displayOKAlertWithTitle:@"OK" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+			}
+			else if(error.code == SNFErrorCodeDjangoDebugError){
 				APDDjangoErrorViewer *errorViewer = [[APDDjangoErrorViewer alloc] init];
 				[errorViewer showErrorData:error.localizedDescription forURL:nil];
 				[self presentViewController:errorViewer animated:YES completion:nil];
-			}else{
+			} else {
 				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 			}
 			return;
@@ -293,11 +306,13 @@
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				if(error.code == SNFErrorCodeDjangoDebugError){
+				if(error.code == -1009) {
+					[self displayOKAlertWithTitle:@"OK" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+				} else if(error.code == SNFErrorCodeDjangoDebugError) {
 					APDDjangoErrorViewer *errorViewer = [[APDDjangoErrorViewer alloc] init];
 					[self presentViewController:errorViewer animated:YES completion:nil];
 					[errorViewer showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"user_update_profile_image"]];
-				}else{
+				} else {
 					[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 				}
 				return;

@@ -29,9 +29,13 @@
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
 		if(error) {
-			UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-			[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-			[self presentViewController:alert animated:TRUE completion:nil];
+			if(error.code == -1009) {
+				[self displayOKAlertWithTitle:@"OK" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+			} else {
+				UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+				[self presentViewController:alert animated:TRUE completion:nil];
+			}
 			return;
 		}
 		

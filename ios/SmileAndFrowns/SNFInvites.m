@@ -66,7 +66,11 @@
 	[self.service invitesWithCompletion:^(NSError * error, NSArray * receivedInvites, NSArray * sentInvites) {
 		[refresh endRefreshing];
 		if(error) {
-			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			if(error.code == -1009) {
+				[self displayOKAlertWithTitle:@"Error" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+			} else {
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			}
 		} else {
 			[[UIApplication sharedApplication] setApplicationIconBadgeNumber:receivedInvites.count];
 			self.receivedInvites = receivedInvites;
@@ -128,9 +132,14 @@
 	[self.service invitesWithCompletion:^(NSError *error, NSArray *receivedInvites, NSArray *sentInvites) {
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		if(error) {
-			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			if(error.code == -1009) {
+				[self displayOKAlertWithTitle:@"Error" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+			} else {
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			}
 			return;
 		}
+		
 		[[UIApplication sharedApplication] setApplicationIconBadgeNumber:receivedInvites.count];
 		self.receivedInvites = receivedInvites;
 		self.sentInvites = sentInvites;
@@ -243,7 +252,11 @@
 	[self.service deleteInviteCode:[note.userInfo objectForKey:@"code"] andCompletion:^(NSError *error) {
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		if(error) {
-			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			if(error.code == -1009) {
+				[self displayOKAlertWithTitle:@"Error" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+			} else {
+				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			}
 			return;
 		}
 		[self reloadDataFirst];

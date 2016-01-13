@@ -263,7 +263,10 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				if(error.code == SNFErrorCodeDjangoDebugError) {
+				if(error.code == -1009) {
+					[self displayOKAlertWithTitle:@"Error" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+				}
+				else if(error.code == SNFErrorCodeDjangoDebugError) {
 					APDDjangoErrorViewer *djangoView = [[APDDjangoErrorViewer alloc] init];
 					[djangoView showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"invite"]];
 					[self presentViewController:djangoView animated:YES completion:^{}];
@@ -423,7 +426,11 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			
 			if(error) {
-				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+				if(error.code == -1009) {
+					[self displayOKAlertWithTitle:@"OK" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+				} else {
+					[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+				}
 				return;
 			}
 			

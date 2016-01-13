@@ -161,7 +161,11 @@ NSString * const SNFLoginLogingSyncCompleted = @"SNFLoginSyncCompleted";
 		
 		if(error) {
 			
-			[self displayOKAlertWithTitle:@"Login Error" message:error.localizedDescription completion:nil];
+			if(error.code == -1009) {
+				[self displayOKAlertWithTitle:@"OK" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+			} else {
+				[self displayOKAlertWithTitle:@"Login Error" message:error.localizedDescription completion:nil];
+			}
 			
 		} else {
 			
