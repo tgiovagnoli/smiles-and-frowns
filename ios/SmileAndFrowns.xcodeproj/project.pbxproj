@@ -113,6 +113,16 @@
 		07C0F3D01BEE6FC80075A6B9 /* male@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3CC1BEE6FC80075A6B9 /* male@2x.png */; };
 		07CA06D31C175C9200C75A6B /* NSURLRequest+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CA06D21C175C9200C75A6B /* NSURLRequest+Additions.m */; };
 		07CA06D61C18CC7800C75A6B /* SNFDateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CA06D51C18CC7800C75A6B /* SNFDateManager.m */; };
+		07E5799F1C46B4E200465246 /* tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E5799D1C46B4E200465246 /* tutorial1.png */; };
+		07E579A01C46B4E200465246 /* tutorial1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E5799E1C46B4E200465246 /* tutorial1@2x.png */; };
+		07E579A31C46BAB800465246 /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579A11C46BAB800465246 /* tutorial2.png */; };
+		07E579A41C46BAB800465246 /* tutorial2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579A21C46BAB800465246 /* tutorial2@2x.png */; };
+		07E579A71C46BBC200465246 /* tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579A51C46BBC200465246 /* tutorial3.png */; };
+		07E579A81C46BBC200465246 /* tutorial3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579A61C46BBC200465246 /* tutorial3@2x.png */; };
+		07E579AB1C46BD5500465246 /* tutorial4.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579A91C46BD5500465246 /* tutorial4.png */; };
+		07E579AC1C46BD5500465246 /* tutorial4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579AA1C46BD5500465246 /* tutorial4@2x.png */; };
+		07E579AF1C46BE9E00465246 /* tutorial5.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579AD1C46BE9E00465246 /* tutorial5.png */; };
+		07E579B01C46BE9E00465246 /* tutorial5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579AE1C46BE9E00465246 /* tutorial5@2x.png */; };
 		07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E7055A1BEBD1520013FB75 /* iAd.framework */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
@@ -378,6 +388,16 @@
 		07CA06D21C175C9200C75A6B /* NSURLRequest+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURLRequest+Additions.m"; path = "submodules/apd-objc/NSURLRequest+Additions.m"; sourceTree = "<group>"; };
 		07CA06D41C18CC7800C75A6B /* SNFDateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFDateManager.h; sourceTree = "<group>"; };
 		07CA06D51C18CC7800C75A6B /* SNFDateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFDateManager.m; sourceTree = "<group>"; };
+		07E5799D1C46B4E200465246 /* tutorial1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial1.png; sourceTree = "<group>"; };
+		07E5799E1C46B4E200465246 /* tutorial1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial1@2x.png"; sourceTree = "<group>"; };
+		07E579A11C46BAB800465246 /* tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial2.png; sourceTree = "<group>"; };
+		07E579A21C46BAB800465246 /* tutorial2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial2@2x.png"; sourceTree = "<group>"; };
+		07E579A51C46BBC200465246 /* tutorial3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial3.png; sourceTree = "<group>"; };
+		07E579A61C46BBC200465246 /* tutorial3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial3@2x.png"; sourceTree = "<group>"; };
+		07E579A91C46BD5500465246 /* tutorial4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial4.png; sourceTree = "<group>"; };
+		07E579AA1C46BD5500465246 /* tutorial4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial4@2x.png"; sourceTree = "<group>"; };
+		07E579AD1C46BE9E00465246 /* tutorial5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial5.png; sourceTree = "<group>"; };
+		07E579AE1C46BE9E00465246 /* tutorial5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial5@2x.png"; sourceTree = "<group>"; };
 		07E7055A1BEBD1520013FB75 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSLog+Geom.h"; path = "submodules/apd-objc/NSLog+Geom.h"; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
@@ -764,6 +784,16 @@
 		07C0F3C01BEE646E0075A6B9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				07E579AD1C46BE9E00465246 /* tutorial5.png */,
+				07E579AE1C46BE9E00465246 /* tutorial5@2x.png */,
+				07E579A91C46BD5500465246 /* tutorial4.png */,
+				07E579AA1C46BD5500465246 /* tutorial4@2x.png */,
+				07E579A51C46BBC200465246 /* tutorial3.png */,
+				07E579A61C46BBC200465246 /* tutorial3@2x.png */,
+				07E579A11C46BAB800465246 /* tutorial2.png */,
+				07E579A21C46BAB800465246 /* tutorial2@2x.png */,
+				07E5799D1C46B4E200465246 /* tutorial1.png */,
+				07E5799E1C46B4E200465246 /* tutorial1@2x.png */,
 				075EA4FF1C135C000003A403 /* spend.png */,
 				075EA5001C135C000003A403 /* spend@2x.png */,
 				075EA4FB1C1357540003A403 /* back_boards.png */,
@@ -1267,7 +1297,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0707D6AF1BE2A1C9002F1FC0 /* SNFLogin.xib in Resources */,
+				07E579A41C46BAB800465246 /* tutorial2@2x.png in Resources */,
 				D6F4421F1BEB95C5009C2866 /* SNFReportCellSmileFrown.xib in Resources */,
+				07E579A71C46BBC200465246 /* tutorial3.png in Resources */,
 				D6E724D51BF4F25300398D09 /* SNFChildEdit.xib in Resources */,
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
 				D6E724E31BF542E500398D09 /* SNFMoreWebDetail.xib in Resources */,
@@ -1278,6 +1310,7 @@
 				075EA4E41C121E240003A403 /* goal.png in Resources */,
 				07C0F3C41BEE646E0075A6B9 /* fb@2x.png in Resources */,
 				0707D6D11BE2B301002F1FC0 /* SNFPasswordReset.xib in Resources */,
+				07E579AB1C46BD5500465246 /* tutorial4.png in Resources */,
 				D6DB2BDC1BEAAB3500F1CDFF /* SNFAddReward.xib in Resources */,
 				075EA4FD1C1357540003A403 /* back_boards.png in Resources */,
 				07C0F3BA1BED37C70075A6B9 /* InAppPurchases.plist in Resources */,
@@ -1287,12 +1320,14 @@
 				07C0F3CF1BEE6FC80075A6B9 /* male.png in Resources */,
 				075EA4F61C125C170003A403 /* subtract@2x.png in Resources */,
 				075EA5021C135C000003A403 /* spend@2x.png in Resources */,
+				07E5799F1C46B4E200465246 /* tutorial1.png in Resources */,
 				D6270ED91BE817E900F7C39A /* SNFAddBehaviorCell.xib in Resources */,
 				078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */,
 				075EA4E71C121E240003A403 /* money@2x.png in Resources */,
 				0707D6C61BE2B2D8002F1FC0 /* SNFAcceptInvite.xib in Resources */,
 				07C0F3B51BED049B0075A6B9 /* SNFInvitesCell.xib in Resources */,
 				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
+				07E579A81C46BBC200465246 /* tutorial3@2x.png in Resources */,
 				07C0F3CE1BEE6FC80075A6B9 /* female@2x.png in Resources */,
 				D6F4421A1BEB90A4009C2866 /* SNFReporting.xib in Resources */,
 				D65DF1111BE29A42009CC6DF /* SNFTabMenu.xib in Resources */,
@@ -1309,6 +1344,7 @@
 				075EA4DB1C1214F60003A403 /* smile@2x.png in Resources */,
 				D65DF1501BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib in Resources */,
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
+				07E579AC1C46BD5500465246 /* tutorial4@2x.png in Resources */,
 				D6F442311BEBF425009C2866 /* SNFReportingSectionHeader.xib in Resources */,
 				075EA4F31C125C170003A403 /* add.png in Resources */,
 				075EA4FE1C1357540003A403 /* back_boards@2x.png in Resources */,
@@ -1319,10 +1355,12 @@
 				D6DB2BD11BEAA03300F1CDFF /* SNFRewardCell.xib in Resources */,
 				07C0F3D01BEE6FC80075A6B9 /* male@2x.png in Resources */,
 				075EA4F51C125C170003A403 /* subtract.png in Resources */,
+				07E579B01C46BE9E00465246 /* tutorial5@2x.png in Resources */,
 				075EA5011C135C000003A403 /* spend.png in Resources */,
 				07C0F3C31BEE646E0075A6B9 /* fb.png in Resources */,
 				D62E1CE81BEA6BBD00EF8725 /* SNFAddSmileOrFrown.xib in Resources */,
 				D6DB2BD61BEAA0BA00F1CDFF /* SNFAddCell.xib in Resources */,
+				07E579A31C46BAB800465246 /* tutorial2.png in Resources */,
 				0707D6CC1BE2B2F8002F1FC0 /* SNFCreateAccount.xib in Resources */,
 				D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */,
 				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
@@ -1337,8 +1375,10 @@
 				074D8D0F1C21EC78007B5516 /* SNFReportPDFUserHeader.xib in Resources */,
 				074D8D141C21F77D007B5516 /* SNFReportPDFDetailRow.xib in Resources */,
 				D6DB2BE11BEAC3E300F1CDFF /* SNFSpendRewards.xib in Resources */,
+				07E579A01C46B4E200465246 /* tutorial1@2x.png in Resources */,
 				D6E724DD1BF523FF00398D09 /* SNFValuePicker.xib in Resources */,
 				075EA4D81C1214F60003A403 /* frown.png in Resources */,
+				07E579AF1C46BE9E00465246 /* tutorial5.png in Resources */,
 				075EA4E61C121E240003A403 /* money.png in Resources */,
 				0707D6AA1BE29BC4002F1FC0 /* SNFLauncher.xib in Resources */,
 				07C0F3C71BEE64CF0075A6B9 /* twitter.png in Resources */,
