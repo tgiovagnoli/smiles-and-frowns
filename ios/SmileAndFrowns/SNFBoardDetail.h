@@ -41,6 +41,8 @@ typedef NS_ENUM(NSInteger, SNFBoardDetailUserRole){
 @property (weak) IBOutlet NSLayoutConstraint * addButtonHeightConstraint;
 @property (nonatomic) SNFBoard * board;
 
+@property UIRefreshControl * refresh;
+
 - (IBAction)backToBoards:(UIButton *)sender;
 
 @end

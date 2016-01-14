@@ -243,21 +243,31 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	}
 	
 	SNFUserService * service = [[SNFUserService alloc] init];
+	
+	//make sure boards are synced
 	[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
 		
 		if(error) {
-			if(error.code == SNFErrorCodeDjangoDebugError) {
+			
+			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+			
+			if(error.code == -1009) {
+				[self displayOKAlertWithTitle:@"Error" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+			}
+			
+			else if(error.code == SNFErrorCodeDjangoDebugError) {
 				APDDjangoErrorViewer * djangoView = [[APDDjangoErrorViewer alloc] init];
 				[djangoView showErrorData:error.localizedDescription forURL:[[SNFModel sharedInstance].config apiURLForPath:@"invite"]];
 				[self presentViewController:djangoView animated:YES completion:^{}];
-			} else {
+			}
+			
+			else {
 				[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
 			}
 			return;
 		}
 		
-		//make sure boards are synced
 		[service inviteWithData:self.inviteData andCompletion:^(NSError *error) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];

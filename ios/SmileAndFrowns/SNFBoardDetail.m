@@ -32,6 +32,42 @@
 	self.messageView.layer.shadowRadius = 1;
 	
 	[self updateUI];
+	
+	self.refresh = [[UIRefreshControl alloc] init];
+	[self.refresh addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
+	[self.rolesTable addSubview:self.refresh];
+}
+
+- (void) onRefresh:(id) sender {
+	[self.refresh beginRefreshing];
+	SNFSyncService * sync = [[SNFSyncService alloc] init];
+	if(!sync.syncing) {
+		[sync syncWithCompletion:^(NSError *error, NSObject *boardData) {
+			if(error) {
+				[self.refresh endRefreshing];
+				if(error.code == -1009) {
+					[self displayOKAlertWithTitle:@"Error" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+				} else {
+					[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+				}
+				return;
+			}
+			
+			[sync syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
+				[self.refresh endRefreshing];
+				if(error) {
+					if(error.code == -1009) {
+						[self displayOKAlertWithTitle:@"Error" message:@"This feature requires an internet connection. Please try again when you’re back online." completion:nil];
+					} else {
+						[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+					}
+					return;
+				}
+				
+				[self reloadUserRoles];
+			}];
+		}];
+	}
 }
 
 - (void) resetColors {
@@ -227,7 +263,7 @@
 	
 	[self.messageView removeFromSuperview];
 	
-	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,340)];
+	SNFAddUserRole * addUserRole = [[SNFAddUserRole alloc] initWithSourceView:self.addButton sourceRect:CGRectZero contentSize:CGSizeMake(500,360)];
 	addUserRole.board = self.board;
 	[[AppDelegate rootViewController] presentViewController:addUserRole animated:YES completion:nil];
 }
