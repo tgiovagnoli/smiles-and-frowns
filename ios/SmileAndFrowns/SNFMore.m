@@ -258,11 +258,16 @@
 	[self purgeAndSync];
 }
 
-- (void)shareAppMail{
+- (void) shareAppMail {
+	NSString * emailFile = [[NSBundle mainBundle] pathForResource:@"email" ofType:@"html"];
+	NSData * data = [NSData dataWithContentsOfFile:emailFile];
+	NSString * emailContent = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+	
 	MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
 	[mailComposer setSubject:@"Check out smiles and frowns"];
-	[mailComposer setMessageBody:@"https://itunes.apple.com/app/id1058499314" isHTML:NO];
+	[mailComposer setMessageBody:emailContent isHTML:TRUE];
 	mailComposer.mailComposeDelegate = self;
+	
 	[[SNFViewController instance] presentViewController:mailComposer animated:YES completion:^{}];
 }
 

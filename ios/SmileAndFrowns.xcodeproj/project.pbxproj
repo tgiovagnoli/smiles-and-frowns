@@ -123,6 +123,7 @@
 		07E579AC1C46BD5500465246 /* tutorial4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579AA1C46BD5500465246 /* tutorial4@2x.png */; };
 		07E579AF1C46BE9E00465246 /* tutorial5.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579AD1C46BE9E00465246 /* tutorial5.png */; };
 		07E579B01C46BE9E00465246 /* tutorial5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579AE1C46BE9E00465246 /* tutorial5@2x.png */; };
+		07E579B71C47131500465246 /* email.html in Resources */ = {isa = PBXBuildFile; fileRef = 07E579B61C47131500465246 /* email.html */; };
 		07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E7055A1BEBD1520013FB75 /* iAd.framework */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
@@ -399,6 +400,7 @@
 		07E579AD1C46BE9E00465246 /* tutorial5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial5.png; sourceTree = "<group>"; };
 		07E579AE1C46BE9E00465246 /* tutorial5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial5@2x.png"; sourceTree = "<group>"; };
 		07E579B11C46DF2E00465246 /* SmileAndFrowns 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SmileAndFrowns 4.xcdatamodel"; sourceTree = "<group>"; };
+		07E579B61C47131500465246 /* email.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = email.html; path = SmileAndFrowns/email.html; sourceTree = "<group>"; };
 		07E7055A1BEBD1520013FB75 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSLog+Geom.h"; path = "submodules/apd-objc/NSLog+Geom.h"; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
@@ -1020,6 +1022,7 @@
 				07C0F3C01BEE646E0075A6B9 /* images */,
 				07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */,
 				D659DBC31BDAE07F0048D3F7 /* Info.plist */,
+				07E579B61C47131500465246 /* email.html */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1364,6 +1367,7 @@
 				07E579A31C46BAB800465246 /* tutorial2.png in Resources */,
 				0707D6CC1BE2B2F8002F1FC0 /* SNFCreateAccount.xib in Resources */,
 				D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */,
+				07E579B71C47131500465246 /* email.html in Resources */,
 				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
 				074D8D0A1C21EC06007B5516 /* SNFReportPDF.xib in Resources */,
 				D65DF1301BE2AE6D009CC6DF /* SNFMore.xib in Resources */,
