@@ -124,6 +124,17 @@
 		07E579AF1C46BE9E00465246 /* tutorial5.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579AD1C46BE9E00465246 /* tutorial5.png */; };
 		07E579B01C46BE9E00465246 /* tutorial5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579AE1C46BE9E00465246 /* tutorial5@2x.png */; };
 		07E579B71C47131500465246 /* email.html in Resources */ = {isa = PBXBuildFile; fileRef = 07E579B61C47131500465246 /* email.html */; };
+		07E579B91C48153000465246 /* SNFTutorial~iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07E579B81C48153000465246 /* SNFTutorial~iPad.xib */; };
+		07E579C41C4815F200465246 /* tutorial1_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579BA1C4815F200465246 /* tutorial1_ipad.png */; };
+		07E579C51C4815F200465246 /* tutorial1_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579BB1C4815F200465246 /* tutorial1_ipad@2x.png */; };
+		07E579C61C4815F200465246 /* tutorial2_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579BC1C4815F200465246 /* tutorial2_ipad.png */; };
+		07E579C71C4815F200465246 /* tutorial2_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579BD1C4815F200465246 /* tutorial2_ipad@2x.png */; };
+		07E579C81C4815F200465246 /* tutorial3_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579BE1C4815F200465246 /* tutorial3_ipad.png */; };
+		07E579C91C4815F200465246 /* tutorial3_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579BF1C4815F200465246 /* tutorial3_ipad@2x.png */; };
+		07E579CA1C4815F200465246 /* tutorial4_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579C01C4815F200465246 /* tutorial4_ipad.png */; };
+		07E579CB1C4815F200465246 /* tutorial4_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579C11C4815F200465246 /* tutorial4_ipad@2x.png */; };
+		07E579CC1C4815F200465246 /* tutorial5_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579C21C4815F200465246 /* tutorial5_ipad.png */; };
+		07E579CD1C4815F200465246 /* tutorial5_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579C31C4815F200465246 /* tutorial5_ipad@2x.png */; };
 		07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E7055A1BEBD1520013FB75 /* iAd.framework */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
@@ -401,6 +412,17 @@
 		07E579AE1C46BE9E00465246 /* tutorial5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial5@2x.png"; sourceTree = "<group>"; };
 		07E579B11C46DF2E00465246 /* SmileAndFrowns 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SmileAndFrowns 4.xcdatamodel"; sourceTree = "<group>"; };
 		07E579B61C47131500465246 /* email.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = email.html; path = SmileAndFrowns/email.html; sourceTree = "<group>"; };
+		07E579B81C48153000465246 /* SNFTutorial~iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "SNFTutorial~iPad.xib"; sourceTree = "<group>"; };
+		07E579BA1C4815F200465246 /* tutorial1_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial1_ipad.png; sourceTree = "<group>"; };
+		07E579BB1C4815F200465246 /* tutorial1_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial1_ipad@2x.png"; sourceTree = "<group>"; };
+		07E579BC1C4815F200465246 /* tutorial2_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial2_ipad.png; sourceTree = "<group>"; };
+		07E579BD1C4815F200465246 /* tutorial2_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial2_ipad@2x.png"; sourceTree = "<group>"; };
+		07E579BE1C4815F200465246 /* tutorial3_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial3_ipad.png; sourceTree = "<group>"; };
+		07E579BF1C4815F200465246 /* tutorial3_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial3_ipad@2x.png"; sourceTree = "<group>"; };
+		07E579C01C4815F200465246 /* tutorial4_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial4_ipad.png; sourceTree = "<group>"; };
+		07E579C11C4815F200465246 /* tutorial4_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial4_ipad@2x.png"; sourceTree = "<group>"; };
+		07E579C21C4815F200465246 /* tutorial5_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial5_ipad.png; sourceTree = "<group>"; };
+		07E579C31C4815F200465246 /* tutorial5_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial5_ipad@2x.png"; sourceTree = "<group>"; };
 		07E7055A1BEBD1520013FB75 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSLog+Geom.h"; path = "submodules/apd-objc/NSLog+Geom.h"; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
@@ -616,6 +638,7 @@
 				0707D69C1BE28EC6002F1FC0 /* SNFTutorial.h */,
 				0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */,
 				0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */,
+				07E579B81C48153000465246 /* SNFTutorial~iPad.xib */,
 			);
 			name = Tutorial;
 			sourceTree = "<group>";
@@ -787,6 +810,16 @@
 		07C0F3C01BEE646E0075A6B9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				07E579BA1C4815F200465246 /* tutorial1_ipad.png */,
+				07E579BB1C4815F200465246 /* tutorial1_ipad@2x.png */,
+				07E579BC1C4815F200465246 /* tutorial2_ipad.png */,
+				07E579BD1C4815F200465246 /* tutorial2_ipad@2x.png */,
+				07E579BE1C4815F200465246 /* tutorial3_ipad.png */,
+				07E579BF1C4815F200465246 /* tutorial3_ipad@2x.png */,
+				07E579C01C4815F200465246 /* tutorial4_ipad.png */,
+				07E579C11C4815F200465246 /* tutorial4_ipad@2x.png */,
+				07E579C21C4815F200465246 /* tutorial5_ipad.png */,
+				07E579C31C4815F200465246 /* tutorial5_ipad@2x.png */,
 				075EA4F71C1356F60003A403 /* add_board.png */,
 				075EA4F81C1356F60003A403 /* add_board@2x.png */,
 				075EA4EF1C125C170003A403 /* add.png */,
@@ -1305,9 +1338,11 @@
 				D6F4421F1BEB95C5009C2866 /* SNFReportCellSmileFrown.xib in Resources */,
 				07E579A71C46BBC200465246 /* tutorial3.png in Resources */,
 				D6E724D51BF4F25300398D09 /* SNFChildEdit.xib in Resources */,
+				07E579C51C4815F200465246 /* tutorial1_ipad@2x.png in Resources */,
 				D659DBC21BDAE07F0048D3F7 /* LaunchScreen.storyboard in Resources */,
 				D6E724E31BF542E500398D09 /* SNFMoreWebDetail.xib in Resources */,
 				0707D6DD1BE428BA002F1FC0 /* SNFInvites.xib in Resources */,
+				07E579C81C4815F200465246 /* tutorial3_ipad.png in Resources */,
 				D6270ED71BE817E900F7C39A /* SNFAddBehavior.xib in Resources */,
 				D65DF15B1BE2F59F009CC6DF /* SNFAddUserRole.xib in Resources */,
 				075EA4F91C1356F60003A403 /* add_board.png in Resources */,
@@ -1324,6 +1359,7 @@
 				07C0F3CF1BEE6FC80075A6B9 /* male.png in Resources */,
 				075EA4F61C125C170003A403 /* subtract@2x.png in Resources */,
 				075EA5021C135C000003A403 /* spend@2x.png in Resources */,
+				07E579CA1C4815F200465246 /* tutorial4_ipad.png in Resources */,
 				07E5799F1C46B4E200465246 /* tutorial1.png in Resources */,
 				D6270ED91BE817E900F7C39A /* SNFAddBehaviorCell.xib in Resources */,
 				078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */,
@@ -1340,13 +1376,16 @@
 				075EA4D21C1213900003A403 /* Roboto-Light.ttf in Resources */,
 				075EA4EA1C121E240003A403 /* treat.png in Resources */,
 				D6272FC41BE002330024CBC2 /* APDDjangoErrorViewer.xib in Resources */,
+				07E579C71C4815F200465246 /* tutorial2_ipad@2x.png in Resources */,
 				075EA4D11C1213900003A403 /* Roboto-Bold.ttf in Resources */,
 				0707D6A51BE29756002F1FC0 /* SNFViewController.xib in Resources */,
 				07C0F3CD1BEE6FC80075A6B9 /* female.png in Resources */,
+				07E579CC1C4815F200465246 /* tutorial5_ipad.png in Resources */,
 				075EA4D31C1213900003A403 /* Roboto-Regular.ttf in Resources */,
 				07C0F3C81BEE64CF0075A6B9 /* twitter@2x.png in Resources */,
 				075EA4DB1C1214F60003A403 /* smile@2x.png in Resources */,
 				D65DF1501BE2BFA9009CC6DF /* SNFBoardDetailAdultCell.xib in Resources */,
+				07E579C61C4815F200465246 /* tutorial2_ipad.png in Resources */,
 				D62D37911BDE7FC600102D6A /* SNFDebug.xib in Resources */,
 				07E579AC1C46BD5500465246 /* tutorial4@2x.png in Resources */,
 				D6F442311BEBF425009C2866 /* SNFReportingSectionHeader.xib in Resources */,
@@ -1367,6 +1406,7 @@
 				07E579A31C46BAB800465246 /* tutorial2.png in Resources */,
 				0707D6CC1BE2B2F8002F1FC0 /* SNFCreateAccount.xib in Resources */,
 				D65DF1131BE29A42009CC6DF /* SNFUserProfile.xib in Resources */,
+				07E579CD1C4815F200465246 /* tutorial5_ipad@2x.png in Resources */,
 				07E579B71C47131500465246 /* email.html in Resources */,
 				D6272FBF1BE002160024CBC2 /* APDDebugViewController.xib in Resources */,
 				074D8D0A1C21EC06007B5516 /* SNFReportPDF.xib in Resources */,
@@ -1377,11 +1417,14 @@
 				D694011C1BED25530073119E /* SNFPredefinedBoardCell.xib in Resources */,
 				075EA4EB1C121E240003A403 /* treat@2x.png in Resources */,
 				075EA4D91C1214F60003A403 /* frown@2x.png in Resources */,
+				07E579C91C4815F200465246 /* tutorial3_ipad@2x.png in Resources */,
 				074D8D0F1C21EC78007B5516 /* SNFReportPDFUserHeader.xib in Resources */,
 				074D8D141C21F77D007B5516 /* SNFReportPDFDetailRow.xib in Resources */,
+				07E579C41C4815F200465246 /* tutorial1_ipad.png in Resources */,
 				D6DB2BE11BEAC3E300F1CDFF /* SNFSpendRewards.xib in Resources */,
 				07E579A01C46B4E200465246 /* tutorial1@2x.png in Resources */,
 				D6E724DD1BF523FF00398D09 /* SNFValuePicker.xib in Resources */,
+				07E579B91C48153000465246 /* SNFTutorial~iPad.xib in Resources */,
 				075EA4D81C1214F60003A403 /* frown.png in Resources */,
 				07E579AF1C46BE9E00465246 /* tutorial5.png in Resources */,
 				075EA4E61C121E240003A403 /* money.png in Resources */,
@@ -1390,6 +1433,7 @@
 				075EA4E81C121E240003A403 /* time.png in Resources */,
 				D65DF1411BE2BB88009CC6DF /* SNFBoardDetail.xib in Resources */,
 				0703A8981C165BA200DC011E /* GTM-T7XD6P in Resources */,
+				07E579CB1C4815F200465246 /* tutorial4_ipad@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

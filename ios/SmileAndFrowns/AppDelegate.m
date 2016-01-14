@@ -62,7 +62,7 @@ static AppDelegate * _instance;
 	[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
 	
 	if(![SNFTutorial hasSeenTutorial]) {
-		self.window.rootViewController = [[SNFTutorial alloc] init];
+		self.window.rootViewController = [SNFTutorial tutorialInstance];
 	} else if([SNFLauncher showAtLaunch] || ![SNFModel sharedInstance].loggedInUser) {
 		self.window.rootViewController = [[SNFLauncher alloc] init];
 	} else {

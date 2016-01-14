@@ -77,7 +77,7 @@
 }
 
 - (void) tutorial {
-	SNFTutorial * tutorial = [[SNFTutorial alloc] init];
+	SNFTutorial * tutorial = [SNFTutorial tutorialInstance];
 	tutorial.userInitiatedTutorial = TRUE;
 	[AppDelegate instance].window.rootViewController = tutorial;
 }

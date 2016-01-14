@@ -16,4 +16,6 @@
 
 + (BOOL) hasSeenTutorial;
 
++ (SNFTutorial *) tutorialInstance;
+
 @end

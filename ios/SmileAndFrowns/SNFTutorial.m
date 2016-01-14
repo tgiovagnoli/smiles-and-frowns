@@ -15,6 +15,17 @@
 
 @implementation SNFTutorial
 
++ (SNFTutorial *) tutorialInstance; {
+	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		SNFTutorial * tutorial = [[SNFTutorial alloc] initWithNibName:@"SNFTutorial~iPad" bundle:nil];
+		return tutorial;
+	} else {
+		SNFTutorial * tutorial = [[SNFTutorial alloc] initWithNibName:@"SNFTutorial" bundle:nil];
+		return tutorial;
+	}
+	return nil;
+}
+
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	self.firstlayout = true;

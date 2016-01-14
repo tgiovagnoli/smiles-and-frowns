@@ -276,8 +276,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Your Rewards" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-F5-3oS">
-                    <rect key="frame" x="8" y="367" width="584" height="40"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Set Your Rewards" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAz-F5-3oS">
+                    <rect key="frame" x="8" y="371" width="584" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Xqu-EU-Rj1">
                             <variation key="heightClass=regular-widthClass=compact" constant="33"/>
@@ -287,8 +287,8 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H2i-cf-HgO">
-                    <rect key="frame" x="8" y="415" width="584" height="69"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="H2i-cf-HgO">
+                    <rect key="frame" x="8" y="419" width="584" height="69"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="69" id="sgU-Ab-odg">
                             <variation key="heightClass=regular-widthClass=compact" constant="96"/>
@@ -311,7 +311,7 @@
                 <constraint firstItem="H2i-cf-HgO" firstAttribute="top" secondItem="dAz-F5-3oS" secondAttribute="bottom" constant="8" id="h2I-DC-Cjy">
                     <variation key="heightClass=regular-widthClass=compact" constant="-2"/>
                 </constraint>
-                <constraint firstAttribute="bottom" secondItem="H2i-cf-HgO" secondAttribute="bottom" constant="116" id="mDU-yf-MvL"/>
+                <constraint firstAttribute="bottom" secondItem="H2i-cf-HgO" secondAttribute="bottom" constant="96" id="mDU-yf-MvL"/>
                 <constraint firstAttribute="trailing" secondItem="1CB-Eu-lcg" secondAttribute="trailing" id="mMY-bf-Kdg"/>
                 <constraint firstItem="H2i-cf-HgO" firstAttribute="leading" secondItem="hjt-y4-rrK" secondAttribute="leading" constant="8" id="p4u-pF-kBw">
                     <variation key="heightClass=regular-widthClass=compact" constant="8"/>
@@ -333,7 +333,7 @@
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let Kids do the Math" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7C-uP-IpV">
-                    <rect key="frame" x="8" y="398" width="584" height="40"/>
+                    <rect key="frame" x="8" y="391" width="584" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="kt5-Tq-Ivb">
                             <variation key="heightClass=regular-widthClass=compact" constant="36"/>
@@ -344,7 +344,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tRw-Ci-aWc">
-                    <rect key="frame" x="8" y="446" width="584" height="74"/>
+                    <rect key="frame" x="8" y="439" width="584" height="74"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="74" id="wJM-fv-M5d">
                             <variation key="heightClass=regular-widthClass=compact" constant="101"/>
@@ -369,7 +369,7 @@
                 <constraint firstAttribute="trailing" secondItem="5B6-3a-hJ0" secondAttribute="trailing" id="Fhx-YR-UGS"/>
                 <constraint firstItem="i7C-uP-IpV" firstAttribute="leading" secondItem="DBe-Vx-ncF" secondAttribute="leading" constant="8" id="ONw-Qi-YjQ"/>
                 <constraint firstAttribute="trailing" secondItem="i7C-uP-IpV" secondAttribute="trailing" constant="8" id="WXi-Pt-g8M"/>
-                <constraint firstAttribute="bottom" secondItem="tRw-Ci-aWc" secondAttribute="bottom" constant="80" id="j7V-Oh-bGF"/>
+                <constraint firstAttribute="bottom" secondItem="tRw-Ci-aWc" secondAttribute="bottom" constant="87" id="j7V-Oh-bGF"/>
                 <constraint firstItem="tRw-Ci-aWc" firstAttribute="leading" secondItem="DBe-Vx-ncF" secondAttribute="leading" constant="8" id="oPd-OV-UI4">
                     <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                 </constraint>
