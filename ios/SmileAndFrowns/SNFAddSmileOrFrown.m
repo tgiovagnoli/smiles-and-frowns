@@ -4,6 +4,7 @@
 #import "UIViewController+ModalCreation.h"
 #import "SNFSyncService.h"
 #import "SNFFormStyles.h"
+#import "NSTimer+Blocks.h"
 
 @implementation SNFAddSmileOrFrown
 
@@ -27,11 +28,21 @@
 	self.noteField.layer.borderWidth = 1;
 	
 	[self decorate];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardShown:) name:UIKeyboardDidShowNotification object:nil];
+}
+
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)decorate{
 	[SNFFormStyles roundEdgesOnButton:self.addSNFButton];
 	[SNFFormStyles roundEdgesOnButton:self.addBehaviorButton];
+}
+
+- (void) onKeyboardShown:(id) sender {
+	[self.scrollView scrollRectToVisible:CGRectMake(0,self.scrollView.contentSize.height-10,10,10) animated:TRUE];
 }
 
 - (void) textViewDidBeginEditing:(UITextView *)textView {
@@ -40,6 +51,10 @@
 			textView.text = @"";
 			textView.textColor = [SNFFormStyles darkGray];
 		}
+		
+		[NSTimer scheduledTimerWithTimeInterval:1 block:^{
+			[self.scrollView scrollRectToVisible:CGRectMake(0,self.formView.height,10,10) animated:TRUE];
+		} repeats:FALSE];
 	}
 }
 
