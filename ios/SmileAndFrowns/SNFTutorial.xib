@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D13b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
@@ -108,7 +108,7 @@
                             <variation key="heightClass=regular-widthClass=compact" constant="70"/>
                         </constraint>
                     </constraints>
-                    <string key="text">Now it’s easy to make great behavior plans with our 5Cs of success: Clarity, Consistency, Collaboration, Consequence and Challenge.</string>
+                    <string key="text">Now it’s easy to make great behavior plans with our 5Cs of success: Clarity, Consistency, Collaboration, Consequence and a game-like sense of Challenge.</string>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -185,7 +185,7 @@
                             <variation key="heightClass=regular-widthClass=compact" constant="95"/>
                         </constraint>
                     </constraints>
-                    <string key="text">Our boards are a simple way to set expectations clearly, reward behavior consistently, and review results easily. Start fast with a preset board, or quickly make your own.</string>
+                    <string key="text">Our boards are a simple way to set expectations clearly, reward behavior consistently, and review results easily. Just tap on one in the Boards view to start fast with a pre-set, or quickly make your own.</string>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -227,7 +227,7 @@
                             <variation key="heightClass=regular-widthClass=compact" constant="93"/>
                         </constraint>
                     </constraints>
-                    <string key="text">Adding a child to a board is a snap, and collaborating is easy. Invite a spouse, nanny or babysitter to join so everyone is onboard and in sync, so kids have just one set of rules.</string>
+                    <string key="text">Adding a child to a board is a snap, but that’s just the beginning. You can also invite a spouse, a nanny, or anyone else you want to sync up to your board, making collaboration easy.</string>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -294,7 +294,7 @@
                             <variation key="heightClass=regular-widthClass=compact" constant="96"/>
                         </constraint>
                     </constraints>
-                    <string key="text">When Smiles have real value, kids are challenged to earn them. In Smiles &amp; Frowns they're worth Money, Time, Treats or Goals. Start fast with our presets, or set your own in seconds.</string>
+                    <string key="text">Kids will work hard to earn rewards, which you’ll find when you tap the Spend icon. In Smiles &amp; Frowns, rewards can be Money, Time, Treats or Goals. Use our presets, or tap the orange + the make your own in seconds.</string>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -332,7 +332,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let Kids do the Math" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7C-uP-IpV">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let the Games Begin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i7C-uP-IpV">
                     <rect key="frame" x="8" y="391" width="584" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="kt5-Tq-Ivb">
@@ -350,7 +350,7 @@
                             <variation key="heightClass=regular-widthClass=compact" constant="101"/>
                         </constraint>
                     </constraints>
-                    <string key="text">From here, it’s simple: Smiles minus Frowns equals a child’s rewards-buying power. Kids can see the numbers adding up, and with their behavior tied directly to consequence, they’ll work hard to do their best.</string>
+                    <string key="text">Just tap a child’s Smile or Frown icon, select a behavior and submit. Kids learn fast that Smiles - Frowns = their rewards-buying power, so they’ll work hard to do their best. To review performance, just tap on a child’s name.</string>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
