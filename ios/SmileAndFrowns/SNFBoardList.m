@@ -443,16 +443,19 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	}
 	
 	if(copyBehaviors) {
-		for(SNFPredefinedBehavior * behavior in copyBehaviors) {
+		for(SNFPredefinedBehavior * pdBehavior in copyBehaviors) {
 			NSDictionary * behaviorInfo = @{
-				@"title": behavior.title,
+				@"title": pdBehavior.title,
 				@"board": @{@"uuid":newBoard.uuid},
-				@"positive": behavior.positive,
+				@"positive": pdBehavior.positive,
+				@"predefined_behavior_uuid":pdBehavior.uuid,
 			};
 			SNFBehavior * behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:[SNFModel sharedInstance].managedObjectContext];
-			behavior.predefined_behavior_uuid = behavior.uuid;
+			behavior.predefined_behavior_uuid = pdBehavior.uuid;
 		}
 	}
+	
+	[[SNFSyncService instance] saveContext];
 	
 	[self reloadBoards];
 	
@@ -462,8 +465,6 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 		boardDetail.board = newBoard;
 		[self boardListCell:nil wantsToEditBoard:newBoard];
 	}
-	
-	[[SNFSyncService instance] saveContext];
 	
 	//NSLog(@"\nboard updated:%@ \nlast synced:%@", newBoard.updated_date, [SNFModel sharedInstance].userSettings.lastSyncDate);
 }

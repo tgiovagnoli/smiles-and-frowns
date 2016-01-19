@@ -5,9 +5,27 @@
 #import "SNFSyncService.h"
 #import "SNFFormStyles.h"
 #import "NSTimer+Blocks.h"
+#import "SNFBoardDetailHeader.h"
+
+@interface SNFAddSmileOrFrownGroup : NSObject
+@property NSString * title;
+@property NSMutableArray * rows;
+@end
+
+@implementation SNFAddSmileOrFrownGroup
+- (id) init {
+	self = [super init];
+	self.rows = [NSMutableArray array];
+	self.title = @"";
+	return self;
+}
+@end
+
+@interface SNFAddSmileOrFrown ()
+@property NSMutableArray * groups;
+@end
 
 @implementation SNFAddSmileOrFrown
-
 
 - (void)viewDidLoad{
 	[super viewDidLoad];
@@ -86,7 +104,7 @@
 	}
 }
 
-- (void)reloadBehaviors{
+- (void) reloadBehaviors {
 	switch (self.type) {
 		case SNFAddSmileOrFrownTypeSmile:
 			_behaviors = [self.board sortedActivePositiveBehaviors];
@@ -95,10 +113,63 @@
 			_behaviors = [self.board sortedActiveNegativeBehaviors];
 			break;
 	}
+	
+	NSMutableDictionary * groups = [NSMutableDictionary dictionary];
+	BOOL useGroups = TRUE;
+	
+	for(SNFBehavior * behavior in _behaviors) {
+		
+		if(!behavior.predefined_behavior_uuid || [behavior.predefined_behavior_uuid isEqual:[NSNull null]] || behavior.predefined_behavior_uuid.length < 1) {
+			useGroups = FALSE;
+			break;
+		}
+		
+		SNFPredefinedBehavior * predefined = [SNFPredefinedBehavior behaviorByUUID:behavior.predefined_behavior_uuid];
+		if(!predefined) {
+			useGroups = FALSE;
+			break;
+		}
+		
+		SNFPredefinedBehaviorGroup * predefinedBehaviorGroup = [SNFPredefinedBehavior groupForBehavior:predefined];
+		if(!predefinedBehaviorGroup) {
+			useGroups = FALSE;
+			break;
+		}
+		
+		SNFAddSmileOrFrownGroup * group = groups[predefinedBehaviorGroup.title];
+		
+		if(!group) {
+			group = [[SNFAddSmileOrFrownGroup alloc] init];
+			group.title = predefinedBehaviorGroup.title;
+			groups[predefinedBehaviorGroup.title] = group;
+		}
+		
+		[group.rows addObject:behavior];
+		
+	}
+	
+	if(!useGroups) {
+		self.groups = nil;
+	} else {
+		
+		self.groups = [NSMutableArray array];
+		for(NSString * key in groups) {
+			SNFAddSmileOrFrownGroup * group = groups[key];
+			[self.groups addObject:group];
+		}
+		
+		[self.groups sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+			SNFAddSmileOrFrownGroup * g1 = (SNFAddSmileOrFrownGroup *)obj1;
+			SNFAddSmileOrFrownGroup * g2 = (SNFAddSmileOrFrownGroup *)obj2;
+			return [g1.title compare:g2.title];
+		}];
+		
+	}
+	
 	[self.behaviorsTable reloadData];
 }
 
-- (void)setBoard:(SNFBoard *)board{
+- (void) setBoard:(SNFBoard *) board {
 	_board = board;
 	[self updateUI:TRUE];
 }
@@ -146,7 +217,15 @@
 		[self presentViewController:alert animated:YES completion:^{}];
 		return;
 	}
-	SNFBehavior *behavior = [_behaviors objectAtIndex:indexPath.row];
+	
+	SNFBehavior * behavior = nil;
+	if(self.groups) {
+		SNFAddSmileOrFrownGroup * group = [self.groups objectAtIndex:indexPath.section];
+		behavior = [group.rows objectAtIndex:indexPath.row];
+	} else {
+		behavior = [_behaviors objectAtIndex:indexPath.row];
+	}
+	
 	for(NSInteger i=0; i<self.amountStepper.value; i++){
 		switch(self.type){
 			case SNFAddSmileOrFrownTypeFrown:
@@ -163,8 +242,8 @@
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
-- (void)addSmileForBehavior:(SNFBehavior *)behavior{
-	if(![self validateAndWarnForBehavior:behavior]){
+- (void) addSmileForBehavior:(SNFBehavior *) behavior {
+	if(![self validateAndWarnForBehavior:behavior]) {
 		return;
 	}
 	
@@ -174,12 +253,12 @@
 	}
 	
 	NSDictionary *smileDictionary = @{
-									   @"note": note,
-									   @"board": @{@"uuid": self.board.uuid},
-									   @"behavior": @{@"uuid": behavior.uuid},
-									   @"user": [self.user infoDictionary],
-									   @"creator": [[SNFModel sharedInstance].loggedInUser infoDictionary],
-									  };
+		@"note": note,
+		@"board": @{@"uuid": self.board.uuid},
+		@"behavior": @{@"uuid": behavior.uuid},
+		@"user": [self.user infoDictionary],
+		@"creator": [[SNFModel sharedInstance].loggedInUser infoDictionary],
+	};
 	[SNFSmile editOrCreatefromInfoDictionary:smileDictionary withContext:[SNFModel sharedInstance].managedObjectContext];
 	[[SNFSyncService instance] saveContext];
 }
@@ -244,25 +323,68 @@
 	self.amountField.text = [NSString stringWithFormat:@"%.0f", sender.value];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-	if(tableView == self.behaviorsTable){
-		return _behaviors.count;
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	if(self.groups) {
+		return 22;
 	}
 	return 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-	if(tableView == self.behaviorsTable){
-		SNFBehavior *behavior = [_behaviors objectAtIndex:indexPath.row];
-		SNFBoardEditBehaviorCell *cell = [self.behaviorsTable dequeueReusableCellWithIdentifier:@"SNFBoardEditBehaviorCell"];
-		if(!cell){
-			NSArray *topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardEditBehaviorCell" owner:self options:nil];
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+	if(self.groups) {
+		return self.groups.count;
+	}
+	return 1;
+}
+
+- (UIView *) tableView:(UITableView *) tableView viewForHeaderInSection:(NSInteger) section {
+	if(!self.groups) {
+		return nil;
+	}
+	SNFAddSmileOrFrownGroup * group = [self.groups objectAtIndex:section];
+	SNFBoardDetailHeader * headerCell = [[SNFBoardDetailHeader alloc] init];
+	headerCell.textLabel.text = group.title;
+	return headerCell;
+}
+
+- (NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
+	if(self.groups) {
+		SNFAddSmileOrFrownGroup * group = [self.groups objectAtIndex:section];
+		return group.rows.count;
+	}
+	
+	if(tableView == self.behaviorsTable) {
+		return _behaviors.count;
+	}
+	
+	return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
+	if(tableView == self.behaviorsTable) {
+		
+		SNFBehavior * behavior = nil;
+		
+		if(self.groups) {
+			SNFAddSmileOrFrownGroup * group = [self.groups objectAtIndex:indexPath.section];
+			behavior = [group.rows objectAtIndex:indexPath.row];
+		} else {
+			behavior = [_behaviors objectAtIndex:indexPath.row];
+		}
+		
+		SNFBoardEditBehaviorCell * cell = [self.behaviorsTable dequeueReusableCellWithIdentifier:@"SNFBoardEditBehaviorCell"];
+		
+		if(!cell) {
+			NSArray * topLevelObjects = [[NSBundle mainBundle] loadNibNamed:@"SNFBoardEditBehaviorCell" owner:self options:nil];
 			cell = [topLevelObjects firstObject];
 		}
+		
 		cell.behavior = behavior;
 		cell.delegate = self;
+		
 		return cell;
 	}
+	
 	return nil;
 }
 

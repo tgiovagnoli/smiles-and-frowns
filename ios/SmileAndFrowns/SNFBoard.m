@@ -29,7 +29,9 @@
 	self.updated_date = [NSDate date];
 	self.created_date = [NSDate date];
 	self.device_date = [NSDate date];
-	self.uuid = [[NSUUID UUID] UUIDString];
+	if(!self.uuid) {
+		self.uuid = [[NSUUID UUID] UUIDString];
+	}
 	if(!self.predefined_board_uuid) {
 		self.predefined_board_uuid = @"";
 	}
@@ -153,15 +155,16 @@
 	}else{
 		boardInfo = @{@"title": pdb.title, @"owner": [[SNFModel sharedInstance].loggedInUser infoDictionary]};
 	}
-	SNFBoard *board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
+	SNFBoard * board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
 	board.predefined_board_uuid = pdb.uuid;
-	for(SNFPredefinedBehavior *pdBehavior in pdb.behaviors){
+	for(SNFPredefinedBehavior * pdBehavior in pdb.behaviors) {
 		NSDictionary *behaviorInfo = @{
-									   @"title": pdBehavior.title,
-									   @"board": @{@"uuid": board.uuid},
-									   @"positive": pdBehavior.positive,
-									   };
-		SNFBehavior *behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
+			@"title": pdBehavior.title,
+			@"board": @{@"uuid": board.uuid},
+			@"positive": pdBehavior.positive,
+			@"predefined_behavior_uuid":pdBehavior.uuid,
+		};
+		SNFBehavior * behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 		behavior.predefined_behavior_uuid = pdBehavior.uuid;
 		NSLog(@"%@ - %@", behavior.title, behavior.positive);
 	}

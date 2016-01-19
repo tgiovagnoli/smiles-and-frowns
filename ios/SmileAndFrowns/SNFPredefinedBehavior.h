@@ -9,6 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SNFPredefinedBehavior : NSManagedObject
 
 + (SNFPredefinedBehavior *) behaviorByUUID:(NSString *) uuid;
++ (SNFPredefinedBehaviorGroup *) groupForBehavior:(SNFPredefinedBehavior *) behavior;
 
 @end
 

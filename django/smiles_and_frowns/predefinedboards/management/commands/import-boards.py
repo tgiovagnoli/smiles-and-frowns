@@ -56,11 +56,11 @@ class Command(BaseCommand):
 
 				#create smile
 				if len(smile) > 0 and smile != "":
-					behavior,created = models.PredefinedBehavior.objects.get_or_create(title=smile,positive=True)
+					behavior = models.PredefinedBehavior(title=smile,positive=True)
 
 				#create frown
 				elif len(frown) > 0 and frown != "":
-					behavior,created = models.PredefinedBehavior.objects.get_or_create(title=frown,positive=False)
+					behavior = models.PredefinedBehavior(title=frown,positive=False)
 				
 				if behavior:
 					behavior.save()

@@ -24,7 +24,9 @@
 	self.updated_date = [NSDate date];
 	self.created_date = [NSDate date];
 	self.device_date = [NSDate date];
-	self.uuid = [[NSUUID UUID] UUIDString];
+	if(!self.uuid) {
+		self.uuid = [[NSUUID UUID] UUIDString];
+	}
 	if(!self.role){
 		self.role = SNFUserRoleChild;
 	}
