@@ -108,7 +108,7 @@
                             <variation key="heightClass=regular-widthClass=compact" constant="70"/>
                         </constraint>
                     </constraints>
-                    <string key="text">Now it’s easy to make great behavior plans with our 5Cs of success: Clarity, Consistency, Collaboration, Consequence and a game-like sense of Challenge.</string>
+                    <string key="text">Now it’s easy to make great behavior plans with our 5 Cs of success: Clarity, Consistency, Collaboration, Consequence and a game-like sense of Challenge.</string>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -294,7 +294,7 @@
                             <variation key="heightClass=regular-widthClass=compact" constant="96"/>
                         </constraint>
                     </constraints>
-                    <string key="text">Kids will work hard to earn rewards, which you’ll find when you tap the Spend icon. In Smiles &amp; Frowns, rewards can be Money, Time, Treats or Goals. Use our presets, or tap the orange + the make your own in seconds.</string>
+                    <string key="text">Kids will work hard to earn rewards, which you’ll find when you tap the Spend icon. In Smiles &amp; Frowns, rewards can be Money, Time, Treats or Goals. Use our presets, or tap the orange + the make your own.</string>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
