@@ -430,8 +430,7 @@
 - (void)setBoard:(SNFBoard *)board{
 	_board = board;
 	[self updateUI];
-	
-	[[GATracking instance] trackScreenWithTagManager:[NSString stringWithFormat:@"BoardDetailView:%@",board.title]];
+	[[GATracking instance] trackScreenWithTagManager:@"BoardDetailView"];
 }
 
 - (void)reloadUserRoles{
