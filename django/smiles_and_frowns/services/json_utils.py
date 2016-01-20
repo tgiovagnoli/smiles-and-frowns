@@ -78,6 +78,7 @@ def behavior_info_dictionary(behavior):
 		"id": behavior.id,
 		"positive": behavior.positive,
 		"predefined_behavior_uuid":behavior.predefined_behavior_uuid,
+		"group":behavior.group,
 	}
 	append_sync_info(behavior, behavior_data)
 	if behavior.board: behavior_data['board'] = {'uuid':behavior.board.uuid}

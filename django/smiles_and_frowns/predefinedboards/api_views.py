@@ -14,6 +14,7 @@ def serialize_boards(boards):
 			"description": board.description,
 			"uuid": board.uuid,
 			"id": board.id,
+			"soft_delete":board.soft_delete,
 			"list_sort": board.list_sort,
 			"behaviors": serialize_behaviors(board.behaviors.all(), uuid_only=True)
 		})
@@ -32,6 +33,8 @@ def serialize_behaviors(behaviors, uuid_only=False):
 				"uuid": behavior.uuid,
 				"id": behavior.id,
 				"positive": behavior.positive,
+				"soft_delete":board.soft_delete,
+				"group":board.group,
 			})
 	return behaviors_info;
 

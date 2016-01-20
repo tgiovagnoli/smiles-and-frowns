@@ -866,6 +866,7 @@ def sync(request):
 		behavior.deleted = client_behavior.get('deleted',False)
 		behavior.positive = client_behavior.get('positive',True)
 		behavior.predefined_behavior_uuid = client_behavior.get('predefined_behavior_uuid',"")
+		behavior.group = client_behavior.get('group','')
 		behavior.save()
 
 		#set created for lookup

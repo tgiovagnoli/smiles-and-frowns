@@ -112,6 +112,7 @@ class Behavior(SyncModel):
 	board = models.ForeignKey(Board,on_delete=models.SET_NULL,null=True)
 	positive = models.BooleanField(default=True)
 	predefined_behavior_uuid = models.CharField(max_length=64,default="",null=True) #this is only set if the behavior was created from a predefined behavior.
+	group = models.CharField(max_length=128,default="",blank=True,null=True)
 	def __unicode__(self):
 		return self.title
 

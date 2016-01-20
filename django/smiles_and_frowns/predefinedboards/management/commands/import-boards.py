@@ -6,6 +6,7 @@ import os,shutil,xlrd
 class Command(BaseCommand):
 	option_list = BaseCommand.option_list + (
 		make_option("--xls",action="store",dest="xls",help="XLS(X) File"),
+		make_option("--soft_delete",action="store_true",dest="soft_delete",help="XLS(X) File"),
 	)
 
 	def handle(self, *args, **options):
@@ -13,6 +14,18 @@ class Command(BaseCommand):
 			raise CommandError("--xls option is required")
 		xls = options.get('xls')
 		wb = xlrd.open_workbook(xls)
+		
+		#mark all existing 'predefined' data as soft_delete.
+		if options.get('soft_delete',False):
+			boards = PredefinedBoard.objects.all()
+			for board in boards:
+				board.soft_delete = True
+			behaviors = PredefinedBehavior.objects.all()
+			for behavior in behaviors:
+				behavior.soft_delete = True
+			groups = PredefinedBehaviorGroup.objects.all()
+			for group in groups:
+				group.soft_delete = True
 
 		#create groups
 		groups = wb.sheet_by_name("GroupTitles")
@@ -56,11 +69,11 @@ class Command(BaseCommand):
 
 				#create smile
 				if len(smile) > 0 and smile != "":
-					behavior = models.PredefinedBehavior(title=smile,positive=True)
+					behavior = models.PredefinedBehavior(title=smile,group=group_model.title,positive=True)
 
 				#create frown
 				elif len(frown) > 0 and frown != "":
-					behavior = models.PredefinedBehavior(title=frown,positive=False)
+					behavior = models.PredefinedBehavior(title=frown,group=group_model.title,positive=False)
 				
 				if behavior:
 					behavior.save()

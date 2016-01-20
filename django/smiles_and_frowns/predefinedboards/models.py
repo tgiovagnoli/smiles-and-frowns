@@ -5,6 +5,8 @@ class PredefinedBehavior(models.Model):
 	title = models.CharField(max_length=128)
 	uuid = models.CharField(max_length=64)
 	positive = models.BooleanField(default=True)
+	soft_delete = models.BooleanField(default=False)
+	group = models.CharField(max_length=128,default="",blank=True,null=True)
 	def __unicode__(self):
 		return self.title
 	def save(self, *args, **kwargs):
@@ -18,6 +20,7 @@ class PredefinedBoard(models.Model):
 	uuid = models.CharField(max_length=64)
 	behaviors = models.ManyToManyField(PredefinedBehavior)
 	list_sort = models.PositiveSmallIntegerField(default=0)
+	soft_delete = models.BooleanField(default=False)
 	def __unicode__(self):
 		return self.title
 	def save(self, *args, **kwargs):
@@ -29,6 +32,7 @@ class PredefinedBehaviorGroup(models.Model):
 	title = models.CharField(max_length=128)
 	uuid = models.CharField(max_length=64)
 	behaviors = models.ManyToManyField(PredefinedBehavior)
+	soft_delete = models.BooleanField(default=False)
 	def __unicode__(self):
 		return self.title
 	def save(self, *args, **kwargs):
