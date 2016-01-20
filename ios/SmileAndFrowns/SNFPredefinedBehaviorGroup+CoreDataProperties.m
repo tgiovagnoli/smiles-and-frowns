@@ -16,5 +16,6 @@
 @dynamic title;
 @dynamic uuid;
 @dynamic behaviors;
+@dynamic soft_delete;
 
 @end

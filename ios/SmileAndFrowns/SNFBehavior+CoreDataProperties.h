@@ -9,6 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSString *title;
 @property (nullable, nonatomic, retain) NSString *note;
+@property (nullable, nonatomic, retain) NSString *group;
 @property (nullable, nonatomic, retain) SNFBoard *board;
 @property (nullable, nonatomic, retain) NSNumber *positive;
 @property (nullable, nonatomic, retain) NSSet<SNFSmile *> *smiles;

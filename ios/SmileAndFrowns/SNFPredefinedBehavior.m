@@ -10,6 +10,8 @@
 		@"uuid": @"uuid",
 		@"title": @"title",
 		@"positive": @"positive",
+		@"group":@"group",
+		@"soft_delete":@"soft_delete",
 	};
 }
 

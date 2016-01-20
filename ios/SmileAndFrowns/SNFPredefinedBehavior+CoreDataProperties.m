@@ -18,5 +18,7 @@
 @dynamic positive;
 @dynamic predefined_boards;
 @dynamic predefined_behaviors;
+@dynamic group;
+@dynamic soft_delete;
 
 @end

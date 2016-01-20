@@ -150,9 +150,9 @@
 
 + (SNFBoard *)boardFromPredefinedBoard:(SNFPredefinedBoard *)pdb andContext:(NSManagedObjectContext *)context{
 	NSDictionary *boardInfo;
-	if(!pdb){
+	if(!pdb) {
 		boardInfo = @{@"title": @"Untitled", @"owner": [[SNFModel sharedInstance].loggedInUser infoDictionary]};
-	}else{
+	} else {
 		boardInfo = @{@"title": pdb.title, @"owner": [[SNFModel sharedInstance].loggedInUser infoDictionary]};
 	}
 	SNFBoard * board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
@@ -163,10 +163,10 @@
 			@"board": @{@"uuid": board.uuid},
 			@"positive": pdBehavior.positive,
 			@"predefined_behavior_uuid":pdBehavior.uuid,
+			@"group":pdBehavior.group,
 		};
 		SNFBehavior * behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 		behavior.predefined_behavior_uuid = pdBehavior.uuid;
-		NSLog(@"%@ - %@", behavior.title, behavior.positive);
 	}
 	[board addInitialRewards];
 	return board;

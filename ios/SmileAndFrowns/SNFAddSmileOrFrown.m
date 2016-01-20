@@ -118,38 +118,23 @@
 	BOOL useGroups = TRUE;
 	
 	for(SNFBehavior * behavior in _behaviors) {
-		
-		if(!behavior.predefined_behavior_uuid || [behavior.predefined_behavior_uuid isEqual:[NSNull null]] || behavior.predefined_behavior_uuid.length < 1) {
+		NSString * groupName = behavior.group;
+		if(!groupName || [groupName isEqual:[NSNull null]] || groupName.length < 1) {
 			useGroups = FALSE;
-			break;
 		}
-		
-		SNFPredefinedBehavior * predefined = [SNFPredefinedBehavior behaviorByUUID:behavior.predefined_behavior_uuid];
-		if(!predefined) {
-			useGroups = FALSE;
-			break;
-		}
-		
-		SNFPredefinedBehaviorGroup * predefinedBehaviorGroup = [SNFPredefinedBehavior groupForBehavior:predefined];
-		if(!predefinedBehaviorGroup) {
-			useGroups = FALSE;
-			break;
-		}
-		
-		SNFAddSmileOrFrownGroup * group = groups[predefinedBehaviorGroup.title];
-		
+		SNFAddSmileOrFrownGroup * group = groups[behavior.group];
 		if(!group) {
 			group = [[SNFAddSmileOrFrownGroup alloc] init];
-			group.title = predefinedBehaviorGroup.title;
-			groups[predefinedBehaviorGroup.title] = group;
+			group.title = behavior.group;
+			groups[behavior.group] = group;
 		}
-		
 		[group.rows addObject:behavior];
-		
 	}
 	
 	if(!useGroups) {
+		
 		self.groups = nil;
+		
 	} else {
 		
 		self.groups = [NSMutableArray array];

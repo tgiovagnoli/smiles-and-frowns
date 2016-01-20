@@ -7,6 +7,7 @@
 	return @{
 			 @"uuid": @"uuid",
 			 @"title": @"title",
+			 @"soft_delete":@"soft_delete",
 			 };
 }
 

@@ -33,8 +33,8 @@ def serialize_behaviors(behaviors, uuid_only=False):
 				"uuid": behavior.uuid,
 				"id": behavior.id,
 				"positive": behavior.positive,
-				"soft_delete":board.soft_delete,
-				"group":board.group,
+				"soft_delete":behavior.soft_delete,
+				"group":behavior.group,
 			})
 	return behaviors_info;
 
@@ -45,9 +45,10 @@ def serialize_behavior_groups(behavior_groups):
 			"title": group.title,
 			"uuid": group.uuid,
 			"id": group.id,
+			"soft_delete": group.soft_delete,
 			"behaviors": serialize_behaviors(group.behaviors.all(), uuid_only=True)
 		})
-	return group_info;
+	return group_info
 
 def sync_boards(request):
 	boards = models.PredefinedBoard.objects.all()

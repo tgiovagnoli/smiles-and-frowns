@@ -194,7 +194,9 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	predefRequest.sortDescriptors = @[list_sort];
 	
 	if(![self.searchField.text isEmpty]) {
-		predefRequest.predicate = [NSPredicate predicateWithFormat:@"(title CONTAINS[cd] %@)", self.searchField.text];
+		predefRequest.predicate = [NSPredicate predicateWithFormat:@"(title CONTAINS[cd] %@) && (soft_delete = 0)", self.searchField.text];
+	} else {
+		predefRequest.predicate = [NSPredicate predicateWithFormat:@"(soft_delete = 0)", self.searchField.text];
 	}
 	
 	_predefinedBoards = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:predefRequest error:&error];
@@ -449,6 +451,7 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 				@"board": @{@"uuid":newBoard.uuid},
 				@"positive": pdBehavior.positive,
 				@"predefined_behavior_uuid":pdBehavior.uuid,
+				@"group":pdBehavior.group,
 			};
 			SNFBehavior * behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:[SNFModel sharedInstance].managedObjectContext];
 			behavior.predefined_behavior_uuid = pdBehavior.uuid;

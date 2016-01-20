@@ -18,5 +18,6 @@
 @dynamic behaviors;
 @dynamic list_sort;
 @dynamic board_description;
+@dynamic soft_delete;
 
 @end

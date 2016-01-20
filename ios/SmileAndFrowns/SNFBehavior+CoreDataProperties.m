@@ -17,5 +17,6 @@
 @dynamic smiles;
 @dynamic frowns;
 @dynamic device_date;
+@dynamic group;
 
 @end

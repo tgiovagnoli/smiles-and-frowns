@@ -15,6 +15,7 @@
 		@"remote_id": @"id",
 		@"board": @"board",
 		@"positive": @"positive",
+		@"group":@"group",
 	};
 }
 
@@ -33,6 +34,9 @@
 	}
 	if(!self.title){
 		self.title = @"Untitled";
+	}
+	if(!self.group) {
+		self.group = @"";
 	}
 	self.soft_deleted = @NO;
 	[super awakeFromInsert];

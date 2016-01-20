@@ -11,6 +11,7 @@
 		@"title": @"title",
 		@"list_sort":@"list_sort",
 		@"board_description":@"description",
+		@"soft_delete":@"soft_delete",
 	};
 }
 

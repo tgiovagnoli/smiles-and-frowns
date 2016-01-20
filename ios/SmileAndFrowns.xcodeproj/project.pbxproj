@@ -423,6 +423,7 @@
 		07E579C11C4815F200465246 /* tutorial4_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial4_ipad@2x.png"; sourceTree = "<group>"; };
 		07E579C21C4815F200465246 /* tutorial5_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial5_ipad.png; sourceTree = "<group>"; };
 		07E579C31C4815F200465246 /* tutorial5_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tutorial5_ipad@2x.png"; sourceTree = "<group>"; };
+		07E579ED1C4FFF2500465246 /* SmileAndFrowns 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SmileAndFrowns 5.xcdatamodel"; sourceTree = "<group>"; };
 		07E7055A1BEBD1520013FB75 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSLog+Geom.h"; path = "submodules/apd-objc/NSLog+Geom.h"; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
@@ -1738,12 +1739,13 @@
 		072BBF701C40638000A7AADA /* SmileAndFrowns.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				07E579ED1C4FFF2500465246 /* SmileAndFrowns 5.xcdatamodel */,
 				07E579B11C46DF2E00465246 /* SmileAndFrowns 4.xcdatamodel */,
 				072BBF711C40638000A7AADA /* SmileAndFrowns 2.xcdatamodel */,
 				072BBF721C40638000A7AADA /* SmileAndFrowns 3.xcdatamodel */,
 				072BBF731C40638000A7AADA /* SmileAndFrowns.xcdatamodel */,
 			);
-			currentVersion = 07E579B11C46DF2E00465246 /* SmileAndFrowns 4.xcdatamodel */;
+			currentVersion = 07E579ED1C4FFF2500465246 /* SmileAndFrowns 5.xcdatamodel */;
 			name = SmileAndFrowns.xcdatamodeld;
 			path = SmileAndFrowns/SmileAndFrowns.xcdatamodeld;
 			sourceTree = "<group>";

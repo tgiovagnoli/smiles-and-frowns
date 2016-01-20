@@ -14,19 +14,23 @@ class Command(BaseCommand):
 			raise CommandError("--xls option is required")
 		xls = options.get('xls')
 		wb = xlrd.open_workbook(xls)
-		
+
 		#mark all existing 'predefined' data as soft_delete.
-		if options.get('soft_delete',False):
-			boards = PredefinedBoard.objects.all()
+		soft_delete = options.get('soft_delete',False)
+		if soft_delete:
+			boards = models.PredefinedBoard.objects.all()
 			for board in boards:
 				board.soft_delete = True
-			behaviors = PredefinedBehavior.objects.all()
+				board.save()
+			behaviors = models.PredefinedBehavior.objects.all()
 			for behavior in behaviors:
 				behavior.soft_delete = True
-			groups = PredefinedBehaviorGroup.objects.all()
+				behavior.save()
+			groups = models.PredefinedBehaviorGroup.objects.all()
 			for group in groups:
 				group.soft_delete = True
-
+				group.save()
+		
 		#create groups
 		groups = wb.sheet_by_name("GroupTitles")
 		for row in range(0,groups.nrows):
@@ -35,7 +39,10 @@ class Command(BaseCommand):
 				continue
 			
 			#create group
-			group_model,created = models.PredefinedBehaviorGroup.objects.get_or_create(title=group)
+			if soft_delete:
+				group_model = models.PredefinedBehaviorGroup(title=group)
+			else:
+				group_model,created = models.PredefinedBehaviorGroup.objects.get_or_create(title=group)
 			group_model.save()
 
 		#create boards / behaviors
@@ -45,7 +52,11 @@ class Command(BaseCommand):
 			
 			#create board
 			board_name = sheet.name
-			board_model,created = models.PredefinedBoard.objects.get_or_create(title=board_name)
+			board_model = None
+			if soft_delete:
+				board_model = models.PredefinedBoard(title=board_name)
+			else:
+				board_model,created = models.PredefinedBoard.objects.get_or_create(title=board_name,soft_delete=False)
 			board_model.save()
 			
 			#create behaviors
@@ -62,18 +73,24 @@ class Command(BaseCommand):
 
 				#get group
 				try:
-					group_model = models.PredefinedBehaviorGroup.objects.get(title=group)
+					group_model = models.PredefinedBehaviorGroup.objects.get(title=group,soft_delete=False)
 				except Exception as e:
 					print group
 					print e
 
 				#create smile
 				if len(smile) > 0 and smile != "":
-					behavior = models.PredefinedBehavior(title=smile,group=group_model.title,positive=True)
+					if soft_delete:
+						behavior = models.PredefinedBehavior(title=smile,group=group_model.title,positive=True)
+					else:
+						behavior = models.PredefinedBehavior.objects.get_or_create(title=smile,group=group_model.title,positive=True,soft_delete=False)
 
 				#create frown
 				elif len(frown) > 0 and frown != "":
-					behavior = models.PredefinedBehavior(title=frown,group=group_model.title,positive=False)
+					if soft_delete:
+						behavior = models.PredefinedBehavior(title=frown,group=group_model.title,positive=False)
+					else:
+						behavior = models.PredefinedBehavior.objects.get_or_create(title=frown,group=group_model.title,positive=False,soft_delete=False)
 				
 				if behavior:
 					behavior.save()

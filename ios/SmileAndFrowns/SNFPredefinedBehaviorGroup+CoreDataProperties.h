@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSString *title;
 @property (nullable, nonatomic, retain) NSString *uuid;
+@property (nullable, nonatomic, retain) NSNumber *soft_delete;
 @property (nullable, nonatomic, retain) NSSet<SNFPredefinedBehavior *> *behaviors;
 
 @end
