@@ -35,7 +35,7 @@
 - (void) awakeFromNib {
 	self.behaviorTitleField.delegate = self;
 	[self.behaviorTitleField addTarget:self action:@selector(onTitleUpdate:) forControlEvents:UIControlEventEditingChanged];
-	self.editButton.layer.cornerRadius = 8;
+	self.editButton.layer.cornerRadius = 10;
 	self.editButton.layer.backgroundColor = [[UIColor colorWithRed:0.801 green:0.801 blue:0.801 alpha:1] CGColor];
 	[self.editButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
 	self.behaviorTitleField.userInteractionEnabled = NO;

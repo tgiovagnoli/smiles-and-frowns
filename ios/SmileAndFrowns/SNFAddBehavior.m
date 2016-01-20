@@ -131,7 +131,7 @@
 	NSManagedObjectContext * context = [SNFModel sharedInstance].managedObjectContext;
 	SNFPredefinedBehaviorGroup * userGroup = [self userGroup];
 	NSNumber * positive = [NSNumber numberWithBool:!self.positiveNegativeSegment.selectedSegmentIndex];
-	NSDictionary * behaviorInfo = @{@"uuid": [[NSUUID UUID] UUIDString],@"title": @"Untitled",@"positive":positive,};
+	NSDictionary * behaviorInfo = @{@"uuid": [[NSUUID UUID] UUIDString],@"title": @"Untitled",@"positive":positive,@"group":@"User Created"};
 	SNFPredefinedBehavior * behavior = (SNFPredefinedBehavior *)[SNFPredefinedBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 	[userGroup addBehaviorsObject:behavior];
 	[[SNFSyncService instance] saveContext];
@@ -187,7 +187,12 @@
 		NSArray * behaviors = predefinedGroup[@"behaviors"];
 		SNFPredefinedBehavior * predefinedBehavior = [behaviors objectAtIndex:indexPath.row];
 		if(predefinedBehavior && self.board) {
-			NSDictionary * behaviorInfo = @{@"title": predefinedBehavior.title,@"uuid": [[NSUUID UUID] UUIDString],@"positive": predefinedBehavior.positive,};
+			NSDictionary * behaviorInfo = @{
+				@"title":predefinedBehavior.title,
+				@"uuid":[[NSUUID UUID] UUIDString],
+				@"positive":predefinedBehavior.positive,
+				@"group":predefinedBehavior.group
+			};
 			NSLog(@"adding behavior %@", predefinedBehavior.title);
 			SNFBehavior * behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 			behavior.board = self.board;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15C40a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D13b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -22,7 +22,6 @@
                 <subviews>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SNFAddBehaviorCell" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Behavior Title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nFw-eP-7lN">
                         <rect key="frame" x="15" y="8" width="297" height="27"/>
-                        <animations/>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
@@ -32,10 +31,9 @@
                         </connections>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGM-lZ-ab0">
-                        <rect key="frame" x="275" y="15" width="32" height="14"/>
-                        <animations/>
+                        <rect key="frame" x="267" y="10" width="43" height="23"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="32" id="eoJ-EZ-Yug"/>
+                            <constraint firstAttribute="width" constant="43" id="eoJ-EZ-Yug"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
                         <state key="normal" title="Edit">
@@ -46,19 +44,17 @@
                         </connections>
                     </button>
                 </subviews>
-                <animations/>
                 <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="nFw-eP-7lN" secondAttribute="bottom" id="0hb-xf-deP"/>
-                    <constraint firstAttribute="bottom" secondItem="CGM-lZ-ab0" secondAttribute="bottom" constant="14" id="2wh-C6-CYW"/>
-                    <constraint firstItem="CGM-lZ-ab0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="F7T-8I-v0j"/>
+                    <constraint firstAttribute="bottom" secondItem="CGM-lZ-ab0" secondAttribute="bottom" constant="10" id="2wh-C6-CYW"/>
+                    <constraint firstItem="CGM-lZ-ab0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="F7T-8I-v0j"/>
                     <constraint firstItem="nFw-eP-7lN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="JJH-ea-2eL"/>
                     <constraint firstAttribute="trailingMargin" secondItem="nFw-eP-7lN" secondAttribute="trailing" id="OB1-8X-CcH"/>
-                    <constraint firstAttribute="trailing" secondItem="CGM-lZ-ab0" secondAttribute="trailing" constant="13" id="jsv-XG-xDe"/>
+                    <constraint firstAttribute="trailing" secondItem="CGM-lZ-ab0" secondAttribute="trailing" constant="10" id="jsv-XG-xDe"/>
                     <constraint firstItem="nFw-eP-7lN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="vzK-zI-R0E"/>
                 </constraints>
             </tableViewCellContentView>
-            <animations/>
             <connections>
                 <outlet property="behaviorTitleField" destination="nFw-eP-7lN" id="afW-J8-wN3"/>
                 <outlet property="editButton" destination="CGM-lZ-ab0" id="uzj-aV-c9a"/>
@@ -69,7 +65,6 @@
         <view contentMode="scaleToFill" id="ru5-uI-5U4">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <animations/>
             <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="570" y="421"/>
