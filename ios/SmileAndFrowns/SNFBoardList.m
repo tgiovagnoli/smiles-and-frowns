@@ -10,6 +10,10 @@
 
 const NSString * SNFBoardListCustomTitle = @"Custom Board";
 
+@interface SNFBoardList ()
+@property SNFPredefinedBoard * purchaseBoard;
+@end
+
 @implementation SNFBoardList
 
 - (void) viewDidLoad {
@@ -65,61 +69,40 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 - (NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
 	if(section == SNFBoardListSectionBoards) {
 		return _boards.count;
+	} else if(section == SNFBoardListSectionPredefinedBoards) {
+		return _predefinedBoards.count;
 	}
-	
-	else if(section == SNFBoardListSectionPredefinedBoards) {
-		
-		if([self showCustom]) {
-			return _predefinedBoards.count + 1;
-		} else {
-			return _predefinedBoards.count;
-		}
-		
-	}
-	
 	return 0;
-}
-
-- (BOOL) showCustom {
-	return NO;
-	//if([[SNFBoardListCustomTitle lowercaseString] containsString:[self.searchField.text lowercaseString]] || [self.searchField.text isEmpty]){
-	//	return YES;
-	//}
-	//return NO;
 }
 
 - (UITableViewCell *) tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
 	if(indexPath.section == SNFBoardListSectionBoards) {
-		
-		SNFBoardListCell *cell = [self.boardsTable dequeueReusableCellWithIdentifier:@"SNFBoardListCell"];
-		
+		SNFBoardListCell * cell = [self.boardsTable dequeueReusableCellWithIdentifier:@"SNFBoardListCell"];
 		if(!cell) {
 			cell = [[[NSBundle mainBundle] loadNibNamed:@"SNFBoardListCell" owner:nil options:nil] firstObject];
 		}
-		
 		cell.board = [_boards objectAtIndex:indexPath.row];
 		cell.delegate = self;
-		
 		return cell;
-		
-	} else if(indexPath.section == SNFBoardListSectionPredefinedBoards) {
+	}
+	
+	else if(indexPath.section == SNFBoardListSectionPredefinedBoards) {
 		SNFPredefinedBoardCell *cell = [self.boardsTable dequeueReusableCellWithIdentifier:@"SNFPredefinedBoardCell"];
 		if(!cell) {
 			cell = [[[NSBundle mainBundle] loadNibNamed:@"SNFPredefinedBoardCell" owner:nil options:nil] firstObject];
 		}
-		
 		SNFPredefinedBoard * pdb = nil;
 		if(indexPath.row < _predefinedBoards.count) {
 			pdb = [_predefinedBoards objectAtIndex:indexPath.row];
 		}
 		cell.predefinedBoard = pdb;
-		
+		cell.delegate = self;
 		return cell;
 	}
 	return nil;
 }
 
-- (void)boardListCell:(SNFBoardListCell *)cell wantsToEditBoard:(SNFBoard *)board{
+- (void) boardListCell:(SNFBoardListCell *) cell wantsToEditBoard:(SNFBoard *) board {
 	SNFBoardEdit * boardEdit = nil;
 	if(cell) {
 		boardEdit = [[SNFBoardEdit alloc] initWithSourceView:cell.editButton sourceRect:CGRectZero contentSize:CGSizeMake(500,644) arrowDirections:UIPopoverArrowDirectionRight];
@@ -131,8 +114,9 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	boardEdit.board = board;
 }
 
-- (void)boardListCell:(SNFBoardListCell *)cell wantsToResetBoard:(SNFBoard *)board{
-	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Reset board?" message:@"Are you sure you want to reset this board? All data will be lost and participating users will be removed from this board. This cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
+- (void) boardListCell:(SNFBoardListCell *) cell wantsToResetBoard:(SNFBoard *) board {
+	UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Reset board?" message:@"Are you sure you want to reset this board? All data will be lost and participating users will be removed from this board. This cannot be undone." preferredStyle:UIAlertControllerStyleAlert];
+	
 	[alert addAction:[UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
 		NSArray * predefinedBehaviors = [board predefinedBoardBehaviors];
 		NSString * predefinedBoardUUID = board.predefined_board_uuid;
@@ -142,36 +126,58 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 		[[SNFSyncService instance] saveContext];
 		[self reloadBoards];
 	}]];
+	
 	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
 	[self presentViewController:alert animated:YES completion:^{}];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-	if(indexPath.section == SNFBoardListSectionBoards){
-		SNFBoardDetail *boardDetail = [[SNFBoardDetail alloc] init];
+- (void) tableView:(UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath {
+	
+	if(indexPath.section == SNFBoardListSectionBoards) {
+		SNFBoardDetail * boardDetail = [[SNFBoardDetail alloc] init];
 		[[SNFViewController instance].viewControllerStack pushViewController:boardDetail animated:YES];
 		boardDetail.board = [_boards objectAtIndex:indexPath.row];
-	}else if (indexPath.section == SNFBoardListSectionPredefinedBoards){
-		SNFPredefinedBoard *pdb = nil;
-		if(indexPath.row < _predefinedBoards.count){
+	}
+	
+	else if(indexPath.section == SNFBoardListSectionPredefinedBoards){
+		SNFPredefinedBoard * pdb = nil;
+		if(indexPath.row < _predefinedBoards.count) {
 			pdb = [_predefinedBoards objectAtIndex:indexPath.row];
 		}
 		[self buyOrCreateBoard:pdb];
 	}
 }
 
-- (void)reloadBoards{
-	NSError * error;
+- (NSArray *) allPredefinedBoards {
+	//load up all the predefined boards
+	NSFetchRequest * predefRequest = [NSFetchRequest fetchRequestWithEntityName:@"SNFPredefinedBoard"];
+	NSSortDescriptor * list_sort = [[NSSortDescriptor alloc] initWithKey:@"list_sort" ascending:TRUE];
+	predefRequest.sortDescriptors = @[list_sort];
+	predefRequest.predicate = [NSPredicate predicateWithFormat:@"(soft_delete = 0)", self.searchField.text];
+	NSError * error = nil;
+	NSArray * predefinedBoards = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:predefRequest error:&error];
+	if(!predefinedBoards || predefinedBoards.count < 1) {
+		predefRequest.predicate = nil;
+		predefinedBoards = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:predefRequest error:&error];
+	}
+	if(error) {
+		NSLog(@"error loading predefined boards");
+	}
+	return predefinedBoards;
+}
+
+- (void) reloadBoards {
+	NSError * error = nil;
 	NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"SNFBoard"];
 	if([self.searchField.text isEmpty]) {
 		request.predicate = [NSPredicate predicateWithFormat:@"(soft_deleted == 0)", [SNFModel sharedInstance].loggedInUser.email];
-	}else{
+	} else {
 		request.predicate = [NSPredicate predicateWithFormat:@"(soft_deleted == 0) && (title CONTAINS[cd] %@)", self.searchField.text,[SNFModel sharedInstance].loggedInUser.email];
 	}
 	
 	if(self.filter == SNFBoardListFilterDate){
 		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"created_date" ascending:NO]];
-	}else if(self.filter == SNFBoardListFilterName){
+	} else if(self.filter == SNFBoardListFilterName){
 		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
 	}
 	
@@ -202,13 +208,10 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	_predefinedBoards = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:predefRequest error:&error];
 	
 	if(!_predefinedBoards || _predefinedBoards.count < 1) {
-		
 		predefRequest.predicate = nil;
-		
 		if(![self.searchField.text isEmpty]) {
 			predefRequest.predicate = [NSPredicate predicateWithFormat:@"(title CONTAINS[cd] %@)", self.searchField.text];
 		}
-		
 		_predefinedBoards = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:predefRequest error:&error];
 	}
 	
@@ -219,31 +222,34 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	[self.boardsTable reloadData];
 }
 
-- (BOOL)hasPermissionForBoard:(SNFBoard *)board{
-	SNFUser *authedUser = [SNFModel sharedInstance].loggedInUser;
-	if(!authedUser){
+- (BOOL) hasPermissionForBoard:(SNFBoard *) board {
+	SNFUser * authedUser = [SNFModel sharedInstance].loggedInUser;
+	if(!authedUser) {
 		return NO;
 	}
-	if([board.owner.email isEqualToString:authedUser.email]){
+	
+	if([board.owner.email isEqualToString:authedUser.email]) {
 		return YES;
 	}
-	for(SNFUserRole *userRole in board.user_roles){
+	
+	for(SNFUserRole * userRole in board.user_roles) {
 		if([userRole.user.email isEqualToString:authedUser.email] && ![userRole.soft_deleted boolValue]){
 			return YES;
 		}
 	}
+	
 	return NO;
 }
 
-- (IBAction)changeSorting:(UISegmentedControl *)sender{
+- (IBAction) changeSorting:(UISegmentedControl *) sender {
 	self.filter = sender.selectedSegmentIndex;
 	[self reloadBoards];
 }
 
-- (IBAction)showSeachField:(UIButton *)sender{
+- (IBAction) showSeachField:(UIButton *) sender {
 	if(self.searchField.hidden){
 		[self showSearch];
-	}else{
+	} else {
 		[self hideSearch];
 	}
 }
@@ -256,7 +262,7 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	return 60;
 }
 
-- (void)showSearch{
+- (void) showSearch {
 	[self.searchButton setTitle:@"Done" forState:UIControlStateNormal];
 	self.searchField.hidden = NO;
 	self.filterControl.hidden = YES;
@@ -279,15 +285,30 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	return NO;
 }
 
-- (void)buyOrCreateBoard:(SNFPredefinedBoard *)pdb{
+- (void) loadPurchases {
+	IAPHelper * iap = [IAPHelper defaultHelper];
+	NSArray * products = [iap productIdsByNames:@[@"AllBoards",@"NewBoards"]];
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	[iap loadItunesProducts:products withCompletion:^(NSError *error) {
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+		if(error) {
+			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+		} else {
+			[self buyOrCreateBoard:self.purchaseBoard];
+		}
+	}];
+}
+
+- (void) buyOrCreateBoard:(SNFPredefinedBoard *) pdb {
+	
 	// make sure that the user is logged in
 	SNFUserService * userService = [[SNFUserService alloc] init];
 	[userService authedUserInfoWithCompletion:^(NSError *error, SNFUser *user) {
+		
 		if(!error && user) {
 			NSArray * allBoards = [SNFBoard allObjectsWithContext:[SNFModel sharedInstance].managedObjectContext];
-			BOOL needsPurchase = NO;
-			
 			NSString * loggedInUserName = [SNFModel sharedInstance].loggedInUser.username;
+			BOOL needsPurchase = NO;
 			for(SNFBoard * board in allBoards) {
 				if([board.owner.username isEqualToString:loggedInUserName]) {
 					needsPurchase = YES;
@@ -296,15 +317,59 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 			}
 			
 			if(needsPurchase && pdb) {
-				// buy board confirm
-				NSString *messageString = [self behaviorsStringFromBoard:pdb];
-				messageString = [messageString stringByAppendingString:@" Would you like to buy this board?"];
-				UIAlertController *alert = [UIAlertController alertControllerWithTitle:pdb.title message:messageString preferredStyle:UIAlertControllerStyleAlert];
-				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-					[self purchaseNewBoard:pdb];
-				}]];
-				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
-				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+				//load prices first
+				IAPHelper * helper = [IAPHelper defaultHelper];
+				NSArray * products = [helper productIdsByNames:@[@"AllBoards",@"NewBoard"]];
+				
+				[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+				
+				[helper loadItunesProducts:products withCompletion:^(NSError *error) {
+					
+					[MBProgressHUD hideHUDForView:self.view animated:TRUE];
+					
+					if(error) {
+						
+					} else {
+						
+						NSString * allProductId = [helper productIdByName:@"AllBoards"];
+						SKProduct * allProduct = [helper productForItunesProductId:allProductId];
+						NSString * allPrice = [helper priceStringForItunesProductId:allProductId];
+						NSString * allDescription = allProduct.localizedDescription;
+						if(!allDescription) {
+							allDescription = [helper productDescriptionForProductId:allProductId];
+						}
+						
+						NSString * boardProductId = [helper productIdByName:@"NewBoard"];
+						SKProduct * boardProduct = [helper productForItunesProductId:boardProductId];
+						NSString * boardPrice = [helper priceStringForItunesProductId:boardProductId];
+						NSString * boardDescription = boardProduct.localizedDescription;
+						if(!boardDescription) {
+							boardDescription = [helper productDescriptionForProductId:boardProductId];
+						}
+						
+						NSString * messageString = [self behaviorsStringFromBoard:pdb];
+						messageString = [messageString stringByAppendingFormat:@" Would you like to buy this board for %@",boardPrice];
+						messageString = [messageString stringByAppendingFormat:@" or purchase all boards for %@?",allPrice];
+						UIAlertController * alert = [UIAlertController alertControllerWithTitle:pdb.title message:messageString preferredStyle:UIAlertControllerStyleAlert];
+						
+						NSString * title = [NSString stringWithFormat:@"Purchase %@ for %@",pdb.title,boardPrice];
+						[alert addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+							[self purchaseNewBoard:pdb];
+						}]];
+						
+						title = [NSString stringWithFormat:@"Purchase %@ for %@",allDescription,allPrice];
+						[alert addAction:[UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+							[self purchaseAllPredefinedBoards];
+						}]];
+						
+						[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+							
+						}]];
+						
+						[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
+						
+					}
+				}];
 			}
 			
 			else if(!needsPurchase && pdb) {
@@ -318,16 +383,6 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
 				[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:^{}];
 			}
-			
-			else {
-				// empty board
-				if(needsPurchase) {
-					[self purchaseNewBoard:pdb];
-				} else {
-					[self addNewBoard:pdb withTransactionID:nil editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
-				}
-			}
-			
 		}
 		
 		else {
@@ -396,19 +451,26 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	return behaviors;
 }
 
+- (void) boardCellWantsToPurchase:(SNFPredefinedBoardCell *) cell {
+	[self buyOrCreateBoard:cell.predefinedBoard];
+}
 
-- (void) purchaseNewBoard:(SNFPredefinedBoard *) pdb {
+- (void) purchaseAllPredefinedBoards {
 	
-	#if TARGET_IPHONE_SIMULATOR
-	[self addNewBoard:pdb withTransactionID:[[NSUUID UUID] UUIDString] editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
+#if TARGET_IPHONE_SIMULATOR
+	NSArray * allBoards = [self allPredefinedBoards];
+	for(SNFPredefinedBoard * board in allBoards) {
+		[self addNewBoard:board withTransactionID:nil editBoard:FALSE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
+	}
+	[self reloadBoards];
+	[self displayOKAlertWithTitle:@"Success" message:[NSString stringWithFormat:@"You purchased %li new boards.",allBoards.count] completion:nil];
 	return;
-	#endif
+#endif
 	
-	NSArray * productIds = [[IAPHelper defaultHelper] productIdsByNames:@[@"NewBoard"]];
-	
+	NSString * product = [[IAPHelper defaultHelper] productIdByName:@"AllBoards"];
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[[IAPHelper defaultHelper] loadItunesProducts:productIds withCompletion:^(NSError *error) {
+	[[IAPHelper defaultHelper] purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
@@ -417,24 +479,38 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 			return;
 		}
 		
-		NSString * product = [[IAPHelper defaultHelper] productIdByName:@"NewBoard"];
-		NSLog(@"NewBoard product id: %@", product);
+		NSArray * allBoards = [self allPredefinedBoards];
+		for(SNFPredefinedBoard * board in allBoards) {
+			[self addNewBoard:board withTransactionID:transaction.transactionIdentifier editBoard:FALSE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
+		}
+		[self reloadBoards];
+		[self displayOKAlertWithTitle:@"Success" message:[NSString stringWithFormat:@"You purchased %li new boards.",allBoards.count] completion:nil];
+	}];
+	
+}
+
+- (void) purchaseNewBoard:(SNFPredefinedBoard *) pdb {
+	
+	#if TARGET_IPHONE_SIMULATOR
+	[self addNewBoard:pdb withTransactionID:[[NSUUID UUID] UUIDString] editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
+	return;
+	#endif
+	
+	NSString * product = [[IAPHelper defaultHelper] productIdByName:@"NewBoard"];
+	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+	
+	[[IAPHelper defaultHelper] purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
 		
-		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
+		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
-		[[IAPHelper defaultHelper] purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
-			
-			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-			
-			if(error) {
-				[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
-				return;
-			}
-			
-			[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
-				[self addNewBoard:pdb withTransactionID:transaction.transactionIdentifier editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
-			} repeats:FALSE];
-		}];
+		if(error) {
+			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
+			return;
+		}
+		
+		[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
+			[self addNewBoard:pdb withTransactionID:transaction.transactionIdentifier editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
+		} repeats:FALSE];
 	}];
 }
 
@@ -484,7 +560,7 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 }
 
 
-- (IBAction)onPurchaseNewBoard:(id)sender{
+- (IBAction) onPurchaseNewBoard:(id) sender {
 	[self buyOrCreateBoard:nil];
 }
 

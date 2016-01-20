@@ -8,7 +8,6 @@
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
             <string>Roboto-Regular</string>
-            <string>Roboto-Regular</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -16,7 +15,6 @@
             <connections>
                 <outlet property="boardsTable" destination="3G0-te-iwP" id="Ph3-Lx-s8B"/>
                 <outlet property="filterControl" destination="RpQ-c6-pcS" id="oEz-A1-Xkg"/>
-                <outlet property="purchaseButton" destination="sfm-E0-cfS" id="D8L-h6-o3J"/>
                 <outlet property="searchButton" destination="OjW-Rd-ePF" id="wi5-B4-9Eh"/>
                 <outlet property="searchField" destination="C0h-fF-oYr" id="auk-7c-6ch"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -28,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3G0-te-iwP">
-                    <rect key="frame" x="0.0" y="104" width="600" height="444"/>
+                    <rect key="frame" x="0.0" y="104" width="600" height="496"/>
                     <color key="backgroundColor" red="0.98431372549019602" green="0.96078431372549022" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="separatorColor" red="0.83921569585800171" green="0.7137255072593689" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -37,20 +35,6 @@
                         <outlet property="delegate" destination="-1" id="9qy-KR-Ocp"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfm-E0-cfS">
-                    <rect key="frame" x="10" y="556" width="580" height="36"/>
-                    <color key="backgroundColor" red="0.96078431372549022" green="0.49411764705882355" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="36" id="WdV-q4-PuJ"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                    <state key="normal" title="Purchase New Board">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="onPurchaseNewBoard:" destination="-1" eventType="touchUpInside" id="hdf-yv-udg"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiM-8D-clb">
                     <rect key="frame" x="0.0" y="30" width="600" height="27"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
@@ -95,8 +79,6 @@
             </subviews>
             <color key="backgroundColor" red="0.94901960784313721" green="0.91764705882352937" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="sfm-E0-cfS" firstAttribute="top" secondItem="3G0-te-iwP" secondAttribute="bottom" constant="8" id="02E-Od-09u"/>
-                <constraint firstAttribute="bottom" secondItem="sfm-E0-cfS" secondAttribute="bottom" constant="8" id="5a3-qI-Ka2"/>
                 <constraint firstItem="UiM-8D-clb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="86l-UY-YR4"/>
                 <constraint firstItem="RpQ-c6-pcS" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="9" id="9DI-rc-tgg"/>
                 <constraint firstItem="C0h-fF-oYr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="L35-mh-M1g"/>
@@ -104,15 +86,14 @@
                 <constraint firstItem="3G0-te-iwP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dIv-kf-plz"/>
                 <constraint firstAttribute="trailing" secondItem="UiM-8D-clb" secondAttribute="trailing" id="dKJ-Xx-xdA"/>
                 <constraint firstItem="3G0-te-iwP" firstAttribute="top" secondItem="RpQ-c6-pcS" secondAttribute="bottom" constant="10" id="dcy-p3-caA"/>
-                <constraint firstAttribute="trailing" secondItem="sfm-E0-cfS" secondAttribute="trailing" constant="10" id="eE0-n5-Duc"/>
                 <constraint firstItem="RpQ-c6-pcS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ec2-Zi-jVf"/>
                 <constraint firstItem="OjW-Rd-ePF" firstAttribute="leading" secondItem="C0h-fF-oYr" secondAttribute="trailing" constant="8" id="evB-dg-2gb"/>
-                <constraint firstItem="sfm-E0-cfS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="hT9-rw-Ip6"/>
                 <constraint firstAttribute="trailing" secondItem="OjW-Rd-ePF" secondAttribute="trailing" constant="8" id="l0W-hm-uYZ"/>
                 <constraint firstItem="C0h-fF-oYr" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="9" id="lrt-NS-5dQ"/>
                 <constraint firstItem="OjW-Rd-ePF" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="8" id="q5X-nu-csF"/>
                 <constraint firstAttribute="trailing" secondItem="3G0-te-iwP" secondAttribute="trailing" id="ufc-ty-a6I"/>
                 <constraint firstItem="UiM-8D-clb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x77-jT-H02"/>
+                <constraint firstAttribute="bottom" secondItem="3G0-te-iwP" secondAttribute="bottom" id="yfO-jY-m01"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="481" y="601"/>

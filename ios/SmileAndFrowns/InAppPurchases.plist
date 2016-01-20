@@ -8,7 +8,17 @@
 		<key>Title</key>
 		<string>New Board</string>
 		<key>ProductId</key>
-		<string>com.smilesandfrowns.SmilesAndFrowns.NewBoard</string>
+		<string>com.smilesandfrowns.SmilesAndFrowns.NewBoard2</string>
+		<key>Type</key>
+		<string>Consumable</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>AllBoards</string>
+		<key>Title</key>
+		<string>All Boards</string>
+		<key>ProductId</key>
+		<string>com.smilesandfrowns.SmilesAndFrowns.AllBoards2</string>
 		<key>Type</key>
 		<string>Consumable</string>
 	</dict>

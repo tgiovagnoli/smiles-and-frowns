@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, SNFBoardListSection){
 	SNFBoardListSectionPredefinedBoards
 };
 
-@interface SNFBoardList : SNFFormViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SNFBoardListCellDelegate, SNFBoardEditDelegate, UIViewControllerStackUpdating>{
+@interface SNFBoardList : SNFFormViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, SNFBoardListCellDelegate, SNFBoardEditDelegate, UIViewControllerStackUpdating, SNFPredefinedBoardCellDelegate>{
 	NSArray *_boards;
 	NSArray *_predefinedBoards;
 }

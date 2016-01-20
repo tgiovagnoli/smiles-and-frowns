@@ -20,21 +20,45 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ylj-Av-0uA">
-                        <rect key="frame" x="15" y="8" width="297" height="27"/>
+                        <rect key="frame" x="15" y="8" width="222" height="27"/>
                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                         <color key="textColor" red="0.59364610910415649" green="0.59375101327896118" blue="0.59363943338394165" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKF-8e-JfL">
+                        <rect key="frame" x="245" y="6" width="67" height="30"/>
+                        <color key="backgroundColor" red="0.96078431606292725" green="0.49411764740943909" blue="0.17647059261798859" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="6LU-hc-Y1Z"/>
+                            <constraint firstAttribute="width" constant="67" id="hSN-5J-3m7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="Purchase">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="purchase:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TFh-Zz-3ru"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="Ylj-Av-0uA" secondAttribute="trailing" id="2iM-jB-Jok"/>
                     <constraint firstItem="Ylj-Av-0uA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="3DS-1K-hbs"/>
+                    <constraint firstItem="lKF-8e-JfL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9KM-Kn-bWC"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Ylj-Av-0uA" secondAttribute="bottom" id="Xnm-lq-0hz"/>
+                    <constraint firstItem="lKF-8e-JfL" firstAttribute="leading" secondItem="Ylj-Av-0uA" secondAttribute="trailing" constant="8" id="e5F-9v-Wau"/>
                     <constraint firstItem="Ylj-Av-0uA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="f0x-gb-IPy"/>
+                    <constraint firstItem="lKF-8e-JfL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-2" id="hOt-Vt-qFV"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="lKF-8e-JfL" secondAttribute="trailing" id="osp-2W-OFw"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="hOt-Vt-qFV"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="purchase" destination="lKF-8e-JfL" id="F60-no-cUJ"/>
                 <outlet property="titleLabel" destination="Ylj-Av-0uA" id="EgQ-LW-VKW"/>
             </connections>
             <point key="canvasLocation" x="303" y="543"/>

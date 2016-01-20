@@ -18,7 +18,7 @@ class PredefinedBoard(models.Model):
 	title = models.CharField(max_length=128)
 	description = models.CharField(max_length=2048,default="",blank=True,null=True)
 	uuid = models.CharField(max_length=64)
-	behaviors = models.ManyToManyField(PredefinedBehavior)
+	behaviors = models.ManyToManyField(PredefinedBehavior,blank=True,null=True)
 	list_sort = models.PositiveSmallIntegerField(default=0)
 	soft_delete = models.BooleanField(default=False)
 	def __unicode__(self):

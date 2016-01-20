@@ -158,12 +158,16 @@
 	SNFBoard * board = (SNFBoard *)[SNFBoard editOrCreatefromInfoDictionary:boardInfo withContext:context];
 	board.predefined_board_uuid = pdb.uuid;
 	for(SNFPredefinedBehavior * pdBehavior in pdb.behaviors) {
+		NSString * group = pdBehavior.group;
+		if(!group || [group isEqual:[NSNull null]] || group.length < 1) {
+			group = @"";
+		}
 		NSDictionary *behaviorInfo = @{
 			@"title": pdBehavior.title,
 			@"board": @{@"uuid": board.uuid},
 			@"positive": pdBehavior.positive,
 			@"predefined_behavior_uuid":pdBehavior.uuid,
-			@"group":pdBehavior.group,
+			@"group":group,
 		};
 		SNFBehavior * behavior = (SNFBehavior *)[SNFBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 		behavior.predefined_behavior_uuid = pdBehavior.uuid;

@@ -1,4 +1,6 @@
+
 #import "SNFPredefinedBoardCell.h"
+#import "SNFFormStyles.h"
 
 @implementation SNFPredefinedBoardCell
 
@@ -7,6 +9,8 @@
 	self.selectionStyle = UITableViewCellSelectionStyleNone;
 	[self setSeparatorInset:UIEdgeInsetsZero];
 	self.preservesSuperviewLayoutMargins = FALSE;
+	
+	[SNFFormStyles roundEdgesOnButton:self.purchase];
 }
 
 - (void) setPredefinedBoard:(SNFPredefinedBoard *) predefinedBoard {
@@ -15,6 +19,12 @@
 		self.titleLabel.text = predefinedBoard.title;
 	} else {
 		self.titleLabel.text = @"Custom board";
+	}
+}
+
+- (IBAction) purchase:(id)sender {
+	if(self.delegate) {
+		[self.delegate boardCellWantsToPurchase:self];
 	}
 }
 
