@@ -44,6 +44,7 @@
 	[self.amountField setTextColor:[SNFFormStyles darkGray]];
 	[self.amountField setFont:[UIFont fontWithName:@"Roboto-Regular" size:26]];
 	
+	self.noteField.delegate = self;
 	self.noteField.layer.borderColor = [[SNFFormStyles darkSandColor] CGColor];
 	self.noteField.layer.borderWidth = 1;
 	
@@ -63,6 +64,12 @@
 
 - (void) onKeyboardShown:(id) sender {
 	[self.scrollView scrollRectToVisible:CGRectMake(0,self.scrollView.contentSize.height-10,10,10) animated:TRUE];
+}
+
+- (void) dictationRecordingDidEnd {
+	[NSTimer scheduledTimerWithTimeInterval:1 block:^{
+		[self.scrollView scrollRectToVisible:CGRectMake(0,self.scrollView.contentSize.height-10,10,10) animated:TRUE];
+	} repeats:false];
 }
 
 - (void) textViewDidBeginEditing:(UITextView *)textView {
@@ -123,6 +130,7 @@
 		NSString * groupName = behavior.group;
 		if(!groupName || [groupName isEqual:[NSNull null]] || groupName.length < 1) {
 			useGroups = FALSE;
+			break;
 		}
 		SNFAddSmileOrFrownGroup * group = groups[behavior.group];
 		if(!group) {

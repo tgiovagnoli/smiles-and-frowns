@@ -10,6 +10,7 @@
 #import "SNFFormViewController.h"
 #import "SNFValuePicker.h"
 #import "GATracking.h"
+#import "SNFDictationTextView.h"
 
 typedef NS_ENUM(NSInteger, SNFAddSmileOrFrownType){
 	SNFAddSmileOrFrownTypeSmile,
@@ -22,7 +23,7 @@ typedef NS_ENUM(NSInteger, SNFAddSmileOrFrownType){
 - (void)addSmileOrFrownFinished:(SNFAddSmileOrFrown *)addSoF;
 @end
 
-@interface SNFAddSmileOrFrown : SNFFormViewController <UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate, SNFValuePickerDelegate> {
+@interface SNFAddSmileOrFrown : SNFFormViewController <UITextViewDelegate, UITableViewDelegate, UITableViewDataSource, SNFBoardEditBehaviorCellDelegate, SNFAddBehaviorDelegate, SNFValuePickerDelegate,SNFDicationTextViewDelegate> {
 	NSArray *_behaviors;
 	SNFValuePicker *_smileCountPicker;
 }
@@ -36,7 +37,7 @@ typedef NS_ENUM(NSInteger, SNFAddSmileOrFrownType){
 @property (weak) IBOutlet UIButton *addBehaviorButton;
 @property (weak) IBOutlet UIButton *addSNFButton;
 @property (weak) IBOutlet UIButton *cancelButton;
-@property (weak) IBOutlet UITextView *noteField;
+@property (weak) IBOutlet SNFDictationTextView *noteField;
 
 @property IBOutlet NSLayoutConstraint * cancelButtonBottom;
 
