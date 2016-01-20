@@ -41,6 +41,8 @@
 	_smileCountPicker.delegate = self;
 	
 	[self.amountFieldButton setTitle:@"" forState:UIControlStateNormal];
+	[self.amountField setTextColor:[SNFFormStyles darkGray]];
+	[self.amountField setFont:[UIFont fontWithName:@"Roboto-Regular" size:26]];
 	
 	self.noteField.layer.borderColor = [[SNFFormStyles darkSandColor] CGColor];
 	self.noteField.layer.borderWidth = 1;
