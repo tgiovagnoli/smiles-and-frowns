@@ -56,7 +56,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	[SNFFormStyles roundEdgesOnButton:self.addFromContactsButton];
 }
 
-- (IBAction) segmentChange:(id)sender {
+- (IBAction) segmentChange:(UIView *) sender {
 	
 	if(self.segment.selectedSegmentIndex == 0) {
 		self.roleLabel.text = @"Children earn Smiles, Frowns and great Rewards.";
@@ -65,6 +65,15 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 	} else if(self.segment.selectedSegmentIndex == 2) {
 		self.roleLabel.text = @"Guardians help by giving Smiles & Frowns and Rewards.";
 	}
+	
+//	for(int i = 0; i < [sender.subviews count]; i++) {
+//		if ([[sender.subviews objectAtIndex:i]isSelected]) {
+//			UIColor * tintColor = [UIColor colorWithHexString:@"#fed24c"];
+//			[[sender.subviews objectAtIndex:i] setTintColor:tintColor];
+//		} else {
+//			[[sender.subviews objectAtIndex:i] setTintColor:nil];
+//		}
+//	}
 	
 	if(self.segment.selectedSegmentIndex > 0) {
 		self.age.hidden = TRUE;

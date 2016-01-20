@@ -20,16 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _tableContents = @[
+					   [self tableItemWithName:@"View the Tutorial" andSelector:@selector(tutorial)],
 					   [self tableItemWithName:@"The Five Cs" andSelector:@selector(theFiveCs)],
 					   [self tableItemWithName:@"Tips & Tricks" andSelector:@selector(tipsAndTricks)],
-					   //[self tableItemWithName:@"Send Feedback" andSelector:@selector(sendFeedback)],
+					   [self tableItemWithName:@"Subscribe (to Remove Ads)" andSelector:@selector(removeAds)],
 					   [self tableItemWithName:@"Restore Purchases" andSelector:@selector(restorePurchases)],
-					   [self tableItemWithName:@"Remove Ads" andSelector:@selector(removeAds)],
-					   [self tableItemWithName:@"Terms and Privacy" andSelector:@selector(termsAndPrivacy)],
-					   [self tableItemWithName:@"View the Tutorial" andSelector:@selector(tutorial)],
 					   [self tableItemWithName:@"Reset Local Data" andSelector:@selector(resetLocalSync)],
-					   [self tableItemWithName:SHARE_APP_NAME andSelector:@selector(shareAppMail)],
+					   [self tableItemWithName:@"Terms and Privacy" andSelector:@selector(termsAndPrivacy)],
 					   [self tableItemWithName:@"Logout" andSelector:@selector(logout)],
+					   [self tableItemWithName:SHARE_APP_NAME andSelector:@selector(shareAppMail)],
 					   ];
 	[self.tableView reloadData];
 	

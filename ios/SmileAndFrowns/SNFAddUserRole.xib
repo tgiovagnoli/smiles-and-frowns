@@ -199,7 +199,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYH-t5-3YD">
                     <rect key="frame" x="212" y="268" width="176" height="30"/>
-                    <color key="backgroundColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.96078431606292725" green="0.49411764740943909" blue="0.17647059261798859" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="SWz-fc-48O"/>
                         <constraint firstAttribute="width" constant="176" id="nVB-vV-lth"/>

@@ -201,7 +201,18 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	
 	_predefinedBoards = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:predefRequest error:&error];
 	
-	if(error){
+	if(!_predefinedBoards || _predefinedBoards.count < 1) {
+		
+		predefRequest.predicate = nil;
+		
+		if(![self.searchField.text isEmpty]) {
+			predefRequest.predicate = [NSPredicate predicateWithFormat:@"(title CONTAINS[cd] %@)", self.searchField.text];
+		}
+		
+		_predefinedBoards = [[SNFModel sharedInstance].managedObjectContext executeFetchRequest:predefRequest error:&error];
+	}
+	
+	if(error) {
 		NSLog(@"error loading predefined boards");
 	}
 	
