@@ -101,17 +101,6 @@
 		<key>serverURL</key>
 		<string>http://services.smilesandfrowns.com</string>
 	</dict>
-	<key>SNFServicesSSL</key>
-	<dict>
-		<key>TwitterKey</key>
-		<string>7ghdn08ov5iF7DymXI1WVxYWn</string>
-		<key>TwitterSecret</key>
-		<string>LuFNvUIq6c05jotBq8YWserlHcjWmlYcbfDnOhfxRp9XiVeov4</string>
-		<key>apiPath</key>
-		<string>api</string>
-		<key>serverURL</key>
-		<string>https://services.smilesandfrowns.com</string>
-	</dict>
 	<key>SNFServicesIP</key>
 	<dict>
 		<key>TwitterKey</key>
@@ -123,6 +112,27 @@
 		<key>serverURL</key>
 		<string>http://45.33.54.108</string>
 	</dict>
+	<key>SNFServicesSSL</key>
+	<dict>
+		<key>TwitterKey</key>
+		<string>7ghdn08ov5iF7DymXI1WVxYWn</string>
+		<key>TwitterSecret</key>
+		<string>LuFNvUIq6c05jotBq8YWserlHcjWmlYcbfDnOhfxRp9XiVeov4</string>
+		<key>apiPath</key>
+		<string>api</string>
+		<key>serverURL</key>
+		<string>https://services.smilesandfrowns.com</string>
+	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Roboto-Bold.ttf</string>
+		<string>Roboto-Light.ttf</string>
+		<string>Roboto-Regular.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -135,15 +145,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Roboto-Bold.ttf</string>
-		<string>Roboto-Light.ttf</string>
-		<string>Roboto-Regular.ttf</string>
-	</array>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-	</array>
 </dict>
 </plist>
