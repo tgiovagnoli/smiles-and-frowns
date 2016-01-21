@@ -121,6 +121,25 @@ def smile_info_dictionary(smile):
 	if smile.creator: smile_data["creator"] = {"username": smile.creator.username}
 	return smile_data
 
+def spendable_smile_info_dictionary_collection(smiles):
+	smiles_data = []
+	for smile in smiles:
+		smiles_data.append(spendable_smile_info_dictionary(smile))
+	return smiles_data
+
+def spendable_smile_info_dictionary(smile):
+	smile_data = {
+		"id": smile.id,
+		"collected": smile.collected,
+		"note": smile.note
+	}
+	append_sync_info(smile, smile_data)
+	if smile.behavior: smile_data["behavior"] = {"uuid": smile.behavior.uuid}
+	if smile.board: smile_data['board'] = {'uuid':smile.board.uuid}
+	if smile.user: smile_data["user"] = {"username": smile.user.username}
+	if smile.creator: smile_data["creator"] = {"username": smile.creator.username}
+	return smile_data
+
 def frown_info_dictionary_collection(frowns):
 	frowns_data = []
 	for frown in frowns:

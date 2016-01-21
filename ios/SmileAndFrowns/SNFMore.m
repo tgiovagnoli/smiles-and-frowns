@@ -51,7 +51,7 @@
 	UITableViewCell *cell = [[UITableViewCell alloc] init];
 	APDDebugViewControllerItem * item = [_tableContents objectAtIndex:indexPath.row];
 	cell.textLabel.text = item.name;
-	cell.textLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:14];
+	cell.textLabel.font = [UIFont fontWithName:@"Roboto-Regular" size:16];
 	cell.textLabel.textColor = [SNFFormStyles darkGray];
 	cell.contentView.backgroundColor = [SNFFormStyles lightSandColor];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -36,6 +36,12 @@ class SmileAdmin(admin.ModelAdmin):
 	list_display = ("board", "user", "updated_date")
 	readonly_fields = ('uuid',)
 
+class SpendableSmileAdmin(admin.ModelAdmin):
+	save_on_top = True
+	fields = ("board", "user", "creator", "behavior", "collected", "device_date", "deleted", "uuid", "note")
+	list_display = ("board", "user", "updated_date")
+	readonly_fields = ('uuid',)
+
 class FrownAdmin(admin.ModelAdmin):
 	save_on_top = True
 	fields = ("board", "user", "creator", "behavior", "device_date", "deleted", "uuid", "note")
@@ -54,5 +60,6 @@ admin.site.register(models.Board, BoardAdmin)
 admin.site.register(models.Behavior, BehaviorAdmin)
 admin.site.register(models.Reward, RewardAdmin)
 admin.site.register(models.Smile, SmileAdmin)
+admin.site.register(models.SpendableSmile, SpendableSmileAdmin)
 admin.site.register(models.Frown, FrownAdmin)
 admin.site.register(models.Invite, InviteAdmin)

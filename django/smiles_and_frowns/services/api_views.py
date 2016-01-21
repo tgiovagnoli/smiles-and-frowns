@@ -607,6 +607,7 @@ def sync_data_for_board(board,request):
 	#get associate objects for board
 	behaviors = models.Behavior.objects.filter(board=board)
 	smiles = models.Smile.objects.filter(board=board)
+	spendable_smiles = models.SpendableSmile.objects.filter(board=board)
 	frowns = models.Frown.objects.filter(board=board)
 	rewards = models.Reward.objects.filter(board=board)
 	user_roles = models.UserRole.objects.filter(board=board)
@@ -655,6 +656,7 @@ def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behavi
 	#device_date has to be greater than the sync_date.
 	behaviors = models.Behavior.objects.filter(~Q(uuid__in=created_object_uuids['behaviors']),board__in=boards,device_date__gt=sync_date)
 	smiles = models.Smile.objects.filter(~Q(uuid__in=created_object_uuids['smiles']),board__in=boards,device_date__gt=sync_date)
+	spendable_smiles = models.SpendableSmile.objects.filter(~Q(uuid__in=created_object_uuids['spendable_smiles']),board__in=boards,device_date__gt=sync_date)
 	frowns = models.Frown.objects.filter(~Q(uuid__in=created_object_uuids['frowns']),board__in=boards,device_date__gt=sync_date)
 	rewards = models.Reward.objects.filter(~Q(uuid__in=created_object_uuids['rewards']),board__in=boards,device_date__gt=sync_date)
 	user_roles = models.UserRole.objects.filter(~Q(uuid__in=created_object_uuids['user_roles']),board__in=boards,device_date__gt=sync_date)
@@ -678,6 +680,7 @@ def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behavi
 	output['boards'] = json_utils.board_info_dictionary_collection(boards,request)
 	output['behaviors'] = json_utils.behavior_info_dictionary_collection(behaviors)
 	output['smiles'] = json_utils.smile_info_dictionary_collection(smiles)
+	output['spendable_smiles'] = json_utils.spendable_smile_info_dictionary_collection(spendable_smiles)
 	output['frowns'] = json_utils.frown_info_dictionary_collection(frowns)
 	output['rewards'] = json_utils.reward_info_dictionary_collection(rewards)
 	output['user_roles'] = json_utils.user_role_info_dictionary_collection(user_roles,request)
@@ -688,10 +691,10 @@ def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behavi
 def sync(request):
 	'''
 	Request body should be json:
-	{sync_date:date, 'boards':[], 'behaviors':[], 'smiles':[], 'frowns':[], 'rewards':[], 'user_roles':[]}
+	{sync_date:date, 'boards':[], 'behaviors':[], 'smiles':[], 'spendable_smiles':[], 'frowns':[], 'rewards':[], 'user_roles':[]}
 
 	Response body is the same:
-	{sync_date:date, 'boards':[], 'behaviors':[], 'smiles':[], 'frowns':[], 'rewards':[], 'user_roles':[]}
+	{sync_date:date, 'boards':[], 'behaviors':[], 'smiles':[], 'spendable_smiles':[], 'frowns':[], 'rewards':[], 'user_roles':[]}
 	'''
 	
 	#check auth
@@ -937,6 +940,71 @@ def sync(request):
 		#set created uuid lookup. after save so uuid is available
 		if created:
 			created_object_uuids['smiles'].append(smile.uuid)
+
+	#go through spendable smiles
+	client_spendable_smiles = data.get('spendable_smiles',[])
+	for client_spendable_smile in client_spendable_smiles:
+		smile_date = json_utils.date_fromstring(client_spendable_smile.get('updated_date'))
+		
+		#get user for smile.user
+		user = None
+		try:
+			user_dict = client_spendable_smile.get('user')
+			user = User.objects.get(username=user_dict.get('username'))
+		except:
+			pass
+
+		creator = None
+		try:
+			creator_dict = client_spendable_smile.get('creator')
+			creator = User.objects.get(username=creator_dict.get('username'))
+		except:
+			pass
+		
+		#get board for smile.board
+		board = None
+		try:
+			board_dict = client_spendable_smile.get('board')
+			board = models.Board.objects.get(uuid=board_dict.get('uuid'))
+		except:
+			pass
+		
+		#get behavior for smile.behavior
+		behavior = None
+		try:
+			behavior_dict = client_spendable_smile.get('behavior')
+			behavior = models.Behavior.objects.get(uuid=behavior_dict.get('uuid'))
+		except:
+			pass
+
+		#get or create smile
+		smile,created = models.SpendableSmile.objects.get_or_create(uuid=client_spendable_smile.get('uuid'))
+		if not created:
+
+			#check if deleted
+			if client_spendable_smile.get('deleted',False):
+				if not smile.deleted:
+					smile.deleted = True
+					smile.save()
+
+			#check if date is newer in db.
+			if smile.device_date > smile_date or smile.deleted:
+				continue
+
+		#set smile data
+		smile.user = user
+		smile.creator = creator
+		smile.board = board
+		smile.behavior = behavior
+		smile.deleted = client_spendable_smile.get('deleted',False)
+		smile.device_date = smile_date
+		smile.collected = client_spendable_smile.get('collected')
+		smile.note = client_spendable_smile.get('note', '')
+		smile.save()
+
+		#set created uuid lookup. after save so uuid is available
+		if created:
+			created_object_uuids['spendable_smiles'].append(smile.uuid)
 
 	#go through frowns
 	client_frowns = data.get('frowns',[])
