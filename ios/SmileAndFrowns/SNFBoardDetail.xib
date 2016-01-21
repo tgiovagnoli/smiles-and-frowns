@@ -73,13 +73,13 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M6o-Fl-4ar">
-                    <rect key="frame" x="346" y="54" width="249" height="118"/>
+                    <rect key="frame" x="326" y="54" width="269" height="118"/>
                     <subviews>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zqt-4F-rND">
-                            <rect key="frame" x="0.0" y="25" width="249" height="93"/>
+                            <rect key="frame" x="0.0" y="25" width="269" height="93"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your board doesn't have any people on it. Invite some by tapping the + button above." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rR-oX-Ip3">
-                                    <rect key="frame" x="14" y="8" width="221" height="76"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your board doesn't have anyone on it yet. To add people, just tap the + button." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rR-oX-Ip3">
+                                    <rect key="frame" x="11" y="8" width="247" height="76"/>
                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
                                     <color key="textColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -88,14 +88,14 @@
                             <color key="backgroundColor" red="0.7432059645652771" green="0.67897683382034302" blue="0.61088413000106812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fY9-tR-o3Y" customClass="TriangleView">
-                            <rect key="frame" x="209" y="0.0" width="40" height="25"/>
+                            <rect key="frame" x="229" y="0.0" width="40" height="25"/>
                             <color key="backgroundColor" red="0.7432059645652771" green="0.67897683382034302" blue="0.61088413000106812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.68780374526977539" green="0.32321482143222591" blue="0.16686178941703403" alpha="0.0" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="118" id="fcU-JC-FTz"/>
-                        <constraint firstAttribute="width" constant="249" id="veZ-el-Qbd"/>
+                        <constraint firstAttribute="width" constant="269" id="veZ-el-Qbd"/>
                     </constraints>
                 </view>
             </subviews>

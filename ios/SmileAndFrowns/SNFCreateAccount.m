@@ -13,6 +13,9 @@
 #import "UIViewController+Alerts.h"
 #import "ATITwitterAuthHandler.h"
 #import "SNFLauncher.h"
+#import "SNFAcceptInvite.h"
+#import "SNFBoardList.h"
+#import "SNFViewController.h"
 
 @interface SNFCreateAccount ()
 @property SNFUserService * service;
@@ -83,7 +86,7 @@
 			[SNFModel sharedInstance].loggedInUser = user;
 			[SNFModel sharedInstance].userSettings.lastSyncDate = nil;
 			
-			[self closeModal];
+			[self closeModal:true];
 		}
 	}];
 }
@@ -202,31 +205,30 @@
 			return;
 		}
 		
-		[self syncPredefinedBoards];
+		[self closeModal:TRUE];
 	}];
 }
 
-- (void) syncPredefinedBoards {
-	MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-	hud.labelText = @"Syncing Board Data";
-	
-	[[SNFSyncService instance] syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
-		
-		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
-		
-		if(error) {
-			[self displayOKAlertWithTitle:@"Sync Error" message:error.localizedDescription completion:nil];
-			return;
-		}
-		
-		[self closeModal];
-	}];
-}
-
-- (void) closeModal {
+- (void) closeModal:(BOOL) goesToBoards {
 	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
 		if(self.nextViewController) {
+			
+			if([self.nextViewController isKindOfClass:[SNFAcceptInvite class]]) {
+				if(goesToBoards) {
+					SNFAcceptInvite * invite = (SNFAcceptInvite *)self.nextViewController;
+					invite.cancelGoesToBoardsList = TRUE;
+				}
+			}
+			
 			[[AppDelegate rootViewController] presentViewController:self.nextViewController animated:TRUE completion:nil];
+			
+		} else {
+			
+			if(goesToBoards) {
+				SNFViewController * list = [[SNFViewController alloc] init];
+				[AppDelegate instance].window.rootViewController = list;
+			}
+			
 		}
 	}];
 }

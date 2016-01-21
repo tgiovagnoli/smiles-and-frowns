@@ -8,6 +8,7 @@
 #import "SNFSyncService.h"
 #import "UIViewController+Alerts.h"
 #import "SNFBoardDetail.h"
+#import "SNFBoardList.h"
 
 NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 
@@ -103,7 +104,12 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 
 - (IBAction) cancel:(id) sender {
 	[self.view endEditing:TRUE];
-	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:nil];
+	[[AppDelegate rootViewController] dismissViewControllerAnimated:TRUE completion:^{
+		if(self.cancelGoesToBoardsList) {
+			SNFViewController * list = [[SNFViewController alloc] init];
+			[AppDelegate instance].window.rootViewController = list;
+		}
+	}];
 	[SNFModel sharedInstance].pendingInviteCode = nil;
 }
 

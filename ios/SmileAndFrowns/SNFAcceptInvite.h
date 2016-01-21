@@ -8,6 +8,7 @@ extern NSString * const SNFInviteAccepted;
 @interface SNFAcceptInvite : SNFFormViewController
 
 @property NSString * inviteCode;
+@property BOOL cancelGoesToBoardsList;
 
 @property (weak) IBOutlet UILabel * joinLabel;
 @property (weak) IBOutlet UITextField * inviteCodeField;
