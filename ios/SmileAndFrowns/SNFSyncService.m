@@ -10,6 +10,7 @@
 #import "SNFPredefinedBoard.h"
 #import "SNFPredefinedBehavior.h"
 #import "SNFPredefinedBehaviorGroup.h"
+#import "SNFSpendableSmile.h"
 
 NSString * const SNFSyncServiceCompleted = @"SNFSyncServiceCompleted";
 NSString * const SNFSyncServiceError = @"SNFSyncServiceError";
@@ -65,6 +66,7 @@ static SNFSyncService * _instance;
 	
 	if(![SNFModel sharedInstance].userSettings.lastSyncDate){
 		NSLog(@"not synced clean local database");
+		[SNFModel sharedInstance].userSettings.lastSyncDate = nil;
 		[self purgeLocalData];
 	}
 	
@@ -94,6 +96,7 @@ static SNFSyncService * _instance;
 			[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceCompleted object:nil];
 			
 			if(error){
+				NSLog(@"error: %@",error);
 				[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:error];
 				return completion(error, nil);
@@ -124,9 +127,8 @@ static SNFSyncService * _instance;
 	NSMutableDictionary * postData = [[NSMutableDictionary alloc] init];
 	
 	NSDate * lastSyncDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
-	
 	if(lastSyncDate) {
-		lastSyncDate = [lastSyncDate dateByAddingTimeInterval:-15*60];
+		lastSyncDate = [lastSyncDate dateByAddingTimeInterval:-5*60];
 		NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
 		[formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
 		[formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
@@ -135,12 +137,13 @@ static SNFSyncService * _instance;
 	}
 	
 	NSDate * fromDate = [SNFModel sharedInstance].userSettings.lastSyncDate;
-	
 	if(!fromDate) {
-		fromDate = [NSDate dateWithTimeIntervalSince1970:0];
-	} else {
-		fromDate = [fromDate dateByAddingTimeInterval:-15*60];
+		fromDate = [NSDate date];
+		//fromDate = [NSDate dateWithTimeIntervalSince1970:0];
 	}
+	//else {
+	//	fromDate = [fromDate dateByAddingTimeInterval:-5*60];
+	//}
 	
 	[postData setObject:[self collectionForEntityName:@"SNFBoard" sinceSyncDate:fromDate] forKey:@"boards"];
 	[postData setObject:[self collectionForUserRolesSinceSyncDate:fromDate] forKey:@"user_roles"];
@@ -148,6 +151,7 @@ static SNFSyncService * _instance;
 	[postData setObject:[self collectionForEntityName:@"SNFReward" sinceSyncDate:fromDate] forKey:@"rewards"];
 	[postData setObject:[self collectionForEntityName:@"SNFSmile" sinceSyncDate:fromDate] forKey:@"smiles"];
 	[postData setObject:[self collectionForEntityName:@"SNFFrown" sinceSyncDate:fromDate] forKey:@"frowns"];
+	[postData setObject:[self collectionForEntityName:@"SNFSpendableSmile" sinceSyncDate:fromDate] forKey:@"spendable_smiles"];
 	
 	return postData;
 }
@@ -206,6 +210,9 @@ static SNFSyncService * _instance;
 	}
 	for(SNFBoard *board in [SNFBoard allObjectsWithContext:context]){
 		[context deleteObject:board];
+	}
+	for(SNFSpendableSmile * spendsmile in [SNFSpendableSmile allObjectsWithContext:context]) {
+		[context deleteObject:spendsmile];
 	}
 }
 
@@ -292,6 +299,19 @@ static SNFSyncService * _instance;
 		[changeLog setObject:smilesChanges forKey:@"smiles"];
 	}
 	
+	
+	// update spendable smiles
+	NSArray * spendableSmilesUpdates = [results valueForKey:@"spendable_smiles"];
+	if(spendableSmilesUpdates) {
+		NSMutableArray * smilesChanges = [[NSMutableArray alloc] init];
+		for(NSDictionary *smilesUpdate in spendableSmilesUpdates){
+			SNFSmile *smile = (SNFSmile *)[SNFSpendableSmile editOrCreatefromInfoDictionary:smilesUpdate withContext:context];
+			[smilesChanges addObject:smile];
+			updated = YES;
+		}
+		[changeLog setObject:smilesChanges forKey:@"spendable_smiles"];
+	}
+	
 	// update frowns
 	NSArray *frownsUpdates = [results valueForKey:@"frowns"];
 	if(frownsUpdates){
@@ -341,6 +361,7 @@ static SNFSyncService * _instance;
 	NSURLSessionTask *task = [session dataTaskWithURL:serviceURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 		//dispatch_sync(dispatch_get_main_queue(), ^{
 			if(error){
+				NSLog(@"error: %@",error);
 				completion(error, nil);
 				return;
 			}

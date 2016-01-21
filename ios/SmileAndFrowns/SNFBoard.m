@@ -8,6 +8,7 @@
 #import "SNFModel.h"
 #import "SNFPredefinedBoard.h"
 #import "SNFPredefinedBehavior.h"
+#import "SNFSpendableSmile.h"
 
 @implementation SNFBoard
 
@@ -220,6 +221,22 @@
 	return [activeRewards sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.created_date" ascending:NO]]];
 }
 
+- (NSArray *) spendableSmilesForUser:(SNFUser *) user includeDeletedSmiles:(BOOL) includeDeletedSmiles includeCollectedSmiles:(BOOL) includeCollectedSmiles; {
+	NSMutableArray * usersSmiles = [[NSMutableArray alloc] init];
+	for(SNFSpendableSmile * smile in self.spendable_smiles) {
+		if(smile.soft_deleted.boolValue && !includeDeletedSmiles) {
+			continue;
+		}
+		if(smile.collected.boolValue && !includeCollectedSmiles) {
+			continue;
+		}
+		if([smile.user.username isEqualToString:user.username]) {
+			[usersSmiles addObject:smile];
+		}
+	}
+	return usersSmiles;
+}
+
 - (NSArray *) smilesForUser:(SNFUser *) user includeDeletedSmiles:(BOOL) includeDeletedSmiles includeCollectedSmiles:(BOOL) includeCollectedSmiles; {
 	NSMutableArray * usersSmiles = [[NSMutableArray alloc] init];
 	for(SNFSmile *smile in self.smiles) {
@@ -253,9 +270,11 @@
 }
 
 - (NSInteger) smileCurrencyForUser:(SNFUser *) user {
-	NSArray * smiles = [self smilesForUser:user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE];
-	NSArray * frowns = [self frownsForUser:user includeDeletedFrowns:FALSE];
-	return smiles.count - frowns.count;
+	abort();
+	//NSArray * smiles = [self smilesForUser:user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE];
+	//NSArray * frowns = [self frownsForUser:user includeDeletedFrowns:FALSE];
+	//return smiles.count - frowns.count;
+	return 0;
 }
 
 - (NSString *)permissionForUser:(SNFUser *)user{

@@ -381,31 +381,12 @@
 	NSArray * smiles = [self.board smilesForUser:user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE];
 	NSArray * frowns = [self.board frownsForUser:user includeDeletedFrowns:FALSE];
 	
-	if(frowns.count > smiles.count || frowns.count == smiles.count) {
-		
-		for(SNFSmile * smile in smiles) {
-			smile.soft_deleted = @(1);
-		}
-		
-	} else {
-		
-		NSInteger smilesToDelete = frowns.count;
-		//NSLog(@"smiles to delete: %li",smilesToDelete);
-		
-		if(smilesToDelete > 0) {
-			for(SNFSmile * smile in smiles) {
-				smile.soft_deleted = @(1);
-				smilesToDelete--;
-				if(smilesToDelete < 1) {
-					break;
-				}
-			}
-		}
-		
+	for(SNFSmile * smile in smiles) {
+		smile.soft_deleted = @(1);
 	}
 	
 	for(SNFFrown * frown in frowns) {
-		frown.soft_deleted = @(TRUE);
+		frown.soft_deleted = @(1);
 	}
 	
 	[[SNFSyncService instance] saveContext];

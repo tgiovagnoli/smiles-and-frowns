@@ -1,7 +1,9 @@
+
 #import "SNFUser+CoreDataProperties.h"
 #import "SNFSmile.h"
 #import "SNFFrown.h"
 #import "SNFUserRole.h"
+#import "SNFSpendableSmile.h"
 
 @implementation SNFUser (CoreDataProperties)
 
@@ -18,5 +20,7 @@
 @dynamic frowns;
 @dynamic user_roles;
 @dynamic owned_boards;
+@dynamic spendable_smiles;
+@dynamic spendable_smiles_creator;
 
 @end

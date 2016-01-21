@@ -18,10 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSArray *)sortedActiveNegativeBehaviors;
 - (NSArray *)sortedActiveRewards;
 - (NSArray *)smilesForUser:(SNFUser *)user includeDeletedSmiles:(BOOL) includeDeletedSmiles includeCollectedSmiles:(BOOL) includeCollectedSmiles;
+- (NSArray *)spendableSmilesForUser:(SNFUser *) user includeDeletedSmiles:(BOOL) includeDeletedSmiles includeCollectedSmiles:(BOOL) includeCollectedSmiles;
 - (NSArray *)frownsForUser:(SNFUser *)user includeDeletedFrowns:(BOOL) includeDeletedFrowns;
 - (NSInteger)smileCurrencyForUser:(SNFUser *)user;
 - (NSString *)permissionForUser:(SNFUser *)user;
-
 
 //this looks up a SNFPredefinedBoard based on the predefined_board_uuid, then returns all of it's associated behaviors.
 - (NSArray *) predefinedBoardBehaviors;

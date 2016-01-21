@@ -10,6 +10,7 @@
 #import "SNFFormStyles.h"
 #import "NSTimer+Blocks.h"
 #import "NSLog+Geom.h"
+#import "SNFSpendableSmile.h"
 
 @interface SNFSpendRewards ()
 @property float spendAmount;
@@ -163,7 +164,8 @@
 	
 	// calculate the number of smiles available from the board
 	//_smilesAvailable = 0;
-	_smilesAvailable = [self.board smileCurrencyForUser:self.user];
+	//_smilesAvailable = [self.board smileCurrencyForUser:self.user];
+	_smilesAvailable = [self.board spendableSmilesForUser:self.user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE].count;
 	self.totalSmilestoSpendLabel.text = [NSString stringWithFormat:@"%ld", (long)_smilesAvailable];
 	
 	[self updateButtons];
@@ -516,9 +518,6 @@
 }
 
 - (IBAction)onCancel:(UIButton *)sender{
-	//if(self.delegate){
-	//	[self.delegate spendRewardsIsDone:self];
-	//}
 	[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
@@ -553,7 +552,7 @@
 	
 	NSInteger smilesTaken = 0;
 	
-	for(SNFSmile * smile in [self.board smilesForUser:self.user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE]) {
+	for(SNFSpendableSmile * smile in [self.board spendableSmilesForUser:self.user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE]) {
 		if(smilesTaken < smiles) {
 			smile.collected = @YES;
 		}

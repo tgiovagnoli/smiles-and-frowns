@@ -5,6 +5,7 @@
 @class SNFInvite;
 @class SNFFrown;
 @class SNFUser;
+@class SNFSpendableSmile;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) SNFUser *owner;
 @property (nullable, nonatomic, retain) NSSet<SNFFrown *> *frowns;
 @property (nullable, nonatomic, retain) NSSet<SNFSmile *> *smiles;
+@property (nullable, nonatomic, retain) NSSet<SNFSpendableSmile *> *spendable_smiles;
 @property (nullable, nonatomic, retain) NSSet<SNFReward *> *rewards;
 @property (nullable, nonatomic, retain) NSSet<SNFBehavior *> *behaviors;
 @property (nullable, nonatomic, retain) NSSet<SNFUserRole *> *user_roles;
@@ -42,6 +44,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeSmilesObject:(SNFSmile *)value;
 - (void)addSmiles:(NSSet<SNFSmile *> *)values;
 - (void)removeSmiles:(NSSet<SNFSmile *> *)values;
+
+- (void)addSpendable_smilesObject:(SNFSpendableSmile *)object;
+- (void)removeSpendable_smilesObject:(SNFSpendableSmile	*)object;
+- (void)addSpendable_smiles:(NSSet <SNFSpendableSmile *> *)objects;
+- (void)removeSpendable_smiles:(NSSet <SNFSpendableSmile *> *)objects;
 
 - (void)addRewardsObject:(SNFReward *)value;
 - (void)removeRewardsObject:(SNFReward *)value;

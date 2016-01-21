@@ -139,9 +139,7 @@ class SpendableSmile(SyncModel):
 	user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="%(class)s_user")
 	creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="%(class)s_creator")
 	board = models.ForeignKey(Board, on_delete=models.SET_NULL, null=True)
-	behavior = models.ForeignKey(Behavior, null=True)
 	collected = models.BooleanField(default=False)
-	note = models.CharField(max_length=256, blank=True, default="")
 	def __unicode__(self):
 		return self.board.title
 

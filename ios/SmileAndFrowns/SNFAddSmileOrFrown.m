@@ -6,6 +6,7 @@
 #import "SNFFormStyles.h"
 #import "NSTimer+Blocks.h"
 #import "SNFBoardDetailHeader.h"
+#import "SNFSpendableSmile.h"
 
 @interface SNFAddSmileOrFrownGroup : NSObject
 @property NSString * title;
@@ -255,6 +256,14 @@
 		@"creator": [[SNFModel sharedInstance].loggedInUser infoDictionary],
 	};
 	[SNFSmile editOrCreatefromInfoDictionary:smileDictionary withContext:[SNFModel sharedInstance].managedObjectContext];
+	
+	NSDictionary * spendSmileInfo = @{
+		@"board": @{@"uuid": self.board.uuid},
+		@"user": [self.user infoDictionary],
+		@"creator": [[SNFModel sharedInstance].loggedInUser infoDictionary],
+	};
+	[SNFSpendableSmile editOrCreatefromInfoDictionary:spendSmileInfo withContext:[SNFModel sharedInstance].managedObjectContext];
+	
 	[[SNFSyncService instance] saveContext];
 }
 

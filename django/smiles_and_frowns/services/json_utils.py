@@ -131,10 +131,8 @@ def spendable_smile_info_dictionary(smile):
 	smile_data = {
 		"id": smile.id,
 		"collected": smile.collected,
-		"note": smile.note
 	}
 	append_sync_info(smile, smile_data)
-	if smile.behavior: smile_data["behavior"] = {"uuid": smile.behavior.uuid}
 	if smile.board: smile_data['board'] = {'uuid':smile.board.uuid}
 	if smile.user: smile_data["user"] = {"username": smile.user.username}
 	if smile.creator: smile_data["creator"] = {"username": smile.creator.username}

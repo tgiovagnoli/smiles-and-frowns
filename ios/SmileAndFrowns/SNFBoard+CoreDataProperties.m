@@ -4,6 +4,7 @@
 #import "SNFUserRole.h"
 #import "SNFFrown.h"
 #import "SNFUser.h"
+#import "SNFSpendableSmile.h"
 
 @implementation SNFBoard (CoreDataProperties)
 
@@ -18,6 +19,7 @@
 @dynamic remote_id;
 @dynamic frowns;
 @dynamic smiles;
+@dynamic spendable_smiles;
 @dynamic rewards;
 @dynamic behaviors;
 @dynamic user_roles;

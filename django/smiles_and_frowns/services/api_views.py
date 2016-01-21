@@ -624,7 +624,7 @@ def sync_data_for_board(board,request):
 	return output
 
 @csrf_exempt
-def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behaviors':[],'smiles':[],'frowns':[],'rewards':[],'user_roles':[]}):
+def sync_pull(request, sync_date=None, created_object_uuids={'boards':[],'behaviors':[],'smiles':[],'spendable_smiles':[],'frowns':[],'rewards':[],'user_roles':[]}):
 	'''
 	sync_date can be None, string, or datetime.
 	created_object_uuids are objects that won't be included in query to get objects to return to user.
@@ -712,6 +712,7 @@ def sync(request):
 		'boards':[],
 		'behaviors':[],
 		'smiles':[],
+		'spendable_smiles':[],
 		'frowns':[],
 		'rewards':[],
 		'user_roles':[],

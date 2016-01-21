@@ -10,41 +10,11 @@
 @implementation SNFBoardDetailChildCell
 
 - (void) awakeFromNib {
-//	self.containerView.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.containerView.layer.shadowOffset = CGSizeMake(0, 0);
-//	self.containerView.layer.shadowOpacity = .2;
-//	self.containerView.layer.shadowRadius = 1;
-	
 	self.containerView.layer.borderWidth = 2;
 	self.containerView.layer.borderColor = [[UIColor whiteColor] CGColor];
 	
-//	self.smileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.smileImage.layer.shadowOffset = CGSizeMake(0,2);
-//	self.smileImage.layer.shadowOpacity = .2;
-//	self.smileImage.layer.shadowRadius = 1;
-	
-//	self.frownImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.frownImage.layer.shadowOffset = CGSizeMake(0,2);
-//	self.frownImage.layer.shadowOpacity = .2;
-//	self.frownImage.layer.shadowRadius = 1;
-	
-//	self.spendImage.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.spendImage.layer.shadowOffset = CGSizeMake(0,0);
-//	self.spendImage.layer.shadowOpacity = .2;
-//	self.spendImage.layer.shadowRadius = 3;
-	
 	UITapGestureRecognizer * report = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onReport:)];
 	[self.profileImage addGestureRecognizer:report];
-	
-//	self.smileContainer.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.smileContainer.layer.shadowOffset = CGSizeMake(0,1);
-//	self.smileContainer.layer.shadowOpacity = .2;
-//	self.smileContainer.layer.shadowRadius = 1;
-	
-//	self.frownContainer.layer.shadowColor = [[UIColor blackColor] CGColor];
-//	self.frownContainer.layer.shadowOffset = CGSizeMake(0,1);
-//	self.frownContainer.layer.shadowOpacity = .2;
-//	self.frownContainer.layer.shadowRadius = 1;
 	
 	self.profileImage.layer.shadowColor = [[UIColor blackColor] CGColor];
 	self.profileImage.layer.shadowOffset = CGSizeMake(0,2);
@@ -70,20 +40,31 @@
 
 - (void) updateUI {
 	NSPredicate * smilePredacate = [NSPredicate predicateWithFormat:@"(board=%@) AND (user=%@) AND (soft_deleted=0) AND (collected=0)", _userRole.board, _userRole.user];
-	NSPredicate * frownPredacate = [NSPredicate predicateWithFormat:@"(board=%@) AND (user=%@) AND (soft_deleted=0)", _userRole.board, _userRole.user];
-	
 	NSFetchRequest * smileFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFSmile"];
 	smileFetchRequest.resultType = NSCountResultType;
 	smileFetchRequest.predicate = smilePredacate;
 	NSError * smileFetchError = nil;
 	NSUInteger smilesCount = [[SNFModel sharedInstance].managedObjectContext countForFetchRequest:smileFetchRequest error:&smileFetchError];
-	
 	if(smileFetchError) {
 		NSLog(@"%@", smileFetchError);
 	}
-	
 	self.smilesCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)smilesCount];
 	
+//	NSPredicate * spendSmilePredicate = [NSPredicate predicateWithFormat:@"(board=%@) AND (user=%@) AND (soft_deleted=0) AND (collected=0)", _userRole.board, _userRole.user];
+//	NSFetchRequest * spendSmileFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFSpendableSmile"];
+//	spendSmileFetchRequest.resultType = NSCountResultType;
+//	spendSmileFetchRequest.predicate = spendSmilePredicate;
+//	NSError * spendSmileFetchError = nil;
+//	NSUInteger spendSmilesCount = [[SNFModel sharedInstance].managedObjectContext countForFetchRequest:spendSmileFetchRequest error:&spendSmileFetchError];
+//	if(spendSmileFetchError) {
+//		NSLog(@"%@", spendSmileFetchError);
+//	}
+//	self.spendLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)spendSmilesCount];
+	NSInteger spendable = [self.userRole.board spendableSmilesForUser:self.userRole.user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE].count;
+	self.spendLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)spendable];
+	//self.spendLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.userRole.board smileCurrencyForUser:self.userRole.user]];
+	
+	NSPredicate * frownPredacate = [NSPredicate predicateWithFormat:@"(board=%@) AND (user=%@) AND (soft_deleted=0)", _userRole.board, _userRole.user];
 	NSFetchRequest * frownFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFFrown"];
 	frownFetchRequest.resultType = NSCountResultType;
 	frownFetchRequest.predicate = frownPredacate;
@@ -91,22 +72,17 @@
 	if(frownFetchError) {
 		NSLog(@"%@", frownFetchError);
 	}
-	
 	NSUInteger frownsCount = [[SNFModel sharedInstance].managedObjectContext countForFetchRequest:frownFetchRequest error:&frownFetchError];
 	self.frownsCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)frownsCount];
 	self.nameLabel.text = self.userRole.user.first_name;
-	
-	self.spendLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.userRole.board smileCurrencyForUser:self.userRole.user]];
 	
 	[self setImageFromGender];
 	
 	if(![self.userRole.user.image isEmpty] && self.userRole.user.image) {
 		NSURL * url = [NSURL URLWithString:self.userRole.user.image];
-		
 		[[UIImageLoader defaultLoader] loadImageWithURL:url hasCache:^(UIImageLoaderImage *image, UIImageLoadSource loadedFromSource) {
 			[self.profileImage setImage:image asProfileWithBorderColor:[UIColor whiteColor] andBorderThickness:2];
 		} sendingRequest:^(BOOL didHaveCachedImage) {
-			
 		} requestCompleted:^(NSError *error, UIImageLoaderImage *image, UIImageLoadSource loadedFromSource) {
 			if(loadedFromSource == UIImageLoadSourceNetworkToDisk) {
 				[self.profileImage setImage:image asProfileWithBorderColor:[UIColor whiteColor] andBorderThickness:2];

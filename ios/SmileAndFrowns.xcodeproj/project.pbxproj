@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0703A8981C165BA200DC011E /* GTM-T7XD6P in Resources */ = {isa = PBXBuildFile; fileRef = 075EA4CC1C11FE5E0003A403 /* GTM-T7XD6P */; };
 		0703C0D11C50193A000F28A7 /* SNFDictationTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0703C0D01C50193A000F28A7 /* SNFDictationTextView.m */; };
+		0703C0DF1C51736D000F28A7 /* SNFSpendableSmile+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0703C0DC1C51736D000F28A7 /* SNFSpendableSmile+CoreDataProperties.m */; };
+		0703C0E01C51736D000F28A7 /* SNFSpendableSmile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0703C0DE1C51736D000F28A7 /* SNFSpendableSmile.m */; };
 		0707D69F1BE28EC6002F1FC0 /* SNFTutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */; };
 		0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */; };
 		0707D6A31BE294A6002F1FC0 /* UIView+LayoutHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 0707D6A21BE294A6002F1FC0 /* UIView+LayoutHelpers.m */; };
@@ -244,6 +246,11 @@
 /* Begin PBXFileReference section */
 		0703C0CF1C50193A000F28A7 /* SNFDictationTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFDictationTextView.h; sourceTree = "<group>"; };
 		0703C0D01C50193A000F28A7 /* SNFDictationTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFDictationTextView.m; sourceTree = "<group>"; };
+		0703C0DA1C5172CB000F28A7 /* SmileAndFrowns 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SmileAndFrowns 6.xcdatamodel"; sourceTree = "<group>"; };
+		0703C0DB1C51736D000F28A7 /* SNFSpendableSmile+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFSpendableSmile+CoreDataProperties.h"; sourceTree = "<group>"; };
+		0703C0DC1C51736D000F28A7 /* SNFSpendableSmile+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SNFSpendableSmile+CoreDataProperties.m"; sourceTree = "<group>"; };
+		0703C0DD1C51736D000F28A7 /* SNFSpendableSmile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFSpendableSmile.h; sourceTree = "<group>"; };
+		0703C0DE1C51736D000F28A7 /* SNFSpendableSmile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFSpendableSmile.m; sourceTree = "<group>"; };
 		0707D69C1BE28EC6002F1FC0 /* SNFTutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFTutorial.h; sourceTree = "<group>"; };
 		0707D69D1BE28EC6002F1FC0 /* SNFTutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFTutorial.m; sourceTree = "<group>"; };
 		0707D69E1BE28EC6002F1FC0 /* SNFTutorial.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNFTutorial.xib; sourceTree = "<group>"; };
@@ -1117,6 +1124,10 @@
 				D659DBCF1BDAEA000048D3F7 /* SNFSmile.m */,
 				D659DBCC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.h */,
 				D659DBCD1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m */,
+				0703C0DD1C51736D000F28A7 /* SNFSpendableSmile.h */,
+				0703C0DE1C51736D000F28A7 /* SNFSpendableSmile.m */,
+				0703C0DB1C51736D000F28A7 /* SNFSpendableSmile+CoreDataProperties.h */,
+				0703C0DC1C51736D000F28A7 /* SNFSpendableSmile+CoreDataProperties.m */,
 				D659DBE61BDAEA000048D3F7 /* SNFUser.h */,
 				D659DBE71BDAEA000048D3F7 /* SNFUser.m */,
 				D659DBE41BDAEA000048D3F7 /* SNFUser+CoreDataProperties.h */,
@@ -1486,6 +1497,7 @@
 				0707D6D51BE2D16D002F1FC0 /* NSString+Additions.m in Sources */,
 				D659DBEC1BDAEA000048D3F7 /* SNFSmile+CoreDataProperties.m in Sources */,
 				D6272FC71BE04E010024CBC2 /* SNFUserSettings.m in Sources */,
+				0703C0E01C51736D000F28A7 /* SNFSpendableSmile.m in Sources */,
 				D6E724D41BF4F25300398D09 /* SNFChildEdit.m in Sources */,
 				D659DBFA1BDAEA000048D3F7 /* SNFUserRole+CoreDataProperties.m in Sources */,
 				D659DBF81BDAEA000048D3F7 /* SNFUser+CoreDataProperties.m in Sources */,
@@ -1557,6 +1569,7 @@
 				D6E724E21BF542E500398D09 /* SNFMoreWebDetail.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
 				0707D6DC1BE428BA002F1FC0 /* SNFInvites.m in Sources */,
+				0703C0DF1C51736D000F28A7 /* SNFSpendableSmile+CoreDataProperties.m in Sources */,
 				0707D6CB1BE2B2F8002F1FC0 /* SNFCreateAccount.m in Sources */,
 				D6E724DC1BF523FF00398D09 /* SNFValuePicker.m in Sources */,
 				D65DF1101BE29A42009CC6DF /* SNFTabMenu.m in Sources */,
@@ -1745,13 +1758,14 @@
 		072BBF701C40638000A7AADA /* SmileAndFrowns.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0703C0DA1C5172CB000F28A7 /* SmileAndFrowns 6.xcdatamodel */,
 				07E579ED1C4FFF2500465246 /* SmileAndFrowns 5.xcdatamodel */,
 				07E579B11C46DF2E00465246 /* SmileAndFrowns 4.xcdatamodel */,
 				072BBF711C40638000A7AADA /* SmileAndFrowns 2.xcdatamodel */,
 				072BBF721C40638000A7AADA /* SmileAndFrowns 3.xcdatamodel */,
 				072BBF731C40638000A7AADA /* SmileAndFrowns.xcdatamodel */,
 			);
-			currentVersion = 07E579ED1C4FFF2500465246 /* SmileAndFrowns 5.xcdatamodel */;
+			currentVersion = 0703C0DA1C5172CB000F28A7 /* SmileAndFrowns 6.xcdatamodel */;
 			name = SmileAndFrowns.xcdatamodeld;
 			path = SmileAndFrowns/SmileAndFrowns.xcdatamodeld;
 			sourceTree = "<group>";

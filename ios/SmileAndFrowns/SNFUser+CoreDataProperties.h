@@ -4,6 +4,7 @@
 @class SNFFrown;
 @class SNFUserRole;
 @class SNFBoard;
+@class SNFSpendableSmile;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *remote_id;
 @property (nullable, nonatomic, retain) NSString *tmp_profile_image_uuid;
 @property (nullable, nonatomic, retain) NSSet<SNFSmile *> *smiles;
+@property (nullable, nonatomic, retain) NSSet<SNFSpendableSmile *> *spendable_smiles;
+@property (nullable, nonatomic, retain) NSSet<SNFSpendableSmile *> *spendable_smiles_creator;
 @property (nullable, nonatomic, retain) NSSet<SNFFrown *> *frowns;
 @property (nullable, nonatomic, retain) NSSet<SNFUserRole *> *user_roles;
 @property (nullable, nonatomic, retain) NSSet<SNFBoard *> *owned_boards;
