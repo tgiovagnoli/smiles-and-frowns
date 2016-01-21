@@ -1,0 +1,5 @@
+-Convert tables to InnoDB - see django/smiles_and_frowns/alter_to_innodb.txt
+-For 119 & 122, run migrations
+-Send out new build
+
+-Only newly created boards will have group headers available in the give smile/frown view
