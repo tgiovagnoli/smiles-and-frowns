@@ -13,7 +13,7 @@
 #import "SNFViewController.h"
 #import "SNFSyncService.h"
 
-#define SHARE_APP_NAME @"Share this App"
+#define SHARE_APP_NAME @"Share Smiles & Frowns"
 
 @implementation SNFMore
 
