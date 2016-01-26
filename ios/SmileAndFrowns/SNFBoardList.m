@@ -376,7 +376,7 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 				// free board confirm
 				NSString * messageString = [self behaviorsStringFromBoard:pdb];
 				messageString = [messageString stringByAppendingString:@" Would you like to use this board?"];
-				UIAlertController *alert = [UIAlertController alertControllerWithTitle:pdb.title message:messageString preferredStyle:UIAlertControllerStyleAlert];
+				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Your first board is free!" message:messageString preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 					[self addNewBoard:pdb withTransactionID:nil editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
 				}]];

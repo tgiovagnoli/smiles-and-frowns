@@ -50,20 +50,6 @@
 	}
 	self.smilesCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)smilesCount];
 	
-//	NSPredicate * spendSmilePredicate = [NSPredicate predicateWithFormat:@"(board=%@) AND (user=%@) AND (soft_deleted=0) AND (collected=0)", _userRole.board, _userRole.user];
-//	NSFetchRequest * spendSmileFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFSpendableSmile"];
-//	spendSmileFetchRequest.resultType = NSCountResultType;
-//	spendSmileFetchRequest.predicate = spendSmilePredicate;
-//	NSError * spendSmileFetchError = nil;
-//	NSUInteger spendSmilesCount = [[SNFModel sharedInstance].managedObjectContext countForFetchRequest:spendSmileFetchRequest error:&spendSmileFetchError];
-//	if(spendSmileFetchError) {
-//		NSLog(@"%@", spendSmileFetchError);
-//	}
-//	self.spendLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)spendSmilesCount];
-	NSInteger spendable = [self.userRole.board spendableSmilesForUser:self.userRole.user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE].count;
-	self.spendLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)spendable];
-	//self.spendLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.userRole.board smileCurrencyForUser:self.userRole.user]];
-	
 	NSPredicate * frownPredacate = [NSPredicate predicateWithFormat:@"(board=%@) AND (user=%@) AND (soft_deleted=0)", _userRole.board, _userRole.user];
 	NSFetchRequest * frownFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFFrown"];
 	frownFetchRequest.resultType = NSCountResultType;
@@ -75,6 +61,24 @@
 	NSUInteger frownsCount = [[SNFModel sharedInstance].managedObjectContext countForFetchRequest:frownFetchRequest error:&frownFetchError];
 	self.frownsCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)frownsCount];
 	self.nameLabel.text = self.userRole.user.first_name;
+	
+	//	NSPredicate * spendSmilePredicate = [NSPredicate predicateWithFormat:@"(board=%@) AND (user=%@) AND (soft_deleted=0) AND (collected=0)", _userRole.board, _userRole.user];
+	//	NSFetchRequest * spendSmileFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFSpendableSmile"];
+	//	spendSmileFetchRequest.resultType = NSCountResultType;
+	//	spendSmileFetchRequest.predicate = spendSmilePredicate;
+	//	NSError * spendSmileFetchError = nil;
+	//	NSUInteger spendSmilesCount = [[SNFModel sharedInstance].managedObjectContext countForFetchRequest:spendSmileFetchRequest error:&spendSmileFetchError];
+	//	if(spendSmileFetchError) {
+	//		NSLog(@"%@", spendSmileFetchError);
+	//	}
+	//	self.spendLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)spendSmilesCount];
+	NSInteger spendable = [self.userRole.board spendableSmilesForUser:self.userRole.user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE].count;
+	self.spendLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)spendable];
+	//self.spendLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.userRole.board smileCurrencyForUser:self.userRole.user]];
+	
+	//if(frownsCount > smilesCount) {
+	//	self.spendLabel.text = [NSString stringWithFormat:@"-%lu",frownsCount-smilesCount];
+	//}
 	
 	[self setImageFromGender];
 	
