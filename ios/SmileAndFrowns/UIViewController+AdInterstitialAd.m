@@ -34,7 +34,9 @@ static BOOL showOnLoad = FALSE;
 	[NSTimer scheduledTimerWithTimeInterval:.5 block:^{
 		UIViewController * rootvc = [AppDelegate instance].window.rootViewController;
 		UIView * root = rootvc.view;
-		if(rootvc.presentedViewController) {
+		BOOL isIpad = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad;
+		
+		if(!isIpad && rootvc.presentedViewController) {
 			[[SNFModel sharedInstance] resetInterstitial];
 			root = rootvc.presentedViewController.view;
 			adContainer.alpha = 0;
@@ -46,6 +48,22 @@ static BOOL showOnLoad = FALSE;
 				
 			}];
 		}
+		
+		if(isIpad) {
+			if(rootvc.presentedViewController) {
+				[rootvc dismissViewControllerAnimated:FALSE completion:nil];
+			}
+			[[SNFModel sharedInstance] resetInterstitial];
+			adContainer.alpha = 0;
+			[root addSubview:adContainer];
+			[_interstitial presentInView:adContainer];
+			[UIView animateWithDuration:.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+				adContainer.alpha = 1;
+			} completion:^(BOOL finished) {
+				
+			}];
+		}
+		
 	} repeats:FALSE];
 }
 
