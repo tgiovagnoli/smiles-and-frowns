@@ -4,6 +4,7 @@
 #import "UIViewController+ModalCreation.h"
 #import "UIView+LayoutHelpers.h"
 #import "SNFFormStyles.h"
+#import "UIViewController+AdInterstitialAd.h"
 
 @interface SNFLauncher : UIViewController <ADBannerViewDelegate>
 

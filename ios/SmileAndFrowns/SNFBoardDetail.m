@@ -36,6 +36,8 @@
 	self.refresh = [[UIRefreshControl alloc] init];
 	[self.refresh addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
 	[self.rolesTable addSubview:self.refresh];
+	
+	[self startInterstitialAd];
 }
 
 - (void) onRefresh:(id) sender {

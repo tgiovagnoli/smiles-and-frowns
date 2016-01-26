@@ -11,6 +11,7 @@
 #import "SNFReportBehaviorGroup2.h"
 #import "SNFReportSection.h"
 #import "SNFReportDataProvider.h"
+#import "UIViewController+AdInterstitialAd.h"
 
 @interface SNFReporting ()
 @property SNFReportPDF * pdf;
@@ -49,6 +50,8 @@
 	[SNFFormStyles updateFontOnSegmentControl:self.filterType];
 	
 	[self updateUI];
+	
+	[self startInterstitialAd];
 }
 
 - (void) dealloc {

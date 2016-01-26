@@ -100,6 +100,7 @@
 		078DF4D31BEA9AF600CBFAA4 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */; };
 		078DF4D51BEA9B1100CBFAA4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */; };
 		078DF4D91BEA9F1800CBFAA4 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */; };
+		07973DC31C57D64D002F7E82 /* UIViewController+AdInterstitialAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 07973DC21C57D64D002F7E82 /* UIViewController+AdInterstitialAd.m */; };
 		07C0F3B01BEC4C460075A6B9 /* UIViewController+ModalCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */; };
 		07C0F3B31BED047B0075A6B9 /* SNFInvitesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C0F3B21BED047B0075A6B9 /* SNFInvitesCell.m */; };
 		07C0F3B51BED049B0075A6B9 /* SNFInvitesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07C0F3B41BED049B0075A6B9 /* SNFInvitesCell.xib */; };
@@ -388,6 +389,8 @@
 		078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = libs/TwitterCore.framework; sourceTree = "<group>"; };
 		078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = libs/Fabric.framework; sourceTree = "<group>"; };
 		078DF4D81BEA9F1800CBFAA4 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = libs/TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		07973DC11C57D64D002F7E82 /* UIViewController+AdInterstitialAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AdInterstitialAd.h"; sourceTree = "<group>"; };
+		07973DC21C57D64D002F7E82 /* UIViewController+AdInterstitialAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AdInterstitialAd.m"; sourceTree = "<group>"; };
 		07C0F3AE1BEC4C460075A6B9 /* UIViewController+ModalCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ModalCreation.h"; sourceTree = "<group>"; };
 		07C0F3AF1BEC4C460075A6B9 /* UIViewController+ModalCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ModalCreation.m"; sourceTree = "<group>"; };
 		07C0F3B11BED047B0075A6B9 /* SNFInvitesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFInvitesCell.h; sourceTree = "<group>"; };
@@ -1250,6 +1253,8 @@
 				075EA4ED1C1225540003A403 /* Utils.m */,
 				07200DCB1C1C92060031B260 /* TriangleView.h */,
 				07200DCC1C1C92060031B260 /* TriangleView.m */,
+				07973DC11C57D64D002F7E82 /* UIViewController+AdInterstitialAd.h */,
+				07973DC21C57D64D002F7E82 /* UIViewController+AdInterstitialAd.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -1487,6 +1492,7 @@
 				D659DBF91BDAEA000048D3F7 /* SNFUser.m in Sources */,
 				D6D197571BF677060009E652 /* UIImageView+ProfileStyle.m in Sources */,
 				D65DF15A1BE2F59F009CC6DF /* SNFAddUserRole.m in Sources */,
+				07973DC31C57D64D002F7E82 /* UIViewController+AdInterstitialAd.m in Sources */,
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
 				074D8D0E1C21EC78007B5516 /* SNFReportPDFUserHeader.m in Sources */,
 				07C0F3B01BEC4C460075A6B9 /* UIViewController+ModalCreation.m in Sources */,

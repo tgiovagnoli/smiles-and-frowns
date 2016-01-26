@@ -8,6 +8,7 @@
 #import "SNFFormViewController.h"
 #import "GATracking.h"
 #import "SNFFormStyles.h"
+#import "UIViewController+AdInterstitialAd.h"
 
 @class SNFAddBehavior;
 

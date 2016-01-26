@@ -32,6 +32,7 @@ NSString * const SNFInviteAccepted = @"SNFInviteAccepted";
 	[SNFFormStyles roundEdgesOnButton:self.joinButton];
 	
 	[self startBannerAd];
+	[self startInterstitialAd];
 }
 
 - (void)decorate{

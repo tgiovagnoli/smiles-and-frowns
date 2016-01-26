@@ -53,6 +53,7 @@
 	self.deleteButton.alpha = 0;
 	
 	[self startBannerAd];
+	[self startInterstitialAd];
 	[self updateUI];
 	[self updateRewardsInfoLabel];
 }

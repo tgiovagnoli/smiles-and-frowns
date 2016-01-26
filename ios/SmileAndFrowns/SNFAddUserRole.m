@@ -8,6 +8,7 @@
 #import "SNFUserService.h"
 #import "SNFUser.h"
 #import "SNFFormStyles.h"
+#import "UIViewController+AdInterstitialAd.h"
 
 NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 
@@ -23,6 +24,7 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 - (void) viewDidLoad {
 	[super viewDidLoad];
 	[self startBannerAd];
+	[self startInterstitialAd];
 	
 	_genderPicker = [[SNFValuePicker alloc] init];
 	_genderPicker.delegate = self;

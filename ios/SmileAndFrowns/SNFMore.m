@@ -33,6 +33,8 @@
 	[self.tableView reloadData];
 	
 	[[GATracking instance] trackScreenWithTagManager:@"MoreView"];
+	
+	[self startInterstitialAd];
 }
 
 - (void) testBadge {

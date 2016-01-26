@@ -54,6 +54,8 @@
 	}
 	
 	[self loadAuthedUser];
+	
+	[self startInterstitialAd];
 }
 
 - (void)decorate{

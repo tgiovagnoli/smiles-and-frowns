@@ -3,6 +3,7 @@
 #import "SNFBoard.h"
 #import "SNFReward.h"
 #import "SNFFormViewController.h"
+#import "UIViewController+AdInterstitialAd.h"
 
 typedef NS_ENUM(NSInteger,SNFAddRewardCurrency) {
 	SNFAddRewardCurrencyTime = 0,

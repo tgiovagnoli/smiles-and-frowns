@@ -12,6 +12,7 @@
 	[self startBannerAd];
 	[SNFFormStyles roundEdgesOnButton:self.addReward];
 	[SNFFormStyles updateFontOnSegmentControl:self.typeControl];
+	[self startInterstitialAd];
 }
 
 - (void) updateUI {

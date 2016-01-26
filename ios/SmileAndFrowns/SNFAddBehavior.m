@@ -28,6 +28,8 @@
 			[self.positiveNegativeSegment setEnabled:FALSE forSegmentAtIndex:0];
 		}
 	}
+	
+	[self startInterstitialAd];
 }
 
 - (void) decorate {

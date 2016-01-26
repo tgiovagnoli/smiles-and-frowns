@@ -50,6 +50,8 @@
 	[[GATracking instance] trackScreenWithTagManager:@"InvitesView"];
 	
 	[self decorate];
+	
+	[self startInterstitialAd];
 }
 
 - (void)decorate{

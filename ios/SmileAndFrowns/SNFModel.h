@@ -20,4 +20,7 @@
 - (NSString *) lastLoggedInUsername;
 - (void)setLoggedInUser:(SNFUser *)loggedInUser updateLastLoggedIn:(BOOL)updateLastLoggedIn;
 
+- (BOOL) shouldShowInterstitial;
+- (void) resetInterstitial;
+
 @end

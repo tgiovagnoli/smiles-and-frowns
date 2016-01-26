@@ -26,7 +26,7 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	[self.boardsTable insertSubview:refreshControl atIndex:0];
 	[self decorate];
 	[self reloadBoards];
-	
+	[self startInterstitialAd];
 	[[GATracking instance] trackScreenWithTagManager:@"BoardListView"];
 }
 

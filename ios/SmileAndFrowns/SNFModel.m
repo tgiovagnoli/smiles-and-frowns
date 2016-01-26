@@ -20,6 +20,20 @@ static SNFModel *_instance;
 	return self;
 }
 
+static int _showInterstitial = 0;
+
+- (void) resetInterstitial {
+	_showInterstitial = 0;
+}
+
+- (BOOL) shouldShowInterstitial; {
+	_showInterstitial++;
+	if(_showInterstitial >= 20) {
+		return TRUE;
+	}
+	return FALSE;
+}
+
 - (void) setLoggedInUser:(SNFUser *) loggedInUser {
 	_loggedInUser = loggedInUser;
 	if(loggedInUser) {

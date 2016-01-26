@@ -31,6 +31,8 @@
 - (void)viewDidLoad{
 	[super viewDidLoad];
 	[self startBannerAd];
+	[self startInterstitialAd];
+	
 	[self updateUI:TRUE];
 	
 	_smileCountPicker = [[SNFValuePicker alloc] init];

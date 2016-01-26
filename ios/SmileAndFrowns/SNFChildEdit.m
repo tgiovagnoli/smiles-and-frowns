@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "UIViewController+Alerts.h"
 #import "SNFFormStyles.h"
+#import "UIViewController+AdInterstitialAd.h"
 
 @implementation SNFChildEdit
 
@@ -35,6 +36,8 @@
 	[self decorate];
 	
 	[self updateUI];
+	
+	[self startInterstitialAd];
 }
 
 - (void)decorate{

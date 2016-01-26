@@ -23,6 +23,7 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	[self.rewardsCollectionView registerNib:[UINib nibWithNibName:@"SNFAddCell" bundle:nil] forCellWithReuseIdentifier:@"SNFAddCell"];
 	[self startBannerAd];
 	[self decorate];
+	[self startInterstitialAd];
 }
 
 - (void)decorate{

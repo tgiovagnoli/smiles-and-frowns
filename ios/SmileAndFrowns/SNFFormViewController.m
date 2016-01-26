@@ -4,6 +4,8 @@
 #import "NSTimer+Blocks.h"
 #import "SNFViewController.h"
 #import "IAPHelper.h"
+#import "SNFModel.h"
+#import "AppDelegate.h"
 
 @interface SNFFormViewController ()
 @property BOOL firstlayout;
