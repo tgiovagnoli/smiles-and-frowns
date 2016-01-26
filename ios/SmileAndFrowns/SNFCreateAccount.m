@@ -86,7 +86,7 @@
 			[SNFModel sharedInstance].loggedInUser = user;
 			[SNFModel sharedInstance].userSettings.lastSyncDate = nil;
 			
-			[self closeModal:true];
+			[self syncAfterLogin:nil];
 		}
 	}];
 }

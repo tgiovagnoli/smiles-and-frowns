@@ -38,7 +38,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>23</string>
+	<string>25</string>
 	<key>FacebookAppID</key>
 	<string>1641664296087724</string>
 	<key>FacebookDisplayName</key>
@@ -67,7 +67,7 @@
 		<true/>
 	</dict>
 	<key>SNFConfig</key>
-	<string>SNFServicesSSL</string>
+	<string>SNFDebugImac</string>
 	<key>SNFDebugImac</key>
 	<dict>
 		<key>TwitterKey</key>

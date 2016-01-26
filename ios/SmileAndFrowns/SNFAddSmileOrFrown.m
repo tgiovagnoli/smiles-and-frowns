@@ -259,12 +259,17 @@
 	};
 	[SNFSmile editOrCreatefromInfoDictionary:smileDictionary withContext:[SNFModel sharedInstance].managedObjectContext];
 	
-	NSDictionary * spendSmileInfo = @{
-		@"board": @{@"uuid": self.board.uuid},
-		@"user": [self.user infoDictionary],
-		@"creator": [[SNFModel sharedInstance].loggedInUser infoDictionary],
-	};
-	[SNFSpendableSmile editOrCreatefromInfoDictionary:spendSmileInfo withContext:[SNFModel sharedInstance].managedObjectContext];
+	NSArray * smiles = [self.board smilesForUser:self.user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE];
+	NSArray * frowns = [self.board frownsForUser:self.user includeDeletedFrowns:FALSE];
+	
+	if(smiles.count > frowns.count) {
+		NSDictionary * spendSmileInfo = @{
+			@"board": @{@"uuid": self.board.uuid},
+			@"user": [self.user infoDictionary],
+			@"creator": [[SNFModel sharedInstance].loggedInUser infoDictionary],
+		};
+		[SNFSpendableSmile editOrCreatefromInfoDictionary:spendSmileInfo withContext:[SNFModel sharedInstance].managedObjectContext];
+	}
 	
 	[[SNFSyncService instance] saveContext];
 }
@@ -279,8 +284,8 @@
 		note = @"";
 	}
 	
-	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
-	NSDictionary *frownDictionary = @{
+	NSManagedObjectContext * context = [SNFModel sharedInstance].managedObjectContext;
+	NSDictionary * frownDictionary = @{
 									  @"note": note,
 									  @"board": @{@"uuid": self.board.uuid},
 									  @"behavior": @{@"uuid": behavior.uuid},
@@ -288,6 +293,13 @@
 									  @"creator": [[SNFModel sharedInstance].loggedInUser infoDictionary],
 									  };
 	[SNFFrown editOrCreatefromInfoDictionary:frownDictionary withContext:context];
+	
+	NSArray * spendableSmiles = [self.board spendableSmilesForUser:self.user includeDeletedSmiles:FALSE includeCollectedSmiles:FALSE];
+	if(spendableSmiles.count > 0) {
+		SNFSpendableSmile * smile = spendableSmiles[0];
+		smile.soft_deleted = @(1);
+	}
+	
 	[[SNFSyncService instance] saveContext];
 }
 
