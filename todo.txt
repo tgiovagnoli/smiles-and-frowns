@@ -6,3 +6,14 @@
 -For 119 & 122, run migrations
 -Send out new build
 -Only newly created boards will have group headers available in the give smile/frown view
+
+
+
+
+SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE TABLE predefinedboards_predefinedbehavior;
+TRUNCATE TABLE predefinedboards_predefinedbehaviorgroup;
+TRUNCATE TABLE predefinedboards_predefinedbehaviorgroup_behaviors;
+TRUNCATE TABLE predefinedboards_predefinedboard;
+TRUNCATE TABLE predefinedboards_predefinedboard_behaviors;
+SET FOREIGN_KEY_CHECKS = 1;

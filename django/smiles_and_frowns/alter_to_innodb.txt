@@ -1,4 +1,5 @@
 show table status where Engine='MyISAM'
+alter table auth_group ENGINE=InnoDB;
 alter table auth_group_permissions ENGINE=InnoDB;
 alter table auth_permission ENGINE=InnoDB;
 alter table auth_user ENGINE=InnoDB;
