@@ -49,7 +49,17 @@ NSString * const SNFLoginLogingSyncCompleted = @"SNFLoginSyncCompleted";
 }
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
-	[self.view endEditing:TRUE];
+	if(textField == self.email) {
+		[self.password becomeFirstResponder];
+		return NO;
+	}
+	
+	if(textField == self.password) {
+		[self login:nil];
+		[self.view endEditing:TRUE];
+		return YES;
+	}
+	
 	return TRUE;
 }
 

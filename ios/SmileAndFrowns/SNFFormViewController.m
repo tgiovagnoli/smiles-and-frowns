@@ -84,15 +84,21 @@
 }
 
 - (void) keyboardWillShow:(NSNotification *) notification {
+	NSLog(@"keyboard will show");
 	self.keyboardHeight = [self keyboardHeight:notification];
 	[self keyboardShown];
 }
 
 - (void) keyboardWillHide:(NSNotification *) notification {
+	NSLog(@"keyboard will hide");
 	[self keyboardHidden];
 }
 
 - (void) keyboardShown {
+	if(self.keyboardIsVisible) {
+		return;
+	}
+	
 	self.keyboardIsVisible = TRUE;
 	
 	CGFloat bottom = self.keyboardHeight;
