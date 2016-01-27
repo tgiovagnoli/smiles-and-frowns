@@ -88,6 +88,7 @@ static BOOL showOnLoad = FALSE;
 	NSLog(@"interstitial finished");
 	
 	showOnLoad = FALSE;
+	_interstitial.delegate = nil;
 	_interstitial = nil;
 	
 	[[AppDelegate instance].window makeKeyAndVisible];
