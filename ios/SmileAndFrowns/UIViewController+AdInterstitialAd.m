@@ -9,14 +9,6 @@ static BOOL showOnLoad = FALSE;
 @implementation UIViewController (AdInterstitialAd)
 
 - (void) startInterstitialAd {
-	if(!showOnLoad && [[SNFModel sharedInstance] shouldShowInterstitial]) {
-		showOnLoad = TRUE;
-		_interstitial = [[ADInterstitialAd alloc] init];
-		_interstitial.delegate = self;
-	}
-}
-
-- (void) showInterstitial {
 	if(!adWindow) {
 		adWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	}
@@ -27,6 +19,14 @@ static BOOL showOnLoad = FALSE;
 		adWindow.rootViewController.view = adContainer;
 	}
 	
+	if(!showOnLoad && [[SNFModel sharedInstance] shouldShowInterstitial]) {
+		showOnLoad = TRUE;
+		_interstitial = [[ADInterstitialAd alloc] init];
+		_interstitial.delegate = self;
+	}
+}
+
+- (void) showInterstitial {
 	[[SNFModel sharedInstance] resetInterstitial];
 	adContainer.alpha = 0;
 	[adWindow makeKeyAndVisible];
@@ -59,6 +59,7 @@ static BOOL showOnLoad = FALSE;
 
 - (void) interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error {
 	NSLog(@"interstitial fail with error %@",error);
+	showOnLoad = FALSE;
 	[adContainer removeFromSuperview];
 	_interstitial.delegate = nil;
 	_interstitial = nil;
@@ -73,13 +74,8 @@ static BOOL showOnLoad = FALSE;
 	showOnLoad = FALSE;
 	_interstitial = nil;
 	
-	[adWindow.rootViewController.view removeFromSuperview];
-	adWindow.rootViewController.view = nil;
-	adWindow.rootViewController = nil;
-	adWindow = nil;
-	adContainer = nil;
-	
 	[[AppDelegate instance].window makeKeyAndVisible];
+	[adWindow.rootViewController.view removeFromSuperview];
 }
 
 @end
