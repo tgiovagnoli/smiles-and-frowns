@@ -9,6 +9,14 @@ static BOOL showOnLoad = FALSE;
 @implementation UIViewController (AdInterstitialAd)
 
 - (void) startInterstitialAd {
+	if(!showOnLoad && [[SNFModel sharedInstance] shouldShowInterstitial]) {
+		showOnLoad = TRUE;
+		_interstitial = [[ADInterstitialAd alloc] init];
+		_interstitial.delegate = self;
+	}
+}
+
+- (void) showInterstitial {
 	if(!adWindow) {
 		adWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	}
@@ -19,36 +27,16 @@ static BOOL showOnLoad = FALSE;
 		adWindow.rootViewController.view = adContainer;
 	}
 	
-	if(!_interstitial) {
-		_interstitial = [[ADInterstitialAd alloc] init];
-		_interstitial.delegate = self;
-		showOnLoad = FALSE;
-	}
-	
-	if([[SNFModel sharedInstance] shouldShowInterstitial]) {
-		if(_interstitial.loaded) {
-			[self showInterstitial];
-		} else {
-			showOnLoad = TRUE;
-			_interstitial = [[ADInterstitialAd alloc] init];
-			_interstitial.delegate = self;
-		}
-	}
-}
+	[[SNFModel sharedInstance] resetInterstitial];
+	adContainer.alpha = 0;
+	[adWindow makeKeyAndVisible];
+	[_interstitial presentInView:adContainer];
+	[UIView animateWithDuration:.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+		adContainer.alpha = 1;
+	} completion:^(BOOL finished) {
+		
+	}];
 
-- (void) showInterstitial {
-	NSLog(@"show interstitial");
-	[NSTimer scheduledTimerWithTimeInterval:.25 block:^{
-		[[SNFModel sharedInstance] resetInterstitial];
-		adContainer.alpha = 0;
-		[adWindow makeKeyAndVisible];
-		[_interstitial presentInView:adContainer];
-		[UIView animateWithDuration:.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-			adContainer.alpha = 1;
-		} completion:^(BOOL finished) {
-			
-		}];
-	} repeats:FALSE];
 }
 
 - (void) interstitialAdDidLoad:(ADInterstitialAd *)interstitialAd {
@@ -78,6 +66,19 @@ static BOOL showOnLoad = FALSE;
 
 - (void) interstitialAdActionDidFinish:(ADInterstitialAd *)interstitialAd {
 	NSLog(@"interstitial finished");
+	if(!adWindow.isKeyWindow) {
+		return;
+	}
+	
+	showOnLoad = FALSE;
+	_interstitial = nil;
+	
+	[adWindow.rootViewController.view removeFromSuperview];
+	adWindow.rootViewController.view = nil;
+	adWindow.rootViewController = nil;
+	adWindow = nil;
+	adContainer = nil;
+	
 	[[AppDelegate instance].window makeKeyAndVisible];
 }
 
