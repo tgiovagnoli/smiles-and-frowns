@@ -60,7 +60,6 @@ static BOOL showOnLoad = FALSE;
 - (void) interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error {
 	NSLog(@"interstitial fail with error %@",error);
 	showOnLoad = FALSE;
-	[adContainer removeFromSuperview];
 	_interstitial.delegate = nil;
 	_interstitial = nil;
 }
