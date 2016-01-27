@@ -19,10 +19,17 @@ static BOOL showOnLoad = FALSE;
 		adWindow.rootViewController.view = adContainer;
 	}
 	
-	if(!showOnLoad && [[SNFModel sharedInstance] shouldShowInterstitial]) {
-		showOnLoad = TRUE;
-		_interstitial = [[ADInterstitialAd alloc] init];
-		_interstitial.delegate = self;
+	if([[SNFModel sharedInstance] shouldShowInterstitial]) {
+		if(_interstitial && !_interstitial.loaded) {
+			showOnLoad = TRUE;
+			_interstitial.delegate = nil;
+			_interstitial = [[ADInterstitialAd alloc] init];
+			_interstitial.delegate = self;
+		} else {
+			showOnLoad = TRUE;
+			_interstitial = [[ADInterstitialAd alloc] init];
+			_interstitial.delegate = self;
+		}
 	}
 }
 
