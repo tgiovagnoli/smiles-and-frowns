@@ -30,6 +30,8 @@
 	}
 	
 	[self startInterstitialAd];
+	
+	[self updateBehaviors];
 }
 
 - (void) decorate {
@@ -52,6 +54,7 @@
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	NSError * error;
 	NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"SNFPredefinedBehaviorGroup"];
+	request.predicate = [NSPredicate predicateWithFormat:@"soft_delete = 0"];
 	NSSortDescriptor * sortByTitle = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:TRUE];
 	request.sortDescriptors = @[sortByTitle];
 	NSArray * allGroups = [context executeFetchRequest:request error:&error];
