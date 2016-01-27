@@ -9,6 +9,10 @@ static BOOL showOnLoad = FALSE;
 @implementation UIViewController (AdInterstitialAd)
 
 - (void) startInterstitialAd {
+	if([[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
+		return;
+	}
+	
 	if(!adWindow) {
 		adWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	}
