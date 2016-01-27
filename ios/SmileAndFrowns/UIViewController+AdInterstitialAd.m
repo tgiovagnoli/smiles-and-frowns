@@ -47,7 +47,11 @@ static BOOL showOnLoad = FALSE;
 	} completion:^(BOOL finished) {
 		
 	}];
+}
 
+- (BOOL) interstitialAdActionShouldBegin:(ADInterstitialAd *)interstitialAd willLeaveApplication:(BOOL)willLeave {
+	NSLog(@"interstitial should begin");
+	return TRUE;
 }
 
 - (void) interstitialAdDidLoad:(ADInterstitialAd *)interstitialAd {
@@ -76,10 +80,12 @@ static BOOL showOnLoad = FALSE;
 }
 
 - (void) interstitialAdActionDidFinish:(ADInterstitialAd *)interstitialAd {
-	NSLog(@"interstitial finished");
+	
 	if(!adWindow.isKeyWindow) {
 		return;
 	}
+	
+	NSLog(@"interstitial finished");
 	
 	showOnLoad = FALSE;
 	_interstitial = nil;
