@@ -4,6 +4,7 @@
 #import "SNFReward.h"
 #import "SNFFormViewController.h"
 #import "UIViewController+AdInterstitialAd.h"
+#import "UIViewController+Alerts.h"
 
 typedef NS_ENUM(NSInteger,SNFAddRewardCurrency) {
 	SNFAddRewardCurrencyTime = 0,
@@ -20,12 +21,17 @@ typedef NS_ENUM(NSInteger,SNFAddRewardCurrency) {
 
 @interface SNFAddReward : SNFFormViewController <UITextFieldDelegate>
 
-@property (weak) IBOutlet UISegmentedControl *typeControl;
-@property (weak) IBOutlet UILabel *smilesAmountLabel;
-@property (weak) IBOutlet UILabel *currencyAmountLabel;
-@property (weak) IBOutlet UIStepper *smilesStepper;
-@property (weak) IBOutlet UIStepper *currencyStepper;
-@property (weak) IBOutlet UITextField *titleField;
+@property (weak) IBOutlet UISegmentedControl * typeControl;
+@property (weak) IBOutlet UILabel * smilesAmountLabel;
+@property (weak) IBOutlet UIStepper * smilesStepper;
+
+//@property (weak) IBOutlet UILabel * currencyAmountLabel;
+//@property (weak) IBOutlet UIStepper * currencyStepper;
+
+@property (weak) IBOutlet UITextField * baseRateField;
+@property (weak) IBOutlet UILabel * baseRateLabel;
+
+@property (weak) IBOutlet UITextField * titleField;
 @property (weak) IBOutlet UIButton * addReward;
 
 @property SNFBoard *board;
