@@ -333,6 +333,11 @@
 		userRole.soft_deleted = @(YES);
 		[[SNFSyncService instance] saveContext];
 		[self reloadUserRoles];
+		if(![SNFSyncService instance].syncing) {
+			[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
+				[self updateUI];
+			}];
+		}
 	}]];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
 	[[AppDelegate rootViewController] presentViewController:alert animated:YES completion:nil];
