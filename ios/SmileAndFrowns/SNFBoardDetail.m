@@ -334,9 +334,8 @@
 		[[SNFSyncService instance] saveContext];
 		[self reloadUserRoles];
 		if(![SNFSyncService instance].syncing) {
-			[[SNFSyncService instance] syncWithCompletion:^(NSError *error, NSObject *boardData) {
-				[self updateUI];
-			}];
+			[[SNFSyncService instance] syncWithCompletion:nil];
+			return;
 		}
 	}]];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];

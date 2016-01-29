@@ -56,7 +56,9 @@ static SNFSyncService * _instance;
 
 - (void) syncWithCompletion:(SNFSyncServiceCallback) completion {
 	if(_syncing) {
-		completion([SNFError errorWithCode:SNFErrorCodeConcurrentSyncAttempt andMessage:@"Tried to sync while already syncing."], nil);
+		if(completion) {
+			completion([SNFError errorWithCode:SNFErrorCodeConcurrentSyncAttempt andMessage:@"Tried to sync while already syncing."], nil);
+		}
 		return;
 	}
 	
@@ -80,7 +82,9 @@ static SNFSyncService * _instance;
 	
 	if(jsonError) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-		completion(jsonError, nil);
+		if(completion) {
+			completion(jsonError, nil);
+		}
 	}
 	
 	NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:serviceURL];
@@ -99,7 +103,10 @@ static SNFSyncService * _instance;
 				NSLog(@"error: %@",error);
 				[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:error];
-				return completion(error, nil);
+				if(completion) {
+					return completion(error, nil);
+				}
+				return;
 			}
 			
 			NSError *jsonError;
@@ -107,7 +114,10 @@ static SNFSyncService * _instance;
 			if(jsonError){
 				[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:jsonError];
-				return completion(jsonError, nil);
+				if(completion) {
+					return completion(jsonError, nil);
+				}
+				return;
 			}
 			
 			if([infoDict isMemberOfClass:[NSDictionary class]] || [infoDict isKindOfClass:[NSDictionary class]]){
@@ -116,7 +126,10 @@ static SNFSyncService * _instance;
 				SNFError *error = [SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"];
 				[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 				[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:error];
-				return completion(error, nil);
+				if(completion) {
+					return completion(error, nil);
+				}
+				return;
 			}
 		//});
 	}];
@@ -335,7 +348,10 @@ static SNFSyncService * _instance;
 	if(saveError) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		[[NSNotificationCenter defaultCenter] postNotificationName:SNFSyncServiceError object:saveError];
-		return completion(saveError, nil);
+		if(completion) {
+			return completion(saveError, nil);
+		}
+		return;
 	}
 	
 	[self syncPredefinedBoardsWithCompletion:^(NSError *error, NSObject *boardData) {
@@ -343,15 +359,18 @@ static SNFSyncService * _instance;
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 		
 		if(error) {
-			return completion(error, nil);
+			if(completion) {
+				return completion(error, nil);
+			}
+			return;
 		} else {
-			completion(saveError, updates);
+			if(completion) {
+				completion(saveError, updates);
+			}
 		}
 		
 	}];
 }
-
-
 
 - (void)syncPredefinedBoardsWithCompletion:(SNFSyncServiceCallback)completion{
 	NSURL *serviceURL = [[SNFModel sharedInstance].config apiURLForPath:@"predefined_boards/sync"];
@@ -367,14 +386,18 @@ static SNFSyncService * _instance;
 			NSError *jsonError;
 			NSObject *infoDict = [self responseObjectFromData:data withError:&jsonError];
 			if(jsonError){
-				completion(jsonError, nil);
+				if(completion) {
+					completion(jsonError, nil);
+				}
 				return;
 			}
 			
 			if([infoDict isMemberOfClass:[NSDictionary class]] || [infoDict isKindOfClass:[NSDictionary class]]){
 				[self updatePredefinedRecordsWithResults:(NSDictionary *)infoDict andCallCompletion:completion];
 			}else{
-				completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"], nil);
+				if(completion) {
+					completion([SNFError errorWithCode:SNFErrorCodeParseError andMessage:@"expected dictionary"], nil);
+				}
 			}
 		//});
 	}];
@@ -436,7 +459,9 @@ static SNFSyncService * _instance;
 	if(saveError){
 		return completion(saveError, nil);
 	}
-	completion(nil, returnData);
+	if(completion) {
+		completion(nil, returnData);
+	}
 }
 
 - (void)saveContext{
