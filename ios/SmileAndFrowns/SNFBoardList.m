@@ -349,7 +349,7 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 						
 						NSString * messageString = [self behaviorsStringFromBoard:pdb];
 						messageString = [messageString stringByAppendingFormat:@" Would you like to buy this board for %@",boardPrice];
-						messageString = [messageString stringByAppendingFormat:@" or purchase all boards for %@?",allPrice];
+						messageString = [messageString stringByAppendingFormat:@" or you can purchase all seven boards for %@?",allPrice];
 						UIAlertController * alert = [UIAlertController alertControllerWithTitle:pdb.title message:messageString preferredStyle:UIAlertControllerStyleAlert];
 						
 						NSString * title = [NSString stringWithFormat:@"Purchase %@ for %@",pdb.title,boardPrice];

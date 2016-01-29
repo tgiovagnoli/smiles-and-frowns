@@ -55,6 +55,12 @@
                         <action selector="onTypeUpdate:" destination="-1" eventType="valueChanged" id="0lK-zZ-gOK"/>
                     </connections>
                 </segmentedControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qam-VC-uzm">
+                    <rect key="frame" x="20" y="62" width="187" height="23"/>
+                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
+                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="0.25" maximumValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="IKM-b9-e7F">
                     <rect key="frame" x="253" y="60" width="94" height="29"/>
                     <color key="tintColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
@@ -105,15 +111,6 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write rewards simply, like &quot;an hour of TV&quot; or &quot;a trip to the zoo&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MsD-JM-DUz">
-                    <rect key="frame" x="20" y="159" width="560" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="Yof-QK-w14"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-                    <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smile.png" translatesAutoresizingMaskIntoConstraints="NO" id="3yy-za-2Gu">
                     <rect key="frame" x="215" y="59" width="30" height="30"/>
                     <constraints>
@@ -121,10 +118,13 @@
                         <constraint firstAttribute="width" constant="30" id="nFf-UX-AzX"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qam-VC-uzm">
-                    <rect key="frame" x="20" y="62" width="187" height="23"/>
-                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="17"/>
-                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write rewards simply, like &quot;an hour of TV&quot; or &quot;a trip to the zoo&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MsD-JM-DUz">
+                    <rect key="frame" x="20" y="169" width="560" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Yof-QK-w14"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
+                    <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -134,7 +134,7 @@
                 <constraint firstItem="IKM-b9-e7F" firstAttribute="top" secondItem="A72-d6-0sG" secondAttribute="bottom" constant="21" id="3Re-hl-VpP"/>
                 <constraint firstItem="O3y-LZ-SEe" firstAttribute="top" secondItem="qam-VC-uzm" secondAttribute="bottom" constant="12" id="8rI-U8-G5E"/>
                 <constraint firstItem="IKM-b9-e7F" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="B1G-a2-t5o"/>
-                <constraint firstItem="MsD-JM-DUz" firstAttribute="top" secondItem="fqt-no-x3F" secondAttribute="bottom" constant="3" id="CKw-hN-NZf"/>
+                <constraint firstItem="MsD-JM-DUz" firstAttribute="top" secondItem="fqt-no-x3F" secondAttribute="bottom" constant="13" id="CKw-hN-NZf"/>
                 <constraint firstItem="MsD-JM-DUz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="FnN-i1-ZUu"/>
                 <constraint firstItem="3yy-za-2Gu" firstAttribute="top" secondItem="A72-d6-0sG" secondAttribute="bottom" constant="20" id="JLG-C4-E6W"/>
                 <constraint firstAttribute="trailing" secondItem="JNG-r0-h4R" secondAttribute="trailing" constant="20" id="KI0-dH-1CF"/>
@@ -151,7 +151,7 @@
                 <constraint firstItem="qam-VC-uzm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="suU-Pd-dd9"/>
                 <constraint firstItem="A72-d6-0sG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="t4e-43-Jdy"/>
                 <constraint firstItem="3yy-za-2Gu" firstAttribute="leading" secondItem="qam-VC-uzm" secondAttribute="trailing" constant="8" id="twq-Cy-wHo"/>
-                <constraint firstItem="QrK-kD-9Ev" firstAttribute="top" secondItem="MsD-JM-DUz" secondAttribute="bottom" constant="23" id="ur5-DH-p8k"/>
+                <constraint firstItem="QrK-kD-9Ev" firstAttribute="top" secondItem="MsD-JM-DUz" secondAttribute="bottom" constant="13" id="ur5-DH-p8k"/>
                 <constraint firstAttribute="trailing" secondItem="QrK-kD-9Ev" secondAttribute="trailing" constant="20" id="xYS-20-iKC"/>
                 <constraint firstItem="A72-d6-0sG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="zfd-bu-P8C"/>
             </constraints>
