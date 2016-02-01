@@ -38,14 +38,23 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	self.noBehaviorsMessage.layer.shadowRadius = 1;
 }
 
-- (void)setBoard:(SNFBoard *)board{
+- (void) setBoard:(SNFBoard *) board {
 	_board = board;
 	[[SNFSyncService instance] saveContext];
 	[self updateUI];
 }
 
-- (void)updateUI{
+- (void) updateUI {
 	self.boardTitleField.text = self.board.title;
+	
+	NSString * permission = [self.board permissionForUser: [SNFModel sharedInstance].loggedInUser ];
+	if(![permission isEqualToString:@"owner"]) {
+		self.boardTitleField.enabled = FALSE;
+		self.boardTitleField.borderStyle = UITextBorderStyleNone;
+		self.boardTitleField.backgroundColor = [UIColor clearColor];
+		//self.boardTitleField.textAlignment = NSTextAlignmentCenter;
+	}
+	
 	[self reloadBehaviors];
 	[self reloadRewards];
 }
