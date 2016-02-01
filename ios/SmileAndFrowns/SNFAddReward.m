@@ -16,7 +16,7 @@
 }
 
 - (void) updateUI {
-	self.smilesAmountLabel.text = [NSString stringWithFormat:@"%.02f", self.smilesStepper.value];
+	self.smilesAmountLabel.text = [NSString stringWithFormat:@"%.0f", self.smilesStepper.value];
 	//self.currencyAmountLabel.text = [NSString stringWithFormat:@"%.02f", self.currencyStepper.value];
 }
 
@@ -26,7 +26,7 @@
 }
 
 - (IBAction)onSmileAmountUpdate:(UIStepper *)sender{
-	self.smilesAmountLabel.text = [NSString stringWithFormat:@"%.02f", sender.value];
+	self.smilesAmountLabel.text = [NSString stringWithFormat:@"%.0f", sender.value];
 }
 
 - (IBAction)onCurrencyAmountUpdate:(UIStepper *)sender{
@@ -89,7 +89,7 @@
 
 - (void) updateReward {
 	self.reward.currency_amount = [NSNumber numberWithDouble:[self.baseRateField.text doubleValue]];
-	self.reward.smile_amount = [NSNumber numberWithFloat:self.smilesStepper.value];
+	self.reward.smile_amount = [NSNumber numberWithInteger:self.smilesStepper.value];
 	self.reward.title = self.titleField.text;
 	// time, money, treat, goal
 	if(self.typeControl.selectedSegmentIndex == SNFAddRewardCurrencyTime){

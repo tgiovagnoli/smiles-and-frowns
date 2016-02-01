@@ -5,6 +5,7 @@
 #import "UIViewController+ModalCreation.h"
 #import "SNFSyncService.h"
 #import "SNFBoardDetailHeader.h"
+#import "Utils.h"
 
 NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 
@@ -211,6 +212,30 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	return _sortedRewards.count;
 }
 
+- (NSString *) rewardLabel:(SNFReward *) reward {
+	CGFloat smileAmount = reward.smile_amount.floatValue;
+	CGFloat currentyAmount = reward.currency_amount.floatValue;
+	NSMutableString * label = [[NSMutableString alloc] init];
+	NSString * smile = @"Smiles";
+	if(smileAmount == 1) {
+		smile = @"Smile";
+	}
+	if([Utils CGFloatHasDecimals:smileAmount]) {
+		[label appendFormat:@"%.2f",smileAmount];
+	} else {
+		[label appendFormat:@"%.0f",smileAmount];
+	}
+	[label appendFormat:@" %@",smile];
+	[label appendFormat:@" = "];
+	if([Utils CGFloatHasDecimals:currentyAmount]) {
+		[label appendFormat:@"%.2f",currentyAmount];
+	} else {
+		[label appendFormat:@"%.0f",currentyAmount];
+	}
+	[label appendFormat:@" %@",reward.title];
+	return label;
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
 	SNFRewardCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SNFRewardCell" forIndexPath:indexPath];
 	SNFReward * reward = [_sortedRewards objectAtIndex:indexPath.row];
@@ -225,7 +250,7 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 		cell.selected = TRUE;
 	}
 	
-	self.rewardInfoLabel.text = [NSString stringWithFormat:@"%.2f Smiles = %.2f %@", reward.smile_amount.floatValue, reward.currency_amount.floatValue, reward.title];
+	self.rewardInfoLabel.text = [self rewardLabel:reward];
 	cell.reward = reward;
 	
 	return cell;
@@ -264,7 +289,7 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	}
 	
 	SNFReward *reward = [_sortedRewards objectAtIndex:indexPath.row];
-	self.rewardInfoLabel.text = [NSString stringWithFormat:@"%.2f Smiles = %.2f %@", reward.smile_amount.floatValue, reward.currency_amount.floatValue, reward.title];
+	self.rewardInfoLabel.text = [self rewardLabel:reward];
 }
 
 @end
