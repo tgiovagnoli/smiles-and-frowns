@@ -37,7 +37,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="526"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="508"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vzw-KH-7l0">
@@ -195,13 +195,13 @@
                 <constraint firstItem="ely-HM-UuA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iiv-8d-BXx"/>
                 <constraint firstItem="2Ur-w3-S89" firstAttribute="top" secondItem="Vzw-KH-7l0" secondAttribute="bottom" constant="6" id="jVg-TC-vwo"/>
                 <constraint firstItem="ely-HM-UuA" firstAttribute="top" secondItem="Md1-ZG-DHg" secondAttribute="bottom" constant="10" id="l3C-PL-djF"/>
-                <constraint firstAttribute="bottom" secondItem="1N9-w8-PPp" secondAttribute="bottom" constant="18" id="p7J-2f-2ab"/>
+                <constraint firstAttribute="bottom" secondItem="1N9-w8-PPp" secondAttribute="bottom" id="p7J-2f-2ab"/>
                 <constraint firstItem="Md1-ZG-DHg" firstAttribute="top" secondItem="2Ur-w3-S89" secondAttribute="bottom" constant="27" id="vaS-3M-fsx"/>
                 <constraint firstAttribute="trailing" secondItem="2Ur-w3-S89" secondAttribute="trailing" constant="14" id="vq3-Eq-XYi"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="259" y="243"/>
+            <point key="canvasLocation" x="259" y="234"/>
         </view>
         <view contentMode="scaleToFill" id="5iE-x8-Lfy">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>

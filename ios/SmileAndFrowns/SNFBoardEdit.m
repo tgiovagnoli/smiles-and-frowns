@@ -115,10 +115,10 @@ NSString * const SNFBoardEditFinished = @"SNFBoardEditFinished";
 	
 	switch((SNFBoardEditBehaviorType)section) {
 		case SNFBoardEditBehaviorTypePositive:
-			view.textLabel.text = @"Positive Behaviors";
+			view.textLabel.text = @"Smiles";
 			break;
 		case SNFBoardEditBehaviorTypeNegative:
-			view.textLabel.text = @"Negative Behaviors";
+			view.textLabel.text = @"Frowns";
 			break;
 	}
 	return view;
