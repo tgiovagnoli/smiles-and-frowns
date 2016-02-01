@@ -54,7 +54,7 @@
 	NSManagedObjectContext *context = [SNFModel sharedInstance].managedObjectContext;
 	NSError * error;
 	NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"SNFPredefinedBehaviorGroup"];
-	request.predicate = [NSPredicate predicateWithFormat:@"soft_delete = 0"];
+	request.predicate = [NSPredicate predicateWithFormat:@"(soft_delete = 0 OR soft_delete = nil)"];
 	NSSortDescriptor * sortByTitle = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:TRUE];
 	request.sortDescriptors = @[sortByTitle];
 	NSArray * allGroups = [context executeFetchRequest:request error:&error];
@@ -136,7 +136,7 @@
 	NSManagedObjectContext * context = [SNFModel sharedInstance].managedObjectContext;
 	SNFPredefinedBehaviorGroup * userGroup = [self userGroup];
 	NSNumber * positive = [NSNumber numberWithBool:!self.positiveNegativeSegment.selectedSegmentIndex];
-	NSDictionary * behaviorInfo = @{@"uuid": [[NSUUID UUID] UUIDString],@"title": @"Untitled",@"positive":positive,@"group":@"User Created"};
+	NSDictionary * behaviorInfo = @{@"uuid": [[NSUUID UUID] UUIDString],@"title": @"Untitled",@"positive":positive,@"group":SNFPredefinedBehaviorGroupUserName};
 	SNFPredefinedBehavior * behavior = (SNFPredefinedBehavior *)[SNFPredefinedBehavior editOrCreatefromInfoDictionary:behaviorInfo withContext:context];
 	[userGroup addBehaviorsObject:behavior];
 	[[SNFSyncService instance] saveContext];
@@ -159,7 +159,7 @@
 		}
 	}
 	if(!userGroup) {
-		NSDictionary *userGroupInfo = @{@"uuid": [[NSUUID UUID] UUIDString],@"title":SNFPredefinedBehaviorGroupUserName,};
+		NSDictionary * userGroupInfo = @{@"uuid": [[NSUUID UUID] UUIDString],@"title":SNFPredefinedBehaviorGroupUserName,@"soft_delete":@(0)};
 		userGroup = (SNFPredefinedBehaviorGroup *)[SNFPredefinedBehaviorGroup editOrCreatefromInfoDictionary:userGroupInfo withContext:context];
 		[[SNFSyncService instance] saveContext];
 	}
