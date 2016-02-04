@@ -360,7 +360,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqH-NK-KiA">
-                    <rect key="frame" x="527" y="29" width="60" height="30"/>
+                    <rect key="frame" x="527" y="24" width="60" height="30"/>
                     <color key="backgroundColor" white="0.86394166946411133" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="GQ1-pl-6rP"/>
@@ -375,25 +375,25 @@
                     </connections>
                 </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pqT-LU-Qmd">
-                    <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                    <rect key="frame" x="0.0" y="62" width="600" height="538"/>
                     <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                 </scrollView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spend Rewards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epy-Ix-oHa">
-                    <rect key="frame" x="177" y="30" width="247" height="25"/>
+                    <rect key="frame" x="177" y="24" width="247" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="247" id="aTm-Du-Nvp"/>
-                        <constraint firstAttribute="height" constant="25" id="ce5-RY-LfK"/>
+                        <constraint firstAttribute="height" constant="30" id="ce5-RY-LfK"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
                     <color key="textColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.94901961088180542" green="0.91764706373214722" blue="0.87843137979507446" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="kqH-NK-KiA" firstAttribute="top" secondItem="epy-Ix-oHa" secondAttribute="top" constant="-1" id="34Q-Yf-8dk"/>
-                <constraint firstItem="epy-Ix-oHa" firstAttribute="top" secondItem="1W3-ff-SKE" secondAttribute="top" constant="30" id="FgP-CE-4ky"/>
-                <constraint firstItem="pqT-LU-Qmd" firstAttribute="top" secondItem="epy-Ix-oHa" secondAttribute="bottom" constant="9" id="Lbi-vl-9pE"/>
+                <constraint firstItem="kqH-NK-KiA" firstAttribute="top" secondItem="epy-Ix-oHa" secondAttribute="top" id="34Q-Yf-8dk"/>
+                <constraint firstItem="epy-Ix-oHa" firstAttribute="top" secondItem="1W3-ff-SKE" secondAttribute="top" constant="24" id="FgP-CE-4ky"/>
+                <constraint firstItem="pqT-LU-Qmd" firstAttribute="top" secondItem="epy-Ix-oHa" secondAttribute="bottom" constant="8" id="Lbi-vl-9pE"/>
                 <constraint firstItem="pqT-LU-Qmd" firstAttribute="leading" secondItem="1W3-ff-SKE" secondAttribute="leading" id="Y68-vI-XBN"/>
                 <constraint firstAttribute="trailing" secondItem="kqH-NK-KiA" secondAttribute="trailing" constant="13" id="aC7-XT-osg"/>
                 <constraint firstItem="epy-Ix-oHa" firstAttribute="centerX" secondItem="1W3-ff-SKE" secondAttribute="centerX" id="jIa-os-n9a"/>

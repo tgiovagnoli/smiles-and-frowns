@@ -4,6 +4,10 @@
 #import "SNFFormStyles.h"
 #import "SNFSyncService.h"
 
+@interface SNFAddReward ()
+@property CGFloat smilesStepperValue;
+@end
+
 @implementation SNFAddReward
 
 - (void)viewDidLoad{
@@ -16,7 +20,29 @@
 }
 
 - (void) updateUI {
-	self.smilesAmountLabel.text = [NSString stringWithFormat:@"%.0f", self.smilesStepper.value];
+	
+	if(self.smilesStepperValue < 0) {
+		self.smilesStepperValue = 0;
+	}
+	
+	if(self.smilesStepperValue > 100) {
+		self.smilesStepperValue = 100;
+	}
+	
+	if(self.smilesStepperValue == 0) {
+		self.subtractButton.enabled = FALSE;
+	}
+	
+	if(self.smilesStepperValue > 0) {
+		self.addButton.enabled  = TRUE;
+		self.subtractButton.enabled = TRUE;
+	}
+	
+	if(self.smilesStepperValue == 100) {
+		self.addButton.enabled = FALSE;
+	}
+	
+	self.smilesAmountLabel.text = [NSString stringWithFormat:@"%.0f", self.smilesStepperValue];
 	//self.currencyAmountLabel.text = [NSString stringWithFormat:@"%.02f", self.currencyStepper.value];
 }
 
@@ -42,12 +68,6 @@
 }
 
 - (IBAction) onAddReward:(UIButton *) sender {
-	
-	if(self.baseRateField.text.length < 1) {
-		[self displayOKAlertWithTitle:@"Error" message:@"Base rate cannot be empty" completion:nil];
-		return;
-	}
-	
 	NSError * error = nil;
 	NSRegularExpression * expresstion = [[NSRegularExpression alloc] initWithPattern:@"^\\d*[\\.|\\,]?\\d*$" options:0 error:&error];
 	if(error) {
@@ -74,7 +94,6 @@
 		_reward = (SNFReward *)[SNFReward editOrCreatefromInfoDictionary:rewardData withContext:[SNFModel sharedInstance].managedObjectContext];
 	}
 	
-	
 	[self updateReward];
 	
 	[[SNFSyncService instance] saveContext];
@@ -88,8 +107,14 @@
 }
 
 - (void) updateReward {
-	self.reward.currency_amount = [NSNumber numberWithDouble:[self.baseRateField.text doubleValue]];
-	self.reward.smile_amount = [NSNumber numberWithInteger:self.smilesStepper.value];
+	double currency = 0;
+	if(self.baseRateField.text.length < 1) {
+		currency = 1;
+	} else {
+		currency = [self.baseRateField.text doubleValue];
+	}
+	self.reward.currency_amount = [NSNumber numberWithDouble:currency];
+	self.reward.smile_amount = [NSNumber numberWithInteger:self.smilesStepperValue];
 	self.reward.title = self.titleField.text;
 	// time, money, treat, goal
 	if(self.typeControl.selectedSegmentIndex == SNFAddRewardCurrencyTime){
@@ -106,6 +131,17 @@
 
 - (IBAction)onCancel:(UIButton *)sender{
 	[self dismissViewControllerAnimated:YES completion:^{}];
+}
+
+- (IBAction) add:(id)sender {
+	self.smilesStepperValue += 1;
+	[self updateUI];
+}
+
+- (IBAction) subtract:(id)sender {
+	self.smilesStepperValue -= 1;
+	
+	[self updateUI];
 }
 
 @end

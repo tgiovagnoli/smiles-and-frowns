@@ -33,7 +33,7 @@
                             <constraint firstAttribute="width" constant="67" id="hSN-5J-3m7"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <state key="normal" title="Purchase">
+                        <state key="normal" title="Free">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <connections>

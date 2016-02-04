@@ -30,13 +30,15 @@ typedef NS_ENUM(NSInteger, SNFAddSmileOrFrownType){
 
 @property (weak) IBOutlet UILabel * titleLabel;
 @property (weak) IBOutlet UITableView *behaviorsTable;
-@property (weak) IBOutlet UIStepper *amountStepper;
+//@property (weak) IBOutlet UIStepper *amountStepper;
 @property (weak) IBOutlet UITextField *amountField;
 @property (weak) IBOutlet UIButton *amountFieldButton;
 @property (weak) IBOutlet UIImageView *snfTypeImageView;
 @property (weak) IBOutlet UIButton *addBehaviorButton;
 @property (weak) IBOutlet UIButton *addSNFButton;
 @property (weak) IBOutlet UIButton *cancelButton;
+@property (weak) IBOutlet UIButton *addButton;
+@property (weak) IBOutlet UIButton *subtractButton;
 @property (weak) IBOutlet SNFDictationTextView *noteField;
 
 @property IBOutlet NSLayoutConstraint * cancelButtonBottom;

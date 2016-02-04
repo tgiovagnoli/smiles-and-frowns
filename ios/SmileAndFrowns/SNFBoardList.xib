@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3G0-te-iwP">
-                    <rect key="frame" x="0.0" y="104" width="600" height="496"/>
+                    <rect key="frame" x="0.0" y="91" width="600" height="509"/>
                     <color key="backgroundColor" red="0.98431372549019602" green="0.96078431372549022" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="separatorColor" red="0.83921569585800171" green="0.7137255072593689" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -35,14 +35,8 @@
                         <outlet property="delegate" destination="-1" id="9qy-KR-Ocp"/>
                     </connections>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiM-8D-clb">
-                    <rect key="frame" x="0.0" y="30" width="600" height="27"/>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
-                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjW-Rd-ePF">
-                    <rect key="frame" x="504" y="65" width="88" height="30"/>
+                    <rect key="frame" x="504" y="55" width="88" height="30"/>
                     <color key="backgroundColor" red="0.29019609093666077" green="0.29019609093666077" blue="0.29019609093666077" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="88" id="04A-XZ-DIy"/>
@@ -57,7 +51,7 @@
                     </connections>
                 </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RpQ-c6-pcS">
-                    <rect key="frame" x="8" y="66" width="488" height="29"/>
+                    <rect key="frame" x="8" y="55" width="488" height="29"/>
                     <segments>
                         <segment title="Name"/>
                         <segment title="Date"/>
@@ -68,7 +62,7 @@
                     </connections>
                 </segmentedControl>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="C0h-fF-oYr">
-                    <rect key="frame" x="8" y="66" width="488" height="30"/>
+                    <rect key="frame" x="8" y="55" width="488" height="30"/>
                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
@@ -76,21 +70,30 @@
                         <outlet property="delegate" destination="-1" id="ZAu-oK-umK"/>
                     </connections>
                 </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boards" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiM-8D-clb">
+                    <rect key="frame" x="0.0" y="24" width="600" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="8vR-gu-t6T"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
+                    <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.94901960784313721" green="0.91764705882352937" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="UiM-8D-clb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="86l-UY-YR4"/>
-                <constraint firstItem="RpQ-c6-pcS" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="9" id="9DI-rc-tgg"/>
+                <constraint firstItem="UiM-8D-clb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="86l-UY-YR4"/>
+                <constraint firstItem="RpQ-c6-pcS" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="1" id="9DI-rc-tgg"/>
                 <constraint firstItem="C0h-fF-oYr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="L35-mh-M1g"/>
                 <constraint firstItem="OjW-Rd-ePF" firstAttribute="leading" secondItem="RpQ-c6-pcS" secondAttribute="trailing" constant="8" id="Yf6-1G-mgg"/>
                 <constraint firstItem="3G0-te-iwP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dIv-kf-plz"/>
                 <constraint firstAttribute="trailing" secondItem="UiM-8D-clb" secondAttribute="trailing" id="dKJ-Xx-xdA"/>
-                <constraint firstItem="3G0-te-iwP" firstAttribute="top" secondItem="RpQ-c6-pcS" secondAttribute="bottom" constant="10" id="dcy-p3-caA"/>
+                <constraint firstItem="3G0-te-iwP" firstAttribute="top" secondItem="RpQ-c6-pcS" secondAttribute="bottom" constant="8" id="dcy-p3-caA"/>
                 <constraint firstItem="RpQ-c6-pcS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ec2-Zi-jVf"/>
                 <constraint firstItem="OjW-Rd-ePF" firstAttribute="leading" secondItem="C0h-fF-oYr" secondAttribute="trailing" constant="8" id="evB-dg-2gb"/>
                 <constraint firstAttribute="trailing" secondItem="OjW-Rd-ePF" secondAttribute="trailing" constant="8" id="l0W-hm-uYZ"/>
-                <constraint firstItem="C0h-fF-oYr" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="9" id="lrt-NS-5dQ"/>
-                <constraint firstItem="OjW-Rd-ePF" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="8" id="q5X-nu-csF"/>
+                <constraint firstItem="C0h-fF-oYr" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="1" id="lrt-NS-5dQ"/>
+                <constraint firstItem="OjW-Rd-ePF" firstAttribute="top" secondItem="UiM-8D-clb" secondAttribute="bottom" constant="1" id="q5X-nu-csF"/>
                 <constraint firstAttribute="trailing" secondItem="3G0-te-iwP" secondAttribute="trailing" id="ufc-ty-a6I"/>
                 <constraint firstItem="UiM-8D-clb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="x77-jT-H02"/>
                 <constraint firstAttribute="bottom" secondItem="3G0-te-iwP" secondAttribute="bottom" id="yfO-jY-m01"/>

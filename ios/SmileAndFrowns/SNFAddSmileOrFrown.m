@@ -24,12 +24,16 @@
 
 @interface SNFAddSmileOrFrown ()
 @property NSMutableArray * groups;
+@property CGFloat amountStepperValue;
 @end
 
 @implementation SNFAddSmileOrFrown
 
 - (void)viewDidLoad{
 	[super viewDidLoad];
+	self.amountStepperValue = 0;
+	
+	
 	[self startBannerAd];
 	[self startInterstitialAd];
 	
@@ -98,19 +102,45 @@
 }
 
 - (void)updateUI:(BOOL) reloadBehaviors {
-	self.amountField.text = [NSString stringWithFormat:@"%.0f", self.amountStepper.value];
+	self.amountField.text = [NSString stringWithFormat:@"%.0f", self.amountStepperValue];
+	if(self.amountStepperValue == 0) {
+		self.subtractButton.enabled = FALSE;
+		self.addButton.enabled = TRUE;
+	}
+	
+	if(self.amountStepperValue > 0) {
+		self.subtractButton.enabled = TRUE;
+		self.addButton.enabled = TRUE;
+	}
+	
+	if(self.amountStepperValue == 100) {
+		self.addButton.enabled = FALSE;
+		self.subtractButton.enabled = TRUE;
+	}
+	
 	if(reloadBehaviors) {
 		[self reloadBehaviors];
 	}
+	
 	switch(self.type){
 		case SNFAddSmileOrFrownTypeFrown:
 			self.titleLabel.text = @"Give Frowns";
-			[self.addSNFButton setTitle:@"Give Frown" forState:UIControlStateNormal];
+			if(self.amountStepperValue < 2) {
+				[self.addSNFButton setTitle:@"Give Frown" forState:UIControlStateNormal];
+			} else {
+				[self.addSNFButton setTitle:@"Give Frowns" forState:UIControlStateNormal];
+			}
+			
 			self.snfTypeImageView.image = [UIImage imageNamed:@"frown"];
 			break;
 		case SNFAddSmileOrFrownTypeSmile:
 			self.titleLabel.text = @"Give Smiles";
-			[self.addSNFButton setTitle:@"Give Smile" forState:UIControlStateNormal];
+			if(self.amountStepperValue < 2) {
+				[self.addSNFButton setTitle:@"Give Smile" forState:UIControlStateNormal];
+			} else {
+				[self.addSNFButton setTitle:@"Give Smiles" forState:UIControlStateNormal];
+			}
+			
 			self.snfTypeImageView.image = [UIImage imageNamed:@"smile"];
 			break;
 	}
@@ -224,7 +254,7 @@
 		behavior = [_behaviors objectAtIndex:indexPath.row];
 	}
 	
-	for(NSInteger i=0; i<self.amountStepper.value; i++){
+	for(NSInteger i=0; i<self.amountStepperValue; i++){
 		switch(self.type){
 			case SNFAddSmileOrFrownTypeFrown:
 				[self addFrownForBehavior:behavior];
@@ -414,17 +444,33 @@
 - (IBAction)onChangeAmount:(UIButton *)sender{
 	[self.view addSubview:_smileCountPicker.view];
 	[_smileCountPicker.view  matchFrameSizeOfView:self.view];
-	_smileCountPicker.selectedValue = [NSString stringWithFormat:@"%lu", (long)floor(self.amountStepper.value)];
+	_smileCountPicker.selectedValue = [NSString stringWithFormat:@"%lu", (long)floor(self.amountStepperValue)];
 }
 
 - (void)valuePicker:(SNFValuePicker *)valuePicker changedValue:(NSString *)value{
 	NSInteger newVal = [value integerValue];
-	self.amountStepper.value = newVal;
+	self.amountStepperValue = newVal;
 	[self updateUI:FALSE];
 }
 
 - (void)valuePickerFinished:(SNFValuePicker *)valuePicker{
 	[_smileCountPicker.view removeFromSuperview];
+}
+
+- (IBAction) add:(id)sender {
+	self.amountStepperValue += 1;
+	if(self.amountStepperValue > 100) {
+		self.amountStepperValue = 100;
+	}
+	[self updateUI:FALSE];
+}
+
+- (IBAction) subtract:(id)sender {
+	self.amountStepperValue -= 1;
+	if(self.amountStepperValue < 0) {
+		self.amountStepperValue = 0;
+	}
+	[self updateUI:FALSE];
 }
 
 @end

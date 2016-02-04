@@ -9,6 +9,7 @@
 #import "SNFLauncher.h"
 
 const NSString * SNFBoardListCustomTitle = @"Custom Board";
+static NSString * priceCache = nil;
 
 @interface SNFBoardList ()
 @property SNFPredefinedBoard * purchaseBoard;
@@ -28,6 +29,17 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	[self reloadBoards];
 	[self startInterstitialAd];
 	[[GATracking instance] trackScreenWithTagManager:@"BoardListView"];
+	
+	if(!priceCache) {
+		NSString * boardPurchaseId = [[IAPHelper defaultHelper] productIdByName:@"NewBoard"];
+		NSArray * products = @[boardPurchaseId];
+		[[IAPHelper defaultHelper] loadItunesProducts:products withCompletion:^(NSError *error) {
+			if(!error) {
+				priceCache = [[IAPHelper defaultHelper] priceStringForItunesProductId:boardPurchaseId];
+				[self reloadBoards];
+			}
+		}];
+	}
 }
 
 - (void) decorate {
@@ -87,16 +99,29 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	}
 	
 	else if(indexPath.section == SNFBoardListSectionPredefinedBoards) {
-		SNFPredefinedBoardCell *cell = [self.boardsTable dequeueReusableCellWithIdentifier:@"SNFPredefinedBoardCell"];
+		SNFPredefinedBoardCell * cell = [self.boardsTable dequeueReusableCellWithIdentifier:@"SNFPredefinedBoardCell"];
+		
 		if(!cell) {
 			cell = [[[NSBundle mainBundle] loadNibNamed:@"SNFPredefinedBoardCell" owner:nil options:nil] firstObject];
 		}
+		
 		SNFPredefinedBoard * pdb = nil;
+		
 		if(indexPath.row < _predefinedBoards.count) {
 			pdb = [_predefinedBoards objectAtIndex:indexPath.row];
 		}
+		
 		cell.predefinedBoard = pdb;
 		cell.delegate = self;
+		
+		if([self needsToPurchaseBoard]) {
+			if(priceCache) {
+				[cell.purchase setTitle:priceCache forState:UIControlStateNormal];
+			} else {
+				[cell.purchase setTitle:@"Purchase" forState:UIControlStateNormal];
+			}
+		}
+		
 		return cell;
 	}
 	return nil;
@@ -299,6 +324,27 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	}];
 }
 
+- (BOOL) needsToPurchaseBoard {
+	static int cachedNeedsPurchase = -1;
+	
+	if(cachedNeedsPurchase > -1) {
+		return cachedNeedsPurchase;
+	}
+	
+	NSArray * allBoards = [SNFBoard allObjectsWithContext:[SNFModel sharedInstance].managedObjectContext];
+	NSString * loggedInUserName = [SNFModel sharedInstance].loggedInUser.username;
+	cachedNeedsPurchase = 0;
+	
+	for(SNFBoard * board in allBoards) {
+		if([board.owner.username isEqualToString:loggedInUserName]) {
+			cachedNeedsPurchase = 1;
+			break;
+		}
+	}
+	
+	return cachedNeedsPurchase;
+}
+
 - (void) buyOrCreateBoard:(SNFPredefinedBoard *) pdb {
 	
 	// make sure that the user is logged in
@@ -306,15 +352,7 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 	[userService authedUserInfoWithCompletion:^(NSError *error, SNFUser *user) {
 		
 		if(!error && user) {
-			NSArray * allBoards = [SNFBoard allObjectsWithContext:[SNFModel sharedInstance].managedObjectContext];
-			NSString * loggedInUserName = [SNFModel sharedInstance].loggedInUser.username;
-			BOOL needsPurchase = NO;
-			for(SNFBoard * board in allBoards) {
-				if([board.owner.username isEqualToString:loggedInUserName]) {
-					needsPurchase = YES;
-					break;
-				}
-			}
+			BOOL needsPurchase = [self needsToPurchaseBoard];
 			
 			if(needsPurchase && pdb) {
 				//load prices first
@@ -375,7 +413,7 @@ const NSString * SNFBoardListCustomTitle = @"Custom Board";
 			else if(!needsPurchase && pdb) {
 				// free board confirm
 				NSString * messageString = [self behaviorsStringFromBoard:pdb];
-				messageString = [messageString stringByAppendingString:@" Would you like to use this board?"];
+				messageString = [messageString stringByAppendingString:@" Would you like to use this as your free board?"];
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Your first board is free!" message:messageString preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 					[self addNewBoard:pdb withTransactionID:nil editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];

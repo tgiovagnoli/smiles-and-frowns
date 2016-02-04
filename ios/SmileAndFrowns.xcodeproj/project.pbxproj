@@ -1064,14 +1064,14 @@
 		D659DBCA1BDAE0B30048D3F7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				072BBF701C40638000A7AADA /* SmileAndFrowns.xcdatamodeld */,
 				D659DBBE1BDAE07F0048D3F7 /* Assets.xcassets */,
+				07E579B61C47131500465246 /* email.html */,
 				075EA4CD1C1213900003A403 /* fonts */,
 				075EA4CC1C11FE5E0003A403 /* GTM-T7XD6P */,
 				07C0F3C01BEE646E0075A6B9 /* images */,
 				07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */,
 				D659DBC31BDAE07F0048D3F7 /* Info.plist */,
-				07E579B61C47131500465246 /* email.html */,
+				072BBF701C40638000A7AADA /* SmileAndFrowns.xcdatamodeld */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

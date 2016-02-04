@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15C40a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D13b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Regular.ttf">
@@ -28,25 +28,22 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5S-pm-EG9">
-                    <rect key="frame" x="260" y="30" width="81" height="21"/>
-                    <animations/>
+                    <rect key="frame" x="260" y="24" width="81" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="BS1-8r-UKm"/>
+                        <constraint firstAttribute="height" constant="30" id="BS1-8r-UKm"/>
                         <constraint firstAttribute="width" constant="81" id="Q5c-Oe-62e"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bRf-Tm-bMP">
-                    <rect key="frame" x="0.0" y="97" width="600" height="439"/>
-                    <animations/>
+                    <rect key="frame" x="0.0" y="91" width="600" height="445"/>
                     <color key="backgroundColor" red="0.98431372549999996" green="0.96078431369999995" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="separatorColor" red="0.83921569585800171" green="0.7137255072593689" blue="0.5215686559677124" alpha="1" colorSpace="calibratedRGB"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't see your invite?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAW-Wo-mla">
                     <rect key="frame" x="218" y="539" width="164" height="21"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="164" id="2nP-n0-f6l"/>
                         <constraint firstAttribute="height" constant="21" id="lYZ-9E-JEK"/>
@@ -57,7 +54,6 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMX-gj-M04">
                     <rect key="frame" x="210" y="562" width="180" height="30"/>
-                    <animations/>
                     <color key="backgroundColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="gUE-qR-4es"/>
@@ -72,8 +68,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WZj-o7-fej">
-                    <rect key="frame" x="505" y="59" width="87" height="30"/>
-                    <animations/>
+                    <rect key="frame" x="505" y="55" width="87" height="30"/>
                     <color key="backgroundColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="87" id="iIo-vO-fKy"/>
@@ -88,8 +83,7 @@
                     </connections>
                 </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ywm-aD-4se">
-                    <rect key="frame" x="8" y="59" width="489" height="29"/>
-                    <animations/>
+                    <rect key="frame" x="8" y="55" width="489" height="29"/>
                     <segments>
                         <segment title="Name"/>
                         <segment title="Date"/>
@@ -100,14 +94,12 @@
                     </connections>
                 </segmentedControl>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="vjl-ND-B7d">
-                    <rect key="frame" x="8" y="59" width="489" height="30"/>
-                    <animations/>
+                    <rect key="frame" x="8" y="55" width="489" height="30"/>
                     <color key="textColor" red="0.25882352939999997" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                 </textField>
             </subviews>
-            <animations/>
             <color key="backgroundColor" red="0.94901960780000005" green="0.91764705879999997" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="dMX-gj-M04" firstAttribute="top" secondItem="CAW-Wo-mla" secondAttribute="bottom" constant="2" id="1fi-0h-OR8"/>
@@ -124,14 +116,14 @@
                 <constraint firstItem="vjl-ND-B7d" firstAttribute="width" secondItem="ywm-aD-4se" secondAttribute="width" id="aKe-hA-svw"/>
                 <constraint firstItem="ywm-aD-4se" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="g36-jr-kLX"/>
                 <constraint firstItem="vjl-ND-B7d" firstAttribute="bottom" secondItem="ywm-aD-4se" secondAttribute="bottom" constant="2" id="gVx-xA-bmr"/>
-                <constraint firstItem="i5S-pm-EG9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="ii1-LE-uxN"/>
+                <constraint firstItem="i5S-pm-EG9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="24" id="ii1-LE-uxN"/>
                 <constraint firstItem="dMX-gj-M04" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ioU-KJ-kMB"/>
-                <constraint firstItem="ywm-aD-4se" firstAttribute="top" secondItem="i5S-pm-EG9" secondAttribute="bottom" constant="8" id="uMB-OZ-zWS"/>
-                <constraint firstItem="bRf-Tm-bMP" firstAttribute="top" secondItem="ywm-aD-4se" secondAttribute="bottom" constant="10" id="wvF-jA-L0f"/>
+                <constraint firstItem="ywm-aD-4se" firstAttribute="top" secondItem="i5S-pm-EG9" secondAttribute="bottom" constant="1" id="uMB-OZ-zWS"/>
+                <constraint firstItem="bRf-Tm-bMP" firstAttribute="top" secondItem="ywm-aD-4se" secondAttribute="bottom" constant="8" id="wvF-jA-L0f"/>
                 <constraint firstItem="CAW-Wo-mla" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xPH-Aa-V6d"/>
                 <constraint firstItem="WZj-o7-fej" firstAttribute="top" secondItem="ywm-aD-4se" secondAttribute="top" id="ywP-Ni-lkN"/>
             </constraints>
-            <point key="canvasLocation" x="583" y="475"/>
+            <point key="canvasLocation" x="568" y="514"/>
         </view>
     </objects>
 </document>

@@ -23,7 +23,9 @@ typedef NS_ENUM(NSInteger,SNFAddRewardCurrency) {
 
 @property (weak) IBOutlet UISegmentedControl * typeControl;
 @property (weak) IBOutlet UILabel * smilesAmountLabel;
-@property (weak) IBOutlet UIStepper * smilesStepper;
+//@property (weak) IBOutlet UIStepper * smilesStepper;
+@property (weak) IBOutlet UIButton * addButton;
+@property (weak) IBOutlet UIButton * subtractButton;
 
 //@property (weak) IBOutlet UILabel * currencyAmountLabel;
 //@property (weak) IBOutlet UIStepper * currencyStepper;

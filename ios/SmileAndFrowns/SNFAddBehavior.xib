@@ -162,21 +162,21 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Awv-dk-Olb">
-                    <rect key="frame" x="0.0" y="101" width="600" height="499"/>
+                    <rect key="frame" x="0.0" y="98" width="600" height="502"/>
                     <color key="backgroundColor" red="0.9843137264251709" green="0.96078431606292725" blue="0.92549020051956177" alpha="1" colorSpace="calibratedRGB"/>
                 </scrollView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Behavior" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpq-GM-DFZ">
-                    <rect key="frame" x="236" y="30" width="129" height="21"/>
+                    <rect key="frame" x="215" y="24" width="169" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="129" id="Ngo-Er-dXl"/>
-                        <constraint firstAttribute="height" constant="21" id="c9m-G3-ZNN"/>
+                        <constraint firstAttribute="width" constant="169" id="Ngo-Er-dXl"/>
+                        <constraint firstAttribute="height" constant="30" id="c9m-G3-ZNN"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="20"/>
+                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="22"/>
                     <color key="textColor" red="0.29019609089999998" green="0.29019609089999998" blue="0.29019609089999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dlr-0x-QdB">
-                    <rect key="frame" x="530" y="25" width="60" height="30"/>
+                    <rect key="frame" x="530" y="24" width="60" height="30"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="lfH-4b-Ehq"/>
@@ -191,7 +191,7 @@
                     </connections>
                 </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vg6-qT-KCP">
-                    <rect key="frame" x="8" y="59" width="582" height="29"/>
+                    <rect key="frame" x="9" y="62" width="582" height="29"/>
                     <segments>
                         <segment title="Smiles"/>
                         <segment title="Frowns"/>
@@ -208,15 +208,21 @@
                 <constraint firstAttribute="bottom" secondItem="Awv-dk-Olb" secondAttribute="bottom" id="FwU-ah-KIP"/>
                 <constraint firstItem="Vg6-qT-KCP" firstAttribute="top" secondItem="dpq-GM-DFZ" secondAttribute="bottom" constant="8" id="HHD-sH-3ae"/>
                 <constraint firstItem="Awv-dk-Olb" firstAttribute="leading" secondItem="04U-4t-QMg" secondAttribute="leading" id="Vl9-Jt-bVa"/>
-                <constraint firstItem="Awv-dk-Olb" firstAttribute="top" secondItem="dpq-GM-DFZ" secondAttribute="bottom" constant="50" id="dQx-ls-ynb"/>
-                <constraint firstItem="Dlr-0x-QdB" firstAttribute="top" secondItem="dpq-GM-DFZ" secondAttribute="top" constant="-5" id="dhY-TN-E18"/>
+                <constraint firstItem="Awv-dk-Olb" firstAttribute="top" secondItem="dpq-GM-DFZ" secondAttribute="bottom" constant="44" id="dQx-ls-ynb"/>
+                <constraint firstItem="Dlr-0x-QdB" firstAttribute="top" secondItem="dpq-GM-DFZ" secondAttribute="top" id="dhY-TN-E18"/>
                 <constraint firstItem="dpq-GM-DFZ" firstAttribute="centerX" secondItem="04U-4t-QMg" secondAttribute="centerX" id="gJe-4I-ahI"/>
                 <constraint firstAttribute="trailing" secondItem="Dlr-0x-QdB" secondAttribute="trailing" constant="10" id="iu8-oX-xTU"/>
-                <constraint firstItem="Vg6-qT-KCP" firstAttribute="leading" secondItem="04U-4t-QMg" secondAttribute="leading" constant="8" id="kBM-sK-ITa"/>
-                <constraint firstItem="dpq-GM-DFZ" firstAttribute="top" secondItem="04U-4t-QMg" secondAttribute="top" constant="30" id="wGx-OE-he7"/>
-                <constraint firstAttribute="trailing" secondItem="Vg6-qT-KCP" secondAttribute="trailing" constant="10" id="yI0-ib-1za"/>
+                <constraint firstItem="Vg6-qT-KCP" firstAttribute="leading" secondItem="04U-4t-QMg" secondAttribute="leading" constant="9" id="kBM-sK-ITa"/>
+                <constraint firstItem="dpq-GM-DFZ" firstAttribute="top" secondItem="04U-4t-QMg" secondAttribute="top" constant="24" id="wGx-OE-he7"/>
+                <constraint firstItem="Awv-dk-Olb" firstAttribute="top" secondItem="Vg6-qT-KCP" secondAttribute="bottom" constant="8" id="xoq-7U-864"/>
+                <constraint firstAttribute="trailing" secondItem="Vg6-qT-KCP" secondAttribute="trailing" constant="9" id="yI0-ib-1za"/>
             </constraints>
-            <point key="canvasLocation" x="1084" y="376"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="dQx-ls-ynb"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="1147" y="381"/>
         </view>
     </objects>
 </document>
