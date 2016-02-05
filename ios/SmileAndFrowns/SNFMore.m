@@ -265,7 +265,7 @@
 	NSString * emailContent = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	
 	MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
-	[mailComposer setSubject:@"Check out smiles and frowns"];
+	[mailComposer setSubject:@"Check out Smiles & Frowns™"];
 	[mailComposer setMessageBody:emailContent isHTML:TRUE];
 	mailComposer.mailComposeDelegate = self;
 	
