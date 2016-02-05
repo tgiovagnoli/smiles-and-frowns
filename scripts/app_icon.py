@@ -10,33 +10,25 @@ import shutil
  
 # found at https://developer.apple.com/library/ios/qa/qa1686/_index.html
 outputs = {
-	"Icon~iPhone": "60x60",
-	"Icon~iPhone@2x": "120x120",
-	"Icon~iPhone@3x": "180x180",
-
-	"Icon~iPad": "76x76",
-	"Icon~iPad@2x": "152x152",
-
-	"iTunesArtwork": "512x512",
-	"iTunesArtwork@2x": "1024x1024", 
-
-	"iOS6-Spotlight~iPhone": "29x29", 
-	"iOS6-Spotlight~iPhone@2x": "58x58", 
-	"iOS6-Spotlight~iPhone@3x": "87x87", 
-
-	"iOS6-Settings~iPhone": "29x29", 
-	"iOS6-Settings~iPhone@2x": "58x58", 
-	"iOS6-Settings~iPhone@3x": "87x87", 
-
-	"iOS7-Spotlight~iPhone": "40x40", 
-	"iOS7-Spotlight~iPhone@2x": "80x80", 
-	"iOS7-Spotlight~iPhone@3x": "120x120",
-
-	"Settings~iPad": "29x29", 
-	"Settings~iPad@2x": "58x58", 
-
-	"Spotlight~iPad": "40x40", 
-	"Spotlight~iPad@2x": "80x80", 
+	"iTunesArtwork":"512x512",
+	"iTunesArtwork@2x":"1024x1024",
+	"Icon_29":"29x29",
+	"Icon_29@2x":"58x58",
+	"Icon_29@3x":"87x87",
+	"Icon_40":"40x40",
+	"Icon_40@2x":"80x80",
+	"Icon_50":"50x50",
+	"Icon_50@2x":"100x100",
+	"Icon_57":"57x57",
+	"Icon_57@2x":"114x114",
+	"Icon_60":"60x60",
+	"Icon_60@2x":"120x120",
+	"Icon_72":"72x72",
+	"Icon_72@2x":"144x144",
+	"Icon_76":"76x76",
+	"Icon_76@2x":"152x152",
+	"Icon_83":"83x83",
+	"Icon_83@2x":"166x166",
 }
  
 def resizeImages(inputDir, outputDir):
