@@ -13,12 +13,14 @@ static NSString * priceCache = nil;
 
 @interface SNFBoardList ()
 @property SNFPredefinedBoard * purchaseBoard;
+@property NSInteger cachedNeedsPurchase;
 @end
 
 @implementation SNFBoardList
 
 - (void) viewDidLoad {
 	[super viewDidLoad];
+	self.cachedNeedsPurchase = -1;
 	self.searchField.hidden = YES;
 	[self.searchField addTarget:self action:@selector(searchFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 	UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
@@ -324,25 +326,25 @@ static NSString * priceCache = nil;
 	}];
 }
 
+
+
 - (BOOL) needsToPurchaseBoard {
-	static int cachedNeedsPurchase = -1;
-	
-	if(cachedNeedsPurchase > -1) {
-		return cachedNeedsPurchase;
+	if(self.cachedNeedsPurchase > -1) {
+		return self.cachedNeedsPurchase;
 	}
 	
 	NSArray * allBoards = [SNFBoard allObjectsWithContext:[SNFModel sharedInstance].managedObjectContext];
 	NSString * loggedInUserName = [SNFModel sharedInstance].loggedInUser.username;
-	cachedNeedsPurchase = 0;
+	self.cachedNeedsPurchase = 0;
 	
 	for(SNFBoard * board in allBoards) {
 		if([board.owner.username isEqualToString:loggedInUserName]) {
-			cachedNeedsPurchase = 1;
+			self.cachedNeedsPurchase = 1;
 			break;
 		}
 	}
 	
-	return cachedNeedsPurchase;
+	return self.cachedNeedsPurchase;
 }
 
 - (void) buyOrCreateBoard:(SNFPredefinedBoard *) pdb {
@@ -416,6 +418,7 @@ static NSString * priceCache = nil;
 				messageString = [messageString stringByAppendingString:@" Would you like to use this as your free board?"];
 				UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Your first board is free!" message:messageString preferredStyle:UIAlertControllerStyleAlert];
 				[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+					self.cachedNeedsPurchase = 1;
 					[self addNewBoard:pdb withTransactionID:nil editBoard:TRUE title:nil copyBehaviors:nil predefinedBoardUUID:nil];
 				}]];
 				[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}]];
