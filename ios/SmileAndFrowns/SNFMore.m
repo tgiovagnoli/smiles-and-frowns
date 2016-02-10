@@ -260,13 +260,13 @@
 }
 
 - (void) shareAppMail {
-	NSString * emailFile = [[NSBundle mainBundle] pathForResource:@"email" ofType:@"html"];
+	NSString * emailFile = [[NSBundle mainBundle] pathForResource:@"email" ofType:@"txt"];
 	NSData * data = [NSData dataWithContentsOfFile:emailFile];
 	NSString * emailContent = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	
 	MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
 	[mailComposer setSubject:@"Check out Smiles & Frowns™"];
-	[mailComposer setMessageBody:emailContent isHTML:TRUE];
+	[mailComposer setMessageBody:emailContent isHTML:FALSE];
 	mailComposer.mailComposeDelegate = self;
 	
 	[[SNFViewController instance] presentViewController:mailComposer animated:YES completion:^{}];

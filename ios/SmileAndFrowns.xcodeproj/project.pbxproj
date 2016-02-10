@@ -88,6 +88,7 @@
 		075EA5021C135C000003A403 /* spend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 075EA5001C135C000003A403 /* spend@2x.png */; };
 		075EA5051C1362460003A403 /* PillLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA5041C1362460003A403 /* PillLabel.m */; };
 		075EA5081C1368560003A403 /* SNFBoardDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA5071C1368560003A403 /* SNFBoardDetailHeader.m */; };
+		077603D21C6BAE5500AA8096 /* email.txt in Resources */ = {isa = PBXBuildFile; fileRef = 077603D11C6BAE5500AA8096 /* email.txt */; };
 		078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */; };
 		078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */; };
 		078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */; };
@@ -372,6 +373,7 @@
 		075EA5041C1362460003A403 /* PillLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PillLabel.m; sourceTree = "<group>"; };
 		075EA5061C1368560003A403 /* SNFBoardDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBoardDetailHeader.h; sourceTree = "<group>"; };
 		075EA5071C1368560003A403 /* SNFBoardDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoardDetailHeader.m; sourceTree = "<group>"; };
+		077603D11C6BAE5500AA8096 /* email.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = email.txt; path = SmileAndFrowns/email.txt; sourceTree = "<group>"; };
 		078DF4B11BE8105300CBFAA4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = libs/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = libs/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -1072,6 +1074,7 @@
 				07C0F3B91BED37C70075A6B9 /* InAppPurchases.plist */,
 				D659DBC31BDAE07F0048D3F7 /* Info.plist */,
 				072BBF701C40638000A7AADA /* SmileAndFrowns.xcdatamodeld */,
+				077603D11C6BAE5500AA8096 /* email.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1390,6 +1393,7 @@
 				07C0F3B51BED049B0075A6B9 /* SNFInvitesCell.xib in Resources */,
 				0707D6A01BE28EC6002F1FC0 /* SNFTutorial.xib in Resources */,
 				07E579A81C46BBC200465246 /* tutorial3@2x.png in Resources */,
+				077603D21C6BAE5500AA8096 /* email.txt in Resources */,
 				07C0F3CE1BEE6FC80075A6B9 /* female@2x.png in Resources */,
 				D6F4421A1BEB90A4009C2866 /* SNFReporting.xib in Resources */,
 				D65DF1111BE29A42009CC6DF /* SNFTabMenu.xib in Resources */,
