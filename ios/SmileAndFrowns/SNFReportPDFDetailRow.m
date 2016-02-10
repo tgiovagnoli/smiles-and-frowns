@@ -16,13 +16,13 @@
 	if(self.behaviorGroup.type == SNFReportBehaviorGroupTypeFrown) {
 		behavior = [((SNFFrown *) self.behaviorGroup.objects.firstObject) behavior];
 		creator = [((SNFFrown *) self.behaviorGroup.objects.firstObject) creator];
-		note = [((SNFFrown *) self.behaviorGroup.objects.firstObject) note];
+		note = self.behaviorGroup.notes;
 		self.imageView.image = [UIImage imageNamed:@"frown"];
 		self.smileFrownCount.text = [NSString stringWithFormat:@"%lu",self.behaviorGroup.objects.count];
 	} else {
 		behavior = [((SNFSmile *) self.behaviorGroup.objects.firstObject) behavior];
 		creator = [((SNFSmile *) self.behaviorGroup.objects.firstObject) creator];
-		note = [((SNFSmile *) self.behaviorGroup.objects.firstObject) note];
+		note = self.behaviorGroup.notes;
 		self.imageView.image = [UIImage imageNamed:@"smile"];
 		self.smileFrownCount.text = [NSString stringWithFormat:@"%lu",self.behaviorGroup.objects.count];
 	}
