@@ -105,7 +105,7 @@
 }
 
 - (void)termsAndPrivacy{
-	[self showWebDetailWithURLString:@"http://smilesandfrowns.com/terms_and_privacy/" andTitle:@"Terms & Privacy"];
+	[self showWebDetailWithURLString:@"http://smilesandfrowns.com/terms-conditions-privacy/" andTitle:@"Terms & Privacy"];
 }
 
 - (void)appSettings{
