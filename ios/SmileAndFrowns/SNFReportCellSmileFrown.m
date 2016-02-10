@@ -16,7 +16,7 @@
 			self.countLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long) behaviorGroup.objects.count];
 			behavior = [((SNFFrown *) behaviorGroup.objects.firstObject) behavior];
 			creator = [((SNFFrown *) behaviorGroup.objects.firstObject) creator];
-			note = [((SNFFrown *) behaviorGroup.objects.firstObject) note];
+			note = behaviorGroup.notes;
 			self.smileFrownImageView.image = [UIImage imageNamed:@"frown"];
 			break;
 		
@@ -24,7 +24,7 @@
 			self.countLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long) behaviorGroup.objects.count];
 			behavior = [((SNFSmile *) behaviorGroup.objects.firstObject) behavior];
 			creator = [((SNFSmile *) behaviorGroup.objects.firstObject) creator];
-			note = [((SNFSmile *) behaviorGroup.objects.firstObject) note];
+			note = behaviorGroup.notes;
 			self.smileFrownImageView.image = [UIImage imageNamed:@"smile"];
 			break;
 	}
