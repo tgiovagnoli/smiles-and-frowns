@@ -23,7 +23,7 @@
 					   [self tableItemWithName:@"View the Tutorial" andSelector:@selector(tutorial)],
 					   [self tableItemWithName:@"The Five Cs" andSelector:@selector(theFiveCs)],
 					   [self tableItemWithName:@"Tips & Tricks" andSelector:@selector(tipsAndTricks)],
-					   [self tableItemWithName:@"Subscribe (to Remove Ads)" andSelector:@selector(removeAds)],
+					   [self tableItemWithName:@"Remove Ads" andSelector:@selector(removeAds)],
 					   [self tableItemWithName:@"Restore Purchases" andSelector:@selector(restorePurchases)],
 					   [self tableItemWithName:@"Reset Local Data" andSelector:@selector(resetLocalSync)],
 					   [self tableItemWithName:@"Terms and Privacy" andSelector:@selector(termsAndPrivacy)],
