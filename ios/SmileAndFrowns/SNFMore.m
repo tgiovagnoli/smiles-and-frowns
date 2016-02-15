@@ -154,11 +154,9 @@
 
 - (void) removeAds {
 	
-	NSArray * products = [[IAPHelper defaultHelper] productIdsByNames:@[@"RemoveAds"]];
-	
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[[IAPHelper defaultHelper] loadItunesProducts:products withCompletion:^(NSError *error) {
+	[[IAPHelper defaultHelper] loadItunesProductNamed:@"RemoveAds" withCompletion:^(NSError *error) {
 		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
@@ -167,11 +165,9 @@
 			return;
 		}
 		
-		NSString * product = [[IAPHelper defaultHelper] productIdByName:@"RemoveAds"];
-		
 		[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 		
-		[[IAPHelper defaultHelper] purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+		[[IAPHelper defaultHelper] purchaseItunesProductNamed:@"RemoveAds" completion:^(NSError *error, SKPaymentTransaction *transaction) {
 			
 			[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 			

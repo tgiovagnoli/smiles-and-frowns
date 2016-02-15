@@ -31,8 +31,7 @@
 
 - (void)viewDidLoad{
 	[super viewDidLoad];
-	self.amountStepperValue = 0;
-	
+	self.amountStepperValue = 1;
 	
 	[self startBannerAd];
 	[self startInterstitialAd];
@@ -103,12 +102,12 @@
 
 - (void)updateUI:(BOOL) reloadBehaviors {
 	self.amountField.text = [NSString stringWithFormat:@"%.0f", self.amountStepperValue];
-	if(self.amountStepperValue == 0) {
+	if(self.amountStepperValue == 1) {
 		self.subtractButton.enabled = FALSE;
 		self.addButton.enabled = TRUE;
 	}
 	
-	if(self.amountStepperValue > 0) {
+	if(self.amountStepperValue > 1) {
 		self.subtractButton.enabled = TRUE;
 		self.addButton.enabled = TRUE;
 	}

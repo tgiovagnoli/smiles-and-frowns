@@ -12,6 +12,7 @@
 
 - (void)viewDidLoad{
 	[super viewDidLoad];
+	self.smilesStepperValue = 1;
 	[self updateUI];
 	[self startBannerAd];
 	[SNFFormStyles roundEdgesOnButton:self.addReward];
@@ -21,19 +22,19 @@
 
 - (void) updateUI {
 	
-	if(self.smilesStepperValue < 0) {
-		self.smilesStepperValue = 0;
+	if(self.smilesStepperValue < 1) {
+		self.smilesStepperValue = 1;
 	}
 	
 	if(self.smilesStepperValue > 100) {
 		self.smilesStepperValue = 100;
 	}
 	
-	if(self.smilesStepperValue == 0) {
+	if(self.smilesStepperValue == 1) {
 		self.subtractButton.enabled = FALSE;
 	}
 	
-	if(self.smilesStepperValue > 0) {
+	if(self.smilesStepperValue > 1) {
 		self.addButton.enabled  = TRUE;
 		self.subtractButton.enabled = TRUE;
 	}

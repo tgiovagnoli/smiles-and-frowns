@@ -33,11 +33,9 @@ static NSString * priceCache = nil;
 	[[GATracking instance] trackScreenWithTagManager:@"BoardListView"];
 	
 	if(!priceCache) {
-		NSString * boardPurchaseId = [[IAPHelper defaultHelper] productIdByName:@"NewBoard"];
-		NSArray * products = @[boardPurchaseId];
-		[[IAPHelper defaultHelper] loadItunesProducts:products withCompletion:^(NSError *error) {
+		[[IAPHelper defaultHelper] loadItunesProductNamed:@"NewBoard" withCompletion:^(NSError *error) {
 			if(!error) {
-				priceCache = [[IAPHelper defaultHelper] priceStringForItunesProductId:boardPurchaseId];
+				priceCache = [[IAPHelper defaultHelper] priceStringForItunesProductNamed:@"NewBoard"];
 				[self reloadBoards];
 			}
 		}];
@@ -313,10 +311,8 @@ static NSString * priceCache = nil;
 }
 
 - (void) loadPurchases {
-	IAPHelper * iap = [IAPHelper defaultHelper];
-	NSArray * products = [iap productIdsByNames:@[@"AllBoards",@"NewBoards"]];
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
-	[iap loadItunesProducts:products withCompletion:^(NSError *error) {
+	[[IAPHelper defaultHelper] loadItunesProductsWithNames:@[@"AllBoards",@"NewBoards"] withCompletion:^(NSError *error) {
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		if(error) {
 			[self displayOKAlertWithTitle:@"Error" message:error.localizedDescription completion:nil];
@@ -325,8 +321,6 @@ static NSString * priceCache = nil;
 		}
 	}];
 }
-
-
 
 - (BOOL) needsToPurchaseBoard {
 	if(self.cachedNeedsPurchase > -1) {
@@ -508,10 +502,9 @@ static NSString * priceCache = nil;
 	return;
 #endif
 	
-	NSString * product = [[IAPHelper defaultHelper] productIdByName:@"AllBoards"];
 	[MBProgressHUD showHUDAddedTo:self.view animated:TRUE];
 	
-	[[IAPHelper defaultHelper] purchaseItunesProductId:product completion:^(NSError *error, SKPaymentTransaction *transaction) {
+	[[IAPHelper defaultHelper] purchaseItunesProductNamed:@"AllBoards" completion:^(NSError *error, SKPaymentTransaction *transaction) {
 		
 		[MBProgressHUD hideHUDForView:self.view animated:TRUE];
 		
