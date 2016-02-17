@@ -192,7 +192,7 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fdh-2O-Ufx">
                     <rect key="frame" x="220" y="447" width="161" height="30"/>
-                    <color key="backgroundColor" red="0.45490196347236633" green="0.80392158031463623" blue="0.34117648005485535" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.96078431606292725" green="0.49411764740943909" blue="0.17647059261798859" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="161" id="8dr-7s-aff"/>
                         <constraint firstAttribute="height" constant="30" id="PHX-qa-BmQ"/>
@@ -417,7 +417,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="6" y="130"/>
+            <point key="canvasLocation" x="468" y="116"/>
         </view>
     </objects>
     <resources>

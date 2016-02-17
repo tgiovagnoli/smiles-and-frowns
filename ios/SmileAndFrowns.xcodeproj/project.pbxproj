@@ -89,6 +89,8 @@
 		075EA5051C1362460003A403 /* PillLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA5041C1362460003A403 /* PillLabel.m */; };
 		075EA5081C1368560003A403 /* SNFBoardDetailHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 075EA5071C1368560003A403 /* SNFBoardDetailHeader.m */; };
 		077603D21C6BAE5500AA8096 /* email.txt in Resources */ = {isa = PBXBuildFile; fileRef = 077603D11C6BAE5500AA8096 /* email.txt */; };
+		077603DD1C74DA3600AA8096 /* launcher_smiles_frowns.png in Resources */ = {isa = PBXBuildFile; fileRef = 077603DB1C74DA3600AA8096 /* launcher_smiles_frowns.png */; };
+		077603DE1C74DA3600AA8096 /* launcher_smiles_frowns@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 077603DC1C74DA3600AA8096 /* launcher_smiles_frowns@2x.png */; };
 		078DF4B31BE8105300CBFAA4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */; };
 		078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */; };
 		078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DF4B51BE8109D00CBFAA4 /* FBSDKCoreKit.framework */; };
@@ -374,6 +376,8 @@
 		075EA5061C1368560003A403 /* SNFBoardDetailHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFBoardDetailHeader.h; sourceTree = "<group>"; };
 		075EA5071C1368560003A403 /* SNFBoardDetailHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFBoardDetailHeader.m; sourceTree = "<group>"; };
 		077603D11C6BAE5500AA8096 /* email.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = email.txt; path = SmileAndFrowns/email.txt; sourceTree = "<group>"; };
+		077603DB1C74DA3600AA8096 /* launcher_smiles_frowns.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launcher_smiles_frowns.png; sourceTree = "<group>"; };
+		077603DC1C74DA3600AA8096 /* launcher_smiles_frowns@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launcher_smiles_frowns@2x.png"; sourceTree = "<group>"; };
 		078DF4B11BE8105300CBFAA4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = libs/MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
 		078DF4B21BE8105300CBFAA4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = libs/MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		078DF4B41BE8109D00CBFAA4 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = libs/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -840,6 +844,8 @@
 				075EA4D51C1214F60003A403 /* frown@2x.png */,
 				075EA4DC1C121E240003A403 /* goal.png */,
 				075EA4DD1C121E240003A403 /* goal@2x.png */,
+				077603DB1C74DA3600AA8096 /* launcher_smiles_frowns.png */,
+				077603DC1C74DA3600AA8096 /* launcher_smiles_frowns@2x.png */,
 				07C0F3CB1BEE6FC80075A6B9 /* male.png */,
 				07C0F3CC1BEE6FC80075A6B9 /* male@2x.png */,
 				075EA4DE1C121E240003A403 /* money.png */,
@@ -1381,6 +1387,7 @@
 				075EA4F41C125C170003A403 /* add@2x.png in Resources */,
 				D6270EDE1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.xib in Resources */,
 				075EA4E51C121E240003A403 /* goal@2x.png in Resources */,
+				077603DD1C74DA3600AA8096 /* launcher_smiles_frowns.png in Resources */,
 				07C0F3CF1BEE6FC80075A6B9 /* male.png in Resources */,
 				075EA4F61C125C170003A403 /* subtract@2x.png in Resources */,
 				075EA5021C135C000003A403 /* spend@2x.png in Resources */,
@@ -1423,6 +1430,7 @@
 				D65DF12A1BE2AA50009CC6DF /* SNFBoardList.xib in Resources */,
 				D6DB2BD11BEAA03300F1CDFF /* SNFRewardCell.xib in Resources */,
 				07C0F3D01BEE6FC80075A6B9 /* male@2x.png in Resources */,
+				077603DE1C74DA3600AA8096 /* launcher_smiles_frowns@2x.png in Resources */,
 				075EA4F51C125C170003A403 /* subtract.png in Resources */,
 				07E579B01C46BE9E00465246 /* tutorial5@2x.png in Resources */,
 				075EA5011C135C000003A403 /* spend.png in Resources */,

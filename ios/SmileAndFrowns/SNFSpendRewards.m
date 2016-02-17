@@ -308,7 +308,12 @@
 		if(_selectedReward.currency_amount.floatValue == 1) {
 			[label appendFormat:@"%.0f ",_selectedReward.currency_amount.floatValue];
 		} else {
-			[label appendFormat:@"%.2f ",_selectedReward.currency_amount.floatValue];
+			
+			if([Utils CGFloatHasDecimals:_selectedReward.currency_amount.floatValue]) {
+				[label appendFormat:@"%.2f ",_selectedReward.currency_amount.floatValue];
+			} else {
+				[label appendFormat:@"%.0f ",_selectedReward.currency_amount.floatValue];
+			}
 		}
 	}
 	

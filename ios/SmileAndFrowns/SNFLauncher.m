@@ -61,13 +61,13 @@
 }
 
 - (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
-	self.bottom.constant = 10;
+	self.bottom.constant = 30;
 	[self.bannerView removeFromSuperview];
 }
 
 - (void) bannerViewDidLoadAd:(ADBannerView *)banner {
 	banner.y = self.view.height - banner.height;
-	self.bottom.constant = banner.height + 10;
+	self.bottom.constant = banner.height + 30;
 	[self.view addSubview:banner];
 }
 

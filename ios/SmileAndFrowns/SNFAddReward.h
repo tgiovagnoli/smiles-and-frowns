@@ -7,8 +7,8 @@
 #import "UIViewController+Alerts.h"
 
 typedef NS_ENUM(NSInteger,SNFAddRewardCurrency) {
-	SNFAddRewardCurrencyTime = 0,
-	SNFAddRewardCurrencyMoney = 1,
+	SNFAddRewardCurrencyMoney = 0,
+	SNFAddRewardCurrencyTime = 1,
 	SNFAddRewardCurrencyTreat = 2,
 	SNFAddRewardCurrencyGoal = 3,
 };

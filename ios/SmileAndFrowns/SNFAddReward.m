@@ -45,6 +45,8 @@
 	
 	self.smilesAmountLabel.text = [NSString stringWithFormat:@"%.0f", self.smilesStepperValue];
 	//self.currencyAmountLabel.text = [NSString stringWithFormat:@"%.02f", self.currencyStepper.value];
+	
+	[self onTypeUpdate:nil];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -61,10 +63,10 @@
 }
 
 - (IBAction)onTypeUpdate:(UISegmentedControl *)sender{
-	if(self.typeControl.selectedSegmentIndex == 1) {
+	if(self.typeControl.selectedSegmentIndex == SNFAddRewardCurrencyMoney) {
 		self.baseRateLabel.text = @"Write money as a percentage, like “.25 Dollars” for a quarter";
 	} else {
-		self.baseRateLabel.text = @"Write rewards simply, like \"an hour of TV\" or \"a trip to the zoo\"";
+		self.baseRateLabel.text = @"Write rewards simply, like \"hour of TV\" or \"a trip to the zoo\"";
 	}
 }
 
