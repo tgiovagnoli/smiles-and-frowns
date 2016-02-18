@@ -37,7 +37,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="417"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="367"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Re-ki-vPd">
@@ -188,7 +188,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="350" y="275.5"/>
+            <point key="canvasLocation" x="291" y="167.5"/>
         </view>
         <view contentMode="scaleToFill" id="B8r-hh-lJc">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -235,7 +235,7 @@
                 <constraint firstAttribute="bottom" secondItem="Az6-f7-2Fm" secondAttribute="bottom" id="hxZ-Xp-Cql"/>
                 <constraint firstAttribute="trailing" secondItem="Az6-f7-2Fm" secondAttribute="trailing" id="jkC-Li-V5z"/>
             </constraints>
-            <point key="canvasLocation" x="1125" y="359"/>
+            <point key="canvasLocation" x="957" y="212"/>
         </view>
     </objects>
     <resources>
