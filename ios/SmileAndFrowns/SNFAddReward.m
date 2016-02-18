@@ -66,7 +66,7 @@
 	if(self.typeControl.selectedSegmentIndex == SNFAddRewardCurrencyMoney) {
 		self.baseRateLabel.text = @"Write money as a percentage, like “.25 Dollars” for a quarter";
 	} else {
-		self.baseRateLabel.text = @"Write rewards simply, like \"hour of TV\" or \"a trip to the zoo\"";
+		self.baseRateLabel.text = @"Write rewards simply, like \"hour of TV\" or \"trip to the zoo\"";
 	}
 }
 
