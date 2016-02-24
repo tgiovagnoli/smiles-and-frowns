@@ -13,7 +13,6 @@
 @property (weak) IBOutlet UIImageView * smileFrownImageView;
 
 @property (nonatomic) SNFReportBehaviorGroup2 * behaviorGroup;
-
-
+- (void) setBehaviorGroupV1:(SNFReportBehaviorGroup *) behaviorGroup;
 
 @end

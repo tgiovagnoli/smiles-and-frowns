@@ -752,7 +752,7 @@
 			name = "Reporting By Weeks";
 			sourceTree = "<group>";
 		};
-		074D8D2A1C24B70E007B5516 /* old */ = {
+		074D8D2A1C24B70E007B5516 /* Daily */ = {
 			isa = PBXGroup;
 			children = (
 				D6F442271BEBA8CD009C2866 /* SNFReportBehaviorGroup.h */,
@@ -760,7 +760,7 @@
 				D6F442241BEBA877009C2866 /* SNFReportDateGroup.h */,
 				D6F442251BEBA877009C2866 /* SNFReportDateGroup.m */,
 			);
-			name = old;
+			name = Daily;
 			sourceTree = "<group>";
 		};
 		074D8D471C28BE24007B5516 /* UIImageLoader */ = {
@@ -1290,7 +1290,7 @@
 		D6F442151BEB9080009C2866 /* Reporting */ = {
 			isa = PBXGroup;
 			children = (
-				074D8D2A1C24B70E007B5516 /* old */,
+				074D8D2A1C24B70E007B5516 /* Daily */,
 				074D8D261C247D3F007B5516 /* Reporting By Weeks */,
 				D6F4421B1BEB95C5009C2866 /* SNFReportCellSmileFrown.h */,
 				D6F4421C1BEB95C5009C2866 /* SNFReportCellSmileFrown.m */,

@@ -12,6 +12,6 @@
 @interface SNFReportGeneration : NSObject
 
 - (SNFReportDataProvider *) smilesFrownsReportByWeeksForUser:(SNFUser *)user board:(SNFBoard *) board;
-- (NSArray <SNFReportBehaviorGroup *> *)smilesFrownsReportForUser:(SNFUser *)user board:(SNFBoard *)board ascending:(BOOL)ascending;
+- (NSArray <SNFReportDateGroup *> *)smilesFrownsReportForUser:(SNFUser *)user board:(SNFBoard *)board ascending:(BOOL)ascending;
 
 @end

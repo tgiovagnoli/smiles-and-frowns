@@ -6,6 +6,7 @@
 @interface SNFReportPDFDetailRow : UIViewController
 
 @property SNFReportBehaviorGroup2 * behaviorGroup;
+@property SNFReportBehaviorGroup * behaviorGroupV1;
 
 @property IBOutlet UIImageView * imageView;
 @property IBOutlet UILabel * smileFrownCount;

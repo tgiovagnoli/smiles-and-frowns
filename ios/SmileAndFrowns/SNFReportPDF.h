@@ -16,6 +16,7 @@ extern NSString * const SNFReportPDFFinished;
 @property SNFUser * user;
 @property SNFBoard * board;
 @property SNFReportDataProvider * dataProvider;
+@property NSArray <SNFReportDateGroup *> * dataProviderV1;
 
 @property IBOutlet HDLabel * credits;
 

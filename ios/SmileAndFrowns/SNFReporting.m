@@ -16,6 +16,7 @@
 @interface SNFReporting ()
 @property SNFReportPDF * pdf;
 @property SNFReportDataProvider * dataProvider;
+@property NSArray <SNFReportDateGroup *> * dataProviderV1;
 @property UIActivityViewController * activityViewController;
 @end
 
@@ -65,15 +66,21 @@
 - (void) reloadReport {
 	if(self.user && self.board) {
 		
-		SNFReportGeneration * reportGeneration = [[SNFReportGeneration alloc] init];
+		self.dataProviderV1 = nil;
+		self.dataProvider = nil;
 		
+		SNFReportGeneration * reportGeneration = [[SNFReportGeneration alloc] init];
 		switch ((SNFReportingFilter)self.filterType.selectedSegmentIndex) {
-			case SNFReportingFilterCurrentBoard:
+			case SNFReportingFilterThisBoardDaily:
+				self.dataProviderV1 = [reportGeneration smilesFrownsReportForUser:self.user board:self.board ascending:FALSE];
+				break;
+			case SNFReportingFilterThisBoardWeekly:
 				self.dataProvider = [reportGeneration smilesFrownsReportByWeeksForUser:self.user board:self.board];
 				break;
-			case SNFReportingFilterAllBoards:
+			case SNFReportingFilterAllBoardsWeekly:
 				self.dataProvider = [reportGeneration smilesFrownsReportByWeeksForUser:self.user board:nil];
 				break;
+			
 		}
 		
 	}
@@ -96,12 +103,24 @@
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *) tableView {
+	if(self.dataProviderV1) {
+		return self.dataProviderV1.count;
+	}
 	return self.dataProvider.sections.count;
 }
 
 - (NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger) section {
-	SNFReportSection * reportSection = [self.dataProvider.sections objectAtIndex:section];
-	return reportSection.behaviorGroups.count;
+	if(self.dataProvider) {
+		SNFReportSection * reportSection = [self.dataProvider.sections objectAtIndex:section];
+		return reportSection.behaviorGroups.count;
+	}
+	
+	if(self.dataProviderV1) {
+		SNFReportDateGroup *dateGroup = [self.dataProviderV1 objectAtIndex:section];
+		return dateGroup.behaviorGroups.count;
+	}
+	
+	return 0;
 }
 
 - (CGFloat) tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
@@ -109,8 +128,6 @@
 }
 
 - (UIView *) tableView:(UITableView *) tableView viewForHeaderInSection:(NSInteger) section {
-	SNFReportSection * reportSection = [self.dataProvider.sections objectAtIndex:section];
-	
 	NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
 	dateFormatter.timeStyle = NSDateFormatterNoStyle;
 	dateFormatter.dateStyle = NSDateFormatterMediumStyle;
@@ -119,17 +136,39 @@
 	dateFormatter.locale = [NSLocale currentLocale];
 	dateFormatter.dateFormat = @"MM/d/yy";
 	
+	NSString * sectionTitle = nil;
+	
+	if(self.dataProvider) {
+		SNFReportSection * reportSection = [self.dataProvider.sections objectAtIndex:section];
+		sectionTitle = reportSection.sectionHeaderTitle;
+	}
+	
+	if(self.dataProviderV1) {
+		SNFReportDateGroup * dateGroup = [self.dataProviderV1 objectAtIndex:section];
+		sectionTitle = [dateFormatter stringFromDate:dateGroup.date];
+	}
+	
 	SNFBoardDetailHeader * header = [[SNFBoardDetailHeader alloc] init];
-	header.textLabel.text = reportSection.sectionHeaderTitle;
+	header.textLabel.text = sectionTitle;
 	
 	return header;
 }
 
 - (UITableViewCell *) tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *) indexPath {
-	SNFReportSection * section = [self.dataProvider.sections objectAtIndex:indexPath.section];
-	SNFReportBehaviorGroup2 * behaviorGroup = [section.behaviorGroups objectAtIndex:indexPath.row];
 	SNFReportCellSmileFrown * cell = [self.reportTable dequeueReusableCellWithIdentifier:@"SNFReportCellSmileFrown"];
-	cell.behaviorGroup = behaviorGroup;
+	
+	if(self.dataProvider) {
+		SNFReportSection * section = [self.dataProvider.sections objectAtIndex:indexPath.section];
+		SNFReportBehaviorGroup2 * behaviorGroup = [section.behaviorGroups objectAtIndex:indexPath.row];
+		cell.behaviorGroup = behaviorGroup;
+	}
+	
+	if(self.dataProviderV1) {
+		SNFReportDateGroup * dateGroup = [self.dataProviderV1 objectAtIndex:indexPath.section];
+		SNFReportBehaviorGroup * behaviorGroup = [dateGroup.behaviorGroups objectAtIndex:indexPath.row];
+		[cell setBehaviorGroupV1:behaviorGroup];
+	}
+	
 	return cell;
 }
 
@@ -138,8 +177,13 @@
 }
 
 - (IBAction) onExport:(id) sender {
-	if(self.dataProvider.sections.count < 1) {
+	if(self.dataProvider && self.dataProvider.sections.count < 1) {
 		
+		[self displayOKAlertWithTitle:@"Sorry" message:@"Nothing to export." completion:nil];
+		return;
+	}
+	
+	if(self.dataProviderV1 && self.dataProviderV1.count < 1) {
 		[self displayOKAlertWithTitle:@"Sorry" message:@"Nothing to export." completion:nil];
 		return;
 	}
@@ -148,10 +192,16 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onPDFFinished:) name:SNFReportPDFFinished object:nil];
 	
 	self.pdf = [[SNFReportPDF alloc] init];
-	self.pdf.dataProvider = self.dataProvider;
+	
+	if(self.dataProviderV1) {
+		self.pdf.dataProviderV1 = self.dataProviderV1;
+	} else {
+		self.pdf.dataProvider = self.dataProvider;
+	}
+	
 	self.pdf.user = self.user;
 	
-	if(self.filterType.selectedSegmentIndex != SNFReportingFilterAllBoards) {
+	if(self.filterType.selectedSegmentIndex != SNFReportingFilterAllBoardsWeekly) {
 		self.pdf.board = self.board;
 	}
 	

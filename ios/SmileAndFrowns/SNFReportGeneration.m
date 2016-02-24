@@ -61,7 +61,7 @@
 		predicate = [NSPredicate predicateWithFormat:@"user==%@", user];
 	}
 	NSSortDescriptor *dateSort = [[NSSortDescriptor alloc] initWithKey:@"created_date" ascending:ascending];
-
+	
 	NSFetchRequest *smileFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"SNFSmile"];
 	smileFetchRequest.predicate = predicate;
 	smileFetchRequest.sortDescriptors = @[dateSort];
@@ -114,9 +114,9 @@
 		[selectedBehaviorGroup.smiles addObject:smile];
 	}
 	
-	for(SNFFrown *frown in allFrowns) {
+	for(SNFFrown *frown in allFrowns){
 		NSInteger daysSinceEpoch = [self dayForObjectCreatedSinceEpoch:frown];
-		SNFReportDateGroup * selectedDateGroup;
+		SNFReportDateGroup *selectedDateGroup;
 		for(SNFReportDateGroup *dateGroup in daysGrouped){
 			if(dateGroup.daysSinceEpoch == daysSinceEpoch){
 				selectedDateGroup = dateGroup;
@@ -143,6 +143,7 @@
 			[selectedDateGroup.behaviorGroups addObject:selectedBehaviorGroup];
 		}
 		[selectedBehaviorGroup.frowns addObject:frown];
+		NSLog(@"poo");
 	}
 	
 	return [daysGrouped sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.date" ascending:ascending]]];

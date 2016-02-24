@@ -8,8 +8,9 @@
 #import "SNFFormViewController.h"
 
 typedef NS_ENUM(NSInteger, SNFReportingFilter){
-	SNFReportingFilterCurrentBoard,
-	SNFReportingFilterAllBoards,
+	SNFReportingFilterThisBoardDaily,
+	SNFReportingFilterThisBoardWeekly,
+	SNFReportingFilterAllBoardsWeekly,
 };
 
 @interface SNFReporting : SNFFormViewController <UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate>
