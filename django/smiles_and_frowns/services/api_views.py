@@ -110,22 +110,7 @@ def user_update_profile_image(request):
 		user = models.User.objects.get(username=username)
 	except:
 		return json_response_error("User not found")
-
-	#check permission
-	is_permitted = False
-	if user == request.user:
-		is_permitted = True
-
-	boards = []
-	all_boards = models.Board.objects.filter(owner=request.user).all()
-	for board in all_boards:
-		for user_role in board.users:
-			if user_role.user == user:
-				is_permitted = True
-	if is_permitted == False:
-		return json_response_error("Not permitted")
 	
-
 	#set image
 	user.profile.image = image
 	user.profile.save()
