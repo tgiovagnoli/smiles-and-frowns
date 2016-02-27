@@ -408,14 +408,18 @@ NSString * const SNFAddUserRoleAddedChild = @"SNFAddUserRoleAddedChild";
 }
 
 - (void)pickImage:(UIGestureRecognizer *)gr{
-	if(![[SNFModel sharedInstance].loggedInUser.username isEqualToString:self.board.owner.username]){
-		// not the owner do not allow images to be set.
+	
+	NSString * permission = [self.board permissionForUser:[SNFModel sharedInstance].loggedInUser];
+	NSArray * allowedPermissions = @[@"owner",@"parent"];
+	if(![allowedPermissions containsObject:permission]) {
 		return;
 	}
+	
 	if(self.segment.selectedSegmentIndex != 0){
 		return;
 	}
-	UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+	
+	UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
 	imagePicker.delegate = self;
 	imagePicker.allowsEditing = YES;
 	[self presentViewController:imagePicker animated:YES completion:^{}];
