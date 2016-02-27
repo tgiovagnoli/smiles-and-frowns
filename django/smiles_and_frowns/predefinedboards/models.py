@@ -6,7 +6,7 @@ class PredefinedBehavior(models.Model):
 	uuid = models.CharField(max_length=64)
 	positive = models.BooleanField(default=True)
 	soft_delete = models.BooleanField(default=False)
-	group = models.CharField(max_length=128,default="",blank=True,null=True)
+	group = models.CharField(max_length=128,default="",blank=False,null=True)
 	def __unicode__(self):
 		return self.title
 	def save(self, *args, **kwargs):
