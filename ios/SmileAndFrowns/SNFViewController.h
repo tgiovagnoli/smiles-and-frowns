@@ -10,7 +10,7 @@
 #import "APDDjangoErrorViewer.h"
 #import "UIViewController+Alerts.h"
 
-@interface SNFViewController : UIViewController <APDDebugViewControllerDelegate,ADBannerViewDelegate>
+@interface SNFViewController : UIViewController <APDDebugViewControllerDelegate,GADBannerViewDelegate>
 
 @property (weak) IBOutlet UIViewControllerStack * viewControllerStack;
 @property (weak) IBOutlet UIView * tabMenuContainer;

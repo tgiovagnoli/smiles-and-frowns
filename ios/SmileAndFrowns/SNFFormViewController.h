@@ -3,7 +3,7 @@
 #import <iAd/iAd.h>
 #import "SNFADBannerView.h"
 
-@interface SNFFormViewController : UIViewController <ADBannerViewDelegate>
+@interface SNFFormViewController : UIViewController <GADBannerViewDelegate>
 
 @property IBOutlet UIView * formView;
 @property IBOutlet UIScrollView * scrollView;

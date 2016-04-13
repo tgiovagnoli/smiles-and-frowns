@@ -143,6 +143,24 @@
 		07E579CC1C4815F200465246 /* tutorial5_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579C21C4815F200465246 /* tutorial5_ipad.png */; };
 		07E579CD1C4815F200465246 /* tutorial5_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07E579C31C4815F200465246 /* tutorial5_ipad@2x.png */; };
 		07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E7055A1BEBD1520013FB75 /* iAd.framework */; };
+		07FF69EC1CBEB5D5005C77C5 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF69EB1CBEB5D5005C77C5 /* GoogleMobileAds.framework */; };
+		07FF69F51CBEB5D8005C77C5 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07FF69F41CBEB5D8005C77C5 /* README.txt */; };
+		07FF69F71CBEB602005C77C5 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF69F61CBEB602005C77C5 /* AdSupport.framework */; };
+		07FF69F91CBEB60C005C77C5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF69F81CBEB60C005C77C5 /* AudioToolbox.framework */; };
+		07FF69FB1CBEB615005C77C5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF69FA1CBEB615005C77C5 /* AVFoundation.framework */; };
+		07FF69FD1CBEB61E005C77C5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF69FC1CBEB61E005C77C5 /* CoreMedia.framework */; };
+		07FF69FF1CBEB629005C77C5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF69FE1CBEB629005C77C5 /* CoreTelephony.framework */; };
+		07FF6A021CBEB631005C77C5 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A001CBEB631005C77C5 /* EventKit.framework */; };
+		07FF6A031CBEB631005C77C5 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A011CBEB631005C77C5 /* EventKitUI.framework */; };
+		07FF6A051CBEB63D005C77C5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A041CBEB63D005C77C5 /* MediaPlayer.framework */; };
+		07FF6A071CBEB643005C77C5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A061CBEB643005C77C5 /* MessageUI.framework */; };
+		07FF6A091CBEB64E005C77C5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A081CBEB64E005C77C5 /* StoreKit.framework */; };
+		07FF6A1E1CBEB7B3005C77C5 /* FlurryAdsEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FF6A161CBEB7B3005C77C5 /* FlurryAdsEmpty.m */; };
+		07FF6A1F1CBEB7B3005C77C5 /* libFlurryAds_7.6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A171CBEB7B3005C77C5 /* libFlurryAds_7.6.0.a */; };
+		07FF6A261CBEB7C0005C77C5 /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FF6A221CBEB7C0005C77C5 /* FlurryEmpty.m */; };
+		07FF6A271CBEB7C0005C77C5 /* libFlurry_7.6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A241CBEB7C0005C77C5 /* libFlurry_7.6.0.a */; };
+		07FF6A281CBEB7C0005C77C5 /* libFlurryWatch_7.6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A251CBEB7C0005C77C5 /* libFlurryWatch_7.6.0.a */; };
+		07FF6A2A1CBEB7EB005C77C5 /* libFlurryDFPAdapter_6.0.0.r1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A291CBEB7EB005C77C5 /* libFlurryDFPAdapter_6.0.0.r1.a */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
 		D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC21BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m */; };
@@ -445,6 +463,44 @@
 		07E579ED1C4FFF2500465246 /* SmileAndFrowns 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SmileAndFrowns 5.xcdatamodel"; sourceTree = "<group>"; };
 		07E7055A1BEBD1520013FB75 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		07E7055C1BEBD2B40013FB75 /* NSLog+Geom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSLog+Geom.h"; path = "submodules/apd-objc/NSLog+Geom.h"; sourceTree = "<group>"; };
+		07FF69EB1CBEB5D5005C77C5 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "libs/GoogleMobileAdsSdkiOS-7.7.1/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		07FF69EE1CBEB5D8005C77C5 /* GADMAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
+		07FF69EF1CBEB5D8005C77C5 /* GADMAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
+		07FF69F01CBEB5D8005C77C5 /* GADMediationAdRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMediationAdRequest.h; sourceTree = "<group>"; };
+		07FF69F11CBEB5D8005C77C5 /* GADMEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMEnums.h; sourceTree = "<group>"; };
+		07FF69F21CBEB5D8005C77C5 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkAdapterProtocol.h; sourceTree = "<group>"; };
+		07FF69F31CBEB5D8005C77C5 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMRewardBasedVideoAdNetworkConnectorProtocol.h; sourceTree = "<group>"; };
+		07FF69F41CBEB5D8005C77C5 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		07FF69F61CBEB602005C77C5 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		07FF69F81CBEB60C005C77C5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		07FF69FA1CBEB615005C77C5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		07FF69FC1CBEB61E005C77C5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		07FF69FE1CBEB629005C77C5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		07FF6A001CBEB631005C77C5 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		07FF6A011CBEB631005C77C5 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		07FF6A041CBEB63D005C77C5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		07FF6A061CBEB643005C77C5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		07FF6A081CBEB64E005C77C5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		07FF6A0C1CBEB7B3005C77C5 /* FlurryAdBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdBanner.h; sourceTree = "<group>"; };
+		07FF6A0D1CBEB7B3005C77C5 /* FlurryAdBannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdBannerDelegate.h; sourceTree = "<group>"; };
+		07FF6A0F1CBEB7B3005C77C5 /* FlurryAdInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdInterstitial.h; sourceTree = "<group>"; };
+		07FF6A101CBEB7B3005C77C5 /* FlurryAdInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdInterstitialDelegate.h; sourceTree = "<group>"; };
+		07FF6A121CBEB7B3005C77C5 /* FlurryAdNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNative.h; sourceTree = "<group>"; };
+		07FF6A131CBEB7B3005C77C5 /* FlurryAdNativeAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeAsset.h; sourceTree = "<group>"; };
+		07FF6A141CBEB7B3005C77C5 /* FlurryAdNativeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeDelegate.h; sourceTree = "<group>"; };
+		07FF6A151CBEB7B3005C77C5 /* FlurryAdNativeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeStyle.h; sourceTree = "<group>"; };
+		07FF6A161CBEB7B3005C77C5 /* FlurryAdsEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryAdsEmpty.m; sourceTree = "<group>"; };
+		07FF6A171CBEB7B3005C77C5 /* libFlurryAds_7.6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAds_7.6.0.a; sourceTree = "<group>"; };
+		07FF6A191CBEB7B3005C77C5 /* FlurryAdError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdError.h; sourceTree = "<group>"; };
+		07FF6A1A1CBEB7B3005C77C5 /* FlurryAdTargeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdTargeting.h; sourceTree = "<group>"; };
+		07FF6A1C1CBEB7B3005C77C5 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdDelegate.h; sourceTree = "<group>"; };
+		07FF6A1D1CBEB7B3005C77C5 /* FlurryAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAds.h; sourceTree = "<group>"; };
+		07FF6A211CBEB7C0005C77C5 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		07FF6A221CBEB7C0005C77C5 /* FlurryEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryEmpty.m; sourceTree = "<group>"; };
+		07FF6A231CBEB7C0005C77C5 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
+		07FF6A241CBEB7C0005C77C5 /* libFlurry_7.6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.6.0.a; sourceTree = "<group>"; };
+		07FF6A251CBEB7C0005C77C5 /* libFlurryWatch_7.6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryWatch_7.6.0.a; sourceTree = "<group>"; };
+		07FF6A291CBEB7EB005C77C5 /* libFlurryDFPAdapter_6.0.0.r1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurryDFPAdapter_6.0.0.r1.a; path = ../../../libFlurryDFPAdapter_6.0.0.r1.a; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
 		D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPredefinedBehavior.m; sourceTree = "<group>"; };
 		D6270EBF1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFPredefinedBehavior+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -626,10 +682,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07FF6A091CBEB64E005C77C5 /* StoreKit.framework in Frameworks */,
+				07FF6A271CBEB7C0005C77C5 /* libFlurry_7.6.0.a in Frameworks */,
+				07FF6A071CBEB643005C77C5 /* MessageUI.framework in Frameworks */,
+				07FF6A051CBEB63D005C77C5 /* MediaPlayer.framework in Frameworks */,
+				07FF6A021CBEB631005C77C5 /* EventKit.framework in Frameworks */,
+				07FF6A031CBEB631005C77C5 /* EventKitUI.framework in Frameworks */,
+				07FF69FF1CBEB629005C77C5 /* CoreTelephony.framework in Frameworks */,
+				07FF69FD1CBEB61E005C77C5 /* CoreMedia.framework in Frameworks */,
+				07FF69FB1CBEB615005C77C5 /* AVFoundation.framework in Frameworks */,
+				07FF69F91CBEB60C005C77C5 /* AudioToolbox.framework in Frameworks */,
+				07FF69F71CBEB602005C77C5 /* AdSupport.framework in Frameworks */,
 				075EA4CB1C11FE220003A403 /* libsqlite3.tbd in Frameworks */,
 				075EA4C91C11FE170003A403 /* libz.tbd in Frameworks */,
 				071AC1001BF26538005D63F2 /* libc++.tbd in Frameworks */,
 				071AC0FE1BF2652B005D63F2 /* SystemConfiguration.framework in Frameworks */,
+				07FF6A281CBEB7C0005C77C5 /* libFlurryWatch_7.6.0.a in Frameworks */,
+				07FF6A1F1CBEB7B3005C77C5 /* libFlurryAds_7.6.0.a in Frameworks */,
 				071AC0FC1BF26526005D63F2 /* Security.framework in Frameworks */,
 				071AC0FA1BF26522005D63F2 /* QuickLook.framework in Frameworks */,
 				071AC0F81BF2651E005D63F2 /* QuartzCore.framework in Frameworks */,
@@ -638,11 +707,13 @@
 				071AC0F21BF2650C005D63F2 /* CoreGraphics.framework in Frameworks */,
 				071AC0F01BF26505005D63F2 /* AssetsLibrary.framework in Frameworks */,
 				07E7055B1BEBD1520013FB75 /* iAd.framework in Frameworks */,
+				07FF69EC1CBEB5D5005C77C5 /* GoogleMobileAds.framework in Frameworks */,
 				078DF4D31BEA9AF600CBFAA4 /* TwitterCore.framework in Frameworks */,
 				075EA4B81C11FDF30003A403 /* libGoogleAnalyticsServices.a in Frameworks */,
 				078DF4B71BE8109D00CBFAA4 /* FacebookSDK.framework in Frameworks */,
 				078DF4B81BE8109D00CBFAA4 /* FBSDKCoreKit.framework in Frameworks */,
 				071AC0EE1BF264CB005D63F2 /* HockeySDK.framework in Frameworks */,
+				07FF6A2A1CBEB7EB005C77C5 /* libFlurryDFPAdapter_6.0.0.r1.a in Frameworks */,
 				078DF4B91BE8109D00CBFAA4 /* FBSDKLoginKit.framework in Frameworks */,
 				078DF4CE1BEA939D00CBFAA4 /* TwitterKit.framework in Frameworks */,
 				078DF4D51BEA9B1100CBFAA4 /* Fabric.framework in Frameworks */,
@@ -887,6 +958,106 @@
 			path = SmileAndFrowns/images;
 			sourceTree = "<group>";
 		};
+		07FF69EA1CBEB5CF005C77C5 /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				07FF69ED1CBEB5D8005C77C5 /* Mediation Adapters */,
+				07FF69EB1CBEB5D5005C77C5 /* GoogleMobileAds.framework */,
+			);
+			name = AdMob;
+			sourceTree = "<group>";
+		};
+		07FF69ED1CBEB5D8005C77C5 /* Mediation Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				07FF69EE1CBEB5D8005C77C5 /* GADMAdNetworkAdapterProtocol.h */,
+				07FF69EF1CBEB5D8005C77C5 /* GADMAdNetworkConnectorProtocol.h */,
+				07FF69F01CBEB5D8005C77C5 /* GADMediationAdRequest.h */,
+				07FF69F11CBEB5D8005C77C5 /* GADMEnums.h */,
+				07FF69F21CBEB5D8005C77C5 /* GADMRewardBasedVideoAdNetworkAdapterProtocol.h */,
+				07FF69F31CBEB5D8005C77C5 /* GADMRewardBasedVideoAdNetworkConnectorProtocol.h */,
+				07FF69F41CBEB5D8005C77C5 /* README.txt */,
+			);
+			name = "Mediation Adapters";
+			path = "libs/GoogleMobileAdsSdkiOS-7.7.1/Mediation Adapters";
+			sourceTree = "<group>";
+		};
+		07FF6A0A1CBEB7B3005C77C5 /* FlurryAds */ = {
+			isa = PBXGroup;
+			children = (
+				07FF6A291CBEB7EB005C77C5 /* libFlurryDFPAdapter_6.0.0.r1.a */,
+				07FF6A0B1CBEB7B3005C77C5 /* FlurryAdBanner */,
+				07FF6A0E1CBEB7B3005C77C5 /* FlurryAdInterstitial */,
+				07FF6A111CBEB7B3005C77C5 /* FlurryAdNative */,
+				07FF6A161CBEB7B3005C77C5 /* FlurryAdsEmpty.m */,
+				07FF6A171CBEB7B3005C77C5 /* libFlurryAds_7.6.0.a */,
+				07FF6A181CBEB7B3005C77C5 /* Shared */,
+				07FF6A1B1CBEB7B3005C77C5 /* StaticAPI */,
+			);
+			name = FlurryAds;
+			path = "libs/Flurry iPhone SDK viPhone SDK 7.6.0/Flurry-iOS-7.6.0/FlurryAds";
+			sourceTree = "<group>";
+		};
+		07FF6A0B1CBEB7B3005C77C5 /* FlurryAdBanner */ = {
+			isa = PBXGroup;
+			children = (
+				07FF6A0C1CBEB7B3005C77C5 /* FlurryAdBanner.h */,
+				07FF6A0D1CBEB7B3005C77C5 /* FlurryAdBannerDelegate.h */,
+			);
+			path = FlurryAdBanner;
+			sourceTree = "<group>";
+		};
+		07FF6A0E1CBEB7B3005C77C5 /* FlurryAdInterstitial */ = {
+			isa = PBXGroup;
+			children = (
+				07FF6A0F1CBEB7B3005C77C5 /* FlurryAdInterstitial.h */,
+				07FF6A101CBEB7B3005C77C5 /* FlurryAdInterstitialDelegate.h */,
+			);
+			path = FlurryAdInterstitial;
+			sourceTree = "<group>";
+		};
+		07FF6A111CBEB7B3005C77C5 /* FlurryAdNative */ = {
+			isa = PBXGroup;
+			children = (
+				07FF6A121CBEB7B3005C77C5 /* FlurryAdNative.h */,
+				07FF6A131CBEB7B3005C77C5 /* FlurryAdNativeAsset.h */,
+				07FF6A141CBEB7B3005C77C5 /* FlurryAdNativeDelegate.h */,
+				07FF6A151CBEB7B3005C77C5 /* FlurryAdNativeStyle.h */,
+			);
+			path = FlurryAdNative;
+			sourceTree = "<group>";
+		};
+		07FF6A181CBEB7B3005C77C5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				07FF6A191CBEB7B3005C77C5 /* FlurryAdError.h */,
+				07FF6A1A1CBEB7B3005C77C5 /* FlurryAdTargeting.h */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		07FF6A1B1CBEB7B3005C77C5 /* StaticAPI */ = {
+			isa = PBXGroup;
+			children = (
+				07FF6A1C1CBEB7B3005C77C5 /* FlurryAdDelegate.h */,
+				07FF6A1D1CBEB7B3005C77C5 /* FlurryAds.h */,
+			);
+			path = StaticAPI;
+			sourceTree = "<group>";
+		};
+		07FF6A201CBEB7C0005C77C5 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				07FF6A211CBEB7C0005C77C5 /* Flurry.h */,
+				07FF6A221CBEB7C0005C77C5 /* FlurryEmpty.m */,
+				07FF6A231CBEB7C0005C77C5 /* FlurryWatch.h */,
+				07FF6A241CBEB7C0005C77C5 /* libFlurry_7.6.0.a */,
+				07FF6A251CBEB7C0005C77C5 /* libFlurryWatch_7.6.0.a */,
+			);
+			name = Flurry;
+			path = "libs/Flurry iPhone SDK viPhone SDK 7.6.0/Flurry-iOS-7.6.0/Flurry";
+			sourceTree = "<group>";
+		};
 		D6270ECF1BE817DA00F7C39A /* Behaviors */ = {
 			isa = PBXGroup;
 			children = (
@@ -942,10 +1113,20 @@
 		D62D37861BDE7E9700102D6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07FF6A201CBEB7C0005C77C5 /* Flurry */,
+				07FF6A0A1CBEB7B3005C77C5 /* FlurryAds */,
+				07FF69EA1CBEB5CF005C77C5 /* AdMob */,
+				07FF69F61CBEB602005C77C5 /* AdSupport.framework */,
 				D6272FB41BE0020A0024CBC2 /* apd-objc */,
 				071AC0EF1BF26505005D63F2 /* AssetsLibrary.framework */,
+				07FF69F81CBEB60C005C77C5 /* AudioToolbox.framework */,
+				07FF69FA1CBEB615005C77C5 /* AVFoundation.framework */,
 				071AC0F11BF2650C005D63F2 /* CoreGraphics.framework */,
+				07FF69FC1CBEB61E005C77C5 /* CoreMedia.framework */,
+				07FF69FE1CBEB629005C77C5 /* CoreTelephony.framework */,
 				071AC0F31BF26511005D63F2 /* CoreText.framework */,
+				07FF6A001CBEB631005C77C5 /* EventKit.framework */,
+				07FF6A011CBEB631005C77C5 /* EventKitUI.framework */,
 				078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */,
 				078DF4A21BE7E9D700CBFAA4 /* Facebook */,
 				075EA4B61C11FDEC0003A403 /* GA */,
@@ -956,10 +1137,13 @@
 				075EA4CA1C11FE220003A403 /* libsqlite3.tbd */,
 				075EA4C81C11FE170003A403 /* libz.tbd */,
 				D65DF1141BE2A45B009CC6DF /* MBProgerssHUD */,
+				07FF6A041CBEB63D005C77C5 /* MediaPlayer.framework */,
+				07FF6A061CBEB643005C77C5 /* MessageUI.framework */,
 				071AC0F51BF26518005D63F2 /* MobileCoreServices.framework */,
 				071AC0F71BF2651E005D63F2 /* QuartzCore.framework */,
 				071AC0F91BF26522005D63F2 /* QuickLook.framework */,
 				071AC0FB1BF26526005D63F2 /* Security.framework */,
+				07FF6A081CBEB64E005C77C5 /* StoreKit.framework */,
 				071AC0FD1BF2652B005D63F2 /* SystemConfiguration.framework */,
 				078DF4D21BEA9AF600CBFAA4 /* TwitterCore.framework */,
 				078DF4CB1BEA939D00CBFAA4 /* TwitterKit.framework */,
@@ -1383,6 +1567,7 @@
 				07E579AB1C46BD5500465246 /* tutorial4.png in Resources */,
 				D6DB2BDC1BEAAB3500F1CDFF /* SNFAddReward.xib in Resources */,
 				075EA4FD1C1357540003A403 /* back_boards.png in Resources */,
+				07FF69F51CBEB5D8005C77C5 /* README.txt in Resources */,
 				07C0F3BA1BED37C70075A6B9 /* InAppPurchases.plist in Resources */,
 				075EA4F41C125C170003A403 /* add@2x.png in Resources */,
 				D6270EDE1BE8180F00F7C39A /* SNFBoardEditBehaviorCell.xib in Resources */,
@@ -1493,6 +1678,7 @@
 				D6F4422C1BEBD76F009C2866 /* SNFTaggedAlertAction.m in Sources */,
 				D64D2C241C14A040007D3E7F /* UIColor+Hex.m in Sources */,
 				078DF4C51BEA62F600CBFAA4 /* UIViewController+Alerts.m in Sources */,
+				07FF6A261CBEB7C0005C77C5 /* FlurryEmpty.m in Sources */,
 				D659DBF51BDAEA000048D3F7 /* SNFReward.m in Sources */,
 				D65DF1121BE29A42009CC6DF /* SNFUserProfile.m in Sources */,
 				075EA4B51C11FBA20003A403 /* GATracking.m in Sources */,
@@ -1507,6 +1693,7 @@
 				07973DC31C57D64D002F7E82 /* UIViewController+AdInterstitialAd.m in Sources */,
 				D659DBB11BDAE07F0048D3F7 /* main.m in Sources */,
 				074D8D0E1C21EC78007B5516 /* SNFReportPDFUserHeader.m in Sources */,
+				07FF6A1E1CBEB7B3005C77C5 /* FlurryAdsEmpty.m in Sources */,
 				07C0F3B01BEC4C460075A6B9 /* UIViewController+ModalCreation.m in Sources */,
 				D6DB2BE01BEAC3E300F1CDFF /* SNFSpendRewards.m in Sources */,
 				D659DC011BDAF9CC0048D3F7 /* NSManagedObject+InfoDictionary.m in Sources */,
@@ -1701,12 +1888,26 @@
 					"$(PROJECT_DIR)/libs",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/libs/HockeySDK-iOS/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/libs/GoogleMobileAdsSdkiOS-7.7.1",
 				);
 				INFOPLIST_FILE = SmileAndFrowns/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/GA/GoogleAnalyticsServicesiOS_3.15",
+					"$(PROJECT_DIR)/libs/Flurry",
+					iPhone,
+					SDK,
+					viPhone,
+					SDK,
+					"7.6.0/Flurry-iOS-7.6.0/FlurryAds",
+					"$(PROJECT_DIR)/libs/Flurry",
+					iPhone,
+					SDK,
+					viPhone,
+					SDK,
+					"7.6.0/Flurry-iOS-7.6.0/Flurry",
+					"$(PROJECT_DIR)/libs",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1731,12 +1932,26 @@
 					"$(PROJECT_DIR)/libs",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/libs/HockeySDK-iOS/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/libs/GoogleMobileAdsSdkiOS-7.7.1",
 				);
 				INFOPLIST_FILE = SmileAndFrowns/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/GA/GoogleAnalyticsServicesiOS_3.15",
+					"$(PROJECT_DIR)/libs/Flurry",
+					iPhone,
+					SDK,
+					viPhone,
+					SDK,
+					"7.6.0/Flurry-iOS-7.6.0/FlurryAds",
+					"$(PROJECT_DIR)/libs/Flurry",
+					iPhone,
+					SDK,
+					viPhone,
+					SDK,
+					"7.6.0/Flurry-iOS-7.6.0/Flurry",
+					"$(PROJECT_DIR)/libs",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",

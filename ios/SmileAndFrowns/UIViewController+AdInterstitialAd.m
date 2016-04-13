@@ -3,14 +3,19 @@
 
 static UIWindow * adWindow;
 static UIView * adContainer;
-static ADInterstitialAd * _interstitial;
-static BOOL showOnLoad = FALSE;
+static GADInterstitial * _interstitial;
 
 @implementation UIViewController (AdInterstitialAd)
 
 - (void) startInterstitialAd {
 	if([[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
 		return;
+	}
+	
+	if(!_interstitial) {
+		_interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2912900990256546/3765881719"];
+		_interstitial.delegate = self;
+		[_interstitial loadRequest:[GADRequest request]];
 	}
 	
 	if(!adWindow) {
@@ -23,17 +28,8 @@ static BOOL showOnLoad = FALSE;
 		adWindow.rootViewController.view = adContainer;
 	}
 	
-	if([[SNFModel sharedInstance] shouldShowInterstitial]) {
-		if(_interstitial && !_interstitial.loaded) {
-			showOnLoad = TRUE;
-			_interstitial.delegate = nil;
-			_interstitial = [[ADInterstitialAd alloc] init];
-			_interstitial.delegate = self;
-		} else {
-			showOnLoad = TRUE;
-			_interstitial = [[ADInterstitialAd alloc] init];
-			_interstitial.delegate = self;
-		}
+	if([[SNFModel sharedInstance] shouldShowInterstitial] && [_interstitial isReady]) {
+		[self showInterstitial];
 	}
 }
 
@@ -41,58 +37,28 @@ static BOOL showOnLoad = FALSE;
 	[[SNFModel sharedInstance] resetInterstitial];
 	adContainer.alpha = 0;
 	[adWindow makeKeyAndVisible];
-	[_interstitial presentInView:adContainer];
+	[_interstitial presentFromRootViewController:adWindow.rootViewController];
 	[UIView animateWithDuration:.25 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 		adContainer.alpha = 1;
 	} completion:^(BOOL finished) {
-		
 	}];
 }
 
-- (BOOL) interstitialAdActionShouldBegin:(ADInterstitialAd *)interstitialAd willLeaveApplication:(BOOL)willLeave {
-	NSLog(@"interstitial should begin");
-	return TRUE;
+- (void) interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error {
+	NSLog(@"error: %@",error);
 }
 
-- (void) interstitialAdDidLoad:(ADInterstitialAd *)interstitialAd {
-	NSLog(@"interstitial did load");
-	if(showOnLoad) {
-		[self showInterstitial];
-	}
-}
-
-- (void) interstitialAdDidUnload:(ADInterstitialAd *)interstitialAd {
-	NSLog(@"interstitial unload");
-	[adContainer removeFromSuperview];
-	_interstitial.delegate = nil;
-	_interstitial = nil;
-}
-
-- (void) interstitialAdWillLoad:(ADInterstitialAd *)interstitialAd {
-	NSLog(@"interstitial will load");
-}
-
-- (void) interstitialAd:(ADInterstitialAd *)interstitialAd didFailWithError:(NSError *)error {
-	NSLog(@"interstitial fail with error %@",error);
-	showOnLoad = FALSE;
-	_interstitial.delegate = nil;
-	_interstitial = nil;
-}
-
-- (void) interstitialAdActionDidFinish:(ADInterstitialAd *)interstitialAd {
-	
+- (void)interstitialDidDismissScreen:(GADInterstitial *)interstitial {
 	if(!adWindow.isKeyWindow) {
 		return;
 	}
-	
 	NSLog(@"interstitial finished");
-	
-	showOnLoad = FALSE;
-	_interstitial.delegate = nil;
-	_interstitial = nil;
-	
 	[[AppDelegate instance].window makeKeyAndVisible];
-	[adWindow.rootViewController.view removeFromSuperview];
+	//[adWindow.rootViewController.view removeFromSuperview];
+	
+	_interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2912900990256546/3765881719"];
+	_interstitial.delegate = self;
+	[_interstitial loadRequest:[GADRequest request]];
 }
 
 @end

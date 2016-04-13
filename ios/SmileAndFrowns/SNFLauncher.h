@@ -5,8 +5,9 @@
 #import "UIView+LayoutHelpers.h"
 #import "SNFFormStyles.h"
 #import "UIViewController+AdInterstitialAd.h"
+@import GoogleMobileAds;
 
-@interface SNFLauncher : UIViewController <ADBannerViewDelegate>
+@interface SNFLauncher : UIViewController <GADBannerViewDelegate>
 
 @property (weak) IBOutlet UISwitch * showOnStartup;
 @property (weak) IBOutlet UIButton * loginButton;

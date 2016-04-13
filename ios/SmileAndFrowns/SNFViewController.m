@@ -34,8 +34,9 @@ static __weak SNFViewController * _instance;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSyncError:) name:SNFSyncServiceError object:nil];
 	
 	if(![[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
-		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
+		self.bannerView = [[SNFADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
 		self.bannerView.delegate = self;
+		[self.bannerView loadRequest:[GADRequest request]];
 	}
 }
 
@@ -83,13 +84,9 @@ static __weak SNFViewController * _instance;
 	}
 }
 
-- (void) bannerViewDidLoadAd:(ADBannerView *) banner {
-	CGRect f = banner.frame;
-	f.origin.y = self.view.height - banner.height;
-	self.bannerView.frame = f;
-	self.tabMenuContainerBottom.constant = banner.height;
-	[self.view addSubview:self.bannerView];
-	
+- (void) adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
+	[self.bannerView removeFromSuperview];
+	self.tabMenuContainerBottom.constant = 0;
 	[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
 		UIViewController * controller = self.viewControllerStack.currentViewController;
 		if([controller isKindOfClass:[SNFFormViewController class]]) {
@@ -97,12 +94,14 @@ static __weak SNFViewController * _instance;
 			[formController invalidateForScrolling];
 		}
 	} repeats:FALSE];
-	
 }
 
-- (void) bannerView:(ADBannerView *) banner didFailToReceiveAdWithError:(NSError *) error {
-	[self.bannerView removeFromSuperview];
-	self.tabMenuContainerBottom.constant = 0;
+- (void) adViewDidReceiveAd:(GADBannerView *)banner {
+	CGRect f = banner.frame;
+	f.origin.y = self.view.height - banner.height;
+	self.bannerView.frame = f;
+	self.tabMenuContainerBottom.constant = banner.height;
+	[self.view addSubview:self.bannerView];
 	
 	[NSTimer scheduledTimerWithTimeInterval:.1 block:^{
 		UIViewController * controller = self.viewControllerStack.currentViewController;

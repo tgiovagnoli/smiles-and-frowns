@@ -33,8 +33,9 @@
 	}
 	
 	if(![[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
-		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
+		self.bannerView = [[SNFADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
 		self.bannerView.delegate = self;
+		[self.bannerView loadRequest:[GADRequest request]];
 	}
 }
 
@@ -176,7 +177,7 @@
 	}
 }
 
-- (void) bannerViewDidLoadAd:(ADBannerView *) banner {
+- (void) adViewDidReceiveAd:(GADBannerView *)banner {
 	[self.view addSubview:banner];
 	banner.y = self.view.height - banner.height;
 	if(self.scrollViewBottom.constant <= banner.height) {
@@ -184,7 +185,7 @@
 	}
 }
 
-- (void) bannerView:(ADBannerView *) banner didFailToReceiveAdWithError:(NSError *)error {
+- (void) adView:(GADBannerView *)banner didFailToReceiveAdWithError:(GADRequestError *)error {
 	[self.bannerView removeFromSuperview];
 	if(self.keyboardIsVisible) {
 		return;

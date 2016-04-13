@@ -34,8 +34,9 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLoginSyncComplete:) name:SNFLoginLogingSyncCompleted object:nil];
 	
 	if(![[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
-		self.bannerView = [[SNFADBannerView alloc] initWithAdType:ADAdTypeBanner];
+		self.bannerView = [[SNFADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
 		self.bannerView.delegate = self;
+		[self.bannerView loadRequest:[GADRequest request]];
 	}
 	
 	[self decorate];
@@ -43,7 +44,7 @@
 	[[GATracking instance] trackScreenWithTagManager:@"LauncherView"];
 }
 
-- (void)decorate{
+- (void) decorate {
 	for(UIButton *button in self.buttons){
 		[SNFFormStyles roundEdgesOnButton:button];
 	}
@@ -60,12 +61,12 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void) bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+- (void) adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error {
 	self.bottom.constant = 30;
 	[self.bannerView removeFromSuperview];
 }
 
-- (void) bannerViewDidLoadAd:(ADBannerView *)banner {
+- (void) adViewDidReceiveAd:(GADBannerView *)banner {
 	banner.y = self.view.height - banner.height;
 	self.bottom.constant = banner.height + 30;
 	[self.view addSubview:banner];

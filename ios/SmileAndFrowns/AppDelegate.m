@@ -14,6 +14,7 @@
 #import <HockeySDK/HockeySDK.h>
 #import "UIImageLoader.h"
 #import "GATracking.h"
+@import GoogleMobileAds;
 
 static AppDelegate * _instance;
 
@@ -32,6 +33,8 @@ static AppDelegate * _instance;
 
 - (BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	_instance = self;
+	
+	NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
 	
 	[[GATracking instance] initTagManagerWithID:@"GTM-T7XD6P" allowIDFACollection:TRUE];
 	[[GATracking instance] setLogLevel:kTAGLoggerLogLevelNone];

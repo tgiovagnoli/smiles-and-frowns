@@ -5,7 +5,8 @@
 #import "AppDelegate.h"
 #import "NSTimer+Blocks.h"
 #import "IAPHelper.h"
+@import GoogleMobileAds;
 
-@interface UIViewController (AdInterstitialAd) <ADInterstitialAdDelegate>
+@interface UIViewController (AdInterstitialAd) <GADInterstitialDelegate>
 - (void) startInterstitialAd;
 @end

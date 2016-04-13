@@ -1,8 +1,9 @@
 
 #import <iAd/iAd.h>
+@import GoogleMobileAds;
 
 extern NSString * const SNFADBannerViewPurchasedRemoveAds;
 
-@interface SNFADBannerView : ADBannerView
+@interface SNFADBannerView : GADBannerView
 
 @end
