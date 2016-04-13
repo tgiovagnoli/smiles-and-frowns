@@ -27,7 +27,7 @@ NSString * const SNFADBannerViewPurchasedRemoveAds = @"SNFADBannerViewPurchasedR
 	}
 	self.rootViewController = [AppDelegate instance].window.rootViewController;
 	GADRequest * request = [GADRequest request];
-	request.testDevices = @[ kGADSimulatorID ];
+	//request.testDevices = @[ kGADSimulatorID ];
 	[self loadRequest:request];
 }
 

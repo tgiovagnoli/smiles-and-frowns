@@ -16,7 +16,7 @@ static GADInterstitial * _interstitial;
 		_interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2912900990256546/3765881719"];
 		_interstitial.delegate = self;
 		GADRequest * request = [GADRequest request];
-		request.testDevices = @[ kGADSimulatorID ];
+		//request.testDevices = @[ kGADSimulatorID ];
 		[_interstitial loadRequest:request];
 	}
 	
@@ -65,7 +65,7 @@ static GADInterstitial * _interstitial;
 	_interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2912900990256546/3765881719"];
 	_interstitial.delegate = self;
 	GADRequest * request = [GADRequest request];
-	request.testDevices = @[ kGADSimulatorID ];
+	//request.testDevices = @[ kGADSimulatorID ];
 	[_interstitial loadRequest:request];
 }
 
