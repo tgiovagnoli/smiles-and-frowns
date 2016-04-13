@@ -28,7 +28,7 @@ static int _showInterstitial = 0;
 
 - (BOOL) shouldShowInterstitial; {
 	_showInterstitial++;
-	if(_showInterstitial >= 5) {
+	if(_showInterstitial >= 30) {
 		return TRUE;
 	}
 	return FALSE;
