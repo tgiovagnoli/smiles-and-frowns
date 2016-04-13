@@ -15,7 +15,9 @@ static GADInterstitial * _interstitial;
 	if(!_interstitial) {
 		_interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2912900990256546/3765881719"];
 		_interstitial.delegate = self;
-		[_interstitial loadRequest:[GADRequest request]];
+		GADRequest * request = [GADRequest request];
+		request.testDevices = @[ kGADSimulatorID ];
+		[_interstitial loadRequest:request];
 	}
 	
 	if(!adWindow) {
@@ -62,7 +64,9 @@ static GADInterstitial * _interstitial;
 	
 	_interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2912900990256546/3765881719"];
 	_interstitial.delegate = self;
-	[_interstitial loadRequest:[GADRequest request]];
+	GADRequest * request = [GADRequest request];
+	request.testDevices = @[ kGADSimulatorID ];
+	[_interstitial loadRequest:request];
 }
 
 @end

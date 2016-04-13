@@ -14,6 +14,7 @@
 #import <HockeySDK/HockeySDK.h>
 #import "UIImageLoader.h"
 #import "GATracking.h"
+#import "Flurry.h"
 @import GoogleMobileAds;
 
 static AppDelegate * _instance;
@@ -38,6 +39,8 @@ static AppDelegate * _instance;
 	
 	[[GATracking instance] initTagManagerWithID:@"GTM-T7XD6P" allowIDFACollection:TRUE];
 	[[GATracking instance] setLogLevel:kTAGLoggerLogLevelNone];
+	
+	[Flurry startSession:@"JFJH9PDDP5PH7FCN82DJ"];
 	
 	UIUserNotificationType userNotificationTypes = UIUserNotificationTypeBadge;
 	UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];

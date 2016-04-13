@@ -26,7 +26,9 @@ NSString * const SNFADBannerViewPurchasedRemoveAds = @"SNFADBannerViewPurchasedR
 		[self.delegate adView:self didFailToReceiveAdWithError:nil];
 	}
 	self.rootViewController = [AppDelegate instance].window.rootViewController;
-	[self loadRequest:[GADRequest request]];
+	GADRequest * request = [GADRequest request];
+	request.testDevices = @[ kGADSimulatorID ];
+	[self loadRequest:request];
 }
 
 - (void) dealloc {
