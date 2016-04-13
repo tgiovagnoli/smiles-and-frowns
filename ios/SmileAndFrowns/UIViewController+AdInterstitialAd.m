@@ -56,6 +56,10 @@ static GADInterstitial * _interstitial;
 	[[AppDelegate instance].window makeKeyAndVisible];
 	//[adWindow.rootViewController.view removeFromSuperview];
 	
+	adContainer = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	adWindow.rootViewController = [[UIViewController alloc] init];
+	adWindow.rootViewController.view = adContainer;
+	
 	_interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2912900990256546/3765881719"];
 	_interstitial.delegate = self;
 	[_interstitial loadRequest:[GADRequest request]];
