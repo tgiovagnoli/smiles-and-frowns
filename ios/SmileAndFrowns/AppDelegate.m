@@ -33,7 +33,7 @@ static AppDelegate * _instance;
 - (BOOL) application:(UIApplication *) application didFinishLaunchingWithOptions:(NSDictionary *) launchOptions {
 	_instance = self;
 	
-	[[GATracking instance] initTagManagerWithID:@"GTM-T7XD6P"];
+	[[GATracking instance] initTagManagerWithID:@"GTM-T7XD6P" allowIDFACollection:TRUE];
 	[[GATracking instance] setLogLevel:kTAGLoggerLogLevelNone];
 	
 	UIUserNotificationType userNotificationTypes = UIUserNotificationTypeBadge;
