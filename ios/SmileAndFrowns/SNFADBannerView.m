@@ -22,9 +22,14 @@ NSString * const SNFADBannerViewPurchasedRemoveAds = @"SNFADBannerViewPurchasedR
 }
 
 - (void) startBannerAd {
+	if([[IAPHelper defaultHelper] hasPurchasedNonConsumableNamed:@"RemoveAds"]) {
+		return;
+	}
+	
 	if(self.delegate) {
 		[self.delegate adView:self didFailToReceiveAdWithError:nil];
 	}
+	
 	self.rootViewController = [AppDelegate instance].window.rootViewController;
 	GADRequest * request = [GADRequest request];
 	//request.testDevices = @[ kGADSimulatorID ];
