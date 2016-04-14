@@ -155,11 +155,11 @@
 		07FF6A071CBEB643005C77C5 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A061CBEB643005C77C5 /* MessageUI.framework */; };
 		07FF6A091CBEB64E005C77C5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A081CBEB64E005C77C5 /* StoreKit.framework */; };
 		07FF6A3A1CBEF06B005C77C5 /* libFlurryDFPAdapter_6.0.0.r1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A391CBEF06B005C77C5 /* libFlurryDFPAdapter_6.0.0.r1.a */; };
-		07FF6A551CBEF0B0005C77C5 /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FF6A3D1CBEF0B0005C77C5 /* FlurryEmpty.m */; };
-		07FF6A561CBEF0B0005C77C5 /* libFlurry_7.6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A3F1CBEF0B0005C77C5 /* libFlurry_7.6.0.a */; };
-		07FF6A571CBEF0B0005C77C5 /* libFlurryWatch_7.6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A401CBEF0B0005C77C5 /* libFlurryWatch_7.6.0.a */; };
-		07FF6A581CBEF0B0005C77C5 /* FlurryAdsEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FF6A4D1CBEF0B0005C77C5 /* FlurryAdsEmpty.m */; };
-		07FF6A591CBEF0B0005C77C5 /* libFlurryAds_7.6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A4E1CBEF0B0005C77C5 /* libFlurryAds_7.6.0.a */; };
+		07FF6A741CBF1854005C77C5 /* FlurryEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FF6A5C1CBF1854005C77C5 /* FlurryEmpty.m */; };
+		07FF6A751CBF1854005C77C5 /* libFlurry_7.6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A5E1CBF1854005C77C5 /* libFlurry_7.6.0.a */; };
+		07FF6A761CBF1854005C77C5 /* libFlurryWatch_7.6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A5F1CBF1854005C77C5 /* libFlurryWatch_7.6.0.a */; };
+		07FF6A771CBF1854005C77C5 /* FlurryAdsEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FF6A6C1CBF1854005C77C5 /* FlurryAdsEmpty.m */; };
+		07FF6A781CBF1854005C77C5 /* libFlurryAds_7.6.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07FF6A6D1CBF1854005C77C5 /* libFlurryAds_7.6.0.a */; };
 		D6270EC91BE817D200F7C39A /* SNFPredefinedBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */; };
 		D6270ECA1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC01BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.m */; };
 		D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D6270EC21BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m */; };
@@ -474,25 +474,25 @@
 		07FF6A061CBEB643005C77C5 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		07FF6A081CBEB64E005C77C5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		07FF6A391CBEF06B005C77C5 /* libFlurryDFPAdapter_6.0.0.r1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFlurryDFPAdapter_6.0.0.r1.a; path = "libs/FlurryAdapterForDFPAndAdMobiOS-master/libFlurryDFPAdapter_6.0.0.r1.a"; sourceTree = "<group>"; };
-		07FF6A3C1CBEF0B0005C77C5 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		07FF6A3D1CBEF0B0005C77C5 /* FlurryEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryEmpty.m; sourceTree = "<group>"; };
-		07FF6A3E1CBEF0B0005C77C5 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
-		07FF6A3F1CBEF0B0005C77C5 /* libFlurry_7.6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.6.0.a; sourceTree = "<group>"; };
-		07FF6A401CBEF0B0005C77C5 /* libFlurryWatch_7.6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryWatch_7.6.0.a; sourceTree = "<group>"; };
-		07FF6A431CBEF0B0005C77C5 /* FlurryAdBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdBanner.h; sourceTree = "<group>"; };
-		07FF6A441CBEF0B0005C77C5 /* FlurryAdBannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdBannerDelegate.h; sourceTree = "<group>"; };
-		07FF6A461CBEF0B0005C77C5 /* FlurryAdInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdInterstitial.h; sourceTree = "<group>"; };
-		07FF6A471CBEF0B0005C77C5 /* FlurryAdInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdInterstitialDelegate.h; sourceTree = "<group>"; };
-		07FF6A491CBEF0B0005C77C5 /* FlurryAdNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNative.h; sourceTree = "<group>"; };
-		07FF6A4A1CBEF0B0005C77C5 /* FlurryAdNativeAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeAsset.h; sourceTree = "<group>"; };
-		07FF6A4B1CBEF0B0005C77C5 /* FlurryAdNativeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeDelegate.h; sourceTree = "<group>"; };
-		07FF6A4C1CBEF0B0005C77C5 /* FlurryAdNativeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeStyle.h; sourceTree = "<group>"; };
-		07FF6A4D1CBEF0B0005C77C5 /* FlurryAdsEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryAdsEmpty.m; sourceTree = "<group>"; };
-		07FF6A4E1CBEF0B0005C77C5 /* libFlurryAds_7.6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAds_7.6.0.a; sourceTree = "<group>"; };
-		07FF6A501CBEF0B0005C77C5 /* FlurryAdError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdError.h; sourceTree = "<group>"; };
-		07FF6A511CBEF0B0005C77C5 /* FlurryAdTargeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdTargeting.h; sourceTree = "<group>"; };
-		07FF6A531CBEF0B0005C77C5 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdDelegate.h; sourceTree = "<group>"; };
-		07FF6A541CBEF0B0005C77C5 /* FlurryAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAds.h; sourceTree = "<group>"; };
+		07FF6A5B1CBF1854005C77C5 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		07FF6A5C1CBF1854005C77C5 /* FlurryEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryEmpty.m; sourceTree = "<group>"; };
+		07FF6A5D1CBF1854005C77C5 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
+		07FF6A5E1CBF1854005C77C5 /* libFlurry_7.6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.6.0.a; sourceTree = "<group>"; };
+		07FF6A5F1CBF1854005C77C5 /* libFlurryWatch_7.6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryWatch_7.6.0.a; sourceTree = "<group>"; };
+		07FF6A621CBF1854005C77C5 /* FlurryAdBanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdBanner.h; sourceTree = "<group>"; };
+		07FF6A631CBF1854005C77C5 /* FlurryAdBannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdBannerDelegate.h; sourceTree = "<group>"; };
+		07FF6A651CBF1854005C77C5 /* FlurryAdInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdInterstitial.h; sourceTree = "<group>"; };
+		07FF6A661CBF1854005C77C5 /* FlurryAdInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdInterstitialDelegate.h; sourceTree = "<group>"; };
+		07FF6A681CBF1854005C77C5 /* FlurryAdNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNative.h; sourceTree = "<group>"; };
+		07FF6A691CBF1854005C77C5 /* FlurryAdNativeAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeAsset.h; sourceTree = "<group>"; };
+		07FF6A6A1CBF1854005C77C5 /* FlurryAdNativeDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeDelegate.h; sourceTree = "<group>"; };
+		07FF6A6B1CBF1854005C77C5 /* FlurryAdNativeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdNativeStyle.h; sourceTree = "<group>"; };
+		07FF6A6C1CBF1854005C77C5 /* FlurryAdsEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlurryAdsEmpty.m; sourceTree = "<group>"; };
+		07FF6A6D1CBF1854005C77C5 /* libFlurryAds_7.6.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurryAds_7.6.0.a; sourceTree = "<group>"; };
+		07FF6A6F1CBF1854005C77C5 /* FlurryAdError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdError.h; sourceTree = "<group>"; };
+		07FF6A701CBF1854005C77C5 /* FlurryAdTargeting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdTargeting.h; sourceTree = "<group>"; };
+		07FF6A721CBF1854005C77C5 /* FlurryAdDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAdDelegate.h; sourceTree = "<group>"; };
+		07FF6A731CBF1854005C77C5 /* FlurryAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryAds.h; sourceTree = "<group>"; };
 		D6270EBD1BE817D200F7C39A /* SNFPredefinedBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNFPredefinedBehavior.h; sourceTree = "<group>"; };
 		D6270EBE1BE817D200F7C39A /* SNFPredefinedBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNFPredefinedBehavior.m; sourceTree = "<group>"; };
 		D6270EBF1BE817D200F7C39A /* SNFPredefinedBehavior+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SNFPredefinedBehavior+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -675,7 +675,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07FF6A091CBEB64E005C77C5 /* StoreKit.framework in Frameworks */,
-				07FF6A561CBEF0B0005C77C5 /* libFlurry_7.6.0.a in Frameworks */,
+				07FF6A751CBF1854005C77C5 /* libFlurry_7.6.0.a in Frameworks */,
 				07FF6A071CBEB643005C77C5 /* MessageUI.framework in Frameworks */,
 				07FF6A051CBEB63D005C77C5 /* MediaPlayer.framework in Frameworks */,
 				07FF6A021CBEB631005C77C5 /* EventKit.framework in Frameworks */,
@@ -689,12 +689,12 @@
 				075EA4CB1C11FE220003A403 /* libsqlite3.tbd in Frameworks */,
 				075EA4C91C11FE170003A403 /* libz.tbd in Frameworks */,
 				071AC1001BF26538005D63F2 /* libc++.tbd in Frameworks */,
-				07FF6A571CBEF0B0005C77C5 /* libFlurryWatch_7.6.0.a in Frameworks */,
+				07FF6A761CBF1854005C77C5 /* libFlurryWatch_7.6.0.a in Frameworks */,
 				071AC0FE1BF2652B005D63F2 /* SystemConfiguration.framework in Frameworks */,
 				071AC0FC1BF26526005D63F2 /* Security.framework in Frameworks */,
 				071AC0FA1BF26522005D63F2 /* QuickLook.framework in Frameworks */,
 				071AC0F81BF2651E005D63F2 /* QuartzCore.framework in Frameworks */,
-				07FF6A591CBEF0B0005C77C5 /* libFlurryAds_7.6.0.a in Frameworks */,
+				07FF6A781CBF1854005C77C5 /* libFlurryAds_7.6.0.a in Frameworks */,
 				071AC0F61BF26518005D63F2 /* MobileCoreServices.framework in Frameworks */,
 				071AC0F41BF26511005D63F2 /* CoreText.framework in Frameworks */,
 				071AC0F21BF2650C005D63F2 /* CoreGraphics.framework in Frameworks */,
@@ -958,77 +958,77 @@
 			name = AdMob;
 			sourceTree = "<group>";
 		};
-		07FF6A3B1CBEF0B0005C77C5 /* Flurry */ = {
+		07FF6A5A1CBF1854005C77C5 /* Flurry */ = {
 			isa = PBXGroup;
 			children = (
-				07FF6A3C1CBEF0B0005C77C5 /* Flurry.h */,
-				07FF6A3D1CBEF0B0005C77C5 /* FlurryEmpty.m */,
-				07FF6A3E1CBEF0B0005C77C5 /* FlurryWatch.h */,
-				07FF6A3F1CBEF0B0005C77C5 /* libFlurry_7.6.0.a */,
-				07FF6A401CBEF0B0005C77C5 /* libFlurryWatch_7.6.0.a */,
+				07FF6A5B1CBF1854005C77C5 /* Flurry.h */,
+				07FF6A5C1CBF1854005C77C5 /* FlurryEmpty.m */,
+				07FF6A5D1CBF1854005C77C5 /* FlurryWatch.h */,
+				07FF6A5E1CBF1854005C77C5 /* libFlurry_7.6.0.a */,
+				07FF6A5F1CBF1854005C77C5 /* libFlurryWatch_7.6.0.a */,
 			);
 			name = Flurry;
-			path = "libs/Flurry iPhone SDK viPhone SDK 7.6.0/Flurry-iOS-7.6.0/Flurry";
+			path = "libs/Flurry/Flurry-iOS-7.6.0/Flurry";
 			sourceTree = "<group>";
 		};
-		07FF6A411CBEF0B0005C77C5 /* FlurryAds */ = {
+		07FF6A601CBF1854005C77C5 /* FlurryAds */ = {
 			isa = PBXGroup;
 			children = (
-				07FF6A421CBEF0B0005C77C5 /* FlurryAdBanner */,
-				07FF6A451CBEF0B0005C77C5 /* FlurryAdInterstitial */,
-				07FF6A481CBEF0B0005C77C5 /* FlurryAdNative */,
-				07FF6A4D1CBEF0B0005C77C5 /* FlurryAdsEmpty.m */,
-				07FF6A4E1CBEF0B0005C77C5 /* libFlurryAds_7.6.0.a */,
-				07FF6A4F1CBEF0B0005C77C5 /* Shared */,
-				07FF6A521CBEF0B0005C77C5 /* StaticAPI */,
+				07FF6A611CBF1854005C77C5 /* FlurryAdBanner */,
+				07FF6A641CBF1854005C77C5 /* FlurryAdInterstitial */,
+				07FF6A671CBF1854005C77C5 /* FlurryAdNative */,
+				07FF6A6C1CBF1854005C77C5 /* FlurryAdsEmpty.m */,
+				07FF6A6D1CBF1854005C77C5 /* libFlurryAds_7.6.0.a */,
+				07FF6A6E1CBF1854005C77C5 /* Shared */,
+				07FF6A711CBF1854005C77C5 /* StaticAPI */,
 			);
 			name = FlurryAds;
-			path = "libs/Flurry iPhone SDK viPhone SDK 7.6.0/Flurry-iOS-7.6.0/FlurryAds";
+			path = "libs/Flurry/Flurry-iOS-7.6.0/FlurryAds";
 			sourceTree = "<group>";
 		};
-		07FF6A421CBEF0B0005C77C5 /* FlurryAdBanner */ = {
+		07FF6A611CBF1854005C77C5 /* FlurryAdBanner */ = {
 			isa = PBXGroup;
 			children = (
-				07FF6A431CBEF0B0005C77C5 /* FlurryAdBanner.h */,
-				07FF6A441CBEF0B0005C77C5 /* FlurryAdBannerDelegate.h */,
+				07FF6A621CBF1854005C77C5 /* FlurryAdBanner.h */,
+				07FF6A631CBF1854005C77C5 /* FlurryAdBannerDelegate.h */,
 			);
 			path = FlurryAdBanner;
 			sourceTree = "<group>";
 		};
-		07FF6A451CBEF0B0005C77C5 /* FlurryAdInterstitial */ = {
+		07FF6A641CBF1854005C77C5 /* FlurryAdInterstitial */ = {
 			isa = PBXGroup;
 			children = (
-				07FF6A461CBEF0B0005C77C5 /* FlurryAdInterstitial.h */,
-				07FF6A471CBEF0B0005C77C5 /* FlurryAdInterstitialDelegate.h */,
+				07FF6A651CBF1854005C77C5 /* FlurryAdInterstitial.h */,
+				07FF6A661CBF1854005C77C5 /* FlurryAdInterstitialDelegate.h */,
 			);
 			path = FlurryAdInterstitial;
 			sourceTree = "<group>";
 		};
-		07FF6A481CBEF0B0005C77C5 /* FlurryAdNative */ = {
+		07FF6A671CBF1854005C77C5 /* FlurryAdNative */ = {
 			isa = PBXGroup;
 			children = (
-				07FF6A491CBEF0B0005C77C5 /* FlurryAdNative.h */,
-				07FF6A4A1CBEF0B0005C77C5 /* FlurryAdNativeAsset.h */,
-				07FF6A4B1CBEF0B0005C77C5 /* FlurryAdNativeDelegate.h */,
-				07FF6A4C1CBEF0B0005C77C5 /* FlurryAdNativeStyle.h */,
+				07FF6A681CBF1854005C77C5 /* FlurryAdNative.h */,
+				07FF6A691CBF1854005C77C5 /* FlurryAdNativeAsset.h */,
+				07FF6A6A1CBF1854005C77C5 /* FlurryAdNativeDelegate.h */,
+				07FF6A6B1CBF1854005C77C5 /* FlurryAdNativeStyle.h */,
 			);
 			path = FlurryAdNative;
 			sourceTree = "<group>";
 		};
-		07FF6A4F1CBEF0B0005C77C5 /* Shared */ = {
+		07FF6A6E1CBF1854005C77C5 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				07FF6A501CBEF0B0005C77C5 /* FlurryAdError.h */,
-				07FF6A511CBEF0B0005C77C5 /* FlurryAdTargeting.h */,
+				07FF6A6F1CBF1854005C77C5 /* FlurryAdError.h */,
+				07FF6A701CBF1854005C77C5 /* FlurryAdTargeting.h */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		07FF6A521CBEF0B0005C77C5 /* StaticAPI */ = {
+		07FF6A711CBF1854005C77C5 /* StaticAPI */ = {
 			isa = PBXGroup;
 			children = (
-				07FF6A531CBEF0B0005C77C5 /* FlurryAdDelegate.h */,
-				07FF6A541CBEF0B0005C77C5 /* FlurryAds.h */,
+				07FF6A721CBF1854005C77C5 /* FlurryAdDelegate.h */,
+				07FF6A731CBF1854005C77C5 /* FlurryAds.h */,
 			);
 			path = StaticAPI;
 			sourceTree = "<group>";
@@ -1102,8 +1102,8 @@
 				07FF6A011CBEB631005C77C5 /* EventKitUI.framework */,
 				078DF4D41BEA9B1100CBFAA4 /* Fabric.framework */,
 				078DF4A21BE7E9D700CBFAA4 /* Facebook */,
-				07FF6A3B1CBEF0B0005C77C5 /* Flurry */,
-				07FF6A411CBEF0B0005C77C5 /* FlurryAds */,
+				07FF6A5A1CBF1854005C77C5 /* Flurry */,
+				07FF6A601CBF1854005C77C5 /* FlurryAds */,
 				075EA4B61C11FDEC0003A403 /* GA */,
 				071AC0ED1BF264CB005D63F2 /* HockeySDK.framework */,
 				071AC1011BF2656E005D63F2 /* HockeySDKResources.bundle */,
@@ -1720,7 +1720,7 @@
 				078DF4C81BEA932200CBFAA4 /* ATITwitterAuthHandler.m in Sources */,
 				074D8D171C220D80007B5516 /* HDView.m in Sources */,
 				078DF4C21BE8810600CBFAA4 /* SNFFormViewController.m in Sources */,
-				07FF6A581CBEF0B0005C77C5 /* FlurryAdsEmpty.m in Sources */,
+				07FF6A771CBF1854005C77C5 /* FlurryAdsEmpty.m in Sources */,
 				075EA4EE1C1225540003A403 /* Utils.m in Sources */,
 				D6270ECB1BE817D200F7C39A /* SNFPredefinedBehaviorGroup.m in Sources */,
 				D6270ED81BE817E900F7C39A /* SNFAddBehaviorCell.m in Sources */,
@@ -1747,7 +1747,7 @@
 				07C0F3B81BED26420075A6B9 /* IAPHelper.m in Sources */,
 				D6E724E21BF542E500398D09 /* SNFMoreWebDetail.m in Sources */,
 				D659DBF01BDAEA000048D3F7 /* SNFBoard+CoreDataProperties.m in Sources */,
-				07FF6A551CBEF0B0005C77C5 /* FlurryEmpty.m in Sources */,
+				07FF6A741CBF1854005C77C5 /* FlurryEmpty.m in Sources */,
 				0707D6DC1BE428BA002F1FC0 /* SNFInvites.m in Sources */,
 				0703C0DF1C51736D000F28A7 /* SNFSpendableSmile+CoreDataProperties.m in Sources */,
 				0707D6CB1BE2B2F8002F1FC0 /* SNFCreateAccount.m in Sources */,
@@ -1870,20 +1870,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/GA/GoogleAnalyticsServicesiOS_3.15",
-					"$(PROJECT_DIR)/libs/Flurry",
-					iPhone,
-					SDK,
-					viPhone,
-					SDK,
-					"7.6.0/Flurry-iOS-7.6.0/FlurryAds",
-					"$(PROJECT_DIR)/libs/Flurry",
-					iPhone,
-					SDK,
-					viPhone,
-					SDK,
-					"7.6.0/Flurry-iOS-7.6.0/Flurry",
 					"$(PROJECT_DIR)/libs",
 					"$(PROJECT_DIR)/libs/FlurryAdapterForDFPAndAdMobiOS-master",
+					"$(PROJECT_DIR)/libs/Flurry/Flurry-iOS-7.6.0/Flurry",
+					"$(PROJECT_DIR)/libs/Flurry/Flurry-iOS-7.6.0/FlurryAds",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1915,20 +1905,10 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/libs/GA/GoogleAnalyticsServicesiOS_3.15",
-					"$(PROJECT_DIR)/libs/Flurry",
-					iPhone,
-					SDK,
-					viPhone,
-					SDK,
-					"7.6.0/Flurry-iOS-7.6.0/FlurryAds",
-					"$(PROJECT_DIR)/libs/Flurry",
-					iPhone,
-					SDK,
-					viPhone,
-					SDK,
-					"7.6.0/Flurry-iOS-7.6.0/Flurry",
 					"$(PROJECT_DIR)/libs",
 					"$(PROJECT_DIR)/libs/FlurryAdapterForDFPAndAdMobiOS-master",
+					"$(PROJECT_DIR)/libs/Flurry/Flurry-iOS-7.6.0/Flurry",
+					"$(PROJECT_DIR)/libs/Flurry/Flurry-iOS-7.6.0/FlurryAds",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
