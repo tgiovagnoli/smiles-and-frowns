@@ -190,7 +190,7 @@
 	if(self.keyboardIsVisible) {
 		return;
 	}
-	if(self.scrollViewBottom.constant > banner.height) {
+	if(self.scrollViewBottom.constant >= banner.height) {
 		self.scrollViewBottom.constant -= banner.height;
 	}
 }
