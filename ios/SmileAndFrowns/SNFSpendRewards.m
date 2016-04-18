@@ -52,6 +52,8 @@
 	
 	self.deleteButton.alpha = 0;
 	
+	[[GATracking instance] trackScreenWithTagManager:@"SpendSmileView"];
+	
 	[self startBannerAd];
 	[self startInterstitialAd];
 	[self updateUI];

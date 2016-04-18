@@ -47,6 +47,8 @@
 		self.titleLabel.text = @"Reporting";
 	}
 	
+	[[GATracking instance] trackScreenWithTagManager:@"ViewReportView"];
+	
 	[SNFFormStyles roundEdgesOnButton:self.exportButton];
 	[SNFFormStyles updateFontOnSegmentControl:self.filterType];
 	
