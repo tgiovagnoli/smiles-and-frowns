@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Roboto-Light.ttf">
@@ -350,7 +350,7 @@
                             <variation key="heightClass=regular-widthClass=compact" constant="101"/>
                         </constraint>
                     </constraints>
-                    <string key="text">Just tap a child’s Smile or Frown icon, select a behavior and submit. Kids learn fast that Smiles - Frowns = their rewards-buying power, so they’ll work hard to do their best. To review performance, just tap on a child’s name.</string>
+                    <string key="text">Just tap a child's Smile or Frown icon, select a behavior and submit. Kids learn fast that Smiles - Frowns = their rewards-buying power. To review performance, just tap on a child's name. To make edits, try swiping left.</string>
                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
