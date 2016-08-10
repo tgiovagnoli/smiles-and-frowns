@@ -12,6 +12,7 @@
 		@"soft_deleted": @"deleted",
 		@"updated_date": @"updated_date",
 		@"device_date": @"device_date",
+		@"created_date": @"created_date",
 		@"remote_id": @"id",
 		@"board": @"board",
 		@"positive": @"positive",

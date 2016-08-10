@@ -22,6 +22,7 @@
 		@"remote_id": @"id",
 		@"updated_date": @"updated_date",
 		@"device_date": @"device_date",
+		@"created_date": @"created_date",
 		@"owner": @"owner",
 	};
 }

@@ -14,6 +14,7 @@
 		@"user": @"user",
 		@"device_date": @"device_date",
 		@"updated_date": @"updated_date",
+		@"created_date": @"created_date",
 		@"role": @"role",
 		@"soft_deleted": @"deleted",
 	};

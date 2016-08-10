@@ -12,6 +12,7 @@
 			 @"remote_id": @"id",
 			 @"updated_date": @"updated_date",
 			 @"created_date": @"created_date",
+			 @"device_date": @"device_date",
 			 @"board": @"board",
 			 @"collected": @"collected",
 			 @"user": @"user",

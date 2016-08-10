@@ -81,69 +81,78 @@
 		NSLog(@"%@", frownFetchError);
 	}
 	
+	NSMutableArray * daysGrouped = [[NSMutableArray alloc] init];
+	
 	// sort the smiles into an days dictionary
-	NSMutableArray *daysGrouped = [[NSMutableArray alloc] init];
-	for(SNFSmile *smile in allSmiles){
+	for(SNFSmile * smile in allSmiles) {
 		NSInteger daysSinceEpoch = [self dayForObjectCreatedSinceEpoch:smile];
-		SNFReportDateGroup *selectedDateGroup;
-		for(SNFReportDateGroup *dateGroup in daysGrouped){
-			if(dateGroup.daysSinceEpoch == daysSinceEpoch){
+		SNFReportDateGroup * selectedDateGroup;
+		for(SNFReportDateGroup * dateGroup in daysGrouped) {
+			if(dateGroup.daysSinceEpoch == daysSinceEpoch) {
 				selectedDateGroup = dateGroup;
 				break;
 			}
 		}
-		if(!selectedDateGroup){
+		
+		if(!selectedDateGroup) {
 			selectedDateGroup = [[SNFReportDateGroup alloc] init];
 			selectedDateGroup.daysSinceEpoch = daysSinceEpoch;
 			selectedDateGroup.date = [[NSCalendar currentCalendar] startOfDayForDate:smile.created_date];
 			[daysGrouped addObject:selectedDateGroup];
 		}
 		
-		SNFReportBehaviorGroup *selectedBehaviorGroup;
-		for(SNFReportBehaviorGroup *behaviorGroup in selectedDateGroup.behaviorGroups){
-			if([behaviorGroup checkGroupViabilityOnSmile:smile]){
+		SNFReportBehaviorGroup * selectedBehaviorGroup;
+		for(SNFReportBehaviorGroup * behaviorGroup in selectedDateGroup.behaviorGroups) {
+			if([behaviorGroup checkGroupViabilityOnSmile:smile]) {
 				selectedBehaviorGroup = behaviorGroup;
 				break;
 			}
 		}
-		if(!selectedBehaviorGroup){
+		
+		if(!selectedBehaviorGroup) {
 			selectedBehaviorGroup = [[SNFReportBehaviorGroup alloc] init];
 			[selectedBehaviorGroup createKeysFromSmile:smile];
 			[selectedDateGroup.behaviorGroups addObject:selectedBehaviorGroup];
 		}
+		
 		[selectedBehaviorGroup.smiles addObject:smile];
 	}
 	
-	for(SNFFrown *frown in allFrowns){
+	for(SNFFrown * frown in allFrowns) {
+		
+		NSLog(@"frown.created_date: %@",frown.created_date);
+		
 		NSInteger daysSinceEpoch = [self dayForObjectCreatedSinceEpoch:frown];
-		SNFReportDateGroup *selectedDateGroup;
-		for(SNFReportDateGroup *dateGroup in daysGrouped){
-			if(dateGroup.daysSinceEpoch == daysSinceEpoch){
+		SNFReportDateGroup * selectedDateGroup;
+		for(SNFReportDateGroup * dateGroup in daysGrouped) {
+			if(dateGroup.daysSinceEpoch == daysSinceEpoch) {
 				selectedDateGroup = dateGroup;
 				break;
 			}
 		}
-		if(!selectedDateGroup){
+		
+		if(!selectedDateGroup) {
 			selectedDateGroup = [[SNFReportDateGroup alloc] init];
 			selectedDateGroup.daysSinceEpoch = daysSinceEpoch;
 			selectedDateGroup.date = [[NSCalendar currentCalendar] startOfDayForDate:frown.created_date];
 			[daysGrouped addObject:selectedDateGroup];
-			// TODO: need to update the NSDate to the rounded day.
 		}
 		
-		SNFReportBehaviorGroup *selectedBehaviorGroup;
-		for(SNFReportBehaviorGroup *behaviorGroup in selectedDateGroup.behaviorGroups){
-			if([behaviorGroup checkGroupViabilityOnFrown:frown]){
+		SNFReportBehaviorGroup * selectedBehaviorGroup;
+		for(SNFReportBehaviorGroup * behaviorGroup in selectedDateGroup.behaviorGroups) {
+			if([behaviorGroup checkGroupViabilityOnFrown:frown]) {
 				selectedBehaviorGroup = behaviorGroup;
+				break;
 			}
 		}
-		if(!selectedBehaviorGroup){
+		
+		if(!selectedBehaviorGroup) {
 			selectedBehaviorGroup = [[SNFReportBehaviorGroup alloc] init];
 			[selectedBehaviorGroup createKeysFromFrown:frown];
 			[selectedDateGroup.behaviorGroups addObject:selectedBehaviorGroup];
 		}
+		
 		[selectedBehaviorGroup.frowns addObject:frown];
-		NSLog(@"poo");
 	}
 	
 	return [daysGrouped sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"self.date" ascending:ascending]]];
